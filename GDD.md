@@ -83,7 +83,7 @@ FA = {
 | Sprite                                             | Nombre           | descripcion | HP | At | Ve | FA |
 | :-------------:                                    | :-------------   |:---|:---:|:---:|:---:|:---:|
 | <img src="DocImg/pp.jpg" width="100" height="100"> | Personaje Generico  | Es un Personaje generico no hace gran cosa | 100 | 100 | 0 | D |
-| <img src="dirección" width="100" height="100"> | Nombre  |  descripcion | Vida | ataque | velocidad | Forma de Ataque |
+| <img src="dirección" width="100" height="100"> | Nombre  |  descripcion | HP | At | Ve | FA |
 
 ## Objetos
 Las imagenes tienen que estar estar en 100x100, o que este en formato cuadrado 1:1, o la altura debe medir 100 pixeles. insetar este codigo en la columna de sprite.
