@@ -119,7 +119,7 @@ FA = {
 | Sprite                                             | Nombre           |localizaciones    | descripcion | HP | At | Ve | FA |
 | :-------------:                                    | :-------------   |:---|:---|:---:|:---:|:---:|:---:|
 | <img src="DocImg/pp.jpg" width="100" height="100"> | NPC Generico  | su puta casa | Es un npc generico no hace gran cosa | 100 | 100 | 0 | D |
-| <img src="dirección" width="100" height="100"> | Nombre  | localizaciones | descripcion | Vida | ataque | velocidad | Forma de Ataque |
+| <img src="dirección" width="100" height="100"> | Nombre  | localizaciones | descripción | HP | At | Ve | FA |
 
 ## Referencias
 - la madre de manu
