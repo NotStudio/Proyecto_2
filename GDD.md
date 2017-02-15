@@ -21,16 +21,39 @@ movil
 bonica
 ## Menús
 ## Localidades
-### Base
-Donde estan las tiendas y las cosicas
+### La Base
+Donde se realiza parte survival del juego.
+Se pueden realizar las siguientes acciones
+- Guardar
+- Comprar
+- Elegir zona para jugar
+- Craftear.
+
 ### Zonas
-Donde está el core del juego
+- Donde se obtienen recursos para la parte survival del juegeo
+- Hay 1 boss por zona.
+- Hay 1 tipo de recurso por zona.
+- Las zonas se organizan por niveles o pisos.
+- Los niveles por habitaciones, que se van recorriendo hasta poder acceder al siguiente nivel.
+- La forma de colocar habitaciones es aleatoria.
+- Las habitaciones son estructuralmente iguales para todas las zonas.
+- Enemigos diferentes por zona.
+- tilesheets diferentes por zona.
+- Recurso diferente por zona.
+
 #### Zona 1
 donde esta la madre de manu
 #### Zona 2
 donde esta la puta madre de manu
 #### Zona N-enésima
 donde esta la puta madre de manu en monociclo
+
+### Habitaciones
+- Es donde se juega a la parte Arcade del juego (disparar y desplazarse).
+- Puede haber o no enemigos en una habitación.
+- Hay X tipos diferentes de habitación.
+- Una habitación tiene que estar conectada minimo a otra habitación.
+-
 
 ## Historia
 La puta madre de manu conoce El monociclo
