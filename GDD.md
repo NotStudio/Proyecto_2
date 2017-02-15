@@ -53,7 +53,6 @@ donde esta la puta madre de manu en monociclo
 - Puede haber o no enemigos en una habitación.
 - Hay X tipos diferentes de habitación.
 - Una habitación tiene que estar conectada minimo a otra habitación.
--
 
 ## Historia
 La puta madre de manu conoce El monociclo
