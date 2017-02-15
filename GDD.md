@@ -12,16 +12,19 @@ portada del juego
 ## 5 Primeros minutos del Juego
 Una puta ida de olla
 ## Jugabilidad
-jugable
 ### Mecánica
-automatica
+corre y mata pium pium
 ### Dinámica
-movil
+El juego tiene 2 rasgos respecto a la dinámica, Survival y Arcade, una necesita de la otra, es necesario realizar la parte Arcade para poder avanzar en la Survival y esta amplia la parte Arcade.
+#### Survival
+Esta parte de la dinámica es la que hace avanzar directamente la historia o desarrollo del juego y se desarrolla en Refugio/Base. Tiene que ver con desbloqueo de zonas, lo que amplia la parte Arcade, crafteo de objetos, y el desarrollo de los Personajes (selección de los personajes). El objetivo principal de esta parte es el desbloqueo de todas las zonas para llegar a la ultima zona y acabar el juego.
+#### Arcade
+Esta parte de la dinámica consiste en completar las zonas, que se componen de niveles y los niveles de habitaciones, para obtener recursos, y estos poder ser usados en la parte Survival del juego. Se desarrolla en las habitaciones, se tienen que acabar con todos los enemigos de la habitción para poder pasar una habitación colindante de la actual y llegar al acceso del siguiente nivel que estará en una habitación del nivel.
 ### Estética
 bonica
 ## Menús
 ## Localidades
-### La Base
+### La Base o Refugio
 Donde se realiza parte survival del juego.
 Se pueden realizar las siguientes acciones
 - Guardar
