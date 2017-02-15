@@ -1,7 +1,7 @@
 # Nombre Juego
 
 Por
-<ul>[![logo](DocImg\pp.jpg)]()</ul>
+<ul>[![logo](/DocImg/pp.jpg)]()</ul>
 
 ## Documento de diseño
 [El Documento](/GDD.md)
