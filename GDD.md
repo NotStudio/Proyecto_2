@@ -1,7 +1,7 @@
 # nombre Juego
 ## Resumen
 | Genero | Público | Modos de juego | Plataforma | calificación |
-|-|-|-|-|-|
+|:-------|:--------|:---------------|:-----------|:-------------|
 | undefined | undefined    |undefined| PC  | Undefined |
 ## Descripción
 una puta movida
@@ -56,8 +56,8 @@ FA = {
 ```
 
 | Sprite                                             | Nombre           | descripcion | HP | At | Ve | FA |
-| :-------------:                                    | :-------------   |:--|:-:|:-:|:-:|:-:|
-| <img src="DocImg\pp.jpg" width="100" height="100"> | Personaje Generico  | Es un Personaje generico no hace gran cosa | 100 | 100 | 0 | D |
+| :-------------:                                    | :-------------   |:---|:---:|:---:|:---:|:---:|
+| <img src="DocImg/pp.jpg" width="100" height="100"> | Personaje Generico  | Es un Personaje generico no hace gran cosa | 100 | 100 | 0 | D |
 | <img src="dirección" width="100" height="100"> | Nombre  |  descripcion | Vida | ataque | velocidad | Forma de Ataque |
 
 ## Objetos
@@ -68,8 +68,8 @@ Plantilla para insetar lineas
 ```
 
 | Sprite                                             | Nombre           |efecto        |
-| :-------------:                                    | :-------------   |:-|
-| <img src="DocImg\pp.jpg" width="100" height="100"> | Objeto generico  | efecto generico |
+| :-------------:                                    | :-------------   |:-------------|
+| <img src="DocImg/pp.jpg" width="100" height="100"> | Objeto generico  | efecto generico |
 | <img src="Localización de la imagen" height="100" width="100"> | Nombre del Objeto  | Efecto del objeto|
 
 ## NPC's
@@ -95,8 +95,8 @@ FA = {
 ```
 
 | Sprite                                             | Nombre           |localizaciones    | descripcion | HP | At | Ve | FA |
-| :-------------:                                    | :-------------   |:-|:--|:-:|:-:|:-:|:-:|
-| <img src="DocImg\pp.jpg" width="100" height="100"> | NPC Generico  | su puta casa | Es un npc generico no hace gran cosa | 100 | 100 | 0 | D |
+| :-------------:                                    | :-------------   |:---|:---|:---:|:---:|:---:|:---:|
+| <img src="DocImg/pp.jpg" width="100" height="100"> | NPC Generico  | su puta casa | Es un npc generico no hace gran cosa | 100 | 100 | 0 | D |
 | <img src="dirección" width="100" height="100"> | Nombre  | localizaciones | descripcion | Vida | ataque | velocidad | Forma de Ataque |
 
 ## Referencias
