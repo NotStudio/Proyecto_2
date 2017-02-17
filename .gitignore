@@ -1,8 +1,8 @@
-Juegaso/[Dd]ebug
-Juegaso/Project/[Dd]ebug
-*.suo
+/Juegaso/Project/[Dd]ebug
 *.user
 *.userosscache
 *.sln.docstates
 *.sdf
 *.opensdf
+*.exe
+*.log
