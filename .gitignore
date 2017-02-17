@@ -1,6 +1,4 @@
-# Juegaso/[Dd]ebug
 /Juegaso/Project/[Dd]ebug
-# *.dll
 *.suo
 *.user
 *.userosscache
