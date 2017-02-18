@@ -3,12 +3,12 @@
   <ImportGroup Label="PropertySheets" />
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup>
-    <IncludePath>$(SolutionDir)Box2D\include;$(SolutionDir)SDL2_image-2.0.1\include;$(SolutionDir)SDL2-2.0.5\include;$(IncludePath)</IncludePath>
-    <LibraryPath>$(SolutionDir)Box2D\lib;$(SolutionDir)SDL2_image-2.0.1\lib\x86;$(SolutionDir)SDL2-2.0.5\lib\x86;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(SolutionDir)Box2D\include;$(SolutionDir)SDL2_image-2.0.1\include;$(SolutionDir)SDL2_ttf-2.0.14\include;$(SolutionDir)SDL2-2.0.5\include;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)Box2D\lib;$(SolutionDir)SDL2_image-2.0.1\lib\x86;$(SolutionDir)SDL2_ttf-2.0.14\lib\x86;$(SolutionDir)SDL2-2.0.5\lib\x86;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup>
     <Link>
-      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib;Box2D.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib;SDL2_ttf.lib;Box2D.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <SubSystem>Console</SubSystem>
     </Link>
   </ItemDefinitionGroup>
