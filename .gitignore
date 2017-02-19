@@ -1,4 +1,4 @@
-/Juegaso/Project/[Dd]ebug
+*.db
 *.user
 *.userosscache
 *.sdf
