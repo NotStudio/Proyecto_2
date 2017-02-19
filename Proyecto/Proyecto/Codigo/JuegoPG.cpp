@@ -69,7 +69,7 @@ JuegoPG::JuegoPG(b2World* mundo) : error(false), gameOver(false), exit(false), s
 	b2Body* gBody = world->CreateBody(&gBodydef);
 
 	b2PolygonShape gBox;
-	gBox.SetAsBox(50.0f, 50.0f);
+	gBox.SetAsBox(25.0f, 25.0f);
 
 	b2FixtureDef gDef;
 	gDef.shape = &gBox;
@@ -88,6 +88,9 @@ JuegoPG::JuegoPG(b2World* mundo) : error(false), gameOver(false), exit(false), s
 	
 	//Arrancamos las texturas y los objetos.
 	initMedia();
+	objetos.push_back(tostadora);
+	objetos.push_back(gato);
+	objetos.push_back(wall);
 	run();	
 	
 }
@@ -213,20 +216,21 @@ void JuegoPG::handleInput() {
 	int lim = 3;
 
 	b2Vec2 v = tostadora->GetLinearVelocity();
-
+	
+	
 
 	if (KEYS[SDLK_a]) { 
 		izq = true;
 		if (!(v.x < -lim))
-			pos.x -= vel;
-		
+			pos.x -= vel;	
 	}
 	else
 		izq = false;
 
 	if (KEYS[SDLK_d]) { 
-		if (!(v.x > lim))
+		if (!(v.x > lim)){
 			pos.x += vel;
+		}
 		dcha = true;
 		
 	}
@@ -268,6 +272,18 @@ void JuegoPG::handleInput() {
 				pos.y += vel*0.75f;
 		}
 	}
+	if (pos.x >= lim || pos.x <= -lim){
+		if (pos.x > 0)
+			pos.x = lim;
+		else 
+			pos.x = -lim;
+	}
+	if (pos.y >= lim || pos.y <= -lim){
+		if (pos.y > 0)
+			pos.y = lim;
+		else
+			pos.y = -lim;
+	}
 
 }
 //Método de consulta de la variable de control 'error'.
@@ -298,31 +314,24 @@ void JuegoPG::update(){
 	world->Step(1.0f/60.0f, 6, 2);
 	handleInput();
 	tostadora->SetLinearVelocity(pos);
-
-	b2Vec2 posT = tostadora->GetPosition();
-	b2Vec2 posg = gato->GetPosition();
-	b2Vec2 posw = wall->GetPosition();
-
-	r.x = (int)posT.x;
-	r.y = (int)posT.y;
 	
-	r2.x = (int)posg.x;
-	r2.y = (int)posg.y;
-
-	recta.x = (int)posw.x;
-	recta.y = (int)posw.y;
-
-
 }
 
 void JuegoPG::draw(){
 	
 	SDL_RenderClear(pRenderer);
-
+	
 	texturas[3]->draw(pRenderer, fondoRect, &fondoRect);
-	texturas[2]->draw(pRenderer,recta, nullptr);
-	texturas[1]->draw(pRenderer, r2, nullptr);
-	texturas[0]->draw(pRenderer,r,nullptr);
+	b2Vec2 posT;
+
+	for (int i = 0; i < objetos.size(); i++){
+		r.x = (int)objetos[i]->GetPosition().x;
+		r.y = (int)objetos[i]->GetPosition().y;
+		texturas[i]->draw(pRenderer, r, nullptr);
+		//[i]->GetUserData();
+		//MIRAR TAMAÑO CON LA CLASE.
+	}
+	
 
 	SDL_RenderPresent(pRenderer);
 

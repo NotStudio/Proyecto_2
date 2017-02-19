@@ -33,6 +33,7 @@ class JuegoPG
 	b2Body * tostadora;
 	b2Body * gato;
 	b2Body * wall;
+	std::vector<b2Body*> objetos;
 
 	SDL_Rect recta;
 
