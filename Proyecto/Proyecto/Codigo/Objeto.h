@@ -1,0 +1,19 @@
+#pragma once
+class Objeto
+{
+public:
+
+	Objeto()
+	{
+	}
+
+	virtual ~Objeto()
+	{
+	}
+
+	virtual void update() = 0;
+
+	virtual void draw() = 0;
+
+};
+

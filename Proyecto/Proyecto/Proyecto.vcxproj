@@ -19,13 +19,16 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Codigo\JuegoPG.cpp" />
+    <ClCompile Include="Codigo\Juego.cpp" />
     <ClCompile Include="Codigo\TexturasSDL.cpp" />
+    <ClCompile Include="Entidad.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Codigo\JuegoPG.h" />
+    <ClInclude Include="Codigo\Juego.h" />
     <ClInclude Include="Codigo\TexturasSDL.h" />
+    <ClInclude Include="Entidad.h" />
+    <ClInclude Include="Objeto.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{9AEFB5D6-5EFA-4A01-9D4F-1F8F42527E24}</ProjectGuid>

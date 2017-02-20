@@ -1,8 +1,8 @@
-#include "JuegoPG.h"
+#include "Juego.h"
 
 
 //Constructora que inicializa todos los atributos de la clase Juego.
-JuegoPG::JuegoPG(b2World* mundo) : error(false), gameOver(false), exit(false), score(0), world(mundo)
+Juego::Juego(b2World* mundo) : error(false), gameOver(false), exit(false), score(0), world(mundo)
 {
 	window.alto = 600; //Tamaño de la ventana.
 	window.ancho = 800;
@@ -70,6 +70,8 @@ JuegoPG::JuegoPG(b2World* mundo) : error(false), gameOver(false), exit(false), s
 
 	b2PolygonShape gBox;
 	gBox.SetAsBox(25.0f, 25.0f);
+	
+
 
 	b2FixtureDef gDef;
 	gDef.shape = &gBox;
@@ -95,7 +97,7 @@ JuegoPG::JuegoPG(b2World* mundo) : error(false), gameOver(false), exit(false), s
 	
 }
 
-JuegoPG::~JuegoPG()
+Juego::~Juego()
 {
 
 	//Liberamos los objetos.
@@ -109,28 +111,28 @@ JuegoPG::~JuegoPG()
 
 
 //Devolvemos una textura en función del enumerado que nos pasen.
-TexturasSDL* JuegoPG::getTextura(Texturas_t t) {
+TexturasSDL* Juego::getTextura(Texturas_t t) {
 
 	
 	return texturas[t];
 	
 };
 //Devolvemos el puntero al Render que está como atributo en la clase.
-SDL_Renderer* JuegoPG::getRender() const {
+SDL_Renderer* Juego::getRender() const {
 
 	return pRenderer;
 
 };
 
 //Devolvemos la posición actual del mouse, que se actualiza en el onClick.
-void JuegoPG::getMousePos(int &mpx, int &mpy)const {
+void Juego::getMousePos(int &mpx, int &mpy)const {
 
 	mpx = mousePos.x;
 	mpy = mousePos.y;
 
 };
 //Método que inicializa las texturas.
-void JuegoPG::initMedia() {
+void Juego::initMedia() {
 	//Creamos las texturas y las metemos en el vector de punteros.
 	for (int i = 0; i < nombreTexturas.size(); i++) {
 		texturas.emplace_back(new TexturasSDL);
@@ -139,7 +141,7 @@ void JuegoPG::initMedia() {
 
 };
 //Método que libera las texturas.
-void JuegoPG::freeMedia() {
+void Juego::freeMedia() {
 
 	for (int i = 0; i < nombreTexturas.size(); i++) {
 		delete texturas.at(i);
@@ -147,7 +149,7 @@ void JuegoPG::freeMedia() {
 	}
 };
 //Método que inicializa SDL
-bool JuegoPG::initSDL() {
+bool Juego::initSDL() {
 
 	bool success = true; //Initialization flag
 
@@ -176,7 +178,7 @@ bool JuegoPG::initSDL() {
 	return success;
 };
 //Método que libera SDL
-void JuegoPG::closeSDL() {
+void Juego::closeSDL() {
 
 	SDL_DestroyRenderer(pRenderer);
 	pRenderer = nullptr;
@@ -187,7 +189,7 @@ void JuegoPG::closeSDL() {
 	SDL_Quit();
 };
 //Método que controla los eventos.
-bool JuegoPG::handle_event() {
+bool Juego::handle_event() {
 
 	SDL_Event event;
 	while (SDL_PollEvent(&event)) {
@@ -198,10 +200,10 @@ bool JuegoPG::handle_event() {
 			salir(); 
 			break;
 		case SDL_KEYDOWN:
-			KEYS[event.key.keysym.sym] = true;
+			KEYS[event.button.button] = true;
 			break;
 		case SDL_KEYUP:
-			KEYS[event.key.keysym.sym] = false;
+			KEYS[event.button.button] = false;
 			break;
 		default:
 			break;
@@ -210,7 +212,7 @@ bool JuegoPG::handle_event() {
 	return true;
 };
 
-void JuegoPG::handleInput() {
+void Juego::handleInput() {
 
 	float32 vel = 0.05f;
 	int lim = 3;
@@ -287,26 +289,26 @@ void JuegoPG::handleInput() {
 
 }
 //Método de consulta de la variable de control 'error'.
-bool JuegoPG::getError() {
+bool Juego::getError() {
 
 	return error;
 
 };
 
-void JuegoPG::salir() {
+void Juego::salir() {
 
 		exit = true;
 	
 }
 
-void JuegoPG::move(char c) {
+void Juego::move(char c) {
 
 	
 	
 }
 
 
-void JuegoPG::update(){
+void Juego::update(){
 
 	b2Vec2 point;
 	point.x = 500;
@@ -317,7 +319,7 @@ void JuegoPG::update(){
 	
 }
 
-void JuegoPG::draw(){
+void Juego::draw(){
 	
 	SDL_RenderClear(pRenderer);
 	
@@ -338,7 +340,7 @@ void JuegoPG::draw(){
 }
 
 
-void JuegoPG::run() {
+void Juego::run() {
 
 	if (!error) {
 		cout << "PLAY \n";

@@ -21,7 +21,10 @@
     <ClCompile Include="Codigo\TexturasSDL.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Codigo\JuegoPG.cpp">
+    <ClCompile Include="Codigo\Juego.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Entidad.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -29,7 +32,13 @@
     <ClInclude Include="Codigo\TexturasSDL.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Codigo\JuegoPG.h">
+    <ClInclude Include="Codigo\Juego.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Objeto.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Entidad.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

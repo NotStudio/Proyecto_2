@@ -1,7 +1,7 @@
 #include <SDL.h>
 #include <SDL_image.h>
 #include <SDL_ttf.h>
-#include "Codigo\JuegoPG.h"
+#include "Codigo\Juego.h"
 #include <exception>
 #include <string>
 using namespace std;
@@ -20,13 +20,12 @@ int main(int argc, char* args[]) {
 
 
 	b2Vec2 gravity(0.0f, 0.0f);
+
 	b2World world(gravity);
 
-	JuegoPG juego(&world);
+	Juego juego(&world);
 
 	//system("PAUSE");
 
 	return 0;
-
-
 }

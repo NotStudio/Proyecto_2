@@ -1,5 +1,5 @@
-#ifndef JUEGOPG_H
-#define JUEGOPG_H
+#ifndef JUEGO_H
+#define JUEGO_H
 #include <vector>
 #include <string>
 #include <Box2D\Box2D.h>
@@ -9,7 +9,7 @@
 class EstadoJuego;
 
 using namespace std;
-class JuegoPG
+class Juego
 {
 	int score;
 
@@ -68,11 +68,17 @@ class JuegoPG
 	bool KEYS[322];
 
 public:
-	JuegoPG(b2World * mundo);
-	~JuegoPG();
+	Juego(b2World * mundo);
+	~Juego();
 
 	enum Texturas_t {
 		tTostadora, tGato, tFondo
+	};
+
+	struct Animacion
+	{
+		SDL_Rect anim;
+		int numFrames;
 	};
 	
 	void move(char c);
