@@ -214,8 +214,8 @@ bool Juego::handle_event() {
 
 void Juego::handleInput() {
 
-	float32 vel = 0.05f;
-	int lim = 3;
+	int vel = 2;
+	int lim = 300;
 
 	b2Vec2 v = tostadora->GetLinearVelocity();
 	
@@ -261,17 +261,17 @@ void Juego::handleInput() {
 	if (!dcha && !izq) {
 		if (pos.x != 0) {
 			if (pos.x > 0)
-				pos.x -= vel*0.75f;
+				pos.x -= vel;
 			else
-				pos.x += vel*0.75f;
+				pos.x += vel;
 		}
 	}
 	if (!up && !down) {
 		if (pos.y != 0) {
 			if (pos.y > 0)
-				pos.y -= vel*0.75f;
+				pos.y -= vel;
 			else
-				pos.y += vel*0.75f;
+				pos.y += vel;
 		}
 	}
 	if (pos.x >= lim || pos.x <= -lim){
@@ -311,12 +311,12 @@ void Juego::move(char c) {
 void Juego::update(){
 
 	b2Vec2 point;
-	point.x = 500;
-	point.y = 500;
 	world->Step(1.0f/60.0f, 6, 2);
 	handleInput();
-	tostadora->SetLinearVelocity(pos);
-	
+	point.x = (float32)pos.x / 10;
+	point.y = (float32)pos.y / 10;
+	tostadora->SetLinearVelocity(point);
+	std::cout << point.x << " " << point.y << "\n";
 }
 
 void Juego::draw(){
