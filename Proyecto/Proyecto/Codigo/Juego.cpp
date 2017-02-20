@@ -200,10 +200,10 @@ bool Juego::handle_event() {
 			salir(); 
 			break;
 		case SDL_KEYDOWN:
-			KEYS[event.button.button] = true;
+			KEYS[event.key.keysym.scancode] = true;
 			break;
 		case SDL_KEYUP:
-			KEYS[event.button.button] = false;
+			KEYS[event.key.keysym.scancode] = false;
 			break;
 		default:
 			break;
@@ -221,7 +221,7 @@ void Juego::handleInput() {
 	
 	
 
-	if (KEYS[SDLK_a]) { 
+	if (KEYS[SDL_SCANCODE_A]) { 
 		izq = true;
 		if (!(v.x < -lim))
 			pos.x -= vel;	
@@ -229,7 +229,7 @@ void Juego::handleInput() {
 	else
 		izq = false;
 
-	if (KEYS[SDLK_d]) { 
+	if (KEYS[SDL_SCANCODE_D]) { 
 		if (!(v.x > lim)){
 			pos.x += vel;
 		}
@@ -239,7 +239,7 @@ void Juego::handleInput() {
 	else
 		dcha = false;
 
-	if (KEYS[SDLK_w]) { 
+	if (KEYS[SDL_SCANCODE_W]) {
 		if (!(v.y < -lim))
 			pos.y -= vel;
 		up = true;
@@ -248,7 +248,7 @@ void Juego::handleInput() {
 	else
 		up = false;
 
-	if (KEYS[SDLK_s]) { 
+	if (KEYS[SDL_SCANCODE_S]) {
 		if (!(v.y > lim))
 			pos.y += vel;
 		down = true;

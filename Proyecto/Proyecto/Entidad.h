@@ -13,7 +13,7 @@ protected:
 	//Atributos de Box2D
 	b2Shape* shape;
 	b2BodyDef bodyDef;
-	b2Body body;
+	b2Body* body;
 	b2FixtureDef fDef;
 	//Struct de animacion.
 	std::vector<Juego::Animacion> animaciones;
@@ -25,7 +25,7 @@ public:
 
 	virtual ~Entidad();
 
-	virtual void draw();
+	//virtual void draw();
 
 };
 
