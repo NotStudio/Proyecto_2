@@ -6,9 +6,12 @@
 #include "TexturasSDL.h"
 #include <float.h>
 #include <stack>
+#include <unordered_map>
 class EstadoJuego;
 
 using namespace std;
+
+
 class Juego
 {
 	int score;
@@ -25,7 +28,6 @@ class Juego
 
 	void run();
 
-	void handleInput();
 	SDL_Rect r;
 	SDL_Rect r2;
 	b2Vec2 pos;
@@ -67,6 +69,10 @@ class Juego
 
 	bool KEYS[322];
 
+	unordered_map<string, pair<string,TexturasSDL*>> mapTexturas;
+
+	
+
 public:
 	Juego(b2World * mundo);
 	~Juego();
@@ -81,7 +87,7 @@ public:
 		int numFrames;
 	};
 	
-	void move(char c);
+	void move();
 
 	TexturasSDL* getTextura(Texturas_t t);
 

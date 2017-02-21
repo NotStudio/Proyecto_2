@@ -21,10 +21,12 @@ Juego::Juego(b2World* mundo) : error(false), gameOver(false), exit(false), score
 	
 	
 	//Añadimos al vector del nombre de las texturas los nombres de las imágenes. Tienen que tener un orden concreto.
-	nombreTexturas.emplace_back("../Material/TOSTADORA.png");
-	nombreTexturas.emplace_back("../Material/gato.png");
-	nombreTexturas.emplace_back("../Material/wall.png");
-	nombreTexturas.emplace_back("../Material/background.jpg");
+	nombreTexturas.emplace_back("../Material/Tostadora_idle.png");
+	nombreTexturas.emplace_back("../Material/Gato_idle.png");
+	nombreTexturas.emplace_back("../Material/Wall_idle.png");
+	nombreTexturas.emplace_back("../Material/Background_idle.jpg");
+
+	
 	
 	b2BodyDef tostBodydef;
 	tostBodydef.type = b2_dynamicBody;
@@ -133,19 +135,34 @@ void Juego::getMousePos(int &mpx, int &mpy)const {
 };
 //Método que inicializa las texturas.
 void Juego::initMedia() {
+	
 	//Creamos las texturas y las metemos en el vector de punteros.
 	for (int i = 0; i < nombreTexturas.size(); i++) {
-		texturas.emplace_back(new TexturasSDL);
-		texturas.at(i)->load(pRenderer, nombreTexturas[i]);
+
+		std::string entity, anim, aux;
+		aux = nombreTexturas[i];
+		entity = nombreTexturas[i].erase(0, 12);
+		entity.erase(entity.end()-4,entity.end());
+
+		anim = entity.substr(entity.size() - 4, 4);
+		entity.erase(entity.end() - 5, entity.end());
+		mapTexturas.emplace(std::make_pair(entity, std::make_pair(anim, new TexturasSDL)));
+		mapTexturas.at(entity).second->load(pRenderer,aux);
+
 	}
 
 };
 //Método que libera las texturas.
 void Juego::freeMedia() {
 
-	for (int i = 0; i < nombreTexturas.size(); i++) {
-		delete texturas.at(i);
-		texturas.at(i) = nullptr;
+	std::unordered_map<string, pair<string, TexturasSDL*>>::iterator it = mapTexturas.begin();
+	b2Vec2 posT;
+	int i = 0;
+	while (it != mapTexturas.end()) {
+		delete mapTexturas.at(it->first).second;
+		mapTexturas.at(it->first).second = nullptr;
+		it++;
+		i++;
 	}
 };
 //Método que inicializa SDL
@@ -212,13 +229,12 @@ bool Juego::handle_event() {
 	return true;
 };
 
-void Juego::handleInput() {
+void Juego::move() {
 
 	int vel = 2;
 	int lim = 300;
 
 	b2Vec2 v = tostadora->GetLinearVelocity();
-	
 	
 
 	if (KEYS[SDL_SCANCODE_A]) { 
@@ -301,18 +317,13 @@ void Juego::salir() {
 	
 }
 
-void Juego::move(char c) {
-
-	
-	
-}
 
 
 void Juego::update(){
 
 	b2Vec2 point;
 	world->Step(1.0f/60.0f, 6, 2);
-	handleInput();
+	move();
 	point.x = (float32)pos.x / 10;
 	point.y = (float32)pos.y / 10;
 	tostadora->SetLinearVelocity(point);
@@ -322,16 +333,17 @@ void Juego::update(){
 void Juego::draw(){
 	
 	SDL_RenderClear(pRenderer);
-	
-	texturas[3]->draw(pRenderer, fondoRect, &fondoRect);
+	std::unordered_map<string, pair<string, TexturasSDL*>>::iterator it = mapTexturas.begin();
+	mapTexturas.at("Background").second->draw(pRenderer, fondoRect, &fondoRect);
 	b2Vec2 posT;
-
-	for (int i = 0; i < objetos.size(); i++){
-		r.x = (int)objetos[i]->GetPosition().x;
-		r.y = (int)objetos[i]->GetPosition().y;
-		texturas[i]->draw(pRenderer, r, nullptr);
-		//[i]->GetUserData();
-		//MIRAR TAMAÑO CON LA CLASE.
+	int i = 0;
+	while (it != mapTexturas.end()){
+		//r.x = (int)objetos[i]->GetPosition().x;
+		//r.y = (int)objetos[i]->GetPosition().y;
+		mapTexturas.at(it->first).second->draw(pRenderer, r, nullptr);
+		std::cout << it->first;
+		it++;
+		i++;
 	}
 	
 

@@ -25,7 +25,9 @@ public:
 
 	virtual ~Entidad();
 
-	//virtual void draw();
+	virtual void draw();
+
+	b2Body* getBody();
 
 };
 
