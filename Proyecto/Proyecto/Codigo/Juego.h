@@ -7,7 +7,8 @@
 #include <float.h>
 #include <stack>
 #include <unordered_map>
-class EstadoJuego;
+#include "EstadoJuego.h"
+//class EstadoJuego;
 
 using namespace std;
 
@@ -16,7 +17,10 @@ class Juego
 {
 	int score;
 
-	stack<EstadoJuego*> estados;
+
+	stack<EstadoJuego*> Estados;
+
+	EstadoJuego * pestados;
 
 	void initMedia();
 
@@ -108,6 +112,12 @@ public:
 	void update();
 
 	void draw();
+
+	EstadoJuego* topEstado();
+	void changeState(EstadoJuego* newSt);
+	void pushState(EstadoJuego* newState);
+	void popState();
+	void setSalir();
 };
 
 

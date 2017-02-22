@@ -369,6 +369,31 @@ void Juego::run() {
 			cout << "GAME OVER \n";
 		}
 	}
-};
+}
+
+	EstadoJuego * Juego::topEstado(){
+		return Estados.top();
+	}
+
+	void Juego::changeState(EstadoJuego* newSt){
+		popState();
+		pushState(newSt);
+	}
+	
+
+	void Juego::pushState(EstadoJuego* newState){
+		Estados.push(newState);
+	}
 
 
+	void Juego::popState(){
+		delete Estados.top();
+		Estados.pop();
+	}
+
+
+	void Juego::setSalir(){
+		exit = true;
+		closeSDL();
+
+	}

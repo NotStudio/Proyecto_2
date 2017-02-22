@@ -1,8 +1,8 @@
 #pragma once
 #include <Box2D\Box2D.h>
 #include <SDL.h>
-#include "Codigo\Objeto.h"
-#include "Codigo\Juego.h"
+#include "Objeto.h"
+#include "Juego.h"
 class Entidad :	public Objeto
 {
 protected:

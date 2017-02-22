@@ -24,7 +24,22 @@
     <ClCompile Include="Codigo\Juego.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Entidad.cpp">
+    <ClCompile Include="Codigo\Entidad.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Codigo\EstadoPG.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Codigo\main.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Codigo\Pausa.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Codigo\GameOver.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Codigo\MenuPG.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -35,10 +50,25 @@
     <ClInclude Include="Codigo\Juego.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Objeto.h">
+    <ClInclude Include="Codigo\Entidad.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Entidad.h">
+    <ClInclude Include="Codigo\EstadoJuego.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Codigo\EstadoPG.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Codigo\Objeto.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Codigo\Pausa.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Codigo\GameOver.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Codigo\MenuPG.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
