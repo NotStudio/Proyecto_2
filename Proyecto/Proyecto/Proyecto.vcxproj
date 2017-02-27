@@ -19,26 +19,32 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Codigo\Entidad.cpp" />
-    <ClCompile Include="Codigo\EstadoPG.cpp" />
-    <ClCompile Include="Codigo\GameOver.cpp" />
-    <ClCompile Include="Codigo\Juego.cpp" />
-    <ClCompile Include="Codigo\main.cpp" />
-    <ClCompile Include="Codigo\MenuPG.cpp" />
-    <ClCompile Include="Codigo\Pausa.cpp" />
-    <ClCompile Include="Codigo\TexturasSDL.cpp" />
+    <ClCompile Include="Consumible.cpp" />
+    <ClCompile Include="contactListener.cpp" />
+    <ClCompile Include="Entidad.cpp" />
+    <ClCompile Include="Item.cpp" />
+    <ClCompile Include="Juego.cpp" />
+    <ClCompile Include="Jugable.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="ObjetoClave.cpp" />
+    <ClCompile Include="ObjetoHistorico.cpp" />
+    <ClCompile Include="Personaje.cpp" />
+    <ClCompile Include="TexturasSDL.cpp" />
+    <ClCompile Include="Tostadora.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Codigo\Entidad.h" />
-    <ClInclude Include="Codigo\EstadoJuego.h" />
-    <ClInclude Include="Codigo\EstadoPG.h" />
-    <ClInclude Include="Codigo\GameOver.h" />
-    <ClInclude Include="Codigo\Juego.h" />
-    <ClInclude Include="Codigo\MenuPG.h" />
-    <ClInclude Include="Codigo\Objeto.h" />
-    <ClInclude Include="Codigo\Pausa.h" />
-    <ClInclude Include="Codigo\TexturasSDL.h" />
+    <ClInclude Include="Consumible.h" />
+    <ClInclude Include="contactListener.h" />
+    <ClInclude Include="Entidad.h" />
+    <ClInclude Include="Item.h" />
+    <ClInclude Include="Juego.h" />
+    <ClInclude Include="Jugable.h" />
+    <ClInclude Include="Objeto.h" />
+    <ClInclude Include="ObjetoClave.h" />
+    <ClInclude Include="ObjetoHistorico.h" />
+    <ClInclude Include="Personaje.h" />
+    <ClInclude Include="TexturasSDL.h" />
+    <ClInclude Include="Tostadora.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{9AEFB5D6-5EFA-4A01-9D4F-1F8F42527E24}</ProjectGuid>

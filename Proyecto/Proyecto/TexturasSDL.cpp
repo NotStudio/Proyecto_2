@@ -25,7 +25,7 @@ bool TexturasSDL::load(SDL_Renderer* pRenderer, std::string const& nombreArch) {
 	tamTextura.alto = pSurface->clip_rect.h;
 	tamTextura.ancho = pSurface->clip_rect.w;
 
-	
+	nombreArc = nombreArch;
 	SDL_DestroyTexture(pTexture);
 
 

@@ -18,7 +18,7 @@ public:
 
 private:
 
-	string nombreArch;
+	string nombreArc;
 
 	struct tam {
 		int ancho;

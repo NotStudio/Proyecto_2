@@ -1,4 +1,5 @@
 #include "Juego.h"
+#include "Tostadora.h"
 
 
 //Constructora que inicializa todos los atributos de la clase Juego.
@@ -18,15 +19,18 @@ Juego::Juego(b2World* mundo) : error(false), gameOver(false), exit(false), score
 		std::cout << "Ha ocurrido un error con SDL";
 	}
 	//Esto es el wall de mexico los estados hundidos
-	
+	r.x = 100;
+	r.y = 100;
+	r.h = 50;
+	r.w = 50;
 	
 	//Añadimos al vector del nombre de las texturas los nombres de las imágenes. Tienen que tener un orden concreto.
 	nombreTexturas.emplace_back("../Material/Tostadora_idle.png");
 	nombreTexturas.emplace_back("../Material/Gato_idle.png");
 	nombreTexturas.emplace_back("../Material/Wall_idle.png");
 	nombreTexturas.emplace_back("../Material/Background_idle.jpg");
-
 	
+	world->SetContactListener(&listener);
 	
 	b2BodyDef tostBodydef;
 	tostBodydef.type = b2_dynamicBody;
@@ -43,8 +47,7 @@ Juego::Juego(b2World* mundo) : error(false), gameOver(false), exit(false), score
 	fDef.friction = 1.0f;
 	tostBody->CreateFixture(&fDef);
 	tostadora = tostBody;
-	r.h = 50;
-	r.w = 50;
+	
 
 	b2BodyDef wallBodydef;
 	wallBodydef.type = b2_staticBody;
@@ -84,7 +87,6 @@ Juego::Juego(b2World* mundo) : error(false), gameOver(false), exit(false), score
 	r2.h = 100;
 	r2.w = 100;
 
-	dcha = izq = up = down = false;
 
 	for (int i = 0; i < 322; i++) { // init them all to false
 		KEYS[i] = false;
@@ -95,6 +97,7 @@ Juego::Juego(b2World* mundo) : error(false), gameOver(false), exit(false), score
 	objetos.push_back(tostadora);
 	objetos.push_back(gato);
 	objetos.push_back(wall);
+	toasty = new Tostadora(this, r);
 	run();	
 	
 }
@@ -109,14 +112,21 @@ Juego::~Juego()
 	closeSDL();
 	pWindow = nullptr;
 	pRenderer = nullptr;
+
+	//Liberar cosas de la Física
+	
 }
 
 
 //Devolvemos una textura en función del enumerado que nos pasen.
-TexturasSDL* Juego::getTextura(Texturas_t t) {
-
+TexturasSDL* Juego::getTextura(const string &entity, const string &anim) {
+	try{
+		return mapTexturas.at(entity).at(anim);
+	}
+	catch (out_of_range){
+		std::cout << "Error al cargar textura";
+	}
 	
-	return texturas[t];
 	
 };
 //Devolvemos el puntero al Render que está como atributo en la clase.
@@ -146,23 +156,39 @@ void Juego::initMedia() {
 
 		anim = entity.substr(entity.size() - 4, 4);
 		entity.erase(entity.end() - 5, entity.end());
+		/*
 		mapTexturas.emplace(std::make_pair(entity, std::make_pair(anim, new TexturasSDL)));
-		mapTexturas.at(entity).second->load(pRenderer,aux);
+		mapTexturas.at(entity).second->load(pRenderer,aux);*/
+		
+		try{
+			mapTexturas.at(entity).emplace(std::make_pair(anim, new TexturasSDL));
+			mapTexturas.at(entity).at(anim)->load(pRenderer, aux);
 
+		}
+		catch(out_of_range){
+
+			unordered_map<string, TexturasSDL*> auxMap;
+			mapTexturas.emplace(std::make_pair(entity, auxMap));
+			mapTexturas.at(entity).emplace(std::make_pair(anim, new TexturasSDL));
+			mapTexturas.at(entity).at(anim)->load(pRenderer, aux);
+		}
+		
 	}
 
 };
 //Método que libera las texturas.
 void Juego::freeMedia() {
 
-	std::unordered_map<string, pair<string, TexturasSDL*>>::iterator it = mapTexturas.begin();
-	b2Vec2 posT;
-	int i = 0;
+	std::unordered_map<string, std::unordered_map<string, TexturasSDL*>>::iterator it = mapTexturas.begin();
+
 	while (it != mapTexturas.end()) {
-		delete mapTexturas.at(it->first).second;
-		mapTexturas.at(it->first).second = nullptr;
+		std::unordered_map<string, TexturasSDL*>::iterator itAux = mapTexturas.at(it->first).begin();
+		while (itAux != mapTexturas.at(it->first).end()){
+			delete mapTexturas.at(it->first).at(itAux->first);
+			mapTexturas.at(it->first).at(itAux->first) = nullptr;
+			itAux++;
+		}
 		it++;
-		i++;
 	}
 };
 //Método que inicializa SDL
@@ -229,81 +255,6 @@ bool Juego::handle_event() {
 	return true;
 };
 
-void Juego::move() {
-
-	int vel = 2;
-	int lim = 300;
-
-	b2Vec2 v = tostadora->GetLinearVelocity();
-	
-
-	if (KEYS[SDL_SCANCODE_A]) { 
-		izq = true;
-		if (!(v.x < -lim))
-			pos.x -= vel;	
-	}
-	else
-		izq = false;
-
-	if (KEYS[SDL_SCANCODE_D]) { 
-		if (!(v.x > lim)){
-			pos.x += vel;
-		}
-		dcha = true;
-		
-	}
-	else
-		dcha = false;
-
-	if (KEYS[SDL_SCANCODE_W]) {
-		if (!(v.y < -lim))
-			pos.y -= vel;
-		up = true;
-		
-	}
-	else
-		up = false;
-
-	if (KEYS[SDL_SCANCODE_S]) {
-		if (!(v.y > lim))
-			pos.y += vel;
-		down = true;
-		
-	}
-	else
-		down = false;
-
-
-	if (!dcha && !izq) {
-		if (pos.x != 0) {
-			if (pos.x > 0)
-				pos.x -= vel;
-			else
-				pos.x += vel;
-		}
-	}
-	if (!up && !down) {
-		if (pos.y != 0) {
-			if (pos.y > 0)
-				pos.y -= vel;
-			else
-				pos.y += vel;
-		}
-	}
-	if (pos.x >= lim || pos.x <= -lim){
-		if (pos.x > 0)
-			pos.x = lim;
-		else 
-			pos.x = -lim;
-	}
-	if (pos.y >= lim || pos.y <= -lim){
-		if (pos.y > 0)
-			pos.y = lim;
-		else
-			pos.y = -lim;
-	}
-
-}
 //Método de consulta de la variable de control 'error'.
 bool Juego::getError() {
 
@@ -323,25 +274,22 @@ void Juego::update(){
 
 	b2Vec2 point;
 	world->Step(1.0f/60.0f, 6, 2);
-	move();
-	point.x = (float32)pos.x / 10;
-	point.y = (float32)pos.y / 10;
-	tostadora->SetLinearVelocity(point);
-	std::cout << point.x << " " << point.y << "\n";
+	toasty->update();
+	
+	
+	//std::cout << point.x << " " << point.y << "\n";
 }
 
 void Juego::draw(){
 	
 	SDL_RenderClear(pRenderer);
-	std::unordered_map<string, pair<string, TexturasSDL*>>::iterator it = mapTexturas.begin();
-	mapTexturas.at("Background").second->draw(pRenderer, fondoRect, &fondoRect);
+	mapTexturas.at("Background").at("idle")->draw(pRenderer, fondoRect, &fondoRect);
+	toasty->draw();
+	unordered_map<string, unordered_map<string, TexturasSDL*>>::iterator it = mapTexturas.begin();
 	b2Vec2 posT;
 	int i = 0;
 	while (it != mapTexturas.end()){
-		//r.x = (int)objetos[i]->GetPosition().x;
-		//r.y = (int)objetos[i]->GetPosition().y;
-		mapTexturas.at(it->first).second->draw(pRenderer, r, nullptr);
-		std::cout << it->first;
+		mapTexturas.at(it->first).at("idle")->draw(pRenderer, r, nullptr);
 		it++;
 		i++;
 	}
@@ -369,31 +317,12 @@ void Juego::run() {
 			cout << "GAME OVER \n";
 		}
 	}
+};
+
+bool Juego::inputQuery(int numButton) {
+	return KEYS[numButton];
 }
 
-	EstadoJuego * Juego::topEstado(){
-		return Estados.top();
-	}
-
-	void Juego::changeState(EstadoJuego* newSt){
-		popState();
-		pushState(newSt);
-	}
-	
-
-	void Juego::pushState(EstadoJuego* newState){
-		Estados.push(newState);
-	}
-
-
-	void Juego::popState(){
-		delete Estados.top();
-		Estados.pop();
-	}
-
-
-	void Juego::setSalir(){
-		exit = true;
-		closeSDL();
-
-	}
+b2World* Juego::getWorld() {
+	return world;
+}

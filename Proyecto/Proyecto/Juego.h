@@ -7,8 +7,8 @@
 #include <float.h>
 #include <stack>
 #include <unordered_map>
-#include "EstadoJuego.h"
-//class EstadoJuego;
+#include "contactListener.h"
+class EstadoJuego;
 
 using namespace std;
 
@@ -17,10 +17,7 @@ class Juego
 {
 	int score;
 
-
-	stack<EstadoJuego*> Estados;
-
-	EstadoJuego * pestados;
+	stack<EstadoJuego*> estados;
 
 	void initMedia();
 
@@ -36,6 +33,7 @@ class Juego
 	SDL_Rect r2;
 	b2Vec2 pos;
 	b2World * world;
+	b2ContactListener listener;
 	b2Body * tostadora;
 	b2Body * gato;
 	b2Body * wall;
@@ -69,11 +67,12 @@ class Juego
 
 	char moveC;
 
-	bool dcha, izq, up, down;
-
 	bool KEYS[322];
 
-	unordered_map<string, pair<string,TexturasSDL*>> mapTexturas;
+	unordered_map<string, unordered_map<string, TexturasSDL*>> mapTexturas;
+
+	Objeto* toasty;
+
 
 	
 
@@ -81,19 +80,15 @@ public:
 	Juego(b2World * mundo);
 	~Juego();
 
-	enum Texturas_t {
-		tTostadora, tGato, tFondo
-	};
 
 	struct Animacion
 	{
-		SDL_Rect anim;
+		SDL_Rect* rect;
+		TexturasSDL* textura;
 		int numFrames;
 	};
-	
-	void move();
 
-	TexturasSDL* getTextura(Texturas_t t);
+	TexturasSDL* getTextura(const string &entity, const string &anim);
 
 	SDL_Renderer* getRender() const;
 
@@ -113,11 +108,11 @@ public:
 
 	void draw();
 
-	EstadoJuego* topEstado();
-	void changeState(EstadoJuego* newSt);
-	void pushState(EstadoJuego* newState);
-	void popState();
-	void setSalir();
+	bool inputQuery(int numButton);
+
+	b2World* getWorld();
+
+
 };
 
 

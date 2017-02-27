@@ -5,4 +5,7 @@
 *.opensdf
 *.exe
 *.log
+*.opendb
 *.suo
+*.filters
+*.tlog

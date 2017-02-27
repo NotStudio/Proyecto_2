@@ -15,60 +15,78 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Personaje.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Jugable.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Tostadora.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Codigo\TexturasSDL.cpp">
+    <ClCompile Include="TexturasSDL.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Codigo\Juego.cpp">
+    <ClCompile Include="Juego.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Codigo\Entidad.cpp">
+    <ClCompile Include="Entidad.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Codigo\EstadoPG.cpp">
+    <ClCompile Include="contactListener.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Codigo\main.cpp">
+    <ClCompile Include="Item.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Codigo\Pausa.cpp">
+    <ClCompile Include="Consumible.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Codigo\GameOver.cpp">
+    <ClCompile Include="ObjetoClave.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Codigo\MenuPG.cpp">
+    <ClCompile Include="ObjetoHistorico.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Codigo\TexturasSDL.h">
+    <ClInclude Include="Personaje.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Codigo\Juego.h">
+    <ClInclude Include="Jugable.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Codigo\Entidad.h">
+    <ClInclude Include="Tostadora.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Codigo\EstadoJuego.h">
+    <ClInclude Include="TexturasSDL.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Codigo\EstadoPG.h">
+    <ClInclude Include="Juego.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Codigo\Objeto.h">
+    <ClInclude Include="Entidad.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Codigo\Pausa.h">
+    <ClInclude Include="contactListener.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Codigo\GameOver.h">
+    <ClInclude Include="Objeto.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Codigo\MenuPG.h">
+    <ClInclude Include="Item.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Consumible.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjetoClave.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjetoHistorico.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
