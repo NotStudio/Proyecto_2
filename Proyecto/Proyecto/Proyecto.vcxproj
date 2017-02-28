@@ -105,6 +105,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <IncludePath>$(SolutionDir)Box2D\include;$(SolutionDir)SDL2-2.0.5\include;$(IncludePath)</IncludePath>
     <LibraryPath>$(SolutionDir)Box2D\lib;$(LibraryPath)</LibraryPath>
+    <OutDir>$(SolutionDir)bin\</OutDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
