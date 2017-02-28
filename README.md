@@ -2,10 +2,10 @@
 
 Por
 
-![logo](/DocImg/pp.jpg)
+![logo](documentos/DocImg/pp.jpg)
 
 ## Documento de diseño
-[El Documento](/GDD.md)
+[El Documento](documentos/GDD.md)
 ## Miembros
 - [Mario Peña](https://github.com/mpena05)
 - [Manuel Hernández](https://github.com/manherna)

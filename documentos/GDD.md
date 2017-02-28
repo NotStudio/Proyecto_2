@@ -87,20 +87,35 @@ Se consiguen matando enemigos o encotrandolos por el mapa.
 
 ### Clave
 Estos objetos sirven para craftear otros objetos o craftear objetos para desbloquear zonas. Se obtienen por crafteo o en zonas especificas.
-| Sprite                                             | Nombre           |efecto        | Obtención |
-| :-------------:                                    |:-------------   |:-------------|:---|
-| <img src="DocImg/pp.jpg" width="50" height="50"> | Objeto generico  | efecto generico | generico|
-| <img src="DocImg/pp.jpg" width="50" height="50"> | Chatarra  | Crafteo | generico|
-| <img src="DocImg/pp.jpg" width="50" height="50"> | Madera  | Crafteo | generico|
-| <img src="Direccion" height="50" width="50">     | Pila de botón    | Canjeable por una partida con el Tamagochi | Dropeo o encontrar en una zona|
+| Sprite                                           | Nombre           |Uso                | Obtención |
+| :-------------:                                  |:-------------    |:-------------     |:---|
+| <img src="DocImg/pp.jpg" width="50" height="50"> | Objeto generico  | efecto generico   | generico|
+| <img src="DocImg/pp.jpg" width="50" height="50"> | Chatarra         | Crafteo           | the Natural Preserve |
+| <img src="DocImg/pp.jpg" width="50" height="50"> | Madera           | Crafteo           | the Natural Preserve |
+| <img src="DocImg/pp.jpg" width="50" height="50"> | Estaño           | Crafteo           | Hipsters Sancturary |
+| <img src="DocImg/pp.jpg" width="50" height="50"> | Chip             | Crafteo           | Hipsters Sancturary |
+| <img src="DocImg/pp.jpg" width="50" height="50"> | Litio            | Crafteo           | Hipsters Sancturary |
+| <img src="DocImg/pp.jpg" width="50" height="50"> | Petroleo         | Crafteo           | S. Motors Museum |
+| <img src="DocImg/pp.jpg" width="50" height="50"> | Carbón           | Crafteo           | S. Motors Museum |
+| <img src="DocImg/pp.jpg" width="50" height="50"> | Tanque           | Crafteo           | S. Motors Museum |
+| <img src="DocImg/pp.jpg" width="50" height="50"> | Olla a presión   | Crafteo           | S. Motors Museum |
+| <img src="DocImg/pp.jpg" width="50" height="50"> | Tuberías         | Crafteo           | S. Motors Museum |
+| <img src="DocImg/pp.jpg" width="50" height="50"> | Eje              | Crafteo           | Madera + Madera |
+| <img src="DocImg/pp.jpg" width="50" height="50"> | Engranaje        | Crafteo           | Chatarra + Chatarra |
+| <img src="DocImg/pp.jpg" width="50" height="50"> | Engranajes       | Crafteo           | Engranaje + Engranaje |
+| <img src="DocImg/pp.jpg" width="50" height="50"> | Circuitos        | Crafteo           | Chatarra + Estaño |
+| <img src="Direccion" height="50" width="50">     | Pila de botón    | Canjeable por una partida con el Tamagochi | Chatarra + Litio|
+| <img src="DocImg/pp.jpg" width="50" height="50"> | Tanque a Presión TP | Crafteo           | Olla + Tanque |
+| <img src="DocImg/pp.jpg" width="50" height="50"> | Refinador Express RE     | Crafteo           | TP + Tuberías |
+
 
 ### Histórico
 Para el desarrollo de la historia, se craftean y se consiguen matando a jefes.
 | Sprite                               | Nombre                 |Obtención        |
 | :-------------:                      |:-------------          |:-------------   |
-| <img src=" " width="50" height="50"> | Engranajes              | Crafteo         |
-| <img src="" width="50" height="50">  | Circuitos Electronicos | Crafteo        |
-| <img src="" width="50" height="50">  | Combustible            | Crafteo |
+| <img src=" " width="50" height="50"> | Mecanismo(Engranajes)  | Engranajes + Eje        |
+| <img src="" width="50" height="50">  | Circuitos Electronicos | Chip + Estaño        |
+| <img src="" width="50" height="50">  | Combustible            | RE + Petroleo |
 | <img src=" " width="50" height="50"> | Acero                  | Crafteo |
 
 
