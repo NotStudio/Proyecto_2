@@ -9,3 +9,6 @@
 *.suo
 *.filters
 *.tlog
+*.ilk
+*.pdb
+Proyecto/Proyecto/Debug
