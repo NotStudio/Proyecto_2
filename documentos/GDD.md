@@ -87,6 +87,7 @@ Se consiguen matando enemigos o encotrandolos por el mapa.
 
 ### Clave
 Estos objetos sirven para craftear otros objetos o craftear objetos para desbloquear zonas. Se obtienen por crafteo o en zonas especificas.
+
 | Sprite                                           | Nombre           |Uso                | Obtención |
 | :-------------:                                  |:-------------    |:-------------     |:---|
 | <img src="DocImg/pp.jpg" width="50" height="50"> | Objeto generico  | efecto generico   | generico|
@@ -111,6 +112,7 @@ Estos objetos sirven para craftear otros objetos o craftear objetos para desbloq
 
 ### Histórico
 Para el desarrollo de la historia, se craftean y se consiguen matando a jefes.
+
 | Sprite                               | Nombre                 |Obtención        |
 | :-------------:                      |:-------------          |:-------------   |
 | <img src=" " width="50" height="50"> | Mecanismo(Engranajes)  | Engranajes + Eje        |
