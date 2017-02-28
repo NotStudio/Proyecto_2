@@ -13,3 +13,4 @@
 *.pdb
 Proyecto/Proyecto/Debug
 Debug
+*.vcxproj
