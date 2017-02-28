@@ -1,7 +1,7 @@
 #include "contactListener.h"
 
+void contactListener::BeginContact(b2Contact* contact){
 
-void contactListener::beginContact(b2Contact* contact){
 
 	    void* ob1 =  contact->GetFixtureA()->GetBody()->GetUserData();
 		void* ob2 = contact->GetFixtureB()->GetBody()->GetUserData();
@@ -10,6 +10,4 @@ void contactListener::beginContact(b2Contact* contact){
 			static_cast<Objeto*>(ob1)->onColisionEnter((Objeto*)ob2);
 			static_cast<Objeto*>(ob2)->onColisionEnter((Objeto*)ob1);
 		}
-		
-
 }

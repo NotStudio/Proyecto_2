@@ -1,5 +1,6 @@
 #include "Juego.h"
 #include "Tostadora.h"
+#include "NPC.h"
 
 
 //Constructora que inicializa todos los atributos de la clase Juego.
@@ -11,8 +12,6 @@ Juego::Juego(b2World* mundo) : error(false), gameOver(false), exit(false), score
 	fondoRect.y = 0;
 	fondoRect.w = window.ancho;
 	fondoRect.h = window.alto;
-	mousePos.x = 0;//Posición del raton, inicialización trivial.
-	mousePos.y = 0;
 	//iniciazión de SDL
 	if (!initSDL()) {
 		error = true;
@@ -23,6 +22,10 @@ Juego::Juego(b2World* mundo) : error(false), gameOver(false), exit(false), score
 	r.y = 100;
 	r.h = 50;
 	r.w = 50;
+	r2.x = 350;
+	r2.y = 350;
+	r2.h = 50;
+	r2.w = 50;
 	
 	//Añadimos al vector del nombre de las texturas los nombres de las imágenes. Tienen que tener un orden concreto.
 	nombreTexturas.emplace_back("../Material/Tostadora_idle.png");
@@ -32,61 +35,6 @@ Juego::Juego(b2World* mundo) : error(false), gameOver(false), exit(false), score
 	
 	world->SetContactListener(&listener);
 	
-	b2BodyDef tostBodydef;
-	tostBodydef.type = b2_dynamicBody;
-	tostBodydef.position.Set(50.0f, 50.0f);
-
-	b2Body* tostBody = world->CreateBody(&tostBodydef);
-
-	b2PolygonShape tostBox;
-	tostBox.SetAsBox(25.0f, 25.0f);
-
-	b2FixtureDef fDef;
-	fDef.shape = &tostBox;
-	fDef.density = 1.0f;
-	fDef.friction = 1.0f;
-	tostBody->CreateFixture(&fDef);
-	tostadora = tostBody;
-	
-
-	b2BodyDef wallBodydef;
-	wallBodydef.type = b2_staticBody;
-	wallBodydef.position.Set(400.0f, 400.0f);
-
-	b2Body* wallBody = world->CreateBody(&wallBodydef);
-
-	b2PolygonShape wallbox;
-	wallbox.SetAsBox(25.0f, 25.0f);
-
-	b2FixtureDef wDef;
-	wDef.shape = &wallbox;
-	wallBody->CreateFixture(&wDef);
-	wall= wallBody; 
-	recta.h = 50;// tamaño de la imagen
-	recta.w = 50;
-	
-
-
-	b2BodyDef gBodydef;
-	gBodydef.type = b2_dynamicBody;
-	gBodydef.position.Set(150.0f, 100.0f);
-
-	b2Body* gBody = world->CreateBody(&gBodydef);
-
-	b2PolygonShape gBox;
-	gBox.SetAsBox(25.0f, 25.0f);
-	
-
-
-	b2FixtureDef gDef;
-	gDef.shape = &gBox;
-	gDef.density = 50000.0f;
-	gDef.friction = 1.0f;
-	gBody->CreateFixture(&gDef);
-	gato = gBody;
-	r2.h = 100;
-	r2.w = 100;
-
 
 	for (int i = 0; i < 322; i++) { // init them all to false
 		KEYS[i] = false;
@@ -94,10 +42,10 @@ Juego::Juego(b2World* mundo) : error(false), gameOver(false), exit(false), score
 	
 	//Arrancamos las texturas y los objetos.
 	initMedia();
-	objetos.push_back(tostadora);
-	objetos.push_back(gato);
-	objetos.push_back(wall);
-	toasty = new Tostadora(this, r);
+	objetos.push_back(new Tostadora(this,r));
+	objetos.push_back(new NPC(this, r2, "Gato"));
+	//objetos.push_back(gato);
+	//objetos.push_back(wall);
 	run();	
 	
 }
@@ -272,9 +220,9 @@ void Juego::salir() {
 
 void Juego::update(){
 
-	b2Vec2 point;
-	world->Step(1.0f/60.0f, 6, 2);
-	toasty->update();
+	for (int i = 0; i < objetos.size(); i++) {
+		objetos[i]->update();
+	}
 	
 	
 	//std::cout << point.x << " " << point.y << "\n";
@@ -284,14 +232,10 @@ void Juego::draw(){
 	
 	SDL_RenderClear(pRenderer);
 	mapTexturas.at("Background").at("idle")->draw(pRenderer, fondoRect, &fondoRect);
-	toasty->draw();
 	unordered_map<string, unordered_map<string, TexturasSDL*>>::iterator it = mapTexturas.begin();
 	b2Vec2 posT;
-	int i = 0;
-	while (it != mapTexturas.end()){
-		mapTexturas.at(it->first).at("idle")->draw(pRenderer, r, nullptr);
-		it++;
-		i++;
+	for (int i = 0; i < objetos.size(); i++) {
+		objetos[i]->draw();
 	}
 	
 
@@ -307,10 +251,11 @@ void Juego::run() {
 		lastUpdate = SDL_GetTicks();
 		handle_event();
 		while (!exit) {
+			handle_event();
 			update();
 			lastUpdate = SDL_GetTicks();
+			world->Step(1.0f / 60.0f, 6, 2);
 			draw();
-			handle_event();
 		}
 		if (exit) cout << "EXIT \n";
 		else if (gameOver) {

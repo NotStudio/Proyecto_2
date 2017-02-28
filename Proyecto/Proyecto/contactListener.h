@@ -7,6 +7,6 @@ class contactListener :
 {
 public:
 
-	void beginContact(b2Contact* contact);
+	void BeginContact(b2Contact* contact);
 };
 

@@ -33,11 +33,11 @@ class Juego
 	SDL_Rect r2;
 	b2Vec2 pos;
 	b2World * world;
-	b2ContactListener listener;
+	contactListener listener;
 	b2Body * tostadora;
 	b2Body * gato;
 	b2Body * wall;
-	std::vector<b2Body*> objetos;
+	std::vector<Objeto*> objetos;
 
 	SDL_Rect recta;
 
@@ -71,7 +71,6 @@ class Juego
 
 	unordered_map<string, unordered_map<string, TexturasSDL*>> mapTexturas;
 
-	Objeto* toasty;
 
 
 	

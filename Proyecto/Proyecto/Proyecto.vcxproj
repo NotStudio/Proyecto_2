@@ -26,6 +26,7 @@
     <ClCompile Include="Juego.cpp" />
     <ClCompile Include="Jugable.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="NPC.cpp" />
     <ClCompile Include="ObjetoClave.cpp" />
     <ClCompile Include="ObjetoHistorico.cpp" />
     <ClCompile Include="Personaje.cpp" />
@@ -39,6 +40,7 @@
     <ClInclude Include="Item.h" />
     <ClInclude Include="Juego.h" />
     <ClInclude Include="Jugable.h" />
+    <ClInclude Include="NPC.h" />
     <ClInclude Include="Objeto.h" />
     <ClInclude Include="ObjetoClave.h" />
     <ClInclude Include="ObjetoHistorico.h" />

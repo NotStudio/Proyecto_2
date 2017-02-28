@@ -24,7 +24,6 @@ Tostadora::Tostadora(Juego* punteroJuego, SDL_Rect spritePar):Jugable(punteroJue
 
 Tostadora::~Tostadora()
 {
-	pJuego->getWorld()->DestroyBody(body);
 }
 
 void Tostadora::onColisionEnter(Objeto* contactObject) {
