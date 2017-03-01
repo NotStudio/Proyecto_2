@@ -3,6 +3,7 @@
 #include <SDL.h>
 #include "Objeto.h"
 #include "Juego.h"
+
 class Entidad :	public Objeto
 {
 protected:
@@ -45,6 +46,10 @@ public:
 
 	}
 
+
+	
+
+	
 	
 
 };

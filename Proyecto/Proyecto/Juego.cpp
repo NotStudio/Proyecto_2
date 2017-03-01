@@ -247,23 +247,29 @@ void Juego::draw(){
 
 void Juego::run() {
 
-	if (!error) {
-		cout << "PLAY \n";
-		lastUpdate = SDL_GetTicks();
-		handle_event();
-		while (!exit) {
-			handle_event();
+	cout << "PLAY \n";
+	lastUpdate = SDL_GetTicks();
+	world->Step(1.0f / 60.0f, 6, 2);
+	draw();
+	handle_event();
+	while (!exit) {
+		if (SDL_GetTicks() - lastUpdate >= MSxUpdate) {
 			update();
 			lastUpdate = SDL_GetTicks();
-			world->Step(1.0f / 60.0f, 6, 2);
-			draw();
 		}
-		if (exit) cout << "EXIT \n";
-		else if (gameOver) {
-			cout << "GAME OVER \n";
-		}
+		world->Step(1.0f / 60.0f, 6, 2);
+		draw();
+		handle_event();
 	}
-};
+	if (exit) cout << "EXIT \n";
+	else if (gameOver) {
+		cout << "GAME OVER \n";
+	}
+}
+
+
+
+
 
 bool Juego::inputQuery(int numButton) {
 	return KEYS[numButton];
