@@ -36,6 +36,14 @@ public:
 	b2Body* getBody();
 
 	std::string getId() { return id; };
+	int getX(){
+		return pos.x;
+
+	}
+	int getY(){
+		return pos.y;
+
+	}
 
 	
 

@@ -1,7 +1,7 @@
 #include "Juego.h"
 #include "Tostadora.h"
 #include "NPC.h"
-
+#include "Enemigo.h"
 
 //Constructora que inicializa todos los atributos de la clase Juego.
 Juego::Juego(b2World* mundo) : error(false), gameOver(false), exit(false), score(0), world(mundo)
@@ -43,7 +43,7 @@ Juego::Juego(b2World* mundo) : error(false), gameOver(false), exit(false), score
 	//Arrancamos las texturas y los objetos.
 	initMedia();
 	objetos.push_back(new Tostadora(this,r));
-	objetos.push_back(new NPC(this, r2, "Gato"));
+	objetos.push_back(new Enemigo(this, r2, "Gato"));
 	//objetos.push_back(gato);
 	//objetos.push_back(wall);
 	run();	
