@@ -44,8 +44,6 @@ Juego::Juego(b2World* mundo) : error(false), gameOver(false), exit(false), score
 	initMedia();
 	objetos.push_back(new Tostadora(this,r));
 	objetos.push_back(new NPC(this, r2, "Gato"));
-	//objetos.push_back(gato);
-	//objetos.push_back(wall);
 	run();	
 	
 }
@@ -104,11 +102,9 @@ void Juego::initMedia() {
 
 		anim = entity.substr(entity.size() - 4, 4);
 		entity.erase(entity.end() - 5, entity.end());
-		/*
-		mapTexturas.emplace(std::make_pair(entity, std::make_pair(anim, new TexturasSDL)));
-		mapTexturas.at(entity).second->load(pRenderer,aux);*/
 		
 		try{
+			mapTexturas.at(entity);//Para que no cree la textura dos veces.
 			mapTexturas.at(entity).emplace(std::make_pair(anim, new TexturasSDL));
 			mapTexturas.at(entity).at(anim)->load(pRenderer, aux);
 
@@ -136,7 +132,14 @@ void Juego::freeMedia() {
 			mapTexturas.at(it->first).at(itAux->first) = nullptr;
 			itAux++;
 		}
+		
 		it++;
+	}
+	
+	//Esto debe ir en otro metodo
+	for (int i = 0; i < objetos.size(); i++) {
+		delete objetos[i];
+		objetos[i] = nullptr;
 	}
 };
 //Método que inicializa SDL
@@ -224,8 +227,6 @@ void Juego::update(){
 		objetos[i]->update();
 	}
 	
-	
-	//std::cout << point.x << " " << point.y << "\n";
 }
 
 void Juego::draw(){

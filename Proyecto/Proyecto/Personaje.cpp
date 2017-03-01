@@ -9,7 +9,7 @@ Personaje::Personaje(Juego* punteroJuego, SDL_Rect spritePar, string objectId):E
 
 Personaje::~Personaje()
 {
-	pJuego->getWorld()->DestroyBody(body);
+	
 
 }
 

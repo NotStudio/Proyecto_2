@@ -22,8 +22,10 @@ Entidad::Entidad(Juego* punteroJuego, SDL_Rect spritePar, string objectId) : pJu
 
 Entidad::~Entidad()
 {
-	pJuego = nullptr;
 	//Destruir cosas de la Física
+	pJuego->getWorld()->DestroyBody(body);
+	delete shape;
+	//pJuego = nullptr;
 }
 
 
