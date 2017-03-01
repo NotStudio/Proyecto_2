@@ -19,33 +19,44 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Boton.cpp" />
     <ClCompile Include="Consumible.cpp" />
     <ClCompile Include="contactListener.cpp" />
     <ClCompile Include="Enemigo.cpp" />
     <ClCompile Include="Entidad.cpp" />
+    <ClCompile Include="EstadoPG.cpp" />
+    <ClCompile Include="GameOver.cpp" />
     <ClCompile Include="Item.cpp" />
     <ClCompile Include="Juego.cpp" />
     <ClCompile Include="Jugable.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="MenuPG.cpp" />
     <ClCompile Include="NPC.cpp" />
     <ClCompile Include="ObjetoClave.cpp" />
     <ClCompile Include="ObjetoHistorico.cpp" />
+    <ClCompile Include="Pausa.cpp" />
     <ClCompile Include="Personaje.cpp" />
     <ClCompile Include="TexturasSDL.cpp" />
     <ClCompile Include="Tostadora.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Boton.h" />
     <ClInclude Include="Consumible.h" />
     <ClInclude Include="contactListener.h" />
     <ClInclude Include="Enemigo.h" />
     <ClInclude Include="Entidad.h" />
+    <ClInclude Include="EstadoJuego.h" />
+    <ClInclude Include="EstadoPG.h" />
+    <ClInclude Include="GameOver.h" />
     <ClInclude Include="Item.h" />
     <ClInclude Include="Juego.h" />
     <ClInclude Include="Jugable.h" />
+    <ClInclude Include="MenuPG.h" />
     <ClInclude Include="NPC.h" />
     <ClInclude Include="Objeto.h" />
     <ClInclude Include="ObjetoClave.h" />
     <ClInclude Include="ObjetoHistorico.h" />
+    <ClInclude Include="Pausa.h" />
     <ClInclude Include="Personaje.h" />
     <ClInclude Include="TexturasSDL.h" />
     <ClInclude Include="Tostadora.h" />
