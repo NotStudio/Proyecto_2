@@ -8,6 +8,7 @@
 #include <stack>
 #include <unordered_map>
 #include "contactListener.h"
+
 class EstadoJuego;
 
 using namespace std;
@@ -71,7 +72,7 @@ class Juego
 
 	unordered_map<string, unordered_map<string, TexturasSDL*>> mapTexturas;
 
-
+	
 
 	
 
@@ -110,7 +111,11 @@ public:
 	bool inputQuery(int numButton);
 
 	b2World* getWorld();
-
+	//Personaje activo queda ajustarlo para que pueda cambiar y no sea siempre el primero de la lista
+	//pero para hacer el apanyo nos sirvfe de momento
+	Objeto*personajeActivo(){
+		return objetos[0];
+	}
 
 };
 

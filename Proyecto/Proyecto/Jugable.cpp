@@ -105,8 +105,8 @@ void Jugable::move() {
 	movControl();
 	//Movimiento;
 	b2Vec2 velFloat;
-	velFloat.x = (float32)vel.x / 10;
-	velFloat.y = (float32)vel.y / 10;
+	velFloat.x = (float32)vel.x / 40;
+	velFloat.y = (float32)vel.y / 40;
 	//std::cout << vel.x << "\n";
 	//std::cout << " POS" << pos.x << "\n";
 	body->SetLinearVelocity(velFloat);
