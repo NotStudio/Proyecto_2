@@ -12,11 +12,11 @@ public:
 
 	virtual void draw();
 	virtual void update();
-	//virtual void onClick();
+	
 
 protected:
 
-	Juego* ptsjuego;
+	Juego* ptjuego;
 
 	std::vector <Objeto*> objetos;  
 

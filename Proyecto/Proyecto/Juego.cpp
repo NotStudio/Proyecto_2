@@ -58,6 +58,11 @@ Juego::~Juego()
 	closeSDL();
 	pWindow = nullptr;
 	pRenderer = nullptr;
+	//Limpiamos la pila de estados.
+	while (!estados.empty()){
+		delete topEstado();
+		estados.pop();
+	}
 
 	//Liberar cosas de la Física
 	
@@ -82,13 +87,7 @@ SDL_Renderer* Juego::getRender() const {
 
 };
 
-//Devolvemos la posición actual del mouse, que se actualiza en el onClick.
-void Juego::getMousePos(int &mpx, int &mpy)const {
 
-	mpx = mousePos.x;
-	mpy = mousePos.y;
-
-};
 //Método que inicializa las texturas.
 void Juego::initMedia() {
 	
@@ -223,22 +222,15 @@ void Juego::salir() {
 
 void Juego::update(){
 
-	for (int i = 0; i < objetos.size(); i++) {
-		objetos[i]->update();
-	}
-	
+	topEstado()->update();
 }
 
 void Juego::draw(){
 	
 	SDL_RenderClear(pRenderer);
 	mapTexturas.at("Background").at("idle")->draw(pRenderer, fondoRect, &fondoRect);
-	unordered_map<string, unordered_map<string, TexturasSDL*>>::iterator it = mapTexturas.begin();
-	b2Vec2 posT;
-	for (int i = 0; i < objetos.size(); i++) {
-		objetos[i]->draw();
-	}
-	
+
+	topEstado()->draw();
 
 	SDL_RenderPresent(pRenderer);
 
@@ -278,3 +270,29 @@ bool Juego::inputQuery(int numButton) {
 b2World* Juego::getWorld() {
 	return world;
 }
+
+EstadoJuego* Juego::topEstado(){
+
+	return estados.top();
+
+}
+
+void Juego::changeState(EstadoJuego* newEstado){
+
+	popState();
+	pushState(newEstado);
+}
+
+void Juego::pushState(EstadoJuego* newEstado){ 
+
+	estados.push(newEstado);
+
+}
+
+void Juego::popState(){
+
+	delete topEstado();
+	estados.pop();
+
+};
+

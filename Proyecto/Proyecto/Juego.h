@@ -8,6 +8,7 @@
 #include <stack>
 #include <unordered_map>
 #include "contactListener.h"
+#include "EstadoJuego.h"
 
 class EstadoJuego;
 
@@ -46,8 +47,6 @@ class Juego
 
 	SDL_Renderer* pRenderer;
 
-	vector<TexturasSDL*> texturas;
-
 	vector<string> nombreTexturas;
 
 	struct Ventana { //Struct que contiene el tamaño y el color de la ventana.
@@ -57,20 +56,15 @@ class Juego
 	} window;
 
 	bool error, gameOver, exit;
-
-	struct Mouse {
-		int x;
-		int y;
-
-	}mousePos;
 	
 	SDL_Rect fondoRect;
-
-	char moveC;
 
 	bool KEYS[322];
 
 	unordered_map<string, unordered_map<string, TexturasSDL*>> mapTexturas;
+
+	stack<EstadoJuego*> estados;
+
 
 	
 
@@ -86,19 +80,26 @@ public:
 		SDL_Rect* rect;
 		TexturasSDL* textura;
 		int numFrames;
+
 	};
 
 	TexturasSDL* getTextura(const string &entity, const string &anim);
 
 	SDL_Renderer* getRender() const;
 
-	void getMousePos(int &mpx, int &mpy) const;
-
 	bool getError();
 
 	void salir();
 
 	bool handle_event();
+
+	EstadoJuego* topEstado();
+
+	void changeState(EstadoJuego* newEstado);
+
+	void pushState(EstadoJuego* newEstado);
+
+	void popState();
 
 	static const Uint32  MSxUpdate = 17;
 

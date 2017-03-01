@@ -31,18 +31,22 @@
     <ClCompile Include="Jugable.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MenuPG.cpp" />
+    <ClCompile Include="Nivel.cpp" />
     <ClCompile Include="NPC.cpp" />
     <ClCompile Include="ObjetoClave.cpp" />
     <ClCompile Include="ObjetoHistorico.cpp" />
     <ClCompile Include="Pausa.cpp" />
     <ClCompile Include="Personaje.cpp" />
+    <ClCompile Include="Play.cpp" />
     <ClCompile Include="TexturasSDL.cpp" />
     <ClCompile Include="Tostadora.cpp" />
+    <ClCompile Include="Zona.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Boton.h" />
     <ClInclude Include="Consumible.h" />
     <ClInclude Include="contactListener.h" />
+    <ClInclude Include="doubleLinkedList.h" />
     <ClInclude Include="Enemigo.h" />
     <ClInclude Include="Entidad.h" />
     <ClInclude Include="EstadoJuego.h" />
@@ -52,14 +56,17 @@
     <ClInclude Include="Juego.h" />
     <ClInclude Include="Jugable.h" />
     <ClInclude Include="MenuPG.h" />
+    <ClInclude Include="Nivel.h" />
     <ClInclude Include="NPC.h" />
     <ClInclude Include="Objeto.h" />
     <ClInclude Include="ObjetoClave.h" />
     <ClInclude Include="ObjetoHistorico.h" />
     <ClInclude Include="Pausa.h" />
     <ClInclude Include="Personaje.h" />
+    <ClInclude Include="Play.h" />
     <ClInclude Include="TexturasSDL.h" />
     <ClInclude Include="Tostadora.h" />
+    <ClInclude Include="Zona.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{9AEFB5D6-5EFA-4A01-9D4F-1F8F42527E24}</ProjectGuid>
