@@ -27,9 +27,10 @@ void Camara::setTarget(SDL_Rect *target)
 
 void Camara::update()
 {
-	Centro = { Apuntando->x + Apuntando->w / 2,Apuntando->y + Apuntando->y / 2 };
+	Centro = { Apuntando->x + Apuntando->w / 2,Apuntando->y + Apuntando->h/ 2 };
 	plano.x = Centro.x - plano.w / 2;
 	plano.y = Centro.y - plano.h / 2;
+	/*
 	if (plano.x <= 0) {
 		plano.x = 0;
 		Centro.x = plano.w / 2;
@@ -38,6 +39,7 @@ void Camara::update()
 		plano.y = 0;
 		Centro.y = plano.h/2;
 	}	
+	*/
 	ultimoPlano = plano;
 }
 

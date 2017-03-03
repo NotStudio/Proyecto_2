@@ -22,8 +22,8 @@ bool TexturasSDL::load(SDL_Renderer* pRenderer, std::string const& nombreArch) {
 	
 	SDL_Surface* pSurface = loadSurface(nombreArch);
 
-	tamTextura.alto = pSurface->clip_rect.h;
-	tamTextura.ancho = pSurface->clip_rect.w;
+	//tamTextura.alto = pSurface->clip_rect.h;
+	//tamTextura.ancho = pSurface->clip_rect.w;
 
 	nombreArc = nombreArch;
 	SDL_DestroyTexture(pTexture);
@@ -38,9 +38,14 @@ bool TexturasSDL::load(SDL_Renderer* pRenderer, std::string const& nombreArch) {
 
 };
 
-void TexturasSDL::draw(SDL_Renderer* pRenderer, SDL_Rect const& rect, SDL_Rect* const& frame ) {
+void TexturasSDL::draw(SDL_Renderer* pRenderer, SDL_Rect const& rect, SDL_Rect* const& frame, double angle , SDL_Point* center, SDL_RendererFlip flip) {
+	SDL_RenderCopyEx(pRenderer, pTexture, frame, &rect,angle,center,flip);
+}
+void TexturasSDL::draw(SDL_Renderer * pRenderer, SDL_Rect const & rect, SDL_Rect * const & frame, Camara Camera)
+{
 
-	SDL_RenderCopy(pRenderer, pTexture, frame, &rect);
-
-};
-
+	SDL_Point kek = { 200,200 };
+	kek.x -= rect.x;
+	kek.y -= rect.y;
+	SDL_RenderCopyEx(pRenderer, pTexture, frame, &rect, Camera.getAngulo(),&kek , SDL_FLIP_NONE);
+}

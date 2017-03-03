@@ -1,5 +1,5 @@
-#ifndef JUEGO_H
-#define JUEGO_H
+#ifndef JUEGO_H_
+#define JUEGO_H_
 #include <vector>
 #include <string>
 #include <Box2D\Box2D.h>
@@ -8,6 +8,8 @@
 #include <stack>
 #include <unordered_map>
 #include "contactListener.h"
+#include "Room.h"
+#include "Camara.h"
 
 class EstadoJuego;
 
@@ -16,6 +18,7 @@ using namespace std;
 
 class Juego
 {
+	
 	int score;
 
 	stack<EstadoJuego*> estados;
@@ -71,7 +74,7 @@ class Juego
 	bool KEYS[322];
 
 	unordered_map<string, unordered_map<string, TexturasSDL*>> mapTexturas;
-
+	Camara Camera;
 	
 
 	
@@ -109,6 +112,9 @@ public:
 	void draw();
 
 	bool inputQuery(int numButton);
+
+	SDL_Rect getCameraRect() { return Camera.getPlano(); }
+	Camara getCamera() { return Camera; }
 
 	b2World* getWorld();
 	//Personaje activo queda ajustarlo para que pueda cambiar y no sea siempre el primero de la lista

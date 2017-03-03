@@ -101,16 +101,13 @@ void Room::render(Camara* camara){
 	int maldito = encontrarPosicionTiled(camara->getTarget());
 	for (size_t i = 0; i < Tiles->size(); i++)
 	{
-		if (i == maldito + 1|| i == maldito - 1 || i == maldito - (ANCHO_NIVEL / TILE_WIDTH))
-		{
-		}
-		else if (Tiles->at(i)->Dentro(&camara->getPlano())) {
+		 if (Tiles->at(i)->Dentro(&camara->getPlano())||true) {
 			if (Tiles->at(i)->getType() > 2)
 				Tiles->at(i)->setPos(1,1);
 			SDL_Rect rel = Tiles->at(i)->getBox();
 			rel.x -= camara->getPlano().x;
 			rel.y -= camara->getPlano().y;
-			kek->draw(pRend, rel, TileSheetRect[Tiles->at(i)->getType()]);
+			kek->draw(pRend, rel, TileSheetRect[Tiles->at(i)->getType()],*camara);
 		}
 	}
 }

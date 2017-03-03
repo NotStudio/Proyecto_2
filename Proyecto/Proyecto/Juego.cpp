@@ -2,6 +2,8 @@
 #include "Tostadora.h"
 #include "NPC.h"
 #include "Enemigo.h"
+#include "Room.h"
+#include "Camara.h"
 
 //Constructora que inicializa todos los atributos de la clase Juego.
 Juego::Juego(b2World* mundo) : error(false), gameOver(false), exit(false), score(0), world(mundo)
@@ -22,12 +24,13 @@ Juego::Juego(b2World* mundo) : error(false), gameOver(false), exit(false), score
 	r.y = 100;
 	r.h = 50;
 	r.w = 50;
-	r2.x = 350;
-	r2.y = 350;
+	r2.x = -350;
+	r2.y = -350;
 	r2.h = 50;
 	r2.w = 50;
 	
 	//Añadimos al vector del nombre de las texturas los nombres de las imágenes. Tienen que tener un orden concreto.
+	
 	nombreTexturas.emplace_back("../Material/Tostadora_idle.png");
 	nombreTexturas.emplace_back("../Material/Gato_idle.png");
 	nombreTexturas.emplace_back("../Material/Wall_idle.png");
@@ -44,7 +47,10 @@ Juego::Juego(b2World* mundo) : error(false), gameOver(false), exit(false), score
 	initMedia();
 	objetos.push_back(new Tostadora(this,r));
 	objetos.push_back(new Enemigo(this, r2, "Gato"));
-	run();	
+	Camera = Camara(static_cast<Entidad*>(objetos[0])->getRect(), window.ancho, window.alto);
+	int w = 50;
+
+	run();
 	
 }
 
@@ -232,7 +238,7 @@ void Juego::update(){
 void Juego::draw(){
 	
 	SDL_RenderClear(pRenderer);
-	mapTexturas.at("Background").at("idle")->draw(pRenderer, fondoRect, &fondoRect);
+	//mapTexturas.at("Background").at("idle")->draw(pRenderer, fondoRect, &fondoRect);
 	unordered_map<string, unordered_map<string, TexturasSDL*>>::iterator it = mapTexturas.begin();
 	b2Vec2 posT;
 	for (int i = 0; i < objetos.size(); i++) {
@@ -246,21 +252,43 @@ void Juego::draw(){
 
 
 void Juego::run() {
-
+	std::vector<Room*>*kek=new vector<Room*>;
+	texturas.push_back(new TexturasSDL());
+	texturas[0]->load(pRenderer, "../Material/gato.png");
+	kek->push_back(new Room("Room/lazy.map", texturas[0], getRender(),getWorld()));
 	cout << "PLAY \n";
 	lastUpdate = SDL_GetTicks();
 	world->Step(1.0f / 60.0f, 6, 2);
-	draw();
+	//draw();
 	handle_event();
+	double a = 0;
+	double b = 0.1;
 	while (!exit) {
 		if (SDL_GetTicks() - lastUpdate >= MSxUpdate) {
 			update();
 			lastUpdate = SDL_GetTicks();
 		}
+		a += b;
+		if (a < -60 || a>60)b *= -1;
+		Camera.setAngulo(a);
+		Camera.update();
 		world->Step(1.0f / 60.0f, 6, 2);
-		draw();
+		b2Vec2 posT;
+		SDL_RenderClear(pRenderer);
+		//mapTexturas.at("Background").at("idle")->draw(pRenderer, fondoRect, &fondoRect);
+		unordered_map<string, unordered_map<string, TexturasSDL*>>::iterator it = mapTexturas.begin();
+		kek->at(0)->render(&Camera);
+		for (int i = 0; i < objetos.size(); i++) {
+			objetos[i]->draw();
+		}
+	
+
+
+		SDL_RenderPresent(pRenderer);
+		//draw();
 		handle_event();
 	}
+	delete kek->at(0);
 	if (exit) cout << "EXIT \n";
 	else if (gameOver) {
 		cout << "GAME OVER \n";

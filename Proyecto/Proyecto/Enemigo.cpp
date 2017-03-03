@@ -24,7 +24,6 @@ void Enemigo::move(){
 	if (x< pos.x)velFloat.x =  -1.0f;
 	if (y> pos.y)velFloat.y = 1.0f;
 	if (y< pos.y)velFloat.y = -1.0f;
-	
 	body->SetLinearVelocity(velFloat);
 }
 void  Enemigo::update(){

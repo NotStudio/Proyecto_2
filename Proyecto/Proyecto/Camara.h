@@ -12,6 +12,10 @@ public:
 	void update();
 	SDL_Rect getPlano();
 	SDL_Rect getTarget() { return *Apuntando; }
+	SDL_Point getTargetCentro() { return SDL_Point{ Apuntando->x + Apuntando->w / 2,Apuntando->y + Apuntando->h / 2 }; }
+	SDL_Point getCentro() { return Centro; }
+	double getAngulo() { return anguloCamara; }
+	void setAngulo(double a) { anguloCamara = a; }
 private:
 	SDL_Point Centro;
 	SDL_Rect * Apuntando;

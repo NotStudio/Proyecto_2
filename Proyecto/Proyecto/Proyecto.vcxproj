@@ -20,7 +20,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Boton.cpp" />
-    <ClCompile Include="Consumible.cpp" />
+    <ClCompile Include="Camara.cpp" />
     <ClCompile Include="contactListener.cpp" />
     <ClCompile Include="Enemigo.cpp" />
     <ClCompile Include="Entidad.cpp" />
@@ -36,11 +36,15 @@
     <ClCompile Include="ObjetoHistorico.cpp" />
     <ClCompile Include="Pausa.cpp" />
     <ClCompile Include="Personaje.cpp" />
+    <ClCompile Include="Room.cpp" />
     <ClCompile Include="TexturasSDL.cpp" />
+    <ClCompile Include="Tile.cpp" />
     <ClCompile Include="Tostadora.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Boton.h" />
+    <ClInclude Include="Camara.h" />
+    <ClInclude Include="checkML.h" />
     <ClInclude Include="Consumible.h" />
     <ClInclude Include="contactListener.h" />
     <ClInclude Include="Enemigo.h" />
@@ -48,6 +52,7 @@
     <ClInclude Include="EstadoJuego.h" />
     <ClInclude Include="EstadoPG.h" />
     <ClInclude Include="GameOver.h" />
+    <ClInclude Include="constructoraRooms.h" />
     <ClInclude Include="Item.h" />
     <ClInclude Include="Juego.h" />
     <ClInclude Include="Jugable.h" />
@@ -58,7 +63,9 @@
     <ClInclude Include="ObjetoHistorico.h" />
     <ClInclude Include="Pausa.h" />
     <ClInclude Include="Personaje.h" />
+    <ClInclude Include="Room.h" />
     <ClInclude Include="TexturasSDL.h" />
+    <ClInclude Include="TileInfo.h" />
     <ClInclude Include="Tostadora.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

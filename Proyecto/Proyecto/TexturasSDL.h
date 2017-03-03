@@ -4,6 +4,7 @@
 #include <iostream>
 #include <string>
 #include "SDL_image.h"
+#include "Camara.h"
 using namespace std;
 
 class TexturasSDL
@@ -14,7 +15,8 @@ public:
 
 	bool load(SDL_Renderer* pRenderer, std::string const& nombreArch);
 
-	void draw(SDL_Renderer* pRenderer, SDL_Rect const& rect, SDL_Rect* const& frame);
+	void draw(SDL_Renderer* pRenderer, SDL_Rect const& rect, SDL_Rect* const& frame, double angle = 0.0, SDL_Point* center = NULL, SDL_RendererFlip flip = SDL_FLIP_NONE);
+	void draw(SDL_Renderer* pRenderer, SDL_Rect const& rect, SDL_Rect* const& frame, Camara Camera);
 
 private:
 
