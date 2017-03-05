@@ -32,10 +32,7 @@ Entidad::~Entidad()
 
 void Entidad::draw() {
 	//Dibujamos el objeto.
-	SDL_Rect rel = *sprite;
-	rel.x -= pJuego->getCameraRect().x;
-	rel.y -= pJuego->getCameraRect().y;
-	currentAnim.textura->draw(pJuego->getRender(), rel, currentAnim.rect,pJuego->getCamera());
+	currentAnim.textura->draw(pJuego->getRender(), *getRect(), currentAnim.rect,pJuego->getCamera());
 	
 }
 

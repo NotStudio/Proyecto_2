@@ -98,24 +98,38 @@ void Room::DestroyRoom(b2World * wardo)
 	}
 }
 void Room::render(Camara* camara){
-	int maldito = encontrarPosicionTiled(camara->getTarget());
+	int maldito ;
 	for (size_t i = 0; i < Tiles->size(); i++)
 	{
 		 if (Tiles->at(i)->Dentro(&camara->getPlano())||true) {
 			if (Tiles->at(i)->getType() > 2)
 				Tiles->at(i)->setPos(1,1);
-			SDL_Rect rel = Tiles->at(i)->getBox();
-			rel.x -= camara->getPlano().x;
-			rel.y -= camara->getPlano().y;
-			kek->draw(pRend, rel, TileSheetRect[Tiles->at(i)->getType()],*camara);
+			
+			kek->draw(pRend, Tiles->at(i)->getBox(), TileSheetRect[Tiles->at(i)->getType()],*camara);
 		}
 	}
 }
 
-int Room::encontrarPosicionTiled(SDL_Rect & const recto)
+int Room::encontrarPosicionTiled(int& const x, int& const y)
 {
-	int x = recto.x+recto.w/2, y = recto.y + recto.h / 2;
 	return(ANCHO_NIVEL / TILE_WIDTH)*((y - (y%TILE_HEIGHT))-1)/TILE_HEIGHT+(1 + (x - (x%TILE_WIDTH)) / TILE_WIDTH);
 }
+vector<int> Room::TilesOcupados(SDL_Rect & const recto)
+{
+	int x = recto.x, y = recto.y;
+	vector<int>marcados;
+	bool flag = true, flag2 = true;
+	while (flag) {
+		while (flag2)
+		{
+			int pos = encontrarPosicionTiled(x, y);
+			if(Tiles->at(pos)->getType()<4)marcados.push_back(pos);
+			if (y > recto.y + recto.h) flag2;
 
-
+			y += TILE_WIDTH;
+		}
+		y = recto.y;
+		flag2 = true;
+	}
+	return marcados;
+}

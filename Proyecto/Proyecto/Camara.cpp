@@ -30,16 +30,25 @@ void Camara::update()
 	Centro = { Apuntando->x + Apuntando->w / 2,Apuntando->y + Apuntando->h/ 2 };
 	plano.x = Centro.x - plano.w / 2;
 	plano.y = Centro.y - plano.h / 2;
-	/*
-	if (plano.x <= 0) {
-		plano.x = 0;
-		Centro.x = plano.w / 2;
+	
+	if (plano.x <= minX) {
+		plano.x = minX;
+		Centro.x = plano.x+plano.w / 2;
 	}
-	if (plano.y <= 0) {
-		plano.y = 0;
+	if (plano.x+plano.w > maxX) {
+		plano.x = maxX-plano.w;
+		Centro.x = plano.x + plano.w / 2;
+	}
+	if (plano.y <= minY) {
+		plano.y = minY;
 		Centro.y = plano.h/2;
-	}	
-	*/
+	}
+	if (plano.y+plano.h > maxY) {
+		plano.y = minY;
+		Centro.y = plano.h / 2;
+	}
+	
+	
 	ultimoPlano = plano;
 }
 

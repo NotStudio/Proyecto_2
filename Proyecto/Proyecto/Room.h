@@ -54,7 +54,8 @@ public:
 	int getAnchoRoom()const { return ANCHO_NIVEL; }
 	int getAltoRoom()const { return ALTO_NIVEL; }
 	void render(Camara* camara);
-	int encontrarPosicionTiled(SDL_Rect & const);
+	int encontrarPosicionTiled(int & const x, int & const y);
+	vector<int> TilesOcupados(SDL_Rect & const recto);
 
 	
 

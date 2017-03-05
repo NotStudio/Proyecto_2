@@ -22,10 +22,10 @@ Juego::Juego(b2World* mundo) : error(false), gameOver(false), exit(false), score
 	//Esto es el wall de mexico los estados hundidos
 	r.x = 100;
 	r.y = 100;
-	r.h = 50;
-	r.w = 50;
-	r2.x = -350;
-	r2.y = -350;
+	r.h = 64;
+	r.w = 64;
+	r2.x = 350;
+	r2.y = 350;
 	r2.h = 50;
 	r2.w = 50;
 	
@@ -266,11 +266,10 @@ void Juego::run() {
 	while (!exit) {
 		if (SDL_GetTicks() - lastUpdate >= MSxUpdate) {
 			update();
-			lastUpdate = SDL_GetTicks();
+			lastUpdate = SDL_GetTicks();	
 		}
 		a += b;
 		if (a < -60 || a>60)b *= -1;
-		Camera.setAngulo(a);
 		Camera.update();
 		world->Step(1.0f / 60.0f, 6, 2);
 		b2Vec2 posT;
