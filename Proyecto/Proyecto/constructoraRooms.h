@@ -63,9 +63,13 @@ vector<Tile*> RoomCustom(b2World * world,int Ancho,int Alto ,int& WID, int& HEI,
 	for (size_t i = 0; i < Ancho*Alto; i++)
 	{
 		if (posY == 0)
-			Tiles.push_back(new Tile(x, y, (posX == 0 || posX == Ancho - 1) ? ((posX == 0) ? SE : SO) : (LocPuert.Norte&&(posX==Ancho/2||posX == (Ancho / 2)-1))?S1:PH, world));
+			Tiles.push_back(new Tile(x, y, (posX == 0 || posX == Ancho - 1) ? ((posX == 0) ? SE : SO) : (LocPuert.Norte && (posX == Ancho / 2 || posX == (Ancho / 2) - 1)) ? S1 : PH, world));
 		else if (posY == Alto - 1)
 			Tiles.push_back(new Tile(x, y, ((posX == 0 || posX == Ancho - 1) && (posY != Alto / 2)) ? ((posX == 0) ? NE : NO) : (LocPuert.Sur && (posX == Ancho / 2 || posX == (Ancho / 2) - 1)) ? S1 : PH, world));
+		else if (LocPuert.Este && (posY == Ancho / 2 || posY == Ancho / 2 - 1))
+			Tiles.push_back(new Tile(x, y, S1, world));
+		else if (LocPuert.Oeste && (posY == Ancho / 2 || posY == Ancho / 2 - 1))
+			Tiles.push_back(new Tile(x, y, S1, world));
 		else
 			Tiles.push_back(new Tile(x, y, ((posX == 0 || posX == Ancho - 1)&& !((LocPuert.Este||LocPuert.Oeste)&&(posY==Alto/2|| posY == (Alto / 2)-1)))? ((posX == 0) ? PV : PV) :S1, world));
 		x += TILE_WIDTH;

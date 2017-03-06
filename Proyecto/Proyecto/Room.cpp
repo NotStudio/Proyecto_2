@@ -36,9 +36,8 @@ void Room::update()
 		pJuego->getCamera()->setLimite(*area);
 }
 
-Room::Room(Juego * pJ, int x, int y,Direcciones LocPort):pJuego(pJ)
+Room::Room(Juego * pJ, int x, int y, Direcciones LocPort) :pJuego(pJ)
 {
-
 	Tiles = new vector<Tile*>(RoomCustom(pJuego->getWorld(), 19, 12, ANCHO_NIVEL, ALTO_NIVEL, x, y, LocPort));
 	//setTiles(DirM, wardo);
 	area = new SDL_Rect{ x,y,ANCHO_NIVEL,ALTO_NIVEL };
