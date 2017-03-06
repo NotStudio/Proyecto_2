@@ -19,9 +19,7 @@ public:
 	bool Dentro(SDL_Rect * const rect) {
 		return (rect->x > plano.x + plano.w || rect->x + rect->w < plano.x || rect->y > plano.y + plano.h || rect->y + rect->h < plano.y);
 	}
-	void setLimite(SDL_Rect & const area) {
-		minX = area.x; minY = area.y; maxX = area.x + area.w; maxY = area.y + area.h;
-	}
+	void setLimite(SDL_Rect & const area);
 private:
 	/*
 	struct Limit

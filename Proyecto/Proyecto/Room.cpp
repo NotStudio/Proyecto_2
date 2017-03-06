@@ -29,55 +29,46 @@ const int NA= 11;
 */
 
 
-Room::Room(string DirM,TexturasSDL * t,SDL_Renderer * pR, b2World * wardo)
+void Room::update()
 {
-	Tiles = new vector<Tile*>(RoomMinima(wardo,ANCHO_NIVEL,ALTO_NIVEL));
-	kek = t;
-	pRend = pR;
+
+	if (dentroRoom(&pJuego->getCamera()->getTargetCentro()))
+		pJuego->getCamera()->setLimite(*area);
+}
+
+Room::Room(Juego * pJ, int x, int y,Direcciones LocPort):pJuego(pJ)
+{
+
+	Tiles = new vector<Tile*>(RoomCustom(pJuego->getWorld(), 19, 12, ANCHO_NIVEL, ALTO_NIVEL, x, y, LocPort));
 	//setTiles(DirM, wardo);
-	int x = 0, y = 0;
+	area = new SDL_Rect{ x,y,ANCHO_NIVEL,ALTO_NIVEL };
+	int xp = 0, yp = 0;
 	for (size_t i = 0; i < TOTAL_TILE_SPRITES; i++)
 	{
-		TileSheetRect.push_back(new SDL_Rect{ x,y,16,16 });
-		x += 16;
-		if (x >= 16 * 4) { x = 0; y += 16; }
+		TileSheetRect.push_back(new SDL_Rect{ xp,yp,16,16 });
+		xp += 16;
+		if (xp >= 16 * 4) { xp = 0; yp += 16; }
 	}
 	
 }
+
+/*
 Room::Room() {
+	pJuego = nullptr;
 	Tiles = nullptr;
-	pRend = nullptr;
-	kek = nullptr;
 }
+*/
 
 bool Room::setTiles(string Dirm,b2World * wardo) {
-	ifstream map(Dirm);
-	map >> MAP_T_WIDTH >> MAP_T_HEIGHT;
-	int TOT_Tiles = MAP_T_WIDTH*MAP_T_HEIGHT;
-	Tiles->reserve(TOT_Tiles);
-	int x = 0, y = 0;
-	for (size_t i = 0; i < TOT_Tiles; i++)
-	{
-		
-		int tipo = -1;
-		map >> tipo;
-		if (tipo >= 0 && tipo < TOTAL_TILE_SPRITES)
-			Tiles->push_back(new Tile(x, y, tipo,wardo));
-		x += TILE_WIDTH;
-		if (x >= TILE_WIDTH*MAP_T_WIDTH) {
-			x = 0;
-			y += TILE_HEIGHT;
-		}
-	}
-	x = 0;
-	y = 0;
+	
+	int x = 0;
+	int y = 0;
 	for (size_t i = 0; i < TOTAL_TILE_SPRITES; i++)
 	{
 		TileSheetRect.push_back(new SDL_Rect{ x,y,16,16 });
 		x += 16;
 		if (x >= 16*4) {x = 0;y += 16;}
 	}
-	map.close();
 	return true;
 }
 Room::~Room()
@@ -97,15 +88,14 @@ void Room::DestroyRoom(b2World * wardo)
 			wardo->DestroyBody(Tiles->at(i)->getBody());
 	}
 }
-void Room::render(Camara* camara){
-	int maldito ;
+void Room::render(){
+	SDL_Rect Dibujar;
+	int tipoDeTile;
 	for (size_t i = 0; i < Tiles->size(); i++)
 	{
-		 if (Tiles->at(i)->Dentro(&camara->getPlano())||true) {
-			if (Tiles->at(i)->getType() > 2)
-				Tiles->at(i)->setPos(1,1);
-			
-			kek->draw(pRend, Tiles->at(i)->getBox(), TileSheetRect[Tiles->at(i)->getType()],*camara);
+		 if (Tiles->at(i)->render(&pJuego->getCameraRect(),Dibujar,tipoDeTile)) {
+
+			pJuego->getTilesheet()->draw(pJuego->getRender(),Dibujar, TileSheetRect[tipoDeTile],pJuego->getCamera());
 		}
 	}
 }
@@ -124,12 +114,17 @@ vector<int> Room::TilesOcupados(SDL_Rect & const recto)
 		{
 			int pos = encontrarPosicionTiled(x, y);
 			if(Tiles->at(pos)->getType()<4)marcados.push_back(pos);
-			if (y > recto.y + recto.h) flag2;
-
+			if (y > recto.y + recto.h) flag2= false;
 			y += TILE_WIDTH;
 		}
 		y = recto.y;
+		if (x > recto.x + recto.w)flag = false;
 		flag2 = true;
 	}
 	return marcados;
+}
+
+void Room::SetRoomFichero(string Dir)
+{
+	RoomDesdeArchivo(Dir, pJuego->getWorld(), ANCHO_NIVEL, ALTO_NIVEL);
 }

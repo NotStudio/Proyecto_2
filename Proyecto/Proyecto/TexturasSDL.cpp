@@ -41,11 +41,11 @@ bool TexturasSDL::load(SDL_Renderer* pRenderer, std::string const& nombreArch) {
 void TexturasSDL::draw(SDL_Renderer* pRenderer, SDL_Rect const& rect, SDL_Rect* const& frame, double angle , SDL_Point* center, SDL_RendererFlip flip) {
 	SDL_RenderCopyEx(pRenderer, pTexture, frame, &rect,angle,center,flip);
 }
-void TexturasSDL::draw(SDL_Renderer * pRenderer, SDL_Rect const & rect, SDL_Rect * const & frame, Camara Camera)
+void TexturasSDL::draw(SDL_Renderer * pRenderer, SDL_Rect const & rect, SDL_Rect * const & frame, Camara * Camera)
 {
-	SDL_Point kek = {Camera.getCentro().x-(rect.x+rect.w/2),Camera.getCentro().y - (rect.y + rect.h / 2) };
+	SDL_Point kek = {Camera->getCentro().x-(rect.x+rect.w/2),Camera->getCentro().y - (rect.y + rect.h / 2) };
 	SDL_Rect kuk = rect;
-	kuk.x -= Camera.getPlano().x;
-	kuk.y -= Camera.getPlano().y;
-	SDL_RenderCopyEx(pRenderer, pTexture, frame, &kuk, Camera.getAngulo(),&kek , SDL_FLIP_NONE);
+	kuk.x -= Camera->getPlano().x;
+	kuk.y -= Camera->getPlano().y;
+	SDL_RenderCopyEx(pRenderer, pTexture, frame, &kuk, Camera->getAngulo(),&kek , SDL_FLIP_NONE);
 }

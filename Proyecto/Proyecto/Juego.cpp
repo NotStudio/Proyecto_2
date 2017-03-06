@@ -47,11 +47,16 @@ Juego::Juego(b2World* mundo) : error(false), gameOver(false), exit(false), score
 	initMedia();
 	objetos.push_back(new Tostadora(this,r));
 	objetos.push_back(new Enemigo(this, r2, "Gato"));
-	Camera = Camara(static_cast<Entidad*>(objetos[0])->getRect(), window.ancho, window.alto);
+	Camera =new Camara(static_cast<Entidad*>(objetos[0])->getRect(), window.ancho, window.alto);
 	int w = 50;
-
 	run();
 	
+}
+
+Juego::Juego()
+{
+	world = nullptr;
+
 }
 
 Juego::~Juego()
@@ -255,7 +260,9 @@ void Juego::run() {
 	std::vector<Room*>*kek=new vector<Room*>;
 	texturas.push_back(new TexturasSDL());
 	texturas[0]->load(pRenderer, "../Material/gato.png");
-	kek->push_back(new Room("Room/lazy.map", texturas[0], getRender(),getWorld()));
+	kek->push_back(new Room(this, 0, 0, Direcciones{false,false,true, false}));
+	kek->push_back(new Room(this, kek->at(0)->getArea().x + kek->at(0)->getArea().w, kek->at(0)->getArea().y, Direcciones{false,false, false,true}));
+	Camera->setLimite(kek->at(0)->getArea());
 	cout << "PLAY \n";
 	lastUpdate = SDL_GetTicks();
 	world->Step(1.0f / 60.0f, 6, 2);
@@ -266,17 +273,22 @@ void Juego::run() {
 	while (!exit) {
 		if (SDL_GetTicks() - lastUpdate >= MSxUpdate) {
 			update();
-			lastUpdate = SDL_GetTicks();	
+			lastUpdate = SDL_GetTicks();
+			for (size_t i = 0; i < 2; i++)
+			{
+				kek->at(i)->update();
+			}
 		}
 		a += b;
 		if (a < -60 || a>60)b *= -1;
-		Camera.update();
+		Camera->update();
 		world->Step(1.0f / 60.0f, 6, 2);
 		b2Vec2 posT;
 		SDL_RenderClear(pRenderer);
 		//mapTexturas.at("Background").at("idle")->draw(pRenderer, fondoRect, &fondoRect);
 		unordered_map<string, unordered_map<string, TexturasSDL*>>::iterator it = mapTexturas.begin();
-		kek->at(0)->render(&Camera);
+		kek->at(0)->render();
+		kek->at(1)->render();
 		for (int i = 0; i < objetos.size(); i++) {
 			objetos[i]->draw();
 		}

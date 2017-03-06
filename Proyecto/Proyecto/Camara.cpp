@@ -7,6 +7,7 @@ Camara::Camara() {
 }
 Camara::Camara(SDL_Rect * target, int w, int h)
 {
+	anguloCamara = 0;
 	if(target != nullptr)
 		Apuntando = target;
 	else
@@ -35,6 +36,7 @@ void Camara::update()
 		plano.x = minX;
 		Centro.x = plano.x+plano.w / 2;
 	}
+	
 	if (plano.x+plano.w > maxX) {
 		plano.x = maxX-plano.w;
 		Centro.x = plano.x + plano.w / 2;
@@ -47,12 +49,15 @@ void Camara::update()
 		plano.y = minY;
 		Centro.y = plano.h / 2;
 	}
-	
-	
 	ultimoPlano = plano;
 }
 
 SDL_Rect Camara::getPlano()
 {
 	return plano;
+}
+
+void Camara::setLimite(SDL_Rect & const area)
+{
+	minX = area.x; minY = area.y; maxX = area.x + area.w; maxY = area.y + area.h;
 }

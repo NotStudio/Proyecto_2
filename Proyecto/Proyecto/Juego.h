@@ -8,7 +8,6 @@
 #include <stack>
 #include <unordered_map>
 #include "contactListener.h"
-#include "Room.h"
 #include "Camara.h"
 
 class EstadoJuego;
@@ -50,7 +49,6 @@ class Juego
 	SDL_Renderer* pRenderer;
 
 	vector<TexturasSDL*> texturas;
-
 	vector<string> nombreTexturas;
 
 	struct Ventana { //Struct que contiene el tamaño y el color de la ventana.
@@ -74,13 +72,13 @@ class Juego
 	bool KEYS[322];
 
 	unordered_map<string, unordered_map<string, TexturasSDL*>> mapTexturas;
-	Camara Camera;
+	Camara *Camera;
 	
-
 	
 
 public:
 	Juego(b2World * mundo);
+	Juego();
 	~Juego();
 
 
@@ -113,16 +111,18 @@ public:
 
 	bool inputQuery(int numButton);
 
-	SDL_Rect getCameraRect() { return Camera.getPlano(); }
-	Camara getCamera() { return Camera; }
-
+	SDL_Rect getCameraRect() { return Camera->getPlano(); }
+	Camara * getCamera() { return Camera; }
+	
 	b2World* getWorld();
 	//Personaje activo queda ajustarlo para que pueda cambiar y no sea siempre el primero de la lista
 	//pero para hacer el apanyo nos sirvfe de momento
 	Objeto*personajeActivo(){
 		return objetos[0];
 	}
-
+	TexturasSDL*getTilesheet(){
+		return texturas[0];
+	}
 };
 
 
