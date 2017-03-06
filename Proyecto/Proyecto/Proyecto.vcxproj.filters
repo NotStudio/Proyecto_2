@@ -78,7 +78,10 @@
     <ClCompile Include="Tile.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Nivel.cpp">
+    <ClCompile Include="Play.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ZonaAccion.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -158,10 +161,13 @@
     <ClInclude Include="Tostadora.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Nivel.h">
+    <ClInclude Include="Play.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="RoomList.h">
+    <ClInclude Include="zonaJuego.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ZonaAccion.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

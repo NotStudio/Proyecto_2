@@ -15,8 +15,8 @@ void Enemigo::onColisionEnter(Objeto* contactObject) {
 	std::cout << "HAs muerto por tocar a un enemigo... ¯\_(ツ)_/¯ ";
 }
 void Enemigo::move(){
-	float x = static_cast<Entidad*>(pJuego->personajeActivo())->getX();
-	float y = static_cast<Entidad*>(pJuego->personajeActivo())->getY();
+	float x = static_cast<Entidad*>(pJuego->getPlayer())->getX();
+	float y = static_cast<Entidad*>(pJuego->getPlayer())->getY();
 	b2Vec2 velFloat;
 	velFloat.x = 0.0f;
 	velFloat.y = 0.0f;

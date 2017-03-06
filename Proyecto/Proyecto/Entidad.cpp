@@ -3,7 +3,6 @@
 
 Entidad::Entidad(Juego* punteroJuego, SDL_Rect spritePar, string objectId) : pJuego(punteroJuego)
 {
-	sprite = new SDL_Rect(spritePar);
 	id = objectId;
 	//Inicializacion de la animacion.
 	currentAnim.numFrames = 0;
@@ -26,6 +25,7 @@ Entidad::~Entidad()
 	//Destruir cosas de la Física
 	pJuego->getWorld()->DestroyBody(body);
 	delete shape;
+	delete sprite;
 	//pJuego = nullptr;
 }
 

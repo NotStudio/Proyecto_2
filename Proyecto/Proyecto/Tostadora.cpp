@@ -15,7 +15,7 @@ Tostadora::Tostadora(Juego* punteroJuego, SDL_Rect spritePar):Jugable(punteroJue
 	fDef.shape = shape; fDef.density = 5.0f; fDef.friction = 0;
 	body->CreateFixture(&fDef);
 
-	stats.velMov = 300;
+	stats.velMov = 600;
 
 
 	

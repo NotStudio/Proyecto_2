@@ -3,12 +3,13 @@
 #include <vector>
 #include <string>
 #include <Box2D\Box2D.h>
-#include "TexturasSDL.h"
+#include <unordered_map>
 #include <float.h>
 #include <stack>
-#include <unordered_map>
+#include "TexturasSDL.h"
 #include "contactListener.h"
 #include "Camara.h"
+#include "EstadoJuego.h"
 
 class EstadoJuego;
 
@@ -72,7 +73,10 @@ class Juego
 	bool KEYS[322];
 
 	unordered_map<string, unordered_map<string, TexturasSDL*>> mapTexturas;
+
 	Camara *Camera;
+
+
 	
 	
 
@@ -109,18 +113,26 @@ public:
 
 	void draw();
 
+	void changeState(EstadoJuego* nwEstado);
+
+	void pushState(EstadoJuego* nwEstado);
+
+	void popState();
+
+	EstadoJuego* topState();
+
 	bool inputQuery(int numButton);
 
 	SDL_Rect getCameraRect() { return Camera->getPlano(); }
 	Camara * getCamera() { return Camera; }
 	
 	b2World* getWorld();
-	//Personaje activo queda ajustarlo para que pueda cambiar y no sea siempre el primero de la lista
-	//pero para hacer el apanyo nos sirvfe de momento
-	Objeto*personajeActivo(){
+
+	Objeto* getPlayer(){
 		return objetos[0];
 	}
 	TexturasSDL*getTilesheet(){
+
 		return texturas[0];
 	}
 };

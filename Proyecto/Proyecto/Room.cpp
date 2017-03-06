@@ -56,13 +56,6 @@ Room::Room(Juego * pJ, int x, int y, Direcciones LocPort) :pJuego(pJ)
 	
 }
 
-/*
-Room::Room() {
-	pJuego = nullptr;
-	Tiles = nullptr;
-}
-*/
-
 bool Room::setTiles(string Dirm,b2World * wardo) {
 	
 	int x = 0;
@@ -82,6 +75,11 @@ Room::~Room()
 		delete Tiles->at(i);
 		Tiles->at(i) = nullptr;
 	}
+	for (size_t i = 0; i < TileSheetRect.size(); i++)
+	{
+		delete TileSheetRect[i];
+	}
+	delete area;
 	delete Tiles;
 	Tiles = nullptr;
 }

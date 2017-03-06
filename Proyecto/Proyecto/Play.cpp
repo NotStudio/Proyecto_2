@@ -3,14 +3,13 @@
 
 Play::Play(Juego * juego) : EstadoPG(juego)
 {
-
-
-
+	personaje = juego->getPlayer();
 }
 
 
 Play::~Play()
 {
+
 }
 
 void Play::draw(){

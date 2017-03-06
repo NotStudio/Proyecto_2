@@ -25,6 +25,7 @@ int main(int argc, char* args[]) {
 	
 	Juego juego(&world);
 	
+	_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF); // Check Memory Leaks
 
 //	system("PAUSE");
 

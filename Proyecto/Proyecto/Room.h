@@ -52,10 +52,17 @@ private:
 	int ANCHO_NIVEL, ALTO_NIVEL;
 	
 	bool setTiles(string d,b2World* Wardo);
+	
+	//Vector de enemigos.
+	vector<Objeto*> enemigos;
+	//Vector de objetos inanimados.
+	//Dificultad.(int, struct)
+
+
+public:
 	bool dentroRoom(SDL_Point* box) {
 		return !(area->x > box->x || area->x + area->w < box->x || area->y > box->y || area->y + area->h < box->y);
 	}
-public:
 	//para saber las puertas donde estan
 	Room * getRoomNorte() { return Norte; }
 	Room * getRoomSur() { return Sur; }

@@ -70,6 +70,10 @@ Juego::~Juego()
 	pWindow = nullptr;
 	pRenderer = nullptr;
 
+	//Liberar estados
+	while (!estados.empty()){
+		popState();
+	}
 	//Liberar cosas de la Física
 	
 }
@@ -257,9 +261,10 @@ void Juego::draw(){
 
 
 void Juego::run() {
+	
 	std::vector<Room*>*kek=new vector<Room*>;
 	texturas.push_back(new TexturasSDL());
-	texturas[0]->load(pRenderer, "../Material/gato.png");
+	texturas[0]->load(pRenderer, "../Material/tilesheet_test.png");
 	kek->push_back(new Room(this, 0, 0, Direcciones{false,false,true, false}));
 	kek->push_back(new Room(this, kek->at(0)->getArea().x + kek->at(0)->getArea().w, kek->at(0)->getArea().y, Direcciones{false,false, false,true}));
 	Camera->setLimite(kek->at(0)->getArea());
@@ -268,8 +273,6 @@ void Juego::run() {
 	world->Step(1.0f / 60.0f, 6, 2);
 	//draw();
 	handle_event();
-	double a = 0;
-	double b = 0.1;
 	while (!exit) {
 		if (SDL_GetTicks() - lastUpdate >= MSxUpdate) {
 			update();
@@ -278,12 +281,9 @@ void Juego::run() {
 			{
 				kek->at(i)->update();
 			}
+			Camera->update();
 		}
-		a += b;
-		if (a < -60 || a>60)b *= -1;
-		Camera->update();
 		world->Step(1.0f / 60.0f, 6, 2);
-		b2Vec2 posT;
 		SDL_RenderClear(pRenderer);
 		//mapTexturas.at("Background").at("idle")->draw(pRenderer, fondoRect, &fondoRect);
 		unordered_map<string, unordered_map<string, TexturasSDL*>>::iterator it = mapTexturas.begin();
@@ -300,13 +300,34 @@ void Juego::run() {
 		handle_event();
 	}
 	delete kek->at(0);
+	delete kek->at(1);
+	delete kek;
+	delete texturas[0];
 	if (exit) cout << "EXIT \n";
 	else if (gameOver) {
 		cout << "GAME OVER \n";
 	}
 }
 
+EstadoJuego* Juego::topState(){
+	return estados.top();
+}
 
+void Juego::changeState(EstadoJuego* newState){
+
+	popState();
+	pushState(newState);
+}
+
+void Juego::pushState(EstadoJuego* newState){
+	estados.push(newState);
+}
+
+void Juego::popState(){
+
+	delete topState();
+	estados.pop();
+}
 
 
 
