@@ -5,18 +5,20 @@
 class Tile
 {
 public:
-	//Initializes position and type
-	Tile(int x, int y, int tileType,b2World*wardo);
+	//Constructor de Tile
+	Tile(int x, int y, int tileType,b2World*world);
 	~Tile();
-	//Shows the tile
+	//devuelve si se puede pintar o no
 	bool render(SDL_Rect*,SDL_Rect&,int&);
 
-	//Get the tile type
+	//devuelve el tipo del tile
 	int getType();
 
-	//Get the collision box
+	//devuelve el rectangulo del tile
 	SDL_Rect getBox();
+	//para saber si algo esta dentro del tile
 	bool Dentro(SDL_Rect * box)const;
+	//para poder borrar el body de un tile si lo tiene
 	b2Body * getBody();
 	void setPos(float32 x, float32 y);
 private:
@@ -35,10 +37,16 @@ private:
 class Room
 {
 private:
+	Room * Norte = nullptr;
+	Room * Sur = nullptr;
+	Room * Este = nullptr;
+	Room * Oeste = nullptr;
 	int x, y;
+	//la zona de la room
 	SDL_Rect * area;
 	Juego * pJuego;
 	vector <SDL_Rect*> TileSheetRect;
+	//el vector de los tiles
 	vector<Tile*>* Tiles;
 	Direcciones Locport;
 	int ANCHO_NIVEL, ALTO_NIVEL;
@@ -48,9 +56,16 @@ private:
 		return !(area->x > box->x || area->x + area->w < box->x || area->y > box->y || area->y + area->h < box->y);
 	}
 public:
+	//para saber las puertas donde estan
+	Room * getRoomNorte() { return Norte; }
+	Room * getRoomSur() { return Sur; }
+	Room * getRoomEste() { return Este; }
+	Room * getRoomOeste() { return Oeste; }
+	Direcciones getPuertas() { return Locport; }
 	SDL_Rect getArea() {
 		return *area;
 	}
+	void SetRoom(Direcciones p);
 	void update();
 	//Room();
 	Room(Juego *,int x, int y,Direcciones);

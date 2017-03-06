@@ -31,6 +31,7 @@
     <ClCompile Include="Jugable.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MenuPG.cpp" />
+    <ClCompile Include="Nivel.cpp" />
     <ClCompile Include="NPC.cpp" />
     <ClCompile Include="ObjetoClave.cpp" />
     <ClCompile Include="ObjetoHistorico.cpp" />
@@ -57,6 +58,7 @@
     <ClInclude Include="Juego.h" />
     <ClInclude Include="Jugable.h" />
     <ClInclude Include="MenuPG.h" />
+    <ClInclude Include="Nivel.h" />
     <ClInclude Include="NPC.h" />
     <ClInclude Include="Objeto.h" />
     <ClInclude Include="ObjetoClave.h" />
@@ -64,6 +66,7 @@
     <ClInclude Include="Pausa.h" />
     <ClInclude Include="Personaje.h" />
     <ClInclude Include="Room.h" />
+    <ClInclude Include="RoomList.h" />
     <ClInclude Include="TexturasSDL.h" />
     <ClInclude Include="TileInfo.h" />
     <ClInclude Include="Tostadora.h" />

@@ -29,6 +29,11 @@ const int NA= 11;
 */
 
 
+void Room::SetRoom(Direcciones p)
+{
+	RoomCustom(pJuego->getWorld(), 15, 12, ANCHO_NIVEL, ALTO_NIVEL, area->x, area->y, p);
+}
+
 void Room::update()
 {
 
