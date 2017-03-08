@@ -1,9 +1,8 @@
 #include "Juego.h"
 #include "Tostadora.h"
-#include "NPC.h"
-#include "Enemigo.h"
-#include "Room.h"
 #include "Camara.h"
+#include "ZonaAccion.h"
+#include "Play.h"
 
 //Constructora que inicializa todos los atributos de la clase Juego.
 Juego::Juego(b2World* mundo) : error(false), gameOver(false), exit(false), score(0), world(mundo)
@@ -24,10 +23,6 @@ Juego::Juego(b2World* mundo) : error(false), gameOver(false), exit(false), score
 	r.y = 100;
 	r.h = 64;
 	r.w = 64;
-	r2.x = 350;
-	r2.y = 350;
-	r2.h = 50;
-	r2.w = 50;
 	
 	//Añadimos al vector del nombre de las texturas los nombres de las imágenes. Tienen que tener un orden concreto.
 	
@@ -35,6 +30,7 @@ Juego::Juego(b2World* mundo) : error(false), gameOver(false), exit(false), score
 	nombreTexturas.emplace_back("../Material/Gato_idle.png");
 	nombreTexturas.emplace_back("../Material/Wall_idle.png");
 	nombreTexturas.emplace_back("../Material/Background_idle.jpg");
+	nombreTexturas.emplace_back("../Material/tilesheet_test.png");
 	
 	world->SetContactListener(&listener);
 	
@@ -45,10 +41,11 @@ Juego::Juego(b2World* mundo) : error(false), gameOver(false), exit(false), score
 	
 	//Arrancamos las texturas y los objetos.
 	initMedia();
-	objetos.push_back(new Tostadora(this,r));
-	objetos.push_back(new Enemigo(this, r2, "Gato"));
-	Camera =new Camara(static_cast<Entidad*>(objetos[0])->getRect(), window.ancho, window.alto);
+	personaje = new Tostadora(this,r);
+	Camera =new Camara(static_cast<Entidad*>(personaje)->getRect(), window.ancho, window.alto);
 	int w = 50;
+	zona = new ZonaAccion(this);
+	pushState(new Play(this));
 	run();
 	
 }
@@ -75,6 +72,9 @@ Juego::~Juego()
 		popState();
 	}
 	//Liberar cosas de la Física
+	//Borrar la camara? delete camera;
+	//borrar zona
+	delete zona;
 	
 }
 
@@ -238,23 +238,15 @@ void Juego::salir() {
 
 void Juego::update(){
 
-	for (int i = 0; i < objetos.size(); i++) {
-		objetos[i]->update();
-	}
-	
+	topState()->update();
+	Camera->update();
+	Camera->setLimite(zona->getNivelActual());
 }
 
 void Juego::draw(){
 	
 	SDL_RenderClear(pRenderer);
-	//mapTexturas.at("Background").at("idle")->draw(pRenderer, fondoRect, &fondoRect);
-	unordered_map<string, unordered_map<string, TexturasSDL*>>::iterator it = mapTexturas.begin();
-	b2Vec2 posT;
-	for (int i = 0; i < objetos.size(); i++) {
-		objetos[i]->draw();
-	}
-	
-
+	topState()->draw();
 	SDL_RenderPresent(pRenderer);
 
 }
@@ -262,47 +254,20 @@ void Juego::draw(){
 
 void Juego::run() {
 	
-	std::vector<Room*>*kek=new vector<Room*>;
-	texturas.push_back(new TexturasSDL());
-	texturas[0]->load(pRenderer, "../Material/tilesheet_test.png");
-	kek->push_back(new Room(this, 0, 0, Direcciones{false,false,true, false}));
-	kek->push_back(new Room(this, kek->at(0)->getArea().x + kek->at(0)->getArea().w, kek->at(0)->getArea().y, Direcciones{false,false, false,true}));
-	Camera->setLimite(kek->at(0)->getArea());
 	cout << "PLAY \n";
 	lastUpdate = SDL_GetTicks();
 	world->Step(1.0f / 60.0f, 6, 2);
-	//draw();
+	draw();
 	handle_event();
 	while (!exit) {
 		if (SDL_GetTicks() - lastUpdate >= MSxUpdate) {
 			update();
 			lastUpdate = SDL_GetTicks();
-			for (size_t i = 0; i < 2; i++)
-			{
-				kek->at(i)->update();
-			}
-			Camera->update();
 		}
 		world->Step(1.0f / 60.0f, 6, 2);
-		SDL_RenderClear(pRenderer);
-		//mapTexturas.at("Background").at("idle")->draw(pRenderer, fondoRect, &fondoRect);
-		unordered_map<string, unordered_map<string, TexturasSDL*>>::iterator it = mapTexturas.begin();
-		kek->at(0)->render();
-		kek->at(1)->render();
-		for (int i = 0; i < objetos.size(); i++) {
-			objetos[i]->draw();
-		}
-	
-
-
-		SDL_RenderPresent(pRenderer);
-		//draw();
+		draw();
 		handle_event();
 	}
-	delete kek->at(0);
-	delete kek->at(1);
-	delete kek;
-	delete texturas[0];
 	if (exit) cout << "EXIT \n";
 	else if (gameOver) {
 		cout << "GAME OVER \n";
@@ -337,4 +302,10 @@ bool Juego::inputQuery(int numButton) {
 
 b2World* Juego::getWorld() {
 	return world;
+}
+
+void Juego::setZona(ZonaJuego* nwZona) {
+	//borrar la zona anterior.
+	zona = nwZona;
+
 }

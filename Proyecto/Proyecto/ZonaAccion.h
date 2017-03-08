@@ -1,12 +1,14 @@
 #pragma once
+#include "Juego.h"
 #include "zonaJuego.h"
-#include "Entidad.h"
+#include "Objeto.h"
 #include "Room.h"
 #include <vector>
 using namespace std;
 class ZonaAccion :
 	public ZonaJuego
 {
+	Juego* pJuego;
 	//Vector de habitaciones/niveles
 	vector<Room*> niveles;
 	//Enemigos
@@ -20,6 +22,7 @@ class ZonaAccion :
 
 
 
+
 public:
 	ZonaAccion(Juego* punteroJuego);
 	virtual ~ZonaAccion();
@@ -27,5 +30,7 @@ public:
 	virtual void draw();
 
 	virtual void update();
+
+	SDL_Rect getNivelActual();
 };
 

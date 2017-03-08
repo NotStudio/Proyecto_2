@@ -16,15 +16,12 @@ Tostadora::Tostadora(Juego* punteroJuego, SDL_Rect spritePar):Jugable(punteroJue
 	body->CreateFixture(&fDef);
 
 	stats.velMov = 600;
-
-
-	
-	
 }
 
 
 Tostadora::~Tostadora()
 {
+	delete shape;
 }
 
 void Tostadora::onColisionEnter(Objeto* contactObject) {

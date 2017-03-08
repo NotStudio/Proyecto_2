@@ -1,11 +1,9 @@
-#include "Room.h"
 #include <fstream>
-#include <SDL.h>
-#include "TexturasSDL.h"
 #include<stdio.h>
-#include<string.h>
+#include "Room.h"
 #include "checkML.h"
 #include "constructoraRooms.h"
+#include "Enemigo.h"
 //Tile constants
 const int TIL_WIDTH = 50;
 const int TIL_HEIGHT = 50;
@@ -36,9 +34,11 @@ void Room::SetRoom(Direcciones p)
 
 void Room::update()
 {
+	for (int i = 0; i < enemigos.size(); i++) {
+		enemigos[i]->update();
+	}
 
-	if (dentroRoom(&pJuego->getCamera()->getTargetCentro()))
-		pJuego->getCamera()->setLimite(*area);
+
 }
 
 Room::Room(Juego * pJ, int x, int y, Direcciones LocPort) :pJuego(pJ)
@@ -53,6 +53,15 @@ Room::Room(Juego * pJ, int x, int y, Direcciones LocPort) :pJuego(pJ)
 		xp += 16;
 		if (xp >= 16 * 4) { xp = 0; yp += 16; }
 	}
+
+	//Crear el vector de enemigos, leer de archivos.
+	SDL_Rect r2;
+	r2.x = 350;
+	r2.y = 350;
+	r2.h = 50;
+	r2.w = 50;
+	enemigos.push_back(new Enemigo(pJuego, r2, "Gato"));
+	//Crear vector de objetos inanimados.
 	
 }
 
@@ -91,6 +100,7 @@ void Room::DestroyRoom(b2World * wardo)
 	}
 }
 void Room::render(){
+	//Dibujamos los tiles de fondo.
 	SDL_Rect Dibujar;
 	int tipoDeTile;
 	for (size_t i = 0; i < Tiles->size(); i++)
@@ -99,6 +109,10 @@ void Room::render(){
 
 			pJuego->getTilesheet()->draw(pJuego->getRender(),Dibujar, TileSheetRect[tipoDeTile],pJuego->getCamera());
 		}
+	}
+	//Dibujamos enemigos y objetos.
+	for (int i = 0; i < enemigos.size(); i++) {
+		enemigos[i]->draw();
 	}
 }
 

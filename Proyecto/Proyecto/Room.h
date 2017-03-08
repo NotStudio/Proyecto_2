@@ -56,6 +56,7 @@ private:
 	//Vector de enemigos.
 	vector<Objeto*> enemigos;
 	//Vector de objetos inanimados.
+	vector<Objeto*> objetos;
 	//Dificultad.(int, struct)
 
 

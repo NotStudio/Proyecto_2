@@ -1,6 +1,6 @@
 #pragma once
 #include "EstadoPG.h"
-#include "Room.h"
+#include "zonaJuego.h"
 class Play :
 	public EstadoPG
 {
@@ -17,6 +17,8 @@ private:
 	Objeto* personaje;
 
 	std::vector<Objeto*> enemigos;
+
+	ZonaJuego* zona;
 
 	
 

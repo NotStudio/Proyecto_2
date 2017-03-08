@@ -1,14 +1,9 @@
 #pragma once
-#include "Juego.h"
-
 class ZonaJuego
 {
-protected:
-	Juego* pJuego;
-
 public:
 
-	ZonaJuego(Juego* punteroJuego) :pJuego(punteroJuego)
+	ZonaJuego()
 	{
 	}
 
@@ -19,5 +14,7 @@ public:
 	virtual void draw() = 0;
 
 	virtual void update() = 0;
+
+	virtual SDL_Rect getNivelActual() = 0;
 };
 

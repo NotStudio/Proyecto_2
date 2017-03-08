@@ -9,10 +9,9 @@
 #include "TexturasSDL.h"
 #include "contactListener.h"
 #include "Camara.h"
-#include "EstadoJuego.h"
 
+class ZonaJuego;
 class EstadoJuego;
-
 using namespace std;
 
 
@@ -48,8 +47,6 @@ class Juego
 	SDL_Window* pWindow;
 
 	SDL_Renderer* pRenderer;
-
-	vector<TexturasSDL*> texturas;
 	vector<string> nombreTexturas;
 
 	struct Ventana { //Struct que contiene el tamaño y el color de la ventana.
@@ -75,6 +72,10 @@ class Juego
 	unordered_map<string, unordered_map<string, TexturasSDL*>> mapTexturas;
 
 	Camara *Camera;
+
+	ZonaJuego* zona;
+
+	Objeto* personaje;
 
 
 	
@@ -128,13 +129,13 @@ public:
 	
 	b2World* getWorld();
 
-	Objeto* getPlayer(){
-		return objetos[0];
-	}
-	TexturasSDL*getTilesheet(){
+	Objeto* getPlayer(){	return personaje ;
+}
+	TexturasSDL*getTilesheet(){	return mapTexturas.at("tilesheet").at("test");}
 
-		return texturas[0];
-	}
+	ZonaJuego* getZona() {	return zona;}
+
+	void setZona(ZonaJuego* nwZona);
 };
 
 
