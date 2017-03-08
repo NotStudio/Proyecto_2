@@ -8,7 +8,8 @@ public:
 	virtual ~Personaje();
 
 	void virtual update();
-
+	int getVidas(){ return stats.vida; };
+	void restaVidas(int numero) { stats.vida -= numero; };
 protected:
 
 	struct atributos {

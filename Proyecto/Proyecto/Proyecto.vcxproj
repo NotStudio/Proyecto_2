@@ -35,6 +35,7 @@
     <ClCompile Include="ObjetoClave.cpp" />
     <ClCompile Include="ObjetoHistorico.cpp" />
     <ClCompile Include="Pausa.cpp" />
+    <ClCompile Include="Perseguidor.cpp" />
     <ClCompile Include="Personaje.cpp" />
     <ClCompile Include="Play.cpp" />
     <ClCompile Include="Room.cpp" />
@@ -64,6 +65,7 @@
     <ClInclude Include="ObjetoClave.h" />
     <ClInclude Include="ObjetoHistorico.h" />
     <ClInclude Include="Pausa.h" />
+    <ClInclude Include="Perseguidor.h" />
     <ClInclude Include="Personaje.h" />
     <ClInclude Include="Play.h" />
     <ClInclude Include="Room.h" />
