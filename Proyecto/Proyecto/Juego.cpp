@@ -31,6 +31,7 @@ Juego::Juego(b2World* mundo) : error(false), gameOver(false), exit(false), score
 	nombreTexturas.emplace_back("../Material/Gato_idle.png");
 	nombreTexturas.emplace_back("../Material/Wall_idle.png");
 	nombreTexturas.emplace_back("../Material/Background_idle.jpg");
+	nombreTexturas.emplace_back("../Material/Bala_idle.png");
 	nombreTexturas.emplace_back("../Material/tilesheet_test.png");
 	
 	world->SetContactListener(&listener);
@@ -152,6 +153,11 @@ void Juego::freeMedia() {
 		it++;
 	}
 	
+	//Esto debe ir en otro metodo
+	for (int i = 0; i < objetos.size(); i++) {
+		delete objetos[i];
+		objetos[i] = nullptr;
+	}
 	//Esto debe ir en otro metodo
 	for (int i = 0; i < objetos.size(); i++) {
 		delete objetos[i];

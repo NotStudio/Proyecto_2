@@ -87,6 +87,9 @@
     <ClCompile Include="Perseguidor.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Bala.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Personaje.h">
@@ -174,6 +177,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Perseguidor.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Bala.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

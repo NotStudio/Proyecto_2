@@ -86,7 +86,7 @@ public:
 	Juego();
 	~Juego();
 
-
+	
 	struct Animacion
 	{
 		SDL_Rect* rect;

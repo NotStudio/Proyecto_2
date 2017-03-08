@@ -17,7 +17,7 @@ private:
 	Objeto* personaje;
 
 	std::vector<Objeto*> enemigos;
-
+	
 	ZonaJuego* zona;
 
 	
