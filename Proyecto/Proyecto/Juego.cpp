@@ -4,6 +4,7 @@
 #include "ZonaAccion.h"
 #include "Play.h"
 
+
 //Constructora que inicializa todos los atributos de la clase Juego.
 Juego::Juego(b2World* mundo) : error(false), gameOver(false), exit(false), score(0), world(mundo)
 {
@@ -254,6 +255,10 @@ void Juego::draw(){
 
 void Juego::run() {
 	
+	int contSeg= 0;
+	int fpsCount = 0;
+	int lasssst = 0;
+	bool stop = false;
 	cout << "PLAY \n";
 	lastUpdate = SDL_GetTicks();
 	world->Step(1.0f / 60.0f, 6, 2);
@@ -263,10 +268,18 @@ void Juego::run() {
 		if (SDL_GetTicks() - lastUpdate >= MSxUpdate) {
 			update();
 			lastUpdate = SDL_GetTicks();
+			fpsCount++;
+		}
+		if (contSeg >= lasssst + 1000) {
+			std::cout << fpsCount << " ";
+			fpsCount = 0;
+			lasssst = contSeg;
+			contSeg = 0;
 		}
 		world->Step(1.0f / 60.0f, 6, 2);
 		draw();
 		handle_event();
+		contSeg = SDL_GetTicks();
 	}
 	if (exit) cout << "EXIT \n";
 	else if (gameOver) {

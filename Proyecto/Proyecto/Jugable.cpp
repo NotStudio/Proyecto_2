@@ -18,7 +18,7 @@ void Jugable::movControl(){
 
 
 	int lim = stats.velMov;
-	int ac = lim / 10;
+	int ac = 0.5 * lim;
 
 	b2Vec2 v = body->GetLinearVelocity();
 

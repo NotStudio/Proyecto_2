@@ -3,16 +3,27 @@
 
 Enemigo::Enemigo(Juego* punteroJuego, SDL_Rect spritePar, string objectId) : NPC(punteroJuego,spritePar,objectId)
 {
+	//Fisica
+
+	bodyDef.type = b2_dynamicBody;
+	bodyDef.position.Set(pos.x, pos.y);
+	body = pJuego->getWorld()->CreateBody(&bodyDef);
+	body->SetUserData(this);
+	shape = new b2PolygonShape;
+	static_cast<b2PolygonShape*>(shape)->SetAsBox(sprite->w / 2, sprite->h / 2);
+	fDef.shape = shape; fDef.density = 5000.0f; fDef.friction = 0.5f;
+	body->CreateFixture(&fDef);
 }
 
 
 Enemigo::~Enemigo()
 {
+	delete shape;
 }
 
 void Enemigo::onColisionEnter(Objeto* contactObject) {
 
-	std::cout << "HAs muerto por tocar a un enemigo... ¯\_(ツ)_/¯ "  << static_cast<Entidad*>(contactObject)->getId();
+	std::cout << "HAs muerto por tocar a un enemigo: "  << dynamic_cast<Entidad*>(contactObject)->getId() << "\n";
 
 }
 void Enemigo::move(){

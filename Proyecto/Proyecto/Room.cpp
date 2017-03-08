@@ -57,7 +57,7 @@ Room::Room(Juego * pJ, int x, int y, Direcciones LocPort) :pJuego(pJ)
 	//Crear el vector de enemigos, leer de archivos.
 	SDL_Rect r2;
 	r2.x = 350;
-	r2.y = 350;
+	r2.y = 500;
 	r2.h = 50;
 	r2.w = 50;
 	enemigos.push_back(new Enemigo(pJuego, r2, "Gato"));
