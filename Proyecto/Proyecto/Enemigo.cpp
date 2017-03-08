@@ -12,7 +12,10 @@ Enemigo::Enemigo(Juego* punteroJuego, SDL_Rect spritePar, string objectId) : NPC
 	shape = new b2PolygonShape;
 	static_cast<b2PolygonShape*>(shape)->SetAsBox(sprite->w / 2, sprite->h / 2);
 	fDef.shape = shape; fDef.density = 5000.0f; fDef.friction = 0.5f;
+	fDef.filter.categoryBits = Juego::ENEMIGO;
+	fDef.filter.maskBits = Juego::JUGADOR | Juego::ESCENARIO | Juego::ENEMIGO;
 	body->CreateFixture(&fDef);
+
 }
 
 
@@ -40,6 +43,6 @@ void Enemigo::move(){
 }
 void  Enemigo::update(){
 	Entidad::update();
-	move();
+	
 
 }

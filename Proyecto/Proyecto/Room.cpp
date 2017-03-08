@@ -55,12 +55,17 @@ Room::Room(Juego * pJ, int x, int y, Direcciones LocPort) :pJuego(pJ)
 	}
 
 	//Crear el vector de enemigos, leer de archivos.
-	SDL_Rect r2;
-	r2.x = 350;
+	SDL_Rect r2, r3;
+	r2.x = 750;
 	r2.y = 500;
 	r2.h = 50;
 	r2.w = 50;
+	r3.x = 300;
+	r3.y = 100;
+	r3.h = 50;
+	r3.w = 50;
 	enemigos.push_back(new Enemigo(pJuego, r2, "Gato"));
+	enemigos.push_back(new Enemigo(pJuego, r3, "Gato"));
 	//Crear vector de objetos inanimados.
 	
 }

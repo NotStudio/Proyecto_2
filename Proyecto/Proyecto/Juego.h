@@ -93,6 +93,14 @@ public:
 		TexturasSDL* textura;
 		int numFrames;
 	};
+	enum capaColisiones{
+		ENEMIGO = 0x0001,
+		AT_ENEMIGO = 0x0002,
+		JUGADOR = 0x0004,
+		AT_JUGADOR = 0x0008,
+		ITEM = 0x0010,
+		ESCENARIO = 0x0020
+	};
 
 	TexturasSDL* getTextura(const string &entity, const string &anim);
 

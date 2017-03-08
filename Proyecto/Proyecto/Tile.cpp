@@ -16,6 +16,8 @@ Tile::Tile(int x, int y, int tileType, b2World * wardo)
 		mShape = new b2PolygonShape();
 		mShape->SetAsBox((float32)TILE_WIDTH / 2, (float32)TILE_HEIGHT / 2);
 		mShapeDef->shape = mShape;
+		mShapeDef->filter.categoryBits = Juego::ESCENARIO;
+		mShapeDef->filter.maskBits = -1;
 		mBody->CreateFixture(mShapeDef);
 	}
 	else {
