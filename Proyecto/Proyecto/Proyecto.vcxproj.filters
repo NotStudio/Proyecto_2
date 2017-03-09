@@ -141,6 +141,9 @@
     <ClCompile Include="Room.cpp">
       <Filter>Source Files\Niveles</Filter>
     </ClCompile>
+    <ClCompile Include="HUD.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Juego.h">
@@ -229,6 +232,12 @@
     </ClInclude>
     <ClInclude Include="Room.h">
       <Filter>Header Files\Niveles</Filter>
+    </ClInclude>
+    <ClInclude Include="HUD.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="HUDbase.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

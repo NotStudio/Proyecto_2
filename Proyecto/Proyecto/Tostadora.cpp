@@ -17,6 +17,8 @@ Tostadora::Tostadora(Juego* punteroJuego, SDL_Rect spritePar):Jugable(punteroJue
 	fDef.filter.maskBits = Juego::ENEMIGO | Juego::AT_ENEMIGO | Juego::ITEM | Juego::ESCENARIO;
 	body->CreateFixture(&fDef);
 	stats.velMov = 1750;
+
+	stats.vida = 4;
 }
 
 
@@ -28,5 +30,6 @@ Tostadora::~Tostadora()
 void Tostadora::onColisionEnter(Objeto* contactObject) {
 
 	std::cout << "colision";
+	stats.vida--;
 
 }

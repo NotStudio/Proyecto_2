@@ -2,7 +2,7 @@
 
 
 //HAY QUE CAMBIAR EL STRING QUE PASA COMO ID
-Perseguidor::Perseguidor(Juego* punteroJuego, SDL_Rect a) : Enemigo(punteroJuego, a, "Gato"), coefMov(7.0f)
+Perseguidor::Perseguidor(Juego* punteroJuego, SDL_Rect a) : Enemigo(punteroJuego, a, "Gato"), coefMov(10.0f)
 {
 	stats.daño = 1;
 
@@ -13,6 +13,7 @@ void Perseguidor::move(){
 	b2Vec2 velFloat;
 	velFloat.x = 0.0f;
 	velFloat.y = 0.0f;
+	
 	
 	b2Vec2 posJug = b2Vec2(x, y);
 	//Vector para la diferencia entre el vect del jugador y el vect del enemigoPerseguidor
@@ -30,6 +31,7 @@ void Perseguidor::update() {
 	Entidad::update();
 	move();
 	
+	
 }
 void Perseguidor::onColisionEnter(Objeto* contactObject) {
 	Jugable * k = dynamic_cast<Jugable *>(contactObject);
@@ -45,3 +47,4 @@ void Perseguidor::onColisionEnter(Objeto* contactObject) {
 Perseguidor::~Perseguidor()
 {
 }
+

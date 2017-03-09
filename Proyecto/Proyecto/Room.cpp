@@ -38,6 +38,8 @@ void Room::update()
 		enemigos[i]->update();
 	}
 
+	
+
 
 }
 
@@ -56,12 +58,12 @@ Room::Room(Juego * pJ, int x, int y, Direcciones LocPort) :pJuego(pJ)
 
 	//Crear el vector de enemigos, leer de archivos.
 	SDL_Rect r2, r3;
-	r2.x = 750;
-	r2.y = 500;
+	r2.x = x + 750;
+	r2.y = y + 500;
 	r2.h = 50;
 	r2.w = 50;
-	r3.x = 300;
-	r3.y = 100;
+	r3.x = x + 300;
+	r3.y = y + 100;
 	r3.h = 50;
 	r3.w = 50;
 	//enemigos.push_back(new Enemigo(pJuego, r2, "Gato"));
@@ -96,6 +98,8 @@ Room::~Room()
 	delete area;
 	delete Tiles;
 	Tiles = nullptr;
+
+	//limpiar enemigos.
 }
 void Room::DestroyRoom(b2World * wardo)
 {
@@ -148,4 +152,13 @@ vector<int> Room::TilesOcupados(SDL_Rect & const recto)
 void Room::SetRoomFichero(string Dir)
 {
 	RoomDesdeArchivo(Dir, pJuego->getWorld(), ANCHO_NIVEL, ALTO_NIVEL);
+}
+
+void Room::stop() {
+
+	for (int i = 0; i < enemigos.size(); i++) {
+		static_cast<Enemigo*>(enemigos[i])->stop();
+	}
+
+
 }

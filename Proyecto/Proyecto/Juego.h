@@ -9,6 +9,7 @@
 #include "TexturasSDL.h"
 #include "contactListener.h"
 #include "Camara.h"
+#include "HUDbase.h"
 
 class ZonaJuego;
 class EstadoJuego;
@@ -77,7 +78,7 @@ class Juego
 
 	Objeto* personaje;
 
-
+	HUDbase* vidasHUD;
 	
 	
 

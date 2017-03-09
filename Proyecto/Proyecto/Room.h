@@ -21,6 +21,8 @@ public:
 	//para poder borrar el body de un tile si lo tiene
 	b2Body * getBody();
 	void setPos(float32 x, float32 y);
+
+	
 private:
 
 	void onColisionEnter();
@@ -85,6 +87,7 @@ public:
 	int encontrarPosicionTiled(int & const x, int & const y);
 	vector<int> TilesOcupados(SDL_Rect & const recto);
 	void SetRoomFichero(string Dir);
+	void stop();
 
 	
 

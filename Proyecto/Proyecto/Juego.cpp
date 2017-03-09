@@ -3,6 +3,7 @@
 #include "Camara.h"
 #include "ZonaAccion.h"
 #include "Play.h"
+#include "HUD.h"
 
 
 //Constructora que inicializa todos los atributos de la clase Juego.
@@ -20,11 +21,7 @@ Juego::Juego(b2World* mundo) : error(false), gameOver(false), exit(false), score
 		std::cout << "Ha ocurrido un error con SDL";
 	}
 	//Esto es el wall de mexico los estados hundidos
-	r.x = 100;
-	r.y = 100;
-	r.h = 64;
-	r.w = 64;
-	
+
 	//Añadimos al vector del nombre de las texturas los nombres de las imágenes. Tienen que tener un orden concreto.
 	
 	nombreTexturas.emplace_back("../Material/Tostadora_idle.png");
@@ -32,6 +29,11 @@ Juego::Juego(b2World* mundo) : error(false), gameOver(false), exit(false), score
 	nombreTexturas.emplace_back("../Material/Wall_idle.png");
 	nombreTexturas.emplace_back("../Material/Background_idle.jpg");
 	nombreTexturas.emplace_back("../Material/tilesheet_test.png");
+	//Esto no es así.
+	nombreTexturas.emplace_back("../Material/Battery4_idle.png");
+	nombreTexturas.emplace_back("../Material/Battery3_idle.png");
+	nombreTexturas.emplace_back("../Material/Battery2_idle.png");
+	nombreTexturas.emplace_back("../Material/Battery1_idle.png");
 	
 	world->SetContactListener(&listener);
 	
@@ -39,12 +41,12 @@ Juego::Juego(b2World* mundo) : error(false), gameOver(false), exit(false), score
 	for (int i = 0; i < 322; i++) { // init them all to false
 		KEYS[i] = false;
 	}
-	
+
 	//Arrancamos las texturas y los objetos.
 	initMedia();
-	personaje = new Tostadora(this,r);
+	personaje = new Tostadora(this, SDL_Rect{100,100,64,64});
 	Camera =new Camara(static_cast<Entidad*>(personaje)->getRect(), window.ancho, window.alto);
-	int w = 50;
+	vidasHUD = new HUD(this, SDL_Rect{20,0,20 * 1.7,35 * 1.7 }, "Battery4", "idle");
 	zona = new ZonaAccion(this);
 	pushState(new Play(this));
 	run();
@@ -248,6 +250,7 @@ void Juego::draw(){
 	
 	SDL_RenderClear(pRenderer);
 	topState()->draw();
+	vidasHUD->draw(personaje);
 	SDL_RenderPresent(pRenderer);
 
 }

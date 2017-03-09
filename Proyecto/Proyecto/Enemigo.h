@@ -10,5 +10,6 @@ public:
 	virtual void move();
 	void virtual onColisionEnter(Objeto* contactObject);
 	void virtual update();
+	void stop();
 };
 #endif

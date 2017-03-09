@@ -11,6 +11,8 @@ public:
 
 	void virtual update();
 
+	Personaje::atributos getStats() { return stats; };
+
 protected:
 	//Booleanas para el control del movimiento, utilizadas en el movControl;
 	bool dcha, izq, up, down;
@@ -22,6 +24,7 @@ protected:
 	void afinarMov(int vel, int lim);
 	//Acceso inventario
 	//void inventario();
+	
 
 };
 #endif

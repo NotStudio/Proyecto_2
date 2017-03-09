@@ -46,3 +46,7 @@ void  Enemigo::update(){
 	
 
 }
+
+void Enemigo::stop() {
+	body->SetLinearVelocity(b2Vec2{ 0,0 });
+}

@@ -26,6 +26,7 @@
     <ClCompile Include="Entidad.cpp" />
     <ClCompile Include="EstadoPG.cpp" />
     <ClCompile Include="GameOver.cpp" />
+    <ClCompile Include="HUD.cpp" />
     <ClCompile Include="Item.cpp" />
     <ClCompile Include="Juego.cpp" />
     <ClCompile Include="Jugable.cpp" />
@@ -56,6 +57,8 @@
     <ClInclude Include="EstadoPG.h" />
     <ClInclude Include="GameOver.h" />
     <ClInclude Include="constructoraRooms.h" />
+    <ClInclude Include="HUD.h" />
+    <ClInclude Include="HUDbase.h" />
     <ClInclude Include="Item.h" />
     <ClInclude Include="Juego.h" />
     <ClInclude Include="Jugable.h" />
