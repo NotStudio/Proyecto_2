@@ -13,21 +13,63 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="Source Files\Estados">
+      <UniqueIdentifier>{590f91db-3947-4e28-9537-cf0feb03a726}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Estados">
+      <UniqueIdentifier>{8325033d-6f99-4207-a9a0-4746d440fd7c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Zonas">
+      <UniqueIdentifier>{ad6fa305-589d-4a21-917b-93cc90f4864d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Zonas">
+      <UniqueIdentifier>{b38e206b-f2dc-42cb-ada3-805e8449fcfb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Objetos">
+      <UniqueIdentifier>{7fcdfe9c-10d8-4aaf-84af-f9c9f5355d6a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Objetos">
+      <UniqueIdentifier>{4f81995e-9314-40a4-a0c3-d016f0f2a38e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Personajes">
+      <UniqueIdentifier>{92570785-0c74-41ce-9849-d34eb43092d8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Personajes\Jugables">
+      <UniqueIdentifier>{9ce16ad4-b248-4c30-8bf8-526e856f47d2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Personajes\Enemigos">
+      <UniqueIdentifier>{e194d101-3e45-4928-8ca9-736b868a233c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Personajes">
+      <UniqueIdentifier>{f0bbc808-8510-4bfe-a805-567fecf18193}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Personajes\Jugables">
+      <UniqueIdentifier>{4608a13c-4dac-4bfc-b471-b82276c5ec66}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Personajes\Enemigos">
+      <UniqueIdentifier>{5a4852db-ef01-46c9-b090-0687a9b502dc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\SDL">
+      <UniqueIdentifier>{55704a4e-c834-4b9f-8cce-294abf7c1169}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\SDL">
+      <UniqueIdentifier>{84ed9788-d61e-4f02-8ee6-271f15176eec}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Box2D">
+      <UniqueIdentifier>{4b73f445-931a-46bb-8f3f-f65843c74835}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Box2D">
+      <UniqueIdentifier>{e10e0674-063e-4ae6-871d-8b5f4a92bf84}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Niveles">
+      <UniqueIdentifier>{417ae4ff-249b-4bbc-96c6-954c9e1da5d0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Niveles">
+      <UniqueIdentifier>{b12b9acc-3275-4025-8b00-0b95b19e89c9}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Personaje.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Jugable.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Tostadora.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="main.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="TexturasSDL.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Juego.cpp">
@@ -36,117 +78,78 @@
     <ClCompile Include="Entidad.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="contactListener.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Item.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="ObjetoClave.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="ObjetoHistorico.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="NPC.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Enemigo.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Boton.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="EstadoPG.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="GameOver.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="MenuPG.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Pausa.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Room.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Camara.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Tile.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Play.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="EstadoPG.cpp">
+      <Filter>Source Files\Estados</Filter>
     </ClCompile>
-    <ClCompile Include="ZonaAccion.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="MenuPG.cpp">
+      <Filter>Source Files\Estados</Filter>
+    </ClCompile>
+    <ClCompile Include="Pausa.cpp">
+      <Filter>Source Files\Estados</Filter>
+    </ClCompile>
+    <ClCompile Include="Play.cpp">
+      <Filter>Source Files\Estados</Filter>
     </ClCompile>
     <ClCompile Include="Perseguidor.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Personajes\Enemigos</Filter>
+    </ClCompile>
+    <ClCompile Include="NPC.cpp">
+      <Filter>Source Files\Personajes\Enemigos</Filter>
+    </ClCompile>
+    <ClCompile Include="Enemigo.cpp">
+      <Filter>Source Files\Personajes\Enemigos</Filter>
+    </ClCompile>
+    <ClCompile Include="Tostadora.cpp">
+      <Filter>Source Files\Personajes\Jugables</Filter>
+    </ClCompile>
+    <ClCompile Include="Jugable.cpp">
+      <Filter>Source Files\Personajes\Jugables</Filter>
+    </ClCompile>
+    <ClCompile Include="GameOver.cpp">
+      <Filter>Source Files\Estados</Filter>
+    </ClCompile>
+    <ClCompile Include="ZonaAccion.cpp">
+      <Filter>Source Files\Zonas</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjetoHistorico.cpp">
+      <Filter>Source Files\Objetos</Filter>
+    </ClCompile>
+    <ClCompile Include="ObjetoClave.cpp">
+      <Filter>Source Files\Objetos</Filter>
+    </ClCompile>
+    <ClCompile Include="Item.cpp">
+      <Filter>Source Files\Objetos</Filter>
+    </ClCompile>
+    <ClCompile Include="Boton.cpp">
+      <Filter>Source Files\Objetos</Filter>
+    </ClCompile>
+    <ClCompile Include="Personaje.cpp">
+      <Filter>Source Files\Personajes</Filter>
+    </ClCompile>
+    <ClCompile Include="TexturasSDL.cpp">
+      <Filter>Source Files\SDL</Filter>
+    </ClCompile>
+    <ClCompile Include="contactListener.cpp">
+      <Filter>Source Files\Box2D</Filter>
+    </ClCompile>
+    <ClCompile Include="Room.cpp">
+      <Filter>Source Files\Niveles</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Personaje.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Jugable.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="TexturasSDL.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Juego.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Entidad.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="contactListener.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Objeto.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Item.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Consumible.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="ObjetoClave.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="ObjetoHistorico.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="NPC.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Enemigo.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Boton.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="EstadoJuego.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="EstadoPG.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="GameOver.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="MenuPG.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Pausa.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Room.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="checkML.h">
@@ -155,26 +158,77 @@
     <ClInclude Include="Camara.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="constructoraRooms.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="TileInfo.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Tostadora.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="MenuPG.h">
+      <Filter>Header Files\Estados</Filter>
     </ClInclude>
     <ClInclude Include="Play.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Estados</Filter>
     </ClInclude>
-    <ClInclude Include="zonaJuego.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="Pausa.h">
+      <Filter>Header Files\Estados</Filter>
     </ClInclude>
-    <ClInclude Include="ZonaAccion.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="EstadoJuego.h">
+      <Filter>Header Files\Estados</Filter>
+    </ClInclude>
+    <ClInclude Include="EstadoPG.h">
+      <Filter>Header Files\Estados</Filter>
+    </ClInclude>
+    <ClInclude Include="GameOver.h">
+      <Filter>Header Files\Estados</Filter>
     </ClInclude>
     <ClInclude Include="Perseguidor.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Personajes\Enemigos</Filter>
+    </ClInclude>
+    <ClInclude Include="NPC.h">
+      <Filter>Header Files\Personajes\Enemigos</Filter>
+    </ClInclude>
+    <ClInclude Include="Enemigo.h">
+      <Filter>Header Files\Personajes\Enemigos</Filter>
+    </ClInclude>
+    <ClInclude Include="Jugable.h">
+      <Filter>Header Files\Personajes\Jugables</Filter>
+    </ClInclude>
+    <ClInclude Include="Tostadora.h">
+      <Filter>Header Files\Personajes\Jugables</Filter>
+    </ClInclude>
+    <ClInclude Include="zonaJuego.h">
+      <Filter>Header Files\Zonas</Filter>
+    </ClInclude>
+    <ClInclude Include="ZonaAccion.h">
+      <Filter>Header Files\Zonas</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjetoHistorico.h">
+      <Filter>Header Files\Objetos</Filter>
+    </ClInclude>
+    <ClInclude Include="ObjetoClave.h">
+      <Filter>Header Files\Objetos</Filter>
+    </ClInclude>
+    <ClInclude Include="Item.h">
+      <Filter>Header Files\Objetos</Filter>
+    </ClInclude>
+    <ClInclude Include="Consumible.h">
+      <Filter>Header Files\Objetos</Filter>
+    </ClInclude>
+    <ClInclude Include="Boton.h">
+      <Filter>Header Files\Objetos</Filter>
+    </ClInclude>
+    <ClInclude Include="Personaje.h">
+      <Filter>Header Files\Personajes</Filter>
+    </ClInclude>
+    <ClInclude Include="TexturasSDL.h">
+      <Filter>Header Files\SDL</Filter>
+    </ClInclude>
+    <ClInclude Include="contactListener.h">
+      <Filter>Header Files\Box2D</Filter>
+    </ClInclude>
+    <ClInclude Include="constructoraRooms.h">
+      <Filter>Header Files\Niveles</Filter>
+    </ClInclude>
+    <ClInclude Include="Room.h">
+      <Filter>Header Files\Niveles</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
