@@ -2,7 +2,7 @@
 ## Resumen
 | Genero | Público | Modos de juego | Plataforma | Calificación |
 |:-------|:--------|:---------------|:-----------|:-------------|
-| undefined | undefined    |1 Jugador| PC  | Undefined |
+| Rol, Acción | Jóven (12 - 30)    |1 Jugador| PC  | La puta polla coño |
 ## Descripción
 "Nombre juego" es un juego en 2D que mezcla componentes de rol (crafteo de objetos) con la acción directa, que se ubica temporalmente algunos años mas tarde de nuestra era.  En él, debemos avanzar por distintas zonas con un elenco variado de personajes jugables, máquinas electrónicas de que poseen una IA muy desarrollada. En dichas zonas, debemos derrotar a los enemigos y conseguir recursos para ayudar al personaje principal, 'Nombre tostadora', en su misión por volver a la estación espacial de la que ha caído por error a la Tierra para volver junto con su compañero humano "Nombre del pavo", un astronauta residente en la estación. Sin embargo, "la tostadora" pronto se dará cuenta que no todo continúa como cuando el dejó el planeta.
 ## Portada
@@ -24,29 +24,31 @@ Esta parte de la dinámica es la que hace avanzar directamente la historia o des
 #### Arcade
 Esta parte de la dinámica consiste en completar las zonas, que se componen de un número de niveles/habitaciones fijo, para obtener recursos, y estos poder ser usados en la parte Survival del juego. Se desarrolla en las habitaciones, se tienen que acabar con todos los enemigos de la habitción para poder pasar una habitación colindante de la actual y llegar al acceso del siguiente nivel que estará en una habitación del nivel.
 ### Estética
-Pixel-art, cartoon, post-apocalíptico.
+Cartoon. Estética desenfadada. 
 ## Menús
 ### Inicio
-### Principal
+Menú que se muestra al iniciar el juego, desde el que podemos acceder al juego directamente (entraremos en la base), ir al menú de opciones o salir del juego.
 ### Pausa
+Durante el juego, podemos pulsar 'P' (ej) para acceder al menu de pausa, que pausará el juego y nos mostrará dos opciones: Reanudar el juego o salir de él (se volverá a la base y se perderán los avances en el nivel).
 ## Localidades
 ### La Base o Refugio
-Donde se realiza parte survival del juego.
-Se pueden realizar las siguientes acciones:
-- Guardado automático, al entrar a la base.
-- Comprar
-- Elegir zona para jugar.
+Donde se realiza parte survival del juego. Estando en la base no podremos realizar ataques, ya que no existirán enemigos. Será un único nivel, pero estará dividido por secciones en la podremos realizar diferentes acciones:
+
+- Comprar?
+- Elegir zona para jugar (que nos llevará directamente a la acción).
 - Craftear.
 - Elegir personaje.
+
+El guardado se realizará automaticamente al entrar a la base al volver de una zona o al salir del juego si estás en la base.
 ### Zonas
-- Donde se obtienen recursos para la parte survival del juegeo
-- Hay 1 boss por zona.
-- Hay 3 tipos de recursos por zona: Recursos genéricos, comunes entre las diferentes zonas, recursos específicos de cada zona y el      recurso que da el boss.
-- Las zonas se organizan por niveles o pisos.
-- La forma de colocar habitaciones es aleatoria.
-- Las habitaciones son estructuralmente iguales para todas las zonas.
-- Enemigos diferentes por zona.
-- tilesheets diferentes por zona.
+Las zonas son las partes jugables del juego. Estás se dividen en niveles/habitaciones, que es donde realmente sucede la acción. Una zona tiene las siguientes características:
+
+-  Compuesta de varios niveles o habitaciones.
+- Existe un nivel final con un boss particular.
+- Hay 3 tipos de recursos por zona: Recursos genéricos (comunes entre las diferentes zonas), recursos específicos de cada zona y el recurso que da el boss.
+- La forma de colocar habitaciones es pseudo-aleatoria.
+- Enemigos diferentes por zona, puediendo existir enemigos "comunes" a todas las zonas.
+- Tilesheets propio por zona, que definirá la estética de sus niveles, que lógicamente será la misma.
 
 #### The Natural Preserve
 Un bosque de chatarra, es la primera zona que tienes al comenzar el juego.
@@ -58,10 +60,14 @@ Un Desguace.
 Hornos
 
 ### Habitaciones/Niveles
-- Es donde se juega a la parte Arcade del juego (disparar y desplazarse).
-- Puede haber o no enemigos en una habitación.
+Como se ha mencionado antes, los niveles son donde sucede la acción. Los niveles se caracterízan por:
+
+- Tener un escenario, compuesto por objetos que dan profundidad al nivel. Los objetos pueden ser mera decoración o interactuables, como cofres.
+- Tener enemigos. No obstante, pueden existir niveles que no tengan enemigos pero que la propia disposición del escenario suponga un desafío para superarlo.
 - Hay X variantes de una misma habitación.
-- Una habitación tiene que estar conectada minimo a otra habitación.
+- Estar conectada minimo a otra habitación.
+- Hasta que no se ha acabado con todos los enemigos, no se podrá avanzar al siguiente nivel.(?)
+- Poder regresar a la base durante él, pero se perderá el progreso en la zona, es decir, se empezará desde el primer nivel al volver a jugar la zona.
 
 ## Historia
 Año 16DB, Estacion espacial “Shuppatsu”, un asteroide colisiona contra la estacion provocando el desprendimiento de uno de los módulos, el cual se precipita sobre la Tierra.
@@ -75,7 +81,7 @@ Al estrellarse sobre la superficie terrestre en una pradera aparece entre el hum
 
 ## Objetos
 ### Consumible
-Objetos que se agotan y afectan a las stats del jugador, los cambios no serán permanentes, solo durarán hasta el final de la run, se gastan en el acto.
+Objetos que se agotan y afectan a las stats del jugador. Los cambios no serán permanentes, solo durarán hasta el final de la run, se gastan en el acto.
 Se consiguen matando enemigos o encotrandolos por el mapa.
 
 | Sprite                                             | Nombre           |efecto        |
@@ -90,7 +96,7 @@ Se consiguen matando enemigos o encotrandolos por el mapa.
 
 
 ### Clave
-Estos objetos sirven para craftear otros objetos o craftear objetos para desbloquear zonas. Se obtienen por crafteo o en zonas especificas.
+Estos sirven para craftear otros objetos. Los objetos resultantes pueden ser clave o históricos. Se obtienen encontrándolos en los niveles o, como se ha descrito, por medio de crafteo. Al  terminar satisfactoriamente un nivel o volver a base vivo, almacenaremos los recursos conseguidos en base. Aquí es donde se podrá llevar a cabo el crafting.
 
 | Sprite                                           | Nombre           |Uso                | Obtención |
 | :-------------:                                  |:-------------    |:-------------     |:---|
@@ -115,7 +121,7 @@ Estos objetos sirven para craftear otros objetos o craftear objetos para desbloq
 
 
 ### Histórico
-Para el desarrollo de la historia, se craftean y se consiguen matando a jefes.
+Para el desarrollo de la historia, se craftean o se consiguen matando a jefes.
 
 | Sprite                               | Nombre                 |Obtención        |
 | :-------------:                      |:-------------          |:-------------   |
