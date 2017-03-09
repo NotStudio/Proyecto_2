@@ -6,9 +6,9 @@ class Bala :
 	public Entidad
 {
 	float32 _vel;
-	int direccion; //1 arriba ,2 derechas, 3 abjo y 4 adivinalo
+	int x,y; //1 arriba ,2 derechas, 3 abjo y 4 adivinalo
 public:
-	Bala(Juego* punteroJuego, SDL_Rect spritePar, string objectId,float32 vel,int dir);
+	Bala(Juego* punteroJuego, SDL_Rect spritePar, string objectId,float32 vel,int dirx,int diry);
 	~Bala();
 	virtual void onColisionEnter(Objeto* contactObject);
 };

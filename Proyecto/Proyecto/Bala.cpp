@@ -1,11 +1,12 @@
 #include "Bala.h"
 #include "checkML.h"
 
-Bala::Bala(Juego* punteroJuego, SDL_Rect spritePar, string objectId,float32 vel, int dir) :Entidad(punteroJuego, spritePar, objectId)
+Bala::Bala(Juego* punteroJuego, SDL_Rect spritePar, string objectId,float32 vel, int dirx,int diry) :Entidad(punteroJuego, spritePar, objectId)
 {
 
 	_vel = vel;
-	direccion = dir;
+	x = dirx;
+	y = diry;
 	bodyDef.type = b2_dynamicBody;
 	bodyDef.fixedRotation = true;
 	bodyDef.position.Set(pos.x, pos.y);
@@ -21,17 +22,9 @@ Bala::Bala(Juego* punteroJuego, SDL_Rect spritePar, string objectId,float32 vel,
 	body->CreateFixture(&fDef);
 	body->SetUserData(this);
 	b2Vec2 velocidad;
-	velocidad.x = 0.0;
-	velocidad.y = 0.0;
-	if (dir == 1)
-		velocidad.y = -(float32)_vel;
-	else if (dir == 2)
-		velocidad.x = (float32)_vel;
-	else if (dir == 3)
-		velocidad.y = (float32)_vel;
-	else if ( dir == 4)
-		velocidad.x = -(float32)_vel;
-		
+	velocidad.x = _vel*x;
+	velocidad.y = _vel*y;
+
 	body->SetLinearVelocity(velocidad);
 	
 

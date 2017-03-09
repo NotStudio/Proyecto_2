@@ -4,6 +4,7 @@
 #include "checkML.h"
 #include "constructoraRooms.h"
 #include "Perseguidor.h"
+#include "MaquinaDePelotas.h"
 //Tile constants
 const int TIL_WIDTH = 50;
 const int TIL_HEIGHT = 50;
@@ -55,17 +56,22 @@ Room::Room(Juego * pJ, int x, int y, Direcciones LocPort) :pJuego(pJ)
 	}
 
 	//Crear el vector de enemigos, leer de archivos.
-	SDL_Rect r2, r3;
+	SDL_Rect r2, r3,r4;
 	r2.x = 750;
 	r2.y = 500;
 	r2.h = 50;
 	r2.w = 50;
 	r3.x = 300;
-	r3.y = 100;
+	r3.y = 300;
 	r3.h = 50;
 	r3.w = 50;
+	r4.x = 500;
+	r4.y = 400;
+	r4.h = 50;
+	r4.w = 50;
 	//enemigos.push_back(new Enemigo(pJuego, r2, "Gato"));
-	enemigos.push_back(new Perseguidor(pJuego, r3));
+	//enemigos.push_back(new Perseguidor(pJuego, r3));
+	enemigos.push_back(new MaquinaDePelotas(pJuego, r4));
 	//Crear vector de objetos inanimados.
 	
 }
