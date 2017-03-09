@@ -1,18 +1,22 @@
 # nombre Juego
 ## Resumen
-| Genero | Público | Modos de juego | Plataforma | calificación |
+| Genero | Público | Modos de juego | Plataforma | Calificación |
 |:-------|:--------|:---------------|:-----------|:-------------|
 | undefined | undefined    |1 Jugador| PC  | Undefined |
 ## Descripción
-Un juego de rusheo.
+"Nombre juego" es un juego en 2D que mezcla componentes de rol (crafteo de objetos) con la acción directa, que se ubica temporalmente algunos años mas tarde de nuestra era.  En él, debemos avanzar por distintas zonas con un elenco variado de personajes jugables, máquinas electrónicas de que poseen una IA muy desarrollada. En dichas zonas, debemos derrotar a los enemigos y conseguir recursos para ayudar al personaje principal, 'Nombre tostadora', en su misión por volver a la estación espacial de la que ha caído por error a la Tierra para volver junto con su compañero humano "Nombre del pavo", un astronauta residente en la estación. Sin embargo, "la tostadora" pronto se dará cuenta que no todo continúa como cuando el dejó el planeta.
 ## Portada
 portada del juego
 
 ## 5 Primeros minutos del Juego
-Tutorial (aún pendiente de determinar)
+Durante los primeros momentos del juego, se realiza una especie de tutorial en la que el jugador va aprendiendo poco a poco las mecánicas básicas del juego: movimiento, ataque, recolección de items, crafteo, etc. Al completar el tutorial, el jugador llegará a lo que será su base durante todo el juego.
 ## Jugabilidad
 ### Mecánica
-Teclado.
+La mecánica del juego puede dividirse en varios aspectos. Por un lado tenemos el movimiento. El jugador puede desplazarse a lo largo de los niveles con las teclas A, W, S, y D, por lo que existen 4 direcciones posibles pero que al combinarse dan lugar a 8. La velocidad de desplazamiento dependerá del atributo correspondiente del personaje. En cuanto al ataque, se ejecuta con las teclas de dirección. Existen varias formas de ataque que dependen del personaje jugable que hayamos seleccionado para jugar:
+
+- Ataque a melee: ataque a corta distancia que puede realizarse en 4 direcciones. Su rango dependerá del personaje seleccionado.
+
+- Ataque a distancia: el personaje lanza proyectiles que recorren el nivel hasta impactar con algo o llegar a su máximo rango, que dependerá de los atributos del personaje.
 ### Dinámica
 El juego tiene 2 rasgos respecto a la dinámica, Survival y Arcade, una necesita de la otra, es necesario realizar la parte Arcade para poder avanzar en la Survival y esta amplia la parte Arcade.
 #### Survival
@@ -128,7 +132,9 @@ Para el desarrollo de la historia, se craftean y se consiguen matando a jefes.
 | <img src="dirección" width="50" height="50">     | Nombre           | localizaciones | descripción | HP | At | Ve | FA |
 
 ## Referencias
-- La tostadora valiente
+- The binding of Isaac.
+
+- Enter the gungeon.
 
 ## Agradecimientos
 - Special Superextra thanks to Hideo Kojima
