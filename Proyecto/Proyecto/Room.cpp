@@ -4,6 +4,8 @@
 #include "checkML.h"
 #include "constructoraRooms.h"
 #include "Perseguidor.h"
+#include "EnemigoBomba.h"
+
 //Tile constants
 const int TIL_WIDTH = 50;
 const int TIL_HEIGHT = 50;
@@ -68,6 +70,7 @@ Room::Room(Juego * pJ, int x, int y, Direcciones LocPort) :pJuego(pJ)
 	r3.w = 50;
 	//enemigos.push_back(new Enemigo(pJuego, r2, "Gato"));
 	enemigos.push_back(new Perseguidor(pJuego, r3));
+	///enemigos.push_back(new EnemigoBomba(pJuego, r3));
 	//Crear vector de objetos inanimados.
 	
 }

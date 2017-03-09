@@ -23,6 +23,7 @@
     <ClCompile Include="Camara.cpp" />
     <ClCompile Include="contactListener.cpp" />
     <ClCompile Include="Enemigo.cpp" />
+    <ClCompile Include="EnemigoBomba.cpp" />
     <ClCompile Include="Entidad.cpp" />
     <ClCompile Include="EstadoPG.cpp" />
     <ClCompile Include="GameOver.cpp" />
@@ -52,6 +53,7 @@
     <ClInclude Include="Consumible.h" />
     <ClInclude Include="contactListener.h" />
     <ClInclude Include="Enemigo.h" />
+    <ClInclude Include="EnemigoBomba.h" />
     <ClInclude Include="Entidad.h" />
     <ClInclude Include="EstadoJuego.h" />
     <ClInclude Include="EstadoPG.h" />
