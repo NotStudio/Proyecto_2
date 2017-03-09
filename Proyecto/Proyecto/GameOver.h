@@ -1,4 +1,5 @@
-#pragma once
+#ifndef GAMEOVER_H_
+#define GAMEOVER_H_
 #include "EstadoPG.h"
 
 
@@ -18,3 +19,4 @@ private:
 };
 
  
+#endif

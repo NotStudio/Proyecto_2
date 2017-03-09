@@ -1,4 +1,6 @@
-#pragma once
+#ifndef OBJETO_HISTORICO_H_
+#define OBJETO_HISTORICO_H_
+
 #include "Item.h"
 class ObjetoHistorico :
 	public Item
@@ -28,3 +30,4 @@ private:
 	string tipo;
 };
 
+#endif

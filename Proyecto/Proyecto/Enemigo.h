@@ -1,4 +1,6 @@
-#pragma once
+#ifndef ENEMIGO_H_
+#define ENEMIGO_H_
+
 #include "NPC.h"
 class Enemigo : public NPC
 {
@@ -9,4 +11,4 @@ public:
 	void virtual onColisionEnter(Objeto* contactObject);
 	void virtual update();
 };
-
+#endif

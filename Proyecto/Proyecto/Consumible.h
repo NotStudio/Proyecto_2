@@ -1,4 +1,5 @@
-#pragma once
+#ifndef CONSUMIBLE_H_
+#define CONSUMIBLE_H_
 #include "Item.h"
 #include "Jugable.h"
 class Consumible :
@@ -39,4 +40,6 @@ class Transistor : public Consumible
 {
 public:
 	Transistor(Juego* punteroJuego, SDL_Rect spritePar, string objectId) :Consumible(punteroJuego, spritePar, objectId) {}
-};	
+};
+
+#endif

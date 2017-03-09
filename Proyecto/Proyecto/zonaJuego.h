@@ -1,4 +1,6 @@
-#pragma once
+#ifndef ZONA_JUEGO_H_
+#define ZONA_JUEGO_H_
+
 class ZonaJuego
 {
 public:
@@ -18,3 +20,4 @@ public:
 	virtual SDL_Rect getNivelActual() = 0;
 };
 
+#endif

@@ -1,4 +1,5 @@
-#pragma once
+#ifndef ESTADO_JUEGO_H_
+#define ESTADO_JUEGO_H_
 
 
 class EstadoJuego
@@ -17,3 +18,4 @@ public:
 	virtual void update() = 0;
 };
 
+#endif

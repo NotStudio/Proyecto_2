@@ -1,4 +1,6 @@
-#pragma once
+#ifndef ESTADO_H_
+#define ESTADO_H_
+
 #include "EstadoJuego.h"
 #include "Juego.h"
 #include "Objeto.h"
@@ -21,3 +23,4 @@ protected:
 
 };
 
+#endif

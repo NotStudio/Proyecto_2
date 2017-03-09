@@ -1,4 +1,6 @@
-#pragma once
+#ifndef ZONA_ACCION_H_
+#define ZONA_ACCION_H_
+
 #include "Juego.h"
 #include "zonaJuego.h"
 #include "Objeto.h"
@@ -34,3 +36,4 @@ public:
 	SDL_Rect getNivelActual();
 };
 
+#endif

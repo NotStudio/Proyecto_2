@@ -1,4 +1,6 @@
-#pragma once
+#ifndef JUGABLE_H_
+#define JUGABLE_H_
+
 #include "Personaje.h"
 class Jugable :
 	public Personaje
@@ -22,4 +24,4 @@ protected:
 	//void inventario();
 
 };
-
+#endif

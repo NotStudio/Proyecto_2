@@ -1,4 +1,5 @@
-#pragma once
+#ifndef TOSTADORA_H_
+#define TOSTADORA_H_
 #include "Jugable.h"
 class Tostadora :
 	public Jugable
@@ -10,3 +11,4 @@ public:
 	virtual void onColisionEnter(Objeto* contactObject);
 };
 
+#endif

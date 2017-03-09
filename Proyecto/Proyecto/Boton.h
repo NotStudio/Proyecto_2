@@ -1,4 +1,6 @@
-#pragma once
+#ifndef BOTON_H_
+#define BOTON_H_
+
 #include "Objeto.h"
 #include "Juego.h"
 
@@ -31,3 +33,4 @@ protected:
 	string id;
 };
 
+#endif

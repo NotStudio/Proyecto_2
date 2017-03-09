@@ -1,4 +1,5 @@
-#pragma once
+#ifndef TILE_INFO_H_
+#define TILE_INFO_H_
 
 const int TILE_WIDTH = 50, TILE_HEIGHT = 50;
 enum TiposTile
@@ -10,3 +11,4 @@ enum TiposTile
 struct Direcciones{
 	bool Norte, Sur, Este, Oeste;
 };
+#endif

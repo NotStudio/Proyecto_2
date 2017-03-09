@@ -1,3 +1,7 @@
+#ifndef CONSTRUCTORA_ROOMS_H_
+#define CONSTRUCTORA_ROOMS_H_
+
+
 #include "Room.h"
 #include "TileInfo.h"
 
@@ -89,3 +93,4 @@ vector<Tile*> RoomCustom(b2World * world,int Ancho,int Alto ,int& WID, int& HEI,
 	return Tiles;
 }
 
+#endif

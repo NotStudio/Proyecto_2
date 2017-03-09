@@ -1,4 +1,6 @@
-#pragma once
+#ifndef NPC_H_
+#define NPC_H_
+
 #include "Personaje.h"
 class NPC :
 	public Personaje
@@ -9,3 +11,4 @@ public:
 
 };
 
+#endif

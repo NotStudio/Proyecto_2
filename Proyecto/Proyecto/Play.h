@@ -1,4 +1,6 @@
-#pragma once
+#ifndef PLAY_H_
+#define PLAY_H_
+
 #include "EstadoPG.h"
 #include "zonaJuego.h"
 class Play :
@@ -27,3 +29,4 @@ private:
 
 };
 
+#endif

@@ -1,4 +1,5 @@
-#pragma once
+#ifndef PAUSA_H_
+#define PAUSA_H_
 #include "EstadoPG.h"
 
 
@@ -13,3 +14,4 @@ private:
 	static void resume(Juego * jg);
 	static void base(Juego * jg);
 };
+#endif

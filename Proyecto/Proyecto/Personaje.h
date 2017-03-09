@@ -1,4 +1,6 @@
-#pragma once
+#ifndef PERSONAJE_H_
+#define PERSONAJE_H_
+
 #include "Entidad.h"
 class Personaje :
 	public Entidad
@@ -24,3 +26,4 @@ protected:
 
 };
 
+#endif
