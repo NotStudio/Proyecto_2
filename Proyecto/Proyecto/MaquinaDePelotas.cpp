@@ -8,7 +8,7 @@
 #include "Bala.h"
 
 
-MaquinaDePelotas::MaquinaDePelotas(Juego* punteroJuego, SDL_Rect a) : Enemigo(punteroJuego, a, "Gato")
+MaquinaDePelotas::MaquinaDePelotas(Juego* punteroJuego, SDL_Rect a) : Enemigo(punteroJuego, a, "Tostadora")
 {
 }
 
@@ -16,14 +16,16 @@ MaquinaDePelotas::MaquinaDePelotas(Juego* punteroJuego, SDL_Rect a) : Enemigo(pu
 MaquinaDePelotas::~MaquinaDePelotas()
 {
 }
-void MaquinaDePelotas::move(){
-	//Hay que quitarlo de la clase padre pero le jdoeria la implementacion a manuel nahera aleson
+void MaquinaDePelotas::update(){
+	Entidad::update();
+	move();
 }
 void MaquinaDePelotas::onColisionEnter(Objeto* contactObject) {
 
 	//cout << "Se ha usted chocado con la maquina de pelotas decidan que pasa diseñadores";
 }
-void MaquinaDePelotas::update(){
+void MaquinaDePelotas::move(){
+	
 	float x = static_cast<Entidad*>(pJuego->getPlayer())->getX();
 	float y = static_cast<Entidad*>(pJuego->getPlayer())->getY();
 	b2Vec2 velFloat;
@@ -45,13 +47,15 @@ void MaquinaDePelotas::update(){
 	posicion.w = 10;
 	posicion.h = 10;
 
-	posicion.x += velFloat.x * 50;
-	posicion.y += velFloat.y * 50;
+	posicion.x += velFloat.x * 35;
+	posicion.y += velFloat.y * 35;
 	Uint32 lastUpdate = SDL_GetTicks();
+//	cout << contador;
 	if (lastUpdate - contador > cadencia){
-	
-		contador = SDL_GetTicks();
-		dynamic_cast<EstadoPG*>(pJuego->topState())->extras.push_back(new Bala(pJuego, posicion, "Bala", 50.0f, velFloat.x, velFloat.y));
+		 //contador++;
+	contador = SDL_GetTicks();
+	//cout << " Velx " << velFloat.x << " Vely  " << velFloat.y;
+	dynamic_cast<EstadoPG*>(pJuego->topState())->extras.push_back(new Bala(pJuego, posicion, "Bala", 50.0f, velFloat.x, velFloat.y));
 	}
 }
 #endif

@@ -3,7 +3,7 @@
 class MaquinaDePelotas :
 	public Enemigo
 {
-	int cadencia = 150;
+	int cadencia = 1000;
 	Uint32 contador = 0;
 public:
 	MaquinaDePelotas(Juego* punteroJuego, SDL_Rect entrada);
