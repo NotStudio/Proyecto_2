@@ -74,6 +74,7 @@
     <ClInclude Include="Play.h" />
     <ClInclude Include="Room.h" />
     <ClInclude Include="TexturasSDL.h" />
+    <ClInclude Include="Tile.h" />
     <ClInclude Include="TileInfo.h" />
     <ClInclude Include="Tostadora.h" />
     <ClInclude Include="ZonaAccion.h" />
@@ -101,7 +102,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v120</PlatformToolset>
+    <PlatformToolset>v140</PlatformToolset>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">

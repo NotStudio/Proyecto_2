@@ -7,6 +7,7 @@ Tostadora::Tostadora(Juego* punteroJuego, SDL_Rect spritePar):Jugable(punteroJue
 	//Física
 	bodyDef.type = b2_dynamicBody;
 	bodyDef.position.Set(pos.x, pos.y);
+	bodyDef.fixedRotation = true;
 	body = pJuego->getWorld()->CreateBody(&bodyDef);
 	body->SetUserData(this);
 	b2Vec2 Puntos[4];
@@ -53,14 +54,14 @@ void Tostadora::disparo(){
 			
 			EstadoJuego*estado;
 		
-			dynamic_cast<EstadoPG*>(pJuego->topState())->extras.push_back(new Bala(pJuego, posicion, "Bala", 50.0f, 0,1));
+			dynamic_cast<EstadoPG*>(pJuego->topState())->extras.push_back(new Bala(pJuego, posicion, "Bala", 50.0f, 0,1,  Juego::AT_JUGADOR));
 		}
 	}
 	else if (pJuego->inputQuery(SDL_SCANCODE_RIGHT)){
 		if (lastUpdate - contador > cadencia){
 			contador = SDL_GetTicks();
 			posicion.x += 75;
-			dynamic_cast<EstadoPG*>(pJuego->topState())->extras.push_back(new Bala(pJuego, posicion, "Bala", 50.0f, 1,0));
+			dynamic_cast<EstadoPG*>(pJuego->topState())->extras.push_back(new Bala(pJuego, posicion, "Bala", 50.0f, 1,0, Juego::AT_JUGADOR));
 			//pJuego->extras.push_back(new Bala(pJuego, posicion, "Bala", 50.0f, 2));
 		}
 	}
@@ -68,7 +69,7 @@ void Tostadora::disparo(){
 		if (lastUpdate - contador > cadencia){
 			contador = SDL_GetTicks();
 			posicion.x -= 75;
-			dynamic_cast<EstadoPG*>(pJuego->topState())->extras.push_back(new Bala(pJuego, posicion, "Bala", 50.0f, -1,0));
+			dynamic_cast<EstadoPG*>(pJuego->topState())->extras.push_back(new Bala(pJuego, posicion, "Bala", 50.0f, -1,0,Juego::AT_JUGADOR));
 			//pJuego->extras.push_back(new Bala(pJuego, posicion, "Bala", 50.0f, 4));
 		}
 	}
@@ -77,7 +78,7 @@ void Tostadora::disparo(){
 			contador = SDL_GetTicks();
 			posicion.y -= 75;
 			
-			dynamic_cast<EstadoPG*>(pJuego->topState())->extras.push_back(new Bala(pJuego, posicion, "Bala", 50.0f, 0,-1));
+			dynamic_cast<EstadoPG*>(pJuego->topState())->extras.push_back(new Bala(pJuego, posicion, "Bala", 50.0f, 0,-1, Juego::AT_JUGADOR));
 			//pJuego->extras.push_back(new Bala(pJuego, posicion, "Bala", 50.0f, 1));
 		}
 	}

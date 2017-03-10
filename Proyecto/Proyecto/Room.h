@@ -1,39 +1,8 @@
 #ifndef ROOM_H_
 #define ROOM_H_
 #include "Juego.h"
+#include "Tile.h"
 #include "TileInfo.h"
-class Tile
-{
-public:
-	//Constructor de Tile
-	Tile(int x, int y, int tileType,b2World*world);
-	~Tile();
-	//devuelve si se puede pintar o no
-	bool render(SDL_Rect*,SDL_Rect&,int&);
-
-	//devuelve el tipo del tile
-	int getType();
-
-	//devuelve el rectangulo del tile
-	SDL_Rect getBox();
-	//para saber si algo esta dentro del tile
-	bool Dentro(SDL_Rect * box)const;
-	//para poder borrar el body de un tile si lo tiene
-	b2Body * getBody();
-	void setPos(float32 x, float32 y);
-private:
-
-	void onColisionEnter();
-	b2Body * mBody;
-	//The attributes of the tile
-	SDL_Rect * mBox;
-	b2FixtureDef * mShapeDef;
-	b2PolygonShape * mShape;
-
-	//The tile type
-	int mType;
-	b2BodyDef * mBodyDef;
-};
 class Room
 {
 private:

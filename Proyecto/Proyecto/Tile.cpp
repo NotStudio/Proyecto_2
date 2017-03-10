@@ -1,5 +1,6 @@
-#include "Room.h"
+#include "Tile.h"
 #include "TileInfo.h"
+#include "Juego.h"
 void Tile::onColisionEnter() { cout << "kek"; }
 Tile::Tile(int x, int y, int tileType, b2World * wardo)
 {
@@ -14,11 +15,17 @@ Tile::Tile(int x, int y, int tileType, b2World * wardo)
 		mBody = wardo->CreateBody(mBodyDef);
 		mShapeDef = new b2FixtureDef;
 		mShape = new b2PolygonShape();
-		mShape->SetAsBox((float32)TILE_WIDTH / 2, (float32)TILE_HEIGHT / 2);
+		b2Vec2 Puntos[4];
+		Puntos[0] = b2Vec2(0, 0);
+		Puntos[1] = b2Vec2(0, TILE_HEIGHT);
+		Puntos[2] = b2Vec2(TILE_WIDTH, TILE_WIDTH);
+		Puntos[3] = b2Vec2(TILE_WIDTH, TILE_HEIGHT);
+		mShape->Set(Puntos, 4);
 		mShapeDef->shape = mShape;
 		mShapeDef->filter.categoryBits = Juego::ESCENARIO;
 		mShapeDef->filter.maskBits = -1;
 		mBody->CreateFixture(mShapeDef);
+		mBody->SetUserData(this);
 	}
 	else {
 
