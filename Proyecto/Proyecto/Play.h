@@ -14,12 +14,15 @@ public:
 
 	virtual void update();
 
+	std::vector<Objeto*> extras;
+
+
 private:
 
 	Objeto* personaje;
 
 	std::vector<Objeto*> enemigos;
-
+	
 	ZonaJuego* zona;
 
 	

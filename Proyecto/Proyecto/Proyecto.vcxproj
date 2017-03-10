@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Bala.cpp" />
     <ClCompile Include="Boton.cpp" />
     <ClCompile Include="Camara.cpp" />
     <ClCompile Include="contactListener.cpp" />
@@ -32,6 +33,7 @@
     <ClCompile Include="Juego.cpp" />
     <ClCompile Include="Jugable.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="MaquinaDePelotas.cpp" />
     <ClCompile Include="MenuPG.cpp" />
     <ClCompile Include="NPC.cpp" />
     <ClCompile Include="ObjetoClave.cpp" />
@@ -47,6 +49,7 @@
     <ClCompile Include="ZonaAccion.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Bala.h" />
     <ClInclude Include="Boton.h" />
     <ClInclude Include="Camara.h" />
     <ClInclude Include="checkML.h" />
@@ -64,6 +67,7 @@
     <ClInclude Include="Item.h" />
     <ClInclude Include="Juego.h" />
     <ClInclude Include="Jugable.h" />
+    <ClInclude Include="MaquinaDePelotas.h" />
     <ClInclude Include="MenuPG.h" />
     <ClInclude Include="NPC.h" />
     <ClInclude Include="Objeto.h" />

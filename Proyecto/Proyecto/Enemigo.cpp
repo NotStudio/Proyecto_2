@@ -9,8 +9,13 @@ Enemigo::Enemigo(Juego* punteroJuego, SDL_Rect spritePar, string objectId) : NPC
 	bodyDef.position.Set(pos.x, pos.y);
 	body = pJuego->getWorld()->CreateBody(&bodyDef);
 	body->SetUserData(this);
+	b2Vec2 Puntos[4];
+	Puntos[0] = b2Vec2(0, 32);
+	Puntos[1] = b2Vec2(0, 64);
+	Puntos[2] = b2Vec2(64, 64);
+	Puntos[3] = b2Vec2(64, 32);
 	shape = new b2PolygonShape;
-	static_cast<b2PolygonShape*>(shape)->SetAsBox(sprite->w / 2, sprite->h / 2);
+	static_cast<b2PolygonShape*>(shape)->Set(Puntos, 4);
 	fDef.shape = shape; fDef.density = 5000.0f; fDef.friction = 0.5f;
 	fDef.filter.categoryBits = Juego::ENEMIGO;
 	fDef.filter.maskBits = Juego::JUGADOR | Juego::ESCENARIO | Juego::ENEMIGO;

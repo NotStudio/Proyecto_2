@@ -25,10 +25,14 @@ protected:
 	string id;
 	//Gestor de animaciones.
 	 //virtual void updateAnim();
+	bool Destruido = true;
 	
 public:
 
+
 	Entidad(Juego* punteroJuego, SDL_Rect spritePar , string objectId);
+
+	virtual bool getDestruido() { return Destruido; };
 
 	virtual ~Entidad();
 

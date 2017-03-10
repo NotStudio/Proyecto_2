@@ -147,6 +147,12 @@
     <ClCompile Include="EnemigoBomba.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Bala.cpp">
+      <Filter>Source Files\Objetos</Filter>
+    </ClCompile>
+    <ClCompile Include="MaquinaDePelotas.cpp">
+      <Filter>Source Files\Personajes\Enemigos</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Juego.h">
@@ -244,6 +250,12 @@
     </ClInclude>
     <ClInclude Include="EnemigoBomba.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Bala.h">
+      <Filter>Header Files\Objetos</Filter>
+    </ClInclude>
+    <ClInclude Include="MaquinaDePelotas.h">
+      <Filter>Header Files\Personajes\Enemigos</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
