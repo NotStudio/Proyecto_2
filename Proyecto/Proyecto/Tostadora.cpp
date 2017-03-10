@@ -7,7 +7,7 @@ Tostadora::Tostadora(Juego* punteroJuego, SDL_Rect spritePar):Jugable(punteroJue
 	//Física
 	bodyDef.type = b2_dynamicBody;
 	bodyDef.position.Set(pos.x, pos.y);
-	bodyDef.fixedRotation = true;
+	bodyDef.fixedRotation=true;
 	body = pJuego->getWorld()->CreateBody(&bodyDef);
 	body->SetUserData(this);
 	b2Vec2 Puntos[4];
