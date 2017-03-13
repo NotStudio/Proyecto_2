@@ -44,6 +44,7 @@ void Entidad::update(){
 
 }
 
+//Retorna el cuerpo de la entidad
 b2Body* Entidad::getBody() {
 	return body;
 }

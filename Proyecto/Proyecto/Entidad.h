@@ -26,14 +26,14 @@ protected:
 	//Gestor de animaciones.
 	 //virtual void updateAnim();
 	//para ver si ha sido destruido
-	bool Destruido = false;
+	bool destruido = false;
 	
 public:
 
 
 	Entidad(Juego* punteroJuego, SDL_Rect spritePar , string objectId);
 
-	virtual bool getDestruido() { return Destruido; };
+	virtual bool getdestruido() { return destruido; };
 
 	virtual ~Entidad();
 

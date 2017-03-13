@@ -3,16 +3,6 @@
 
 Enemigo::Enemigo(Juego* punteroJuego, SDL_Rect spritePar, string objectId) : NPC(punteroJuego,spritePar,objectId)
 {
-	//Fisica
-
-	bodyDef.type = b2_dynamicBody;
-	bodyDef.position.Set(pos.x, pos.y);
-	bodyDef.fixedRotation = true;
-	body = pJuego->getWorld()->CreateBody(&bodyDef);
-	body->SetUserData(this);
-	shape = new b2PolygonShape;
-	static_cast<b2PolygonShape*>(shape)->SetAsBox(sprite->w/2,sprite->h/2);
-	fDef.shape = shape; fDef.density = 5000.0f; fDef.friction = 0.5f;
 	fDef.filter.categoryBits = Juego::ENEMIGO;
 	fDef.filter.maskBits = Juego::JUGADOR | Juego::ESCENARIO | Juego::ENEMIGO;
 	body->CreateFixture(&fDef);
@@ -23,35 +13,24 @@ Enemigo::Enemigo(Juego* punteroJuego, SDL_Rect spritePar, string objectId) : NPC
 Enemigo::~Enemigo()
 {
 	delete shape;
+	shape = nullptr;
 }
 
 void Enemigo::onColisionEnter(Objeto* contactObject) {
 
-
+	//Si lo que ha colisionado con nosotros es una bala, comprobamos si es del jugador o de un enemigo
 	if (dynamic_cast<Bala*>(contactObject)){
 		if (static_cast<Bala*>(contactObject)->getLanzador() == 0){
-			Destruido = true;
+			destruido = true;
 		}
 		//cambiar textura.
 
 	}
 
 }
-void Enemigo::move(){
-	float x = static_cast<Entidad*>(pJuego->getPlayer())->getX();
-	float y = static_cast<Entidad*>(pJuego->getPlayer())->getY();
-	b2Vec2 velFloat;
-	velFloat.x = 0.0f;
-	velFloat.y = 0.0f;
-	if (x> pos.x)velFloat.x = 1.0f;
-	if (x< pos.x)velFloat.x =  -1.0f;
-	if (y> pos.y)velFloat.y = 1.0f;
-	if (y< pos.y)velFloat.y = -1.0f;
-	body->SetLinearVelocity(velFloat);
-}
 void  Enemigo::update(){
 
-	if (!Destruido)
+	if (!destruido)
 		Entidad::update();
 	
 }
@@ -61,7 +40,7 @@ void Enemigo::stop() {
 }
 
 void Enemigo::draw(){
-	if (!Destruido){
+	if (!destruido){
 		Entidad::draw();
 	}
 	else{
