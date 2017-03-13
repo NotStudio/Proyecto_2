@@ -89,6 +89,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Material\tutorial1.map" />
+    <None Include="..\Material\tutorial2.map" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{9AEFB5D6-5EFA-4A01-9D4F-1F8F42527E24}</ProjectGuid>

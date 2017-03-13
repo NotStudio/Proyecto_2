@@ -38,7 +38,6 @@ Tile::~Tile()
 		delete mShape;
 		delete mShapeDef;
 		delete mBodyDef;
-		mBody = nullptr;
 
 		mShapeDef = nullptr;
 		mShape = nullptr;
@@ -67,5 +66,19 @@ bool Tile::Dentro(SDL_Rect*box)const
 b2Body * Tile::getBody()
 {
 	return mBody;
+}
+
+void Tile::SetTile(int newType)
+{
+	mType = newType;
+	if (mType < S12) {
+		delete mShape;
+		delete mShapeDef;
+		delete mBodyDef;
+		mBody = nullptr;
+		mShapeDef = nullptr;
+		mShape = nullptr;
+		mBodyDef = nullptr;
+	}
 }
 

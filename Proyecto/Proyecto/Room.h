@@ -17,7 +17,8 @@ private:
 	Tilesheet * textTiles;
 	//el vector de los tiles
 	vector<Tile*>* Tiles;
-	Puerta Locport;
+	Puerta Entrada;
+	Puerta Salida;
 	int ANCHO_NIVEL, ALTO_NIVEL;
 	
 	bool setTiles(string d,b2World* Wardo);
@@ -33,6 +34,9 @@ public:
 	bool dentroRoom(SDL_Point* box) {
 		return !(area->x > box->x || area->x + area->w < box->x || area->y > box->y || area->y + area->h < box->y);
 	}
+	Puerta getSalida() {
+		return Salida;
+	}
 	//para saber las puertas donde estan
 	Room * getRoomNorte() { return Norte; }
 	Room * getRoomSur() { return Sur; }
@@ -43,7 +47,7 @@ public:
 	}
 	void update();
 	//Room();
-	Room(Juego *,int x, int y,Puerta);
+	Room(Juego *,Puerta Salida, Puerta * Entrada = nullptr,int x=0, int y=0);
 	~Room();
 	void DestroyRoom(b2World * wardo);
 	int getAnchoRoom()const { return ANCHO_NIVEL; }

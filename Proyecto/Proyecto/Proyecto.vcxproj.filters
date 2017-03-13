@@ -281,5 +281,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="..\Material\tutorial1.map" />
+    <None Include="..\Material\tutorial2.map" />
   </ItemGroup>
 </Project>

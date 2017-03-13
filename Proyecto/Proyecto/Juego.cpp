@@ -47,7 +47,7 @@ Juego::Juego(b2World* mundo) : error(false), gameOver(false), exit(false), score
 
 	//Arrancamos las texturas y los objetos.
 	initMedia();
-	personaje = new Tostadora(this, SDL_Rect{100,100,64,64});
+	personaje = new Tostadora(this, SDL_Rect{500,500,64,64});
 	Camera =new Camara(static_cast<Entidad*>(personaje)->getRect(), window.ancho, window.alto);
 	vidasHUD = new HUD(this, SDL_Rect{20,0,20 * 1.7,35 * 1.7 }, "Battery4", "idle");
 	zona = new ZonaAccion(this);
@@ -84,6 +84,8 @@ Juego::~Juego()
 	delete personaje;
 	//borrar zona
 	delete zona;
+	delete vidasHUD;
+	vidasHUD = nullptr;
 	
 }
 

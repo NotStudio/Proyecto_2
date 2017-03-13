@@ -4,14 +4,26 @@
 #include<sstream>
 #include <iostream>
 //Construye habitacion apartir de un texto.
-vector<Tile*> RoomDesdeArchivo(string direccion, b2World * world, int& WID, int& HEI) {
+vector<Tile*> RoomDesdeArchivo(string direccion, b2World * world, int& WID, int& HEI, Puerta & Salida, Puerta * entrada = nullptr) {
 	int MAP_T_WIDTH, MAP_T_HEIGHT;
+	int IniX = 0, IniY = 0;
+	if (entrada!=nullptr)
+	{
+		if (entrada->DirPuerta == Puerta::Oeste) {
+			IniX = entrada->posicion.x + TILE_WIDTH;
+			IniY = entrada->zonaPuerta.y;
+		}
+		if (entrada->DirPuerta == Puerta::Sur) {
+			IniX = entrada->zonaPuerta.x;
+			IniY = entrada->posicion.y+TILE_HEIGHT;
+		}
+	}
 	vector<Tile*> Tiles;
 	ifstream map(direccion);
 	//map >> MAP_T_WIDTH >> MAP_T_HEIGHT;
 	//int TOT_Tiles = MAP_T_WIDTH*MAP_T_HEIGHT;
 	Tiles.reserve(500);
-	int x = 0, y = 0;
+	int x = IniX, y = IniY;
 	int tipo = -1;
 	int maxX = 0, acuX = 0;
 	bool flag= true;
@@ -19,14 +31,76 @@ vector<Tile*> RoomDesdeArchivo(string direccion, b2World * world, int& WID, int&
 	getline(map, linea);
 	for (size_t i = 0; !map.fail(); i++)
 	{
-		x = 0;
+		x = IniX;
 		stringstream lee(linea);
 		acuX = 0;
 		lee >> tipo;
 		do
 		{
 			if (tipo >= 0 && tipo < TOTAL_TILES) {
-				Tiles.push_back(new Tile(x, y, tipo, world));
+				bool vis = false;
+				if (entrada!=nullptr)
+				{
+					switch (entrada->DirPuerta)
+					{
+					case Puerta::Norte:
+						vis = true;
+						break;
+					case Puerta::Sur:
+						if (entrada->posicion.y + TILE_WIDTH == y)
+						{
+							if (entrada->posicion.x == x)
+							{
+								Tiles.push_back(new Tile(x, y, S1, world));
+								vis = true;
+								cout << "lel";
+							}
+							else if (entrada->posicion.x + TILE_HEIGHT == x)
+							{
+								Tiles.push_back(new Tile(x, y, ISO, world));
+								vis = true;
+								cout << "lel";
+							}
+							else if (entrada->posicion.x - TILE_HEIGHT == x)
+							{
+								Tiles.push_back(new Tile(x, y, ISE, world));
+								vis = true;
+								cout << "lel";
+							}
+						}
+						break;
+					case Puerta::Oeste:
+						if (entrada->posicion.x+TILE_WIDTH==x)
+						{
+							if (entrada->posicion.y == y)
+							{
+								Tiles.push_back(new Tile(x, y, S1, world));
+								vis = true;
+								cout << "lel";
+							}
+							else if (entrada->posicion.y + TILE_HEIGHT == y)
+							{
+								Tiles.push_back(new Tile(x, y, INE, world));
+								vis = true;
+								cout << "lel";
+							}
+							else if (entrada->posicion.y - TILE_HEIGHT == y)
+							{
+								Tiles.push_back(new Tile(x, y, ISE, world));
+								vis = true;
+								cout << "lel";
+							}
+						}
+						break;
+					case Puerta::Este:
+						break;
+					default:
+						break;
+					}
+					
+				}
+				if(!vis)
+					Tiles.push_back(new Tile(x, y, tipo, world));
 			}
 			x += TILE_WIDTH;
 			acuX++;
@@ -37,7 +111,40 @@ vector<Tile*> RoomDesdeArchivo(string direccion, b2World * world, int& WID, int&
 		getline(map, linea);
 	}
 	WID = maxX*TILE_WIDTH;
-	HEI = y;
+	HEI = y-IniY;
+	switch (Salida.DirPuerta)
+	{
+	case Puerta::Direcciones::Norte:
+		world->DestroyBody(Tiles[maxX / 2-1]->getBody());
+		Tiles[maxX / 2-1]->SetTile(S1);
+		Tiles[maxX / 2-2]->SetTile(ISE);
+		Tiles[maxX / 2]->SetTile(ISO);
+		Salida.posicion = Tiles[maxX / 2 - 1]->getBox();
+		break;
+	case Puerta::Direcciones::Sur:
+		world->DestroyBody(Tiles[Tiles.size() - maxX / 2-1]->getBody());
+		Tiles[Tiles.size()-maxX / 2-1]->SetTile(S1);
+		Tiles[Tiles.size() - maxX / 2-2]->SetTile(INE);
+		Tiles[Tiles.size() - maxX / 2]->SetTile(INO);
+		Salida.posicion = Tiles[Tiles.size() - maxX / 2 - 1]->getBox();
+		break;
+	case Puerta::Direcciones::Este:
+		world->DestroyBody(Tiles[(maxX)*((Tiles.size() / maxX) / 2)]->getBody());
+		Tiles[(maxX)*((Tiles.size()/maxX)/2)]->SetTile(S1);
+		Tiles[(maxX)*(((Tiles.size() / maxX) / 2)+1)]->SetTile(INE);
+		Tiles[(maxX)*(((Tiles.size() / maxX) / 2) -1)]->SetTile(ISE);
+		Salida.posicion = Tiles[(maxX)*((Tiles.size() / maxX) / 2)]->getBox();
+		break;
+	case Puerta::Direcciones::Oeste:
+		world->DestroyBody(Tiles[(maxX)*(((Tiles.size() / maxX) / 2) + 1) - 1]->getBody());
+		Tiles[(maxX)*(((Tiles.size() / maxX) / 2) + 1)-1]->SetTile(S1);
+		Tiles[(maxX)*(((Tiles.size() / maxX) / 2)+2)-1]->SetTile(INO);
+		Tiles[(maxX)*(((Tiles.size() / maxX) / 2))-1]->SetTile(ISO);
+		Salida.posicion = Tiles[(maxX)*(((Tiles.size() / maxX) / 2) + 1) - 1]->getBox();
+		break;
+	default:
+		break;
+	}
 	return Tiles;
 }
 /*

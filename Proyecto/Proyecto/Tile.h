@@ -22,6 +22,7 @@ public:
 	bool Dentro(SDL_Rect * box)const;
 	//para poder borrar el body de un tile si lo tiene
 	b2Body * getBody();
+	void SetTile(int newType);
 	void update();
 	void setPos(float32 x, float32 y);
 	void* k;

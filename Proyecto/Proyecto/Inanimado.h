@@ -25,7 +25,9 @@ public:
 		fDef.shape = shape; fDef.density = 5.0f; fDef.friction = 0;
 		body->CreateFixture(&fDef);
 	}
-	virtual ~Inanimado() {};
+	virtual ~Inanimado() {
+		delete shape; shape = nullptr;
+	};
 	virtual void onColisionEnter(Objeto * o = nullptr) {};
 };
 class Agujero:

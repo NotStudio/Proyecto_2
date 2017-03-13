@@ -1,5 +1,5 @@
-#ifndef TILE_INFO_H_
-#define TILE_INFO_H_
+#ifndef TILEINFO_H_
+#define TILEINFO_H_
 
 const int TILE_WIDTH = 128, TILE_HEIGHT = 128;
 const int TOTAL_TILES = 24;
@@ -15,7 +15,9 @@ enum TiposTile
 struct Puerta{
 	enum Direcciones
 	{
-		Norte, Este, Sur, Oeste
+		Norte, Este, Sur, Oeste, Sinsitio
 	}DirPuerta;
 	SDL_Rect posicion;
+	SDL_Rect zonaPuerta;
 };
+#endif
