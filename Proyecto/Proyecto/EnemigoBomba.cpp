@@ -20,13 +20,12 @@ EnemigoBomba::~EnemigoBomba()
 
 
 void EnemigoBomba::onColisionEnter(Objeto* contactObject) {
-
 	muerte();
 }
 
 
 void EnemigoBomba::move(){
-	if (Enemigo::distancia()){
+	if (distancia()){
 		jugx = static_cast<Entidad*>(pJuego->getPlayer())->getX();
 		jugy = static_cast<Entidad*>(pJuego->getPlayer())->getY();
 
@@ -45,6 +44,9 @@ void EnemigoBomba::move(){
 
 		body->SetLinearVelocity(velFloat);
 	}
+	else {
+		stop();
+	}
 
 }
 
@@ -58,6 +60,7 @@ void EnemigoBomba::crecer(){
 		sprite->h++;
 		sprite->w++;
 		body->DestroyFixture(body->GetFixtureList());
+		delete shape;
 		shape = new b2PolygonShape;
 		static_cast<b2PolygonShape*>(shape)->SetAsBox(sprite->w / 2, sprite->h / 2, { (float)sprite->w / 2, (float)sprite->h / 2 }, 0);
 		fDef.shape = shape; fDef.density = 5.0f; fDef.friction = 0;
@@ -68,6 +71,7 @@ void EnemigoBomba::crecer(){
 		sprite->h++;
 		sprite->w++;
 		body->DestroyFixture(body->GetFixtureList());
+		delete shape;
 		shape = new b2PolygonShape;
 		static_cast<b2PolygonShape*>(shape)->SetAsBox(sprite->w / 2, sprite->h / 2, { (float)sprite->w / 2, (float)sprite->h / 2 }, 0);
 		fDef.shape = shape; fDef.density = 5.0f; fDef.friction = 0;
@@ -78,6 +82,7 @@ void EnemigoBomba::crecer(){
 		sprite->h++;
 		sprite->w++;
 		body->DestroyFixture(body->GetFixtureList());
+		delete shape;
 		shape = new b2PolygonShape;
 		static_cast<b2PolygonShape*>(shape)->SetAsBox(sprite->w / 2, sprite->h / 2, { (float)sprite->w / 2, (float)sprite->h / 2 }, 0);
 		fDef.shape = shape; fDef.density = 5.0f; fDef.friction = 0;
