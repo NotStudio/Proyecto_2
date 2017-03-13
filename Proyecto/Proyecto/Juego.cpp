@@ -213,7 +213,8 @@ void Juego::closeSDL() {
 
 	SDL_Quit();
 };
-//Método que controla los eventos.
+
+//Método que maneja el array de botones, y los activa y desactiva segun el input.
 bool Juego::handle_event() {
 
 	SDL_Event event;
@@ -238,27 +239,19 @@ bool Juego::handle_event() {
 };
 
 //Método de consulta de la variable de control 'error'.
-bool Juego::getError() {
-
-	return error;
-
-};
-
-void Juego::salir() {
-
-		exit = true;
-	
-}
+bool Juego::getError() {	return error;};
+//Método que cierra el juego activando el booleano 'exit'
+void Juego::salir() {	exit = true;}
 
 
-
+//Update del juego, que llama al update de la camara y del estado
 void Juego::update(){
 
 	topState()->update();
 	Camera->update();
 	Camera->setLimite(zona->getNivelActual());
 }
-
+//Draw del juego, llama al dibujar del estado y del HUD
 void Juego::draw(){
 	
 	SDL_RenderClear(pRenderer);
@@ -268,7 +261,7 @@ void Juego::draw(){
 
 }
 
-
+//Bucle principal del juego
 void Juego::run() {
 	
 	int contSeg= 0;
@@ -303,6 +296,7 @@ void Juego::run() {
 	}
 }
 
+//MÉTODOS DE CONTROL DE MÁQUINA DE ESTADOS.
 EstadoJuego* Juego::topState(){
 	return estados.top();
 }
@@ -324,15 +318,17 @@ void Juego::popState(){
 }
 
 
-
+//Método de consulta de botón pulsado. Devuelve true si el botón que pasamos por parametro está pulsado.
 bool Juego::inputQuery(int numButton) {
 	return KEYS[numButton];
 }
 
+//Retornamos el mundo físico
 b2World* Juego::getWorld() {
 	return world;
 }
 
+//Metodo que controla el cambio de zona (zonaJugable-Base)
 void Juego::setZona(ZonaJuego* nwZona) {
 	//borrar la zona anterior.
 	zona = nwZona;

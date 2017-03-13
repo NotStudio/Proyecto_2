@@ -29,7 +29,6 @@
     <ClCompile Include="EstadoPG.cpp" />
     <ClCompile Include="GameOver.cpp" />
     <ClCompile Include="HUD.cpp" />
-    <ClCompile Include="Inanimado.cpp" />
     <ClCompile Include="Item.cpp" />
     <ClCompile Include="Juego.cpp" />
     <ClCompile Include="Jugable.cpp" />

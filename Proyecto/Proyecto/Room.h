@@ -3,6 +3,7 @@
 #include "Juego.h"
 #include "Tile.h"
 #include "TileInfo.h"
+#include "Bala.h"
 class Room
 {
 private:
@@ -28,9 +29,15 @@ private:
 	//Vector de objetos inanimados.
 	vector<Objeto*> objetos;
 	//Dificultad.(int, struct)
+	vector<Objeto*> extras;//Balas
 
 
 public:
+	
+	void nuevaBala(Bala*bala){
+		extras.push_back(bala);
+	}
+	
 	bool dentroRoom(SDL_Point* box) {
 		return !(area->x > box->x || area->x + area->w < box->x || area->y > box->y || area->y + area->h < box->y);
 	}

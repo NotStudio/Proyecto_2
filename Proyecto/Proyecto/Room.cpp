@@ -30,19 +30,30 @@ const int IP= 10;
 const int NA= 11;
 */
 
-
+//Update que realiza la habitacion. Ha de actualizarse todo lo que haya en ella (enemigos, objetos, balas, etc)
 void Room::update()
 {
 	for (int i = 0; i < enemigos.size(); i++) {
 		enemigos[i]->update();
 	}
-
-
-	
-
-
+	for (int i = 0; i < extras.size(); i++) {
+		if (extras[i] != nullptr)
+		if (!extras[i]->getdestruido())
+			extras[i]->update();
+		else {
+			delete extras[i];
+			extras[i] = nullptr;
+		}
+	}
+	for (int i = 0; i < extras.size(); i++) {
+		if (extras[i] == nullptr)	{
+			extras.erase(extras.begin() + i);
+			i--;
+		}
+	}
 }
 
+//Constructora de la habitación. Aquí es donde se lee el nivel, se crea y se añaden los enemigos y objetos.
 Room::Room(Juego * pJ,Puerta sal, Puerta * entrada,int x, int y) :pJuego(pJ)
 {
 	string a = "tilesheet";
@@ -57,10 +68,7 @@ Room::Room(Juego * pJ,Puerta sal, Puerta * entrada,int x, int y) :pJuego(pJ)
 	int xp = 0, yp = 0;
 	//Crear el vector de enemigos, leer de archivos.
 	SDL_Rect r2, r3,r4;
-	r2.x = x + 750;
-	r2.y = y + 500;
-	r2.h = 50;
-	r2.w = 50;
+	r2.x = x + 750; r2.y = y + 500;	r2.h = 50; r2.w = 50;
 	r3.x = Tiles->at(getTileOcupable())->getBox().x;
 	r3.y = Tiles->at(getTileOcupable())->getBox().y;
 	r3.h = 50;
@@ -71,11 +79,24 @@ Room::Room(Juego * pJ,Puerta sal, Puerta * entrada,int x, int y) :pJuego(pJ)
 	r4.w = 50;
 	//enemigos.push_back(new Enemigo(pJuego, r2, "Gato"));
 	enemigos.push_back(new Perseguidor(pJuego, r3));
-	objetos.push_back(new Agujero(pJuego, SDL_Point{300+area->x,300+ area->y},100));
+	//objetos.push_back(new Agujero(pJuego, SDL_Point{300+area->x,300+ area->y},100));
 	//enemigos.push_back(new MaquinaDePelotas(pJuego, r4));
 	//Crear vector de objetos inanimados.
 	
 }
+
+//Metodo que se llama cuando se sale de la habitación. Se llama al stop de todos lo enemigos, que tienen que dejar de hacer ataques. **ESTO ES PROVISIONAL**
+void Room::stop() {
+
+	for (int i = 0; i < enemigos.size(); i++) {
+		static_cast<Enemigo*>(enemigos[i])->stop();
+	}
+}
+
+//COSAS DE FRAN
+// --------------------------------------------------------------------------------------------------------------
+
+
 bool Room::setTiles(string Dirm,b2World * wardo) {
 	
 	int x = 0;
@@ -142,6 +163,9 @@ void Room::render(){
 	for (int i = 0; i < enemigos.size(); i++) {
 		enemigos[i]->draw();
 	}
+	for (int i = 0; i < extras.size(); i++) {
+		extras[i]->draw();
+	}
 }
 
 int Room::encontrarPosicionTiled(int& const x, int& const y)
@@ -173,11 +197,4 @@ void Room::SetRoomFichero(string Dir)
 //	RoomDesdeArchivo(Dir, pJuego->getWorld(), ANCHO_NIVEL, ALTO_NIVEL);
 }
 
-void Room::stop() {
 
-	for (int i = 0; i < enemigos.size(); i++) {
-		static_cast<Enemigo*>(enemigos[i])->stop();
-	}
-
-
-}

@@ -15,13 +15,8 @@ public:
 		bodyDef.position.Set(pos.x, pos.y);
 		body = pJuego->getWorld()->CreateBody(&bodyDef);
 		body->SetUserData(this);
-		b2Vec2 Puntos[4];
-		Puntos[0] = b2Vec2(0, 0);
-		Puntos[1] = b2Vec2(0, sprite->h);
-		Puntos[2] = b2Vec2(sprite->w,sprite->h );
-		Puntos[3] = b2Vec2(sprite->w,0 );
 		shape = new b2PolygonShape;
-		static_cast<b2PolygonShape*>(shape)->Set(Puntos, 4);
+		static_cast<b2PolygonShape*>(shape)->SetAsBox(sprite->w / 2, sprite->h / 2, { (float)sprite->w / 2, (float)sprite->h / 2 }, 0);
 		fDef.shape = shape; fDef.density = 5.0f; fDef.friction = 0;
 		body->CreateFixture(&fDef);
 	}
@@ -43,7 +38,7 @@ class Tuberia: public Inanimado
 {
 public:
 	Tuberia(Juego * Pj, SDL_Point Pos, int tam) :Inanimado(Pj, SDL_Rect{ Pos.x,Pos.y,tam,tam }, "tuberia") {};
-	~Tuberia();
+	~Tuberia() {};
 
 private:
 

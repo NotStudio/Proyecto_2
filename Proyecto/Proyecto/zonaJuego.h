@@ -18,6 +18,7 @@ public:
 	virtual void update() = 0;
 
 	virtual SDL_Rect getNivelActual() = 0;
+
 };
 
 #endif

@@ -1,7 +1,7 @@
 ﻿#include "EnemigoBomba.h"
 #include <math.h>
 
-EnemigoBomba::EnemigoBomba(Juego* punteroJuego, SDL_Rect a) : Enemigo(punteroJuego, a, "Gato")
+EnemigoBomba::EnemigoBomba(Juego* punteroJuego, SDL_Rect a) : Enemigo(punteroJuego, a, "Gato",300)
 {
 
 	enemyStats.daño = 100;
@@ -26,25 +26,25 @@ void EnemigoBomba::onColisionEnter(Objeto* contactObject) {
 
 
 void EnemigoBomba::move(){
-	
-	jugx = static_cast<Entidad*>(pJuego->getPlayer())->getX();
-	jugy = static_cast<Entidad*>(pJuego->getPlayer())->getY();
+	if (Enemigo::distancia()){
+		jugx = static_cast<Entidad*>(pJuego->getPlayer())->getX();
+		jugy = static_cast<Entidad*>(pJuego->getPlayer())->getY();
 
-	b2Vec2 velFloat;
-	velFloat.x = 0.0f;
-	velFloat.y = 0.0f;
+		b2Vec2 velFloat;
+		velFloat.x = 0.0f;
+		velFloat.y = 0.0f;
 
-	b2Vec2 posJug = b2Vec2(jugx, jugy);
+		b2Vec2 posJug = b2Vec2(jugx, jugy);
 
-	b2Vec2 vecDir = posJug - pos;
+		b2Vec2 vecDir = posJug - pos;
 
-	b2Vec2 vUnitario = b2Vec2((vecDir.x / vecDir.Length()), (vecDir.y / vecDir.Length()));
+		b2Vec2 vUnitario = b2Vec2((vecDir.x / vecDir.Length()), (vecDir.y / vecDir.Length()));
 
-	velFloat.x = vUnitario.x*enemyStats.velMov;
-	velFloat.y = vUnitario.y*enemyStats.velMov;
+		velFloat.x = vUnitario.x*enemyStats.velMov;
+		velFloat.y = vUnitario.y*enemyStats.velMov;
 
-	body->SetLinearVelocity(velFloat);
-
+		body->SetLinearVelocity(velFloat);
+	}
 
 }
 

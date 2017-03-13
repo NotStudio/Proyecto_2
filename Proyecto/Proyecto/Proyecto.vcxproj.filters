@@ -159,9 +159,6 @@
     <ClCompile Include="MaquinaDePelotas.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Inanimado.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Juego.h">

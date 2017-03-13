@@ -4,12 +4,27 @@
 
 Jugable::Jugable(Juego* punteroJuego, SDL_Rect spritePar, string objectId):Personaje(punteroJuego, spritePar, objectId)
 {
+
+
+	//Capa de colision.
+	fDef.filter.categoryBits = Juego::JUGADOR;
+	fDef.filter.maskBits = Juego::ENEMIGO | Juego::AT_ENEMIGO | Juego::ITEM | Juego::ESCENARIO;
+	body->CreateFixture(&fDef);
+	
+
+
+
+
+
+
 	dcha = izq = up = down = false;
 }
 
 
 Jugable::~Jugable()
 {
+	delete shape;
+	shape = nullptr;
 }
 
 
