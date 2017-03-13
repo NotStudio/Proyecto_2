@@ -1,37 +1,46 @@
-#ifndef CONSTRUCTORA_ROOMS_H_
-#define CONSTRUCTORA_ROOMS_H_
-
-
 #include "Room.h"
 #include "TileInfo.h"
-
+#include <string>
+#include<sstream>
+#include <iostream>
 //Construye habitacion apartir de un texto.
 vector<Tile*> RoomDesdeArchivo(string direccion, b2World * world, int& WID, int& HEI) {
 	int MAP_T_WIDTH, MAP_T_HEIGHT;
 	vector<Tile*> Tiles;
 	ifstream map(direccion);
-	map >> MAP_T_WIDTH >> MAP_T_HEIGHT;
-	int TOT_Tiles = MAP_T_WIDTH*MAP_T_HEIGHT;
-	Tiles.reserve(TOT_Tiles);
+	//map >> MAP_T_WIDTH >> MAP_T_HEIGHT;
+	//int TOT_Tiles = MAP_T_WIDTH*MAP_T_HEIGHT;
+	Tiles.reserve(500);
 	int x = 0, y = 0;
 	int tipo = -1;
-	for (size_t i = 0; i < TOT_Tiles; i++)
+	int maxX = 0, acuX = 0;
+	bool flag= true;
+	string linea;
+	getline(map, linea);
+	for (size_t i = 0; !map.fail(); i++)
 	{
-	
-		map >> tipo;
-		if (tipo >= 0 && tipo < 12) {
-			Tiles.push_back(new Tile(x, y, tipo, world));
-		}
-		x += TILE_WIDTH;
-		if (x >= TILE_WIDTH*MAP_T_WIDTH) {
-			x = 0;
-			y += TILE_HEIGHT;
-		}
+		x = 0;
+		stringstream lee(linea);
+		acuX = 0;
+		lee >> tipo;
+		do
+		{
+			if (tipo >= 0 && tipo < TOTAL_TILES) {
+				Tiles.push_back(new Tile(x, y, tipo, world));
+			}
+			x += TILE_WIDTH;
+			acuX++;
+			lee >> tipo;
+		} while (!lee.fail());
+		(acuX > maxX) ? maxX = acuX:maxX;
+		y += TILE_HEIGHT;
+		getline(map, linea);
 	}
-	WID = MAP_T_WIDTH*TILE_WIDTH;
-	HEI = MAP_T_HEIGHT*TILE_HEIGHT;
+	WID = maxX*TILE_WIDTH;
+	HEI = y;
 	return Tiles;
 }
+/*
 vector<Tile*> RoomMinima(b2World * world,int& WID, int& HEI, int xIni,int yIni){
 	int Ancho = 16;
 	int Alto = 12;
@@ -92,5 +101,4 @@ vector<Tile*> RoomCustom(b2World * world,int Ancho,int Alto ,int& WID, int& HEI,
 	cout << WID << " " << HEI;
 	return Tiles;
 }
-
-#endif
+*/

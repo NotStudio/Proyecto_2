@@ -14,11 +14,11 @@ public:
 
 	virtual void draw();
 	virtual void update();
-
+	vector<Objeto*> extras;//Objetos en el momento de creacion solo tenia balas
 protected:
 
 	Juego* ptsjuego;
-
+	
 	std::vector <Objeto*> objetos;  
 
 };

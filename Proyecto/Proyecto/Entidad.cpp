@@ -1,5 +1,5 @@
 #include "Entidad.h"
-
+#include "checkML.h"
 
 Entidad::Entidad(Juego* punteroJuego, SDL_Rect spritePar, string objectId) : pJuego(punteroJuego)
 {
@@ -23,9 +23,8 @@ Entidad::Entidad(Juego* punteroJuego, SDL_Rect spritePar, string objectId) : pJu
 Entidad::~Entidad()
 {
 	//Destruir cosas de la Física
-	pJuego->getWorld()->DestroyBody(body);
-	delete shape;
 	delete sprite;
+	pJuego->getWorld()->DestroyBody(body);
 	//pJuego = nullptr;
 }
 
@@ -39,7 +38,7 @@ void Entidad::draw() {
 void Entidad::update(){
 	//Asignar sprite a body para que se dibuje.
 	pos = body->GetPosition();
-	sprite->x = (int)pos.x; sprite->y = (int)pos.y;
+	sprite->x = (int)pos.x-sprite->w/2; sprite->y = (int)pos.y - sprite->w / 2;
 
 	
 

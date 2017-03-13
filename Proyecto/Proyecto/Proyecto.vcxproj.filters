@@ -153,6 +153,15 @@
     <ClCompile Include="MaquinaDePelotas.cpp">
       <Filter>Source Files\Personajes\Enemigos</Filter>
     </ClCompile>
+    <ClCompile Include="Bala.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MaquinaDePelotas.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Inanimado.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Juego.h">
@@ -257,5 +266,20 @@
     <ClInclude Include="MaquinaDePelotas.h">
       <Filter>Header Files\Personajes\Enemigos</Filter>
     </ClInclude>
+    <ClInclude Include="Bala.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MaquinaDePelotas.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Tile.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Inanimado.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\Material\tutorial1.map" />
   </ItemGroup>
 </Project>

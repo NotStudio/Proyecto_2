@@ -19,9 +19,7 @@ public:
 
 	virtual void onColisionEnter(Objeto* contactObject)= 0;
 
-	virtual bool getDestruido() = 0;
-
-	
+	virtual bool getDestruido() { return false; };
 
 };
 

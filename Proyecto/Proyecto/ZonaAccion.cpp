@@ -1,18 +1,25 @@
 #include "ZonaAccion.h"
 #include "Entidad.h"
-
+#include "checkML.h"
+#include "TileInfo.h"
 
 ZonaAccion::ZonaAccion(Juego* punteroJuego): pJuego(punteroJuego)
 {
-	niveles.push_back(new Room(pJuego, 0, 0, Direcciones{ false,true,false, false }));
-	niveles.push_back(new Room(pJuego, niveles.at(0)->getArea().x, niveles.at(0)->getArea().y + niveles.at(0)->getArea().h, Direcciones{ true,false,true, false }));
-	niveles.push_back(new Room(pJuego, niveles.at(1)->getArea().x + niveles.at(1)->getArea().w, niveles.at(1)->getArea().y, Direcciones{ false,false, false,true }));
+	Puerta p;
+	p.DirPuerta = Puerta::Direcciones::Este;
+	niveles.push_back(new Room(pJuego, 0, 0,p));
+	//niveles.push_back(new Room(pJuego, niveles.at(0)->getArea().x + niveles.at(0)->getArea().w, niveles.at(0)->getArea().y, Direcciones{ false,false, false,true }));
 	nivelActual = niveles.at(0);
 }
 
 
 ZonaAccion::~ZonaAccion()
 {
+	for (size_t i = 0; i < niveles.size(); i++)
+	{
+		delete niveles[i];
+		niveles[i] = nullptr;
+	}
 	nivelActual = nullptr;
 }
 

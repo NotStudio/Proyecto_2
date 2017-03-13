@@ -25,7 +25,6 @@ int main(int argc, char* args[]) {
 	
 	Juego juego(&world);
 	
-
 //	system("PAUSE");
 
 	return 0;

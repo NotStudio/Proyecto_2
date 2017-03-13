@@ -7,12 +7,13 @@ class Consumible :
 {
 public:
 	Consumible(Juego* punteroJuego, SDL_Rect spritePar, string objectId):Item(punteroJuego, spritePar, objectId) {
+		bodyDef.position.Set((float32)sprite->x, (float32)sprite->y);
 		body = pJuego->getWorld()->CreateBody(&bodyDef);
 		body->SetUserData(this);
-		bodyDef.position.Set((float32)sprite.x, (float32)sprite.y);
 		shape = new b2PolygonShape;
-		static_cast<b2PolygonShape*>(shape)->SetAsBox(sprite.w / 2, sprite.h / 2);
+		static_cast<b2PolygonShape*>(shape)->SetAsBox(sprite->w / 2, sprite->h / 2);
 		fDef.shape = shape; fDef.density = 5.0f; fDef.friction = 1.0f;
+		fDef.isSensor = true;
 		body->CreateFixture(&fDef);
 	}
 	~Consumible() {};

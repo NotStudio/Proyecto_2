@@ -3,8 +3,8 @@
 #include "Camara.h"
 #include "ZonaAccion.h"
 #include "Play.h"
+#include "checkML.h"
 #include "HUD.h"
-
 
 //Constructora que inicializa todos los atributos de la clase Juego.
 Juego::Juego(b2World* mundo) : error(false), gameOver(false), exit(false), score(0), world(mundo)
@@ -30,6 +30,8 @@ Juego::Juego(b2World* mundo) : error(false), gameOver(false), exit(false), score
 	nombreTexturas.emplace_back("../Material/Background_idle.jpg");
 	nombreTexturas.emplace_back("../Material/Bala_idle.png");
 	nombreTexturas.emplace_back("../Material/tilesheet_test.png");
+	nombreTexturas.emplace_back("../Material/tilesheet_zon1.png");
+	nombreTexturas.emplace_back("../Material/agujero_idle.png");
 	//Esto no es así.
 	nombreTexturas.emplace_back("../Material/Battery4_idle.png");
 	nombreTexturas.emplace_back("../Material/Battery3_idle.png");
@@ -77,6 +79,9 @@ Juego::~Juego()
 	}
 	//Liberar cosas de la Física
 	//Borrar la camara? delete camera;
+	delete Camera;
+	Camera = nullptr;
+	delete personaje;
 	//borrar zona
 	delete zona;
 	
@@ -155,6 +160,11 @@ void Juego::freeMedia() {
 		it++;
 	}
 	
+	//Esto debe ir en otro metodo
+	for (int i = 0; i < objetos.size(); i++) {
+		delete objetos[i];
+		objetos[i] = nullptr;
+	}
 	//Esto debe ir en otro metodo
 	for (int i = 0; i < objetos.size(); i++) {
 		delete objetos[i];
@@ -275,7 +285,7 @@ void Juego::run() {
 			fpsCount++;
 		}
 		if (contSeg >= lasssst + 1000) {
-			std::cout << fpsCount << " ";
+			//std::cout << fpsCount << " ";
 			fpsCount = 0;
 			lasssst = contSeg;
 			contSeg = 0;

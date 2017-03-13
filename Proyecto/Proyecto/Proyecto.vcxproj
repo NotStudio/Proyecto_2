@@ -29,6 +29,7 @@
     <ClCompile Include="EstadoPG.cpp" />
     <ClCompile Include="GameOver.cpp" />
     <ClCompile Include="HUD.cpp" />
+    <ClCompile Include="Inanimado.cpp" />
     <ClCompile Include="Item.cpp" />
     <ClCompile Include="Juego.cpp" />
     <ClCompile Include="Jugable.cpp" />
@@ -64,6 +65,7 @@
     <ClInclude Include="constructoraRooms.h" />
     <ClInclude Include="HUD.h" />
     <ClInclude Include="HUDbase.h" />
+    <ClInclude Include="Inanimado.h" />
     <ClInclude Include="Item.h" />
     <ClInclude Include="Juego.h" />
     <ClInclude Include="Jugable.h" />
@@ -79,10 +81,14 @@
     <ClInclude Include="Play.h" />
     <ClInclude Include="Room.h" />
     <ClInclude Include="TexturasSDL.h" />
+    <ClInclude Include="Tile.h" />
     <ClInclude Include="TileInfo.h" />
     <ClInclude Include="Tostadora.h" />
     <ClInclude Include="ZonaAccion.h" />
     <ClInclude Include="zonaJuego.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\Material\tutorial1.map" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{9AEFB5D6-5EFA-4A01-9D4F-1F8F42527E24}</ProjectGuid>
@@ -106,7 +112,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v120</PlatformToolset>
+    <PlatformToolset>v140</PlatformToolset>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
