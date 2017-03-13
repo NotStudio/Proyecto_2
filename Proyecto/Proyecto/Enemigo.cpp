@@ -1,8 +1,10 @@
 ﻿#include "Enemigo.h"
 #include "Bala.h"
+#include <cmath>
 
-Enemigo::Enemigo(Juego* punteroJuego, SDL_Rect spritePar, string objectId) : NPC(punteroJuego,spritePar,objectId)
+Enemigo::Enemigo(Juego* punteroJuego, SDL_Rect spritePar, string objectId, int distancia) : NPC(punteroJuego, spritePar, objectId)
 {
+	_distancia = distancia;
 	fDef.filter.categoryBits = Juego::ENEMIGO;
 	fDef.filter.maskBits = Juego::JUGADOR | Juego::ESCENARIO | Juego::ENEMIGO;
 	body->CreateFixture(&fDef);
@@ -28,13 +30,22 @@ void Enemigo::onColisionEnter(Objeto* contactObject) {
 	}
 
 }
-void  Enemigo::update(){
-
-	if (!destruido)
+void Enemigo::update(){
+	if (!destruido){
 		Entidad::update();
-	
-}
 
+
+	}
+}
+	bool Enemigo::distancia(){
+	float x = static_cast<Entidad*>(pJuego->getPlayer())->getX();
+
+		float y = static_cast<Entidad*>(pJuego->getPlayer())->getY();
+		float distancia = sqrt((x - pos.x)*(x - pos.x) + (y - pos.y)*(y - pos.y));
+		cout << distancia << " "<< _distancia<<"\n";
+		if (distancia < _distancia) return true;
+		else return false;
+	}
 void Enemigo::stop() {
 	body->SetLinearVelocity(b2Vec2{ 0,0 });
 }

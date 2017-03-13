@@ -3,30 +3,32 @@
 
 
 //HAY QUE CAMBIAR EL STRING QUE PASA COMO ID
-Perseguidor::Perseguidor(Juego* punteroJuego, SDL_Rect a) : Enemigo(punteroJuego, a, "Gato"), coefMov(10.0f)
+Perseguidor::Perseguidor(Juego* punteroJuego, SDL_Rect a) : Enemigo(punteroJuego, a, "Gato",100), coefMov(10.0f)
 {
 	stats.daño = 1;
 
 }
 void Perseguidor::move(){
-	float x = static_cast<Entidad*>(pJuego->getPlayer())->getX();
-	float y = static_cast<Entidad*>(pJuego->getPlayer())->getY();
-	b2Vec2 velFloat;
-	velFloat.x = 0.0f;
-	velFloat.y = 0.0f;
-	
-	
-	b2Vec2 posJug = b2Vec2(x, y);
-	//Vector para la diferencia entre el vect del jugador y el vect del enemigoPerseguidor
-	b2Vec2 vecDir = posJug - pos;
+	if (Enemigo::distancia()){
+		float x = static_cast<Entidad*>(pJuego->getPlayer())->getX();
+		float y = static_cast<Entidad*>(pJuego->getPlayer())->getY();
+		b2Vec2 velFloat;
+		velFloat.x = 0.0f;
+		velFloat.y = 0.0f;
 
-	//Calculamos el vector unitario del vector de direccion.
-	b2Vec2 unitario = b2Vec2((vecDir.x / vecDir.Length()), (vecDir.y / vecDir.Length()));
 
-	velFloat.x = unitario.x*coefMov;
-	velFloat.y = unitario.y*coefMov;
+		b2Vec2 posJug = b2Vec2(x, y);
+		//Vector para la diferencia entre el vect del jugador y el vect del enemigoPerseguidor
+		b2Vec2 vecDir = posJug - pos;
 
-	body->SetLinearVelocity(velFloat);
+		//Calculamos el vector unitario del vector de direccion.
+		b2Vec2 unitario = b2Vec2((vecDir.x / vecDir.Length()), (vecDir.y / vecDir.Length()));
+
+		velFloat.x = unitario.x*coefMov;
+		velFloat.y = unitario.y*coefMov;
+
+		body->SetLinearVelocity(velFloat);
+	}
 }
 void Perseguidor::update() {
 	Entidad::update();
