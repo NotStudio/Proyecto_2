@@ -1,7 +1,7 @@
 #include "Camara.h"
 #include <SDL.h>
 #include <SDL_image.h>
-
+#include "checkML.h"
 Camara::Camara() {
 	Apuntando = nullptr;
 }
@@ -46,7 +46,7 @@ void Camara::update()
 		Centro.y = plano.h/2;
 	}
 	if (plano.y+plano.h > maxY) {
-		plano.y = minY;
+		plano.y = maxY-plano.h;
 		Centro.y = plano.h / 2;
 	}
 

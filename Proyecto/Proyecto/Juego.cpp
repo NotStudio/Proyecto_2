@@ -3,7 +3,7 @@
 #include "Camara.h"
 #include "ZonaAccion.h"
 #include "Play.h"
-
+#include "checkML.h"
 
 //Constructora que inicializa todos los atributos de la clase Juego.
 Juego::Juego(b2World* mundo) : error(false), gameOver(false), exit(false), score(0), world(mundo)
@@ -20,8 +20,8 @@ Juego::Juego(b2World* mundo) : error(false), gameOver(false), exit(false), score
 		std::cout << "Ha ocurrido un error con SDL";
 	}
 	//Esto es el wall de mexico los estados hundidos
-	r.x = 100;
-	r.y = 100;
+	r.x = 150;
+	r.y = 150;
 	r.h = 64;
 	r.w = 64;
 	
@@ -33,6 +33,8 @@ Juego::Juego(b2World* mundo) : error(false), gameOver(false), exit(false), score
 	nombreTexturas.emplace_back("../Material/Background_idle.jpg");
 	nombreTexturas.emplace_back("../Material/Bala_idle.png");
 	nombreTexturas.emplace_back("../Material/tilesheet_test.png");
+	nombreTexturas.emplace_back("../Material/tilesheet_zon1.png");
+	nombreTexturas.emplace_back("../Material/agujero_idle.png");
 	
 	world->SetContactListener(&listener);
 	
@@ -75,6 +77,9 @@ Juego::~Juego()
 	}
 	//Liberar cosas de la Física
 	//Borrar la camara? delete camera;
+	delete Camera;
+	Camera = nullptr;
+	delete personaje;
 	//borrar zona
 	delete zona;
 	
@@ -277,7 +282,7 @@ void Juego::run() {
 			fpsCount++;
 		}
 		if (contSeg >= lasssst + 1000) {
-			std::cout << fpsCount << " ";
+			//std::cout << fpsCount << " ";
 			fpsCount = 0;
 			lasssst = contSeg;
 			contSeg = 0;

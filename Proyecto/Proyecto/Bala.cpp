@@ -26,8 +26,7 @@ Bala::Bala(Juego* punteroJuego, SDL_Rect spritePar, string objectId,float32 vel,
 	velocidad.x = _vel*x;
 	velocidad.y = _vel*y;
 	//Capa de colision.
-	fDef.filter.categoryBits = capa;
-	fDef.filter.maskBits = Juego::ESCENARIO|(capa==Juego::AT_JUGADOR)?Juego::ENEMIGO:Juego::JUGADOR;
+	fDef.filter.maskBits = Juego::ESCENARIO;
 	body->SetLinearVelocity(velocidad);
 	
 

@@ -1,4 +1,5 @@
 #include "TexturasSDL.h"
+#include "checkML.h"
 
 
 
@@ -22,8 +23,8 @@ bool TexturasSDL::load(SDL_Renderer* pRenderer, std::string const& nombreArch) {
 	
 	SDL_Surface* pSurface = loadSurface(nombreArch);
 
-	//tamTextura.alto = pSurface->clip_rect.h;
-	//tamTextura.ancho = pSurface->clip_rect.w;
+	tamTextura.alto = pSurface->clip_rect.h;
+	tamTextura.ancho = pSurface->clip_rect.w;
 
 	nombreArc = nombreArch;
 	SDL_DestroyTexture(pTexture);

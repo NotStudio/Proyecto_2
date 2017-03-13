@@ -5,6 +5,7 @@
 #include "constructoraRooms.h"
 #include "Perseguidor.h"
 #include "MaquinaDePelotas.h"
+#include "Inanimado.h"
 //Tile constants
 const int TIL_WIDTH = 50;
 const int TIL_HEIGHT = 50;
@@ -28,11 +29,6 @@ const int NA= 11;
 */
 
 
-void Room::SetRoom(Direcciones p)
-{
-	RoomCustom(pJuego->getWorld(), 15, 12, ANCHO_NIVEL, ALTO_NIVEL, area->x, area->y, p);
-}
-
 void Room::update()
 {
 	for (int i = 0; i < enemigos.size(); i++) {
@@ -42,27 +38,24 @@ void Room::update()
 
 }
 
-Room::Room(Juego * pJ, int x, int y, Direcciones LocPort) :pJuego(pJ)
+Room::Room(Juego * pJ, int x, int y, Puerta puerta) :pJuego(pJ)
 {
-	Tiles = new vector<Tile*>(RoomCustom(pJuego->getWorld(), 19, 12, ANCHO_NIVEL, ALTO_NIVEL, x, y, LocPort));
+	string a = "tilesheet";
+	string b = "zon1";
+	textTiles = new Tilesheet(24, pJuego->getTextura(a,b));
+	a = "../Material/tutorial1.map";
+	Tiles = new vector<Tile*>(RoomDesdeArchivo(a,pJuego->getWorld(),ANCHO_NIVEL,ALTO_NIVEL));
 	//setTiles(DirM, wardo);
 	area = new SDL_Rect{ x,y,ANCHO_NIVEL,ALTO_NIVEL };
 	int xp = 0, yp = 0;
-	for (size_t i = 0; i < TOTAL_TILE_SPRITES; i++)
-	{
-		TileSheetRect.push_back(new SDL_Rect{ xp,yp,16,16 });
-		xp += 16;
-		if (xp >= 16 * 4) { xp = 0; yp += 16; }
-	}
-
 	//Crear el vector de enemigos, leer de archivos.
 	SDL_Rect r2, r3,r4;
 	r2.x = 750;
 	r2.y = 500;
 	r2.h = 50;
 	r2.w = 50;
-	r3.x = 300;
-	r3.y = 300;
+	r3.x = Tiles->at(getTileOcupable())->getBox().x;
+	r3.y = Tiles->at(getTileOcupable())->getBox().y;
 	r3.h = 50;
 	r3.w = 50;
 	r4.x = 500;
@@ -70,35 +63,47 @@ Room::Room(Juego * pJ, int x, int y, Direcciones LocPort) :pJuego(pJ)
 	r4.h = 50;
 	r4.w = 50;
 	//enemigos.push_back(new Enemigo(pJuego, r2, "Gato"));
-	//enemigos.push_back(new Perseguidor(pJuego, r3));
-	enemigos.push_back(new MaquinaDePelotas(pJuego, r4));
+	enemigos.push_back(new Perseguidor(pJuego, r3));
+	objetos.push_back(new Agujero(pJuego, SDL_Point{100,100},100));
+	//enemigos.push_back(new MaquinaDePelotas(pJuego, r4));
 	//Crear vector de objetos inanimados.
 	
 }
-
 bool Room::setTiles(string Dirm,b2World * wardo) {
 	
 	int x = 0;
 	int y = 0;
-	for (size_t i = 0; i < TOTAL_TILE_SPRITES; i++)
-	{
-		TileSheetRect.push_back(new SDL_Rect{ x,y,16,16 });
-		x += 16;
-		if (x >= 16*4) {x = 0;y += 16;}
-	}
 	return true;
+}
+int Room::getTileOcupable()
+{
+	srand(SDL_GetTicks());
+	int k = rand()%Tiles->size();
+	while (Tiles->at(k)->getType()>11)
+	{
+		k = rand() % Tiles->size();
+	}
+	return k;
 }
 Room::~Room()
 {
+	for (size_t i = 0; i < enemigos.size(); i++)
+	{
+		delete enemigos[i];
+		enemigos[i] = nullptr;
+	}
+	for (size_t i = 0; i < objetos.size(); i++)
+	{
+		delete objetos[i];
+		objetos[i] = nullptr;
+	}
 	for (size_t i = 0; i < Tiles->size(); i++)
 	{
 		delete Tiles->at(i);
 		Tiles->at(i) = nullptr;
 	}
-	for (size_t i = 0; i < TileSheetRect.size(); i++)
-	{
-		delete TileSheetRect[i];
-	}
+	delete textTiles;
+	textTiles = nullptr;
 	delete area;
 	delete Tiles;
 	Tiles = nullptr;
@@ -118,10 +123,13 @@ void Room::render(){
 	{
 		 if (Tiles->at(i)->render(&pJuego->getCameraRect(),Dibujar,tipoDeTile)) {
 
-			pJuego->getTilesheet()->draw(pJuego->getRender(),Dibujar, TileSheetRect[tipoDeTile],pJuego->getCamera());
+			 textTiles->draw(pJuego->getRender(), Dibujar, tipoDeTile, pJuego->getCamera());
 		}
 	}
 	//Dibujamos enemigos y objetos.
+	for (int i = 0; i < objetos.size(); i++) {
+		objetos[i]->draw();
+	}
 	for (int i = 0; i < enemigos.size(); i++) {
 		enemigos[i]->draw();
 	}

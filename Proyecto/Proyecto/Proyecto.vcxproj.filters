@@ -93,6 +93,9 @@
     <ClCompile Include="MaquinaDePelotas.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Inanimado.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Personaje.h">
@@ -191,5 +194,11 @@
     <ClInclude Include="Tile.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="Inanimado.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\Material\tutorial1.map" />
   </ItemGroup>
 </Project>

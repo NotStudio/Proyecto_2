@@ -1,13 +1,14 @@
 #include "Tile.h"
 #include "TileInfo.h"
 #include "Juego.h"
+#include "checkML.h"
 void Tile::onColisionEnter() { cout << "kek"; }
 Tile::Tile(int x, int y, int tileType, b2World * wardo)
 {
 
 	mBox = new SDL_Rect{ x,y,TILE_WIDTH,TILE_HEIGHT };
 	mType = tileType;
-	if (mType > 2) {
+	if (mType > S12) {
 		mBodyDef = new b2BodyDef;
 		mBodyDef->position.Set((float32)mBox->x, (float32)mBox->y);
 		mBodyDef->type = b2_staticBody;
@@ -18,12 +19,10 @@ Tile::Tile(int x, int y, int tileType, b2World * wardo)
 		b2Vec2 Puntos[4];
 		Puntos[0] = b2Vec2(0, 0);
 		Puntos[1] = b2Vec2(0, TILE_HEIGHT);
-		Puntos[2] = b2Vec2(TILE_WIDTH, TILE_WIDTH);
-		Puntos[3] = b2Vec2(TILE_WIDTH, TILE_HEIGHT);
+		Puntos[2] = b2Vec2(TILE_WIDTH, TILE_HEIGHT);
+		Puntos[3] = b2Vec2(TILE_WIDTH, 0);
 		mShape->Set(Puntos, 4);
 		mShapeDef->shape = mShape;
-		mShapeDef->filter.categoryBits = Juego::ESCENARIO;
-		mShapeDef->filter.maskBits = -1;
 		mBody->CreateFixture(mShapeDef);
 		mBody->SetUserData(this);
 	}
@@ -35,7 +34,7 @@ Tile::~Tile()
 {
 	delete mBox;
 	mBox = nullptr;
-	if (mType > 2) {
+	if (mType > S12) {
 		delete mShape;
 		delete mShapeDef;
 		delete mBodyDef;

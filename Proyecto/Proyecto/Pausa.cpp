@@ -1,5 +1,5 @@
 #include "Pausa.h"
-
+#include "checkML.h"
 
 Pausa::Pausa(Juego * juego) : EstadoPG(juego)
 {

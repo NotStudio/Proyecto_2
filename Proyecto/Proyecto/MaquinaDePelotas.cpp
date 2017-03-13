@@ -6,6 +6,7 @@
 #include "MaquinaDePelotas.h"
 #include "EstadoPG.h"
 #include "Bala.h"
+#include "checkML.h"
 
 
 MaquinaDePelotas::MaquinaDePelotas(Juego* punteroJuego, SDL_Rect a) : Enemigo(punteroJuego, a, "Tostadora")

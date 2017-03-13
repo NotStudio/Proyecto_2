@@ -14,14 +14,14 @@ private:
 	//la zona de la room
 	SDL_Rect * area;
 	Juego * pJuego;
-	vector <SDL_Rect*> TileSheetRect;
+	Tilesheet * textTiles;
 	//el vector de los tiles
 	vector<Tile*>* Tiles;
-	Direcciones Locport;
+	Puerta Locport;
 	int ANCHO_NIVEL, ALTO_NIVEL;
 	
 	bool setTiles(string d,b2World* Wardo);
-	
+	int getTileOcupable();
 	//Vector de enemigos.
 	vector<Objeto*> enemigos;
 	//Vector de objetos inanimados.
@@ -38,14 +38,12 @@ public:
 	Room * getRoomSur() { return Sur; }
 	Room * getRoomEste() { return Este; }
 	Room * getRoomOeste() { return Oeste; }
-	Direcciones getPuertas() { return Locport; }
 	SDL_Rect getArea() {
 		return *area;
 	}
-	void SetRoom(Direcciones p);
 	void update();
 	//Room();
-	Room(Juego *,int x, int y,Direcciones);
+	Room(Juego *,int x, int y,Puerta);
 	~Room();
 	void DestroyRoom(b2World * wardo);
 	int getAnchoRoom()const { return ANCHO_NIVEL; }

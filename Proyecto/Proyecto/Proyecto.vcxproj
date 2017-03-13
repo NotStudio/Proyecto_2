@@ -27,6 +27,7 @@
     <ClCompile Include="Entidad.cpp" />
     <ClCompile Include="EstadoPG.cpp" />
     <ClCompile Include="GameOver.cpp" />
+    <ClCompile Include="Inanimado.cpp" />
     <ClCompile Include="Item.cpp" />
     <ClCompile Include="Juego.cpp" />
     <ClCompile Include="Jugable.cpp" />
@@ -59,6 +60,7 @@
     <ClInclude Include="EstadoPG.h" />
     <ClInclude Include="GameOver.h" />
     <ClInclude Include="constructoraRooms.h" />
+    <ClInclude Include="Inanimado.h" />
     <ClInclude Include="Item.h" />
     <ClInclude Include="Juego.h" />
     <ClInclude Include="Jugable.h" />
@@ -79,6 +81,9 @@
     <ClInclude Include="Tostadora.h" />
     <ClInclude Include="ZonaAccion.h" />
     <ClInclude Include="zonaJuego.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\Material\tutorial1.map" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{9AEFB5D6-5EFA-4A01-9D4F-1F8F42527E24}</ProjectGuid>
