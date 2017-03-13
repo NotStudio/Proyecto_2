@@ -179,7 +179,7 @@ bool Juego::initSDL() {
 	bool success = true; //Initialization flag
 
 						 //Initialize SDL
-	if (SDL_Init(SDL_INIT_EVERYTHING) < 0) {
+	if (SDL_Init(SDL_INIT_EVERYTHING | SDL_INIT_TIMER) < 0) {
 		cout << "SDL could not initialize! \nSDL_Error: " << SDL_GetError() << '\n';
 		success = false;
 	}

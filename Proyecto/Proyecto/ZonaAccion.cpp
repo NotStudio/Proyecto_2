@@ -27,8 +27,11 @@ ZonaAccion::~ZonaAccion()
 }
 
 void ZonaAccion::draw(){
-	
-	nivelActual->render();
+	for (size_t i = 0; i < niveles.size(); i++)
+	{
+		niveles[i]->render();
+	}
+	//nivelActual->render();
 
 }
 

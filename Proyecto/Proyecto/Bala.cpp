@@ -45,6 +45,8 @@ Bala::Bala(Juego* punteroJuego, SDL_Rect spritePar, string objectId, float32 vel
 }
 Bala::~Bala()
 {
+	delete shape;
+	shape = nullptr;
 }
 void Bala::onColisionEnter(Objeto* contactObject) {
 	Destruido = true;
