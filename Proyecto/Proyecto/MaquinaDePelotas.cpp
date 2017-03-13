@@ -21,9 +21,9 @@ void MaquinaDePelotas::update(){
 	Entidad::update();
 	move();
 }
-void MaquinaDePelotas::onColisionEnter(Objeto* contactObject) {
 
-	//cout << "Se ha usted chocado con la maquina de pelotas decidan que pasa diseñadores";
+void MaquinaDePelotas::onColisionEnter(Objeto* contactObject){
+	Enemigo::onColisionEnter(contactObject);
 }
 void MaquinaDePelotas::move(){
 	
@@ -56,7 +56,7 @@ void MaquinaDePelotas::move(){
 		 //contador++;
 	contador = SDL_GetTicks();
 	//cout << " Velx " << velFloat.x << " Vely  " << velFloat.y;
-	dynamic_cast<Play*>(pJuego->topState())->extras.push_back(new Bala(pJuego, posicion, "Bala", 50.0f, velFloat.x, velFloat.y));
+	dynamic_cast<Play*>(pJuego->topState())->extras.push_back(new Bala(pJuego, posicion, "Bala", 50.0f, velFloat.x, velFloat.y, 1));
 	}
 }
 #endif

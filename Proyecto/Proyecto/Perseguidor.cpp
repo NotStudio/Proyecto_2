@@ -35,6 +35,9 @@ void Perseguidor::update() {
 	
 }
 void Perseguidor::onColisionEnter(Objeto* contactObject) {
+
+	Enemigo::onColisionEnter(contactObject);
+
 	Jugable * k = dynamic_cast<Jugable *>(contactObject);
 	if (k != nullptr)
 	{

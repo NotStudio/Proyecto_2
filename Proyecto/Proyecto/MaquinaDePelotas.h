@@ -10,6 +10,6 @@ public:
 	~MaquinaDePelotas();
 	virtual void move();
 	virtual void update();
-	virtual void onColisionEnter(Objeto* contactObject);
+	void virtual onColisionEnter(Objeto* contactObject);
 };
 

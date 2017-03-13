@@ -1,7 +1,7 @@
 #include "Bala.h"
 #include "checkML.h"
 
-Bala::Bala(Juego* punteroJuego, SDL_Rect spritePar, string objectId,float32 vel, float32 dirx,float32 diry) :Entidad(punteroJuego, spritePar, objectId)
+Bala::Bala(Juego* punteroJuego, SDL_Rect spritePar, string objectId, float32 vel, float32 dirx, float32 diry, int lanzador) :Entidad(punteroJuego, spritePar, objectId), lanzador(lanzador)
 {
 
 	_vel = vel;
@@ -26,7 +26,15 @@ Bala::Bala(Juego* punteroJuego, SDL_Rect spritePar, string objectId,float32 vel,
 	velocidad.x = _vel*x;
 	velocidad.y = _vel*y;
 	//Capa de colision.
-	fDef.filter.categoryBits = Juego::AT_ENEMIGO;
+	if (lanzador == 1){
+		fDef.filter.categoryBits = Juego::AT_ENEMIGO;
+		fDef.filter.maskBits = Juego::ESCENARIO || Juego::ENEMIGO || Juego::JUGADOR;
+	}
+	else{
+		fDef.filter.categoryBits = Juego::AT_JUGADOR;
+		fDef.filter.maskBits = Juego::ESCENARIO || Juego::ENEMIGO || Juego::JUGADOR;
+	}
+
 	fDef.filter.maskBits = Juego::ESCENARIO;
 	body->SetLinearVelocity(velocidad);
 	
@@ -39,6 +47,10 @@ Bala::~Bala()
 {
 }
 void Bala::onColisionEnter(Objeto* contactObject) {
-	Destruido = false;
+	Destruido = true;
 	//cout << "Bala eliminada";
+}
+
+int Bala::getLanzador(){
+	return lanzador;
 }

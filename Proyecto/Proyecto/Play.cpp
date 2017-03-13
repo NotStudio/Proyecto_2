@@ -28,7 +28,7 @@ void Play::update(){
 	personaje->update();
 	for (int i = 0; i < extras.size(); i++) {
 		if (extras[i] != nullptr)
-		if (extras[i]->getDestruido())
+		if (!extras[i]->getDestruido())
 			extras[i]->update();
 		else {
 			delete extras[i];

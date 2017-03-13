@@ -86,6 +86,12 @@ vector<Tile*> RoomDesdeArchivo(string direccion, b2World * world, int& WID, int&
 							}
 							else if (entrada->posicion.y - TILE_HEIGHT == y)
 							{
+								Tiles.push_back(new Tile(x, y, S1, world));
+								vis = true;
+								cout << "lel";
+							}
+							else if (entrada->posicion.y - 2*TILE_HEIGHT == y)
+							{
 								Tiles.push_back(new Tile(x, y, ISE, world));
 								vis = true;
 								cout << "lel";
@@ -137,10 +143,13 @@ vector<Tile*> RoomDesdeArchivo(string direccion, b2World * world, int& WID, int&
 		break;
 	case Puerta::Direcciones::Oeste:
 		world->DestroyBody(Tiles[(maxX)*(((Tiles.size() / maxX) / 2) + 1) - 1]->getBody());
+		world->DestroyBody(Tiles[(maxX)*(((Tiles.size() / maxX) / 2)) - 1]->getBody());
 		Tiles[(maxX)*(((Tiles.size() / maxX) / 2) + 1)-1]->SetTile(S1);
 		Tiles[(maxX)*(((Tiles.size() / maxX) / 2)+2)-1]->SetTile(INO);
-		Tiles[(maxX)*(((Tiles.size() / maxX) / 2))-1]->SetTile(ISO);
+		Tiles[(maxX)*(((Tiles.size() / maxX) / 2)-1)-1]->SetTile(ISO);
+		Tiles[(maxX)*(((Tiles.size() / maxX) / 2)) - 1]->SetTile(S1);
 		Salida.posicion = Tiles[(maxX)*(((Tiles.size() / maxX) / 2) + 1) - 1]->getBox();
+		Salida.posicion.h += TILE_HEIGHT;
 		break;
 	default:
 		break;

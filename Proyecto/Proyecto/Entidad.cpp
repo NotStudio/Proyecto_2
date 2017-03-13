@@ -38,7 +38,7 @@ void Entidad::draw() {
 void Entidad::update(){
 	//Asignar sprite a body para que se dibuje.
 	pos = body->GetPosition();
-	sprite->x = (int)pos.x-sprite->w/2; sprite->y = (int)pos.y - sprite->w / 2;
+	sprite->x = (int)pos.x; sprite->y = (int)pos.y;
 
 	
 

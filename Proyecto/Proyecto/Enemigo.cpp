@@ -1,5 +1,5 @@
 ﻿#include "Enemigo.h"
-
+#include "Bala.h"
 
 Enemigo::Enemigo(Juego* punteroJuego, SDL_Rect spritePar, string objectId) : NPC(punteroJuego,spritePar,objectId)
 {
@@ -27,7 +27,14 @@ Enemigo::~Enemigo()
 
 void Enemigo::onColisionEnter(Objeto* contactObject) {
 
-	std::cout << "HAs muerto por tocar a un enemigo: "  << dynamic_cast<Entidad*>(contactObject)->getId() << "\n";
+
+	if (dynamic_cast<Bala*>(contactObject)){
+		if (static_cast<Bala*>(contactObject)->getLanzador() == 0){
+			Destruido = true;
+		}
+		//cambiar textura.
+
+	}
 
 }
 void Enemigo::move(){
@@ -43,11 +50,21 @@ void Enemigo::move(){
 	body->SetLinearVelocity(velFloat);
 }
 void  Enemigo::update(){
-	Entidad::update();
-	
 
+	if (!Destruido)
+		Entidad::update();
+	
 }
 
 void Enemigo::stop() {
 	body->SetLinearVelocity(b2Vec2{ 0,0 });
+}
+
+void Enemigo::draw(){
+	if (!Destruido){
+		Entidad::draw();
+	}
+	else{
+		body->SetActive(false);
+	}
 }

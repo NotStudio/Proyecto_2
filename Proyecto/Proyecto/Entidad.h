@@ -26,7 +26,7 @@ protected:
 	//Gestor de animaciones.
 	 //virtual void updateAnim();
 	//para ver si ha sido destruido
-	bool Destruido = true;
+	bool Destruido = false;
 	
 public:
 

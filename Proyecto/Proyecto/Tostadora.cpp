@@ -7,7 +7,7 @@ Tostadora::Tostadora(Juego* punteroJuego, SDL_Rect spritePar):Jugable(punteroJue
 {	
 	//Física
 	bodyDef.type = b2_dynamicBody;
-	bodyDef.position.Set(pos.x+sprite->w/2, pos.y-sprite->h/ 2);
+	bodyDef.position.Set(pos.x, pos.y);
 	bodyDef.fixedRotation=true;
 	body = pJuego->getWorld()->CreateBody(&bodyDef);
 	body->SetUserData(this);
@@ -21,13 +21,13 @@ Tostadora::Tostadora(Juego* punteroJuego, SDL_Rect spritePar):Jugable(punteroJue
 	static_cast<b2PolygonShape*>(shape)->Set(Puntos, 4);
 	*/
 	shape = new b2PolygonShape;
-	static_cast<b2PolygonShape*>(shape)->SetAsBox(sprite->w / 2, sprite->h / 2);
+	static_cast<b2PolygonShape*>(shape)->SetAsBox(sprite->w / 2, sprite->h / 2, {(float)sprite->w/2, (float)sprite->h/2},0);
 	fDef.shape = shape; fDef.density = 5.0f; fDef.friction = 0;
 	//Capa de colision.
 	fDef.filter.categoryBits = Juego::JUGADOR;
 	fDef.filter.maskBits = Juego::ENEMIGO | Juego::AT_ENEMIGO | Juego::ITEM | Juego::ESCENARIO;
 	body->CreateFixture(&fDef);
-	stats.velMov = 500;
+	stats.velMov = 1000;
 
 	stats.vida = 4;
 }
@@ -48,7 +48,7 @@ void Tostadora::onColisionEnter(Objeto* contactObject) {
 
 void Tostadora::disparo(){
 	SDL_Rect posicion;
-
+	int spawnPosition = 50;
 	posicion.x = pos.x + sprite->w / 2;
 	posicion.y = pos.y + sprite->h / 2;
 	posicion.w = 10;
@@ -58,35 +58,35 @@ void Tostadora::disparo(){
 	if (pJuego->inputQuery(SDL_SCANCODE_DOWN)){
 		if (lastUpdate - contador > cadencia){
 			contador = SDL_GetTicks();
-			posicion.y += 75;
+			posicion.y += spawnPosition;
 
 			EstadoJuego*estado;
 
-			dynamic_cast<Play*>(pJuego->topState())->extras.push_back(new Bala(pJuego, posicion, "Bala", 80.0f, 0, 1));
+			dynamic_cast<Play*>(pJuego->topState())->extras.push_back(new Bala(pJuego, posicion, "Bala", 80.0f, 0, 1,0));
 		}
 	}
 	else if (pJuego->inputQuery(SDL_SCANCODE_RIGHT)){
 		if (lastUpdate - contador > cadencia){
 			contador = SDL_GetTicks();
-			posicion.x += 75;
-			dynamic_cast<Play*>(pJuego->topState())->extras.push_back(new Bala(pJuego, posicion, "Bala", 80.0f, 1, 0));
+			posicion.x += spawnPosition;
+			dynamic_cast<Play*>(pJuego->topState())->extras.push_back(new Bala(pJuego, posicion, "Bala", 80.0f, 1, 0,0));
 			//pJuego->extras.push_back(new Bala(pJuego, posicion, "Bala", 50.0f, 2));
 		}
 	}
 	else if (pJuego->inputQuery(SDL_SCANCODE_LEFT)){
 		if (lastUpdate - contador > cadencia){
 			contador = SDL_GetTicks();
-			posicion.x -= 75;
-			dynamic_cast<Play*>(pJuego->topState())->extras.push_back(new Bala(pJuego, posicion, "Bala", 80.0f, -1, 0));
+			posicion.x -= spawnPosition;
+			dynamic_cast<Play*>(pJuego->topState())->extras.push_back(new Bala(pJuego, posicion, "Bala", 80.0f, -1, 0,0));
 			//pJuego->extras.push_back(new Bala(pJuego, posicion, "Bala", 50.0f, 4));
 		}
 	}
 	else if (pJuego->inputQuery(SDL_SCANCODE_UP)){
 		if (lastUpdate - contador > cadencia){
 			contador = SDL_GetTicks();
-			posicion.y -= 75;
+			posicion.y -= spawnPosition;
 
-			dynamic_cast<Play*>(pJuego->topState())->extras.push_back(new Bala(pJuego, posicion, "Bala", 80.0f, 0, -1));
+			dynamic_cast<Play*>(pJuego->topState())->extras.push_back(new Bala(pJuego, posicion, "Bala", 80.0f, 0, -1,0));
 			//pJuego->extras.push_back(new Bala(pJuego, posicion, "Bala", 50.0f, 1));
 		}
 	}
