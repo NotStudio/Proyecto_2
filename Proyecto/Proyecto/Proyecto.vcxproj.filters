@@ -144,9 +144,6 @@
     <ClCompile Include="HUD.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="EnemigoBomba.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Bala.cpp">
       <Filter>Source Files\Objetos</Filter>
     </ClCompile>
@@ -158,6 +155,9 @@
     </ClCompile>
     <ClCompile Include="MaquinaDePelotas.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="EnemigoBomba.cpp">
+      <Filter>Source Files\Personajes\Enemigos</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -254,9 +254,6 @@
     <ClInclude Include="HUDbase.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="EnemigoBomba.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Bala.h">
       <Filter>Header Files\Objetos</Filter>
     </ClInclude>
@@ -274,6 +271,9 @@
     </ClInclude>
     <ClInclude Include="Inanimado.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="EnemigoBomba.h">
+      <Filter>Header Files\Personajes\Enemigos</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
