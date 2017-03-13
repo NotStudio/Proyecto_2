@@ -129,8 +129,10 @@ vector<Tile*> RoomDesdeArchivo(string direccion, b2World * world, int& WID, int&
 		break;
 	case Puerta::Direcciones::Sur:
 		world->DestroyBody(Tiles[Tiles.size() - maxX / 2-1]->getBody());
+		world->DestroyBody(Tiles[Tiles.size() - maxX / 2 -2]->getBody());
 		Tiles[Tiles.size()-maxX / 2-1]->SetTile(S1);
-		Tiles[Tiles.size() - maxX / 2-2]->SetTile(INE);
+		Tiles[Tiles.size() - maxX / 2-2]->SetTile(S1);
+		Tiles[Tiles.size() - maxX / 2 - 3]->SetTile(INE);
 		Tiles[Tiles.size() - maxX / 2]->SetTile(INO);
 		Salida.posicion = Tiles[Tiles.size() - maxX / 2 - 1]->getBox();
 		break;

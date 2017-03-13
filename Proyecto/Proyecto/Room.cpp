@@ -59,7 +59,7 @@ Room::Room(Juego * pJ,Puerta sal, Puerta * entrada,int x, int y) :pJuego(pJ)
 	string a = "tilesheet";
 	string b = "zon1";
 	textTiles = new Tilesheet(24, pJuego->getTextura(a,b));
-	a = (entrada==nullptr)? "../Material/tutorial1.map": "../Material/tutorial2.map";
+	a = (entrada==nullptr)? "../Material/tutorial1.map": "../Material/untitled.map";
 	Tiles = new vector<Tile*>(RoomDesdeArchivo(a,pJuego->getWorld(),ANCHO_NIVEL,ALTO_NIVEL,sal,entrada));
 	//setTiles(DirM, wardo);
 	Salida = sal;
@@ -79,7 +79,7 @@ Room::Room(Juego * pJ,Puerta sal, Puerta * entrada,int x, int y) :pJuego(pJ)
 	r4.w = 50;
 	//enemigos.push_back(new Enemigo(pJuego, r2, "Gato"));
 	enemigos.push_back(new Perseguidor(pJuego, r3));
-	//objetos.push_back(new Agujero(pJuego, SDL_Point{300+area->x,300+ area->y},100));
+	objetos.push_back(new Agujero(pJuego, SDL_Point{300+area->x,300+ area->y},200));
 	//enemigos.push_back(new MaquinaDePelotas(pJuego, r4));
 	//Crear vector de objetos inanimados.
 	
