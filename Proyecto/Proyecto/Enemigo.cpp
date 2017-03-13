@@ -36,10 +36,7 @@ void Enemigo::update(){
 	}
 }
 bool Enemigo::distancia() {
-	float x = static_cast<Entidad*>(pJuego->getPlayer())->getX();
-
-	float y = static_cast<Entidad*>(pJuego->getPlayer())->getY();
-	float distancia = sqrt((x - pos.x)*(x - pos.x) + (y - pos.y)*(y - pos.y));
+	float distancia = (pos -static_cast<Entidad*>(pJuego->getPlayer())->getBody()->GetPosition()).Length();
 	if (distancia < _distancia) return true;
 	else return false;
 }

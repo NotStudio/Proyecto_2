@@ -9,7 +9,7 @@ Perseguidor::Perseguidor(Juego* punteroJuego, SDL_Rect a) : Enemigo(punteroJuego
 
 }
 void Perseguidor::move(){
-	if (Enemigo::distancia()){
+	if (distancia()){
 		float x = static_cast<Entidad*>(pJuego->getPlayer())->getX();
 		float y = static_cast<Entidad*>(pJuego->getPlayer())->getY();
 		b2Vec2 velFloat;
@@ -28,6 +28,10 @@ void Perseguidor::move(){
 		velFloat.y = unitario.y*coefMov;
 
 		body->SetLinearVelocity(velFloat);
+	}
+	else
+	{
+		stop();
 	}
 }
 void Perseguidor::update() {
