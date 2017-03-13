@@ -17,6 +17,8 @@ class ZonaAccion :
 	vector<Objeto*> enemigos;
 	//Objetos colisionables: cofres, rocas, mierda en general.
 	vector<Objeto*> obEntorno;
+	//Balas en prinsipito
+	
 	//Puntero al nivel actual
 	Room* nivelActual;
 
@@ -32,7 +34,7 @@ public:
 	virtual void draw();
 
 	virtual void update();
-
+	Room*getNivel(){ return nivelActual; }
 	SDL_Rect getNivelActual();
 };
 

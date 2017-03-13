@@ -36,6 +36,21 @@ void Room::update()
 	for (int i = 0; i < enemigos.size(); i++) {
 		enemigos[i]->update();
 	}
+	for (int i = 0; i < extras.size(); i++) {
+		if (extras[i] != nullptr)
+		if (!extras[i]->getdestruido())
+			extras[i]->update();
+		else {
+			delete extras[i];
+			extras[i] = nullptr;
+		}
+	}
+	for (int i = 0; i < extras.size(); i++) {
+		if (extras[i] == nullptr)	{
+			extras.erase(extras.begin() + i);
+			i--;
+		}
+	}
 }
 
 //Constructora de la habitación. Aquí es donde se lee el nivel, se crea y se añaden los enemigos y objetos.
@@ -147,6 +162,9 @@ void Room::render(){
 	}
 	for (int i = 0; i < enemigos.size(); i++) {
 		enemigos[i]->draw();
+	}
+	for (int i = 0; i < extras.size(); i++) {
+		extras[i]->draw();
 	}
 }
 
