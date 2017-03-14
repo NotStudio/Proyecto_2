@@ -24,7 +24,7 @@ protected:
 	//Recoge el input de la clase Juego.
 	void movControl();
 	//Controla que pare suave.
-	void afinarMov(int vel, int lim);
+	void afinarMov(int const & vel, int const & lim,Direccion const &);
 	//Acceso inventario
 	//void inventario();
 	bool lel = true;

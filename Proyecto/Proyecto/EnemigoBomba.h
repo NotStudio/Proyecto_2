@@ -10,9 +10,7 @@ public:
 
 	virtual void move();
 	virtual void update();
-	virtual void onColisionEnter(Objeto* contactObject);
-	virtual void draw();
-
+	virtual void onColisionEnter(Objeto* contactObject=nullptr);
 	void muerte();
 	
 

@@ -27,13 +27,20 @@ protected:
 	 //virtual void updateAnim();
 	//para ver si ha sido destruido
 	bool destruido = false;
-	struct Direccion
+	enum Direccion
 	{
-		bool izq = false, der = true, arr = false, aba = false;
-	}Dir;
+		Norte, Este, Sur, Oeste, NorteEste,NorteOeste,SurEste,SurOeste,SinDir
+	};
+	enum EstadoAnimacion
+	{
+		Idle, Walk, Ataque,NoAnim
+	};
+	struct EntidadInfo
+	{
+		Direccion mirando=Este;
+		EstadoAnimacion animacionActual = Idle;
+	}estadoEntidad;
 public:
-
-
 	Entidad(Juego* punteroJuego, SDL_Rect spritePar , string objectId);
 
 	virtual bool getdestruido() { return destruido; };

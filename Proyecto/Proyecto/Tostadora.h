@@ -6,7 +6,7 @@ class Tostadora :
 {
 protected:
 	SDL_TimerID Disparar;
-	Uint32 cadencia = 500;
+	Uint32 cadencia = 350;
 	bool disparar=true;
 public:
 	void reactivarDisparo(){

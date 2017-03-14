@@ -23,11 +23,18 @@ Juego::Juego(b2World* mundo) : error(false), gameOver(false), exit(false), score
 	//Esto es el wall de mexico los estados hundidos
 
 	//Añadimos al vector del nombre de las texturas los nombres de las imágenes. Tienen que tener un orden concreto.
-	
+	//Primero El idle, para cualquier animacion
+	//Tostadora
 	nombreTexturas.emplace_back("../Material/Tostadora_idle.png");
 	nombreTexturas.emplace_back("../Material/Tostadora_walk.png");
 	nombreTexturas.emplace_back("../Material/Tostadora_atqu.png");
+	//Gato
 	nombreTexturas.emplace_back("../Material/Gato_idle.png");
+	//Bomba
+	nombreTexturas.emplace_back("../Material/Bomba_idle.png");
+	//Ladron
+	nombreTexturas.emplace_back("../Material/Ladron_idle.png");
+
 	nombreTexturas.emplace_back("../Material/Wall_idle.png");
 	nombreTexturas.emplace_back("../Material/Background_idle.jpg");
 	nombreTexturas.emplace_back("../Material/Bala_idle.png");
@@ -125,12 +132,10 @@ void Juego::initMedia() {
 
 		std::string entity, anim, aux;
 		aux = nombreTexturas[i];
-		entity = nombreTexturas[i].erase(0, 12);
-		entity.erase(entity.end()-4,entity.end());
-
-		anim = entity.substr(entity.size() - 4, 4);
-		entity.erase(entity.end() - 5, entity.end());
-		
+		entity = aux.substr(aux.find_last_of('/') + 1);
+		anim = aux.substr(aux.find_last_of('_')+1);
+		entity.erase(entity.find_last_of('_'));		
+		anim.erase(anim.find_last_of('.'));
 		try{
 			mapTexturas.at(entity);//Para que no cree la textura dos veces.
 			mapTexturas.at(entity).emplace(std::make_pair(anim, new TexturasSDL));

@@ -71,13 +71,14 @@ Room::Room(Juego * pJ,Puerta sal, Puerta * entrada,int x, int y) :pJuego(pJ)
 	r2.x = x + 750; r2.y = y + 500;	r2.h = 50; r2.w = 50;
 	r3.x = Tiles->at(getTileOcupable())->getBox().x;
 	r3.y = Tiles->at(getTileOcupable())->getBox().y;
-	r3.h = 50;
-	r3.w = 50;
-	r4.x = x + 300;
-	r4.y = y + 100;
-	r4.h = 50;
-	r4.w = 50;
-	//enemigos.push_back(new Enemigo(pJuego, r2, "Gato"));
+	r3.h = 64;
+	r3.w = 64;
+	
+	r4.x = 500 + area->x;
+	r4.y = 500 + area->y;
+	r4.h = 64;
+	r4.w = 64;
+	enemigos.push_back(new EnemigoBomba(pJuego, r4));
 	enemigos.push_back(new Perseguidor(pJuego, r3));
 	objetos.push_back(new Agujero(pJuego, SDL_Point{300+area->x,300+ area->y},200));
 	//enemigos.push_back(new MaquinaDePelotas(pJuego, r4));

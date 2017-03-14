@@ -3,7 +3,7 @@
 
 
 //HAY QUE CAMBIAR EL STRING QUE PASA COMO ID
-Perseguidor::Perseguidor(Juego* punteroJuego, SDL_Rect a) : Enemigo(punteroJuego, a, "Gato",100), coefMov(10.0f)
+Perseguidor::Perseguidor(Juego* punteroJuego, SDL_Rect a) : Enemigo(punteroJuego, a, "Ladron",300), coefMov(10.0f)
 {
 	stats.daño = 1;
 
