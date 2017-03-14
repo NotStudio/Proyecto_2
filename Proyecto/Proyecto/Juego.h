@@ -98,7 +98,7 @@ public:
 		void loadTextura(TexturasSDL*text, int nFrames = 1) {
 			textura = text;
 			numFrames = nFrames;
-			rect = { 0,0,textura->getAncho() / numFrames,textura->getAlto() };
+			rect = { 0,0,(int)textura->getAncho() / numFrames,(int)textura->getAlto() };
 		}
 		void setNumFrames(int nFrames) {
 			numFrames = nFrames;
