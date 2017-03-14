@@ -39,27 +39,22 @@ void Tostadora::disparo(){
 		if (pJuego->inputQuery(SDL_SCANCODE_DOWN)) {
 				disparar = false;
 				posicion.y += spawnPosition;
-				dynamic_cast<Play*>(pJuego->topState())->extras.push_back(new Bala(pJuego, posicion, "Bala", 80.0f, 0, 1, 0));
+				dynamic_cast<ZonaAccion*>(pJuego->getZona())->getNivel()->nuevaBala(new Bala(pJuego, posicion, "Bala", 80.0f, 0, 1, 0));
 		}
 		else if (pJuego->inputQuery(SDL_SCANCODE_RIGHT)) {
 			disparar = false;
 			posicion.x += spawnPosition;
-			dynamic_cast<Play*>(pJuego->topState())->extras.push_back(new Bala(pJuego, posicion, "Bala", 80.0f, 1, 0, 0));
-				//pJuego->extras.push_back(new Bala(pJuego, posicion, "Bala", 50.0f, 2
+			dynamic_cast<ZonaAccion*>(pJuego->getZona())->getNivel()->nuevaBala(new Bala(pJuego, posicion, "Bala", 80.0f, 1, 0, 0));
 		}
 		else if (pJuego->inputQuery(SDL_SCANCODE_LEFT)) {
 
 			disparar = false;
 			posicion.x -= spawnPosition;
-			dynamic_cast<Play*>(pJuego->topState())->extras.push_back(new Bala(pJuego, posicion, "Bala", 80.0f, -1, 0, 0));
-			//pJuego->extras.push_back(new Bala(pJuego, posicion, "Bala", 50.0f, 4));
 			dynamic_cast<ZonaAccion*>(pJuego->getZona())->getNivel()->nuevaBala(new Bala(pJuego, posicion, "Bala", 80.0f, -1, 0, 0));
 		}
 		else if (pJuego->inputQuery(SDL_SCANCODE_UP)) {
 			disparar = false;
 			posicion.y -= spawnPosition;
-			dynamic_cast<Play*>(pJuego->topState())->extras.push_back(new Bala(pJuego, posicion, "Bala", 80.0f, 0, -1, 0));
-			//pJuego->extras.push_back(new Bala(pJuego, posicion, "Bala", 50.0f, 1));
 			dynamic_cast<ZonaAccion*>(pJuego->getZona())->getNivel()->nuevaBala(new Bala(pJuego, posicion, "Bala", 80.0f, 0, -1, 0));
 		}
 		if(!disparar)Disparar = SDL_AddTimer(cadencia, timerDisparo, this);

@@ -23,11 +23,11 @@ Bala::Bala(Juego* punteroJuego, SDL_Rect spritePar, string objectId, float32 vel
 	//Capa de colision.
 	if (lanzador == 1){
 		fDef.filter.categoryBits = Juego::AT_ENEMIGO;
-		fDef.filter.maskBits = Juego::ESCENARIO || Juego::ENEMIGO || Juego::JUGADOR;
+		fDef.filter.maskBits = Juego::ESCENARIO | Juego::ENEMIGO | Juego::JUGADOR;
 	}
-	else{
+	else if (lanzador == 0){
 		fDef.filter.categoryBits = Juego::AT_JUGADOR;
-		fDef.filter.maskBits = Juego::ESCENARIO || Juego::ENEMIGO || Juego::JUGADOR;
+		fDef.filter.maskBits = Juego::ESCENARIO | Juego::ENEMIGO;
 	}
 
 	fDef.filter.maskBits = Juego::ESCENARIO;

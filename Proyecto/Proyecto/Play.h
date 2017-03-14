@@ -14,7 +14,7 @@ public:
 
 	virtual void update();
 
-	std::vector<Objeto*> extras;
+	//std::vector<Objeto*> extras;
 
 
 private:
@@ -24,11 +24,6 @@ private:
 	std::vector<Objeto*> enemigos;
 	
 	ZonaJuego* zona;
-
-	
-
-
-
 
 };
 
