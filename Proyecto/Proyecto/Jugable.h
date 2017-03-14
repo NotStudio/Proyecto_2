@@ -15,7 +15,6 @@ public:
 
 protected:
 	//Booleanas para el control del movimiento, utilizadas en el movControl;
-	bool dcha, izq, up, down;
 	//Mueve.
 	void move();
 	//Recoge el input de la clase Juego.
@@ -24,7 +23,7 @@ protected:
 	void afinarMov(int vel, int lim);
 	//Acceso inventario
 	//void inventario();
-	
+	bool lel = true;
 
 };
 #endif

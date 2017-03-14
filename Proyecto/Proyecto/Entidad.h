@@ -27,7 +27,10 @@ protected:
 	 //virtual void updateAnim();
 	//para ver si ha sido destruido
 	bool destruido = false;
-	
+	struct Direccion
+	{
+		bool izq = false, der = true, arr = false, aba = false;
+	}Dir;
 public:
 
 

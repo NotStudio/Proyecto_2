@@ -10,3 +10,21 @@ El estudio está conformado actualmente por 8 personas. Para organizarnos y repa
 - Pivotal Tracker: cada persona tiene una tarea activa en todo momento en Pivotal, de modo que siempre sabe cuál es su trabajo para esa semana. Al comenzar la tarea, hay que notificarlo en la aplicación. Así también, al terminar debemos marcarla como terminada. Los demás componentes del grupo han de evaluarla antes de aceptarla.
 
 - Git y GitHub: repositorios en los que se encuentra el proyecto. En el máster en todo momento ha de haber una versión jugable del proyecto, pudiendo existir ramas que estén en desarrollo.
+## Tareas especificas
+### Diseñar una room
+Al diseñar una Room se han de cumplir estas condiciones para que dicha room sea valida.
+- Dos tamaños:
+  - 20x20 (el nombre de la room tiene que ser [nombre sin Espacios]\_Grande.map)
+  - 16x16(el nombre de la room tiene que ser [nombre sin Espacios]\_Peque.map)
+- En no se pueden bloquear los tiles de entrada o de salida, es decir:
+  - en las habitaciones 20x20 no se pueden colocar tiles que colisionen en las posiciones.
+    - (1,9),(2,9),(17,9),(18,9)
+    - (9,1),(9,2),(9,17),(9,18)
+    - (1,10),(2,10),(17,10),(18,10)
+    - (10,1),(10,2),(10,17),(10,18)
+  - en las habitaciones 16x16 no se pueden colocar tiles que colisionen en las posiciones.
+    - (1,7),(2,7),(13,7),(14,7)
+    - (7,1),(7,2),(7,13),(7,14)
+    - (1,8),(2,8),(13,8),(14,8)
+    - (8,1),(8,2),(8,13),(8,14)
+- Las habitaciones se pueden crear en tiled mientras, pero se han de exportar en formato **CSV Y LUEGO SE ELIMINEN LAS COMAS DEL ARCHIVO, PARA HACERLO SE TIENE QUE ABRIR DESDE UN EDITOR DE TEXTO Y REEMPLAZAR LAS COMAS POR UN ESPACIO** 

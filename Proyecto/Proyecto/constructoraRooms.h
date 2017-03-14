@@ -5,17 +5,38 @@
 #include <iostream>
 //Construye habitacion apartir de un texto.
 vector<Tile*> RoomDesdeArchivo(string direccion, b2World * world, int& WID, int& HEI, Puerta & Salida, Puerta * entrada = nullptr) {
-	int MAP_T_WIDTH, MAP_T_HEIGHT;
 	int IniX = 0, IniY = 0;
 	if (entrada!=nullptr)
 	{
+		string Distinguidor = direccion.substr( direccion.find_last_of('_')+1);
 		if (entrada->DirPuerta == Puerta::Oeste) {
+			if (Distinguidor == "Grande.map"&&entrada->zonaPuerta.w == TILE_WIDTH * 16) {
+				IniX = entrada->posicion.x + TILE_WIDTH;
+				IniY = entrada->zonaPuerta.y - 2*TILE_HEIGHT;
+			}
+			else if (Distinguidor == "Peque.map"&&entrada->zonaPuerta.w > TILE_WIDTH * 16) {
+				IniX = entrada->posicion.x + TILE_WIDTH;
+				IniY = entrada->zonaPuerta.y + 2 * TILE_HEIGHT;
+			}
+			else{
+				
+				IniY = entrada->zonaPuerta.y;
+			}
 			IniX = entrada->posicion.x + TILE_WIDTH;
-			IniY = entrada->zonaPuerta.y;
 		}
-		if (entrada->DirPuerta == Puerta::Sur) {
-			IniX = entrada->zonaPuerta.x;
-			IniY = entrada->posicion.y+TILE_HEIGHT;
+		else if (entrada->DirPuerta == Puerta::Sur) {
+			if (Distinguidor == "Grande.map"&&entrada->zonaPuerta.w == TILE_WIDTH * 16) {
+				IniX = entrada->zonaPuerta.x - 2 * TILE_WIDTH;
+				IniY = entrada->posicion.y + TILE_HEIGHT;
+			}
+			else if (Distinguidor == "Peque.map"&&entrada->zonaPuerta.w > TILE_WIDTH * 16) {
+				IniX = entrada->zonaPuerta.x + 2*TILE_WIDTH;
+				IniY = entrada->posicion.y + TILE_HEIGHT;
+			}
+			else {
+				IniX = entrada->zonaPuerta.x;
+				IniY = entrada->posicion.y+TILE_HEIGHT;
+			}
 		}
 	}
 	vector<Tile*> Tiles;
@@ -62,6 +83,12 @@ vector<Tile*> RoomDesdeArchivo(string direccion, b2World * world, int& WID, int&
 								cout << "lel";
 							}
 							else if (entrada->posicion.x - TILE_HEIGHT == x)
+							{
+								Tiles.push_back(new Tile(x, y, S1, world));
+								vis = true;
+								cout << "lel";
+							}
+							else if (entrada->posicion.x - 2*TILE_HEIGHT == x)
 							{
 								Tiles.push_back(new Tile(x, y, ISE, world));
 								vis = true;

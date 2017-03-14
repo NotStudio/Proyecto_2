@@ -59,7 +59,7 @@ Room::Room(Juego * pJ,Puerta sal, Puerta * entrada,int x, int y) :pJuego(pJ)
 	string a = "tilesheet";
 	string b = "zon1";
 	textTiles = new Tilesheet(24, pJuego->getTextura(a,b));
-	a = (entrada==nullptr)? "../Material/tutorial1.map": "../Material/untitled.map";
+	a = (entrada==nullptr||entrada->zonaPuerta.w==1024)? "../Material/Maps/mapa_Grande.map": "../Material/Maps/mapa_Peque.map";
 	Tiles = new vector<Tile*>(RoomDesdeArchivo(a,pJuego->getWorld(),ANCHO_NIVEL,ALTO_NIVEL,sal,entrada));
 	//setTiles(DirM, wardo);
 	Salida = sal;

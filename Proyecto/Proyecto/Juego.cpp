@@ -25,6 +25,8 @@ Juego::Juego(b2World* mundo) : error(false), gameOver(false), exit(false), score
 	//Añadimos al vector del nombre de las texturas los nombres de las imágenes. Tienen que tener un orden concreto.
 	
 	nombreTexturas.emplace_back("../Material/Tostadora_idle.png");
+	nombreTexturas.emplace_back("../Material/Tostadora_walk.png");
+	nombreTexturas.emplace_back("../Material/Tostadora_atqu.png");
 	nombreTexturas.emplace_back("../Material/Gato_idle.png");
 	nombreTexturas.emplace_back("../Material/Wall_idle.png");
 	nombreTexturas.emplace_back("../Material/Background_idle.jpg");

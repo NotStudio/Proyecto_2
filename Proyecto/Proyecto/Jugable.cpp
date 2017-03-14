@@ -17,7 +17,6 @@ Jugable::Jugable(Juego* punteroJuego, SDL_Rect spritePar, string objectId):Perso
 
 
 
-	dcha = izq = up = down = false;
 }
 
 
@@ -39,50 +38,55 @@ void Jugable::movControl(){
 
 
 	if (pJuego->inputQuery(SDL_SCANCODE_A)) {
-		izq = true;
+		Dir.izq = true;
 		if (!(v.x < -lim))
 			vel.x -= ac;
 	}
 	else
-		izq = false;
+		Dir.izq = false;
 
 	if (pJuego->inputQuery(SDL_SCANCODE_D)) {
 		if (!(v.x > lim)) {
 			vel.x += ac;
 		}
-		dcha = true;
+		Dir.der = true;
 
 	}
 	else
-		dcha = false;
+		Dir.der = false;
 
 	if (pJuego->inputQuery(SDL_SCANCODE_W)) {
 		if (!(v.y < -lim))
 			vel.y -= ac;
-		up = true;
+		Dir.arr= true;
 
 	}
 	else
-		up = false;
+		Dir.arr = false;
 
 	if (pJuego->inputQuery(SDL_SCANCODE_S)) {
 		if (!(v.y > lim))
 			vel.y += ac;
-		down = true;
+		Dir.aba = true;
 
 	}
 	else
-		down = false;
-
+		Dir.aba = false;
 	//Para que frene solo y para controlar que no se salga.
-	afinarMov(ac, lim);
-
+	if (!lel) {
+		if (Dir.aba || Dir.arr || Dir.izq || Dir.der) {
+			currentAnim = animaciones[1];
+		}
+		else
+			currentAnim = animaciones[0];
+	}
+		afinarMov(ac, lim);
 }
 
 void Jugable::afinarMov(int ac, int lim) {
 
 	//Para que pare solo.
-	if (!dcha && !izq) {
+	if (!Dir.der && !Dir.izq) {
 		if (vel.x != 0) {
 			if (vel.x > 0)
 				vel.x -= ac;
@@ -90,7 +94,7 @@ void Jugable::afinarMov(int ac, int lim) {
 				vel.x += ac;
 		}
 	}
-	if (!up && !down) {
+	if (!Dir.arr && !Dir.aba) {
 		if (vel.y != 0) {
 			if (vel.y > 0)
 				vel.y -= ac;

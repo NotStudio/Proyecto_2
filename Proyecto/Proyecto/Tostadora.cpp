@@ -7,6 +7,13 @@
 class Room;
 Tostadora::Tostadora(Juego* punteroJuego, SDL_Rect spritePar):Jugable(punteroJuego, spritePar, "Tostadora")
 {	
+	currentAnim.setNumFrames(30);
+	animaciones.push_back(currentAnim);
+	Juego::Animacion a;
+	a.loadTextura(pJuego->getTextura(id, "walk"),30);
+	animaciones.push_back(a);
+	a.loadTextura(pJuego->getTextura(id, "atqu"), 30);
+	animaciones.push_back(a);
 	stats.velMov = 1000;
 	stats.vida = 4;
 }
@@ -19,7 +26,7 @@ Tostadora::~Tostadora()
 }
 
 void Tostadora::onColisionEnter(Objeto* contactObject) {
-
+	currentAnim.ActualizarFrame();
 	std::cout << "colision";
 	stats.vida--;
 
@@ -53,20 +60,20 @@ void Tostadora::disparo(){
 			posicion.x -= spawnPosition;
 			dynamic_cast<Play*>(pJuego->topState())->extras.push_back(new Bala(pJuego, posicion, "Bala", 80.0f, -1, 0, 0));
 			//pJuego->extras.push_back(new Bala(pJuego, posicion, "Bala", 50.0f, 4));
-			dynamic_cast<ZonaAccion*>(pJuego->getZona())->getNivel()->nuevaBala(new Bala(pJuego, posicion, "Bala", 80.0f, -1, 0, 0));
 		}
 		else if (pJuego->inputQuery(SDL_SCANCODE_UP)) {
 			disparar = false;
 			posicion.y -= spawnPosition;
 			dynamic_cast<Play*>(pJuego->topState())->extras.push_back(new Bala(pJuego, posicion, "Bala", 80.0f, 0, -1, 0));
-			//pJuego->extras.push_back(new Bala(pJuego, posicion, "Bala", 50.0f, 1));
-			dynamic_cast<ZonaAccion*>(pJuego->getZona())->getNivel()->nuevaBala(new Bala(pJuego, posicion, "Bala", 80.0f, 0, -1, 0));
+			//pJuego->extras.push_back(new Bala(pJuego, posicion, "Bala", 50.0f, 1
 		}
 		if(!disparar)Disparar = SDL_AddTimer(cadencia, timerDisparo, this);
 	}
-
+	if (!disparar)currentAnim = animaciones[2];
+	lel = !disparar;
 }
 void Tostadora::update(){
 	disparo();
+	currentAnim.ActualizarFrame();
 	Jugable::update();
 }
