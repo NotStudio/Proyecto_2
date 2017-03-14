@@ -5,7 +5,8 @@ Entidad::Entidad(Juego* punteroJuego, SDL_Rect spritePar, string objectId) : pJu
 {
 	id = objectId;
 	//Inicializacion de la animacion.
-	currentAnim.loadTextura(pJuego->getTextura(id, "idle"));
+	animaciones = pJuego->getAnimaciones(id);
+	currentAnim = animaciones[0];
 	//Asignacion de los parametros de posicion.
 	pos.x = spritePar.x;
 	pos.y = spritePar.y;
@@ -29,7 +30,7 @@ Entidad::~Entidad()
 
 void Entidad::draw() {
 	//Dibujamos el objeto.
-	currentAnim.textura->draw(pJuego->getRender(), *getRect(), currentAnim.currentRect(),pJuego->getCamera(),Dir.izq);
+	currentAnim->textura->draw(pJuego->getRender(), *getRect(), currentAnim->currentRect(),pJuego->getCamera(),Dir.izq);
 	
 }
 

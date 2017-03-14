@@ -281,12 +281,6 @@ void Juego::run() {
 			lastUpdate = SDL_GetTicks();
 			fpsCount++;
 		}
-		if (contSeg >= lasssst + 1000) {
-			//std::cout << fpsCount << " ";
-			fpsCount = 0;
-			lasssst = contSeg;
-			contSeg = 0;
-		}
 		world->Step(1.0f / 60.0f, 6, 2);
 		draw();
 		handle_event();

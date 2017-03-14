@@ -12,6 +12,10 @@ public:
 	void virtual update();
 
 	Personaje::atributos getStats() { return stats; };
+	virtual void onColisionEnter(Objeto* obj = nullptr);
+	void quitarInmunidad(){
+		inmune = false;
+	}
 
 protected:
 	//Booleanas para el control del movimiento, utilizadas en el movControl;
@@ -24,6 +28,8 @@ protected:
 	//Acceso inventario
 	//void inventario();
 	bool lel = true;
+	bool inmune = false;
+	SDL_TimerID timerInmune;
 
 };
 #endif

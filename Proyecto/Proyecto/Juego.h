@@ -129,9 +129,17 @@ public:
 		ESCENARIO = 0x0020
 	};
 	
-	unordered_map<string, TexturasSDL*>* getAnimaciones(const string & entity) {
+	vector<Animacion*>getAnimaciones(const string & entity) {
+		vector<Animacion*> vec;
 		try {
-			return &mapTexturas.at(entity);
+			int j = 0;
+			for (auto i = mapTexturas.at(entity).begin(); i != mapTexturas.at(entity).end(); i++)
+			{
+				vec.push_back(new Animacion());
+				vec[j]->loadTextura(i->second);
+				j++;
+			}
+			return vec;
 		}
 		catch (out_of_range) {
 			std::cout << "Error al cargar textura";

@@ -1,5 +1,5 @@
 #include "Jugable.h"
-
+#include "Enemigo.h"
 
 
 Jugable::Jugable(Juego* punteroJuego, SDL_Rect spritePar, string objectId):Personaje(punteroJuego, spritePar, objectId)
@@ -10,23 +10,32 @@ Jugable::Jugable(Juego* punteroJuego, SDL_Rect spritePar, string objectId):Perso
 	fDef.filter.categoryBits = Juego::JUGADOR;
 	fDef.filter.maskBits = Juego::ENEMIGO | Juego::AT_ENEMIGO | Juego::ITEM | Juego::ESCENARIO;
 	body->CreateFixture(&fDef);
-	
-
-
-
-
-
-
 }
 
 
 Jugable::~Jugable()
 {
+	SDL_RemoveTimer(timerInmune);
 	delete shape;
 	shape = nullptr;
 }
-
-
+Uint32 desactivarInmunidad(Uint32 intervalo, void* param) {
+	static_cast<Jugable*>(param)->quitarInmunidad();
+	cout << "inmunidad quitada\n";
+	return 0;
+}
+void Jugable::onColisionEnter(Objeto * obj){
+	std::cout << "colision\n";
+	if (dynamic_cast<Enemigo*>(obj)){
+		if (!inmune){
+			inmune = true;
+			cout << "inmunidad activada\n";
+			stats.vida--;
+			cout << stats.vida << " vidas tienes\n";
+			timerInmune = SDL_AddTimer(350, desactivarInmunidad, this);
+		}
+	}
+}
 
 void Jugable::movControl(){
 

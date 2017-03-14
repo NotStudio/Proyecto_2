@@ -7,13 +7,10 @@
 class Room;
 Tostadora::Tostadora(Juego* punteroJuego, SDL_Rect spritePar):Jugable(punteroJuego, spritePar, "Tostadora")
 {	
-	currentAnim.setNumFrames(30);
-	animaciones.push_back(currentAnim);
-	Juego::Animacion a;
-	a.loadTextura(pJuego->getTextura(id, "walk"),30);
-	animaciones.push_back(a);
-	a.loadTextura(pJuego->getTextura(id, "atqu"), 30);
-	animaciones.push_back(a);
+	for (size_t i = 0; i < animaciones.size(); i++)
+	{
+		animaciones[i]->setNumFrames(30);
+	}
 	stats.velMov = 1000;
 	stats.vida = 4;
 }
@@ -23,13 +20,6 @@ Tostadora::~Tostadora()
 {
 	delete shape;
 	shape = nullptr;
-}
-
-void Tostadora::onColisionEnter(Objeto* contactObject) {
-	currentAnim.ActualizarFrame();
-	std::cout << "colision";
-	stats.vida--;
-
 }
 Uint32 timerDisparo(Uint32 intervalo, void* param) {
 	static_cast<Tostadora*>(param)->reactivarDisparo();
@@ -46,25 +36,25 @@ void Tostadora::disparo(){
 		if (pJuego->inputQuery(SDL_SCANCODE_DOWN)) {
 				disparar = false;
 				posicion.y += spawnPosition;
-				dynamic_cast<Play*>(pJuego->topState())->extras.push_back(new Bala(pJuego, posicion, "Bala", 80.0f, 0, 1, 0));
+				dynamic_cast<ZonaAccion*>(pJuego->getZona())->getNivel()->nuevaBala(new Bala(pJuego, posicion, "Bala", 80.0f, 0, 1, 0));
 		}
 		else if (pJuego->inputQuery(SDL_SCANCODE_RIGHT)) {
 			disparar = false;
 			posicion.x += spawnPosition;
-			dynamic_cast<Play*>(pJuego->topState())->extras.push_back(new Bala(pJuego, posicion, "Bala", 80.0f, 1, 0, 0));
+			dynamic_cast<ZonaAccion*>(pJuego->getZona())->getNivel()->nuevaBala(new Bala(pJuego, posicion, "Bala", 80.0f, 1, 0, 0));
 				//pJuego->extras.push_back(new Bala(pJuego, posicion, "Bala", 50.0f, 2
 		}
 		else if (pJuego->inputQuery(SDL_SCANCODE_LEFT)) {
 
 			disparar = false;
 			posicion.x -= spawnPosition;
-			dynamic_cast<Play*>(pJuego->topState())->extras.push_back(new Bala(pJuego, posicion, "Bala", 80.0f, -1, 0, 0));
+			dynamic_cast<ZonaAccion*>(pJuego->getZona())->getNivel()->nuevaBala(new Bala(pJuego, posicion, "Bala", 80.0f, -1, 0, 0));
 			//pJuego->extras.push_back(new Bala(pJuego, posicion, "Bala", 50.0f, 4));
 		}
 		else if (pJuego->inputQuery(SDL_SCANCODE_UP)) {
 			disparar = false;
 			posicion.y -= spawnPosition;
-			dynamic_cast<Play*>(pJuego->topState())->extras.push_back(new Bala(pJuego, posicion, "Bala", 80.0f, 0, -1, 0));
+			dynamic_cast<ZonaAccion*>(pJuego->getZona())->getNivel()->nuevaBala(new Bala(pJuego, posicion, "Bala", 80.0f, 0, -1, 0));
 			//pJuego->extras.push_back(new Bala(pJuego, posicion, "Bala", 50.0f, 1
 		}
 		if(!disparar)Disparar = SDL_AddTimer(cadencia, timerDisparo, this);
@@ -74,6 +64,6 @@ void Tostadora::disparo(){
 }
 void Tostadora::update(){
 	disparo();
-	currentAnim.ActualizarFrame();
+	currentAnim->ActualizarFrame();
 	Jugable::update();
 }

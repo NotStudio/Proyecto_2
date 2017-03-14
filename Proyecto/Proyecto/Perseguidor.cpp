@@ -43,15 +43,6 @@ void Perseguidor::update() {
 void Perseguidor::onColisionEnter(Objeto* contactObject) {
 
 	Enemigo::onColisionEnter(contactObject);
-
-	Jugable * k = dynamic_cast<Jugable *>(contactObject);
-	if (k != nullptr)
-	{
-		cout << "Colision\n";
-		k->restaVidas(stats.daño);
-		cout << "Vidas Jugador: " << k->getVidas() << '\n';
-	
-	}
 }
 
 Perseguidor::~Perseguidor()

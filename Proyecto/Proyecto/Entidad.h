@@ -19,8 +19,8 @@ protected:
 	b2Body* body;
 	b2FixtureDef fDef;
 	//Struct de animacion.
-	std::vector<Juego::Animacion> animaciones;
-	Juego::Animacion currentAnim;
+	std::vector<Juego::Animacion*> animaciones;
+	Juego::Animacion* currentAnim;
 	//Nombre entidad
 	string id;
 	//Gestor de animaciones.

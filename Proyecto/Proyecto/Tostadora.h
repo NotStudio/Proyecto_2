@@ -5,13 +5,8 @@ class Tostadora :
 	public Jugable
 {
 protected:
-	SDL_TimerCallback akak(Uint32 intervalo, void * param){
-		
-		return SDL_TimerCallback(intervalo);
-	}
-	Uint32 contador = 0;
 	SDL_TimerID Disparar;
-	uint32 cadencia = 500;
+	Uint32 cadencia = 500;
 	bool disparar=true;
 public:
 	void reactivarDisparo(){
@@ -19,8 +14,6 @@ public:
 	}
 	Tostadora(Juego* punteroJuego, SDL_Rect spritePar);
 	virtual ~Tostadora();
-
-	virtual void onColisionEnter(Objeto* contactObject);
 	void disparo();
 
 	virtual void update();
