@@ -1,16 +1,14 @@
 ﻿#include "EnemigoBomba.h"
 #include <math.h>
-
-EnemigoBomba::EnemigoBomba(Juego* punteroJuego, SDL_Rect a) : Enemigo(punteroJuego, a, "Gato",300)
+#include "Jugable.h"
+#include "Bala.h"
+EnemigoBomba::EnemigoBomba(Juego* punteroJuego, SDL_Rect a) : Enemigo(punteroJuego, a, "Bomba",1000)
 {
-
 	enemyStats.daño = 100;
 	enemyStats.velAtq = 0;
 	enemyStats.velMov = 1;
 	enemyStats.vida = 10;
-
 	visible = true;
-
 }
 
 
@@ -20,7 +18,13 @@ EnemigoBomba::~EnemigoBomba()
 
 
 void EnemigoBomba::onColisionEnter(Objeto* contactObject) {
-	muerte();
+	if (contactObject != nullptr)
+		if (dynamic_cast<Jugable*>(contactObject))
+			muerte();
+		else if (dynamic_cast<Bala*>(contactObject)) {
+			enemyStats.vida--;
+			(enemyStats.vida <= 0)?muerte():nullptr;
+		}
 }
 
 
@@ -99,7 +103,7 @@ void EnemigoBomba::crecer(){
 
 
 void EnemigoBomba::muerte(){
-	visible = false;
+	destruido = true;
 }
 
 
@@ -107,16 +111,10 @@ void EnemigoBomba::muerte(){
 
 void EnemigoBomba::update(){
 
-	if (visible){
+	if (!destruido){
 		Entidad::update();
 		move();
 		crecer();
 	}
 
-}
-
-
-void EnemigoBomba::draw(){
-	if (visible)
-		Entidad::draw();
 }

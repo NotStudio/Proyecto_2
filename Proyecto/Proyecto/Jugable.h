@@ -12,19 +12,24 @@ public:
 	void virtual update();
 
 	Personaje::atributos getStats() { return stats; };
+	virtual void onColisionEnter(Objeto* obj = nullptr);
+	void quitarInmunidad(){
+		inmune = false;
+	}
 
 protected:
 	//Booleanas para el control del movimiento, utilizadas en el movControl;
-	bool dcha, izq, up, down;
 	//Mueve.
 	void move();
 	//Recoge el input de la clase Juego.
 	void movControl();
 	//Controla que pare suave.
-	void afinarMov(int vel, int lim);
+	void afinarMov(int const & vel, int const & lim,Direccion const &);
 	//Acceso inventario
 	//void inventario();
-	
+	bool lel = true;
+	bool inmune = false;
+	SDL_TimerID timerInmune;
 
 };
 #endif

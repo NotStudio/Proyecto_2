@@ -18,8 +18,9 @@ public:
 	bool load(SDL_Renderer* pRenderer, std::string const& nombreArch);
 	size_t getAncho() { return tamTextura.ancho; }
 	size_t getAlto() { return tamTextura.alto; }
+	string getNombreArchivo();
 	void draw(SDL_Renderer* pRenderer, SDL_Rect const& rect, SDL_Rect* const& frame, double angle = 0.0, SDL_Point* center = NULL, SDL_RendererFlip flip = SDL_FLIP_NONE);
-	void draw(SDL_Renderer* pRenderer, SDL_Rect const& rect, SDL_Rect* const& frame, Camara * Camera);
+	void draw(SDL_Renderer* pRenderer, SDL_Rect const& rect, SDL_Rect* const& frame, Camara * Camera, bool FlipHorinzontal = false);
 
 private:
 

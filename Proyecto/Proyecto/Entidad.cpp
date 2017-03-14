@@ -5,18 +5,14 @@ Entidad::Entidad(Juego* punteroJuego, SDL_Rect spritePar, string objectId) : pJu
 {
 	id = objectId;
 	//Inicializacion de la animacion.
-	currentAnim.numFrames = 0;
-	currentAnim.textura = pJuego->getTextura(id, "idle");
-	currentAnim.rect = nullptr;
+	animaciones = pJuego->getAnimaciones(id);
+	currentAnim = animaciones[0];
 	//Asignacion de los parametros de posicion.
 	pos.x = spritePar.x;
 	pos.y = spritePar.y;
 	vel.y = vel.x = 0;
 	//Asignacion de los parametros del SDL_Rect sprite, propio de la clase.
-	sprite = new SDL_Rect(spritePar);
-	
-	
-	 
+	sprite = new SDL_Rect(spritePar); 
 }
 
 
@@ -26,12 +22,17 @@ Entidad::~Entidad()
 	delete sprite;
 	pJuego->getWorld()->DestroyBody(body);
 	//pJuego = nullptr;
+	for (size_t i = 0; i < animaciones.size(); i++)
+	{
+		delete animaciones[i];
+		animaciones[i] = nullptr;
+	}
 }
 
 
 void Entidad::draw() {
 	//Dibujamos el objeto.
-	currentAnim.textura->draw(pJuego->getRender(), *getRect(), currentAnim.rect,pJuego->getCamera());
+	currentAnim->textura->draw(pJuego->getRender(), *getRect(), currentAnim->currentRect(),pJuego->getCamera(),(estadoEntidad.mirando==NorteOeste|| estadoEntidad.mirando == Oeste|| estadoEntidad.mirando == SurOeste));
 	
 }
 

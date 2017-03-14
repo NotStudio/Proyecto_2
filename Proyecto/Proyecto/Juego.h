@@ -90,9 +90,35 @@ public:
 	
 	struct Animacion
 	{
-		SDL_Rect* rect;
+		SDL_Rect rect;
 		TexturasSDL* textura;
 		int numFrames;
+		int frameActual;
+		Animacion() { rect = { 0,0,0,0 }; textura = nullptr; frameActual = 0; numFrames = 0; };
+		void loadTextura(TexturasSDL*text, int nFrames = 1) {
+			textura = text;
+			numFrames = nFrames;
+			rect = { 0,0,textura->getAncho() / numFrames,textura->getAlto() };
+		}
+		void setNumFrames(int nFrames) {
+			numFrames = nFrames;
+			rect.w = textura->getAncho() / numFrames;
+		}
+		SDL_Rect* currentRect(){
+			return &rect;
+		}
+		void ActualizarFrame() {
+			frameActual++;
+			if (frameActual>=numFrames)
+			{
+					frameActual = 0;
+			}
+			rect.x = frameActual*rect.w;
+		}
+		Animacion operator=(Animacion const a){
+			this->textura = a.textura;
+			return *this;
+		}
 	};
 	enum capaColisiones{
 		ENEMIGO = 0x0001,
@@ -102,7 +128,23 @@ public:
 		ITEM = 0x0010,
 		ESCENARIO = 0x0020
 	};
-
+	
+	vector<Animacion*>getAnimaciones(const string & entity) {
+		vector<Animacion*> vec;
+		try {
+			int j = 0;
+			for (auto i = mapTexturas.at(entity).begin(); i != mapTexturas.at(entity).end(); i++)
+			{
+				vec.push_back(new Animacion());
+				vec[j]->loadTextura(i->second);
+				j++;
+			}
+			return vec;
+		}
+		catch (out_of_range) {
+			std::cout << "Error al cargar textura";
+		}
+	}
 	TexturasSDL* getTextura(const string &entity, const string &anim);
 
 	SDL_Renderer* getRender() const;

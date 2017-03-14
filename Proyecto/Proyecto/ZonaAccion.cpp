@@ -8,9 +8,11 @@ ZonaAccion::ZonaAccion(Juego* punteroJuego): pJuego(punteroJuego)
 	Puerta p;
 	p.DirPuerta = Puerta::Direcciones::Oeste;
 	niveles.push_back(new Room(pJuego, p));
-	p.DirPuerta = Puerta::Direcciones::Sur;
+	p.DirPuerta = Puerta::Direcciones::Oeste;
 	niveles.push_back(new Room(pJuego,p,&niveles[0]->getSalida()));
+	p.DirPuerta = Puerta::Direcciones::Sur;
 	niveles.push_back(new Room(pJuego, p, &niveles[1]->getSalida()));
+	niveles.push_back(new Room(pJuego, p, &niveles[2]->getSalida()));
 	//niveles.push_back(new Room(pJuego, niveles.at(0)->getArea().x + niveles.at(0)->getArea().w, niveles.at(0)->getArea().y, Direcciones{ false,false, false,true }));
 	nivelActual = niveles.at(0);
 }
@@ -27,11 +29,13 @@ ZonaAccion::~ZonaAccion()
 }
 
 void ZonaAccion::draw(){
+	/*
 	for (size_t i = 0; i < niveles.size(); i++)
 	{
 		niveles[i]->render();
 	}
-	//nivelActual->render();
+	*/
+	nivelActual->render();
 
 }
 
@@ -39,7 +43,6 @@ void ZonaAccion::update(){
 	//Sin terminar. LLamar solo a setNivelActual cuando se cambie de nivel, no todo el rato.
 	setNivelActual();
 	nivelActual->update();
-	
 }
 
 void ZonaAccion::setNivelActual(){

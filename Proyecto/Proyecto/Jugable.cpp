@@ -1,88 +1,77 @@
 #include "Jugable.h"
-
+#include "Enemigo.h"
 
 
 Jugable::Jugable(Juego* punteroJuego, SDL_Rect spritePar, string objectId):Personaje(punteroJuego, spritePar, objectId)
 {
-
-
 	//Capa de colision.
 	fDef.filter.categoryBits = Juego::JUGADOR;
 	fDef.filter.maskBits = Juego::ENEMIGO | Juego::AT_ENEMIGO | Juego::ITEM | Juego::ESCENARIO;
 	body->CreateFixture(&fDef);
-	
-
-
-
-
-
-
-	dcha = izq = up = down = false;
 }
 
 
 Jugable::~Jugable()
 {
+	SDL_RemoveTimer(timerInmune);
 	delete shape;
 	shape = nullptr;
 }
-
-
+Uint32 desactivarInmunidad(Uint32 intervalo, void* param) {
+	static_cast<Jugable*>(param)->quitarInmunidad();
+	cout << "inmunidad quitada\n";
+	return 0;
+}
+void Jugable::onColisionEnter(Objeto * obj){
+	std::cout << "colision\n";
+	if (dynamic_cast<Enemigo*>(obj)){
+		if (!inmune){
+			inmune = true;
+			cout << "inmunidad activada\n";
+			stats.vida--;
+			cout << stats.vida << " vidas tienes\n";
+			timerInmune = SDL_AddTimer(350, desactivarInmunidad, this);
+		}
+	}
+}
 
 void Jugable::movControl(){
 
-
+	Direccion aux;
 	int lim = stats.velMov;
 	int ac = 0.5 * lim;
-
 	b2Vec2 v = body->GetLinearVelocity();
-
-
+	
 	if (pJuego->inputQuery(SDL_SCANCODE_A)) {
-		izq = true;
+		aux = Oeste;
 		if (!(v.x < -lim))
 			vel.x -= ac;
-	}
-	else
-		izq = false;
-
-	if (pJuego->inputQuery(SDL_SCANCODE_D)) {
+	}else if (pJuego->inputQuery(SDL_SCANCODE_D)) {
+		aux = Este;
 		if (!(v.x > lim)) {
 			vel.x += ac;
 		}
-		dcha = true;
-
 	}
 	else
-		dcha = false;
-
+		aux = SinDir;
 	if (pJuego->inputQuery(SDL_SCANCODE_W)) {
+		aux = (aux==Este)?NorteEste:(aux==Oeste)?NorteOeste:Norte;
 		if (!(v.y < -lim))
 			vel.y -= ac;
-		up = true;
-
 	}
-	else
-		up = false;
-
-	if (pJuego->inputQuery(SDL_SCANCODE_S)) {
+	else if (pJuego->inputQuery(SDL_SCANCODE_S)) {
+		aux = (aux == Este) ? SurEste : (aux == Oeste) ? SurOeste : Sur;
 		if (!(v.y > lim))
 			vel.y += ac;
-		down = true;
-
 	}
-	else
-		down = false;
-
 	//Para que frene solo y para controlar que no se salga.
-	afinarMov(ac, lim);
-
+	afinarMov(ac, lim, aux);
 }
 
-void Jugable::afinarMov(int ac, int lim) {
+void Jugable::afinarMov(int const & ac, int const & lim,Direccion const & aux) {
 
 	//Para que pare solo.
-	if (!dcha && !izq) {
+	if (aux == Norte || aux == Sur || aux == SinDir) {
 		if (vel.x != 0) {
 			if (vel.x > 0)
 				vel.x -= ac;
@@ -90,7 +79,8 @@ void Jugable::afinarMov(int ac, int lim) {
 				vel.x += ac;
 		}
 	}
-	if (!up && !down) {
+
+	if (aux == Este || aux == Oeste || aux == SinDir) {
 		if (vel.y != 0) {
 			if (vel.y > 0)
 				vel.y -= ac;
@@ -111,9 +101,15 @@ void Jugable::afinarMov(int ac, int lim) {
 		else
 			vel.y = -lim;
 	}
-
-
-
+	if (estadoEntidad.animacionActual != NoAnim) {
+		if (estadoEntidad.animacionActual !=Ataque)
+		{
+		 (aux != estadoEntidad.mirando&&aux != SinDir) ? estadoEntidad.mirando = aux : aux;
+		}
+		EstadoAnimacion aux1;
+		(aux != SinDir) ? aux1 = Walk : aux1 = Idle;
+		(aux1 != estadoEntidad.animacionActual) ? estadoEntidad.animacionActual = aux1 : aux1;
+	}
 }
 
 void Jugable::move() {
@@ -128,5 +124,4 @@ void Jugable::move() {
 void Jugable::update() {
 	move();
 	Personaje::update();
-
 }

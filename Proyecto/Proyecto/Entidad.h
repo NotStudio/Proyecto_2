@@ -19,18 +19,28 @@ protected:
 	b2Body* body;
 	b2FixtureDef fDef;
 	//Struct de animacion.
-	std::vector<Juego::Animacion> animaciones;
-	Juego::Animacion currentAnim;
+	std::vector<Juego::Animacion*> animaciones;
+	Juego::Animacion* currentAnim;
 	//Nombre entidad
 	string id;
 	//Gestor de animaciones.
 	 //virtual void updateAnim();
 	//para ver si ha sido destruido
 	bool destruido = false;
-	
+	enum Direccion
+	{
+		Norte, Este, Sur, Oeste, NorteEste,NorteOeste,SurEste,SurOeste,SinDir
+	};
+	enum EstadoAnimacion
+	{
+		Idle, Walk, Ataque,NoAnim
+	};
+	struct EntidadInfo
+	{
+		Direccion mirando=Este;
+		EstadoAnimacion animacionActual = Idle;
+	}estadoEntidad;
 public:
-
-
 	Entidad(Juego* punteroJuego, SDL_Rect spritePar , string objectId);
 
 	virtual bool getdestruido() { return destruido; };
