@@ -106,7 +106,7 @@ int Room::getTileOcupable()
 {
 	srand(SDL_GetTicks());	
 	int k = rand()%Tiles->size();
-	while (Tiles->at(k)->getType()<11)
+	while (Tiles->at(k)->getType()>11)
 	{
 		k = rand() % Tiles->size();
 	}

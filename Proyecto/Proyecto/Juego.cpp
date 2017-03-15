@@ -222,6 +222,7 @@ bool Juego::initSDL() {
 		else {
 			//Get window surface:
 			pRenderer = SDL_CreateRenderer(pWindow, -1, SDL_RENDERER_ACCELERATED);
+			//SDL_SetWindowFullscreen(pWindow, SDL_WINDOW_FULLSCREEN);
 			SDL_SetRenderDrawColor(pRenderer, 100, 126, 97, 255); //Set background color to black 
 			if (pRenderer == nullptr) {
 				cout << "Renderer could not be created! \nSDL_Error: " << SDL_GetError() << '\n';
