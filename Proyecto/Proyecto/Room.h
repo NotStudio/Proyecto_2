@@ -45,10 +45,6 @@ public:
 		return Salida;
 	}
 	//para saber las puertas donde estan
-	Room * getRoomNorte() { return Norte; }
-	Room * getRoomSur() { return Sur; }
-	Room * getRoomEste() { return Este; }
-	Room * getRoomOeste() { return Oeste; }
 	SDL_Rect getArea() {
 		return *area;
 	}

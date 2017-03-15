@@ -275,5 +275,8 @@
     <ClInclude Include="Inanimado.h">
       <Filter>Header Files\Objetos</Filter>
     </ClInclude>
+    <ClInclude Include="InanimadoInfo.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

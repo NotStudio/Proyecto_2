@@ -102,6 +102,7 @@ bool Room::setTiles(string Dirm,b2World * wardo) {
 	int y = 0;
 	return true;
 }
+
 int Room::getTileOcupable()
 {
 	srand(SDL_GetTicks());	

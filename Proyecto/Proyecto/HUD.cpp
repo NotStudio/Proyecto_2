@@ -5,13 +5,10 @@
 HUD::HUD(Juego* punteroJuego, SDL_Rect spritePar, string objectId, string objectAnim): pjuego(punteroJuego)
 {
 	id = objectId;
-	anim = objectAnim;// Para las vidas esto tiene que ser: "Cuatro", solo al principio.
-
+	anim = objectAnim;// Para las vidas esto tiene que ser: "Cuatro", solo al principio
 	animacion.loadTextura(pjuego->getTextura(id, anim));
 	// No se si el nombre este tiene que tener longitud 4, 
 	//porque en juego initMedia() se hace substr de una cadena de 4 caracteres.
-
-
 	sprite = new SDL_Rect(spritePar);
 }
 
@@ -50,5 +47,4 @@ void HUD::draw(Objeto* personaje){
 		animacion.textura->draw(pjuego->getRender(), *getRect(), animacion.currentRect(), 90);
 		break;
 	}
-
 }

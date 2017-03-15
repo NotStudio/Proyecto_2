@@ -14,14 +14,14 @@
 class ZonaJuego;
 class EstadoJuego;
 using namespace std;
-
-
 class Juego
 {
 	
 	int score;
 
 	stack<EstadoJuego*> estados;
+
+	unordered_map<string, Fuente*> fuentes;
 
 	void initMedia();
 
@@ -49,6 +49,7 @@ class Juego
 
 	SDL_Renderer* pRenderer;
 	vector<string> nombreTexturas;
+	vector<string> ubicacionTipografias;
 
 	struct Ventana { //Struct que contiene el tamaño y el color de la ventana.
 		int ancho;
@@ -130,7 +131,15 @@ public:
 		ESCENARIO_NOCOL = 0x0040
 
 	};
-	
+	Fuente* getTipografia(const string & id) {
+		try {
+			return fuentes.at(id);
+		}
+		catch (out_of_range) {
+			cout << "Error al cargar la tipografia, tome tipografia por defecto\n";
+			return fuentes.at(fuentes.begin()->first);
+		}
+	}
 	vector<Animacion*>getAnimaciones(const string & entity) {
 		vector<Animacion*> vec;
 		try {

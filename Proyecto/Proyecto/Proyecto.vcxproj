@@ -65,6 +65,7 @@
     <ClInclude Include="HUD.h" />
     <ClInclude Include="HUDbase.h" />
     <ClInclude Include="Inanimado.h" />
+    <ClInclude Include="InanimadoInfo.h" />
     <ClInclude Include="Item.h" />
     <ClInclude Include="Juego.h" />
     <ClInclude Include="Jugable.h" />

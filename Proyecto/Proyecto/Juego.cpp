@@ -52,7 +52,7 @@ Juego::Juego(b2World* mundo) : error(false), gameOver(false), exit(false), score
 	nombreTexturas.emplace_back("../Material/DisparoToasty_idle.png");
 	//DisparoBallT
 	nombreTexturas.emplace_back("../Material/BallTBala_idle.png");
-
+	
 
 
 
@@ -68,6 +68,9 @@ Juego::Juego(b2World* mundo) : error(false), gameOver(false), exit(false), score
 	nombreTexturas.emplace_back("../Material/Battery3_idle.png");
 	nombreTexturas.emplace_back("../Material/Battery2_idle.png");
 	nombreTexturas.emplace_back("../Material/Battery1_idle.png");
+	
+	//Tipografias
+	ubicacionTipografias.emplace_back("../Material/lazy.ttf");
 	
 	world->SetContactListener(&listener);
 	
@@ -173,6 +176,22 @@ void Juego::initMedia() {
 		}
 		
 	}
+	for (size_t i = 0; i < ubicacionTipografias.size(); i++)
+	{
+		string tipograf = ubicacionTipografias[i].substr( ubicacionTipografias[i].find_last_of('/')+1);
+		tipograf.erase(tipograf.find_last_of('.'));
+		try
+		{
+			fuentes.at(tipograf);
+			fuentes.emplace(make_pair(tipograf,new Fuente()));
+			fuentes.at(tipograf)->loadFuente(ubicacionTipografias[i]);
+		}
+		catch (out_of_range)
+		{
+			fuentes.emplace(make_pair(tipograf, new Fuente()));
+			fuentes.at(tipograf)->loadFuente(ubicacionTipografias[i]);
+		}
+	}
 
 };
 //Método que libera las texturas.
@@ -189,6 +208,13 @@ void Juego::freeMedia() {
 		}
 		
 		it++;
+	}
+	
+	unordered_map<string, Fuente*>::iterator j=fuentes.begin();
+	while (j != fuentes.end()) {
+		delete fuentes.at(j->first);
+		fuentes.at(j->first) = nullptr;
+		j++;
 	}
 	
 	//Esto debe ir en otro metodo
@@ -213,6 +239,9 @@ bool Juego::initSDL() {
 		success = false;
 	}
 	else {
+		if (TTF_Init() == -1) {
+			cout << "onichan";
+		}
 		//Create window: SDL_CreateWindow("SDL Hello World", posX, posY, width, height, SDL_WINDOW_SHOWN);
 		pWindow = SDL_CreateWindow("NOT A STUDIO", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, window.ancho, window.alto, SDL_WINDOW_SHOWN);
 		if (pWindow == nullptr) {
