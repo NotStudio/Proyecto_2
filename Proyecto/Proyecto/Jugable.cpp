@@ -1,5 +1,6 @@
 #include "Jugable.h"
 #include "Enemigo.h"
+#include "Bala.h"
 
 
 Jugable::Jugable(Juego* punteroJuego, SDL_Rect spritePar, string objectId):Personaje(punteroJuego, spritePar, objectId)
@@ -19,17 +20,17 @@ Jugable::~Jugable()
 }
 Uint32 desactivarInmunidad(Uint32 intervalo, void* param) {
 	static_cast<Jugable*>(param)->quitarInmunidad();
-	cout << "inmunidad quitada\n";
+	//cout << "inmunidad quitada\n";
 	return 0;
 }
 void Jugable::onColisionEnter(Objeto * obj){
-	std::cout << "colision\n";
-	if (dynamic_cast<Enemigo*>(obj)){
+	//std::cout << "colision\n";
+	if (dynamic_cast<Enemigo*>(obj)|| dynamic_cast<Bala*>(obj)){
 		if (!inmune){
 			inmune = true;
-			cout << "inmunidad activada\n";
+			//out << "inmunidad activada\n";
 			stats.vida--;
-			cout << stats.vida << " vidas tienes\n";
+			//cout << stats.vida << " vidas tienes\n";
 			timerInmune = SDL_AddTimer(350, desactivarInmunidad, this);
 		}
 	}

@@ -74,25 +74,21 @@ vector<Tile*> RoomDesdeArchivo(string direccion, b2World * world, int& WID, int&
 							{
 								Tiles.push_back(new Tile(x, y, S1, world));
 								vis = true;
-								cout << "lel";
 							}
 							else if (entrada->posicion.x + TILE_HEIGHT == x)
 							{
 								Tiles.push_back(new Tile(x, y, ISO, world));
 								vis = true;
-								cout << "lel";
 							}
 							else if (entrada->posicion.x - TILE_HEIGHT == x)
 							{
 								Tiles.push_back(new Tile(x, y, S1, world));
 								vis = true;
-								cout << "lel";
 							}
 							else if (entrada->posicion.x - 2*TILE_HEIGHT == x)
 							{
 								Tiles.push_back(new Tile(x, y, ISE, world));
 								vis = true;
-								cout << "lel";
 							}
 						}
 						break;
@@ -103,25 +99,21 @@ vector<Tile*> RoomDesdeArchivo(string direccion, b2World * world, int& WID, int&
 							{
 								Tiles.push_back(new Tile(x, y, S1, world));
 								vis = true;
-								cout << "lel";
 							}
 							else if (entrada->posicion.y + TILE_HEIGHT == y)
 							{
 								Tiles.push_back(new Tile(x, y, INE, world));
 								vis = true;
-								cout << "lel";
 							}
 							else if (entrada->posicion.y - TILE_HEIGHT == y)
 							{
 								Tiles.push_back(new Tile(x, y, S1, world));
 								vis = true;
-								cout << "lel";
 							}
 							else if (entrada->posicion.y - 2*TILE_HEIGHT == y)
 							{
 								Tiles.push_back(new Tile(x, y, ISE, world));
 								vis = true;
-								cout << "lel";
 							}
 						}
 						break;

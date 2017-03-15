@@ -7,7 +7,6 @@ Bala::Bala(Juego* punteroJuego, SDL_Rect spritePar, string objectId, float32 vel
 	_vel = vel;
 	x = dirx;
 	y = diry;
-	cout << x;
 	bodyDef.type = b2_dynamicBody;
 	bodyDef.fixedRotation = true;
 	bodyDef.position.Set(pos.x, pos.y);

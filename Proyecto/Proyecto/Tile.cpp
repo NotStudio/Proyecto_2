@@ -2,7 +2,7 @@
 #include "TileInfo.h"
 #include "Juego.h"
 #include "checkML.h"
-void Tile::onColisionEnter() { cout << "kek"; }
+void Tile::onColisionEnter() { }
 Tile::Tile(int x, int y, int tileType, b2World * wardo)
 {
 

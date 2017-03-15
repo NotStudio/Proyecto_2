@@ -68,14 +68,16 @@ Room::Room(Juego * pJ,Puerta sal, Puerta * entrada,int x, int y) :pJuego(pJ)
 
 
 	//Crear el vector de objetos, leer de archivos.
-	objetos.push_back(new Agujero(pJuego, SDL_Point{ TILE_WIDTH* 3  + area->x, area->w / 2 + TILE_HEIGHT * 7 + area->y }, 150));
-	objetos.push_back(new Nave(pJuego, SDL_Point{ area->w - TILE_WIDTH * 5 + area->x, TILE_HEIGHT*3 + area->y }, TILE_WIDTH*3));
-	objetos.push_back(new Chatarra(pJuego, SDL_Point{ TILE_WIDTH * 1 + area->x, area->w / 2 + TILE_HEIGHT + area->y  }, TILE_WIDTH/4));
-	objetos.push_back(new Chatarra(pJuego, SDL_Point{ TILE_WIDTH * 2 + area->x, area->w / 2 + TILE_HEIGHT * 2 + area->y }, TILE_WIDTH / 4));
-	objetos.push_back(new Tuberia(pJuego, SDL_Point{ TILE_WIDTH /2 + area->x, area->w / 2 + TILE_HEIGHT * 7 + area->y }, TILE_WIDTH / 2));
-
+	if (entrada == nullptr) {
+		objetos.push_back(new Agujero(pJuego, SDL_Point{ TILE_WIDTH * 3 + area->x, area->w / 2 + TILE_HEIGHT * 7 + area->y }, 150));
+		objetos.push_back(new Nave(pJuego, SDL_Point{ area->w - TILE_WIDTH * 5 + area->x, TILE_HEIGHT * 3 + area->y }, TILE_WIDTH * 3));
+		objetos.push_back(new Chatarra(pJuego, SDL_Point{ TILE_WIDTH * 1 + area->x, area->w / 2 + TILE_HEIGHT + area->y }, TILE_WIDTH / 4));
+		objetos.push_back(new Chatarra(pJuego, SDL_Point{ TILE_WIDTH * 2 + area->x, area->w / 2 + TILE_HEIGHT * 2 + area->y }, TILE_WIDTH / 4));
+		objetos.push_back(new Tuberia(pJuego, SDL_Point{ TILE_WIDTH / 2 + area->x, area->w / 2 + TILE_HEIGHT * 7 + area->y }, TILE_WIDTH / 2));
+	}
 	//Crear vector de enemigos.
 	//enemigos.push_back(new Perseguidor(pJuego, SDL_Rect{ area->w / 2 + area->x, area->h /2 + area->y , 64,64 }));
+	enemigos.push_back(new EnemigoBomba(pJuego, Tiles->at(getTileOcupable())->getBox()));
 	enemigos.push_back(new EnemigoBomba(pJuego, Tiles->at(getTileOcupable())->getBox()));
 	enemigos.push_back(new MaquinaDePelotas(pJuego, SDL_Rect{ area->w / 2 + TILE_WIDTH *4 + area->x, area->h /2 +TILE_HEIGHT*4 + area->y , 128,128 }));
 	enemigos.push_back(new Perseguidor(pJuego, SDL_Rect{ 500 + area->x,  500 + area->y , 64,64}));
