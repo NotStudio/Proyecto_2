@@ -1,11 +1,13 @@
 #include "Perseguidor.h"
 #include "checkML.h"
+#include "Bala.h"
 
 
 //HAY QUE CAMBIAR EL STRING QUE PASA COMO ID
-Perseguidor::Perseguidor(Juego* punteroJuego, SDL_Rect a) : Enemigo(punteroJuego, a, "Ladron",300), coefMov(10.0f)
+Perseguidor::Perseguidor(Juego* punteroJuego, SDL_Rect a) : Enemigo(punteroJuego, a, "Iman",300), coefMov(10.0f)
 {
 	stats.daño = 1;
+	stats.vida = 5;
 
 }
 void Perseguidor::move(){
@@ -42,7 +44,14 @@ void Perseguidor::update() {
 }
 void Perseguidor::onColisionEnter(Objeto* contactObject) {
 
-	Enemigo::onColisionEnter(contactObject);
+
+
+	if (contactObject != nullptr) {
+		if (dynamic_cast<Bala*>(contactObject)) {
+			stats.vida--;
+			if (stats.vida <= 0) Enemigo::onColisionEnter(contactObject);
+		}
+	}
 }
 
 Perseguidor::~Perseguidor()

@@ -269,15 +269,11 @@
     <ClInclude Include="Tile.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Inanimado.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="EnemigoBomba.h">
       <Filter>Header Files\Personajes\Enemigos</Filter>
     </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="..\Material\tutorial1.map" />
-    <None Include="..\Material\tutorial2.map" />
+    <ClInclude Include="Inanimado.h">
+      <Filter>Header Files\Objetos</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

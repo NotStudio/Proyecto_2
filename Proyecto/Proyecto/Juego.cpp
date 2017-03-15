@@ -34,13 +34,35 @@ Juego::Juego(b2World* mundo) : error(false), gameOver(false), exit(false), score
 	nombreTexturas.emplace_back("../Material/Bomba_idle.png");
 	//Ladron
 	nombreTexturas.emplace_back("../Material/Ladron_idle.png");
+	//BallT
+	nombreTexturas.emplace_back("../Material/BallT_idle.png");
+	//Iman
+	nombreTexturas.emplace_back("../Material/Iman_idle.png");
+	//Nave
+	nombreTexturas.emplace_back("../Material/Assets/Nave_idle.png");
+	//Tuberia
+	nombreTexturas.emplace_back("../Material/Assets/Tuberia_idle.png");
+	//Chatarra
+	nombreTexturas.emplace_back("../Material/Assets/Chatarra_idle.png");
+	//Agujero
+	nombreTexturas.emplace_back("../Material/Assets/agujero_idle.png");
+
+
+	//DisparoToasty
+	nombreTexturas.emplace_back("../Material/DisparoToasty_idle.png");
+	//DisparoBallT
+	nombreTexturas.emplace_back("../Material/BallTBala_idle.png");
+
+
+
+
 
 	nombreTexturas.emplace_back("../Material/Wall_idle.png");
 	nombreTexturas.emplace_back("../Material/Background_idle.jpg");
 	nombreTexturas.emplace_back("../Material/Bala_idle.png");
 	nombreTexturas.emplace_back("../Material/tilesheet_test.png");
 	nombreTexturas.emplace_back("../Material/tilesheet_zon1.png");
-	nombreTexturas.emplace_back("../Material/agujero_idle.png");
+	
 	//Esto no es así.
 	nombreTexturas.emplace_back("../Material/Battery4_idle.png");
 	nombreTexturas.emplace_back("../Material/Battery3_idle.png");
@@ -56,7 +78,7 @@ Juego::Juego(b2World* mundo) : error(false), gameOver(false), exit(false), score
 
 	//Arrancamos las texturas y los objetos.
 	initMedia();
-	personaje = new Tostadora(this, SDL_Rect{500,500,64,64});
+	personaje = new Tostadora(this, SDL_Rect{100,75,64,64});
 	Camera =new Camara(static_cast<Entidad*>(personaje)->getRect(), window.ancho, window.alto);
 	vidasHUD = new HUD(this, SDL_Rect{20,0,34,55}, "Battery4", "idle");
 	zona = new ZonaAccion(this);
@@ -192,7 +214,7 @@ bool Juego::initSDL() {
 	}
 	else {
 		//Create window: SDL_CreateWindow("SDL Hello World", posX, posY, width, height, SDL_WINDOW_SHOWN);
-		pWindow = SDL_CreateWindow("GLOBOS", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, window.ancho, window.alto, SDL_WINDOW_SHOWN);
+		pWindow = SDL_CreateWindow("NOT A STUDIO", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, window.ancho, window.alto, SDL_WINDOW_SHOWN);
 		if (pWindow == nullptr) {
 			cout << "Window could not be created! \nSDL_Error: " << SDL_GetError() << '\n';
 			success = false;

@@ -15,7 +15,6 @@ Bala::Bala(Juego* punteroJuego, SDL_Rect spritePar, string objectId, float32 vel
 	shape = new b2PolygonShape;
 	static_cast<b2PolygonShape*>(shape)->SetAsBox(sprite->w / 2, sprite->h / 2, { (float)sprite->w / 2, (float)sprite->h / 2 }, 0);
 	fDef.shape = shape; fDef.density = 5.0f; fDef.friction = 0;
-	body->CreateFixture(&fDef);
 	body->SetUserData(this);
 	b2Vec2 velocidad;
 	velocidad.x = _vel*x;
@@ -27,10 +26,10 @@ Bala::Bala(Juego* punteroJuego, SDL_Rect spritePar, string objectId, float32 vel
 	}
 	else if (lanzador == 0){
 		fDef.filter.categoryBits = Juego::AT_JUGADOR;
-		fDef.filter.maskBits = Juego::ESCENARIO | Juego::ENEMIGO;
+		fDef.filter.maskBits = Juego::ENEMIGO | Juego::ESCENARIO;
 	}
 
-	fDef.filter.maskBits = Juego::ESCENARIO;
+	body->CreateFixture(&fDef);
 	body->SetLinearVelocity(velocidad);
 	
 }

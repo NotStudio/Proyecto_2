@@ -1,11 +1,10 @@
-#include <fstream>
+#include <fstream>                        
 #include<stdio.h>
 #include "Room.h"
 #include "checkML.h"
 #include "constructoraRooms.h"
 #include "Perseguidor.h"
 #include "EnemigoBomba.h"
-#include "MaquinaDePelotas.h"
 #include "MaquinaDePelotas.h"
 #include "Inanimado.h"
 //Tile constants
@@ -66,23 +65,20 @@ Room::Room(Juego * pJ,Puerta sal, Puerta * entrada,int x, int y) :pJuego(pJ)
 	area = new SDL_Rect{ Tiles->at(0)->getBox().x ,Tiles->at(0)->getBox().y,ANCHO_NIVEL,ALTO_NIVEL };
 	Salida.zonaPuerta = *area;
 	int xp = 0, yp = 0;
-	//Crear el vector de enemigos, leer de archivos.
-	SDL_Rect r2, r3,r4;
-	r2.x = x + 750; r2.y = y + 500;	r2.h = 50; r2.w = 50;
-	r3.x = Tiles->at(getTileOcupable())->getBox().x;
-	r3.y = Tiles->at(getTileOcupable())->getBox().y;
-	r3.h = 64;
-	r3.w = 64;
-	
-	r4.x = 500 + area->x;
-	r4.y = 500 + area->y;
-	r4.h = 64;
-	r4.w = 64;
-	enemigos.push_back(new EnemigoBomba(pJuego, r4));
-	enemigos.push_back(new Perseguidor(pJuego, r3));
-	objetos.push_back(new Agujero(pJuego, SDL_Point{300+area->x,300+ area->y},200));
-	//enemigos.push_back(new MaquinaDePelotas(pJuego, r4));
-	//Crear vector de objetos inanimados.
+
+
+	//Crear el vector de objetos, leer de archivos.
+	objetos.push_back(new Agujero(pJuego, SDL_Point{ TILE_WIDTH* 3  + area->x, area->w / 2 + TILE_HEIGHT * 7 + area->y }, 150));
+	objetos.push_back(new Nave(pJuego, SDL_Point{ area->w - TILE_WIDTH * 5 + area->x, TILE_HEIGHT*3 + area->y }, TILE_WIDTH*3));
+	objetos.push_back(new Chatarra(pJuego, SDL_Point{ TILE_WIDTH * 1 + area->x, area->w / 2 + TILE_HEIGHT + area->y  }, TILE_WIDTH/4));
+	objetos.push_back(new Chatarra(pJuego, SDL_Point{ TILE_WIDTH * 2 + area->x, area->w / 2 + TILE_HEIGHT * 2 + area->y }, TILE_WIDTH / 4));
+	objetos.push_back(new Tuberia(pJuego, SDL_Point{ TILE_WIDTH /2 + area->x, area->w / 2 + TILE_HEIGHT * 7 + area->y }, TILE_WIDTH / 2));
+
+	//Crear vector de enemigos.
+	//enemigos.push_back(new Perseguidor(pJuego, SDL_Rect{ area->w / 2 + area->x, area->h /2 + area->y , 64,64 }));
+	enemigos.push_back(new EnemigoBomba(pJuego, Tiles->at(getTileOcupable())->getBox()));
+	enemigos.push_back(new MaquinaDePelotas(pJuego, SDL_Rect{ area->w / 2 + TILE_WIDTH *4 + area->x, area->h /2 +TILE_HEIGHT*4 + area->y , 128,128 }));
+	enemigos.push_back(new Perseguidor(pJuego, SDL_Rect{ 500 + area->x,  500 + area->y , 64,64}));
 	
 }
 
@@ -108,7 +104,7 @@ int Room::getTileOcupable()
 {
 	srand(SDL_GetTicks());	
 	int k = rand()%Tiles->size();
-	while (Tiles->at(k)->getType()>11)
+	while (Tiles->at(k)->getType()<11)
 	{
 		k = rand() % Tiles->size();
 	}
@@ -131,6 +127,14 @@ Room::~Room()
 		delete Tiles->at(i);
 		Tiles->at(i) = nullptr;
 	}
+	for (size_t i = 0; i < extras.size(); i++) {
+		delete extras[i];
+		extras[i] = nullptr;
+	}
+
+
+
+
 	delete textTiles;
 	textTiles = nullptr;
 	delete area;

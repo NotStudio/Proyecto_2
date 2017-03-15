@@ -126,7 +126,9 @@ public:
 		JUGADOR = 0x0004,
 		AT_JUGADOR = 0x0008,
 		ITEM = 0x0010,
-		ESCENARIO = 0x0020
+		ESCENARIO = 0x0020,
+		ESCENARIO_NOCOL = 0x0040
+
 	};
 	
 	vector<Animacion*>getAnimaciones(const string & entity) {

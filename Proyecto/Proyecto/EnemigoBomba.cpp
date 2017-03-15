@@ -4,11 +4,12 @@
 #include "Bala.h"
 EnemigoBomba::EnemigoBomba(Juego* punteroJuego, SDL_Rect a) : Enemigo(punteroJuego, a, "Bomba",1000)
 {
-	enemyStats.daño = 100;
-	enemyStats.velAtq = 0;
-	enemyStats.velMov = 1;
-	enemyStats.vida = 10;
+	stats.daño = 100;
+	stats.velAtq = 0;
+	stats.velMov = 1;
+	stats.vida = 3;
 	visible = true;
+	
 }
 
 
@@ -22,8 +23,8 @@ void EnemigoBomba::onColisionEnter(Objeto* contactObject) {
 		if (dynamic_cast<Jugable*>(contactObject))
 			muerte();
 		else if (dynamic_cast<Bala*>(contactObject)) {
-			enemyStats.vida--;
-			(enemyStats.vida <= 0)?muerte():nullptr;
+			stats.vida--;
+			(stats.vida <= 0)?muerte():nullptr;
 		}
 }
 

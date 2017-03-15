@@ -25,30 +25,67 @@ public:
 			static_cast<b2PolygonShape*>(shape)->SetAsBox(sprite->w / 2, sprite->h / 2, { (float)sprite->w / 2, (float)sprite->h / 2 }, 0);
 		}
 		fDef.shape = shape; fDef.density = 5.0f; fDef.friction = 0;
-		body->CreateFixture(&fDef);
+		
 	}
 	virtual ~Inanimado() {
 		delete shape; shape = nullptr;
 	};
 	virtual void onColisionEnter(Objeto * o = nullptr) {};
 };
+
+//==============================================================================================
+//AGUJERO
 class Agujero:
 	public Inanimado
 {
 public:
-	Agujero(Juego * Pj, SDL_Point Pos, int tam) :Inanimado(Pj, SDL_Rect{Pos.x,Pos.y,tam,tam}, "agujero") {}
-	~Agujero() {};
+	Agujero(Juego * Pj, SDL_Point Pos, int tam) :Inanimado(Pj, SDL_Rect{Pos.x,Pos.y,tam,tam}, "agujero") {
+	
+		fDef.filter.categoryBits = Juego::ESCENARIO_NOCOL;
+		fDef.filter.maskBits = Juego::JUGADOR | Juego::ENEMIGO;
+		body->CreateFixture(&fDef);
+
+	
+	}
+	~Agujero() { };
 private:
 
 };
+//==============================================================================================
+//TUBERIA
 class Tuberia: public Inanimado
 {
 public:
-	Tuberia(Juego * Pj, SDL_Point Pos, int tam) :Inanimado(Pj, SDL_Rect{ Pos.x,Pos.y,tam,tam }, "tuberia") {};
+	Tuberia(Juego * Pj, SDL_Point Pos, int tam) :Inanimado(Pj, SDL_Rect{ Pos.x,Pos.y,tam*7,tam*3 }, "Tuberia") {
+		fDef.filter.categoryBits = Juego::ESCENARIO;
+		fDef.filter.maskBits = Juego::JUGADOR | Juego::ENEMIGO | Juego::AT_ENEMIGO | Juego::AT_JUGADOR; 
+		body->CreateFixture(&fDef);
+	};
 	~Tuberia() {};
-
-private:
-
+};
+//==============================================================================================
+//NAVE
+class Nave : public Inanimado
+{
+public:
+	Nave(Juego * Pj, SDL_Point Pos, int tam) :Inanimado(Pj, SDL_Rect{ Pos.x,Pos.y,tam*2,tam }, "Nave") {
+		fDef.filter.categoryBits = Juego::ESCENARIO;
+		fDef.filter.maskBits = Juego::JUGADOR | Juego::ENEMIGO | Juego::AT_ENEMIGO | Juego::AT_JUGADOR;
+		body->CreateFixture(&fDef);
+	};
+	~Nave() {};
 };
 
+//==============================================================================================
+//CHATARRA
+class Chatarra : public Inanimado
+{
+public:
+	Chatarra(Juego * Pj, SDL_Point Pos, int tam) :Inanimado(Pj, SDL_Rect{ Pos.x,Pos.y,tam*5,tam*3 }, "Chatarra") {
+		fDef.filter.categoryBits = Juego::ESCENARIO;
+		fDef.filter.maskBits = Juego::JUGADOR | Juego::ENEMIGO | Juego::AT_ENEMIGO | Juego::AT_JUGADOR;
+		body->CreateFixture(&fDef);
+	};
+	~Chatarra() {};
+};
 #endif // INANIMADO_H_
