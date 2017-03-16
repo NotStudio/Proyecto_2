@@ -79,7 +79,7 @@ struct keks
 	}
 };
 bool solapa(SDL_Rect const & box,SDL_Rect const & area) {
-	return !(area.x >= box.x + box.w || area.x + area.w <= box.x || area.y >= box.y + box.h || area.y + area.y <= box.y);
+	return !(area.x > box.x + box.w || area.x + area.w < box.x || area.y > box.y + box.h || area.y + area.y < box.y);
 }
 vector<keks> solapamientoHabitaciones(vector<Room*> * Habitaciones, SDL_Rect & zona) {
 	vector<keks> posiblis;
@@ -89,6 +89,7 @@ vector<keks> solapamientoHabitaciones(vector<Room*> * Habitaciones, SDL_Rect & z
 		int okX= Habitaciones->at(i)->getArea().x , okY = Habitaciones->at(i)->getArea().y;
 		int okW = Habitaciones->at(i)->getArea().w, okH = Habitaciones->at(i)->getArea().h;
 		bool ayy = false;
+		
 		zona.x = okX+(okW- zona.w )/2;
 		zona.y = okY-zona.h;
 		bool valido = true;
@@ -99,15 +100,17 @@ vector<keks> solapamientoHabitaciones(vector<Room*> * Habitaciones, SDL_Rect & z
 		if (valido && !ayy) {ayy = true;posiblis.push_back(keks(Habitaciones->at(i), zona));}else if(ayy)posiblis[cont].posibles.push_back(zona);
 		valido = true;
 		
-		zona.y = okY + zona.h;
+		zona.y = okY + okH;
+		zona.x = okX + (okW - zona.w) / 2;
 		for (size_t j = 0; j < Habitaciones->size(); j++)
 		{
 			if (solapa(zona, Habitaciones->at(j)->getArea())) valido = false;
 		}
 		if (valido && !ayy) { ayy = true; posiblis.push_back(keks(Habitaciones->at(i), zona)); }
 		else if (ayy)posiblis[cont].posibles.push_back(zona);
+		
 		zona.y = okY + (okH - zona.h) / 2;
-		zona.x = okX + zona.w;
+		zona.x = okX + okW;
 		valido = true;
 		
 		for (size_t j = 0; j < Habitaciones->size(); j++)
@@ -117,7 +120,7 @@ vector<keks> solapamientoHabitaciones(vector<Room*> * Habitaciones, SDL_Rect & z
 
 		if (valido && !ayy) { ayy = true; posiblis.push_back(keks(Habitaciones->at(i), zona)); }
 		else if (ayy)posiblis[cont].posibles.push_back(zona);
-		zona.x = okX - zona.w;
+		zona.x = okX -zona.w;
 		valido = true;
 
 		for (size_t j = 0; j < Habitaciones->size(); j++)
@@ -133,7 +136,7 @@ vector<keks> solapamientoHabitaciones(vector<Room*> * Habitaciones, SDL_Rect & z
 	return posiblis;
 }
 SDL_Point nuevaUbicacion(vector<keks> rooms,Room*&k){
-	srand(time(nullptr));
+	srand(time(time_t()));
 	int a = rand() % rooms.size();
 	int b = rand() % rooms[a].posibles.size();
 	k = rooms[a].hab;
@@ -145,7 +148,6 @@ void Room::ColocarHabitacion(vector<Room*> * Habitaciones) {
 	SDL_Rect aux = *area;
 	SDL_Point a = nuevaUbicacion(solapamientoHabitaciones(Habitaciones,aux),habit);
 	//codigo secreto
-	moverMapa(a.x, a.y);
 	if ((area->x-(habit->area->w-area->w)/2 == habit->area->x))
 	{
 		if (area->y < habit->area->y) {
@@ -170,6 +172,7 @@ void Room::ColocarHabitacion(vector<Room*> * Habitaciones) {
 			setPuertas(Direcciones::Este);
 		}
 	}
+	moverMapa(a.x, a.y);
 	cout << "kek";
 }
 

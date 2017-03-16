@@ -12,7 +12,7 @@ class ZonaAccion :
 {
 	Juego* pJuego;
 	//Vector de habitaciones/niveles
-	vector<Room*> niveles;
+	vector<Room*>* niveles;
 	//Enemigos
 	vector<Objeto*> enemigos;
 	//Objetos colisionables: cofres, rocas, mierda en general.

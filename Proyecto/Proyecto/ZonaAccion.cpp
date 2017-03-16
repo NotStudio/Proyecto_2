@@ -6,29 +6,45 @@
 ZonaAccion::ZonaAccion(Juego* punteroJuego): pJuego(punteroJuego)
 {
 	Puerta p;
+	niveles = new vector<Room*>;
 	p.DirPuerta = Oeste;
-	niveles.push_back(new Room(pJuego, p,&niveles));
-	niveles.push_back(new Room(pJuego, p, &niveles));
+	niveles->push_back(new Room(pJuego, p,niveles));
+	niveles->push_back(new Room(pJuego, p,niveles));
+	niveles->push_back(new Room(pJuego, p,niveles));
+	niveles->push_back(new Room(pJuego, p,niveles));
+	niveles->push_back(new Room(pJuego, p,niveles));
+	niveles->push_back(new Room(pJuego, p,niveles));
 	//niveles.push_back(new Room(pJuego, niveles.at(0)->getArea().x + niveles.at(0)->getArea().w, niveles.at(0)->getArea().y, Direcciones{ false,false, false,true }));
-	nivelActual = niveles.at(0);
+	setNivelActual();
 }
 
 
 ZonaAccion::~ZonaAccion()
 {
-	for (size_t i = 0; i < niveles.size(); i++)
+	for (size_t i = 0; i < niveles->size(); i++)
 	{
-		delete niveles[i];
-		niveles[i] = nullptr;
+		delete niveles->at(i);
+		niveles->at(i) = nullptr;
 	}
+	delete niveles;
+	niveles = nullptr;
 	nivelActual = nullptr;
 }
-
 void ZonaAccion::draw(){
-	
-	for (size_t i = 0; i < niveles.size(); i++)
+	SDL_Rect abas;
+	for (size_t i = 0; i < niveles->size(); i++)
 	{
-		niveles[i]->render();
+		niveles->at(i)->render();
+
+		abas = niveles->at(i)->getArea();
+		abas.x /= 100;
+		abas.y /= 100;
+		abas.w /= 100;
+		abas.h /= 100;
+		abas.x += 300;
+		abas.y += 300;
+
+		SDL_RenderDrawRect(pJuego->getRender(),&abas);
 	}
 
 }
@@ -42,20 +58,19 @@ void ZonaAccion::update(){
 void ZonaAccion::setNivelActual(){
 	//Actualizamos el parametro que indica el nivel en el que estamos
 	//y  se lo notificamos a la cámara.
+	Room * anterior = nivelActual;
 	SDL_Point pj;
 	pj.x = static_cast<Entidad*>(pJuego->getPlayer())->getX();
 	pj.y = static_cast<Entidad*>(pJuego->getPlayer())->getY();
 	int i = 0;
 	bool stop = false;
-	while (i < niveles.size()){
-		if (niveles[i]->dentroRoom(&pj)){
-			nivelActual = niveles[i];
-		}
-		else {
-			niveles[i]->stop();
-		}
-		i++;
+	for (size_t i = 0; i < niveles->size(); i++)
+	{
+		if (niveles->at(i)->dentroRoom(&pj)) nivelActual = niveles->at(i);
+		else niveles->at(i)->stop();
 	}
+	if (nivelActual != anterior)
+		cout << "kek";
 	pJuego->getCamera()->setLimite(nivelActual->getArea());
 }
 

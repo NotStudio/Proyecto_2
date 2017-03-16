@@ -11,7 +11,11 @@ Tostadora::Tostadora(Juego* punteroJuego, SDL_Rect spritePar):Jugable(punteroJue
 	{
 		animaciones[i]->setNumFrames(30);
 	}
+#ifdef FLASHTASMA
+	stats.velMov = 10000;
+#else
 	stats.velMov = 1000;
+#endif // FLASHTASMA
 	stats.vida = 4;
 }
 
