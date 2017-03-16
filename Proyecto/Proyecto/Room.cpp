@@ -39,9 +39,10 @@ void Room::update()
 Room::Room(Juego * pJ,Puerta sal, Puerta * entrada,int x, int y,string a ,string b ) :pJuego(pJ)
 {
 	textTiles = new Tilesheet(24, pJuego->getTextura(a,b));
-	a = (entrada==nullptr||entrada->zonaPuerta.w==1024)? "../Material/Maps/mapa_Grande.map": "../Material/Maps/mapa_Peque.map";
+	a = (entrada==nullptr||entrada->zonaPuerta.w==1024)? "../Material/Maps/mapaGrande.csv": "../Material/Maps/mapa_Peque.map";
 	Tiles = new vector<Tile*>(RoomDesdeArchivo(a,pJuego->getWorld(),ANCHO_NIVEL,ALTO_NIVEL,sal,entrada));
 	ocupados = vector<bool>(Tiles->size(), false);
+	
 	for (size_t i = 0; i < ocupados.size(); i++)
 	{
 		ocupados[i] = Tiles->at(i)->getBody()==nullptr;

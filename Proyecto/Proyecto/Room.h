@@ -31,6 +31,7 @@ private:
 	vector<Objeto*> objetos;
 	//Dificultad.(int, struct)
 	vector<Objeto*> extras;//Balas
+	void ColocarHabitacion();
 public:
 	
 	void nuevaBala(Bala*bala){
