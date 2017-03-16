@@ -2,6 +2,7 @@
 #include <SDL.h>
 #include <SDL_image.h>
 #include "checkML.h"
+#define DEBUG
 Camara::Camara() {
 	Apuntando = nullptr;
 }
@@ -31,6 +32,9 @@ void Camara::update()
 	Centro = { Apuntando->x + Apuntando->w / 2,Apuntando->y + Apuntando->h/ 2 };
 	plano.x = Centro.x - plano.w / 2;
 	plano.y = Centro.y - plano.h / 2;
+#ifndef DEBUG
+ // !DEBUG
+
 	if (plano.x <= minX) {
 		plano.x = minX;
 		Centro.x = plano.x+plano.w / 2;
@@ -48,7 +52,7 @@ void Camara::update()
 		plano.y = maxY-plano.h;
 		Centro.y = plano.h / 2;
 	}
-	
+#endif
 	ultimoPlano = plano;
 }
 

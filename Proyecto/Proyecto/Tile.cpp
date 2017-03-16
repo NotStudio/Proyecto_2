@@ -49,9 +49,10 @@ SDL_Rect  Tile::getBox() {
 	return *mBox;
 }
 void Tile::setPos(float32 x, float32 y) {
-	mBox->x = x;
-	mBox->y = y;
-	mBody->SetTransform(b2Vec2(x, y), 0);
+	mBox->x += x;
+	mBox->y += y;
+	if(mBody!=nullptr)
+		mBody->SetTransform(b2Vec2(mBox->x, mBox->y), 0);
 }
 int Tile::getType() {
 	return mType;

@@ -9,6 +9,7 @@
 #include "Inanimado.h"
 #include "InanimadoInfo.h"
 #include "TileInfo.h"
+#include <time.h>
 #define DEBUG
 
 //Update que realiza la habitacion. Ha de actualizarse todo lo que haya en ella (enemigos, objetos, balas, etc)
@@ -37,14 +38,14 @@ void Room::update()
 
 //Constructora de la habitación. Aquí es donde se lee el nivel, se crea y se añaden los enemigos y objetos.
 //No hace falta meter los parametros string para cargar un tilesheet, carga por defecto el de la zona 1
-Room::Room(Juego * pJ, Puerta sal, vector<Room*> const & ro, Puerta * entrada, int x, int y, string a, string b) :pJuego(pJ)
+Room::Room(Juego * pJ, Puerta sal, vector<Room*> * ro, Puerta * entrada, int x, int y, string a, string b) :pJuego(pJ)
 {
 	textTiles = new Tilesheet(24, pJuego->getTextura(a, b));
-	a = (entrada == nullptr || entrada->zonaPuerta.w == 1024) ? "../Material/Maps/mapaGrande.csv" : "../Material/Maps/mapa_Peque.map";
+	a = "../Material/Maps/mapaGrande.csv";
 	Tiles = RoomDesdeArchivo(a, pJuego->getWorld());
 	area = new SDL_Rect{Tiles[0][0]->getBox().x, Tiles[0][0]->getBox().y, Tiles.at(0).size()*TILE_WIDTH, Tiles.size()*TILE_HEIGHT};
-	if(entrada != nullptr){
-
+	if(ro->size()>0){
+		ColocarHabitacion(ro);
 	}
 	ocupados = vector<vector<bool>>(Tiles.size(),vector<bool>(Tiles[0].size(),false));
 	for (size_t i = 0; i < ocupados.size(); i++)
@@ -54,7 +55,6 @@ Room::Room(Juego * pJ, Puerta sal, vector<Room*> const & ro, Puerta * entrada, i
 			ocupados[i][j] = Tiles[i][j]->getBody()!=nullptr;
 		}
 	}
-	ColocarHabitacion(ro);
 	//setTiles(DirM, wardo);
 	//Salida.zonaPuerta = *area;
 	int xp = 0, yp = 0;
@@ -69,44 +69,110 @@ Room::Room(Juego * pJ, Puerta sal, vector<Room*> const & ro, Puerta * entrada, i
 	enemigos.push_back(new Perseguidor(pJuego, SDL_Rect{ 500 + area->x,  500 + area->y , 64,64}));
 	*/
 }
-
-void Room::ColocarHabitacion(vector<Room*>const & Habitaciones){
-	if (Habitaciones.size() >= 1){
-		
+struct keks
+{
+	Room* hab;
+	vector<SDL_Rect> posibles;
+	keks(Room*h,SDL_Rect r){
+		hab = h;
+		posibles.push_back(r);
 	}
-	else{
-		Salida.DirPuerta = Direcciones(rand() % Sinsitio);
-		Salida.DirPuerta = Direcciones::Este;
-		switch (Salida.DirPuerta)
-		{
-		case Direcciones::Norte:
-			break;
-		case Direcciones::Sur:
-			break;
-		case Direcciones::Oeste:
-			Tiles[Tiles.size() / 2 -2][Tiles.size() - 1]->SetTile(ISO);
-			Tiles[Tiles.size() / 2][Tiles.size()-1]->SetTile(S1);
-			Tiles[Tiles.size() / 2 -1][Tiles.size()-1]->SetTile(S1);
-			Tiles[Tiles.size() / 2 + 1][Tiles.size() - 1]->SetTile(INO);
-			Salida.posicion = Tiles[Tiles.size() / 2 - 1][Tiles.size() - 1]->getBox();
-			Salida.posicion.h += TILE_HEIGHT;
-			break;
-		case Direcciones::Este:
-			Tiles[Tiles.size() / 2 - 2][0]->SetTile(ISE);
-			Tiles[Tiles.size() / 2][0]->SetTile(S1);
-			Tiles[Tiles.size() / 2 - 1][0]->SetTile(S1);
-			Tiles[Tiles.size() / 2 + 1][0]->SetTile(INE);
-			Salida.posicion = Tiles[Tiles.size() / 2-1][0]->getBox();
-			Salida.posicion.h += TILE_HEIGHT;
-			Salida.posicion.w += TILE_WIDTH*2;
-			break;
-		default:
-			break;
-		}
-		bool aux;
-		marcarOcupados(TilesOcupados(Salida.posicion, aux));
-	}
+};
+bool solapa(SDL_Rect const & box,SDL_Rect const & area) {
+	return !(area.x >= box.x + box.w || area.x + area.w <= box.x || area.y >= box.y + box.h || area.y + area.y <= box.y);
 }
+vector<keks> solapamientoHabitaciones(vector<Room*> * Habitaciones, SDL_Rect & zona) {
+	vector<keks> posiblis;
+	int cont = 0;
+	for (size_t i = 0; i < Habitaciones->size(); i++)
+	{
+		int okX= Habitaciones->at(i)->getArea().x , okY = Habitaciones->at(i)->getArea().y;
+		int okW = Habitaciones->at(i)->getArea().w, okH = Habitaciones->at(i)->getArea().h;
+		bool ayy = false;
+		zona.x = okX+(okW- zona.w )/2;
+		zona.y = okY-zona.h;
+		bool valido = true;
+		for (size_t j = 0; j < Habitaciones->size(); j++)
+		{
+			if (solapa(zona, Habitaciones->at(j)->getArea())) valido = false;
+		}
+		if (valido && !ayy) {ayy = true;posiblis.push_back(keks(Habitaciones->at(i), zona));}else if(ayy)posiblis[cont].posibles.push_back(zona);
+		valido = true;
+		
+		zona.y = okY + zona.h;
+		for (size_t j = 0; j < Habitaciones->size(); j++)
+		{
+			if (solapa(zona, Habitaciones->at(j)->getArea())) valido = false;
+		}
+		if (valido && !ayy) { ayy = true; posiblis.push_back(keks(Habitaciones->at(i), zona)); }
+		else if (ayy)posiblis[cont].posibles.push_back(zona);
+		zona.y = okY + (okH - zona.h) / 2;
+		zona.x = okX + zona.w;
+		valido = true;
+		
+		for (size_t j = 0; j < Habitaciones->size(); j++)
+		{
+			if (solapa(zona, Habitaciones->at(j)->getArea())) valido = false;
+		}
+
+		if (valido && !ayy) { ayy = true; posiblis.push_back(keks(Habitaciones->at(i), zona)); }
+		else if (ayy)posiblis[cont].posibles.push_back(zona);
+		zona.x = okX - zona.w;
+		valido = true;
+
+		for (size_t j = 0; j < Habitaciones->size(); j++)
+		{
+			if (solapa(zona, Habitaciones->at(j)->getArea())) valido = false;
+		}
+
+		if (valido && !ayy) { ayy = true; posiblis.push_back(keks(Habitaciones->at(i), zona)); }
+		else if (ayy)posiblis[cont].posibles.push_back(zona);
+
+		if (ayy) cont++;
+	}
+	return posiblis;
+}
+SDL_Point nuevaUbicacion(vector<keks> rooms,Room*&k){
+	srand(time(nullptr));
+	int a = rand() % rooms.size();
+	int b = rand() % rooms[a].posibles.size();
+	k = rooms[a].hab;
+	return{ rooms[a].posibles[b].x,rooms[a].posibles[b].y };
+}
+
+void Room::ColocarHabitacion(vector<Room*> * Habitaciones) {
+	Room * habit = nullptr; 
+	SDL_Rect aux = *area;
+	SDL_Point a = nuevaUbicacion(solapamientoHabitaciones(Habitaciones,aux),habit);
+	//codigo secreto
+	moverMapa(a.x, a.y);
+	if ((area->x-(habit->area->w-area->w)/2 == habit->area->x))
+	{
+		if (area->y < habit->area->y) {
+			setPuertas(Direcciones::Sur);
+			habit->setPuertas(Direcciones::Norte);
+		}
+		else
+		{
+			habit->setPuertas(Direcciones::Sur);
+			setPuertas(Direcciones::Norte);
+		}
+	}
+	else
+	{
+		if (area->x < habit->area->x) {
+			setPuertas(Direcciones::Oeste);
+			habit->setPuertas(Direcciones::Este);
+		}
+		else
+		{
+			habit->setPuertas(Direcciones::Oeste);
+			setPuertas(Direcciones::Este);
+		}
+	}
+	cout << "kek";
+}
+
 
 //Metodo que se llama cuando se sale de la habitación. Se llama al stop de todos lo enemigos, que tienen que dejar de hacer ataques. **ESTO ES PROVISIONAL**
 void Room::stop() {
@@ -182,6 +248,49 @@ void Room::marcarOcupados(vector<SDL_Point> const p){
 	for (size_t i = 0; i < p.size(); i++)
 	{
 		ocupados[p[i].x][p[i].y] = true;
+	}
+}
+void Room::setPuertas(Direcciones dicc)
+{
+	switch (dicc)
+	{
+	case Direcciones::Norte:
+		Tiles[0][Tiles.at(0).size() / 2 - 2]->SetTile(ISE);
+		Tiles[0][Tiles.at(0).size() / 2]->SetTile(S1);
+		Tiles[0][Tiles.at(0).size() / 2 - 1]->SetTile(S1);
+		Tiles[0][Tiles.at(0).size() / 2 + 1]->SetTile(INE);
+		break;
+	case Direcciones::Sur:
+		Tiles[Tiles.size() - 1][Tiles.at(0).size() / 2 - 2]->SetTile(ISO);
+		Tiles[Tiles.size() - 1][Tiles.at(0).size() / 2]->SetTile(S1);
+		Tiles[Tiles.size() - 1][Tiles.at(0).size() / 2 - 1]->SetTile(S1);
+		Tiles[Tiles.size() - 1][Tiles.at(0).size() / 2 + 1]->SetTile(INO);
+		break;
+	case Direcciones::Este:
+		Tiles[Tiles.size() / 2 - 2][Tiles.at(0).size() - 1]->SetTile(ISO);
+		Tiles[Tiles.size() / 2][Tiles.at(0).size() - 1]->SetTile(S1);
+		Tiles[Tiles.size() / 2 - 1][Tiles.at(0).size() - 1]->SetTile(S1);
+		Tiles[Tiles.size() / 2 + 1][Tiles.at(0).size() - 1]->SetTile(INO);
+		break;
+	case Direcciones::Oeste:
+		Tiles[Tiles.size() / 2 - 2][0]->SetTile(ISE);
+		Tiles[Tiles.size() / 2][0]->SetTile(S1);
+		Tiles[Tiles.size() / 2 - 1][0]->SetTile(S1);
+		Tiles[Tiles.size() / 2 + 1][0]->SetTile(INE);
+		break;
+	default:
+		break;
+	}
+
+}
+void Room::moverMapa(int desplazamientoX, int desplazamientoY)
+{
+	for (size_t i = 0; i < Tiles.size(); i++)
+	{
+		for (size_t j = 0; j < Tiles[i].size(); j++)
+		{
+			Tiles[i][j]->setPos(desplazamientoX, desplazamientoY);
+		}
 	}
 }
 void Room::getTileOcupable(SDL_Rect & rect)

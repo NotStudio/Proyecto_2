@@ -23,7 +23,7 @@ private:
 	Puerta Entrada;
 	Puerta Salida;
 	int ANCHO_NIVEL, ALTO_NIVEL;
-	
+	void moverMapa(int desplazamientoX, int desplazamientoY);
 	bool setTiles(string d,b2World* Wardo);
 	void getTileOcupable(SDL_Rect &);
 	//Vector de enemigos.
@@ -32,15 +32,20 @@ private:
 	vector<Objeto*> objetos;
 	//Dificultad.(int, struct)
 	vector<Objeto*> extras;//Balas
-	void ColocarHabitacion(vector<Room*> const & habitaciones);
+	void ColocarHabitacion(vector<Room*> *habitaciones);
 	void marcarOcupados(vector<SDL_Point>const );
+	vector<Direcciones> puertas;
+	void setPuertas(Direcciones dicc);
 public:
-	
+	size_t numPuertas() { return puertas.size(); }
 	void nuevaBala(Bala*bala){
 		extras.push_back(bala);
 	}
 	bool dentroRoom(SDL_Point* box) {
 		return !(area->x > box->x || area->x + area->w < box->x || area->y > box->y || area->y + area->h < box->y);
+	}
+	bool dentroRoom(SDL_Rect box) {
+		return !(area->x >= box.x + box.w || area->x + area->w <= box.x || area->y >= box.y + box.h || area->y + area->h <= box.y);
 	}
 	Puerta getSalida() {
 		return Salida;
@@ -51,7 +56,7 @@ public:
 	}
 	void update();
 	//Room();
-	Room(Juego *,Puerta Salida, vector<Room*>const &,Puerta * Entrada = nullptr,int x=0, int y=0,string a = "tilesheet",string b="zon1");
+	Room(Juego *,Puerta Salida, vector<Room*>*,Puerta * Entrada = nullptr,int x=0, int y=0,string a = "tilesheet",string b="zon1");
 	~Room();
 	void DestroyRoom(b2World * wardo);
 	int getAnchoRoom()const { return ANCHO_NIVEL; }
