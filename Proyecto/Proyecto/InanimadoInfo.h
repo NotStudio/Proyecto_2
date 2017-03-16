@@ -2,20 +2,27 @@
 #define INANIMADOINFO_H_
 #include <SDL.h>
 #include "TileInfo.h"
-/*tamaño determinado 7 tiles de ancho, 3 tiles de alto factor es la escala*/
-SDL_Rect TuberiaRect(int x=0,int y=0,float escala=1.0f) {
-	return SDL_Rect{ x,y,escala*TILE_WIDTH * 7,escala*TILE_HEIGHT * 3 };
-}
-/*tamaño determinado 1 tile de ancho y 1 tile de alto*/
-SDL_Rect AgujeroRect(int x = 0, int y = 0, float escala = 1.0f) {
-	return SDL_Rect{ x,y,escala*TILE_WIDTH,escala*TILE_HEIGHT };
-}
-/*tamaño determinado 5 tile de ancho y 3 tile de alto*/
-SDL_Rect NaveRect(int x = 0, int y = 0, float escala = 1.0f) {
-	return SDL_Rect{ x,y,escala*TILE_WIDTH * 5,escala*TILE_HEIGHT * 3 };
-}
-/*tamaño determinado 5 tile de ancho y 3 tile de alto*/
-SDL_Rect ChatarraRect(int x = 0, int y = 0, float escala = 1.0f) {
-	return SDL_Rect{ x,y,escala*TILE_WIDTH *5,escala*TILE_HEIGHT * 3 };
+#include "Inanimado.h"
+Inanimado * creaInanimado(Juego * pj, string id, int x, int y, float escala = 1) {
+	if (id=="tuberia"||id=="Tuberia")
+	{
+		return new Tuberia(pj, { x,y }, escala);
+	}
+	else if (id == "nave")
+	{
+		return new Nave(pj, { x,y }, escala);
+	}
+	else if (id=="chatarra")
+	{
+		return new Chatarra(pj, { x,y }, escala);
+	}
+	else if (id == "agujero")
+	{
+		return new Agujero(pj, { x,y }, escala);
+	}
+	else
+	{
+		throw exception("becario");
+	}
 }
 #endif // !INANIMADOINFO_H_

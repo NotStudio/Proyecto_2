@@ -19,7 +19,7 @@ public:
 	//devuelve el rectangulo del tile
 	SDL_Rect getBox();
 	//para saber si algo esta dentro del tile
-	bool Dentro(SDL_Rect * box)const;
+	bool Dentro(SDL_Rect box)const;
 	//para poder borrar el body de un tile si lo tiene
 	b2Body * getBody();
 	void SetTile(int newType);
@@ -27,7 +27,7 @@ public:
 	void setPos(float32 x, float32 y);
 	void* k;
 private:
-	b2Body * mBody;
+	b2Body * mBody=nullptr;
 	//The attributes of the tile
 	SDL_Rect * mBox;
 	b2FixtureDef * mShapeDef;

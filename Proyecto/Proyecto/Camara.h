@@ -20,6 +20,7 @@ public:
 		return (rect->x > plano.x + plano.w || rect->x + rect->w < plano.x || rect->y > plano.y + plano.h || rect->y + rect->h < plano.y);
 	}
 	void setLimite(SDL_Rect & const area);
+	SDL_Point getPosRelativa(SDL_Rect rec);
 private:
 	/*
 	struct Limit

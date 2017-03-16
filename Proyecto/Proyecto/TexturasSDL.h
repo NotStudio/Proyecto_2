@@ -86,7 +86,7 @@ public:
 		font = fuente;
 	}
 	//funcion para meter un texto en la textura
-	void loadTexto(SDL_Renderer * pRender ,string const txto,uint32 tamLinea=0,SDL_Color const  color = {0,0,0}) {
+	void loadTexto(SDL_Renderer * pRender ,string const txto,SDL_Color const  color = {0,0,0}) {
 		liberar();
 		SDL_Surface* surfaceText = TTF_RenderText_Blended(font->fuente, txto.c_str(), color);
 		if (surfaceText == nullptr)

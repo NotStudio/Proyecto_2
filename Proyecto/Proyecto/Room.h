@@ -18,6 +18,7 @@ private:
 	Tilesheet * textTiles;
 	//el vector de los tiles
 	vector<Tile*>* Tiles;
+	vector<bool> ocupados;
 	Puerta Entrada;
 	Puerta Salida;
 	int ANCHO_NIVEL, ALTO_NIVEL;
@@ -30,8 +31,6 @@ private:
 	vector<Objeto*> objetos;
 	//Dificultad.(int, struct)
 	vector<Objeto*> extras;//Balas
-
-
 public:
 	
 	void nuevaBala(Bala*bala){
@@ -50,7 +49,7 @@ public:
 	}
 	void update();
 	//Room();
-	Room(Juego *,Puerta Salida, Puerta * Entrada = nullptr,int x=0, int y=0);
+	Room(Juego *,Puerta Salida, Puerta * Entrada = nullptr,int x=0, int y=0,string a = "tilesheet",string b="zon1");
 	~Room();
 	void DestroyRoom(b2World * wardo);
 	int getAnchoRoom()const { return ANCHO_NIVEL; }
@@ -60,7 +59,7 @@ public:
 	vector<int> TilesOcupados(SDL_Rect & const recto);
 	void SetRoomFichero(string Dir);
 	void stop();
-
+	void meterInanimados(string const dir);
 	
 
 }; // !1

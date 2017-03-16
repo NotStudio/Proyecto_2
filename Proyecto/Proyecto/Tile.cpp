@@ -2,6 +2,7 @@
 #include "TileInfo.h"
 #include "Juego.h"
 #include "checkML.h"
+
 void Tile::onColisionEnter() { }
 Tile::Tile(int x, int y, int tileType, b2World * wardo)
 {
@@ -57,11 +58,11 @@ int Tile::getType() {
 bool Tile::render(SDL_Rect * camara, SDL_Rect& rectangulo, int & tipo) {
 	rectangulo = getBox();
 	tipo = getType();
-	return Dentro(camara);
+	return Dentro(*camara);
 }
-bool Tile::Dentro(SDL_Rect*box)const
+bool Tile::Dentro(SDL_Rect box)const
 {
-	return !(mBox->x > box->x + box->w || mBox->x + mBox->w < box->x || mBox->y > box->y + box->h || mBox->y + mBox->h < box->y);
+	return !(mBox->x >= box.x + box.w || mBox->x + mBox->w <= box.x || mBox->y >= box.y + box.h || mBox->y + mBox->h <= box.y);
 }
 b2Body * Tile::getBody()
 {

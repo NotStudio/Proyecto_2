@@ -61,3 +61,7 @@ void Camara::setLimite(SDL_Rect & const area)
 {
 	minX = area.x; minY = area.y; maxX = area.x + area.w; maxY = area.y + area.h;
 }
+SDL_Point Camara::getPosRelativa(SDL_Rect rec) {
+	return{rec.x - plano.x + rec.w/2,rec.y-plano.y + rec.h / 2 };
+
+}

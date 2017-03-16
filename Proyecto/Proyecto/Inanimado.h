@@ -39,13 +39,11 @@ class Agujero:
 	public Inanimado
 {
 public:
-	Agujero(Juego * Pj, SDL_Point Pos, int tam) :Inanimado(Pj, SDL_Rect{Pos.x,Pos.y,tam,tam}, "agujero") {
+	Agujero(Juego * Pj, SDL_Point Pos, float tam) :Inanimado(Pj, SDL_Rect{Pos.x,Pos.y,TILE_WIDTH*tam,TILE_HEIGHT*tam}, "agujero") {
 	
 		fDef.filter.categoryBits = Juego::ESCENARIO_NOCOL;
 		fDef.filter.maskBits = Juego::JUGADOR | Juego::ENEMIGO;
-		body->CreateFixture(&fDef);
-
-	
+		body->CreateFixture(&fDef);	
 	}
 	~Agujero() { };
 private:
@@ -56,7 +54,7 @@ private:
 class Tuberia: public Inanimado
 {
 public:
-	Tuberia(Juego * Pj, SDL_Point Pos, int tam) :Inanimado(Pj, SDL_Rect{ Pos.x,Pos.y,tam*7,tam*3 }, "Tuberia") {
+	Tuberia(Juego * Pj, SDL_Point Pos, int tam) :Inanimado(Pj, SDL_Rect{ Pos.x,Pos.y,TILE_WIDTH*tam*7,TILE_HEIGHT*tam*3 }, "Tuberia") {
 		fDef.filter.categoryBits = Juego::ESCENARIO;
 		fDef.filter.maskBits = Juego::JUGADOR | Juego::ENEMIGO | Juego::AT_ENEMIGO | Juego::AT_JUGADOR; 
 		body->CreateFixture(&fDef);
@@ -68,7 +66,7 @@ public:
 class Nave : public Inanimado
 {
 public:
-	Nave(Juego * Pj, SDL_Point Pos, int tam) :Inanimado(Pj, SDL_Rect{ Pos.x,Pos.y,tam*2,tam }, "Nave") {
+	Nave(Juego * Pj, SDL_Point Pos, int tam) :Inanimado(Pj, SDL_Rect{ Pos.x,Pos.y,TILE_WIDTH*tam*5,TILE_HEIGHT*tam*3 }, "Nave") {
 		fDef.filter.categoryBits = Juego::ESCENARIO;
 		fDef.filter.maskBits = Juego::JUGADOR | Juego::ENEMIGO | Juego::AT_ENEMIGO | Juego::AT_JUGADOR;
 		body->CreateFixture(&fDef);
@@ -81,7 +79,7 @@ public:
 class Chatarra : public Inanimado
 {
 public:
-	Chatarra(Juego * Pj, SDL_Point Pos, int tam) :Inanimado(Pj, SDL_Rect{ Pos.x,Pos.y,tam*5,tam*3 }, "Chatarra") {
+	Chatarra(Juego * Pj, SDL_Point Pos, int tam) :Inanimado(Pj, SDL_Rect{ Pos.x,Pos.y,TILE_WIDTH*tam * 5,TILE_HEIGHT*tam * 3 }, "Chatarra") {
 		fDef.filter.categoryBits = Juego::ESCENARIO;
 		fDef.filter.maskBits = Juego::JUGADOR | Juego::ENEMIGO | Juego::AT_ENEMIGO | Juego::AT_JUGADOR;
 		body->CreateFixture(&fDef);
