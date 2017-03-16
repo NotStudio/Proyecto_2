@@ -19,17 +19,15 @@ vector<Tile*> RoomDesdeArchivo(string direccion, b2World * world, int& WID, int&
 		char aux;
 		stringstream lee(linea);
 		acuX = 0;
-		lee >> tipo >> aux;
+		
 		do
 		{
+			lee >> tipo >> aux;
 			if (tipo >= 0 && tipo < TOTAL_TILES) {
-				bool vis = false;
-				if(!vis)
 					Tiles.push_back(new Tile(x, y, tipo, world));
 			}
 			x += TILE_WIDTH;
 			acuX++;
-			lee >> tipo >> aux;
 		} while (!lee.fail());
 		(acuX > maxX) ? maxX = acuX:maxX;
 		y += TILE_HEIGHT;

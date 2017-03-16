@@ -55,21 +55,6 @@ Room::Room(Juego * pJ,Puerta sal, Puerta * entrada,int x, int y,string a ,string
 	//meterInanimados("a");
 
 	//Crear el vector de objetos, leer de archivos.
-	if (entrada == nullptr) {
-		objetos.push_back(new Agujero(pJuego, SDL_Point{ TILE_WIDTH * 3 + area->x, area->w / 2 + TILE_HEIGHT * 7 + area->y }, 150));
-		objetos.push_back(new Nave(pJuego, SDL_Point{ area->w - TILE_WIDTH * 5 + area->x, TILE_HEIGHT * 3 + area->y }, TILE_WIDTH * 3));
-		objetos.push_back(new Chatarra(pJuego, SDL_Point{ TILE_WIDTH * 1 + area->x, area->w / 2 + TILE_HEIGHT + area->y }, TILE_WIDTH / 4));
-		objetos.push_back(new Chatarra(pJuego, SDL_Point{ TILE_WIDTH * 2 + area->x, area->w / 2 + TILE_HEIGHT * 2 + area->y }, TILE_WIDTH / 4));
-		objetos.push_back(new Tuberia(pJuego, SDL_Point{ TILE_WIDTH / 2 + area->x, area->w / 2 + TILE_HEIGHT * 7 + area->y }, TILE_WIDTH / 2));
-	}
-	for (size_t i = 0; i < objetos.size(); i++)
-	{
-		vector<int>marcados = TilesOcupados(*static_cast<Entidad*>(objetos[i])->getRect());
-		for (size_t i = 0; i < marcados.size(); i++)
-		{
-			ocupados[marcados[i]]=false;
-		}
-	}
 	//Crear vector de enemigos.
 	//enemigos.push_back(new Perseguidor(pJuego, SDL_Rect{ area->w / 2 + area->x, area->h /2 + area->y , 64,64 }));
 	enemigos.push_back(new EnemigoBomba(pJuego, Tiles->at(getTileOcupable())->getBox()));
