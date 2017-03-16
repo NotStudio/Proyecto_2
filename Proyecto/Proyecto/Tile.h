@@ -25,14 +25,12 @@ public:
 	void SetTile(int newType);
 	void update();
 	void setPos(float32 x, float32 y);
-	void* k;
 private:
 	b2Body * mBody=nullptr;
 	//The attributes of the tile
 	SDL_Rect * mBox;
 	b2FixtureDef * mShapeDef;
 	b2PolygonShape * mShape;
-
 	//The tile type
 	int mType=-1;
 	b2BodyDef * mBodyDef;

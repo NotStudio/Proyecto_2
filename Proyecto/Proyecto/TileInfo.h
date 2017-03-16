@@ -12,11 +12,12 @@ enum TiposTile
 	ENO = 16, ENE = 17, ESE = 18, ESO = 19,
 	INO = 20, INE = 21, ISO = 22, ISE = 23,
 };
+const enum Direcciones:size_t
+{
+	Norte = 0, Este = 1, Sur = 2, Oeste = 3, Sinsitio = 4,
+};
 struct Puerta{
-	enum Direcciones
-	{
-		Norte, Este, Sur, Oeste, Sinsitio
-	}DirPuerta;
+	Direcciones DirPuerta;
 	SDL_Rect posicion;
 	SDL_Rect zonaPuerta;
 };

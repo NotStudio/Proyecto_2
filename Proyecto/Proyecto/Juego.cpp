@@ -5,7 +5,8 @@
 #include "Play.h"
 #include "checkML.h"
 #include "HUD.h"
-
+TextoSDL texto;
+string kek;
 //Constructora que inicializa todos los atributos de la clase Juego.
 Juego::Juego(b2World* mundo) : error(false), gameOver(false), exit(false), score(0), world(mundo)
 {
@@ -86,6 +87,7 @@ Juego::Juego(b2World* mundo) : error(false), gameOver(false), exit(false), score
 	vidasHUD = new HUD(this, SDL_Rect{20,0,34,55}, "Battery4", "idle");
 	zona = new ZonaAccion(this);
 	pushState(new Play(this));
+	texto.LoadFuente(getTipografia("lazy"));
 	run();
 	
 }
@@ -280,7 +282,6 @@ bool Juego::handle_event() {
 	while (SDL_PollEvent(&event)) {
 		
 		switch (event.type) {
-
 		case SDL_QUIT:
 			salir(); 
 			break;
@@ -289,6 +290,8 @@ bool Juego::handle_event() {
 			break;
 		case SDL_KEYUP:
 			KEYS[event.key.keysym.scancode] = false;
+			break;
+		case SDL_TEXTINPUT:
 			break;
 		default:
 			break;

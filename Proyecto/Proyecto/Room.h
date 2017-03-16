@@ -17,27 +17,28 @@ private:
 	Juego * pJuego;
 	Tilesheet * textTiles;
 	//el vector de los tiles
-	vector<Tile*>* Tiles;
-	vector<bool> ocupados;
+	vector<vector<Tile*>> Tiles;
+	vector<vector<bool>> ocupados;
+	
 	Puerta Entrada;
 	Puerta Salida;
 	int ANCHO_NIVEL, ALTO_NIVEL;
 	
 	bool setTiles(string d,b2World* Wardo);
-	int getTileOcupable();
+	void getTileOcupable(SDL_Rect &);
 	//Vector de enemigos.
 	vector<Objeto*> enemigos;
 	//Vector de objetos inanimados.
 	vector<Objeto*> objetos;
 	//Dificultad.(int, struct)
 	vector<Objeto*> extras;//Balas
-	void ColocarHabitacion();
+	void ColocarHabitacion(vector<Room*> const & habitaciones);
+	void marcarOcupados(vector<SDL_Point>const );
 public:
 	
 	void nuevaBala(Bala*bala){
 		extras.push_back(bala);
 	}
-	
 	bool dentroRoom(SDL_Point* box) {
 		return !(area->x > box->x || area->x + area->w < box->x || area->y > box->y || area->y + area->h < box->y);
 	}
@@ -50,14 +51,14 @@ public:
 	}
 	void update();
 	//Room();
-	Room(Juego *,Puerta Salida, Puerta * Entrada = nullptr,int x=0, int y=0,string a = "tilesheet",string b="zon1");
+	Room(Juego *,Puerta Salida, vector<Room*>const &,Puerta * Entrada = nullptr,int x=0, int y=0,string a = "tilesheet",string b="zon1");
 	~Room();
 	void DestroyRoom(b2World * wardo);
 	int getAnchoRoom()const { return ANCHO_NIVEL; }
 	int getAltoRoom()const { return ALTO_NIVEL; }
 	void render();
 	int encontrarPosicionTiled(int & const x, int & const y);
-	vector<int> TilesOcupados(SDL_Rect & const recto);
+	vector<SDL_Point> TilesOcupados(SDL_Rect const recto, bool & a );
 	void SetRoomFichero(string Dir);
 	void stop();
 	void meterInanimados(string const dir);

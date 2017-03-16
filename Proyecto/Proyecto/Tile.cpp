@@ -49,8 +49,9 @@ SDL_Rect  Tile::getBox() {
 	return *mBox;
 }
 void Tile::setPos(float32 x, float32 y) {
-	mBox->x = mBody->GetPosition().x;
-	mBox->y = mBody->GetPosition().y;
+	mBox->x = x;
+	mBox->y = y;
+	mBody->SetTransform(b2Vec2(x, y), 0);
 }
 int Tile::getType() {
 	return mType;
@@ -71,8 +72,8 @@ b2Body * Tile::getBody()
 
 void Tile::SetTile(int newType)
 {
-	mType = newType;
-	if (mType < S12) {
+	if (mType>S12 && newType < S12) {
+		mBody->GetWorld()->DestroyBody(mBody);
 		delete mShape;
 		delete mShapeDef;
 		delete mBodyDef;
@@ -81,5 +82,6 @@ void Tile::SetTile(int newType)
 		mShape = nullptr;
 		mBodyDef = nullptr;
 	}
+	mType = newType;
 }
 

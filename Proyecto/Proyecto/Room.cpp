@@ -8,7 +8,8 @@
 #include "MaquinaDePelotas.h"
 #include "Inanimado.h"
 #include "InanimadoInfo.h"
-//#define DEBUG
+#include "TileInfo.h"
+#define DEBUG
 
 //Update que realiza la habitacion. Ha de actualizarse todo lo que haya en ella (enemigos, objetos, balas, etc)
 void Room::update()
@@ -36,24 +37,29 @@ void Room::update()
 
 //Constructora de la habitación. Aquí es donde se lee el nivel, se crea y se añaden los enemigos y objetos.
 //No hace falta meter los parametros string para cargar un tilesheet, carga por defecto el de la zona 1
-Room::Room(Juego * pJ,Puerta sal, Puerta * entrada,int x, int y,string a ,string b ) :pJuego(pJ)
+Room::Room(Juego * pJ, Puerta sal, vector<Room*> const & ro, Puerta * entrada, int x, int y, string a, string b) :pJuego(pJ)
 {
-	textTiles = new Tilesheet(24, pJuego->getTextura(a,b));
-	a = (entrada==nullptr||entrada->zonaPuerta.w==1024)? "../Material/Maps/mapaGrande.csv": "../Material/Maps/mapa_Peque.map";
-	Tiles = new vector<Tile*>(RoomDesdeArchivo(a,pJuego->getWorld(),ANCHO_NIVEL,ALTO_NIVEL,sal,entrada));
-	ocupados = vector<bool>(Tiles->size(), false);
-	
+	textTiles = new Tilesheet(24, pJuego->getTextura(a, b));
+	a = (entrada == nullptr || entrada->zonaPuerta.w == 1024) ? "../Material/Maps/mapaGrande.csv" : "../Material/Maps/mapa_Peque.map";
+	Tiles = RoomDesdeArchivo(a, pJuego->getWorld());
+	area = new SDL_Rect{Tiles[0][0]->getBox().x, Tiles[0][0]->getBox().y, Tiles.at(0).size()*TILE_WIDTH, Tiles.size()*TILE_HEIGHT};
+	if(entrada != nullptr){
+
+	}
+	ocupados = vector<vector<bool>>(Tiles.size(),vector<bool>(Tiles[0].size(),false));
 	for (size_t i = 0; i < ocupados.size(); i++)
 	{
-		ocupados[i] = Tiles->at(i)->getBody()==nullptr;
+		for (size_t j = 0; j < ocupados[i].size(); j++)
+		{
+			ocupados[i][j] = Tiles[i][j]->getBody()!=nullptr;
+		}
 	}
+	ColocarHabitacion(ro);
 	//setTiles(DirM, wardo);
-	Salida = sal;
-	area = new SDL_Rect{ Tiles->at(0)->getBox().x ,Tiles->at(0)->getBox().y,ANCHO_NIVEL,ALTO_NIVEL };
-	Salida.zonaPuerta = *area;
+	//Salida.zonaPuerta = *area;
 	int xp = 0, yp = 0;
 	//meterInanimados("a");
-
+	/*
 	//Crear el vector de objetos, leer de archivos.
 	//Crear vector de enemigos.
 	//enemigos.push_back(new Perseguidor(pJuego, SDL_Rect{ area->w / 2 + area->x, area->h /2 + area->y , 64,64 }));
@@ -61,7 +67,45 @@ Room::Room(Juego * pJ,Puerta sal, Puerta * entrada,int x, int y,string a ,string
 	enemigos.push_back(new EnemigoBomba(pJuego, Tiles->at(getTileOcupable())->getBox()));
 	enemigos.push_back(new MaquinaDePelotas(pJuego, SDL_Rect{ area->w / 2 + TILE_WIDTH *4 + area->x, area->h /2 +TILE_HEIGHT*4 + area->y , 128,128 }));
 	enemigos.push_back(new Perseguidor(pJuego, SDL_Rect{ 500 + area->x,  500 + area->y , 64,64}));
-	
+	*/
+}
+
+void Room::ColocarHabitacion(vector<Room*>const & Habitaciones){
+	if (Habitaciones.size() >= 1){
+		
+	}
+	else{
+		Salida.DirPuerta = Direcciones(rand() % Sinsitio);
+		Salida.DirPuerta = Direcciones::Este;
+		switch (Salida.DirPuerta)
+		{
+		case Direcciones::Norte:
+			break;
+		case Direcciones::Sur:
+			break;
+		case Direcciones::Oeste:
+			Tiles[Tiles.size() / 2 -2][Tiles.size() - 1]->SetTile(ISO);
+			Tiles[Tiles.size() / 2][Tiles.size()-1]->SetTile(S1);
+			Tiles[Tiles.size() / 2 -1][Tiles.size()-1]->SetTile(S1);
+			Tiles[Tiles.size() / 2 + 1][Tiles.size() - 1]->SetTile(INO);
+			Salida.posicion = Tiles[Tiles.size() / 2 - 1][Tiles.size() - 1]->getBox();
+			Salida.posicion.h += TILE_HEIGHT;
+			break;
+		case Direcciones::Este:
+			Tiles[Tiles.size() / 2 - 2][0]->SetTile(ISE);
+			Tiles[Tiles.size() / 2][0]->SetTile(S1);
+			Tiles[Tiles.size() / 2 - 1][0]->SetTile(S1);
+			Tiles[Tiles.size() / 2 + 1][0]->SetTile(INE);
+			Salida.posicion = Tiles[Tiles.size() / 2-1][0]->getBox();
+			Salida.posicion.h += TILE_HEIGHT;
+			Salida.posicion.w += TILE_WIDTH*2;
+			break;
+		default:
+			break;
+		}
+		bool aux;
+		marcarOcupados(TilesOcupados(Salida.posicion, aux));
+	}
 }
 
 //Metodo que se llama cuando se sale de la habitación. Se llama al stop de todos lo enemigos, que tienen que dejar de hacer ataques. **ESTO ES PROVISIONAL**
@@ -87,7 +131,7 @@ void Room::meterInanimados(string const dir)
 		if (tipo != "") {
 			try
 			{
-				objetos.push_back(creaInanimado(pJuego, tipo, posX*TILE_WIDTH-area->x , posY*TILE_HEIGHT-area->y, escala));
+				objetos.push_back(creaInanimado(pJuego, tipo, posX*TILE_WIDTH-area->x, posY*TILE_HEIGHT-area->y, escala));
 			}
 			catch (const std::exception&)
 			{
@@ -99,30 +143,8 @@ void Room::meterInanimados(string const dir)
 	fichero.close();
 
 }
-
-//COSAS DE FRAN
-// --------------------------------------------------------------------------------------------------------------
-
-
-bool Room::setTiles(string Dirm,b2World * wardo) {
-	
-	int x = 0;
-	int y = 0;
-	return true;
-}
-
-int Room::getTileOcupable()
-{
-	srand(SDL_GetTicks());	
-	int k = rand()%Tiles->size();
-	while (ocupados[k])
-	{
-		k = rand() % Tiles->size();
-	}
-	return k;
-}
 Room::~Room()
-{
+{ 
 	for (size_t i = 0; i < enemigos.size(); i++)
 	{
 		delete enemigos[i];
@@ -133,11 +155,16 @@ Room::~Room()
 		delete objetos[i];
 		objetos[i] = nullptr;
 	}
-	for (size_t i = 0; i < Tiles->size(); i++)
+
+	for (size_t i = 0; i < Tiles.size(); i++)
 	{
-		delete Tiles->at(i);
-		Tiles->at(i) = nullptr;
+		for (size_t j = 0; j < Tiles.at(i).size(); j++)
+		{
+			delete Tiles.at(i).at(j);
+			Tiles.at(i).at(j)=nullptr;
+		}
 	}
+
 	for (size_t i = 0; i < extras.size(); i++) {
 		delete extras[i];
 		extras[i] = nullptr;
@@ -145,15 +172,74 @@ Room::~Room()
 
 
 
-
 	delete textTiles;
 	textTiles = nullptr;
 	delete area;
-	delete Tiles;
-	Tiles = nullptr;
 
 	//limpiar enemigos.
 }
+void Room::marcarOcupados(vector<SDL_Point> const p){
+	for (size_t i = 0; i < p.size(); i++)
+	{
+		ocupados[p[i].x][p[i].y] = true;
+	}
+}
+void Room::getTileOcupable(SDL_Rect & rect)
+{
+	srand(SDL_GetTicks());
+	int contador = 0;
+	int k = rand()%Tiles.size();
+	int j = rand() % Tiles[k].size();
+	bool flag = true;
+	rect.x = Tiles[k][j]->getBox().x;
+	rect.y = Tiles[k][j]->getBox().y;
+	TilesOcupados(rect,flag);
+	while (flag)
+	{
+		contador++;
+		k = rand() % Tiles.size();
+		j = rand() % Tiles[k].size();
+		rect.x = Tiles[k][j]->getBox().x;
+		rect.y = Tiles[k][j]->getBox().y;
+		TilesOcupados(rect, flag);
+		if (contador > 1000){
+			throw exception("no se encuentra una mierda\n");
+		}
+	}
+}
+vector<SDL_Point> Room::TilesOcupados(SDL_Rect const recto, bool & Solapa)
+{
+	vector<SDL_Point> marcados;
+	Solapa = false;
+	for (size_t i = 0; i < Tiles.size(); i++)
+	{
+		for (size_t j = 0; j < Tiles.at(i).size(); j++)
+		{
+			if (Tiles[i][j]->Dentro(recto)) { 
+				marcados.push_back({ i, j }); 
+				if (!Solapa){
+					Solapa = ocupados[i][j];
+				}
+			}
+		}
+		
+	}
+	return marcados;
+}
+
+//COSAS DE FRAN
+// --------------------------------------------------------------------------------------------------------------
+/*
+
+bool Room::setTiles(string Dirm,b2World * wardo) {
+	
+	int x = 0;
+	int y = 0;
+	return true;
+}
+
+
+
 void Room::DestroyRoom(b2World * wardo)
 {
 	for (size_t i = 0; i < Tiles->size(); i++)
@@ -161,21 +247,42 @@ void Room::DestroyRoom(b2World * wardo)
 			wardo->DestroyBody(Tiles->at(i)->getBody());
 	}
 }
+
+
+int Room::encontrarPosicionTiled(int& const x, int& const y)
+{
+	return(ANCHO_NIVEL / TILE_WIDTH)*((y - (y%TILE_HEIGHT))-1)/TILE_HEIGHT+(1 + (x - (x%TILE_WIDTH)) / TILE_WIDTH);
+}
+
+
+void Room::SetRoomFichero(string Dir)
+{
+//	RoomDesdeArchivo(Dir, pJuego->getWorld(), ANCHO_NIVEL, ALTO_NIVEL);
+}
+*/
 void Room::render(){
 	//Dibujamos los tiles de fondo.
 	SDL_Rect Dibujar;
 	int tipoDeTile;
-	for (size_t i = 0; i < Tiles->size(); i++)
+	for (size_t i = 0; i < Tiles.size(); i++)
 	{
-		 if (Tiles->at(i)->render(&pJuego->getCameraRect(),Dibujar,tipoDeTile)) {
-			 textTiles->draw(pJuego->getRender(), Dibujar, tipoDeTile, pJuego->getCamera());
-			#ifdef DEBUG
-			 if (!ocupados[i]) {
-				 Dibujar.x -= pJuego->getCameraRect().x;
-				 Dibujar.y -= pJuego->getCameraRect().y;
-				 SDL_RenderDrawRect(pJuego->getRender(), &Dibujar);
-			 }
-			#endif // DEBUG
+		bool Racha = false;
+		for (size_t j = 0; j < Tiles[i].size(); j++){
+			if (Tiles.at(i).at(j)->render(&pJuego->getCameraRect(), Dibujar, tipoDeTile)) {
+				textTiles->draw(pJuego->getRender(), Dibujar, tipoDeTile, pJuego->getCamera());
+				Racha = true;
+#ifdef DEBUG
+				if (ocupados[i][j]) {
+					Dibujar.x -= pJuego->getCameraRect().x;
+					Dibujar.y -= pJuego->getCameraRect().y;
+					SDL_RenderDrawRect(pJuego->getRender(), &Dibujar);
+				}
+#endif // DEBUG
+			}
+			else if (Racha){
+				Racha = false;
+				break;
+			}
 		}
 
 	}
@@ -185,34 +292,14 @@ void Room::render(){
 	}
 	for (int i = 0; i < enemigos.size(); i++) {
 		enemigos[i]->draw();
-	#ifdef DEBUG
-		SDL_Point a = pJuego->getCamera()->getPosRelativa(*static_cast<Entidad*>(enemigos[i])->getRect()), b= pJuego->getCamera()->getPosRelativa(pJuego->getCamera()->getTarget());
+#ifdef DEBUG
+		SDL_Point a = pJuego->getCamera()->getPosRelativa(*static_cast<Entidad*>(enemigos[i])->getRect()), b = pJuego->getCamera()->getPosRelativa(pJuego->getCamera()->getTarget());
 		SDL_RenderDrawLine(pJuego->getRender(), b.x, b.y, a.x, a.y);
-	#endif // DEBUG
+#endif // DEBUG
 
 	}
 	for (int i = 0; i < extras.size(); i++) {
 		extras[i]->draw();
 	}
 }
-
-int Room::encontrarPosicionTiled(int& const x, int& const y)
-{
-	return(ANCHO_NIVEL / TILE_WIDTH)*((y - (y%TILE_HEIGHT))-1)/TILE_HEIGHT+(1 + (x - (x%TILE_WIDTH)) / TILE_WIDTH);
-}
-vector<int> Room::TilesOcupados(SDL_Rect & const recto)
-{
-	vector<int>marcados;
-	for (int i = 0; i < Tiles->size(); i++)
-	{
-		if (Tiles->at(i)->Dentro(recto)) marcados.push_back(i);
-	}
-	return marcados;
-}
-
-void Room::SetRoomFichero(string Dir)
-{
-//	RoomDesdeArchivo(Dir, pJuego->getWorld(), ANCHO_NIVEL, ALTO_NIVEL);
-}
-
 
