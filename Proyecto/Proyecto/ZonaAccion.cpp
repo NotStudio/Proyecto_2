@@ -7,14 +7,15 @@ ZonaAccion::ZonaAccion(Juego* punteroJuego): pJuego(punteroJuego)
 {
 	Puerta p;
 	niveles = new vector<Room*>;
+	niveles->reserve(4);
 	p.DirPuerta = Oeste;
 	niveles->push_back(new Room(pJuego, p,niveles));
-	niveles->push_back(new Room(pJuego, p,niveles));
-	niveles->push_back(new Room(pJuego, p,niveles));
-	niveles->push_back(new Room(pJuego, p,niveles));
-	niveles->push_back(new Room(pJuego, p,niveles));
-	niveles->push_back(new Room(pJuego, p,niveles));
+	niveles->push_back(new Room(pJuego, p, niveles));
+	niveles->push_back(new Room(pJuego, p, niveles));
+
+
 	//niveles.push_back(new Room(pJuego, niveles.at(0)->getArea().x + niveles.at(0)->getArea().w, niveles.at(0)->getArea().y, Direcciones{ false,false, false,true }));
+	setRect();
 	setNivelActual();
 }
 
@@ -31,22 +32,23 @@ ZonaAccion::~ZonaAccion()
 	nivelActual = nullptr;
 }
 void ZonaAccion::draw(){
-	SDL_Rect abas;
 	for (size_t i = 0; i < niveles->size(); i++)
 	{
 		niveles->at(i)->render();
-
-		abas = niveles->at(i)->getArea();
-		abas.x /= 100;
-		abas.y /= 100;
-		abas.w /= 100;
-		abas.h /= 100;
-		abas.x += 300;
-		abas.y += 300;
-
-		SDL_RenderDrawRect(pJuego->getRender(),&abas);
 	}
-
+	SDL_SetRenderDrawColor(pJuego->getRender(), 0, 255, 0, 255);
+	SDL_Point pj;
+	pj.x = static_cast<Entidad*>(pJuego->getPlayer())->getX()/128;
+	pj.y = static_cast<Entidad*>(pJuego->getPlayer())->getY()/128;
+	SDL_Rect aux = tam;
+	aux.x /= 128;
+	aux.y /= 128;
+	aux.w /= 128;
+	aux.h /= 128;
+	aux.x += 300;
+	aux.y += 300;
+	SDL_RenderDrawRect(pJuego->getRender(), &aux);
+	SDL_RenderDrawPoint(pJuego->getRender(), pj.x, pj.y);
 }
 
 void ZonaAccion::update(){

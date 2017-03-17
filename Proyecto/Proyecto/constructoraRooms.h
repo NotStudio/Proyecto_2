@@ -9,7 +9,8 @@ vector<vector<Tile*>> RoomDesdeArchivo(string direccion, b2World * world) {
 
 	vector<vector<Tile*>> Tiles;
 	ifstream map(direccion);
-	Tiles.reserve(500);
+	Tiles.reserve(28);
+	
 	int x = IniX, y = IniY, tipo = -1, maxX = 0, acuX = 0, acuY =0;
 	string linea;
 	getline(map, linea);
@@ -19,8 +20,10 @@ vector<vector<Tile*>> RoomDesdeArchivo(string direccion, b2World * world) {
 		char aux;
 		stringstream lee(linea);
 		acuX = 0;
-		if (!lee.fail())
+		if (!lee.fail()) {
 			Tiles.push_back(vector<Tile*>());
+			Tiles[acuY].reserve(28);
+		}
 		do
 		{
 			lee >> tipo >> aux;

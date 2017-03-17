@@ -10,6 +10,7 @@ using namespace std;
 class ZonaAccion :
 	public ZonaJuego
 {
+	SDL_Rect tam;
 	Juego* pJuego;
 	//Vector de habitaciones/niveles
 	vector<Room*>* niveles;
@@ -25,7 +26,21 @@ class ZonaAccion :
 	void setNivelActual();
 
 
-
+	void setRect() {
+		int minX, minY, MaxX, MaxY;
+		minX = niveles->at(0)->getArea().x;
+		minY = niveles->at(0)->getArea().y;
+		MaxX = niveles->at(0)->getArea().w + minX;
+		MaxY = niveles->at(0)->getArea().h + minY;
+		for (size_t i = 1; i < niveles->size(); i++)
+		{
+			minX = (minX > niveles->at(i)->getArea().x) ? niveles->at(i)->getArea().x : minX;
+			minY = (minY > niveles->at(i)->getArea().y) ? niveles->at(i)->getArea().y : minY;
+			MaxX = (MaxX < niveles->at(i)->getArea().w+ niveles->at(i)->getArea().x) ? niveles->at(i)->getArea().w + niveles->at(i)->getArea().x : MaxX;
+			MaxY = (MaxY < niveles->at(i)->getArea().h+ niveles->at(i)->getArea().y) ? niveles->at(i)->getArea().h + niveles->at(i)->getArea().y : MaxY;
+		}
+		tam = { minX,minY,minX - MaxX,minY-MaxY };
+	}
 
 public:
 	ZonaAccion(Juego* punteroJuego);

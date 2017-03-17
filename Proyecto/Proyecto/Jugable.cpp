@@ -1,7 +1,6 @@
 #include "Jugable.h"
 #include "Enemigo.h"
 #include "Bala.h"
-#define FLASHTASMA
 
 
 Jugable::Jugable(Juego* punteroJuego, SDL_Rect spritePar, string objectId):Personaje(punteroJuego, spritePar, objectId)
@@ -9,9 +8,6 @@ Jugable::Jugable(Juego* punteroJuego, SDL_Rect spritePar, string objectId):Perso
 	//Capa de colision.
 	fDef.filter.categoryBits = Juego::JUGADOR;
 	fDef.filter.maskBits = Juego::ENEMIGO | Juego::ITEM | Juego::ESCENARIO | Juego::ESCENARIO_NOCOL | Juego::AT_ENEMIGO;
-#ifdef FLASHTASMA
-	fDef.isSensor = true;
-#endif // FLASHTASMA
 	body->CreateFixture(&fDef);
 }
 

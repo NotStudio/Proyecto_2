@@ -41,7 +41,7 @@ void Room::update()
 Room::Room(Juego * pJ, Puerta sal, vector<Room*> * ro, Puerta * entrada, int x, int y, string a, string b) :pJuego(pJ)
 {
 	textTiles = new Tilesheet(24, pJuego->getTextura(a, b));
-	a = "../Material/Maps/mapaGrande.csv";
+	a = "../Material/Maps/mapaGrande3.csv";
 	Tiles = RoomDesdeArchivo(a, pJuego->getWorld());
 	area = new SDL_Rect{Tiles[0][0]->getBox().x, Tiles[0][0]->getBox().y, Tiles.at(0).size()*TILE_WIDTH, Tiles.size()*TILE_HEIGHT};
 	if(ro->size()>0){
@@ -69,110 +69,39 @@ Room::Room(Juego * pJ, Puerta sal, vector<Room*> * ro, Puerta * entrada, int x, 
 	enemigos.push_back(new Perseguidor(pJuego, SDL_Rect{ 500 + area->x,  500 + area->y , 64,64}));
 	*/
 }
-struct keks
-{
-	Room* hab;
-	vector<SDL_Rect> posibles;
-	keks(Room*h,SDL_Rect r){
-		hab = h;
-		posibles.push_back(r);
-	}
-};
-bool solapa(SDL_Rect const & box,SDL_Rect const & area) {
-	return !(area.x > box.x + box.w || area.x + area.w < box.x || area.y > box.y + box.h || area.y + area.y < box.y);
-}
-vector<keks> solapamientoHabitaciones(vector<Room*> * Habitaciones, SDL_Rect & zona) {
-	vector<keks> posiblis;
-	int cont = 0;
-	for (size_t i = 0; i < Habitaciones->size(); i++)
-	{
-		int okX= Habitaciones->at(i)->getArea().x , okY = Habitaciones->at(i)->getArea().y;
-		int okW = Habitaciones->at(i)->getArea().w, okH = Habitaciones->at(i)->getArea().h;
-		bool ayy = false;
-		
-		zona.x = okX+(okW- zona.w )/2;
-		zona.y = okY-zona.h;
-		bool valido = true;
-		for (size_t j = 0; j < Habitaciones->size(); j++)
-		{
-			if (solapa(zona, Habitaciones->at(j)->getArea())) valido = false;
-		}
-		if (valido && !ayy) {ayy = true;posiblis.push_back(keks(Habitaciones->at(i), zona));}else if(ayy)posiblis[cont].posibles.push_back(zona);
-		valido = true;
-		
-		zona.y = okY + okH;
-		zona.x = okX + (okW - zona.w) / 2;
-		for (size_t j = 0; j < Habitaciones->size(); j++)
-		{
-			if (solapa(zona, Habitaciones->at(j)->getArea())) valido = false;
-		}
-		if (valido && !ayy) { ayy = true; posiblis.push_back(keks(Habitaciones->at(i), zona)); }
-		else if (ayy)posiblis[cont].posibles.push_back(zona);
-		
-		zona.y = okY + (okH - zona.h) / 2;
-		zona.x = okX + okW;
-		valido = true;
-		
-		for (size_t j = 0; j < Habitaciones->size(); j++)
-		{
-			if (solapa(zona, Habitaciones->at(j)->getArea())) valido = false;
-		}
 
-		if (valido && !ayy) { ayy = true; posiblis.push_back(keks(Habitaciones->at(i), zona)); }
-		else if (ayy)posiblis[cont].posibles.push_back(zona);
-		zona.x = okX -zona.w;
-		valido = true;
 
-		for (size_t j = 0; j < Habitaciones->size(); j++)
-		{
-			if (solapa(zona, Habitaciones->at(j)->getArea())) valido = false;
-		}
-
-		if (valido && !ayy) { ayy = true; posiblis.push_back(keks(Habitaciones->at(i), zona)); }
-		else if (ayy)posiblis[cont].posibles.push_back(zona);
-
-		if (ayy) cont++;
-	}
-	return posiblis;
-}
-SDL_Point nuevaUbicacion(vector<keks> rooms,Room*&k){
-	srand(time(time_t()));
-	int a = rand() % rooms.size();
-	int b = rand() % rooms[a].posibles.size();
-	k = rooms[a].hab;
-	return{ rooms[a].posibles[b].x,rooms[a].posibles[b].y };
-}
 
 void Room::ColocarHabitacion(vector<Room*> * Habitaciones) {
 	Room * habit = nullptr; 
 	SDL_Rect aux = *area;
-	SDL_Point a = nuevaUbicacion(solapamientoHabitaciones(Habitaciones,aux),habit);
+	Direcciones D;
+	SDL_Point a = lazyFoo(solapamientoHabitaciones(Habitaciones,aux),habit,D);
 	//codigo secreto
-	if ((area->x-(habit->area->w-area->w)/2 == habit->area->x))
+	area->x = a.x;
+	area->y = a.y;
+	habit->setPuertas(D);
+	switch (D)
 	{
-		if (area->y < habit->area->y) {
-			setPuertas(Direcciones::Sur);
-			habit->setPuertas(Direcciones::Norte);
-		}
-		else
-		{
-			habit->setPuertas(Direcciones::Sur);
-			setPuertas(Direcciones::Norte);
-		}
-	}
-	else
-	{
-		if (area->x < habit->area->x) {
-			setPuertas(Direcciones::Oeste);
-			habit->setPuertas(Direcciones::Este);
-		}
-		else
-		{
-			habit->setPuertas(Direcciones::Oeste);
-			setPuertas(Direcciones::Este);
-		}
+	case Norte:
+		setPuertas(Sur);
+		break;
+	case Este:
+		setPuertas(Oeste);
+		break;
+	case Sur:
+		setPuertas(Norte);
+		break;
+	case Oeste:
+		setPuertas(Este);
+		break;
+	case Sinsitio:
+		break;
+	default:
+		break;
 	}
 	moverMapa(a.x, a.y);
+	
 	cout << "kek";
 }
 
@@ -383,15 +312,7 @@ void Room::render(){
 			if (Tiles.at(i).at(j)->render(&pJuego->getCameraRect(), Dibujar, tipoDeTile)) {
 				textTiles->draw(pJuego->getRender(), Dibujar, tipoDeTile, pJuego->getCamera());
 				Racha = true;
-#ifdef DEBUG
-				if (ocupados[i][j]) {
-					Dibujar.x -= pJuego->getCameraRect().x;
-					Dibujar.y -= pJuego->getCameraRect().y;
-					SDL_RenderDrawRect(pJuego->getRender(), &Dibujar);
-				}
-#endif // DEBUG
-			}
-			else if (Racha){
+			}else if (Racha){
 				Racha = false;
 				break;
 			}
@@ -404,10 +325,6 @@ void Room::render(){
 	}
 	for (int i = 0; i < enemigos.size(); i++) {
 		enemigos[i]->draw();
-#ifdef DEBUG
-		SDL_Point a = pJuego->getCamera()->getPosRelativa(*static_cast<Entidad*>(enemigos[i])->getRect()), b = pJuego->getCamera()->getPosRelativa(pJuego->getCamera()->getTarget());
-		SDL_RenderDrawLine(pJuego->getRender(), b.x, b.y, a.x, a.y);
-#endif // DEBUG
 
 	}
 	for (int i = 0; i < extras.size(); i++) {

@@ -4,18 +4,13 @@
 #include "checkML.h"
 #include "Room.h"
 #include "ZonaAccion.h"
-
 Tostadora::Tostadora(Juego* punteroJuego, SDL_Rect spritePar):Jugable(punteroJuego, spritePar, "Tostadora")
 {	
 	for (size_t i = 0; i < animaciones.size(); i++)
 	{
 		animaciones[i]->setNumFrames(30);
 	}
-#ifdef FLASHTASMA
 	stats.velMov = 10000;
-#else
-	stats.velMov = 1000;
-#endif // FLASHTASMA
 	stats.vida = 4;
 }
 

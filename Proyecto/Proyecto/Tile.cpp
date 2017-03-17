@@ -74,7 +74,7 @@ b2Body * Tile::getBody()
 void Tile::SetTile(int newType)
 {
 	if (mType>S12 && newType < S12) {
-		mBody->GetWorld()->DestroyBody(mBody);
+		mBody->SetActive(false);
 		delete mShape;
 		delete mShapeDef;
 		delete mBodyDef;

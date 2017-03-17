@@ -1,7 +1,7 @@
 #ifndef TOSTADORA_H_
 #define TOSTADORA_H_
 #include "Jugable.h"
-#define FLASHTASMA
+
 class Tostadora :
 	public Jugable
 {
