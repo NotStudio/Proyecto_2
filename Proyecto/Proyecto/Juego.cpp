@@ -5,6 +5,8 @@
 #include "Play.h"
 #include "checkML.h"
 #include "HUD.h"
+#include <io.h>
+#include "recorreFicheros.h"
 TextoSDL texto;
 string kek;
 //Constructora que inicializa todos los atributos de la clase Juego.
@@ -72,7 +74,7 @@ Juego::Juego(b2World* mundo) : error(false), gameOver(false), exit(false), score
 	
 	//Tipografias
 	ubicacionTipografias.emplace_back("../Material/lazy.ttf");
-	
+	ficherosHabitaciones=maine(TiposArchivo::CSV);
 	world->SetContactListener(&listener);
 	
 
@@ -321,7 +323,7 @@ void Juego::draw(){
 	SDL_RenderClear(pRenderer);
 	topState()->draw();
 	vidasHUD->draw(personaje);
-	SDL_RenderPresent(pRenderer);
+	SDL_RenderPresent(pRenderer);	
 
 }
 

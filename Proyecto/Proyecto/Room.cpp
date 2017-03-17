@@ -41,8 +41,8 @@ void Room::update()
 Room::Room(Juego * pJ, Puerta sal, vector<Room*> * ro, Puerta * entrada, int x, int y, string a, string b) :pJuego(pJ)
 {
 	textTiles = new Tilesheet(24, pJuego->getTextura(a, b));
-	a = "../Material/Maps/mapaGrande3.csv";
-	Tiles = RoomDesdeArchivo(a, pJuego->getWorld());
+
+	Tiles = RoomDesdeArchivo(pJuego->getRoom(), pJuego->getWorld());
 	area = new SDL_Rect{Tiles[0][0]->getBox().x, Tiles[0][0]->getBox().y, Tiles.at(0).size()*TILE_WIDTH, Tiles.size()*TILE_HEIGHT};
 	if(ro->size()>0){
 		ColocarHabitacion(ro);
@@ -213,6 +213,7 @@ void Room::setPuertas(Direcciones dicc)
 	default:
 		break;
 	}
+	puertas[numPuertas].DirPuerta = dicc;
 
 }
 void Room::moverMapa(int desplazamientoX, int desplazamientoY)
@@ -312,6 +313,8 @@ void Room::render(){
 			if (Tiles.at(i).at(j)->render(&pJuego->getCameraRect(), Dibujar, tipoDeTile)) {
 				textTiles->draw(pJuego->getRender(), Dibujar, tipoDeTile, pJuego->getCamera());
 				Racha = true;
+				if(Tiles.at(i).at(j)->getBody()!=nullptr)
+					SDL_RenderDrawRect(pJuego->getRender(), &pJuego->getCamera()->getRecRelativa(Dibujar));
 			}else if (Racha){
 				Racha = false;
 				break;

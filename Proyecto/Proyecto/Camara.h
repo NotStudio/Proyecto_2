@@ -21,6 +21,7 @@ public:
 	}
 	void setLimite(SDL_Rect & const area);
 	SDL_Point getPosRelativa(SDL_Rect rec);
+	SDL_Rect getRecRelativa(SDL_Rect rec);
 private:
 	/*
 	struct Limit

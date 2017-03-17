@@ -10,7 +10,7 @@ Tostadora::Tostadora(Juego* punteroJuego, SDL_Rect spritePar):Jugable(punteroJue
 	{
 		animaciones[i]->setNumFrames(30);
 	}
-	stats.velMov = 10000;
+	stats.velMov = 1000;
 	stats.vida = 4;
 }
 

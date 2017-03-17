@@ -69,3 +69,9 @@ SDL_Point Camara::getPosRelativa(SDL_Rect rec) {
 	return{rec.x - plano.x + rec.w/2,rec.y-plano.y + rec.h / 2 };
 
 }
+SDL_Rect Camara::getRecRelativa(SDL_Rect rec) {
+	rec.x -= plano.x;
+	rec.y -= plano.y;
+	return rec;
+}
+

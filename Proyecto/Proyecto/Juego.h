@@ -50,6 +50,7 @@ class Juego
 	SDL_Renderer* pRenderer;
 	vector<string> nombreTexturas;
 	vector<string> ubicacionTipografias;
+	vector<string> ficherosHabitaciones;
 
 	struct Ventana { //Struct que contiene el tamaño y el color de la ventana.
 		int ancho;
@@ -140,6 +141,9 @@ public:
 			return fuentes.at(fuentes.begin()->first);
 		}
 	}
+	string getRoom(){
+		return ficherosHabitaciones[rand()%ficherosHabitaciones.size()];
+	}
 	vector<Animacion*>getAnimaciones(const string & entity) {
 		vector<Animacion*> vec;
 		try {
@@ -159,7 +163,6 @@ public:
 	TexturasSDL* getTextura(const string &entity, const string &anim);
 
 	SDL_Renderer* getRender() const;
-
 	void getMousePos(int &mpx, int &mpy) const;
 
 	bool getError();

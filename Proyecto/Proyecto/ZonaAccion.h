@@ -39,7 +39,7 @@ class ZonaAccion :
 			MaxX = (MaxX < niveles->at(i)->getArea().w+ niveles->at(i)->getArea().x) ? niveles->at(i)->getArea().w + niveles->at(i)->getArea().x : MaxX;
 			MaxY = (MaxY < niveles->at(i)->getArea().h+ niveles->at(i)->getArea().y) ? niveles->at(i)->getArea().h + niveles->at(i)->getArea().y : MaxY;
 		}
-		tam = { minX,minY,minX - MaxX,minY-MaxY };
+		tam = { minX, minY, MaxX - minX, MaxY - minY };
 	}
 
 public:

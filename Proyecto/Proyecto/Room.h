@@ -13,6 +13,8 @@ private:
 	Juego * pJuego;
 	Tilesheet * textTiles;
 	//el vector de los tiles
+	Puerta puertas[4];
+	int numPuertas=0;
 	vector<vector<Tile*>> Tiles;
 	vector<vector<bool>> ocupados;
 	void moverMapa(int desplazamientoX, int desplazamientoY);
@@ -101,17 +103,16 @@ private:
 			zona.x = okX + (okW - zona.w) / 2;
 			zona.y = okY - zona.h;
 			bool valido = true;
-			for (size_t j = 0; j < Habitaciones->size(); j++)
+			for (size_t j = i; j < Habitaciones->size(); j++)
 			{
 				if (solapa(zona, Habitaciones->at(j)->getArea())) valido = false;
 			}
 			if (valido && !ayy) { ayy = true; posiblis.push_back(keks(Habitaciones->at(i), zona,Direcciones::Norte)); }
 			else if (ayy)posiblis[cont].posibles.push_back(make_pair(zona,Direcciones::Norte));
 			valido = true;
-
-			zona.y = okY + okH;
 			zona.x = okX + (okW - zona.w) / 2;
-			for (size_t j = 0; j < Habitaciones->size(); j++)
+			zona.y = okY + okH;
+			for (size_t j = i; j < Habitaciones->size(); j++)
 			{
 				if (solapa(zona, Habitaciones->at(j)->getArea())) valido = false;
 			}
@@ -122,7 +123,7 @@ private:
 			zona.x = okX + okW;
 			valido = true;
 
-			for (size_t j = 0; j < Habitaciones->size(); j++)
+			for (size_t j = i; j < Habitaciones->size(); j++)
 			{
 				if (solapa(zona, Habitaciones->at(j)->getArea())) valido = false;
 			}
@@ -132,7 +133,7 @@ private:
 			zona.x = okX - zona.w;
 			valido = true;
 
-			for (size_t j = 0; j < Habitaciones->size(); j++)
+			for (size_t j = i; j < Habitaciones->size(); j++)
 			{
 				if (solapa(zona, Habitaciones->at(j)->getArea())) valido = false;
 			}

@@ -73,8 +73,9 @@ b2Body * Tile::getBody()
 
 void Tile::SetTile(int newType)
 {
-	if (mType>S12 && newType < S12) {
-		mBody->SetActive(false);
+	mType = newType;
+	if (mType <S12 && mBody!=nullptr) {
+		mBody->GetWorld()->DestroyBody(mBody);
 		delete mShape;
 		delete mShapeDef;
 		delete mBodyDef;
@@ -83,6 +84,6 @@ void Tile::SetTile(int newType)
 		mShape = nullptr;
 		mBodyDef = nullptr;
 	}
-	mType = newType;
+
 }
 

@@ -278,5 +278,8 @@
     <ClInclude Include="InanimadoInfo.h">
       <Filter>Source Files</Filter>
     </ClInclude>
+    <ClInclude Include="recorreFicheros.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
