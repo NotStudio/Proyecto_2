@@ -35,7 +35,7 @@ private:
 
 
 public:
-	void setPuertas(Direcciones dicc);
+	void setPuertas(int dicc);
 	void nuevaBala(Bala*bala){
 		extras.push_back(bala);
 	}
@@ -51,13 +51,12 @@ public:
 	}
 	void update();
 	//Room();
-	Room(Juego *,Puerta Salida, vector<Room*>*,Puerta * Entrada = nullptr,int x=0, int y=0,string a = "tilesheet",string b="zon1");
+	Room(Juego *, vector<Room*>*);
 	~Room();
-	void DestroyRoom(b2World * wardo);
 	void render();
 	int encontrarPosicionTiled(int & const x, int & const y);
 	vector<SDL_Point> TilesOcupados(SDL_Rect const recto, bool & a );
-	void SetRoomFichero(string Dir);
+	void SetRoomFichero(string Dir, vector<Room*> * Habitaciones);
 	void stop();
 	void meterInanimados(string const dir);
 private:
@@ -75,8 +74,14 @@ private:
 		int a = rand() % rooms.size();
 		int b = rand() % rooms[a].posibles.size();
 		k = rooms[a].hab;
-		cout << "Se conecta la " << a << " la " << rooms.size() << "\n";
 		D = rooms[a].posibles[b].second;
+		cout << "Se conecta la " << a << " la " << rooms.size() ;
+		if (D == Norte){
+			cout << " Por Norte ";
+		}if (D == Sur){
+			cout << " Por Sur ";
+		}
+		cout << "\n";
 		return{ rooms[a].posibles[b].first.x,rooms[a].posibles[b].first.y };
 	}
 	bool solapa(SDL_Rect const & a, SDL_Rect const & b) {
@@ -103,43 +108,43 @@ private:
 			zona.x = okX + (okW - zona.w) / 2;
 			zona.y = okY - zona.h;
 			bool valido = true;
-			for (size_t j = i; j < Habitaciones->size(); j++)
+			for (size_t j = 0; j < Habitaciones->size(); j++)
 			{
 				if (solapa(zona, Habitaciones->at(j)->getArea())) valido = false;
 			}
 			if (valido && !ayy) { ayy = true; posiblis.push_back(keks(Habitaciones->at(i), zona,Direcciones::Norte)); }
-			else if (ayy)posiblis[cont].posibles.push_back(make_pair(zona,Direcciones::Norte));
+			else if (valido &&ayy)posiblis[cont].posibles.push_back(make_pair(zona,Direcciones::Norte));
 			valido = true;
 			zona.x = okX + (okW - zona.w) / 2;
 			zona.y = okY + okH;
-			for (size_t j = i; j < Habitaciones->size(); j++)
+			for (size_t j = 0; j < Habitaciones->size(); j++)
 			{
 				if (solapa(zona, Habitaciones->at(j)->getArea())) valido = false;
 			}
 			if (valido && !ayy) { ayy = true; posiblis.push_back(keks(Habitaciones->at(i), zona,Direcciones::Sur)); }
-			else if (ayy)posiblis[cont].posibles.push_back(make_pair(zona, Direcciones::Sur));
+			else if (valido&&ayy)posiblis[cont].posibles.push_back(make_pair(zona, Direcciones::Sur));
 
 			zona.y = okY + (okH - zona.h) / 2;
 			zona.x = okX + okW;
 			valido = true;
 
-			for (size_t j = i; j < Habitaciones->size(); j++)
+			for (size_t j = 0; j < Habitaciones->size(); j++)
 			{
 				if (solapa(zona, Habitaciones->at(j)->getArea())) valido = false;
 			}
 
 			if (valido && !ayy) { ayy = true; posiblis.push_back(keks(Habitaciones->at(i), zona,Direcciones::Este)); }
-			else if (ayy)posiblis[cont].posibles.push_back(make_pair(zona, Direcciones::Este));
+			else if (valido&&ayy)posiblis[cont].posibles.push_back(make_pair(zona, Direcciones::Este));
 			zona.x = okX - zona.w;
 			valido = true;
 
-			for (size_t j = i; j < Habitaciones->size(); j++)
+			for (size_t j = 0; j < Habitaciones->size(); j++)
 			{
 				if (solapa(zona, Habitaciones->at(j)->getArea())) valido = false;
 			}
 
 			if (valido && !ayy) { ayy = true; posiblis.push_back(keks(Habitaciones->at(i), zona,Direcciones::Oeste)); }
-			else if (ayy)posiblis[cont].posibles.push_back(make_pair(zona, Direcciones::Oeste));
+			else if (valido&&ayy)posiblis[cont].posibles.push_back(make_pair(zona, Direcciones::Oeste));
 
 			if (ayy) cont++;
 		}

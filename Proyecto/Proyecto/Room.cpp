@@ -3,6 +3,7 @@
 #include "Room.h"
 #include "checkML.h"
 #include "constructoraRooms.h"
+#include "ZonaAccion.h"
 #include "Perseguidor.h"
 #include "EnemigoBomba.h"
 #include "MaquinaDePelotas.h"
@@ -38,15 +39,12 @@ void Room::update()
 
 //Constructora de la habitación. Aquí es donde se lee el nivel, se crea y se añaden los enemigos y objetos.
 //No hace falta meter los parametros string para cargar un tilesheet, carga por defecto el de la zona 1
-Room::Room(Juego * pJ, Puerta sal, vector<Room*> * ro, Puerta * entrada, int x, int y, string a, string b) :pJuego(pJ)
+Room::Room(Juego * pJ, vector<Room*> * ro) :pJuego(pJ)
 {
-	textTiles = new Tilesheet(24, pJuego->getTextura(a, b));
+	SDL_Rect k = { 55, 56, 89, 68 };
+	size_t a = sizeof(k);
 
-	Tiles = RoomDesdeArchivo(pJuego->getRoom(), pJuego->getWorld());
-	area = new SDL_Rect{Tiles[0][0]->getBox().x, Tiles[0][0]->getBox().y, Tiles.at(0).size()*TILE_WIDTH, Tiles.size()*TILE_HEIGHT};
-	if(ro->size()>0){
-		ColocarHabitacion(ro);
-	}
+	SetRoomFichero(pJuego->getRoom(),ro);
 	ocupados = vector<vector<bool>>(Tiles.size(),vector<bool>(Tiles[0].size(),false));
 	for (size_t i = 0; i < ocupados.size(); i++)
 	{
@@ -73,33 +71,14 @@ Room::Room(Juego * pJ, Puerta sal, vector<Room*> * ro, Puerta * entrada, int x, 
 
 
 void Room::ColocarHabitacion(vector<Room*> * Habitaciones) {
-	Room * habit = nullptr; 
 	SDL_Rect aux = *area;
+	Room * habit = nullptr; 
 	Direcciones D;
 	SDL_Point a = lazyFoo(solapamientoHabitaciones(Habitaciones,aux),habit,D);
 	//codigo secreto
 	area->x = a.x;
 	area->y = a.y;
 	habit->setPuertas(D);
-	switch (D)
-	{
-	case Norte:
-		setPuertas(Sur);
-		break;
-	case Este:
-		setPuertas(Oeste);
-		break;
-	case Sur:
-		setPuertas(Norte);
-		break;
-	case Oeste:
-		setPuertas(Este);
-		break;
-	case Sinsitio:
-		break;
-	default:
-		break;
-	}
 	moverMapa(a.x, a.y);
 	
 	cout << "kek";
@@ -113,6 +92,7 @@ void Room::stop() {
 		static_cast<Enemigo*>(enemigos[i])->stop();
 	}
 }
+
 
 void Room::meterInanimados(string const dir)
 {
@@ -182,7 +162,7 @@ void Room::marcarOcupados(vector<SDL_Point> const p){
 		ocupados[p[i].x][p[i].y] = true;
 	}
 }
-void Room::setPuertas(Direcciones dicc)
+void Room::setPuertas(int dicc)
 {
 	switch (dicc)
 	{
@@ -190,16 +170,16 @@ void Room::setPuertas(Direcciones dicc)
 		Tiles[0][Tiles.at(0).size() / 2 - 2]->SetTile(ISE);
 		Tiles[0][Tiles.at(0).size() / 2]->SetTile(S1);
 		Tiles[0][Tiles.at(0).size() / 2 - 1]->SetTile(S1);
-		Tiles[0][Tiles.at(0).size() / 2 + 1]->SetTile(INE);
+		Tiles[0][Tiles.at(0).size() / 2 + 1]->SetTile(ISO);
 		break;
 	case Direcciones::Sur:
-		Tiles[Tiles.size() - 1][Tiles.at(0).size() / 2 - 2]->SetTile(ISO);
+		Tiles[Tiles.size() - 1][Tiles.at(0).size() / 2 - 2]->SetTile(INO);
 		Tiles[Tiles.size() - 1][Tiles.at(0).size() / 2]->SetTile(S1);
 		Tiles[Tiles.size() - 1][Tiles.at(0).size() / 2 - 1]->SetTile(S1);
-		Tiles[Tiles.size() - 1][Tiles.at(0).size() / 2 + 1]->SetTile(INO);
+		Tiles[Tiles.size() - 1][Tiles.at(0).size() / 2 + 1]->SetTile(INE);
 		break;
 	case Direcciones::Este:
-		Tiles[Tiles.size() / 2 - 2][Tiles.at(0).size() - 1]->SetTile(ISO);
+		Tiles[Tiles.size() / 2 - 2][Tiles.at(0).size() - 1]->SetTile(INO);
 		Tiles[Tiles.size() / 2][Tiles.at(0).size() - 1]->SetTile(S1);
 		Tiles[Tiles.size() / 2 - 1][Tiles.at(0).size() - 1]->SetTile(S1);
 		Tiles[Tiles.size() / 2 + 1][Tiles.at(0).size() - 1]->SetTile(INO);
@@ -213,7 +193,6 @@ void Room::setPuertas(Direcciones dicc)
 	default:
 		break;
 	}
-	puertas[numPuertas].DirPuerta = dicc;
 
 }
 void Room::moverMapa(int desplazamientoX, int desplazamientoY)
@@ -296,14 +275,88 @@ int Room::encontrarPosicionTiled(int& const x, int& const y)
 	return(ANCHO_NIVEL / TILE_WIDTH)*((y - (y%TILE_HEIGHT))-1)/TILE_HEIGHT+(1 + (x - (x%TILE_WIDTH)) / TILE_WIDTH);
 }
 
-
-void Room::SetRoomFichero(string Dir)
-{
-//	RoomDesdeArchivo(Dir, pJuego->getWorld(), ANCHO_NIVEL, ALTO_NIVEL);
-}
 */
+void Room::SetRoomFichero(string Dir, vector<Room*> * Habitaciones)
+{
+	int IniX = 0, IniY = 0;
+	int x = 0, y = 0, tipo = -1, maxX = 0, acuX = 0, acuY = 0, maxY = 0;
+	
+	
+	string linea;
+	ifstream mapAux(Dir);
+	getline(mapAux, linea);
+
+
+
+
+
+
+	stringstream Cuenta(linea);
+	do
+	{
+		char aux;
+		int auxy = -20;
+		Cuenta >> auxy >> aux;
+		if (auxy != -20) acuX++;
+	} while (!Cuenta.fail());
+	maxX = acuX;
+	acuY++;
+	do
+	{
+		getline(mapAux, linea);
+		if(!mapAux.fail())acuY++;
+	} while (!mapAux.fail());
+	mapAux.close();
+	maxY = acuY;
+	int kek = 0;
+	if (Habitaciones->size() > 0){
+		SDL_Rect _zona = { 0, 0, maxX*TILE_WIDTH, maxY*TILE_HEIGHT };
+		Room * _roomConectada;
+		Direcciones D;
+		SDL_Point _nuevaPos = lazyFoo(solapamientoHabitaciones(Habitaciones,_zona),_roomConectada,D);
+		IniX=_nuevaPos.x;
+		IniY = _nuevaPos.y;
+		_roomConectada->setPuertas(D);
+		kek = D;
+	}
+	ifstream map(Dir);
+
+	acuY = 0;
+	y = IniY;
+	getline(map, linea);
+	for (size_t i = 0;!map.fail(); i++)
+	{
+		x = IniX;
+		char aux;
+		stringstream lee(linea);
+		acuX = 0;
+		if (!lee.fail()) {
+			Tiles.push_back(vector<Tile*>());
+			Tiles[acuY].reserve(28);
+		}
+		do
+		{
+			lee >> tipo >> aux;
+			if (tipo >= 0 && tipo < TOTAL_TILES) {
+				Tiles[acuY].push_back(new Tile(x, y, tipo, pJuego->getWorld()));
+			}
+			x += TILE_WIDTH;
+			acuX++;
+		} while (!lee.fail());
+		(acuX > maxX) ? maxX = acuX : maxX;
+		y += TILE_HEIGHT;
+		acuY++;
+		getline(map, linea);
+	}
+	map.close();
+	area = new SDL_Rect{ IniX , IniY, maxX*TILE_WIDTH, maxY*TILE_HEIGHT};
+	if (kek != 0)
+		setPuertas(-kek);
+}
+
 void Room::render(){
 	//Dibujamos los tiles de fondo.
+	int C;
 	SDL_Rect Dibujar;
 	int tipoDeTile;
 	for (size_t i = 0; i < Tiles.size(); i++)
@@ -311,16 +364,15 @@ void Room::render(){
 		bool Racha = false;
 		for (size_t j = 0; j < Tiles[i].size(); j++){
 			if (Tiles.at(i).at(j)->render(&pJuego->getCameraRect(), Dibujar, tipoDeTile)) {
+				if (!Racha)C = i;
 				textTiles->draw(pJuego->getRender(), Dibujar, tipoDeTile, pJuego->getCamera());
 				Racha = true;
-				if(Tiles.at(i).at(j)->getBody()!=nullptr)
-					SDL_RenderDrawRect(pJuego->getRender(), &pJuego->getCamera()->getRecRelativa(Dibujar));
+				
 			}else if (Racha){
-				Racha = false;
+				i = C;
 				break;
 			}
 		}
-
 	}
 	//Dibujamos enemigos y objetos.
 	for (int i = 0; i < objetos.size(); i++) {

@@ -14,9 +14,9 @@ enum TiposTile
 };
 
 //Norte = 0, Este = 1, Sur = 2, Oeste = 3, Sinsitio = 4,
-const enum Direcciones:size_t
+enum Direcciones
 {
-	Norte = 0, Este = 1, Sur = 2, Oeste = 3, Sinsitio = 4
+	Norte = 1, Este = 2, Sur = -1, Oeste = -2, Sinsitio = 0
 };
 struct Puerta{
 	Direcciones DirPuerta;

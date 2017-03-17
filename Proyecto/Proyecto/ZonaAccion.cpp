@@ -2,21 +2,37 @@
 #include "Entidad.h"
 #include "checkML.h"
 #include "TileInfo.h"
-
+bool solapa(SDL_Rect const & a, SDL_Rect const & b) {
+	int leftA, leftB;
+	int rightA, rightB;
+	int topA, topB;
+	int bottomA, bottomB;
+	leftA = a.x; rightA = a.x + a.w; topA = a.y; bottomA = a.y + a.h;
+	leftB = b.x; rightB = b.x + b.w; topB = b.y; bottomB = b.y + b.h;
+	if (bottomA <= topB) { return false; } if (topA >= bottomB) { return false; } if (rightA <= leftB) { return false; } if (leftA >= rightB) { return false; }
+	return true;
+}
 ZonaAccion::ZonaAccion(Juego* punteroJuego): pJuego(punteroJuego)
 {
-	Puerta p;
+	Puerta p ;
+	p.posicion = { 0, 0, 0, 0 };
 	niveles = new vector<Room*>;
 	niveles->reserve(25);
-	p.DirPuerta = Oeste;
-	niveles->push_back(new Room(pJuego, p,niveles));
-	niveles->push_back(new Room(pJuego, p, niveles));
-	niveles->push_back(new Room(pJuego, p, niveles));
-	niveles->push_back(new Room(pJuego, p, niveles));
-	niveles->push_back(new Room(pJuego, p, niveles));
-	niveles->push_back(new Room(pJuego, p, niveles));
-	niveles->push_back(new Room(pJuego, p, niveles));
+	
+
+	niveles->push_back(new Room(pJuego,  niveles));
+	size_t k = sizeof(niveles->at(0));
+
 	//niveles.push_back(new Room(pJuego, niveles.at(0)->getArea().x + niveles.at(0)->getArea().w, niveles.at(0)->getArea().y, Direcciones{ false,false, false,true }));
+	for (size_t i = 0; i < niveles->size(); i++)
+	{
+		for (size_t j = i+1 ; j < niveles->size(); j++)
+		{
+			if (solapa(niveles->at(i)->getArea(), niveles->at(j)->getArea())){
+				cout << "kek";
+			}
+		}
+	}
 	setRect();
 	setNivelActual();
 }
@@ -34,33 +50,7 @@ ZonaAccion::~ZonaAccion()
 	nivelActual = nullptr;
 }
 void ZonaAccion::draw(){
-	SDL_Rect auxi[7];
-	for (size_t i = 0; i < niveles->size(); i++)
-	{
-		niveles->at(i)->render();
-		auxi[i] = niveles->at(i)->getArea();
-		auxi[i].x /= 128;
-		auxi[i].y /= 128;
-		auxi[i].w /= 128;
-		auxi[i].h /= 128;
-		auxi[i].x += 300;
-		auxi[i].y += 300;
-	}
-	
-	SDL_SetRenderDrawColor(pJuego->getRender(), 0, 255, 0, 255);
-	SDL_Point pj;
-	pj.x = static_cast<Entidad*>(pJuego->getPlayer())->getX()/128+300;
-	pj.y = static_cast<Entidad*>(pJuego->getPlayer())->getY()/128+300;
-	SDL_Rect aux = tam;
-	aux.x /= 128;
-	aux.y /= 128;
-	aux.w /= 128;
-	aux.h /= 128;
-	aux.x += 300;
-	aux.y += 300;
-	SDL_RenderDrawRect(pJuego->getRender(), &aux);
-	SDL_RenderDrawRects(pJuego->getRender(), auxi, 7);
-	SDL_RenderDrawPoint(pJuego->getRender(), pj.x, pj.y);
+	nivelActual->render();
 }
 
 void ZonaAccion::update(){

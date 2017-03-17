@@ -2,7 +2,6 @@
 #include <SDL.h>
 #include <SDL_image.h>
 #include "checkML.h"
-#define DEBUG
 Camara::Camara() {
 	Apuntando = nullptr;
 }

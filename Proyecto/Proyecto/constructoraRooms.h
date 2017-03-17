@@ -4,42 +4,7 @@
 #include<sstream>
 #include <iostream>
 //Construye habitacion apartir de un texto.
-vector<vector<Tile*>> RoomDesdeArchivo(string direccion, b2World * world) {
-	int IniX = 0, IniY = 0;
 
-	vector<vector<Tile*>> Tiles;
-	ifstream map(direccion);
-	Tiles.reserve(28);
-	
-	int x = IniX, y = IniY, tipo = -1, maxX = 0, acuX = 0, acuY =0;
-	string linea;
-	getline(map, linea);
-	for (size_t i = 0; !map.fail(); i++)
-	{
-		x = 0;
-		char aux;
-		stringstream lee(linea);
-		acuX = 0;
-		if (!lee.fail()) {
-			Tiles.push_back(vector<Tile*>());
-			Tiles[acuY].reserve(28);
-		}
-		do
-		{
-			lee >> tipo >> aux;
-			if (tipo >= 0 && tipo < TOTAL_TILES) {
-					Tiles[acuY].push_back(new Tile(x, y, tipo, world));
-			}
-			x += TILE_WIDTH;
-			acuX++;
-		} while (!lee.fail());
-		(acuX > maxX) ? maxX = acuX:maxX;
-		y += TILE_HEIGHT;
-		acuY++;
-		getline(map, linea);
-	}
-	return Tiles;
-}
 
 //cosas arcaicas y viejunas del mundo 
 /*

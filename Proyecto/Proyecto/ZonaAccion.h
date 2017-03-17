@@ -50,6 +50,7 @@ public:
 
 	virtual void update();
 	Room*getNivel(){ return nivelActual; }
+	vector<Room*>*getNiveles(){ return niveles; }
 	SDL_Rect getNivelActual();
 };
 
