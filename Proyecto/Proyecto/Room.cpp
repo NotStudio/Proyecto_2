@@ -41,9 +41,7 @@ void Room::update()
 //No hace falta meter los parametros string para cargar un tilesheet, carga por defecto el de la zona 1
 Room::Room(Juego * pJ, vector<Room*> * ro) :pJuego(pJ)
 {
-	SDL_Rect k = { 55, 56, 89, 68 };
-	size_t a = sizeof(k);
-
+	textTiles = new Tilesheet(TOTAL_TILES, pJuego->getTilesheet());
 	SetRoomFichero(pJuego->getRoom(),ro);
 	ocupados = vector<vector<bool>>(Tiles.size(),vector<bool>(Tiles[0].size(),false));
 	for (size_t i = 0; i < ocupados.size(); i++)

@@ -21,18 +21,6 @@ ZonaAccion::ZonaAccion(Juego* punteroJuego): pJuego(punteroJuego)
 	
 
 	niveles->push_back(new Room(pJuego,  niveles));
-	size_t k = sizeof(niveles->at(0));
-
-	//niveles.push_back(new Room(pJuego, niveles.at(0)->getArea().x + niveles.at(0)->getArea().w, niveles.at(0)->getArea().y, Direcciones{ false,false, false,true }));
-	for (size_t i = 0; i < niveles->size(); i++)
-	{
-		for (size_t j = i+1 ; j < niveles->size(); j++)
-		{
-			if (solapa(niveles->at(i)->getArea(), niveles->at(j)->getArea())){
-				cout << "kek";
-			}
-		}
-	}
 	setRect();
 	setNivelActual();
 }

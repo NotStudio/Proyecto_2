@@ -196,7 +196,7 @@ public:
 
 	Objeto* getPlayer(){	return personaje ;
 }
-	TexturasSDL*getTilesheet(){	return mapTexturas.at("tilesheet").at("test");}
+	TexturasSDL*getTilesheet(){	return mapTexturas.at("tilesheet").at("zon1");}
 
 	ZonaJuego* getZona() {	return zona;}
 
