@@ -2,16 +2,7 @@
 #include "Entidad.h"
 #include "checkML.h"
 #include "TileInfo.h"
-bool solapa(SDL_Rect const & a, SDL_Rect const & b) {
-	int leftA, leftB;
-	int rightA, rightB;
-	int topA, topB;
-	int bottomA, bottomB;
-	leftA = a.x; rightA = a.x + a.w; topA = a.y; bottomA = a.y + a.h;
-	leftB = b.x; rightB = b.x + b.w; topB = b.y; bottomB = b.y + b.h;
-	if (bottomA <= topB) { return false; } if (topA >= bottomB) { return false; } if (rightA <= leftB) { return false; } if (leftA >= rightB) { return false; }
-	return true;
-}
+
 ZonaAccion::ZonaAccion(Juego* punteroJuego): pJuego(punteroJuego)
 {
 	Puerta p ;
@@ -19,8 +10,10 @@ ZonaAccion::ZonaAccion(Juego* punteroJuego): pJuego(punteroJuego)
 	niveles = new vector<Room*>;
 	niveles->reserve(25);
 	
-
-	niveles->push_back(new Room(pJuego,  niveles));
+	for (size_t i = 0; i < 3; i++)
+	{
+		niveles->push_back(new Room(pJuego, niveles));
+	}
 	setRect();
 	setNivelActual();
 }
@@ -39,6 +32,16 @@ ZonaAccion::~ZonaAccion()
 }
 void ZonaAccion::draw(){
 	nivelActual->render();
+
+	//Descomentar para ver la disposición de las habitaciones
+	/*
+	for (size_t i = 0; i < niveles->size(); i++)
+	{
+		SDL_Rect aux = niveles->at(i)->getArea();
+		aux.x /= 64; aux.y /= 64; aux.h /= 64; aux.w /= 64; aux.x += 100; aux.y += 100;
+		SDL_RenderDrawRect(pJuego->getRender(), &aux);
+	}
+	*/
 }
 
 void ZonaAccion::update(){

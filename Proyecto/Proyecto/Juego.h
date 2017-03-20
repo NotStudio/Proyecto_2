@@ -69,8 +69,11 @@ class Juego
 	SDL_Rect fondoRect;
 
 	char moveC;
-
-	bool KEYS[322];
+	struct _InfoTecla
+	{
+		bool presionada = false, mantenida = false;
+	};
+	_InfoTecla KEYS[322];
 
 	unordered_map<string, unordered_map<string, TexturasSDL*>> mapTexturas;
 
@@ -188,6 +191,8 @@ public:
 	EstadoJuego* topState();
 
 	bool inputQuery(int numButton);
+
+	bool teclaPulsada(int numButton);
 
 	SDL_Rect getCameraRect() { return Camera->getPlano(); }
 	Camara * getCamera() { return Camera; }

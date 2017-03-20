@@ -35,6 +35,9 @@ private:
 
 
 public:
+	int getNumPuertas() {
+		return numPuertas;
+	}
 	void setPuertas(int dicc);
 	void nuevaBala(Bala*bala){
 		extras.push_back(bala);

@@ -51,35 +51,6 @@ Room::Room(Juego * pJ, vector<Room*> * ro) :pJuego(pJ)
 			ocupados[i][j] = Tiles[i][j]->getBody()!=nullptr;
 		}
 	}
-	//setTiles(DirM, wardo);
-	//Salida.zonaPuerta = *area;
-	int xp = 0, yp = 0;
-	//meterInanimados("a");
-	/*
-	//Crear el vector de objetos, leer de archivos.
-	//Crear vector de enemigos.
-	//enemigos.push_back(new Perseguidor(pJuego, SDL_Rect{ area->w / 2 + area->x, area->h /2 + area->y , 64,64 }));
-	enemigos.push_back(new EnemigoBomba(pJuego, Tiles->at(getTileOcupable())->getBox()));
-	enemigos.push_back(new EnemigoBomba(pJuego, Tiles->at(getTileOcupable())->getBox()));
-	enemigos.push_back(new MaquinaDePelotas(pJuego, SDL_Rect{ area->w / 2 + TILE_WIDTH *4 + area->x, area->h /2 +TILE_HEIGHT*4 + area->y , 128,128 }));
-	enemigos.push_back(new Perseguidor(pJuego, SDL_Rect{ 500 + area->x,  500 + area->y , 64,64}));
-	*/
-}
-
-
-
-void Room::ColocarHabitacion(vector<Room*> * Habitaciones) {
-	SDL_Rect aux = *area;
-	Room * habit = nullptr; 
-	Direcciones D;
-	SDL_Point a = lazyFoo(solapamientoHabitaciones(Habitaciones,aux),habit,D);
-	//codigo secreto
-	area->x = a.x;
-	area->y = a.y;
-	habit->setPuertas(D);
-	moverMapa(a.x, a.y);
-	
-	cout << "kek";
 }
 
 
@@ -171,16 +142,16 @@ void Room::setPuertas(int dicc)
 		Tiles[0][Tiles.at(0).size() / 2 + 1]->SetTile(ISO);
 		break;
 	case Direcciones::Sur:
-		Tiles[Tiles.size() - 1][Tiles.at(0).size() / 2 - 2]->SetTile(INO);
+		Tiles[Tiles.size() - 1][Tiles.at(0).size() / 2 - 2]->SetTile(INE);
 		Tiles[Tiles.size() - 1][Tiles.at(0).size() / 2]->SetTile(S1);
 		Tiles[Tiles.size() - 1][Tiles.at(0).size() / 2 - 1]->SetTile(S1);
-		Tiles[Tiles.size() - 1][Tiles.at(0).size() / 2 + 1]->SetTile(INE);
+		Tiles[Tiles.size() - 1][Tiles.at(0).size() / 2 + 1]->SetTile(INO);
 		break;
 	case Direcciones::Este:
 		Tiles[Tiles.size() / 2 - 2][Tiles.at(0).size() - 1]->SetTile(INO);
 		Tiles[Tiles.size() / 2][Tiles.at(0).size() - 1]->SetTile(S1);
 		Tiles[Tiles.size() / 2 - 1][Tiles.at(0).size() - 1]->SetTile(S1);
-		Tiles[Tiles.size() / 2 + 1][Tiles.at(0).size() - 1]->SetTile(INO);
+		Tiles[Tiles.size() / 2 + 1][Tiles.at(0).size() - 1]->SetTile(ISO);
 		break;
 	case Direcciones::Oeste:
 		Tiles[Tiles.size() / 2 - 2][0]->SetTile(ISE);
@@ -191,7 +162,7 @@ void Room::setPuertas(int dicc)
 	default:
 		break;
 	}
-
+	numPuertas++;
 }
 void Room::moverMapa(int desplazamientoX, int desplazamientoY)
 {

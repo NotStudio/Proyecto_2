@@ -7,9 +7,8 @@
 #include "HUD.h"
 #include <io.h>
 #include "recorreFicheros.h"
-TextoSDL texto;
-string kek;
-//Constructora que inicializa todos los atributos de la clase Juego.
+#include <SDL_events.h>
+//Constructora que inicializa todos los atributos de la clase Juego
 Juego::Juego(b2World* mundo) : error(false), gameOver(false), exit(false), score(0), world(mundo)
 {
 	window.alto = 600; //Tamaño de la ventana.
@@ -73,14 +72,12 @@ Juego::Juego(b2World* mundo) : error(false), gameOver(false), exit(false), score
 	nombreTexturas.emplace_back("../Material/Battery1_idle.png");
 	
 	//Tipografias
-	ubicacionTipografias.emplace_back("../Material/lazy.ttf");
-	ficherosHabitaciones=maine(TiposArchivo::CSV);
+	ubicacionTipografias = Buscador(TiposArchivo::TTF);
+
+	ficherosHabitaciones = Buscador(TiposArchivo::CSV);
 	world->SetContactListener(&listener);
 	
 
-	for (int i = 0; i < 322; i++) { // init them all to false
-		KEYS[i] = false;
-	}
 
 	//Arrancamos las texturas y los objetos.
 	initMedia();
@@ -89,7 +86,6 @@ Juego::Juego(b2World* mundo) : error(false), gameOver(false), exit(false), score
 	vidasHUD = new HUD(this, SDL_Rect{20,0,34,55}, "Battery4", "idle");
 	zona = new ZonaAccion(this);
 	pushState(new Play(this));
-	texto.LoadFuente(getTipografia("lazy"));
 	run();
 	
 }
@@ -282,18 +278,21 @@ void Juego::closeSDL() {
 //Método que maneja el array de botones, y los activa y desactiva segun el input.
 bool Juego::handle_event() {
 
-	SDL_Event event;
-	while (SDL_PollEvent(&event)) {
+	SDL_Event evento;
+	while (SDL_PollEvent(&evento)) {
 		
-		switch (event.type) {
+		switch (evento.type) {
 		case SDL_QUIT:
 			salir(); 
 			break;
 		case SDL_KEYDOWN:
-			KEYS[event.key.keysym.scancode] = true;
+			if (!KEYS[evento.key.keysym.scancode].mantenida)
+				KEYS[evento.key.keysym.scancode].presionada = true;
+			KEYS[evento.key.keysym.scancode].mantenida = true;
 			break;
 		case SDL_KEYUP:
-			KEYS[event.key.keysym.scancode] = false;
+			KEYS[evento.key.keysym.scancode].presionada = false;
+			KEYS[evento.key.keysym.scancode].mantenida = false;
 			break;
 		case SDL_TEXTINPUT:
 			break;
@@ -345,9 +344,9 @@ void Juego::run() {
 			lastUpdate = SDL_GetTicks();
 			fpsCount++;
 		}
+			handle_event();
 		world->Step(1.0f / 60.0f, 6, 2);
 		draw();
-		handle_event();
 		contSeg = SDL_GetTicks();
 	}
 	if (exit) cout << "EXIT \n";
@@ -380,7 +379,17 @@ void Juego::popState(){
 
 //Método de consulta de botón pulsado. Devuelve true si el botón que pasamos por parametro está pulsado.
 bool Juego::inputQuery(int numButton) {
-	return KEYS[numButton];
+	return KEYS[numButton].mantenida;
+}
+
+//Metodo que te devuelve si la tecla ha sido pulsada por primera vez
+bool Juego::teclaPulsada(int numButton) {
+	if (KEYS[numButton].presionada) {
+		KEYS[numButton].presionada = false;
+		return true;
+	}
+	else
+		return KEYS[numButton].presionada;
 }
 
 //Retornamos el mundo físico
