@@ -185,13 +185,13 @@ void Juego::initMedia() {
 		try
 		{
 			fuentes.at(tipograf);
-			fuentes.emplace(make_pair(tipograf,new Fuente()));
-			fuentes.at(tipograf)->loadFuente(ubicacionTipografias[i]);
 		}
 		catch (out_of_range)
 		{
-			fuentes.emplace(make_pair(tipograf, new Fuente()));
-			fuentes.at(tipograf)->loadFuente(ubicacionTipografias[i]);
+			unordered_map<int, Fuente*> auxMap;
+			fuentes.emplace(std::make_pair(tipograf, auxMap));
+			fuentes.at(tipograf).emplace(std::make_pair(50, new Fuente()));
+			fuentes.at(tipograf).at(50)->loadFuente(ubicacionTipografias[i]);
 		}
 	}
 
@@ -212,10 +212,15 @@ void Juego::freeMedia() {
 		it++;
 	}
 	
-	unordered_map<string, Fuente*>::iterator j=fuentes.begin();
+	unordered_map<string, unordered_map<int, Fuente*>>::iterator j=fuentes.begin();
 	while (j != fuentes.end()) {
-		delete fuentes.at(j->first);
-		fuentes.at(j->first) = nullptr;
+		unordered_map<int, Fuente* >::iterator e = fuentes.at(j->first).begin() ;
+		while (e != fuentes.at(j->first).end())
+		{
+			delete fuentes.at(j->first).at(e->first);
+			fuentes.at(j->first).at(e->first) = nullptr;
+			e++;
+		}
 		j++;
 	}
 	

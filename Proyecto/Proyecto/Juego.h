@@ -21,7 +21,6 @@ class Juego
 
 	stack<EstadoJuego*> estados;
 
-	unordered_map<string, Fuente*> fuentes;
 
 	void initMedia();
 
@@ -76,6 +75,7 @@ class Juego
 	_InfoTecla KEYS[322];
 
 	unordered_map<string, unordered_map<string, TexturasSDL*>> mapTexturas;
+	unordered_map<string, unordered_map<int, Fuente*>> fuentes;
 
 	Camara *Camera;
 
@@ -135,13 +135,25 @@ public:
 		ESCENARIO_NOCOL = 0x0040
 
 	};
-	Fuente* getTipografia(const string & id) {
+	Fuente* getTipografia(const string & id, const int & tam=50) {
 		try {
-			return fuentes.at(id);
+			return fuentes.at(id).at(tam);
 		}
 		catch (out_of_range) {
-			cout << "Error al cargar la tipografia, tome tipografia por defecto\n";
-			return fuentes.at(fuentes.begin()->first);
+			try
+			{
+				string a = fuentes.at(id).at(fuentes.at(id).begin()->first)->fichero;
+				fuentes.at(id);
+				fuentes.at(id).emplace(make_pair(tam, new Fuente()));
+				fuentes.at(id).at(tam)->loadFuente(a,tam);
+				return fuentes.at(id).at(tam);
+			}
+			catch (out_of_range)
+			{
+				cout << "Error al cargar la tipografia, tome tipografia por defecto\n";
+				return fuentes.at(fuentes.begin()->first).at(50);
+			}
+			
 		}
 	}
 	string getRoom(){

@@ -10,7 +10,7 @@ class Boton : public Objeto
 public:
 	
 	typedef void CallBack_t(Juego* jg);
-	Boton(Juego* juego, string ID, int x, int y, CallBack_t * cbCons);
+	Boton(Juego* juego, string ID, int x, int y, CallBack_t * cbCons, string);
 	~Boton();
 	void draw();
 
@@ -21,8 +21,7 @@ public:
 	void normal();
 
 	void onColisionEnter(Objeto* contactObject) {};//Hay que ponerlo para que no sea bastracto
-
-
+	void accion() { cb(pjuego); };
 
 
 protected:
@@ -31,10 +30,11 @@ protected:
 	Juego* pjuego;
 
 	SDL_Rect rectb;
-
+	SDL_Rect activo;
+	TextoSDL Texto;
 	int mpbx;
 	int mpby;
-
+	int _x, _y;
 	string id;
 };
 

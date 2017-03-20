@@ -108,6 +108,9 @@ public:
 			SDL_FreeSurface(surfaceText);
 		}
 	}
+	void cambiarColor(SDL_Color const _color, SDL_Renderer * pRender){
+		loadTexto(pRender, texto, _color);
+	}
 	//para dibujar el texto
 	virtual void draw(SDL_Renderer* pRenderer, int x , int y) {
 		SDL_Rect rect = { x,y,tamTextura.ancho,tamTextura.alto };
