@@ -62,7 +62,6 @@ Juego::Juego(b2World* mundo) : error(false), gameOver(false), exit(false), score
 	nombreTexturas.emplace_back("../Material/Wall_idle.png");
 	nombreTexturas.emplace_back("../Material/Background_idle.jpg");
 	nombreTexturas.emplace_back("../Material/Bala_idle.png");
-	nombreTexturas.emplace_back("../Material/tilesheet_test.png");
 	nombreTexturas.emplace_back("../Material/tilesheet_zon1.png");
 	
 	//Esto no es así.
