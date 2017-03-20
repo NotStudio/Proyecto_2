@@ -21,7 +21,7 @@ MenuPG::~MenuPG()
 
 
 void MenuPG::salir(Juego * jg){
-	cout << "algaba Becario\n";
+	jg->salir();
 }
 
 void MenuPG::cargar(Juego * jg){
