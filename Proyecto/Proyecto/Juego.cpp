@@ -88,6 +88,7 @@ Juego::Juego(b2World* mundo) : error(false), gameOver(false), exit(false), score
 	vidasHUD = new HUD(this, SDL_Rect{20,0,34,55}, "Battery4", "idle");
 	zona = new ZonaAccion(this);
 	pushState(new MenuPG(this));
+	//Mix_PlayMusic(musicote, -1);
 	run();
 	
 }
@@ -97,7 +98,6 @@ Juego::Juego()
 	world = nullptr;
 
 }
-
 Juego::~Juego()
 {
 
@@ -194,7 +194,8 @@ void Juego::initMedia() {
 			fuentes.at(tipograf).at(50)->loadFuente(ubicacionTipografias[i]);
 		}
 	}
-
+	musicote = Mix_LoadMUS("../Material/a.wav");
+	aham = Mix_LoadWAV("../Material/ahem_x.wav");
 };
 //Método que libera las texturas.
 void Juego::freeMedia() {
@@ -249,10 +250,12 @@ bool Juego::initSDL() {
 		if (TTF_Init() == -1) {
 			cout << "onichan";
 		}
+		if (Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048) < 0)
+			cout << "kek";
 		//Create window: SDL_CreateWindow("SDL Hello World", posX, posY, width, height, SDL_WINDOW_SHOWN);
 		pWindow = SDL_CreateWindow("NOT A STUDIO", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, window.ancho, window.alto, SDL_WINDOW_SHOWN);
 		if (pWindow == nullptr) {
-			cout << "Window could not be created! \nSDL_Error: " << SDL_GetError() << '\n';
+			cout << "Window could not be created! \nSDL_Error: " << SDL_GetError() << '\n';	
 			success = false;
 		}
 		else {
@@ -278,7 +281,9 @@ void Juego::closeSDL() {
 
 	SDL_DestroyWindow(pWindow);
 	pWindow = nullptr;
-
+	TTF_Quit();
+	IMG_Quit();
+	Mix_Quit();
 	SDL_Quit();
 };
 
@@ -302,6 +307,7 @@ bool Juego::handle_event() {
 			KEYS[evento.key.keysym.scancode].mantenida = false;
 			break;
 		case SDL_TEXTINPUT:
+
 			break;
 		case SDL_MOUSEMOTION:
 			mousePos.x= evento.motion.x;

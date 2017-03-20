@@ -10,6 +10,7 @@
 #include "contactListener.h"
 #include "Camara.h"
 #include "HUDbase.h"
+#include <SDL_mixer.h>
 
 class ZonaJuego;
 class EstadoJuego;
@@ -20,8 +21,8 @@ class Juego
 	int score;
 
 	stack<EstadoJuego*> estados;
-
-
+	Mix_Music *musicote;
+	Mix_Chunk *aham;
 	void initMedia();
 
 	void freeMedia();
