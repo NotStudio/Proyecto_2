@@ -13,11 +13,16 @@ public:
 	Boton(Juego* juego, string ID, int x, int y, CallBack_t * cbCons);
 	~Boton();
 	void draw();
-	//bool onClick();
+
 	void update();
 
+	void aumentar();
 
-	//bool dentro(int x, int y) const;
+	void normal();
+
+	void onColisionEnter(Objeto* contactObject) {};//Hay que ponerlo para que no sea bastracto
+
+
 
 
 protected:

@@ -3,7 +3,7 @@
 
 EstadoPG::EstadoPG(Juego * juego)
 {
-	ptsjuego = juego;
+	pJuego = juego;
 
 }
 

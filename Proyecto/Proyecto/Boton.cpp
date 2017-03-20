@@ -27,6 +27,15 @@ void Boton::draw(){
 
 }
 
+void Boton::aumentar(){
+	rectb.h = 130;
+	rectb.w = 250;
+}
+void Boton::normal(){
+	rectb.h = 100;
+	rectb.w = 200;
+}
+
 /*bool Boton::onClick(){
 	pjuego->getMousePos(mpbx, mpby);
 
@@ -43,6 +52,7 @@ void Boton::draw(){
 }*/
 
 void Boton::update(){
+
 }
 
 
@@ -52,4 +62,6 @@ void Boton::update(){
 	}
 	return false;
 }
+
+	
 */

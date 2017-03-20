@@ -14,12 +14,19 @@ public:
 
 	virtual void draw();
 	virtual void update();
+	virtual void fixedUpdate(){};
 	vector<Objeto*> extras;//Objetos en el momento de creacion solo tenia balas
 protected:
 
-	Juego* ptsjuego;
+	Juego*pJuego;
 	
 	std::vector <Objeto*> objetos;  
+     SDL_TimerID timer;
+    Uint32 cadencia = 500;
+	Uint32 timerUpdate(Uint32 intervalo) {
+			 fixedUpdate();
+			 return 0;
+		 }
 
 };
 

@@ -8,6 +8,7 @@
 #include <io.h>
 #include "recorreFicheros.h"
 #include <SDL_events.h>
+#include "MenuPG.h"
 //Constructora que inicializa todos los atributos de la clase Juego
 Juego::Juego(b2World* mundo) : error(false), gameOver(false), exit(false), score(0), world(mundo)
 {
@@ -69,6 +70,8 @@ Juego::Juego(b2World* mundo) : error(false), gameOver(false), exit(false), score
 	nombreTexturas.emplace_back("../Material/Battery3_idle.png");
 	nombreTexturas.emplace_back("../Material/Battery2_idle.png");
 	nombreTexturas.emplace_back("../Material/Battery1_idle.png");
+	//Cosas de los Menus
+	nombreTexturas.emplace_back("../Material/Menu/boton_idle.png");
 	
 	//Tipografias
 	ubicacionTipografias = Buscador(TiposArchivo::TTF);
@@ -84,7 +87,7 @@ Juego::Juego(b2World* mundo) : error(false), gameOver(false), exit(false), score
 	Camera =new Camara(static_cast<Entidad*>(personaje)->getRect(), window.ancho, window.alto);
 	vidasHUD = new HUD(this, SDL_Rect{20,0,34,55}, "Battery4", "idle");
 	zona = new ZonaAccion(this);
-	pushState(new Play(this));
+	pushState(new MenuPG(this));
 	run();
 	
 }
