@@ -303,6 +303,10 @@ bool Juego::handle_event() {
 			break;
 		case SDL_TEXTINPUT:
 			break;
+		case SDL_MOUSEMOTION:
+			mousePos.x= evento.motion.x;
+			mousePos.y = evento.motion.y;
+			break;
 		default:
 			break;
 		}
@@ -318,7 +322,6 @@ void Juego::salir() {	exit = true;}
 
 //Update del juego, que llama al update de la camara y del estado
 void Juego::update(){
-
 	topState()->update();
 	Camera->update();
 	Camera->setLimite(zona->getNivelActual());
@@ -351,7 +354,7 @@ void Juego::run() {
 			lastUpdate = SDL_GetTicks();
 			fpsCount++;
 		}
-			handle_event();
+		handle_event();
 		world->Step(1.0f / 60.0f, 6, 2);
 		draw();
 		contSeg = SDL_GetTicks();

@@ -46,6 +46,7 @@ void kukxo(string dir, _finddata_t data, TiposArchivo const & T, vector<string> 
 			//DumpEntry(data,T);
 			//cout << dir;
 			if ((data.attrib & _A_SUBDIR) == _A_SUBDIR){
+				//kukxo(dir + data.name + "/", data, T, ass);
 			}
 			else if (string(data.name).find(_TiposArchivo[T])<string(data.name).size())
 				ass.push_back(dir+data.name);

@@ -22,7 +22,10 @@ public:
 
 	void onColisionEnter(Objeto* contactObject) {};//Hay que ponerlo para que no sea bastracto
 	void accion() { cb(pjuego); };
-
+ 	bool Dentro(int x, int y) {
+		SDL_Point p = { x,y };
+		return SDL_PointInRect(&p, &rectb)==SDL_TRUE;
+	}
 
 protected:
 	CallBack_t * cb;
