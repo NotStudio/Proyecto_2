@@ -4,7 +4,7 @@
 
 MenuPG::MenuPG(Juego * juego) :EstadoPG(juego)
 {
-	botones.emplace_back(new Boton(juego, "boton", 300, 250, salir,"Jugar"));
+	botones.emplace_back(new Boton(juego, "boton", 300, 250, playBase,"Jugar"));
 	botones.emplace_back(new Boton(juego, "boton", 300, 350, salir,"Opciones"));
 	botones.emplace_back(new Boton(juego, "boton", 300, 450, salir,"Salir"));
 }
@@ -28,6 +28,7 @@ void MenuPG::cargar(Juego * jg){
 }
 
 void MenuPG::playBase(Juego * jg){
+	jg->changeState(new Play(jg));
 }
 
 void MenuPG::draw(){
@@ -39,7 +40,6 @@ void MenuPG::draw(){
 
 void MenuPG::update() {
 	botones[activo]->normal();
-
 	if (pJuego->teclaPulsada(SDL_SCANCODE_DOWN)) {
 
 		if (activo < botones.size() - 1) {

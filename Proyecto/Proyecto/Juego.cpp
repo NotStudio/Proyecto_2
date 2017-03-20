@@ -77,6 +77,7 @@ Juego::Juego(b2World* mundo) : error(false), gameOver(false), exit(false), score
 	ubicacionTipografias = Buscador(TiposArchivo::TTF);
 
 	ficherosHabitaciones = Buscador(TiposArchivo::CSV);
+	UbicacionSonidos = Buscador(TiposArchivo::WAV);
 	world->SetContactListener(&listener);
 	
 
@@ -87,8 +88,9 @@ Juego::Juego(b2World* mundo) : error(false), gameOver(false), exit(false), score
 	Camera =new Camara(static_cast<Entidad*>(personaje)->getRect(), window.ancho, window.alto);
 	vidasHUD = new HUD(this, SDL_Rect{20,0,34,55}, "Battery4", "idle");
 	zona = new ZonaAccion(this);
+
 	pushState(new MenuPG(this));
-	//Mix_PlayMusic(musicote, -1);
+	cambiarMusica("temon");
 	run();
 	
 }
@@ -125,6 +127,19 @@ Juego::~Juego()
 	
 }
 
+
+void Juego::cambiarMusica(string id)
+{
+	if (Mix_PlayingMusic()==0) {
+		MusicaActual = cargarMusica(id);
+		Mix_PlayMusic(MusicaActual, -1);
+	}
+	else {
+		Mix_FadeOutMusic(1000);
+		MusicaSig=cargarMusica(id);
+		timerCambio = SDL_AddTimer(1000, timerMus, this);
+	}
+}
 
 //Devolvemos una textura en función del enumerado que nos pasen.
 TexturasSDL* Juego::getTextura(const string &entity, const string &anim) {
@@ -194,8 +209,21 @@ void Juego::initMedia() {
 			fuentes.at(tipograf).at(50)->loadFuente(ubicacionTipografias[i]);
 		}
 	}
-	musicote = Mix_LoadMUS("../Material/a.wav");
-	aham = Mix_LoadWAV("../Material/ahem_x.wav");
+	for (size_t i = 0; i < UbicacionSonidos.size(); i++)
+	{
+		string id = UbicacionSonidos[i];
+		id = id.substr(id.find_last_of("/") + 1);
+		id = id.erase(id.find_last_of("."));
+		int o = UbicacionSonidos[i].find("Efectos");
+		if (o>0) {
+			Efectos.emplace(make_pair(id, nullptr));
+			Efectos.at(id)= Mix_LoadWAV(UbicacionSonidos[i].c_str());
+		}
+		else {
+			Musica.emplace(make_pair(id, nullptr));
+			Musica.at(id) = Mix_LoadMUS(UbicacionSonidos[i].c_str());
+		}
+	}
 };
 //Método que libera las texturas.
 void Juego::freeMedia() {
@@ -225,6 +253,18 @@ void Juego::freeMedia() {
 		j++;
 	}
 	
+	for (unordered_map<string, Mix_Chunk*>::iterator itX = Efectos.begin(); itX != Efectos.end(); itX++)
+	{
+		Mix_FreeChunk(Efectos.at(itX->first));
+		Efectos.at(itX->first) = nullptr;
+	}
+	
+	for (unordered_map<string, Mix_Music *>::iterator itX = Musica.begin(); itX != Musica.end(); itX++)
+	{
+		Mix_FreeMusic(Musica.at(itX->first));
+		Musica.at(itX->first) = nullptr;
+	}
+
 	//Esto debe ir en otro metodo
 	for (int i = 0; i < objetos.size(); i++) {
 		delete objetos[i];
@@ -292,7 +332,6 @@ bool Juego::handle_event() {
 
 	SDL_Event evento;
 	while (SDL_PollEvent(&evento)) {
-		
 		switch (evento.type) {
 		case SDL_QUIT:
 			salir(); 
@@ -307,7 +346,6 @@ bool Juego::handle_event() {
 			KEYS[evento.key.keysym.scancode].mantenida = false;
 			break;
 		case SDL_TEXTINPUT:
-
 			break;
 		case SDL_MOUSEMOTION:
 			mousePos.x= evento.motion.x;

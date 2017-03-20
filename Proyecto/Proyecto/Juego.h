@@ -21,8 +21,9 @@ class Juego
 	int score;
 
 	stack<EstadoJuego*> estados;
-	Mix_Music *musicote;
-	Mix_Chunk *aham;
+
+
+
 	void initMedia();
 
 	void freeMedia();
@@ -42,30 +43,30 @@ class Juego
 	b2Body * gato;
 	b2Body * wall;
 	std::vector<Objeto*> objetos;
-
 	SDL_Rect recta;
-
+	static Uint32 timerMus(Uint32 interval, void*Param){
+		static_cast<Juego*>(Param)->meterMusica();
+		return 0;
+	}
 	SDL_Window* pWindow;
 
 	SDL_Renderer* pRenderer;
 	vector<string> nombreTexturas;
 	vector<string> ubicacionTipografias;
 	vector<string> ficherosHabitaciones;
+	vector<string> UbicacionSonidos;
+
 
 	struct Ventana { //Struct que contiene el tamaño y el color de la ventana.
 		int ancho;
 		int alto;
 		SDL_Color color;
 	} window;
-
 	bool error, gameOver, exit;
-
 	struct Mouse {
 		int x;
 		int y;
-
 	}mousePos;
-	
 	SDL_Rect fondoRect;
 
 	char moveC;
@@ -77,17 +78,19 @@ class Juego
 
 	unordered_map<string, unordered_map<string, TexturasSDL*>> mapTexturas;
 	unordered_map<string, unordered_map<int, Fuente*>> fuentes;
-
+	unordered_map<string, Mix_Music*> Musica;
+	unordered_map<string, Mix_Chunk*> Efectos;
+	Mix_Music * MusicaActual;
+	Mix_Music * MusicaSig;
 	Camara *Camera;
-
+	
 	ZonaJuego* zona;
 
 	Objeto* personaje;
 
 	HUDbase* vidasHUD;
-	
-	
 
+	SDL_TimerID timerCambio;
 public:
 	Juego(b2World * mundo);
 	Juego();
@@ -157,6 +160,53 @@ public:
 			
 		}
 	}
+	
+	Mix_Music* cargarMusica(string id) {
+		try
+		{
+			return Musica.at(id);
+		}
+		catch (out_of_range)
+		{
+			printf("No se ha encontrado la cancion, Cancion por Defecto\n");
+			return Musica.at(Musica.begin()->first);
+		}
+	}
+	Mix_Chunk* cargarEfecto(string id) {
+		try
+		{
+			return Efectos.at(id);
+		}
+		catch (out_of_range)
+		{
+			printf("No se ha encontrado el efecto, Cancion por Defecto\n");
+			return Efectos.at(Efectos.begin()->first);
+		}
+	}
+	
+	void setVolumenMusica(int newVol) {
+		newVol=(newVol<125 ) ? newVol:125 ;
+		Mix_VolumeMusic(newVol);
+	}
+	void reproducirMusica(int loops= -1) {
+		Mix_PlayMusic(MusicaActual, loops);
+	}
+	void pararMusica(){
+		Mix_PauseMusic();
+	}
+	//El id es la cancion que quieres meter;
+	void cambiarMusica(string id);
+	void meterMusica() {
+		MusicaActual = MusicaSig;
+		Mix_FadeInMusic(MusicaActual, -1, 2000);
+	}
+	void quitarMusica(){
+		Mix_FadeOutMusic(1000);
+	}
+	void reproducirEfecto(string id) {
+		Mix_PlayChannel(-1,cargarEfecto(id),0);
+	}
+
 	string getRoom(){
 		return ficherosHabitaciones[rand()%ficherosHabitaciones.size()];
 	}

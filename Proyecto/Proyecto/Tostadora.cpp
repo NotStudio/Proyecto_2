@@ -58,9 +58,10 @@ void Tostadora::disparo(){
 			disparar = false;
 			posicion.y -= spawnPosition;
 			dynamic_cast<ZonaAccion*>(pJuego->getZona())->getNivel()->nuevaBala(new Bala(pJuego, posicion, sprite, 80.0f, 0, -1, 0));
-			
 		}
-		if(!disparar)Disparar = SDL_AddTimer(cadencia, timerDisparo, this);
+		if (!disparar) {
+			Disparar = SDL_AddTimer(cadencia, timerDisparo, this); pJuego->reproducirEfecto("scream");
+		}
 	}
 	if (aux != SinDir) {
 		estadoEntidad.mirando = aux;

@@ -30,6 +30,7 @@ void Jugable::onColisionEnter(Objeto * obj){
 			inmune = true;
 			//out << "inmunidad activada\n";
 			stats.vida--;
+			pJuego->reproducirEfecto("scream");
 			//cout << stats.vida << " vidas tienes\n";
 			timerInmune = SDL_AddTimer(350, desactivarInmunidad, this);
 		}
