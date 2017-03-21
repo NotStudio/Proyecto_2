@@ -159,6 +159,12 @@
     <ClCompile Include="EnemigoBomba.cpp">
       <Filter>Source Files\Personajes\Enemigos</Filter>
     </ClCompile>
+    <ClCompile Include="Helice.cpp">
+      <Filter>Source Files\Personajes\Enemigos</Filter>
+    </ClCompile>
+    <ClCompile Include="Sierra.cpp">
+      <Filter>Source Files\Personajes\Enemigos</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Juego.h">
@@ -280,6 +286,12 @@
     </ClInclude>
     <ClInclude Include="recorreFicheros.h">
       <Filter>Source Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Helice.h">
+      <Filter>Header Files\Personajes\Enemigos</Filter>
+    </ClInclude>
+    <ClInclude Include="Sierra.h">
+      <Filter>Header Files\Personajes\Enemigos</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

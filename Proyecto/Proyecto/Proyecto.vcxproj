@@ -28,6 +28,7 @@
     <ClCompile Include="Entidad.cpp" />
     <ClCompile Include="EstadoPG.cpp" />
     <ClCompile Include="GameOver.cpp" />
+    <ClCompile Include="Helice.cpp" />
     <ClCompile Include="HUD.cpp" />
     <ClCompile Include="Item.cpp" />
     <ClCompile Include="Juego.cpp" />
@@ -43,6 +44,7 @@
     <ClCompile Include="Personaje.cpp" />
     <ClCompile Include="Play.cpp" />
     <ClCompile Include="Room.cpp" />
+    <ClCompile Include="Sierra.cpp" />
     <ClCompile Include="TexturasSDL.cpp" />
     <ClCompile Include="Tile.cpp" />
     <ClCompile Include="Tostadora.cpp" />
@@ -62,6 +64,7 @@
     <ClInclude Include="EstadoPG.h" />
     <ClInclude Include="GameOver.h" />
     <ClInclude Include="constructoraRooms.h" />
+    <ClInclude Include="Helice.h" />
     <ClInclude Include="HUD.h" />
     <ClInclude Include="HUDbase.h" />
     <ClInclude Include="Inanimado.h" />
@@ -81,6 +84,7 @@
     <ClInclude Include="Play.h" />
     <ClInclude Include="recorreFicheros.h" />
     <ClInclude Include="Room.h" />
+    <ClInclude Include="Sierra.h" />
     <ClInclude Include="TexturasSDL.h" />
     <ClInclude Include="Tile.h" />
     <ClInclude Include="TileInfo.h" />
