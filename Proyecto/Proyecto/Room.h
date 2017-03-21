@@ -28,7 +28,9 @@ private:
 	vector<Objeto*> extras;//Balas
 	void ColocarHabitacion(vector<Room*> *habitaciones);
 	void marcarOcupados(vector<SDL_Point>const );
-
+	vector<vector<bool>> getOcupados() { 
+		return ocupados;
+	}
 	
 
 
