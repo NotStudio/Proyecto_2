@@ -356,3 +356,9 @@ void Room::render(){
 	}
 }
 
+void Room::encontrarPosicionTiled(int & const x, int & const y, int & posTileX, int & posTileY)
+{
+	posTileX = (x-area->x)/area->w;
+	posTileY = (y - area->y) / area->y;
+}
+

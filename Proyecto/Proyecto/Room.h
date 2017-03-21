@@ -59,7 +59,7 @@ public:
 	Room(Juego *, vector<Room*>*);
 	~Room();
 	void render();
-	int encontrarPosicionTiled(int & const x, int & const y);
+	void encontrarPosicionTiled(int & const x, int & const y,int & posTileX,int &posTileY);
 	vector<SDL_Point> TilesOcupados(SDL_Rect const recto, bool & a );
 	void SetRoomFichero(string Dir, vector<Room*> * Habitaciones);
 	void stop();
