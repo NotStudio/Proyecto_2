@@ -20,8 +20,9 @@ protected:
 		int velMov;
 		int velAtq;
 	} stats;
-
+	//Tal vez no nos haga falta un vector de objetos.
 	vector<Objeto*> inventario;
+	vector<std::string> dropPool;
 
 
 };

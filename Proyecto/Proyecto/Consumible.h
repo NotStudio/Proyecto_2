@@ -5,6 +5,8 @@
 class Consumible :
 	public Item
 {
+protected:
+	virtual void effect(){};
 public:
 	Consumible(Juego* punteroJuego, SDL_Rect spritePar, string objectId):Item(punteroJuego, spritePar, objectId) {
 		bodyDef.position.Set((float32)sprite->x, (float32)sprite->y);
@@ -16,11 +18,15 @@ public:
 		fDef.isSensor = true;
 		body->CreateFixture(&fDef);
 	}
-	~Consumible() {};
-	virtual void onColisionEnter(Objeto* Contacto) {
-		if (dynamic_cast<Jugable*>(Contacto)) 
-			cout<< " Tocado Consumible \n";
+	~Consumible() {//borrar el body
 	};
+	virtual void onColisionEnter(Objeto* Contacto) {
+		if (dynamic_cast<Jugable*>(Contacto)) {
+			cout << " Tocado Consumible \n";
+			destruido = true;
+		}
+	};
+
 };
 class Pila : public Consumible 
 {

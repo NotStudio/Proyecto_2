@@ -44,6 +44,9 @@ public:
 	void nuevaBala(Bala*bala){
 		extras.push_back(bala);
 	}
+	void nuevoObjeto(Objeto* o){
+		extras.push_back(o);
+	}
 	bool dentroRoom(SDL_Point* box) {
 		return !(area->x > box->x || area->x + area->w < box->x || area->y > box->y || area->y + area->h < box->y);
 	}

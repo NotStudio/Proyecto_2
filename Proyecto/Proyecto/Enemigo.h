@@ -1,5 +1,6 @@
 #ifndef ENEMIGO_H_
 #define ENEMIGO_H_
+#include "ZonaAccion.h"
 
 #include "NPC.h"
 class Enemigo : public NPC
@@ -13,5 +14,6 @@ public:
 	void draw();
 	void stop();
 	bool distancia();
+	virtual void dropItems(){};
 };
 #endif
