@@ -23,6 +23,10 @@ private:
 
 	std::vector<Objeto*> enemigos;
 	
+	HUDbase* vidasHUD;
+
+	Camara *Camera;
+
 	ZonaJuego* zona;
 
 };

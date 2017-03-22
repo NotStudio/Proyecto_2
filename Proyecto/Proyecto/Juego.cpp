@@ -84,10 +84,10 @@ Juego::Juego(b2World* mundo) : error(false), gameOver(false), exit(false), score
 
 	//Arrancamos las texturas y los objetos.
 	initMedia();
-	personaje = new Tostadora(this, SDL_Rect{100,75,64,64});
-	Camera =new Camara(static_cast<Entidad*>(personaje)->getRect(), window.ancho, window.alto);
-	vidasHUD = new HUD(this, SDL_Rect{20,0,34,55}, "Battery4", "idle");
-	zona = new ZonaAccion(this);
+	//inicializamos los punteros a nullptr porque el estado play es el que hace new.
+	Camera = nullptr;
+	personaje = nullptr;
+	zona = nullptr;
 
 	pushState(new MenuPG(this));
 	cambiarMusica("temon");
@@ -117,13 +117,8 @@ Juego::~Juego()
 	}
 	//Liberar cosas de la Física
 	//Borrar la camara? delete camera;
-	delete Camera;
-	Camera = nullptr;
-	delete personaje;
-	//borrar zona
-	delete zona;
-	delete vidasHUD;
-	vidasHUD = nullptr;
+	
+	
 	
 }
 
@@ -367,15 +362,14 @@ void Juego::salir() {	exit = true;}
 //Update del juego, que llama al update de la camara y del estado
 void Juego::update(){
 	topState()->update();
-	Camera->update();
-	Camera->setLimite(zona->getNivelActual());
+	
 }
 //Draw del juego, llama al dibujar del estado y del HUD
 void Juego::draw(){
 	
 	SDL_RenderClear(pRenderer);
 	topState()->draw();
-	vidasHUD->draw(personaje);
+	
 	SDL_RenderPresent(pRenderer);	
 
 }

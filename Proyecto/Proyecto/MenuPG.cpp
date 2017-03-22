@@ -39,6 +39,7 @@ void MenuPG::draw(){
 }
 
 void MenuPG::update() {
+
 	botones[activo]->normal();
 	if (pJuego->teclaPulsada(SDL_SCANCODE_DOWN)) {
 

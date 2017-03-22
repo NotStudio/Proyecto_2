@@ -57,11 +57,7 @@ class Juego
 	vector<string> UbicacionSonidos;
 
 
-	struct Ventana { //Struct que contiene el tamaño y el color de la ventana.
-		int ancho;
-		int alto;
-		SDL_Color color;
-	} window;
+	
 	bool error, gameOver, exit;
 	struct Mouse {
 		int x;
@@ -88,7 +84,7 @@ class Juego
 
 	Objeto* personaje;
 
-	HUDbase* vidasHUD;
+	
 
 	SDL_TimerID timerCambio;
 public:
@@ -96,7 +92,11 @@ public:
 	Juego();
 	~Juego();
 
-	
+	struct Ventana { //Struct que contiene el tamaño y el color de la ventana.
+		int ancho;
+		int alto;
+		SDL_Color color;
+	} window;
 	struct Animacion
 	{
 		SDL_Rect rect;
@@ -228,7 +228,14 @@ public:
 	}
 	TexturasSDL* getTextura(const string &entity, const string &anim);
 
+	void setPlayer(Objeto* pj) { personaje = pj; };
+
+	void setCamera(Camara* c) { Camera = c; };
+
+	Ventana getWindow() { return window; };
+
 	SDL_Renderer* getRender() const;
+
 	void getMousePos(int &mpx, int &mpy) const;
 
 	bool getError();
