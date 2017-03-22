@@ -1,7 +1,7 @@
 #include "Entidad.h"
 #include "checkML.h"
 
-Entidad::Entidad(Juego* punteroJuego, SDL_Rect spritePar, string objectId) : pJuego(punteroJuego)
+Entidad::Entidad(Juego* punteroJuego, SDL_Rect spritePar, string objectId) : pJuego(punteroJuego) 
 {
 	id = objectId;
 	//Inicializacion de la animacion.
@@ -27,6 +27,9 @@ Entidad::~Entidad()
 		delete animaciones[i];
 		animaciones[i] = nullptr;
 	}
+	
+	delete shape;
+	shape = nullptr;
 }
 
 

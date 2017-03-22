@@ -28,7 +28,7 @@ public:
 		
 	}
 	virtual ~Inanimado() {
-		delete shape; shape = nullptr;
+		
 	};
 	virtual void onColisionEnter(Objeto * o = nullptr) {};
 };

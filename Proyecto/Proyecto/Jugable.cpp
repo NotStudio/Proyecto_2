@@ -15,8 +15,7 @@ Jugable::Jugable(Juego* punteroJuego, SDL_Rect spritePar, string objectId):Perso
 Jugable::~Jugable()
 {
 	SDL_RemoveTimer(timerInmune);
-	delete shape;
-	shape = nullptr;
+	
 }
 Uint32 desactivarInmunidad(Uint32 intervalo, void* param) {
 	static_cast<Jugable*>(param)->quitarInmunidad();

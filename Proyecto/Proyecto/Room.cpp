@@ -41,6 +41,9 @@ void Room::update()
 //No hace falta meter los parametros string para cargar un tilesheet, carga por defecto el de la zona 1
 Room::Room(Juego * pJ, vector<Room*> * ro) :pJuego(pJ)
 {
+
+	
+
 	textTiles = new Tilesheet(TOTAL_TILES, pJuego->getTilesheet());
 	SetRoomFichero(pJuego->getRoom(),ro);
 	ocupados = vector<vector<bool>>(Tiles.size(),vector<bool>(Tiles[0].size(),false));
@@ -51,6 +54,8 @@ Room::Room(Juego * pJ, vector<Room*> * ro) :pJuego(pJ)
 			ocupados[i][j] = Tiles[i][j]->getBody()!=nullptr;
 		}
 	}
+	enemigos.push_back(new Perseguidor(pJuego, SDL_Rect{ 200,200,128,128 }));
+
 }
 
 

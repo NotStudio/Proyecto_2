@@ -17,8 +17,7 @@ Tostadora::Tostadora(Juego* punteroJuego, SDL_Rect spritePar):Jugable(punteroJue
 
 Tostadora::~Tostadora()
 {
-	delete shape;
-	shape = nullptr;
+	
 }
 Uint32 timerDisparo(Uint32 intervalo, void* param) {
 	static_cast<Tostadora*>(param)->reactivarDisparo();

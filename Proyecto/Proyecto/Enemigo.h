@@ -5,7 +5,11 @@
 #include "NPC.h"
 class Enemigo : public NPC
 {
+protected:
+
 	int _distancia;
+
+	bool needDrop;
 public:
 	Enemigo(Juego* punteroJuego, SDL_Rect spritePar, string objectId, int distancia);
 	~Enemigo();

@@ -50,6 +50,9 @@ Juego::Juego(b2World* mundo) : error(false), gameOver(false), exit(false), score
 	//Agujero
 	nombreTexturas.emplace_back("../Material/Assets/agujero_idle.png");
 
+	//Pila
+	nombreTexturas.emplace_back("../Material/Pila_idle.png");
+
 
 	//DisparoToasty
 	nombreTexturas.emplace_back("../Material/DisparoToasty_idle.png");

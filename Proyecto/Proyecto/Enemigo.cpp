@@ -3,7 +3,7 @@
 #include <cmath>
 
 
-Enemigo::Enemigo(Juego* punteroJuego, SDL_Rect spritePar, string objectId, int distancia) : NPC(punteroJuego, spritePar, objectId)
+Enemigo::Enemigo(Juego* punteroJuego, SDL_Rect spritePar, string objectId, int distancia) : NPC(punteroJuego, spritePar, objectId), needDrop(false)
 {
 	_distancia = distancia;
 	fDef.filter.categoryBits = Juego::ENEMIGO;
@@ -19,8 +19,7 @@ Enemigo::Enemigo(Juego* punteroJuego, SDL_Rect spritePar, string objectId, int d
 
 Enemigo::~Enemigo()
 {
-	delete shape;
-	shape = nullptr;
+	
 }
 
 void Enemigo::onColisionEnter(Objeto* contactObject) {

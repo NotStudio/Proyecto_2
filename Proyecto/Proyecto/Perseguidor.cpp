@@ -42,6 +42,10 @@ void Perseguidor::move(){
 void Perseguidor::update() {
 	Entidad::update();
 	move();
+	if (needDrop) {
+		dropItems();
+		needDrop = false;
+	}
 	
 	
 }
@@ -53,8 +57,8 @@ void Perseguidor::onColisionEnter(Objeto* contactObject) {
 		if (dynamic_cast<Bala*>(contactObject)) {
 			stats.vida--;
 			if (stats.vida <= 0){
-				dropItems();
 				Enemigo::onColisionEnter(contactObject);
+				needDrop = true;
 			}
 				
 		}
@@ -80,7 +84,7 @@ void Perseguidor::dropItems(){
 		string item = dropPool[rand() % 1];
 
 		if (item == "Pila"){
-			//dynamic_cast<ZonaAccion*>(pJuego->getZona())->getNivel()->nuevoObjeto(new Pila(pJuego, SDL_Rect{sprite->x,sprite->y,64,64},"Pila"));
+			dynamic_cast<ZonaAccion*>(pJuego->getZona())->getNivel()->nuevoObjeto(new Pila(pJuego, SDL_Rect{sprite->x,sprite->y,64,64},"Pila"));
 		}
 
 		else if (item == "Bateria"){
