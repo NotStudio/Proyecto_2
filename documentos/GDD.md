@@ -135,7 +135,13 @@ Para el desarrollo de la historia, se craftean o se consiguen matando a jefes.
 
 | Sprite                                             | Nombre           |localizaciones    | descripcion | HP | At | Ve | FA |
 | :-------------:                                    | :-------------   |:---|:---|:---:|:---:|:---:|:---:|
-| <img src="dirección" width="50" height="50">     | Nombre           | localizaciones | descripción | HP | At | Ve | FA |
+| <img src="dirección" width="50" height="50">     | Scrapper           | Desguace | Debajo | HP | At | Ve | FA |
+
+####Scrapper
+Enemigo jefe que se mueve solamente en el eje X. Está ubicado en la pared norte del nivel. 
+Ataque:
+- 1ª Fase: alterna dos ataques. Con el primero, lanza coches (proyectil mas grande de lo normal) que tiene apilados detrás suya con el gancho que tiene en la mano derecha; en el segundo, lanza ruedas en tres direcciones durante un breve periodo de tiempo.
+- 2ª Fase: alterna los mismos dos ataques, pero ahora tiene una pistola de aceite. Lanza chorros de aceite que si golpean al jugador, o pasa por el charco que ha creado el disparo, se ralentiza el movimiento del jugador.
 
 ## Referencias
 - The binding of Isaac.
