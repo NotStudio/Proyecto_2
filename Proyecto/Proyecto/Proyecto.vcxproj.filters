@@ -165,6 +165,9 @@
     <ClCompile Include="Sierra.cpp">
       <Filter>Source Files\Personajes\Enemigos</Filter>
     </ClCompile>
+    <ClCompile Include="FactoryEntidades.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Juego.h">

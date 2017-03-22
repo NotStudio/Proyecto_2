@@ -11,6 +11,7 @@
 #include "InanimadoInfo.h"
 #include "TileInfo.h"
 #include <time.h>
+#include "Sierra.h"
 #define DEBUG
 
 //Update que realiza la habitacion. Ha de actualizarse todo lo que haya en ella (enemigos, objetos, balas, etc)
@@ -51,6 +52,8 @@ Room::Room(Juego * pJ, vector<Room*> * ro) :pJuego(pJ)
 			ocupados[i][j] = Tiles[i][j]->getBody()!=nullptr;
 		}
 	}
+	string w = " ";
+	meterEnemigos(w);
 }
 
 
@@ -63,7 +66,7 @@ void Room::stop() {
 }
 
 
-void Room::meterInanimados(string const dir)
+void Room::meterInanimados(string const &dir)
 {
 	ifstream fichero("manolo.txt");
 	string linea;
@@ -80,15 +83,40 @@ void Room::meterInanimados(string const dir)
 			{
 				objetos.push_back(creaInanimado(pJuego, tipo, posX*TILE_WIDTH-area->x, posY*TILE_HEIGHT-area->y, escala));
 			}
-			catch (const std::exception&)
+			catch (const std::exception& e)
 			{
-				cout << "Ese objeto no existe parguelas \n";
+				cout <<e.what()<< " Ese objeto no existe parguelas \n";
 			}
 		}
 		getline(fichero, linea);
 	}while (!fichero.fail());
 	fichero.close();
 
+}
+void Room::meterEnemigos(string const & dir){
+	ifstream fichero("manola.txt");
+	string linea;
+	getline(fichero, linea);
+	do
+	{
+		string tipo = "";
+		int posX = -1, posY = -1;
+		int aditional = 1;
+		stringstream _lectorLineas(linea);
+		_lectorLineas >> tipo >> posX >> posY >> aditional;
+		if (tipo != "") {
+			try
+			{
+				enemigos.push_back(creaEnemigo(pJuego, tipo, posX*TILE_WIDTH - area->x, posY*TILE_HEIGHT - area->y, aditional));
+			}
+			catch (const std::exception& e)
+			{
+				cout << e.what()<<" Ese objeto no existe parguelas \n";
+			}
+		}
+		getline(fichero, linea);
+	} while (!fichero.fail());
+	fichero.close();
 }
 Room::~Room()
 { 
@@ -163,16 +191,6 @@ void Room::setPuertas(int dicc)
 		break;
 	}
 	numPuertas++;
-}
-void Room::moverMapa(int desplazamientoX, int desplazamientoY)
-{
-	for (size_t i = 0; i < Tiles.size(); i++)
-	{
-		for (size_t j = 0; j < Tiles[i].size(); j++)
-		{
-			Tiles[i][j]->setPos(desplazamientoX, desplazamientoY);
-		}
-	}
 }
 void Room::getTileOcupable(SDL_Rect & rect)
 {

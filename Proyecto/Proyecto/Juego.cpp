@@ -33,6 +33,9 @@ Juego::Juego(b2World* mundo) : error(false), gameOver(false), exit(false), score
 	nombreTexturas.emplace_back("../Material/Tostadora_atqu.png");
 	//Gato
 	nombreTexturas.emplace_back("../Material/Gato_idle.png");
+
+	//Sierra
+	nombreTexturas.emplace_back("../Material/Sierra_idlo.png");
 	//Bomba
 	nombreTexturas.emplace_back("../Material/Bomba_idle.png");
 	//Ladron

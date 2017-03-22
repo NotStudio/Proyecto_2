@@ -4,7 +4,7 @@ class Sierra :
 	public Enemigo
 {
 public: //dir 0=horizontal, 1= vertical
-	Sierra(Juego* punteroJuego, SDL_Rect a, int dir);
+	Sierra(Juego* punteroJuego, int,int, int dir);
 	~Sierra();
 
 	virtual void move();

@@ -27,8 +27,9 @@ void Jugable::onColisionEnter(Objeto * obj){
 	//std::cout << "colision\n";
 	if (dynamic_cast<Enemigo*>(obj)|| dynamic_cast<Bala*>(obj)){
 		if (!inmune){
+			cout << dynamic_cast<Enemigo*>(obj)->getId();
 			inmune = true;
-			//out << "inmunidad activada\n";
+			//cout << "inmunidad activada\n";
 			stats.vida--;
 			pJuego->reproducirEfecto("scream");
 			//cout << stats.vida << " vidas tienes\n";

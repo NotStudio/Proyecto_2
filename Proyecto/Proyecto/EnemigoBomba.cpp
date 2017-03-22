@@ -2,7 +2,7 @@
 #include <math.h>
 #include "Jugable.h"
 #include "Bala.h"
-EnemigoBomba::EnemigoBomba(Juego* punteroJuego, SDL_Rect a) : Enemigo(punteroJuego, a, "Bomba",1000)
+EnemigoBomba::EnemigoBomba(Juego* punteroJuego, int x, int y) : Enemigo(punteroJuego, {x,y,128,128}, "Bomba", 1000)
 {
 	stats.daño = 100;
 	stats.velAtq = 0;

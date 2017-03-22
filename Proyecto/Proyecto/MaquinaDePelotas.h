@@ -6,7 +6,7 @@ class MaquinaDePelotas :
 	int cadencia = 1000;
 	Uint32 contador = 0;
 public:
-	MaquinaDePelotas(Juego* punteroJuego, SDL_Rect entrada);
+	MaquinaDePelotas(Juego* punteroJuego, int,int);
 	~MaquinaDePelotas();
 	virtual void move();
 	virtual void update();

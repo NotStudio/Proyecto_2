@@ -17,8 +17,7 @@ private:
 	int numPuertas=0;
 	vector<vector<Tile*>> Tiles;
 	vector<vector<bool>> ocupados;
-	void moverMapa(int desplazamientoX, int desplazamientoY);
-	
+
 	void getTileOcupable(SDL_Rect &);
 	//Vector de enemigos.
 	vector<Objeto*> enemigos;
@@ -63,7 +62,8 @@ public:
 	vector<SDL_Point> TilesOcupados(SDL_Rect const recto, bool & a );
 	void SetRoomFichero(string Dir, vector<Room*> * Habitaciones);
 	void stop();
-	void meterInanimados(string const dir);
+	void meterInanimados(string const &dir);
+	void meterEnemigos(string const & dir);
 private:
 	struct keks
 	{

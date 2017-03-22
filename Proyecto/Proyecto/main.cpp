@@ -15,10 +15,8 @@ void showMessage(const std::string & msg) {
 };
 
 int main(int argc, char* args[]) {
-
-	_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF); // Check Memory Leaks
-
-
+	_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF); // Check Memory 
+	
 	b2Vec2 gravity(0.0f, 0.0f);
 
 	b2World world(gravity);

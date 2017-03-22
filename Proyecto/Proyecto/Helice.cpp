@@ -2,7 +2,7 @@
 #include "ZonaAccion.h"
 
 
-Helice::Helice(Juego* punteroJuego, SDL_Rect a) : Enemigo(punteroJuego, a, "Sierra", 500)
+Helice::Helice(Juego* punteroJuego, int x, int y) : Enemigo(punteroJuego, {x,y,128,128}, "Sierra", 500)
 {
 
 	stats.daño = 1;

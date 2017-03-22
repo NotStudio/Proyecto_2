@@ -13,7 +13,7 @@ class Perseguidor :
 	public Enemigo
 {
 public:
-	Perseguidor(Juego* punteroJuego, SDL_Rect entrada);
+	Perseguidor(Juego* punteroJuego, int,int);
 	~Perseguidor();
 	virtual void move();
 	virtual void update();

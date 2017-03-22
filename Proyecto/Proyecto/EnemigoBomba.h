@@ -5,7 +5,7 @@
 class EnemigoBomba : public Enemigo
 {
 public:
-	EnemigoBomba(Juego* punteroJuego, SDL_Rect entrada);
+	EnemigoBomba(Juego* punteroJuego, int,int);
 	~EnemigoBomba();
 
 	virtual void move();
