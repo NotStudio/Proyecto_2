@@ -24,6 +24,8 @@ Tile::Tile(int x, int y, int tileType, b2World * wardo)
 		Puntos[3] = b2Vec2(TILE_WIDTH, 0);
 		mShape->Set(Puntos, 4);
 		mShapeDef->shape = mShape;
+		mShapeDef->filter.categoryBits = Juego::ESCENARIO;
+		mShapeDef->filter.maskBits = -1;
 		mBody->CreateFixture(mShapeDef);
 		mBody->SetUserData(this);
 	}

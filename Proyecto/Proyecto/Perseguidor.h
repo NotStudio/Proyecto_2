@@ -19,7 +19,7 @@ public:
 	virtual void update();
 	virtual void onColisionEnter(Objeto* contactObject);
 	virtual void dropItems();
-	
+	virtual void comportamiento();
 private:
 	float coefMov;
 	

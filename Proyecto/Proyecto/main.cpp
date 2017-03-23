@@ -4,6 +4,7 @@
 #include "Juego.h"
 #include <exception>
 #include <string>
+#include <time.h>
 using namespace std;
 
 void showMessage(const std::string & msg) {
@@ -18,6 +19,7 @@ int main(int argc, char* args[]) {
 
 	_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF); // Check Memory Leaks
 
+	srand(time(NULL));
 
 	b2Vec2 gravity(0.0f, 0.0f);
 

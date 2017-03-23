@@ -1,6 +1,7 @@
 ﻿#include "Enemigo.h"
 #include "Bala.h"
 #include <cmath>
+#include "Consumible.h"
 
 
 Enemigo::Enemigo(Juego* punteroJuego, SDL_Rect spritePar, string objectId, int distancia) : NPC(punteroJuego, spritePar, objectId), needDrop(false)
@@ -10,6 +11,8 @@ Enemigo::Enemigo(Juego* punteroJuego, SDL_Rect spritePar, string objectId, int d
 	fDef.filter.maskBits = Juego::JUGADOR | Juego::ESCENARIO | Juego::ENEMIGO | Juego::ESCENARIO_NOCOL | Juego::AT_JUGADOR;
 	body->CreateFixture(&fDef);
 
+	dropPool.push_back("Pila");
+	dropPool.push_back("Bateria");
 
 	
 
@@ -30,14 +33,21 @@ void Enemigo::onColisionEnter(Objeto* contactObject) {
 			destruido = true;
 		}
 		//cambiar textura.
-
 	}
-
 }
 void Enemigo::update(){
 	if (!destruido){
 		Entidad::update();
+		comportamiento();
 	}
+	else {
+		body->SetActive(false);
+		if (needDrop) {
+			dropItems();
+			needDrop = false;
+		}
+	}
+	
 }
 bool Enemigo::distancia() {
 	float distancia = (pos -static_cast<Entidad*>(pJuego->getPlayer())->getBody()->GetPosition()).Length();
@@ -52,7 +62,34 @@ void Enemigo::draw(){
 	if (!destruido){
 		Entidad::draw();
 	}
-	else{
-		body->SetActive(false);
+}
+
+void Enemigo::dropItems() {
+	int prob = rand() % 100;
+	int numItemsDropped = 1;
+	//Probabilidades de dropear algo.
+	if (prob >= 0) {
+
+		for (int i = 0; i < numItemsDropped; i++) {
+
+			int probItem = rand() % 80;
+
+			if (probItem < Consumible::BATERIA_COCHE) {
+				dynamic_cast<ZonaAccion*>(pJuego->getZona())->getNivel()->nuevoObjeto(new Bateria(pJuego, SDL_Rect{ sprite->x,sprite->y,32,32 }, "Booster"));
+			}
+
+			else if (probItem < Consumible::CABLE) {
+				dynamic_cast<ZonaAccion*>(pJuego->getZona())->getNivel()->nuevoObjeto(new Cable(pJuego, SDL_Rect{ sprite->x, sprite->y, 64, 64 }, "Cable"));
+			}
+			else if (probItem < Consumible::BOOSTER) {
+				dynamic_cast<ZonaAccion*>(pJuego->getZona())->getNivel()->nuevoObjeto(new Booster(pJuego, SDL_Rect{ sprite->x, sprite->y, 64, 64 }, "Booster"));
+			}
+			else if (probItem < Consumible::TRANSISTOR) {
+				dynamic_cast<ZonaAccion*>(pJuego->getZona())->getNivel()->nuevoObjeto(new Transistor(pJuego, SDL_Rect{ sprite->x, sprite->y, 64, 64 }, "Transistor"));
+			}
+			else if (probItem < Consumible::PILA) {
+				dynamic_cast<ZonaAccion*>(pJuego->getZona())->getNivel()->nuevoObjeto(new Pila(pJuego, SDL_Rect{ sprite->x, sprite->y, 64, 64 }, "Pila"));
+			}
+		}
 	}
 }

@@ -52,6 +52,12 @@ Juego::Juego(b2World* mundo) : error(false), gameOver(false), exit(false), score
 
 	//Pila
 	nombreTexturas.emplace_back("../Material/Pila_idle.png");
+	//Booster
+	nombreTexturas.emplace_back("../Material/Booster_idle.png");
+	//Transistor
+	nombreTexturas.emplace_back("../Material/Transistor_idle.png");
+	//Cable
+	nombreTexturas.emplace_back("../Material/Cable_idle.png");
 
 
 	//DisparoToasty
@@ -390,12 +396,12 @@ void Juego::run() {
 	draw();
 	handle_event();
 	while (!exit) {
+		handle_event();
 		if (SDL_GetTicks() - lastUpdate >= MSxUpdate) {
 			update();
 			lastUpdate = SDL_GetTicks();
 			fpsCount++;
 		}
-		handle_event();
 		world->Step(1.0f / 60.0f, 6, 2);
 		draw();
 		contSeg = SDL_GetTicks();

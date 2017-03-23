@@ -18,6 +18,7 @@ public:
 	void draw();
 	void stop();
 	bool distancia();
-	virtual void dropItems(){};
+	virtual void dropItems();
+	virtual void comportamiento() {};
 };
 #endif
