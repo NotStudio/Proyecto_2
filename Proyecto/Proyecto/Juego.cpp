@@ -10,6 +10,12 @@
 #include <SDL_events.h>
 #include "MenuPG.h"
 //Constructora que inicializa todos los atributos de la clase Juego
+void operator+=(vector<string>& e,vector<string> o){
+	for (size_t i = 0; i < o.size(); i++)
+	{
+		e.push_back(o[i]);
+	}
+}
 Juego::Juego(b2World* mundo) : error(false), gameOver(false), exit(false), score(0), world(mundo)
 {
 	window.alto = 600; //Tamaño de la ventana.
@@ -89,6 +95,7 @@ Juego::Juego(b2World* mundo) : error(false), gameOver(false), exit(false), score
 	ubicacionTipografias = Buscador(TiposArchivo::TTF);
 
 	UbicacionSonidos = Buscador(TiposArchivo::WAV);
+	UbicacionSonidos += Buscador(TiposArchivo::MP3);
 	world->SetContactListener(&listener);
 	
 
@@ -102,7 +109,7 @@ Juego::Juego(b2World* mundo) : error(false), gameOver(false), exit(false), score
 	zona = nullptr;
 
 	pushState(new MenuPG(this));
-	cambiarMusica("temon");
+	cambiarMusica("Exodus");
 	run();
 	
 }
@@ -142,9 +149,9 @@ void Juego::cambiarMusica(string id)
 		Mix_PlayMusic(MusicaActual, -1);
 	}
 	else {
-		Mix_FadeOutMusic(1000);
+		Mix_FadeOutMusic(1200);
 		MusicaSig=cargarMusica(id);
-		timerCambio = SDL_AddTimer(1000, timerMus, this);
+		timerCambio = SDL_AddTimer(1500, timerMus, this);
 	}
 }
 
@@ -225,10 +232,14 @@ void Juego::initMedia() {
 		if (o>0) {
 			Efectos.emplace(make_pair(id, nullptr));
 			Efectos.at(id)= Mix_LoadWAV(UbicacionSonidos[i].c_str());
+			if(!Efectos.at(id))
+				printf("SDL_mixer could not initialize! SDL_mixer Error: %s\n", Mix_GetError());
 		}
 		else {
 			Musica.emplace(make_pair(id, nullptr));
 			Musica.at(id) = Mix_LoadMUS(UbicacionSonidos[i].c_str());
+			if (!Musica.at(id))
+				printf("SDL_mixer could not initialize! SDL_mixer Error: %s\n", Mix_GetError());
 		}
 	}
 };
@@ -327,6 +338,9 @@ bool Juego::initSDL() {
 	else {
 		if (TTF_Init() == -1) {
 			cout << "onichan";
+		}
+		if (IMG_Init(IMG_INIT_PNG)==-1) {
+			cout << "kek";
 		}
 		if (Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048) < 0)
 			cout << "kek";

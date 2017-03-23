@@ -5,8 +5,7 @@
 
 ZonaAccion::ZonaAccion(Juego* punteroJuego): pJuego(punteroJuego)
 {
-	Puerta p ;
-	p.posicion = { 0, 0, 0, 0 };
+	pJuego->cambiarMusica("are");
 	punteroJuego->setZona(this);
 	niveles = new vector<Room*>;
 	niveles->reserve(25);

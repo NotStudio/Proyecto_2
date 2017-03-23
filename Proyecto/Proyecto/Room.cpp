@@ -16,7 +16,7 @@
 
 //Update que realiza la habitacion. Ha de actualizarse todo lo que haya en ella (enemigos, objetos, balas, etc)
 void Room::update()
-{
+{ 
 	for (int i = 0; i < enemigos.size(); i++) {
 		enemigos[i]->update();
 	}
