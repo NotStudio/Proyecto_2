@@ -79,7 +79,6 @@ Juego::Juego(b2World* mundo) : error(false), gameOver(false), exit(false), score
 	//Tipografias
 	ubicacionTipografias = Buscador(TiposArchivo::TTF);
 
-	ficherosHabitaciones = Buscador(TiposArchivo::CSV);
 	UbicacionSonidos = Buscador(TiposArchivo::WAV);
 	world->SetContactListener(&listener);
 	
@@ -87,6 +86,7 @@ Juego::Juego(b2World* mundo) : error(false), gameOver(false), exit(false), score
 
 	//Arrancamos las texturas y los objetos.
 	initMedia();
+	initHabitaciones();
 	personaje = new Tostadora(this, SDL_Rect{100,75,64,64});
 	Camera =new Camara(static_cast<Entidad*>(personaje)->getRect(), window.ancho, window.alto);
 	vidasHUD = new HUD(this, SDL_Rect{20,0,34,55}, "Battery4", "idle");
@@ -228,6 +228,37 @@ void Juego::initMedia() {
 		}
 	}
 };
+
+void Juego::initHabitaciones(){
+	vector<string> ficherosPatronesEnemigos = Buscador(TiposArchivo::ENEPAT);
+	vector<string> ficherosPatronesInanimados = Buscador(TiposArchivo::INAPAT);
+	vector<string> ficherosHabitaciones = Buscador(TiposArchivo::CSV);
+	for (size_t i = 0; i < ficherosHabitaciones.size(); i++)
+	{
+		string id = ficherosHabitaciones[i].substr(ficherosHabitaciones[i].find_last_of('/') + 1);
+		id.erase(id.find_last_of('.'));		
+		Habitaciones.emplace(make_pair(id, RoomInfo(ficherosHabitaciones[i])));
+	}
+	for (size_t i = 0; i < ficherosPatronesEnemigos.size(); i++)
+	{
+		string id = ficherosPatronesEnemigos[i].substr(ficherosPatronesEnemigos[i].find_last_of('/') + 1);
+		id.erase(id.find_last_of('.'));
+		try{
+			Habitaciones.at(id).setPatronEnemigos(ficherosPatronesEnemigos[i]);
+		} catch(out_of_range){}
+	}
+	for (size_t i = 0; i < ficherosPatronesInanimados.size(); i++)
+	{
+		string id = ficherosPatronesInanimados[i].substr(ficherosPatronesInanimados[i].find_last_of('/') + 1);
+ 		id.erase(id.find_last_of('.'));
+		try{
+			Habitaciones.at(id).setPatronInanimados(ficherosPatronesInanimados[i]);
+		}
+		catch (out_of_range){}
+	}
+
+
+}
 //Método que libera las texturas.
 void Juego::freeMedia() {
 

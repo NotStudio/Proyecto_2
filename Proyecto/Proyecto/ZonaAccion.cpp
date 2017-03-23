@@ -10,6 +10,7 @@ ZonaAccion::ZonaAccion(Juego* punteroJuego): pJuego(punteroJuego)
 	niveles = new vector<Room*>;
 	niveles->reserve(25);
 	niveles->push_back(new Room(pJuego, niveles));
+	niveles->push_back(new Room(pJuego, niveles));
 	setRect();
 	setNivelActual();
 }

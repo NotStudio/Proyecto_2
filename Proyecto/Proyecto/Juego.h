@@ -5,12 +5,15 @@
 #include <Box2D\Box2D.h>
 #include <unordered_map>
 #include <float.h>
+#include <time.h>
 #include <stack>
 #include "TexturasSDL.h"
 #include "contactListener.h"
 #include "Camara.h"
 #include "HUDbase.h"
 #include <SDL_mixer.h>
+#include "RoomInfo.h"
+
 
 class ZonaJuego;
 class EstadoJuego;
@@ -25,6 +28,8 @@ class Juego
 
 
 	void initMedia();
+	
+	void initHabitaciones();
 
 	void freeMedia();
 
@@ -53,9 +58,9 @@ class Juego
 	SDL_Renderer* pRenderer;
 	vector<string> nombreTexturas;
 	vector<string> ubicacionTipografias;
-	vector<string> ficherosHabitaciones;
+	
 	vector<string> UbicacionSonidos;
-
+	
 
 	struct Ventana { //Struct que contiene el tamaño y el color de la ventana.
 		int ancho;
@@ -77,6 +82,7 @@ class Juego
 	_InfoTecla KEYS[322];
 
 	unordered_map<string, unordered_map<string, TexturasSDL*>> mapTexturas;
+	unordered_map<string, RoomInfo> Habitaciones;
 	unordered_map<string, unordered_map<int, Fuente*>> fuentes;
 	unordered_map<string, Mix_Music*> Musica;
 	unordered_map<string, Mix_Chunk*> Efectos;
@@ -207,8 +213,15 @@ public:
 		Mix_PlayChannel(-1,cargarEfecto(id),0);
 	}
 
-	string getRoom(){
-		return ficherosHabitaciones[rand()%ficherosHabitaciones.size()];
+	RoomInfo getRoom(){
+		srand(SDL_GetTicks());
+		unordered_map<string, RoomInfo>::iterator it = Habitaciones.begin();
+		size_t lim = rand() % Habitaciones.size();
+		for (size_t i = 0; i < lim; i++)
+		{
+			it++;
+		}
+		return Habitaciones.at(it->first);
 	}
 	vector<Animacion*>getAnimaciones(const string & entity) {
 		vector<Animacion*> vec;

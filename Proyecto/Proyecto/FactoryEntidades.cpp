@@ -26,7 +26,7 @@ Inanimado * creaInanimado(Juego * pj, string id, int x, int y, float escala ) {
 	}
 	else
 	{
-		throw exception("becario");
+		throw exception("NO EXISTE DICHO OBJETO \n");
 	}
 }
 Enemigo* creaEnemigo(Juego * pj, string id, int x, int y, int aditional){
@@ -48,6 +48,6 @@ Enemigo* creaEnemigo(Juego * pj, string id, int x, int y, int aditional){
 	}
 	else
 	{
-		throw exception("becario");
+		throw exception("NO EXISTE DICHO ENEMIGO \n");
 	}
 }

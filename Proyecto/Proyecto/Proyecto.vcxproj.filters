@@ -251,9 +251,6 @@
     <ClInclude Include="contactListener.h">
       <Filter>Header Files\Box2D</Filter>
     </ClInclude>
-    <ClInclude Include="constructoraRooms.h">
-      <Filter>Header Files\Niveles</Filter>
-    </ClInclude>
     <ClInclude Include="Room.h">
       <Filter>Header Files\Niveles</Filter>
     </ClInclude>
@@ -295,6 +292,9 @@
     </ClInclude>
     <ClInclude Include="Sierra.h">
       <Filter>Header Files\Personajes\Enemigos</Filter>
+    </ClInclude>
+    <ClInclude Include="RoomInfo.h">
+      <Filter>Header Files\Niveles</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

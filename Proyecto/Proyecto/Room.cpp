@@ -43,8 +43,9 @@ void Room::update()
 Room::Room(Juego * pJ, vector<Room*> * ro) :pJuego(pJ)
 {
 	textTiles = new Tilesheet(TOTAL_TILES, pJuego->getTilesheet());
-	SetRoomFichero(pJuego->getRoom(),ro);
-	ocupados = vector<vector<bool>>(Tiles.size(),vector<bool>(Tiles[0].size(),false));
+	RoomInfo _infoRoom = pJuego->getRoom();
+	SetRoomFichero(_infoRoom.fichero(),ro);
+	ocupados = vector<vector<bool>>(Tiles.size(), vector<bool>(Tiles[0].size(), false));
 	for (size_t i = 0; i < ocupados.size(); i++)
 	{
 		for (size_t j = 0; j < ocupados[i].size(); j++)
@@ -52,8 +53,8 @@ Room::Room(Juego * pJ, vector<Room*> * ro) :pJuego(pJ)
 			ocupados[i][j] = Tiles[i][j]->getBody()!=nullptr;
 		}
 	}
-	string w = " ";
-	meterEnemigos(w);
+	meterInanimados(_infoRoom.PatronObjetos());
+	meterEnemigos(_infoRoom.PatronEnemigos());
 }
 
 
@@ -68,11 +69,13 @@ void Room::stop() {
 
 void Room::meterInanimados(string const &dir)
 {
-	ifstream fichero("manolo.txt");
+	ifstream fichero(dir);
 	string linea;
+	int i=0;
 	getline(fichero, linea);
 	do
 	{
+		
 		string tipo = "";
 		int posX = -1,posY=-1;
 		float escala = 1;
@@ -81,11 +84,16 @@ void Room::meterInanimados(string const &dir)
 		if (tipo != "") {
 			try
 			{
-				objetos.push_back(creaInanimado(pJuego, tipo, posX*TILE_WIDTH-area->x, posY*TILE_HEIGHT-area->y, escala));
+				objetos.push_back(creaInanimado(pJuego, tipo, area->x + posX*TILE_WIDTH, area->y + posY*TILE_HEIGHT, escala));
+				bool solapa = false;
+				vector<SDL_Point> _TOcupados = TilesOcupados(*static_cast<Entidad*>(objetos[i])->getRect(), solapa);
+				marcarOcupados(_TOcupados);
+				i++;
+
 			}
 			catch (const std::exception& e)
 			{
-				cout <<e.what()<< " Ese objeto no existe parguelas \n";
+				cout <<e.what();
 			}
 		}
 		getline(fichero, linea);
@@ -94,24 +102,30 @@ void Room::meterInanimados(string const &dir)
 
 }
 void Room::meterEnemigos(string const & dir){
-	ifstream fichero("manola.txt");
+	ifstream fichero(dir);
 	string linea;
 	getline(fichero, linea);
+	int i = 0;
 	do
 	{
+		
 		string tipo = "";
 		int posX = -1, posY = -1;
 		int aditional = 1;
 		stringstream _lectorLineas(linea);
 		_lectorLineas >> tipo >> posX >> posY >> aditional;
-		if (tipo != "") {
+		if (tipo != ""&&!ocupados[posY][posX]) {
 			try
 			{
-				enemigos.push_back(creaEnemigo(pJuego, tipo, posX*TILE_WIDTH - area->x, posY*TILE_HEIGHT - area->y, aditional));
+				enemigos.push_back(creaEnemigo(pJuego, tipo, area->x + posX*TILE_WIDTH, area->y + posY*TILE_HEIGHT, aditional));
+				bool solapa = false;
+				vector<SDL_Point> _TOcupados = TilesOcupados(*static_cast<Entidad*>(enemigos[i])->getRect(), solapa);
+				marcarOcupados(_TOcupados);
+				i++;
 			}
-			catch (const std::exception& e)
+			catch (std::exception&e)
 			{
-				cout << e.what()<<" Ese objeto no existe parguelas \n";
+				cout << e.what();
 			}
 		}
 		getline(fichero, linea);
@@ -161,6 +175,7 @@ void Room::marcarOcupados(vector<SDL_Point> const p){
 }
 void Room::setPuertas(int dicc)
 {
+	Puerta _p;
 	switch (dicc)
 	{
 	case Direcciones::Norte:
@@ -168,29 +183,53 @@ void Room::setPuertas(int dicc)
 		Tiles[0][Tiles.at(0).size() / 2]->SetTile(S1);
 		Tiles[0][Tiles.at(0).size() / 2 - 1]->SetTile(S1);
 		Tiles[0][Tiles.at(0).size() / 2 + 1]->SetTile(ISO);
+		_p.posicion = Tiles[0][Tiles.at(0).size() / 2 - 1]->getBox();
+		_p.posicion.w = 2*TILE_WIDTH;
+		_p.posicion.h = 3 * TILE_HEIGHT;
+		_p.DirPuerta = Norte;
 		break;
 	case Direcciones::Sur:
 		Tiles[Tiles.size() - 1][Tiles.at(0).size() / 2 - 2]->SetTile(INE);
 		Tiles[Tiles.size() - 1][Tiles.at(0).size() / 2]->SetTile(S1);
 		Tiles[Tiles.size() - 1][Tiles.at(0).size() / 2 - 1]->SetTile(S1);
 		Tiles[Tiles.size() - 1][Tiles.at(0).size() / 2 + 1]->SetTile(INO);
+		_p.posicion = Tiles[Tiles.size() - 1][Tiles.at(0).size() / 2 - 1]->getBox();
+		_p.posicion.w = 2 * TILE_WIDTH;
+		_p.posicion.h = -3 * TILE_HEIGHT;
+		_p.DirPuerta = Sur;
 		break;
 	case Direcciones::Este:
-		Tiles[Tiles.size() / 2 - 2][Tiles.at(0).size() - 1]->SetTile(INO);
+		Tiles[Tiles.size() / 2 - 2][Tiles.at(0).size() - 1]->SetTile(ISO);
 		Tiles[Tiles.size() / 2][Tiles.at(0).size() - 1]->SetTile(S1);
 		Tiles[Tiles.size() / 2 - 1][Tiles.at(0).size() - 1]->SetTile(S1);
-		Tiles[Tiles.size() / 2 + 1][Tiles.at(0).size() - 1]->SetTile(ISO);
+		Tiles[Tiles.size() / 2 + 1][Tiles.at(0).size() - 1]->SetTile(INO);
+		_p.posicion = Tiles[Tiles.size() / 2 - 1][Tiles.at(0).size() - 1]->getBox();
+		_p.posicion.w = -3 * TILE_WIDTH;
+		_p.posicion.h = 2 * TILE_HEIGHT;
+		_p.DirPuerta = Este;
 		break;
 	case Direcciones::Oeste:
 		Tiles[Tiles.size() / 2 - 2][0]->SetTile(ISE);
 		Tiles[Tiles.size() / 2][0]->SetTile(S1);
 		Tiles[Tiles.size() / 2 - 1][0]->SetTile(S1);
 		Tiles[Tiles.size() / 2 + 1][0]->SetTile(INE);
+		_p.posicion = Tiles[Tiles.size() / 2 - 1][0]->getBox();
+		_p.posicion.w = 3 * TILE_WIDTH;
+		_p.posicion.h = 2 * TILE_HEIGHT;
+		_p.DirPuerta = Oeste;
 		break;
 	default:
 		break;
 	}
-	numPuertas++;
+	for (size_t i = 0; i < objetos.size(); i++)
+	{
+		if (SDL_HasIntersection(static_cast<Entidad*>(objetos[i])->getRect(), &_p.posicion)){
+			delete objetos[i];
+			objetos[i] = nullptr;
+		}
+			
+	}
+	Puertas.push_back(_p);
 }
 void Room::getTileOcupable(SDL_Rect & rect)
 {
@@ -363,7 +402,8 @@ void Room::render(){
 	}
 	//Dibujamos enemigos y objetos.
 	for (int i = 0; i < objetos.size(); i++) {
-		objetos[i]->draw();
+		if (objetos[i]!=nullptr)
+			objetos[i]->draw();
 	}
 	for (int i = 0; i < enemigos.size(); i++) {
 		enemigos[i]->draw();

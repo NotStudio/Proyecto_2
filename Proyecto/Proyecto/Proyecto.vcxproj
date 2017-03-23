@@ -64,7 +64,6 @@
     <ClInclude Include="EstadoJuego.h" />
     <ClInclude Include="EstadoPG.h" />
     <ClInclude Include="GameOver.h" />
-    <ClInclude Include="constructoraRooms.h" />
     <ClInclude Include="Helice.h" />
     <ClInclude Include="HUD.h" />
     <ClInclude Include="HUDbase.h" />
@@ -85,6 +84,7 @@
     <ClInclude Include="Play.h" />
     <ClInclude Include="recorreFicheros.h" />
     <ClInclude Include="Room.h" />
+    <ClInclude Include="RoomInfo.h" />
     <ClInclude Include="Sierra.h" />
     <ClInclude Include="TexturasSDL.h" />
     <ClInclude Include="Tile.h" />
