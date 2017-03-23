@@ -4,6 +4,7 @@
 #include "Tile.h"
 #include "TileInfo.h"
 #include "Bala.h"
+#include "RoomInfo.h"
 
 class Room
 {
@@ -13,12 +14,10 @@ private:
 	Juego * pJuego;
 	Tilesheet * textTiles;
 	//el vector de los tiles
-	Puerta puertas[4];
-	int numPuertas=0;
+	vector<Puerta> Puertas;
 	vector<vector<Tile*>> Tiles;
 	vector<vector<bool>> ocupados;
-	void moverMapa(int desplazamientoX, int desplazamientoY);
-	
+
 	void getTileOcupable(SDL_Rect &);
 	//Vector de enemigos.
 	vector<Objeto*> enemigos;
@@ -28,17 +27,18 @@ private:
 	vector<Objeto*> extras;//Balas
 	void ColocarHabitacion(vector<Room*> *habitaciones);
 	void marcarOcupados(vector<SDL_Point>const );
+	vector<SDL_Point> TilesOcupados(SDL_Rect const recto, bool & a);
 	vector<vector<bool>> getOcupados() { 
 		return ocupados;
 	}
-	
 
+	
 
 
 
 public:
 	int getNumPuertas() {
-		return numPuertas;
+		return Puertas.size();
 	}
 	void setPuertas(int dicc);
 	void nuevaBala(Bala*bala){
@@ -63,10 +63,11 @@ public:
 	~Room();
 	void render();
 	void encontrarPosicionTiled(int & const x, int & const y,int & posTileX,int &posTileY);
-	vector<SDL_Point> TilesOcupados(SDL_Rect const recto, bool & a );
+	
 	void SetRoomFichero(string Dir, vector<Room*> * Habitaciones);
 	void stop();
-	void meterInanimados(string const dir);
+	void meterInanimados(string const &dir);
+	void meterEnemigos(string const & dir);
 private:
 	struct keks
 	{

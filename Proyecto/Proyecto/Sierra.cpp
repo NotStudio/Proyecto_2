@@ -1,15 +1,18 @@
 #include "Sierra.h"
 
 
-Sierra::Sierra(Juego* punteroJuego, SDL_Rect a, int dir) : Enemigo(punteroJuego, a, "Sierra", 1000)
+Sierra::Sierra(Juego* punteroJuego, int x, int y, int dir) : Enemigo(punteroJuego, {x,y,128,81}, "Sierra", 1000)
 {
-
 	stats.daño = 1;
 	stats.velAtq = 0;
 	stats.velMov = 2;
 	stats.vida = 1;
 	direccion = dir;
-
+	for (size_t i = 0; i < animaciones.size(); i++)
+	{
+		animaciones[i]->setNumFrames(30);
+	}
+	currentAnim = animaciones[0];
 	col = false;
 	
 	body->GetFixtureList()->SetSensor(true);
@@ -62,6 +65,7 @@ void Sierra::move(){
 
 void Sierra::update(){
 	move();
+	currentAnim->ActualizarFrame();
 	Enemigo::update();
 }
 

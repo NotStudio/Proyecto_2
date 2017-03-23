@@ -4,7 +4,7 @@ class Helice :
 	public Enemigo
 {
 public:
-	Helice(Juego* punteroJuego, SDL_Rect a);
+	Helice(Juego* punteroJuego, int ,int);
 	~Helice();
 	void onColisionEnter(Objeto* contactObject);
 	virtual void move();

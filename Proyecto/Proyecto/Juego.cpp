@@ -33,6 +33,9 @@ Juego::Juego(b2World* mundo) : error(false), gameOver(false), exit(false), score
 	nombreTexturas.emplace_back("../Material/Tostadora_atqu.png");
 	//Gato
 	nombreTexturas.emplace_back("../Material/Gato_idle.png");
+
+	//Sierra
+	nombreTexturas.emplace_back("../Material/Sierra_idlo.png");
 	//Bomba
 	nombreTexturas.emplace_back("../Material/Bomba_idle.png");
 	//Ladron
@@ -85,7 +88,6 @@ Juego::Juego(b2World* mundo) : error(false), gameOver(false), exit(false), score
 	//Tipografias
 	ubicacionTipografias = Buscador(TiposArchivo::TTF);
 
-	ficherosHabitaciones = Buscador(TiposArchivo::CSV);
 	UbicacionSonidos = Buscador(TiposArchivo::WAV);
 	world->SetContactListener(&listener);
 	
@@ -93,6 +95,7 @@ Juego::Juego(b2World* mundo) : error(false), gameOver(false), exit(false), score
 
 	//Arrancamos las texturas y los objetos.
 	initMedia();
+	initHabitaciones();
 	//inicializamos los punteros a nullptr porque el estado play es el que hace new.
 	Camera = nullptr;
 	personaje = nullptr;
@@ -229,6 +232,37 @@ void Juego::initMedia() {
 		}
 	}
 };
+
+void Juego::initHabitaciones(){
+	vector<string> ficherosPatronesEnemigos = Buscador(TiposArchivo::ENEPAT);
+	vector<string> ficherosPatronesInanimados = Buscador(TiposArchivo::INAPAT);
+	vector<string> ficherosHabitaciones = Buscador(TiposArchivo::CSV);
+	for (size_t i = 0; i < ficherosHabitaciones.size(); i++)
+	{
+		string id = ficherosHabitaciones[i].substr(ficherosHabitaciones[i].find_last_of('/') + 1);
+		id.erase(id.find_last_of('.'));		
+		Habitaciones.emplace(make_pair(id, RoomInfo(ficherosHabitaciones[i])));
+	}
+	for (size_t i = 0; i < ficherosPatronesEnemigos.size(); i++)
+	{
+		string id = ficherosPatronesEnemigos[i].substr(ficherosPatronesEnemigos[i].find_last_of('/') + 1);
+		id.erase(id.find_last_of('.'));
+		try{
+			Habitaciones.at(id).setPatronEnemigos(ficherosPatronesEnemigos[i]);
+		} catch(out_of_range){}
+	}
+	for (size_t i = 0; i < ficherosPatronesInanimados.size(); i++)
+	{
+		string id = ficherosPatronesInanimados[i].substr(ficherosPatronesInanimados[i].find_last_of('/') + 1);
+ 		id.erase(id.find_last_of('.'));
+		try{
+			Habitaciones.at(id).setPatronInanimados(ficherosPatronesInanimados[i]);
+		}
+		catch (out_of_range){}
+	}
+
+
+}
 //Método que libera las texturas.
 void Juego::freeMedia() {
 

@@ -54,11 +54,11 @@ public:
 	b2Body* getBody();
 
 	std::string getId() { return id; };
-	int getX(){
+	float getX(){
 		return pos.x;
 
 	}
-	int getY(){
+	float getY(){
 		return pos.y;
 	}
 	SDL_Rect * getRect() {

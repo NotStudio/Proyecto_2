@@ -9,7 +9,7 @@
 #include "ZonaAccion.h"
 
 
-MaquinaDePelotas::MaquinaDePelotas(Juego* punteroJuego, SDL_Rect a) : Enemigo(punteroJuego, a, "BallT",500)
+MaquinaDePelotas::MaquinaDePelotas(Juego* punteroJuego, int x, int y) : Enemigo(punteroJuego, {x,y,128,128}, "BallT", 500)
 {
 	
 

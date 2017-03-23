@@ -60,7 +60,7 @@ SDL_Rect Camara::getPlano()
 	return plano;
 }
 
-void Camara::setLimite(SDL_Rect & const area)
+void Camara::setLimite(SDL_Rect const &  area)
 {
 	minX = area.x; minY = area.y; maxX = area.x + area.w; maxY = area.y + area.h;
 }
