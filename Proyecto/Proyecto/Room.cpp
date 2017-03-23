@@ -47,6 +47,7 @@ Room::Room(Juego * pJ, vector<Room*> * ro) :pJuego(pJ)
 
 	textTiles = new Tilesheet(TOTAL_TILES, pJuego->getTilesheet());
 	RoomInfo _infoRoom = pJuego->getRoom();
+	cout << _infoRoom.fichero()<< "\n";
 	SetRoomFichero(_infoRoom.fichero(),ro);
 	ocupados = vector<vector<bool>>(Tiles.size(), vector<bool>(Tiles[0].size(), false));
 	for (size_t i = 0; i < ocupados.size(); i++)
