@@ -13,10 +13,6 @@ Enemigo::Enemigo(Juego* punteroJuego, SDL_Rect spritePar, string objectId, int d
 
 	dropPool.push_back("Pila");
 	dropPool.push_back("Bateria");
-
-	
-
-
 }
 
 
@@ -73,22 +69,23 @@ void Enemigo::dropItems() {
 		for (int i = 0; i < numItemsDropped; i++) {
 
 			int probItem = rand() % 80;
+			
 
 			if (probItem < Consumible::BATERIA_COCHE) {
-				dynamic_cast<ZonaAccion*>(pJuego->getZona())->getNivel()->nuevoObjeto(new Bateria(pJuego, SDL_Rect{ sprite->x,sprite->y,32,32 }, "Booster"));
+				dynamic_cast<ZonaAccion*>(pJuego->getZona())->getNivel()->nuevoObjeto(new Bateria(pJuego, SDL_Rect{ sprite->x +1,sprite->y +2,48,48 }, "Bateria"));
 			}
 
 			else if (probItem < Consumible::CABLE) {
-				dynamic_cast<ZonaAccion*>(pJuego->getZona())->getNivel()->nuevoObjeto(new Cable(pJuego, SDL_Rect{ sprite->x, sprite->y, 64, 64 }, "Cable"));
+				dynamic_cast<ZonaAccion*>(pJuego->getZona())->getNivel()->nuevoObjeto(new Cable(pJuego, SDL_Rect{ sprite->x - 2, sprite->y + 3, 48, 48 }, "Cable"));
 			}
 			else if (probItem < Consumible::BOOSTER) {
-				dynamic_cast<ZonaAccion*>(pJuego->getZona())->getNivel()->nuevoObjeto(new Booster(pJuego, SDL_Rect{ sprite->x, sprite->y, 64, 64 }, "Booster"));
+				dynamic_cast<ZonaAccion*>(pJuego->getZona())->getNivel()->nuevoObjeto(new Booster(pJuego, SDL_Rect{ sprite->x -5, sprite->y + 7, 48, 48 }, "Booster"));
 			}
 			else if (probItem < Consumible::TRANSISTOR) {
-				dynamic_cast<ZonaAccion*>(pJuego->getZona())->getNivel()->nuevoObjeto(new Transistor(pJuego, SDL_Rect{ sprite->x, sprite->y, 64, 64 }, "Transistor"));
+				dynamic_cast<ZonaAccion*>(pJuego->getZona())->getNivel()->nuevoObjeto(new Transistor(pJuego, SDL_Rect{ sprite->x, sprite->y, 48, 48 }, "Transistor"));
 			}
 			else if (probItem < Consumible::PILA) {
-				dynamic_cast<ZonaAccion*>(pJuego->getZona())->getNivel()->nuevoObjeto(new Pila(pJuego, SDL_Rect{ sprite->x, sprite->y, 64, 64 }, "Pila"));
+				dynamic_cast<ZonaAccion*>(pJuego->getZona())->getNivel()->nuevoObjeto(new Pila(pJuego, SDL_Rect{ sprite->x, sprite->y, 48, 48 }, "Pila"));
 			}
 		}
 	}

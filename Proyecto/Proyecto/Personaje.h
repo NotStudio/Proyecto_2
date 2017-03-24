@@ -10,16 +10,20 @@ public:
 	virtual ~Personaje();
 
 	void virtual update();
-	int getVidas(){ return stats.vida; };
+	int getVidas() { return stats.vida; };
 	void restaVidas(int numero) { stats.vida -= numero; };
-protected:
-
 	struct atributos {
 		int vida;
+		int vidaMax;
 		int daño;
 		int velMov;
 		int velAtq;
-	} stats;
+	};
+
+
+protected:
+	atributos stats;
+
 	//Tal vez no nos haga falta un vector de objetos.
 	vector<Objeto*> inventario;
 	vector<std::string> dropPool;

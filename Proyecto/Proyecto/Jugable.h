@@ -11,7 +11,8 @@ public:
 
 	void virtual update();
 
-	Personaje::atributos getStats() { return stats; };
+	Personaje::atributos* getStats() { return &stats; };
+	Personaje::atributos* const getStatsMax() { return  &statsMax; };
 	virtual void onColisionEnter(Objeto* obj = nullptr);
 	void quitarInmunidad(){
 		inmune = false;
@@ -30,6 +31,7 @@ protected:
 	bool lel = true;
 	bool inmune = false;
 	SDL_TimerID timerInmune;
-
+	//atributos maximos
+	atributos statsMax;
 };
 #endif

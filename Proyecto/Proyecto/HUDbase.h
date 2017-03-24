@@ -17,7 +17,7 @@ public:
 	}
 
 
-	virtual void draw(Objeto* personaje)=0;
+	virtual void draw()=0;
 
 	virtual SDL_Rect * getRect() = 0;
 		

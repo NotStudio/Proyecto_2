@@ -58,7 +58,8 @@ Room::Room(Juego * pJ, vector<Room*> * ro) :pJuego(pJ)
 		}
 	}
 	meterInanimados(_infoRoom.PatronObjetos());
-	meterEnemigos(_infoRoom.PatronEnemigos());
+	//meterEnemigos(_infoRoom.PatronEnemigos());
+	enemigos.push_back(new Perseguidor(pJuego, 200, 200));
 }
 
 

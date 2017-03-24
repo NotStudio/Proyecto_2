@@ -10,7 +10,7 @@ public:
 	~HUD();
 
 
-	void draw(Objeto* personaje);
+	void draw();
 	
 	SDL_Rect * getRect() {
 		return sprite;

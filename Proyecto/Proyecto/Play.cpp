@@ -34,16 +34,15 @@ void Play::draw(){
 
 	zona->draw();
 	personaje->draw();
-	
+	vidasHUD->draw();
 }
 
 void Play::update(){
 
-	personaje->update();
-	zona->update();
 	Camera->update();
 	Camera->setLimite(zona->getNivelActual());
-	vidasHUD->draw(personaje);
-
+	zona->update();
+	personaje->update();
+	
 
 }

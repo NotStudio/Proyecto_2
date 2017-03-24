@@ -20,15 +20,16 @@ HUD::~HUD()
 	sprite = nullptr;
 }
 
-void HUD::draw(Objeto* personaje){
+void HUD::draw(){
 
 	int n;
 
-	n = static_cast<Jugable*>(personaje)->getStats().vida;
+	n = static_cast<Jugable*>(pjuego->getPlayer())->getStats()->vida;
 	
 	switch (n){
 		
 	case 4:// Tengo que ver como hacer para cuando se suman vidas que se vuelva a poner "Cuatro"
+		animacion.textura = pjuego->getTextura("Battery4", anim);
 		animacion.textura->draw(pjuego->getRender(), *getRect(), animacion.currentRect(),90);
 		break;
 	case 3:

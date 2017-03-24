@@ -67,6 +67,8 @@ Juego::Juego(b2World* mundo) : error(false), gameOver(false), exit(false), score
 	nombreTexturas.emplace_back("../Material/Transistor_idle.png");
 	//Cable
 	nombreTexturas.emplace_back("../Material/Cable_idle.png");
+	//Bateria
+	nombreTexturas.emplace_back("../Material/Bateria_idle.png");
 
 
 	//DisparoToasty
