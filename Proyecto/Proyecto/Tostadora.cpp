@@ -11,11 +11,11 @@ Tostadora::Tostadora(Juego* punteroJuego, SDL_Rect spritePar):Jugable(punteroJue
 		animaciones[i]->setNumFrames(30);
 	}
 	//Inicializacion de los stats y stats máximos;
-	stats.velMov = 1000;    statsMax.vida = 5;
-	stats.vida = 4;			statsMax.velMov = 1200;
-	stats.daño = 1;			statsMax.daño = 3;
-	stats.velAtq = 3;		statsMax.velAtq = 8;
-	stats.vidaMax = stats.vida; statsMax.vidaMax = 10;
+	stats.velMov = 1000;    stats.velMovLim = 1200;
+	stats.vida = 4;			stats.vidaLim = 4;
+	stats.daño = 1;			stats.dañoLim = 3;
+	stats.velAtq = 3;		stats.velAtqLim = 8;
+	stats.vidaMax = stats.vida; stats.vidaMaxLim = 10;
 }
 
 
