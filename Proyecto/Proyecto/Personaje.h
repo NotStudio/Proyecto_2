@@ -10,8 +10,6 @@ public:
 	virtual ~Personaje();
 
 	void virtual update();
-	int getVidas() { return stats.vida; };
-	void restaVidas(int numero) { stats.vida -= numero; };
 	
 	/*Struct de los ATRIBUTOS. En la constructora de cada personaje, hay que inicializar los atributos con los que empieza.*/
 	struct atributos {
@@ -22,6 +20,8 @@ public:
 		int daño;		static const int dañoLim = 20;	       static const int dañoMin = 1;
 		int velMov;		static const int velMovLim = 1200;	   static const int velMovMin = 700;
 		int velAtq;		static const int velAtqLim = 10;	   static const int velAtqMin = 1;
+
+		atributos() { vida = vidaMax = daño = velMov = velAtq = 0; };
 
 		//Sobrecarga del operador que controla que no se sobrepase por arriba ni por abajo.
 		 struct atributos& operator+=(atributos const &a) {

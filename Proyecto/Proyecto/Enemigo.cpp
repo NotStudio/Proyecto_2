@@ -64,13 +64,12 @@ void Enemigo::dropItems() {
 	int prob = rand() % 100;
 	int numItemsDropped = 1;
 	//Probabilidades de dropear algo.
-	if (prob >= 0) {
+	if (prob >= 50) {
 
 		for (int i = 0; i < numItemsDropped; i++) {
 
-			int probItem = rand() % 80;
+			int probItem = rand() % 100;
 			
-
 			if (probItem < Consumible::BATERIA_COCHE) {
 				dynamic_cast<ZonaAccion*>(pJuego->getZona())->getNivel()->nuevoObjeto(new Bateria(pJuego, SDL_Rect{ sprite->x +1,sprite->y +2,48,48 }, "Bateria"));
 			}

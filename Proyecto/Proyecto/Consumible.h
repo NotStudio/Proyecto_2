@@ -6,9 +6,9 @@ class Consumible :
 	public Item
 {
 protected:
+	//Le sumamos a los stats del personaje los stats del consumible.
 	virtual void effect(){
-		
-	
+		static_cast<Jugable*>(pJuego->getPlayer())->applyEffect(statsUp);
 	};
 	
 	Personaje::atributos statsUp;
@@ -49,13 +49,12 @@ public:
 			body->SetLinearVelocity(b2Vec2{ 0,velLevitacion });
 		}
 	};
-
 	enum PROBABILIDAD {
-		BATERIA_COCHE = 10,
-		CABLE = 20,
-		BOOSTER = 21,
-		TRANSISTOR = 30,
-		PILA = 70
+		BATERIA_COCHE = 5, //5% de poisibilidad
+		CABLE = 20,		   //15% de posibilidad
+		BOOSTER = 40,	   //20% de posibilidad
+		TRANSISTOR = 60,   //20% de posibilidad
+		PILA = 100		   //40% de posibilidad
 	};
 };
 //Pila: vida++
@@ -64,83 +63,57 @@ class Pila : public Consumible
 
 public:
 	Pila(Juego* punteroJuego, SDL_Rect spritePar, string objectId):Consumible(punteroJuego,spritePar,objectId){
-		statsUp.daño = 0;
-		statsUp.velAtq = 0;
-		statsUp.velMov = 0;
-		statsUp.vidaMax = 0;
 		statsUp.vida = 1;
 	}
 	virtual void effect() {
 		Consumible::effect();
-		//Añadimos el efecto.
-	
-		static_cast<Jugable*>(pJuego->getPlayer())->applyEffect(statsUp);
-	
 	};
 };
 
 //Bateria: vida_max ++
 class Bateria : public Consumible
 {
-	
 public:
 	Bateria(Juego* punteroJuego, SDL_Rect spritePar, string objectId) :Consumible(punteroJuego, spritePar, objectId) {
-		
+		statsUp.vidaMax = 1;
 	}
 	virtual void effect() {
 		Consumible::effect();
-		//Añadimos el efecto.
-		
-
 	};
 };
 //Cable: velocidad de movimiento ++;
 class Cable : public Consumible
 {
-
-	
 public:
-
 	Cable(Juego* punteroJuego, SDL_Rect spritePar, string objectId) :Consumible(punteroJuego, spritePar, objectId) {
-		
+		statsUp.velMov = 200;
 	}
 	virtual void effect() {
 		Consumible::effect();
-		//Añadimos el efecto.
-		
-
 	};
 };
 //Transistor: velocidad de ataque ++
 class Transistor : public Consumible
 {
-	
 public:
 	Transistor(Juego* punteroJuego, SDL_Rect spritePar, string objectId) :Consumible(punteroJuego, spritePar, objectId) {
-		
+		statsUp.velAtq = 10;
 	}
 
 	virtual void effect() {
 		Consumible::effect();
-		//Añadimos el efecto.
-		
-
 	};
 };
 //Booster: daño ++
 class Booster : public Consumible
 {
-	
 public:
 	Booster(Juego* punteroJuego, SDL_Rect spritePar, string objectId) :Consumible(punteroJuego, spritePar, objectId) {
-
+		statsUp.daño = 10;
 	}
 
 	virtual void effect() {
 		Consumible::effect();
-		//Añadimos el efecto.
-		
-
 	};
 };
 
