@@ -50,6 +50,8 @@
     <ClCompile Include="Tile.cpp" />
     <ClCompile Include="Tostadora.cpp" />
     <ClCompile Include="ZonaAccion.cpp" />
+    <ClCompile Include="ZonaBase.cpp" />
+    <ClCompile Include="ZonaJuego.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Bala.h" />
@@ -90,8 +92,10 @@
     <ClInclude Include="Tile.h" />
     <ClInclude Include="TileInfo.h" />
     <ClInclude Include="Tostadora.h" />
+    <ClInclude Include="Zona.h" />
     <ClInclude Include="ZonaAccion.h" />
-    <ClInclude Include="zonaJuego.h" />
+    <ClInclude Include="ZonaBase.h" />
+    <ClInclude Include="ZonaJuego.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{9AEFB5D6-5EFA-4A01-9D4F-1F8F42527E24}</ProjectGuid>

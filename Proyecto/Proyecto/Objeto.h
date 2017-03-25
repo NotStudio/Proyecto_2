@@ -21,6 +21,7 @@ public:
 
 	virtual bool getdestruido() { return false; };
 
+
 };
 
 #endif

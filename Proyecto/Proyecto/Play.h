@@ -2,7 +2,7 @@
 #define PLAY_H_
 
 #include "EstadoPG.h"
-#include "zonaJuego.h"
+#include "Zona.h"
 class Play :
 	public EstadoPG
 {
@@ -27,7 +27,7 @@ private:
 
 	Camara *Camera;
 
-	ZonaJuego* zona;
+	Zona* zona;
 
 };
 

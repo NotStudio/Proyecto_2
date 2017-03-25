@@ -1,7 +1,6 @@
 #include "Juego.h"
 #include "Tostadora.h"
 #include "Camara.h"
-#include "ZonaAccion.h"
 #include "Play.h"
 #include "checkML.h"
 #include "HUD.h"
@@ -505,7 +504,7 @@ b2World* Juego::getWorld() {
 }
 
 //Metodo que controla el cambio de zona (zonaJugable-Base)
-void Juego::setZona(ZonaJuego* nwZona) {
+void Juego::setZona(Zona* nwZona) {
 	//borrar la zona anterior.
 	zona = nwZona;
 

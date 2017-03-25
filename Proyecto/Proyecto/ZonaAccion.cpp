@@ -3,10 +3,10 @@
 #include "checkML.h"
 #include "TileInfo.h"
 
-ZonaAccion::ZonaAccion(Juego* punteroJuego): pJuego(punteroJuego)
+ZonaAccion::ZonaAccion(Juego* punteroJuego): ZonaJuego(punteroJuego)
 {
 	pJuego->cambiarMusica("are");
-	punteroJuego->setZona(this);
+	
 	niveles = new vector<Room*>;
 	niveles->reserve(25);
 	
@@ -21,17 +21,10 @@ ZonaAccion::ZonaAccion(Juego* punteroJuego): pJuego(punteroJuego)
 
 ZonaAccion::~ZonaAccion()
 {
-	for (size_t i = 0; i < niveles->size(); i++)
-	{
-		delete niveles->at(i);
-		niveles->at(i) = nullptr;
-	}
-	delete niveles;
-	niveles = nullptr;
-	nivelActual = nullptr;
+	
 }
 void ZonaAccion::draw(){
-	nivelActual->render();
+	ZonaJuego::draw();
 
 	//Descomentar para ver la disposición de las habitaciones
 	/*
@@ -47,7 +40,7 @@ void ZonaAccion::draw(){
 void ZonaAccion::update(){
 	//Sin terminar. LLamar solo a setNivelActual cuando se cambie de nivel, no todo el rato.
 	setNivelActual();
-	nivelActual->update();
+	ZonaJuego::update();
 }
 
 void ZonaAccion::setNivelActual(){
@@ -67,10 +60,4 @@ void ZonaAccion::setNivelActual(){
 	if (nivelActual != anterior)
 		cout << "kek";
 	pJuego->getCamera()->setLimite(nivelActual->getArea());
-}
-
-SDL_Rect ZonaAccion::getNivelActual() {
-
-	return nivelActual->getArea();
-
 }

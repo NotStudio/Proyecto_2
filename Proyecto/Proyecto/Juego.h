@@ -15,7 +15,7 @@
 #include "RoomInfo.h"
 
 
-class ZonaJuego;
+class Zona;
 class EstadoJuego;
 using namespace std;
 class Juego
@@ -86,7 +86,7 @@ class Juego
 	Mix_Music * MusicaSig;
 	Camara *Camera;
 	
-	ZonaJuego* zona;
+	Zona* zona;
 
 	Objeto* personaje;
 
@@ -286,9 +286,9 @@ public:
 }
 	TexturasSDL*getTilesheet(){	return mapTexturas.at("tilesheet").at("zon1");}
 
-	ZonaJuego* getZona() {	return zona;}
+	Zona* getZona() {	return zona;}
 
-	void setZona(ZonaJuego* nwZona);
+	void setZona(Zona* nwZona);
 };
 
 

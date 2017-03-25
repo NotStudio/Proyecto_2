@@ -1,24 +1,23 @@
 #ifndef ZONA_JUEGO_H_
 #define ZONA_JUEGO_H_
-
-class ZonaJuego
+#include "Zona.h"
+#include "Juego.h"
+#include "Room.h"
+class ZonaJuego :
+	public Zona
 {
+protected:
+	Juego* pJuego;
+	//Vector de habitaciones/niveles
+	vector<Room*>* niveles;
+	//Puntero al nivel actual
+	Room* nivelActual;
 public:
-
-	ZonaJuego()
-	{
-	}
-
-	virtual ~ZonaJuego()
-	{
-	}
-
-	virtual void draw() = 0;
-
-	virtual void update() = 0;
-
-	virtual SDL_Rect getNivelActual() = 0;
-
+	ZonaJuego(Juego* punteroJuego);
+	virtual ~ZonaJuego();
+	virtual void draw();
+	virtual void update();
+	virtual SDL_Rect getNivelActual();
 };
 
 #endif

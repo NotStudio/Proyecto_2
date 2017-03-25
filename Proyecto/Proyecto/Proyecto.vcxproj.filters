@@ -168,6 +168,12 @@
     <ClCompile Include="FactoryEntidades.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="ZonaJuego.cpp">
+      <Filter>Source Files\Zonas</Filter>
+    </ClCompile>
+    <ClCompile Include="ZonaBase.cpp">
+      <Filter>Source Files\Zonas</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Juego.h">
@@ -220,9 +226,6 @@
     </ClInclude>
     <ClInclude Include="Tostadora.h">
       <Filter>Header Files\Personajes\Jugables</Filter>
-    </ClInclude>
-    <ClInclude Include="zonaJuego.h">
-      <Filter>Header Files\Zonas</Filter>
     </ClInclude>
     <ClInclude Include="ZonaAccion.h">
       <Filter>Header Files\Zonas</Filter>
@@ -295,6 +298,15 @@
     </ClInclude>
     <ClInclude Include="RoomInfo.h">
       <Filter>Header Files\Niveles</Filter>
+    </ClInclude>
+    <ClInclude Include="ZonaJuego.h">
+      <Filter>Header Files\Zonas</Filter>
+    </ClInclude>
+    <ClInclude Include="ZonaBase.h">
+      <Filter>Header Files\Zonas</Filter>
+    </ClInclude>
+    <ClInclude Include="Zona.h">
+      <Filter>Header Files\Zonas</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
