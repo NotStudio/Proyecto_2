@@ -61,7 +61,6 @@ public:
 //Pila: vida++
 class Pila : public Consumible 
 {
-	const int vidaUp = 1;
 
 public:
 	Pila(Juego* punteroJuego, SDL_Rect spritePar, string objectId):Consumible(punteroJuego,spritePar,objectId){
