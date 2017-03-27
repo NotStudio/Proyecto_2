@@ -26,20 +26,27 @@ public:
 		//Sobrecarga del operador que controla que no se sobrepase por arriba ni por abajo.
 		 struct atributos& operator+=(atributos const &a) {
 			 //Controlamos que no se le pueda añadir mas del límite ni quitar menos que el mínimo.
-			 if (vida + a.vida <= vidaLim) vida += a.vida;
-			 else  if (vida + a.vida < vidaMin) vida = vidaMin;
+			/* if (vida + a.vida <= vidaLim && vida + a.vida >= vidaMin) vida += a.vida;
+			 else  if (vida + a.vida < vidaMin) vida = vidaMin;*/
+			 vida += a.vida;
+			 if (vida < vidaMin) vida = vidaMin;
+			 else if (vida > vidaLim) vida = vidaLim;
 
-			 if (vidaMax + a.vidaMax <= vidaMaxLim) vidaMax += a.vidaMax;
-			 else if (vidaMax + a.vidaMax < vidaMaxMin) vidaMax = vidaMaxMin;
+			 vidaMax += a.vidaMax;
+			 if (vidaMax < vidaMaxMin) vidaMax = vidaMaxMin;
+			 else if (vidaMax > vidaMaxLim) vidaMax = vidaMaxLim;
 
-			 if (daño + a.daño <= dañoLim) daño += a.daño;
-			 else if (daño + a.daño < dañoMin) daño = dañoMin;
+			 daño += a.daño;
+			 if (daño < dañoMin) daño = dañoMin;
+			 else if (daño > dañoLim) daño = dañoLim;
 
-			 if (velMov + a.velMov <= velMovLim) velMov += a.velMov;
-			 else  if (velMov + a.velMov < velMovMin) velMov = velMovMin;
+			 velMov += a.velMov;
+			 if (velMov < velMovMin) velMov = velMovMin;
+			 else if (velMov > velMovLim) velMov = velMovLim;
 
-			 if (velAtq + a.velAtq <= velAtqLim) velAtq += a.velAtq;
-			 else  if (velAtq + a.velAtq < velAtqMin) velAtq = velAtqMin;
+			 velAtq += a.velAtq;
+			 if (velAtq < velAtqMin) velAtq = velAtqMin;
+			 else if (velAtq > velAtqLim) velAtq = velAtqLim;
 
 			return *this;
 		}
