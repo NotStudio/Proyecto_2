@@ -6,10 +6,11 @@
 #include "ZonaAccion.h"
 Tostadora::Tostadora(Juego* punteroJuego, SDL_Rect spritePar):Jugable(punteroJuego, spritePar, "Tostadora")
 {	
-	for (size_t i = 0; i < animaciones.size(); i++)
+	for (unordered_map<string, Juego::Animacion*>::iterator i = animaciones.begin(); i != animaciones.end(); i++)
 	{
-		animaciones[i]->setNumFrames(30);
+		animaciones.at(i->first)->setNumFrames(30);
 	}
+	currentAnim = animaciones.at("idle");
 	//Inicializacion de los stats y stats máximos;
 	stats.velMov = 1000;    
 	stats.vida = 4;			
@@ -64,6 +65,7 @@ void Tostadora::disparo(){
 		}
 		if (!disparar) {
 			Disparar = SDL_AddTimer(cadencia, timerDisparo, this); pJuego->reproducirEfecto("scream");
+			currentAnim = animaciones.at("atqu");
 		}
 	}
 	if (aux != SinDir) {
@@ -79,9 +81,21 @@ void Tostadora::update(){
 	disparo();
 	Entidad::update();
 	if (!disparar) {
-		(estadoEntidad.animacionActual != Ataque) ? estadoEntidad.animacionActual = Ataque : Ataque;
+		if (estadoEntidad.animacionActual != Ataque) {
+			estadoEntidad.animacionActual = Ataque;
+			currentAnim = animaciones.at("atqu");
+		}
 		currentAnim->ActualizarFrame();
 	}
-	currentAnim = animaciones[estadoEntidad.animacionActual];
+	else {
+		if (estadoEntidad.animacionActual == Walk)
+		{
+			currentAnim = animaciones.at("walk");
+		}
+		else {
+			currentAnim = animaciones.at("idle");
+		}
+		
+	}
 	currentAnim->ActualizarFrame();
 }

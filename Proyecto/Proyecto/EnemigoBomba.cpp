@@ -2,8 +2,13 @@
 #include <math.h>
 #include "Jugable.h"
 #include "Bala.h"
-EnemigoBomba::EnemigoBomba(Juego* punteroJuego, int x, int y) : Enemigo(punteroJuego, {x,y,128,128}, "Bomba", 1000)
+EnemigoBomba::EnemigoBomba(Juego* punteroJuego, int x, int y) : Enemigo(punteroJuego, {x,y,64,64}, "Bomba", 400)
 {
+	for (unordered_map<string, Juego::Animacion*>::iterator i = animaciones.begin(); i != animaciones.end(); i++)
+	{
+		animaciones[i->first]->setNumFrames(30);
+	}
+	currentAnim = animaciones.at("walk");
 	stats.daño = 100;
 	stats.velAtq = 0;
 	stats.velMov = 1;
@@ -46,8 +51,12 @@ void EnemigoBomba::move(){
 
 		velFloat.x = vUnitario.x*enemyStats.velMov;
 		velFloat.y = vUnitario.y*enemyStats.velMov;
-
+		if (velFloat.x > 0) {
+			estadoEntidad.mirando = Oeste;
+		}else if (velFloat.x < 0)
+			estadoEntidad.mirando = Este;
 		body->SetLinearVelocity(velFloat);
+		currentAnim->ActualizarFrame();
 	}
 	else {
 		stop();
@@ -86,6 +95,7 @@ void EnemigoBomba::crecer(){
 	if ((i < 100 || j < 100) && sprite->h <= 120){
 		sprite->h++;
 		sprite->w++;
+
 		body->DestroyFixture(body->GetFixtureList());
 		delete shape;
 		shape = new b2PolygonShape;
@@ -99,7 +109,6 @@ void EnemigoBomba::crecer(){
 		sprite->h--;
 		sprite->w--;
 	}
-
 }
 
 

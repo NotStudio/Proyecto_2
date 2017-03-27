@@ -5,8 +5,13 @@
 
 
 //HAY QUE CAMBIAR EL STRING QUE PASA COMO ID
-Perseguidor::Perseguidor(Juego* punteroJuego, int x, int y) : Enemigo(punteroJuego, {x,y,64,64}, "Iman", 300), coefMov(10.0f)
+Perseguidor::Perseguidor(Juego* punteroJuego, int x, int y) : Enemigo(punteroJuego, {x,y,64,57}, "Iman", 300), coefMov(10.0f)
 {
+	for (unordered_map<string,Juego::Animacion*>::iterator i = animaciones.begin(); i != animaciones.end(); i++)
+	{
+		animaciones.at(i->first)->setNumFrames(30);
+	}
+	currentAnim = animaciones.at("walk");
 	stats.daño = 1;
 	stats.vida = 5;
 
@@ -32,6 +37,7 @@ void Perseguidor::move(){
 		velFloat.y = unitario.y*coefMov;
 
 		body->SetLinearVelocity(velFloat);
+		currentAnim->ActualizarFrame();
 	}
 	else
 	{
@@ -39,7 +45,6 @@ void Perseguidor::move(){
 	}
 }
 void Perseguidor::update() {
-
 	Enemigo::update();
 	
 }

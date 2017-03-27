@@ -12,6 +12,7 @@
 #include "TileInfo.h"
 #include <time.h>
 #include "Sierra.h"
+#include "Helice.h"
 #define DEBUG
 
 //Update que realiza la habitacion. Ha de actualizarse todo lo que haya en ella (enemigos, objetos, balas, etc)
@@ -59,7 +60,7 @@ Room::Room(Juego * pJ, vector<Room*> * ro) :pJuego(pJ)
 	}
 	meterInanimados(_infoRoom.PatronObjetos());
 	//meterEnemigos(_infoRoom.PatronEnemigos());
-	enemigos.push_back(new Perseguidor(pJuego, 200, 200));
+	enemigos.push_back(new Helice(pJuego, 300, 300));
 }
 
 
