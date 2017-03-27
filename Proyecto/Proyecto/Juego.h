@@ -90,7 +90,7 @@ class Juego
 
 	Objeto* personaje;
 
-	
+	RoomInfo base;
 
 	SDL_TimerID timerCambio;
 public:
@@ -223,6 +223,9 @@ public:
 		}
 		return Habitaciones.at(it->first);
 	}
+
+	RoomInfo getBaseRoom(){	return base;}
+
 	vector<Animacion*>getAnimaciones(const string & entity) {
 		vector<Animacion*> vec;
 		try {
@@ -284,7 +287,7 @@ public:
 
 	Objeto* getPlayer(){	return personaje ;
 }
-	TexturasSDL*getTilesheet(){	return mapTexturas.at("tilesheet").at("zon1");}
+	TexturasSDL*getTilesheet(Zona * z ){return mapTexturas.at("tilesheet").at("zon1");}
 
 	Zona* getZona() {	return zona;}
 

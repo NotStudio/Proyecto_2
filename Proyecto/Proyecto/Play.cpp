@@ -1,5 +1,6 @@
 #include "Play.h"
 #include "checkML.h"
+#include "ZonaBase.h"
 #include "ZonaAccion.h"
 #include "Tostadora.h"
 #include "Camara.h"
@@ -12,8 +13,7 @@ Play::Play(Juego * juego) : EstadoPG(juego)
 	Juego::Ventana window = juego->getWindow();
 	Camera = new Camara(static_cast<Entidad*>(personaje)->getRect(), window.ancho, window.alto);
 	juego->setCamera(Camera);
-	zona = new ZonaAccion(juego);
-	juego->setZona(zona);
+	zona = new ZonaBase(juego);
 	vidasHUD = new HUD(juego, SDL_Rect{ 20,0,34,55 }, "Battery4", "idle");
 
 }

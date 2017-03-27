@@ -5,7 +5,7 @@
 #include "TileInfo.h"
 #include "Bala.h"
 #include "RoomInfo.h"
-
+#include "Zona.h"
 class Room
 {
 private:
@@ -31,7 +31,7 @@ private:
 	vector<vector<bool>> getOcupados() { 
 		return ocupados;
 	}
-
+	Zona* zona;
 	
 
 
@@ -59,7 +59,8 @@ public:
 	}
 	void update();
 	//Room();
-	Room(Juego *, vector<Room*>*);
+	Room(Juego *, vector<Room*>*, Zona *);
+	Room(Juego *, vector<Room*>*, Zona *, std::string);
 	~Room();
 	void render();
 	void encontrarPosicionTiled(int & const x, int & const y,int & posTileX,int &posTileY);

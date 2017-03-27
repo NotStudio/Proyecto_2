@@ -253,7 +253,11 @@ void Juego::initHabitaciones(){
 	{
 		string id = ficherosHabitaciones[i].substr(ficherosHabitaciones[i].find_last_of('/') + 1);
 		id.erase(id.find_last_of('.'));		
-		Habitaciones.emplace(make_pair(id, RoomInfo(ficherosHabitaciones[i])));
+		if (id == "Base"){
+			base = RoomInfo(ficherosHabitaciones[i]);
+		}
+		else
+			Habitaciones.emplace(make_pair(id, RoomInfo(ficherosHabitaciones[i])));
 	}
 	for (size_t i = 0; i < ficherosPatronesEnemigos.size(); i++)
 	{

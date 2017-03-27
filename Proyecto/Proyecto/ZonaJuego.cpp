@@ -10,13 +10,7 @@ ZonaJuego::ZonaJuego(Juego* punteroJuego):pJuego(punteroJuego)
 
 ZonaJuego::~ZonaJuego()
 {
-	for (size_t i = 0; i < niveles->size(); i++)
-	{
-		delete niveles->at(i);
-		niveles->at(i) = nullptr;
-	}
-	delete niveles;
-	niveles = nullptr;
+	
 	nivelActual = nullptr;
 }
 

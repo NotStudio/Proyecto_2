@@ -17,6 +17,9 @@ public:
 		inmune = false;
 	}
 
+	enum estado{JUGANDO, BASE};
+
+
 protected:
 	//Booleanas para el control del movimiento, utilizadas en el movControl;
 	//Mueve.
@@ -30,6 +33,7 @@ protected:
 	bool lel = true;
 	bool inmune = false;
 	SDL_TimerID timerInmune;
+	estado state;
 	
 };
 #endif

@@ -5,6 +5,8 @@
 class ZonaBase :
 	public ZonaJuego
 {
+
+	Room* baseNivel;
 public:
 	ZonaBase(Juego* punteroJuego);
 	virtual ~ZonaBase();

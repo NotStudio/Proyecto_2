@@ -5,6 +5,7 @@ class RoomInfo
 {
 public:
 	RoomInfo(std::string fichero) :_fichero(fichero){};
+	RoomInfo():_fichero(""){};
 	~RoomInfo(){};
 	std::string fichero(){
 		return _fichero;

@@ -76,7 +76,8 @@ void Tostadora::disparo(){
 }
 void Tostadora::update(){
 	move();
-	disparo();
+	if (state == JUGANDO)
+		disparo();
 	Entidad::update();
 	if (!disparar) {
 		(estadoEntidad.animacionActual != Ataque) ? estadoEntidad.animacionActual = Ataque : Ataque;

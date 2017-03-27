@@ -12,7 +12,7 @@ ZonaAccion::ZonaAccion(Juego* punteroJuego): ZonaJuego(punteroJuego)
 	
 	for (size_t i = 0; i < 1; i++)
 	{
-		niveles->push_back(new Room(pJuego, niveles));
+		niveles->push_back(new Room(pJuego, niveles, this));
 	}
 	setRect();
 	setNivelActual();
@@ -21,6 +21,13 @@ ZonaAccion::ZonaAccion(Juego* punteroJuego): ZonaJuego(punteroJuego)
 
 ZonaAccion::~ZonaAccion()
 {
+	for (size_t i = 0; i < niveles->size(); i++)
+	{
+		delete niveles->at(i);
+		niveles->at(i) = nullptr;
+	}
+	delete niveles;
+	niveles = nullptr;
 	
 }
 void ZonaAccion::draw(){

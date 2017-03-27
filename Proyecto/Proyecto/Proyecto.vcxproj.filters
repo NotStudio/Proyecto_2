@@ -284,9 +284,6 @@
     <ClInclude Include="Inanimado.h">
       <Filter>Header Files\Objetos</Filter>
     </ClInclude>
-    <ClInclude Include="InanimadoInfo.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
     <ClInclude Include="recorreFicheros.h">
       <Filter>Source Files</Filter>
     </ClInclude>
@@ -307,6 +304,9 @@
     </ClInclude>
     <ClInclude Include="Zona.h">
       <Filter>Header Files\Zonas</Filter>
+    </ClInclude>
+    <ClInclude Include="InanimadoInfo.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

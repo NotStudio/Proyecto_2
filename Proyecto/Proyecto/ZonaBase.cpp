@@ -5,13 +5,17 @@
 
 ZonaBase::ZonaBase(Juego* punteroJuego):ZonaJuego(punteroJuego)
 {
-	niveles->push_back(new Room(pJuego, niveles));
-	nivelActual = niveles->at(0);
+
+	baseNivel =  new Room(pJuego, nullptr, this);
+	nivelActual = baseNivel;
+	pJuego->getCamera()->setLimite(nivelActual->getArea());
 }
 
 
 ZonaBase::~ZonaBase()
 {
+	delete baseNivel;
+	baseNivel = nullptr;
 }
 
  SDL_Rect ZonaBase::getNivelActual() {

@@ -3,7 +3,6 @@
 #include "Room.h"
 #include "checkML.h"
 #include "constructoraRooms.h"
-#include "ZonaAccion.h"
 #include "Perseguidor.h"
 #include "EnemigoBomba.h"
 #include "MaquinaDePelotas.h"
@@ -12,6 +11,7 @@
 #include "TileInfo.h"
 #include <time.h>
 #include "Sierra.h"
+#include "ZonaBase.h"
 #define DEBUG
 
 //Update que realiza la habitacion. Ha de actualizarse todo lo que haya en ella (enemigos, objetos, balas, etc)
@@ -40,27 +40,46 @@ void Room::update()
 
 //Constructora de la habitación. Aquí es donde se lee el nivel, se crea y se añaden los enemigos y objetos.
 //No hace falta meter los parametros string para cargar un tilesheet, carga por defecto el de la zona 1
-Room::Room(Juego * pJ, vector<Room*> * ro) :pJuego(pJ)
+Room::Room(Juego * pJ, vector<Room*> * ro, Zona* z) :pJuego(pJ)
 {
-
-	
-
-	textTiles = new Tilesheet(TOTAL_TILES, pJuego->getTilesheet());
-	RoomInfo _infoRoom = pJuego->getRoom();
-	cout << _infoRoom.fichero()<< "\n";
-	SetRoomFichero(_infoRoom.fichero(),ro);
-	ocupados = vector<vector<bool>>(Tiles.size(), vector<bool>(Tiles[0].size(), false));
-	for (size_t i = 0; i < ocupados.size(); i++)
-	{
-		for (size_t j = 0; j < ocupados[i].size(); j++)
+	zona = z;
+	//Si es base, creamos la room de Base.
+	if (typeid(ZonaBase) == typeid(*zona)){
+		textTiles = new Tilesheet(TOTAL_TILES, pJuego->getTilesheet(zona));
+		RoomInfo _infoRoom = pJuego->getBaseRoom();
+		cout << _infoRoom.fichero() << "\n";
+		SetRoomFichero(_infoRoom.fichero(), ro);
+		ocupados = vector<vector<bool>>(Tiles.size(), vector<bool>(Tiles[0].size(), false));
+		for (size_t i = 0; i < ocupados.size(); i++)
 		{
-			ocupados[i][j] = Tiles[i][j]->getBody()!=nullptr;
+			for (size_t j = 0; j < ocupados[i].size(); j++)
+			{
+				ocupados[i][j] = Tiles[i][j]->getBody() != nullptr;
+			}
 		}
+	
+	
 	}
-	meterInanimados(_infoRoom.PatronObjetos());
-	//meterEnemigos(_infoRoom.PatronEnemigos());
-	enemigos.push_back(new Perseguidor(pJuego, 200, 200));
+	//Si no, generamos una zona con niveles aleatorios y to la pesca.
+	else{
+		textTiles = new Tilesheet(TOTAL_TILES, pJuego->getTilesheet(zona));
+		RoomInfo _infoRoom = pJuego->getRoom();
+		cout << _infoRoom.fichero() << "\n";
+		SetRoomFichero(_infoRoom.fichero(), ro);
+		ocupados = vector<vector<bool>>(Tiles.size(), vector<bool>(Tiles[0].size(), false));
+		for (size_t i = 0; i < ocupados.size(); i++)
+		{
+			for (size_t j = 0; j < ocupados[i].size(); j++)
+			{
+				ocupados[i][j] = Tiles[i][j]->getBody() != nullptr;
+			}
+		}
+		meterInanimados(_infoRoom.PatronObjetos());
+		//meterEnemigos(_infoRoom.PatronEnemigos());
+		enemigos.push_back(new Perseguidor(pJuego, 200, 200));
+	}
 }
+
 
 
 //Metodo que se llama cuando se sale de la habitación. Se llama al stop de todos lo enemigos, que tienen que dejar de hacer ataques. **ESTO ES PROVISIONAL**
@@ -340,7 +359,7 @@ void Room::SetRoomFichero(string Dir, vector<Room*> * Habitaciones)
 	mapAux.close();
 	maxY = acuY;
 	int kek = 0;
-	if (Habitaciones->size() > 0){
+	if (Habitaciones != nullptr && Habitaciones->size() > 0){
 		SDL_Rect _zona = { 0, 0, maxX*TILE_WIDTH, maxY*TILE_HEIGHT };
 		Room * _roomConectada;
 		Direcciones D;
