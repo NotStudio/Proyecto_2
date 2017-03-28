@@ -64,7 +64,7 @@ void Tostadora::disparo(){
 			dynamic_cast<ZonaAccion*>(pJuego->getZona())->getNivel()->nuevaBala(new Bala(pJuego, posicion, sprite, 80.0f, 0, -1, 0));
 		}
 		if (!disparar) {
-			Disparar = SDL_AddTimer(cadencia, timerDisparo, this); pJuego->reproducirEfecto("scream");
+			Disparar = SDL_AddTimer(cadencia, timerDisparo, this); pJuego->reproducirEfecto("TShot");
 			currentAnim = animaciones.at("atqu");
 		}
 	}
