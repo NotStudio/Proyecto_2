@@ -51,6 +51,7 @@ namespace rapidxml
 #else
     
 #include <exception>    // For std::exception
+using namespace std;
 
 #define RAPIDXML_PARSE_ERROR(what, where) throw parse_error(what, where)
 
@@ -412,12 +413,10 @@ namespace rapidxml
         //! \param name_size Size of name to assign, or 0 to automatically calculate size from name string.
         //! \param value_size Size of value to assign, or 0 to automatically calculate size from value string.
         //! \return Pointer to allocated node. This pointer will never be NULL.
-        xml_node<Ch> *allocate_node(node_type type, 
-                                    const Ch *name = 0, const Ch *value = 0, 
-                                    std::size_t name_size = 0, std::size_t value_size = 0)
+        xml_node<Ch> *allocate_node(node_type type, const Ch *name = 0, const Ch *value = 0, std::size_t name_size = 0, std::size_t value_size = 0)
         {
-            void *memory = allocate_aligned(sizeof(xml_node<Ch>));
-            xml_node<Ch> *node = new(memory) xml_node<Ch>(type);
+			void * memory = allocate_aligned(sizeof(xml_node<Ch>));
+			xml_node<Ch> * node = new(memory) xml_node<Ch>(type);
             if (name)
             {
                 if (name_size > 0)
@@ -942,6 +941,7 @@ namespace rapidxml
                 for (xml_node<Ch> *child = m_first_node; child; child = child->next_sibling())
                     if (internal::compare(child->name(), child->name_size(), name, name_size, case_sensitive))
                         return child;
+				throw exception();
                 return 0;
             }
             else

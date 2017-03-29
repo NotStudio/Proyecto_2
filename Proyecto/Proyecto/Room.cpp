@@ -12,6 +12,7 @@
 #include <time.h>
 #include "Sierra.h"
 #include "ZonaBase.h"
+#include "tmxReader.h"
 #define DEBUG
 
 //Update que realiza la habitacion. Ha de actualizarse todo lo que haya en ella (enemigos, objetos, balas, etc)
@@ -330,7 +331,8 @@ void Room::SetRoomFichero(string Dir, vector<Room*> * Habitaciones)
 {
 	int IniX = 0, IniY = 0;
 	int x = 0, y = 0, tipo = -1, maxX = 0, acuX = 0, acuY = 0, maxY = 0;
-	
+
+	Mapinfo mapkeke = lector("");
 	
 	string linea;
 	ifstream mapAux(Dir);
