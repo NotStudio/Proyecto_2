@@ -3,7 +3,7 @@
 #include "Juego.h"
 #include "checkML.h"
 
-void Tile::onColisionEnter() { }
+void Tile::onColisionEnter() { std::cout << "col tile\n"; }
 Tile::Tile(int x, int y, int tileType, b2World * wardo)
 {
 
@@ -26,6 +26,7 @@ Tile::Tile(int x, int y, int tileType, b2World * wardo)
 		mShapeDef->shape = mShape;
 		mShapeDef->filter.categoryBits = Juego::ESCENARIO;
 		mShapeDef->filter.maskBits = -1;
+	
 		mBody->CreateFixture(mShapeDef);
 		mBody->SetUserData(this);
 	}
@@ -38,10 +39,11 @@ Tile::~Tile()
 	delete mBox;
 	mBox = nullptr;
 	if (mType > S12) {
+		mBody->GetWorld()->DestroyBody(mBody);
 		delete mShape;
 		delete mShapeDef;
 		delete mBodyDef;
-
+		mBody = nullptr;
 		mShapeDef = nullptr;
 		mShape = nullptr;
 		mBodyDef = nullptr;

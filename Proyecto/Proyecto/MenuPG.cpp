@@ -4,9 +4,9 @@
 
 MenuPG::MenuPG(Juego * juego) :EstadoPG(juego)
 {
-	botones.emplace_back(new Boton(juego, "boton", 300, 250, playBase,"Jugar"));
-	botones.emplace_back(new Boton(juego, "boton", 300, 350, salir,"Opciones"));
-	botones.emplace_back(new Boton(juego, "boton", 300, 450, salir,"Salir"));
+	botones.emplace_back(new Boton(juego, "boton", 415, 175, playBase,"Jugar"));
+	botones.emplace_back(new Boton(juego, "boton", 415, 275, salir,"Opciones"));
+	botones.emplace_back(new Boton(juego, "boton", 415, 375, salir,"Salir"));
 }
 
 
@@ -32,6 +32,8 @@ void MenuPG::playBase(Juego * jg){
 }
 
 void MenuPG::draw(){
+	pJuego->getTextura("MenuInicio", "idle")->draw(pJuego->getRender(), { 0,0,800,600 }, nullptr);
+	
 	for (int i = 0; i < botones.size(); i++)
 	{
 		botones[i]->draw();

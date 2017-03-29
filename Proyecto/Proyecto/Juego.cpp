@@ -8,13 +8,16 @@
 #include "recorreFicheros.h"
 #include <SDL_events.h>
 #include "MenuPG.h"
-//Constructora que inicializa todos los atributos de la clase Juego
+#include "ZonaAccion.h"
+#include "ZonaBase.h"
+
 void operator+=(vector<string>& e,vector<string> o){
 	for (size_t i = 0; i < o.size(); i++)
 	{
 		e.push_back(o[i]);
 	}
 }
+// Constructora que inicializa todos los atributos de la clase Juego
 Juego::Juego(b2World* mundo) : error(false), gameOver(false), exit(false), score(0), world(mundo)
 {
 	window.alto = 600; //Tamaño de la ventana.
@@ -57,6 +60,12 @@ Juego::Juego(b2World* mundo) : error(false), gameOver(false), exit(false), score
 	nombreTexturas.emplace_back("../Material/Assets/Chatarra_idle.png");
 	//Agujero
 	nombreTexturas.emplace_back("../Material/Assets/agujero_idle.png");
+	//Selector zona
+	nombreTexturas.emplace_back("../Material/Assets/SelectorZona_idle.png");
+	//Selector zona fondo
+	nombreTexturas.emplace_back("../Material/SelecMapaFondo_idle.png");
+	//Pantalla de carga
+	nombreTexturas.emplace_back("../Material/Loading_idle.png");
 
 	//Pila
 	nombreTexturas.emplace_back("../Material/Pila_idle.png");
@@ -68,6 +77,8 @@ Juego::Juego(b2World* mundo) : error(false), gameOver(false), exit(false), score
 	nombreTexturas.emplace_back("../Material/Cable_idle.png");
 	//Bateria
 	nombreTexturas.emplace_back("../Material/Bateria_idle.png");
+	//Inicio
+	nombreTexturas.emplace_back("../Material/MenuInicio_idle.png");
 
 
 	//DisparoToasty
@@ -263,18 +274,25 @@ void Juego::initHabitaciones(){
 	{
 		string id = ficherosPatronesEnemigos[i].substr(ficherosPatronesEnemigos[i].find_last_of('/') + 1);
 		id.erase(id.find_last_of('.'));
-		try{
-			Habitaciones.at(id).setPatronEnemigos(ficherosPatronesEnemigos[i]);
-		} catch(out_of_range){}
+		if (id == "Base") base.setPatronEnemigos(ficherosPatronesEnemigos[i]);
+		else {
+			try {
+				Habitaciones.at(id).setPatronEnemigos(ficherosPatronesEnemigos[i]);
+			}
+			catch (out_of_range) {}
+		}
 	}
 	for (size_t i = 0; i < ficherosPatronesInanimados.size(); i++)
 	{
 		string id = ficherosPatronesInanimados[i].substr(ficherosPatronesInanimados[i].find_last_of('/') + 1);
- 		id.erase(id.find_last_of('.'));
-		try{
-			Habitaciones.at(id).setPatronInanimados(ficherosPatronesInanimados[i]);
+		id.erase(id.find_last_of('.'));
+		if (id == "Base") base.setPatronInanimados(ficherosPatronesInanimados[i]);
+		else {
+			try {
+				Habitaciones.at(id).setPatronInanimados(ficherosPatronesInanimados[i]);
+			}
+			catch (out_of_range) {}
 		}
-		catch (out_of_range){}
 	}
 
 
@@ -508,8 +526,14 @@ b2World* Juego::getWorld() {
 }
 
 //Metodo que controla el cambio de zona (zonaJugable-Base)
-void Juego::setZona(Zona* nwZona) {
-	//borrar la zona anterior.
-	zona = nwZona;
+void Juego::setZona(std::string zonaNombre) {
 
+
+	if (zona != nullptr)
+		delete zona;
+	if (zonaNombre == "ZonaAccion")
+		zona = new ZonaAccion(this);
+	else
+		zona = new ZonaBase(this);
+	
 }

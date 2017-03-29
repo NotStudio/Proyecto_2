@@ -291,7 +291,7 @@ public:
 
 	Zona* getZona() {	return zona;}
 
-	void setZona(Zona* nwZona);
+	void setZona(std::string zonaNombre);
 };
 
 

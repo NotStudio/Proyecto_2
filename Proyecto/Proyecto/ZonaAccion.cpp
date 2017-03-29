@@ -1,11 +1,11 @@
 #include "ZonaAccion.h"
-#include "Entidad.h"
 #include "checkML.h"
 #include "TileInfo.h"
 
 ZonaAccion::ZonaAccion(Juego* punteroJuego): ZonaJuego(punteroJuego)
 {
 	pJuego->cambiarMusica("are");
+	
 	
 	niveles = new vector<Room*>;
 	niveles->reserve(25);
@@ -16,6 +16,8 @@ ZonaAccion::ZonaAccion(Juego* punteroJuego): ZonaJuego(punteroJuego)
 	}
 	setRect();
 	setNivelActual();
+	static_cast<Jugable*>(pJuego->getPlayer())->cambiaEstado(Jugable::JUGANDO);
+	static_cast<Jugable*>(pJuego->getPlayer())->setPos(0,0);
 }
 
 

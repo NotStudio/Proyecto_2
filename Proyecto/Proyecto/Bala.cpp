@@ -39,6 +39,7 @@ Bala::~Bala()
 }
 void Bala::onColisionEnter(Objeto* contactObject) {
 	destruido = true;
+
 }
 
 int Bala::getLanzador(){

@@ -2,7 +2,7 @@
 #define INANIMADO_H_
 
 
-
+#include "SelecZonaMenu.h"
 #include "Entidad.h"
 
 class Inanimado :
@@ -30,7 +30,7 @@ public:
 	virtual ~Inanimado() {
 		
 	};
-	virtual void onColisionEnter(Objeto * o = nullptr) {};
+	virtual void onColisionEnter(Objeto * o ) {};
 };
 
 //==============================================================================================
@@ -85,5 +85,23 @@ public:
 		body->CreateFixture(&fDef);
 	};
 	~Chatarra() {};
+};
+
+//==============================================================================================
+//SELECTOR DE ZONA
+class  SelectorZona : public Inanimado
+{
+public:
+	SelectorZona(Juego * Pj, SDL_Point Pos, int tam) :Inanimado(Pj, SDL_Rect{ Pos.x,Pos.y,TILE_WIDTH*tam * 4,TILE_HEIGHT*tam *4 }, "SelectorZona") {
+		fDef.filter.categoryBits = Juego::ESCENARIO;
+		fDef.filter.maskBits = Juego::JUGADOR;
+		body->CreateFixture(&fDef);
+	};
+	~SelectorZona() {};
+
+	virtual void onColisionEnter(Objeto* o) {
+
+		pJuego->pushState(new SelecZonaMenu(pJuego));
+	}
 };
 #endif // INANIMADO_H_

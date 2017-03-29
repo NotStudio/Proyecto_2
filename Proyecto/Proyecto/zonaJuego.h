@@ -3,6 +3,7 @@
 #include "Zona.h"
 #include "Juego.h"
 #include "Room.h"
+#include "Jugable.h"
 class ZonaJuego :
 	public Zona
 {
@@ -18,6 +19,7 @@ public:
 	virtual void draw();
 	virtual void update();
 	virtual SDL_Rect getNivelActual();
+	
 };
 
 #endif
