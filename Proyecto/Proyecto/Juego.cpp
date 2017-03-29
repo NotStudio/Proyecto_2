@@ -94,6 +94,7 @@ Juego::Juego(b2World* mundo) : error(false), gameOver(false), exit(false), score
 	nombreTexturas.emplace_back("../Material/Background_idle.jpg");
 	nombreTexturas.emplace_back("../Material/Bala_idle.png");
 	nombreTexturas.emplace_back("../Material/tilesheet_zon1.png");
+	nombreTexturas.emplace_back("../Material/tilesheet_zon2.png");
 	
 	//Esto no es así.
 	nombreTexturas.emplace_back("../Material/Battery4_idle.png");
@@ -536,4 +537,8 @@ void Juego::setZona(std::string zonaNombre) {
 	else
 		zona = new ZonaBase(this);
 	
+}
+
+TexturasSDL* Juego::getTilesheet(Zona* z) {
+return mapTexturas.at("tilesheet").at(static_cast<ZonaJuego*>(z)->getId()); 
 }

@@ -13,12 +13,16 @@ protected:
 	vector<Room*>* niveles;
 	//Puntero al nivel actual
 	Room* nivelActual;
+	//Nombre de la zona para pedir el thilesheet al juego
+	std::string id;
+
 public:
 	ZonaJuego(Juego* punteroJuego);
 	virtual ~ZonaJuego();
 	virtual void draw();
 	virtual void update();
 	virtual SDL_Rect getNivelActual();
+	std::string getId() { return id; };
 	
 };
 

@@ -25,8 +25,8 @@ public:
 	}
 
 	void setPos(float32 x, float32 y) {
-		pos.x = x;
-		pos.y = y;
+		body->SetTransform(b2Vec2{ x,y }, 0);
+		
 	}
 
 protected:
