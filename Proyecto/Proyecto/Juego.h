@@ -145,6 +145,7 @@ public:
 		ESCENARIO_NOCOL = 0x0040
 
 	};
+
 	Fuente* getTipografia(const string & id, const int & tam=50) {
 		try {
 			return fuentes.at(id).at(tam);
@@ -211,6 +212,9 @@ public:
 	}
 	void reproducirEfecto(string id) {
 		Mix_PlayChannel(-1,cargarEfecto(id),0);
+	}
+	RoomInfo getRoomBase(){
+		return base;
 	}
 
 	RoomInfo getRoom(){
