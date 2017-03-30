@@ -1,100 +1,89 @@
 #include"tmxReader.h"
-ObjetoInfo::ObjetoInfo(string nombre, int px, int py, int add) { nombreEntidad = nombre; x = (px / 2); y = (py / 2); adicional = (add); }
-ObjetoInfo::ObjetoInfo(string nombre, int px, int py, int pw, int ph) { nombreEntidad = (nombre); x = (px / 2); y = (py / 2); w = (pw / 2); h = (ph / 2); };
+ObjetoInfo::ObjetoInfo(string nombre, string type, int px, int py, int add) { nombreEntidad = nombre; tipo = type; x = (px / 2); y = (py / 2); }
+ObjetoInfo::ObjetoInfo(string nombre, string type, int px, int py, int pw, int ph) { nombreEntidad = (nombre); tipo = type;x = (px / 2); y = (py / 2); w = (pw / 2); h = (ph / 2); };
 Mapinfo lector()
 {
 	xml_document<> doc;
 	xml_node<> * root_node;
 	ifstream theFile("untitled.tmx");
+	Mapinfo mapInfo;
 	vector<char> buffer((istreambuf_iterator<char>(theFile)), istreambuf_iterator<char>());
 	buffer.push_back('\0');
 	// Parse the buffer using the xml file parsing library into doc 
 	doc.parse<0>(&buffer[0]);
 	// Find our root node
 	int width, height;
-	string keku = "";
+	string aux;
 	root_node = doc.first_node("map");
 	// Iterate over the brewery
-	for (xml_node<> *brewery_node = root_node->first_node("layer"); brewery_node; brewery_node = brewery_node->next_sibling("layer"))
+	for (xml_node<> *layer = root_node->first_node("layer"); layer; layer = layer->next_sibling("layer"))
 	{
-		cout << brewery_node->name() << endl;
-		printf("I have visited %s in %s. ",
-			brewery_node->first_attribute("name")->value(),
-			brewery_node->first_attribute("width")->value());
-		width = atoi(brewery_node->first_attribute("width")->value());
-		height = atoi(brewery_node->first_attribute("height")->value());
+		width = atoi(layer->first_attribute("width")->value());
+		height = atoi(layer->first_attribute("height")->value());
 		// Interate over the beers
-		for (xml_node<> * beer_node = brewery_node->first_node("data"); beer_node; beer_node = beer_node->next_sibling())
+		for (xml_node<> * capa = layer->first_node("data"); capa; capa = capa->next_sibling("data"))
 		{
-			printf(" %s ", beer_node->first_attribute("encoding")->value());
-			keku = beer_node->value();
-			keku[0] = ' ';
+			aux = capa->value();
+			aux[0] = ' ';
 		}
 		cout << endl;
 	}
-	std::stringstream lilo(keku);
-	string ala;
-	vector<string> mapa;
-	while (getline(lilo, ala, '\n'))
+	mapInfo.Mapa.reserve(height);
+	stringstream lector(aux);
+	int _y=0;
+	while (getline(lector,aux, '\n'))
 	{
-		mapa.push_back(ala);
+		mapInfo.Mapa.push_back(vector<int>());
+		mapInfo.Mapa[_y].reserve(width);
+		stringstream lector2(aux);
+		while (getline(lector2, aux, ','))
+		{
+			mapInfo.Mapa[_y].push_back(atoi(aux.c_str()));
+		}
+		_y++;
 	}
-	lilo.clear();
-	Mapinfo mapInfo;
-	mapInfo.Mapa = mapa;
+	lector.clear();
 	mapInfo.ancho = width;
 	mapInfo.alto = height;
-	root_node = doc.first_node("map");
-	for (xml_node<> * brewery_node = root_node->first_node("objectgroup"); brewery_node; brewery_node = brewery_node->next_sibling("objectgroup"))
-	{
-		bool doIt = true;
-		bool Enemigos = false;
-		int NPatron = -1;
-		try
-		{
-			string id = brewery_node->first_attribute("name")->value();
-			if (id != "enemigos"&&id != "inanimados") {
-				cout << "esta capa se llama " << id << endl;
-				throw exception("becario");
-			}
-			else if (id == "enemigos")
-				Enemigos = true;
-			NPatron = atoi(brewery_node->first_node("properties")->first_node("property")->first_attribute("value")->value());
 
-		}
-		catch (const std::exception&)
+	root_node = doc.first_node("map");
+	int ncapa = -1;
+	for (xml_node<> * capa = root_node->first_node("objectgroup"); capa; capa = capa->next_sibling("objectgroup"))
+	{
+		ncapa++;
+		mapInfo.Patrones.push_back(Patron());
+		for (xml_node<> * objeto = capa->first_node("object"); objeto; objeto = objeto->next_sibling("object"))
 		{
-			doIt = false;
-			cout << "La capa de objetos No tiene ningun NPatron, asegurate que es la primera propiedad y unica que existe, y que se llama enemigos o inanimados";
-		}
-		// Interate over the beers
-		if (doIt) {
-			for (xml_node<> * beer_node = brewery_node->first_node("object"); beer_node; beer_node = beer_node->next_sibling())
-			{
-				int x, y;
-				string nombre;
-				nombre = beer_node->first_attribute("name")->value();
-				x = atoi(beer_node->first_attribute("x")->value());
-				y = atoi(beer_node->first_attribute("y")->value());
-				if (Enemigos) {
-					try
-					{
-						mapInfo.meterPatronEnemigos(nombre, x, y, NPatron, atoi(beer_node->first_node("properties")->first_node("property")->first_attribute("value")->value()));
+
+			if (objeto->first_attribute("type")) {
+				string type = objeto->first_attribute("type")->value();
+				if (objeto->first_attribute("name")) {
+					string name = objeto->first_attribute("name")->value();
+					int x = atoi(objeto->first_attribute("x")->value())/2;
+					int y = atoi(objeto->first_attribute("y")->value())/2;
+					if (type == "enemigo") {
+						mapInfo.Patrones[ncapa].meter(ObjetoInfo(name, type, x, y, 0));
 					}
-					catch (const std::exception&)
-					{
-						mapInfo.meterPatronEnemigos(nombre, x, y, NPatron);
+					else if (type == "inanimado") {
+						int w = atoi(objeto->first_attribute("width")->value()) / 2;
+						int h = atoi(objeto->first_attribute("height")->value()) / 2;
+						mapInfo.Patrones[ncapa].meter(ObjetoInfo(name, type, x, y, w,h));
+					}
+					else {
+						cout << "Becario el tipo que has puesto no existe\n";
 					}
 				}
 				else {
-					mapInfo.meterPatronInanimados(nombre, x, y, atoi(beer_node->first_attribute("width")->value()), atoi(beer_node->first_attribute("height")->value()), NPatron);
+					cout << "Becario te has olvidado de ponerle un nombre al objeto \n";
 				}
-				printf(" %s ", beer_node->first_attribute("name")->value());
+			}
+			else {
+				cout << "Becario te has olvidado de ponerle un tipo al objeto \n";
 			}
 		}
-		cout << endl;
 	}
 	doc.clear();
+	theFile.close();
 	return mapInfo;
 
 }

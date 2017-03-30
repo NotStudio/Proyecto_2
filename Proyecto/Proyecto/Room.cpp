@@ -333,30 +333,6 @@ int Room::encontrarPosicionTiled(int& const x, int& const y)
 void Room::SetRoomFichero(string Dir, vector<Room*> * Habitaciones)
 {
 	int IniX = 0, IniY = 0;
-	int x = 0, y = 0, tipo = -1, maxX = 0, acuX = 0, acuY = 0, maxY = 0;
-	/*
-	
-	string linea;
-	ifstream mapAux(Dir);
-	getline(mapAux, linea);
-
-	stringstream Cuenta(linea);
-	do
-	{
-		char aux;
-		int auxy = -20;
-		Cuenta >> auxy >> aux;
-		if (auxy != -20) acuX++;
-	} while (!Cuenta.fail());
-	maxX = acuX;
-	acuY++;
-	do
-	{
-		getline(mapAux, linea);
-		if(!mapAux.fail())acuY++;
-	} while (!mapAux.fail());
-	mapAux.close();
-	maxY = acuY;*/
 	int kek = 0;
 	if (Habitaciones != nullptr && Habitaciones->size() > 0){
 		SDL_Rect _zona = { 0, 0, mapainfo.ancho*TILE_WIDTH, mapainfo.alto*TILE_HEIGHT };
@@ -368,60 +344,21 @@ void Room::SetRoomFichero(string Dir, vector<Room*> * Habitaciones)
 		_roomConectada->setPuertas(D);
 		kek = D;
 	}
-	acuY = 0;
+	int y = IniY;
+	Tiles.reserve(mapainfo.alto);
 	for (size_t i = 0; i < mapainfo.alto; i++)
 	{
-		stringstream lee(mapainfo.Mapa[i]);
-		char aux;
-		if (!lee.fail()) {
-			Tiles.push_back(vector<Tile*>());
-			Tiles[acuY].reserve(28);
-		}
-		for (size_t j = 0; mapainfo.ancho > j; j++) {
-			lee >> tipo >> aux;
-			if (tipo >= 0 && tipo < TOTAL_TILES) {
-				Tiles[acuY].push_back(new Tile(x, y, tipo-1, pJuego->getWorld()));
-			}
-			x += TILE_WIDTH;
-			acuX++;
-
-		}
-		x = IniX;
-		y += TILE_HEIGHT;
-		acuY++;
-	}
-	/*
-	ifstream map(Dir);
-
-	acuY = 0;
-	y = IniY;
-	getline(map, linea);
-	for (size_t i = 0;!map.fail(); i++)
-	{
-		x = IniX;
-		char aux;
-		stringstream lee(linea);
-		acuX = 0;
-		if (!lee.fail()) {
-			Tiles.push_back(vector<Tile*>());
-			Tiles[acuY].reserve(28);
-		}
-		do
+		int x = IniX;
+		Tiles.push_back(vector<Tile*>());
+		Tiles[i].reserve(mapainfo.ancho);
+		for (size_t j = 0; j < mapainfo.ancho; j++)
 		{
-			lee >> tipo >> aux;
-			if (tipo >= 0 && tipo < TOTAL_TILES) {
-				Tiles[acuY].push_back(new Tile(x, y, tipo, pJuego->getWorld()));
-			}
 			x += TILE_WIDTH;
-			acuX++;
-		} while (!lee.fail());
-		(acuX > maxX) ? maxX = acuX : maxX;
+			Tiles[i].push_back(new Tile(x,y,mapainfo.Mapa[i][j]-1,pJuego->getWorld()));
+		}
 		y += TILE_HEIGHT;
-		acuY++;
-		getline(map, linea);
 	}
-	map.close();
-		*/
+	
 	area = new SDL_Rect{ IniX , IniY, mapainfo.ancho*TILE_WIDTH, mapainfo.alto*TILE_HEIGHT};
 	if (kek != 0)
 		setPuertas(-kek);

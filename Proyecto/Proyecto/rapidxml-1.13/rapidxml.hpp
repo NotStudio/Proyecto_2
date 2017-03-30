@@ -941,7 +941,6 @@ namespace rapidxml
                 for (xml_node<Ch> *child = m_first_node; child; child = child->next_sibling())
                     if (internal::compare(child->name(), child->name_size(), name, name_size, case_sensitive))
                         return child;
-				throw exception();
                 return 0;
             }
             else

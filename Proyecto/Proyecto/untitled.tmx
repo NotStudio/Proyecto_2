@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="20" height="20" tilewidth="128" tileheight="128" nextobjectid="4">
- <tileset firstgid="1" name="tilesheet_zon1" tilewidth="128" tileheight="128" tilecount="24" columns="4">
-  <image source="../Material/Mapa/Tilesets/Tileset_1.png" width="512" height="768"/>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="20" height="20" tilewidth="128" tileheight="128" nextobjectid="12">
+ <tileset firstgid="1" name="tilesheet_zon1" tilewidth="128" tileheight="128" tilecount="36" columns="4">
+  <image source="../Material/Mapa/Tilesets/Tileset_1.png" width="512" height="1152"/>
  </tileset>
  <layer name="Capa de Patrones 1" width="20" height="20">
   <data encoding="csv">
@@ -15,7 +15,7 @@
 13,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,16,
 13,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,16,
 13,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,16,
-13,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,16,
+13,8,8,8,8,8,8,8,8,8,8,8,8,4,8,8,8,8,8,16,
 13,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,16,
 13,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,16,
 13,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,8,16,
@@ -31,6 +31,9 @@
   <properties>
    <property name="NPatrones" type="int" value="0"/>
   </properties>
-  <object id="3" name="tuberia" x="864" y="1696" width="448" height="324"/>
+  <object id="3" name="tuberia" type="inanimado" x="864" y="1696" width="448" height="324"/>
+ </objectgroup>
+ <objectgroup name="Capa de Objetos 2">
+  <object id="10" type="pintamonas" x="768" y="768" width="284" height="100"/>
  </objectgroup>
 </map>
