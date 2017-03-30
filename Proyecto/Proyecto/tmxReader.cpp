@@ -1,6 +1,7 @@
 #include"tmxReader.h"
-
-Mapinfo lector(string dir)
+ObjetoInfo::ObjetoInfo(string nombre, int px, int py, int add) { nombreEntidad = nombre; x = (px / 2); y = (py / 2); adicional = (add); }
+ObjetoInfo::ObjetoInfo(string nombre, int px, int py, int pw, int ph) { nombreEntidad = (nombre); x = (px / 2); y = (py / 2); w = (pw / 2); h = (ph / 2); };
+Mapinfo lector()
 {
 	xml_document<> doc;
 	xml_node<> * root_node;

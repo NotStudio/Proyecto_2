@@ -1,3 +1,4 @@
+#pragma once
 #include <string>
 #include <stdio.h>
 #include <iostream>
@@ -8,27 +9,27 @@
 #include "rapidxml-1.13/rapidxml.hpp"
 using namespace rapidxml;
 using namespace std;
-int const tileW = 64;
 struct ObjetoInfo
 {
 	string nombreEntidad;
-	int x = 0;
-	int y = 0;
-	int adicional = 0;
-	int h = -1;
-	int w = -1;
-	ObjetoInfo() {};
-	ObjetoInfo(string nombre, int x, int y, int add) :nombreEntidad(nombre), x(x/2), y(y/2), adicional(add) {};
-	ObjetoInfo(string nombre, int x, int y, int w, int h) :nombreEntidad(nombre), x(x/2), y(y/2), w(w/2), h(h/2) {};
+	int x;
+	int y;
+	int adicional;
+	int h;
+	int w;
+	ObjetoInfo(string nombre, int x, int y, int add);
+	ObjetoInfo(string nombre, int x, int y, int w, int h);
+	ObjetoInfo() :nombreEntidad(" "), x(0), y(0), adicional(0), h(0),w(0){};
 };
 struct Patron
 {
 	vector<ObjetoInfo> lineas;
-	bool usado = false;
+	bool usado;
 	void meter(ObjetoInfo o) {
 		usado = true;
 		lineas.push_back(o);
 	}
+	Patron() { usado = false; };
 };
 struct Mapinfo {
 	int ancho, alto;
@@ -41,7 +42,7 @@ struct Mapinfo {
 			return;
 		}
 		else {
-			patronesEnemigos[NPatron].meter(ObjetoInfo(nombre, x, y, aditional));
+			patronesEnemigos[NPatron].meter(ObjetoInfo{ nombre, x, y, aditional});
 		}
 	};
 	void meterPatronInanimados(string nombre, int x, int y, int w, int h, int NPatron = -1) {
@@ -50,7 +51,7 @@ struct Mapinfo {
 			return;
 		}
 		else {
-			patronesInanimados[NPatron].meter(ObjetoInfo(nombre, x, y, w, h));
+			patronesInanimados[NPatron].meter(ObjetoInfo{ nombre, x, y,h,w });
 		}
 	};
 	vector<ObjetoInfo> getPatronEnemigos(int n = 0) {
@@ -93,7 +94,7 @@ struct Mapinfo {
 	}
 };
 
-Mapinfo lector(string dir);
+Mapinfo lector();
 	
 
 

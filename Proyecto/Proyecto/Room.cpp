@@ -48,9 +48,10 @@ Room::Room(Juego * pJ, vector<Room*> * ro, Zona* z) :pJuego(pJ)
 	if (typeid(ZonaBase) == typeid(*zona)){
 		textTiles = new Tilesheet(TOTAL_TILES, pJuego->getTilesheet(zona));
 		RoomInfo _infoRoom = pJuego->getBaseRoom();
+		mapainfo= lector();
 		cout << _infoRoom.fichero() << "\n";
 		SetRoomFichero(_infoRoom.fichero(), ro);
-		ocupados = vector<vector<bool>>(Tiles.size(), vector<bool>(Tiles[0].size(), false));
+		ocupados = vector<vector<bool>>(mapainfo.alto, vector<bool>(mapainfo.ancho, false));
 		for (size_t i = 0; i < ocupados.size(); i++)
 		{
 			for (size_t j = 0; j < ocupados[i].size(); j++)
@@ -331,8 +332,7 @@ void Room::SetRoomFichero(string Dir, vector<Room*> * Habitaciones)
 {
 	int IniX = 0, IniY = 0;
 	int x = 0, y = 0, tipo = -1, maxX = 0, acuX = 0, acuY = 0, maxY = 0;
-
-	Mapinfo mapkeke = lector("");
+	/*
 	
 	string linea;
 	ifstream mapAux(Dir);
@@ -359,10 +359,10 @@ void Room::SetRoomFichero(string Dir, vector<Room*> * Habitaciones)
 		if(!mapAux.fail())acuY++;
 	} while (!mapAux.fail());
 	mapAux.close();
-	maxY = acuY;
+	maxY = acuY;*/
 	int kek = 0;
 	if (Habitaciones != nullptr && Habitaciones->size() > 0){
-		SDL_Rect _zona = { 0, 0, maxX*TILE_WIDTH, maxY*TILE_HEIGHT };
+		SDL_Rect _zona = { 0, 0, mapainfo.ancho*TILE_WIDTH, mapainfo.alto*TILE_HEIGHT };
 		Room * _roomConectada;
 		Direcciones D;
 		SDL_Point _nuevaPos = lazyFoo(solapamientoHabitaciones(Habitaciones,_zona),_roomConectada,D);
@@ -371,6 +371,29 @@ void Room::SetRoomFichero(string Dir, vector<Room*> * Habitaciones)
 		_roomConectada->setPuertas(D);
 		kek = D;
 	}
+	acuY = 0;
+	for (size_t i = 0; i < mapainfo.alto; i++)
+	{
+		stringstream lee(mapainfo.Mapa[i]);
+		char aux;
+		if (!lee.fail()) {
+			Tiles.push_back(vector<Tile*>());
+			Tiles[acuY].reserve(28);
+		}
+		for (size_t j = 0; mapainfo.ancho > j; j++) {
+			lee >> tipo >> aux;
+			if (tipo >= 0 && tipo < TOTAL_TILES) {
+				Tiles[acuY].push_back(new Tile(x, y, tipo-1, pJuego->getWorld()));
+			}
+			x += TILE_WIDTH;
+			acuX++;
+
+		}
+		x = IniX;
+		y += TILE_HEIGHT;
+		acuY++;
+	}
+	/*
 	ifstream map(Dir);
 
 	acuY = 0;
@@ -401,7 +424,8 @@ void Room::SetRoomFichero(string Dir, vector<Room*> * Habitaciones)
 		getline(map, linea);
 	}
 	map.close();
-	area = new SDL_Rect{ IniX , IniY, maxX*TILE_WIDTH, maxY*TILE_HEIGHT};
+		*/
+	area = new SDL_Rect{ IniX , IniY, mapainfo.ancho*TILE_WIDTH, mapainfo.alto*TILE_HEIGHT};
 	if (kek != 0)
 		setPuertas(-kek);
 }

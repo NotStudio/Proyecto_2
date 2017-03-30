@@ -6,9 +6,11 @@
 #include "Bala.h"
 #include "RoomInfo.h"
 #include "Zona.h"
+#include "tmxReader.h"
 class Room
 {
 private:
+	
 	SDL_Rect * area;
 	//la zona de la room
 	Juego * pJuego;
@@ -17,6 +19,8 @@ private:
 	vector<Puerta> Puertas;
 	vector<vector<Tile*>> Tiles;
 	vector<vector<bool>> ocupados;
+
+	Mapinfo mapainfo;
 
 	void getTileOcupable(SDL_Rect &);
 	//Vector de enemigos.
