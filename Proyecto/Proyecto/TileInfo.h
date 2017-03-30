@@ -2,7 +2,7 @@
 #define TILEINFO_H_
 
 const int TILE_WIDTH = 64, TILE_HEIGHT = 64;
-const int TOTAL_TILES = 24;
+const int TOTAL_TILES = 36;
 enum TiposTile
 {
 	S1 = 0, S2 = 1, S3 = 2, S4 = 3,
@@ -11,6 +11,9 @@ enum TiposTile
 	PO = 12, PN=13, PS = 14, PE = 15,
 	ENO = 16, ENE = 17, ESE = 18, ESO = 19,
 	INO = 20, INE = 21, ISO = 22, ISE = 23,
+	MH = 24, MV= 25, PUN = 26, PUE = 27,
+	PUO = 28, PUS = 29, CRZ = 30, TI = 31,
+	T = 32, TE = 33, TO = 34, NOT = 35,
 };
 
 //Norte = 0, Este = 1, Sur = 2, Oeste = 3, Sinsitio = 4,
