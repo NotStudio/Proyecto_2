@@ -28,7 +28,7 @@ void Jugable::onColisionEnter(Objeto * obj){
 	//std::cout << "colision\n";
 	if (dynamic_cast<Enemigo*>(obj)|| dynamic_cast<Bala*>(obj)){
 		if (!inmune){
-			cout << dynamic_cast<Enemigo*>(obj)->getId();
+			cout << dynamic_cast<Entidad*>(obj)->getId();
 			inmune = true;
 			//cout << "inmunidad activada\n";
 			stats.vida--;
@@ -108,7 +108,7 @@ void Jugable::afinarMov(int const & ac, int const & lim,Direccion const & aux) {
 	if (estadoEntidad.animacionActual != NoAnim) {
 		if (estadoEntidad.animacionActual !=Ataque)
 		{
-		 (aux != estadoEntidad.mirando&&aux != SinDir) ? estadoEntidad.mirando = aux : aux;
+			(aux != estadoEntidad.mirando&&aux != SinDir) ? estadoEntidad.mirando = aux : aux;
 		}
 		EstadoAnimacion aux1;
 		(aux != SinDir) ? aux1 = Walk : aux1 = Idle;

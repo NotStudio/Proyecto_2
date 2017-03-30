@@ -11,6 +11,7 @@
 #include "TileInfo.h"
 #include <time.h>
 #include "Sierra.h"
+#include "Helice.h"
 #include "ZonaBase.h"
 #define DEBUG
 

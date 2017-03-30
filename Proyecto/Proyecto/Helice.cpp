@@ -2,9 +2,13 @@
 #include "ZonaAccion.h"
 
 
-Helice::Helice(Juego* punteroJuego, int x, int y) : Enemigo(punteroJuego, {x,y,128,128}, "Sierra", 500)
+Helice::Helice(Juego* punteroJuego, int x, int y) : Enemigo(punteroJuego, {x,y,60,64}, "OV", 500)
 {
-
+	for (unordered_map<string, Juego::Animacion*>::iterator i = animaciones.begin(); i != animaciones.end(); i++)
+	{
+		animaciones[i->first]->setNumFrames(30);
+	}
+	currentAnim = animaciones.at("idle");
 	stats.daño = 1;
 	stats.velAtq = 0;
 	stats.velMov = 4;
@@ -103,7 +107,7 @@ void Helice::update(){
 
 	if (!destruido){
 		Entidad::update();
-
+		currentAnim->ActualizarFrame();
 		if (distancia()){
 
 			if (rng == 0){

@@ -223,20 +223,15 @@ public:
 		}
 		return Habitaciones.at(it->first);
 	}
-
-	RoomInfo getBaseRoom(){	return base;}
-
-	vector<Animacion*>getAnimaciones(const string & entity) {
-		vector<Animacion*> vec;
+	unordered_map<string, Animacion*>getAnimaciones(const string & entity){
+		unordered_map<string, Animacion*> an;
 		try {
-			int j = 0;
-			for (auto i = mapTexturas.at(entity).begin(); i != mapTexturas.at(entity).end(); i++)
+			for (unordered_map<string,TexturasSDL*>::iterator it = mapTexturas.at(entity).begin(); it != mapTexturas.at(entity).end(); it++)
 			{
-				vec.push_back(new Animacion());
-				vec[j]->loadTextura(i->second);
-				j++;
+				an.emplace(make_pair(it->first, new Animacion()));
+				an.at(it->first)->loadTextura(it->second);
 			}
-			return vec;
+			return an;
 		}
 		catch (out_of_range) {
 			std::cout << "Error al cargar textura";

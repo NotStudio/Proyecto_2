@@ -19,7 +19,7 @@ protected:
 	b2Body* body;
 	b2FixtureDef fDef;
 	//Struct de animacion.
-	std::vector<Juego::Animacion*> animaciones;
+	unordered_map<string,Juego::Animacion*> animaciones;
 	Juego::Animacion* currentAnim;
 	//Nombre entidad
 	string id;
