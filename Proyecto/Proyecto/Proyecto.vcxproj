@@ -45,6 +45,7 @@
     <ClCompile Include="Personaje.cpp" />
     <ClCompile Include="Play.cpp" />
     <ClCompile Include="Room.cpp" />
+    <ClCompile Include="SelecZonaMenu.cpp" />
     <ClCompile Include="Sierra.cpp" />
     <ClCompile Include="TexturasSDL.cpp" />
     <ClCompile Include="Tile.cpp" />
@@ -92,6 +93,7 @@
     <ClInclude Include="recorreFicheros.h" />
     <ClInclude Include="Room.h" />
     <ClInclude Include="RoomInfo.h" />
+    <ClInclude Include="SelecZonaMenu.h" />
     <ClInclude Include="Sierra.h" />
     <ClInclude Include="TexturasSDL.h" />
     <ClInclude Include="Tile.h" />

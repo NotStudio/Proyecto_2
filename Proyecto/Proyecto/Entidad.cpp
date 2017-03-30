@@ -6,7 +6,7 @@ Entidad::Entidad(Juego* punteroJuego, SDL_Rect spritePar, string objectId) : pJu
 	id = objectId;
 	//Inicializacion de la animacion.
 	animaciones = pJuego->getAnimaciones(id);
-	currentAnim = animaciones[0];
+	currentAnim = animaciones.at(animaciones.begin()->first);
 	//Asignacion de los parametros de posicion.
 	pos.x = spritePar.x;
 	pos.y = spritePar.y;
@@ -22,10 +22,10 @@ Entidad::~Entidad()
 	delete sprite;
 	pJuego->getWorld()->DestroyBody(body);
 	//pJuego = nullptr;
-	for (size_t i = 0; i < animaciones.size(); i++)
+	for (unordered_map<string,Juego::Animacion*>::iterator it = animaciones.begin(); it != animaciones.end(); it++)
 	{
-		delete animaciones[i];
-		animaciones[i] = nullptr;
+		delete animaciones.at(it->first);
+		animaciones.at(it->first) = nullptr;
 	}
 	
 	delete shape;

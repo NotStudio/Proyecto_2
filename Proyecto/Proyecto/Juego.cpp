@@ -8,13 +8,16 @@
 #include "recorreFicheros.h"
 #include <SDL_events.h>
 #include "MenuPG.h"
-//Constructora que inicializa todos los atributos de la clase Juego
+#include "ZonaAccion.h"
+#include "ZonaBase.h"
+
 void operator+=(vector<string>& e,vector<string> o){
 	for (size_t i = 0; i < o.size(); i++)
 	{
 		e.push_back(o[i]);
 	}
 }
+// Constructora que inicializa todos los atributos de la clase Juego
 Juego::Juego(b2World* mundo) : error(false), gameOver(false), exit(false), score(0), world(mundo)
 {
 	window.alto = 600; //Tamaño de la ventana.
@@ -33,65 +36,7 @@ Juego::Juego(b2World* mundo) : error(false), gameOver(false), exit(false), score
 	//Añadimos al vector del nombre de las texturas los nombres de las imágenes. Tienen que tener un orden concreto.
 	//Primero El idle, para cualquier animacion
 	//Tostadora
-	nombreTexturas.emplace_back("../Material/Tostadora_idle.png");
-	nombreTexturas.emplace_back("../Material/Tostadora_walk.png");
-	nombreTexturas.emplace_back("../Material/Tostadora_atqu.png");
-	//Gato
-	nombreTexturas.emplace_back("../Material/Gato_idle.png");
-
-	//Sierra
-	nombreTexturas.emplace_back("../Material/Sierra_idlo.png");
-	//Bomba
-	nombreTexturas.emplace_back("../Material/Bomba_idle.png");
-	//Ladron
-	nombreTexturas.emplace_back("../Material/Ladron_idle.png");
-	//BallT
-	nombreTexturas.emplace_back("../Material/BallT_idle.png");
-	//Iman
-	nombreTexturas.emplace_back("../Material/Iman_idle.png");
-	//Nave
-	nombreTexturas.emplace_back("../Material/Assets/Nave_idle.png");
-	//Tuberia
-	nombreTexturas.emplace_back("../Material/Assets/Tuberia_idle.png");
-	//Chatarra
-	nombreTexturas.emplace_back("../Material/Assets/Chatarra_idle.png");
-	//Agujero
-	nombreTexturas.emplace_back("../Material/Assets/agujero_idle.png");
-
-	//Pila
-	nombreTexturas.emplace_back("../Material/Pila_idle.png");
-	//Booster
-	nombreTexturas.emplace_back("../Material/Booster_idle.png");
-	//Transistor
-	nombreTexturas.emplace_back("../Material/Transistor_idle.png");
-	//Cable
-	nombreTexturas.emplace_back("../Material/Cable_idle.png");
-	//Bateria
-	nombreTexturas.emplace_back("../Material/Bateria_idle.png");
-
-
-	//DisparoToasty
-	nombreTexturas.emplace_back("../Material/DisparoToasty_idle.png");
-	//DisparoBallT
-	nombreTexturas.emplace_back("../Material/BallTBala_idle.png");
-	
-
-
-
-
-	nombreTexturas.emplace_back("../Material/Wall_idle.png");
-	nombreTexturas.emplace_back("../Material/Background_idle.jpg");
-	nombreTexturas.emplace_back("../Material/Bala_idle.png");
-	nombreTexturas.emplace_back("../Material/tilesheet_zon1.png");
-	
-	//Esto no es así.
-	nombreTexturas.emplace_back("../Material/Battery4_idle.png");
-	nombreTexturas.emplace_back("../Material/Battery3_idle.png");
-	nombreTexturas.emplace_back("../Material/Battery2_idle.png");
-	nombreTexturas.emplace_back("../Material/Battery1_idle.png");
-	//Cosas de los Menus
-	nombreTexturas.emplace_back("../Material/Menu/boton_idle.png");
-	
+	nombreTexturas = Buscador(TiposArchivo::PNG);
 	//Tipografias
 	ubicacionTipografias = Buscador(TiposArchivo::TTF);
 
@@ -263,18 +208,25 @@ void Juego::initHabitaciones(){
 	{
 		string id = ficherosPatronesEnemigos[i].substr(ficherosPatronesEnemigos[i].find_last_of('/') + 1);
 		id.erase(id.find_last_of('.'));
-		try{
-			Habitaciones.at(id).setPatronEnemigos(ficherosPatronesEnemigos[i]);
-		} catch(out_of_range){}
+		if (id == "Base") base.setPatronEnemigos(ficherosPatronesEnemigos[i]);
+		else {
+			try {
+				Habitaciones.at(id).setPatronEnemigos(ficherosPatronesEnemigos[i]);
+			}
+			catch (out_of_range) {}
+		}
 	}
 	for (size_t i = 0; i < ficherosPatronesInanimados.size(); i++)
 	{
 		string id = ficherosPatronesInanimados[i].substr(ficherosPatronesInanimados[i].find_last_of('/') + 1);
- 		id.erase(id.find_last_of('.'));
-		try{
-			Habitaciones.at(id).setPatronInanimados(ficherosPatronesInanimados[i]);
+		id.erase(id.find_last_of('.'));
+		if (id == "Base") base.setPatronInanimados(ficherosPatronesInanimados[i]);
+		else {
+			try {
+				Habitaciones.at(id).setPatronInanimados(ficherosPatronesInanimados[i]);
+			}
+			catch (out_of_range) {}
 		}
-		catch (out_of_range){}
 	}
 
 
@@ -508,8 +460,26 @@ b2World* Juego::getWorld() {
 }
 
 //Metodo que controla el cambio de zona (zonaJugable-Base)
-void Juego::setZona(Zona* nwZona) {
-	//borrar la zona anterior.
-	zona = nwZona;
+void Juego::setZona(std::string zonaNombre) {
 
+
+	if (zona != nullptr)
+		delete zona;
+	if (zonaNombre == "ZonaAccion")
+		zona = new ZonaAccion(this);
+	else
+		zona = new ZonaBase(this);
+	
+}
+
+TexturasSDL* Juego::getTilesheet(Zona* z) {
+	try
+	{
+		return mapTexturas.at("Tileset").at(static_cast<ZonaJuego*>(z)->getId()); 
+	}
+	catch (out_of_range)
+	{
+		printf("El tileset que has pedido no existe toma este por defecto \n");
+		return mapTexturas.at("Tileset").begin()->second;
+	}
 }

@@ -11,6 +11,7 @@
 #include "TileInfo.h"
 #include <time.h>
 #include "Sierra.h"
+#include "Helice.h"
 #include "ZonaBase.h"
 #include "tmxReader.h"
 #define DEBUG
@@ -59,6 +60,7 @@ Room::Room(Juego * pJ, vector<Room*> * ro, Zona* z) :pJuego(pJ)
 				ocupados[i][j] = Tiles[i][j]->getBody() != nullptr;
 			}
 		}
+		meterInanimados(_infoRoom.PatronObjetos());
 	
 	
 	}
@@ -77,8 +79,8 @@ Room::Room(Juego * pJ, vector<Room*> * ro, Zona* z) :pJuego(pJ)
 			}
 		}
 		meterInanimados(_infoRoom.PatronObjetos());
-		//meterEnemigos(_infoRoom.PatronEnemigos());
-		enemigos.push_back(new Perseguidor(pJuego, 200, 200));
+		meterEnemigos(_infoRoom.PatronEnemigos());
+		//enemigos.push_back(new Perseguidor(pJuego, 200, 200));
 	}
 }
 
@@ -170,7 +172,7 @@ Room::~Room()
 		delete objetos[i];
 		objetos[i] = nullptr;
 	}
-
+	
 	for (size_t i = 0; i < Tiles.size(); i++)
 	{
 		for (size_t j = 0; j < Tiles.at(i).size(); j++)
@@ -179,7 +181,7 @@ Room::~Room()
 			Tiles.at(i).at(j)=nullptr;
 		}
 	}
-
+	
 	for (size_t i = 0; i < extras.size(); i++) {
 		delete extras[i];
 		extras[i] = nullptr;
@@ -337,11 +339,6 @@ void Room::SetRoomFichero(string Dir, vector<Room*> * Habitaciones)
 	string linea;
 	ifstream mapAux(Dir);
 	getline(mapAux, linea);
-
-
-
-
-
 
 	stringstream Cuenta(linea);
 	do

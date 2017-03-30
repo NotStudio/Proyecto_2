@@ -19,6 +19,15 @@ public:
 
 	enum estado{JUGANDO, BASE};
 
+	void cambiaEstado(estado s) {
+
+		state = s;
+	}
+
+	void setPos(float32 x, float32 y) {
+		body->SetTransform(b2Vec2{ x,y }, 0);
+		
+	}
 
 protected:
 	//Booleanas para el control del movimiento, utilizadas en el movControl;

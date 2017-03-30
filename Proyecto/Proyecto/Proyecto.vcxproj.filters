@@ -177,6 +177,9 @@
     <ClCompile Include="ZonaBase.cpp">
       <Filter>Source Files\Zonas</Filter>
     </ClCompile>
+    <ClCompile Include="SelecZonaMenu.cpp">
+      <Filter>Source Files\Estados</Filter>
+    </ClCompile>
     <ClCompile Include="tmxReader.cpp">
       <Filter>Header Files\Niveles</Filter>
     </ClCompile>
@@ -328,6 +331,9 @@
     </ClInclude>
     <ClInclude Include="rapidxml-1.13\rapidxml_print.hpp">
       <Filter>Header Files\TMX</Filter>
+    </ClInclude>
+    <ClInclude Include="SelecZonaMenu.h">
+      <Filter>Header Files\Estados</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

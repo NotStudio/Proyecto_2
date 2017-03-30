@@ -24,7 +24,9 @@ Inanimado * creaInanimado(Juego * pj, string id, int x, int y, float escala ) {
 	{
 		return new Agujero(pj, { x, y }, escala);
 	}
-	else
+	else if (id == "SelectorZona" || id == "selectorzona") {
+		return new SelectorZona(pj, { x,y }, escala);
+	}
 	{
 		throw exception("NO EXISTE DICHO OBJETO \n");
 	}

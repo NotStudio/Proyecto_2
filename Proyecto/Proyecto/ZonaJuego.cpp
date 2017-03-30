@@ -4,7 +4,7 @@
 
 ZonaJuego::ZonaJuego(Juego* punteroJuego):pJuego(punteroJuego)
 {
-	punteroJuego->setZona(this);
+	
 }
 
 

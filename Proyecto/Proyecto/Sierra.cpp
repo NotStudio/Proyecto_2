@@ -8,9 +8,9 @@ Sierra::Sierra(Juego* punteroJuego, int x, int y, int dir) : Enemigo(punteroJueg
 	stats.velMov = 2;
 	stats.vida = 1;
 	direccion = dir;
-	for (size_t i = 0; i < animaciones.size(); i++)
+	for (unordered_map<string, Juego::Animacion*>::iterator i = animaciones.begin(); i != animaciones.end(); i++)
 	{
-		animaciones[i]->setNumFrames(30);
+		animaciones[i->first]->setNumFrames(30);
 	}
 	currentAnim = animaciones[0];
 	col = false;
