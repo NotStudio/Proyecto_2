@@ -36,74 +36,7 @@ Juego::Juego(b2World* mundo) : error(false), gameOver(false), exit(false), score
 	//Añadimos al vector del nombre de las texturas los nombres de las imágenes. Tienen que tener un orden concreto.
 	//Primero El idle, para cualquier animacion
 	//Tostadora
-	nombreTexturas.emplace_back("../Material/Tostadora_idle.png");
-	nombreTexturas.emplace_back("../Material/Tostadora_walk.png");
-	nombreTexturas.emplace_back("../Material/Tostadora_atqu.png");
-	//Gato
-	nombreTexturas.emplace_back("../Material/Gato_idle.png");
-
-	//Sierra
-	nombreTexturas.emplace_back("../Material/Sierra_idlo.png");
-	//Bomba
-	nombreTexturas.emplace_back("../Material/Bomba_idle.png");
-	//Ladron
-	nombreTexturas.emplace_back("../Material/Ladron_idle.png");
-	//BallT
-	nombreTexturas.emplace_back("../Material/BallT_idle.png");
-	//Iman
-	nombreTexturas.emplace_back("../Material/Iman_idle.png");
-	//Nave
-	nombreTexturas.emplace_back("../Material/Assets/Nave_idle.png");
-	//Tuberia
-	nombreTexturas.emplace_back("../Material/Assets/Tuberia_idle.png");
-	//Chatarra
-	nombreTexturas.emplace_back("../Material/Assets/Chatarra_idle.png");
-	//Agujero
-	nombreTexturas.emplace_back("../Material/Assets/agujero_idle.png");
-	//Selector zona
-	nombreTexturas.emplace_back("../Material/Assets/SelectorZona_idle.png");
-	//Selector zona fondo
-	nombreTexturas.emplace_back("../Material/SelecMapaFondo_idle.png");
-	//Pantalla de carga
-	nombreTexturas.emplace_back("../Material/Loading_idle.png");
-
-	//Pila
-	nombreTexturas.emplace_back("../Material/Pila_idle.png");
-	//Booster
-	nombreTexturas.emplace_back("../Material/Booster_idle.png");
-	//Transistor
-	nombreTexturas.emplace_back("../Material/Transistor_idle.png");
-	//Cable
-	nombreTexturas.emplace_back("../Material/Cable_idle.png");
-	//Bateria
-	nombreTexturas.emplace_back("../Material/Bateria_idle.png");
-	//Inicio
-	nombreTexturas.emplace_back("../Material/MenuInicio_idle.png");
-
-
-	//DisparoToasty
-	nombreTexturas.emplace_back("../Material/DisparoToasty_idle.png");
-	//DisparoBallT
-	nombreTexturas.emplace_back("../Material/BallTBala_idle.png");
-	
-
-
-
-
-	nombreTexturas.emplace_back("../Material/Wall_idle.png");
-	nombreTexturas.emplace_back("../Material/Background_idle.jpg");
-	nombreTexturas.emplace_back("../Material/Bala_idle.png");
-	nombreTexturas.emplace_back("../Material/tilesheet_zon1.png");
-	nombreTexturas.emplace_back("../Material/tilesheet_zon2.png");
-	
-	//Esto no es así.
-	nombreTexturas.emplace_back("../Material/Battery4_idle.png");
-	nombreTexturas.emplace_back("../Material/Battery3_idle.png");
-	nombreTexturas.emplace_back("../Material/Battery2_idle.png");
-	nombreTexturas.emplace_back("../Material/Battery1_idle.png");
-	//Cosas de los Menus
-	nombreTexturas.emplace_back("../Material/Menu/boton_idle.png");
-	
+	nombreTexturas = Buscador(TiposArchivo::PNG);
 	//Tipografias
 	ubicacionTipografias = Buscador(TiposArchivo::TTF);
 
@@ -540,5 +473,13 @@ void Juego::setZona(std::string zonaNombre) {
 }
 
 TexturasSDL* Juego::getTilesheet(Zona* z) {
-return mapTexturas.at("tilesheet").at(static_cast<ZonaJuego*>(z)->getId()); 
+	try
+	{
+		return mapTexturas.at("Tileset").at(static_cast<ZonaJuego*>(z)->getId()); 
+	}
+	catch (out_of_range)
+	{
+		printf("El tileset que has pedido no existe toma este por defecto \n");
+		return mapTexturas.at("Tileset").begin()->second;
+	}
 }
