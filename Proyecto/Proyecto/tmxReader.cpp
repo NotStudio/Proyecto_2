@@ -94,6 +94,7 @@ Mapinfo lector()
 		}
 		cout << endl;
 	}
+	doc.clear();
 	return mapInfo;
 
 }

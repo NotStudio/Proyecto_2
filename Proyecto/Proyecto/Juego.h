@@ -223,6 +223,11 @@ public:
 		}
 		return Habitaciones.at(it->first);
 	}
+
+	RoomInfo getBaseRoom() {
+		return base;
+	}
+
 	unordered_map<string, Animacion*>getAnimaciones(const string & entity){
 		unordered_map<string, Animacion*> an;
 		try {
