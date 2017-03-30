@@ -47,7 +47,7 @@ Room::Room(Juego * pJ, vector<Room*> * ro, Zona* z) :pJuego(pJ)
 	//Si es base, creamos la room de Base.
 	if (typeid(ZonaBase) == typeid(*zona)){
 		textTiles = new Tilesheet(TOTAL_TILES, pJuego->getTilesheet(zona));
-		RoomInfo _infoRoom = pJuego->getBaseRoom();
+		RoomInfo _infoRoom = pJuego->getRoom();
 		cout << _infoRoom.fichero() << "\n";
 		SetRoomFichero(_infoRoom.fichero(), ro);
 		ocupados = vector<vector<bool>>(Tiles.size(), vector<bool>(Tiles[0].size(), false));
