@@ -45,6 +45,7 @@ void Room::update()
 //No hace falta meter los parametros string para cargar un tilesheet, carga por defecto el de la zona 1
 Room::Room(Juego * pJ, vector<Room*> * ro, Zona* z) :pJuego(pJ)
 {
+	
 	zona = z;
 	//Si es base, creamos la room de Base.
 	if (typeid(ZonaBase) == typeid(*zona)){

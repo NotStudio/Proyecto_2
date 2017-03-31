@@ -9,6 +9,7 @@
 #include "rapidxml-1.13/rapidxml.hpp"
 using namespace rapidxml;
 using namespace std;
+
 struct ObjetoInfo
 {
 	string nombreEntidad;

@@ -6,7 +6,7 @@
 #include <sstream>
 
 
-
+using namespace TMXReader;
 Properties::Properties()
 {
 }
@@ -53,7 +53,7 @@ void Properties::getValue(const string&name , int&value){
 }
 ObjectInfo::ObjectInfo(rapidxml::xml_node<> * nodo) :Properties(nodo)
 {
-	_Rect = new SDL_Rect{ getX(), getY(), getW(), getH() };
+	_Rect = new Rect{ getX(), getY(), getW(), getH() };
 }
 ObjectInfo::ObjectInfo()
 {
