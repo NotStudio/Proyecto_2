@@ -1,37 +1,38 @@
-#include "InanimadoInfo.h"
+#include "factoriaEntidades.h"
 #include "EnemigoBomba.h"
 #include "Sierra.h"
 #include "Helice.h"
 #include "Perseguidor.h"
+#include "Inanimado.h"
 #include <stdio.h>
 
 
-Inanimado * creaInanimado(Juego * pj, string id, int x, int y, float escala ) {
+Objeto * creaInanimado(Juego * pj, string id, int x, int y, int w, int h,float escala ) {
 	
 	if (id == "tuberia" || id == "Tuberia")
 	{
-		return new Tuberia(pj, { x, y }, escala);
+		return new Tuberia(pj, x,y,w,h);
 	}
 	else if (id == "nave")
 	{
-		return new Nave(pj, { x, y }, escala);
+		return new Nave(pj, x, y, w, h);
 	}
 	else if (id == "chatarra")
 	{
-		return new Chatarra(pj, { x, y }, escala);
+		return new Chatarra(pj, x, y, w, h);
 	}
 	else if (id == "agujero")
 	{
-		return new Agujero(pj, { x, y }, escala);
+		return new Agujero(pj, x, y, w, h);
 	}
 	else if (id == "SelectorZona" || id == "selectorzona") {
-		return new SelectorZona(pj, { x,y }, escala);
+		return new SelectorZona(pj, x, y, w, h);
 	}
 	{
 		throw exception("NO EXISTE DICHO OBJETO \n");
 	}
 }
-Enemigo* creaEnemigo(Juego * pj, string id, int x, int y, int aditional){
+Objeto* creaEnemigo(Juego * pj, string id, int x, int y, int aditional){
 	if (id == "perseguidor" || id == "Perseguidor")
 	{
 		return new Perseguidor(pj, x,y);

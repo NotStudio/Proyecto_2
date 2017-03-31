@@ -7,7 +7,8 @@
 #include "EnemigoBomba.h"
 #include "MaquinaDePelotas.h"
 #include "Inanimado.h"
-#include "InanimadoInfo.h"
+#include "factoriaEntidades.h"
+#include "MapData.h"
 #include "TileInfo.h"
 #include <time.h>
 #include "Sierra.h"
@@ -49,7 +50,7 @@ Room::Room(Juego * pJ, vector<Room*> * ro, Zona* z) :pJuego(pJ)
 	if (typeid(ZonaBase) == typeid(*zona)){
 		textTiles = new Tilesheet(TOTAL_TILES, pJuego->getTilesheet(zona));
 		RoomInfo _infoRoom = pJuego->getBaseRoom();
-		mapainfo= lector();
+		mapainfo = Mapinfo("");
 		cout << _infoRoom.fichero() << "\n";
 		SetRoomFichero(_infoRoom.fichero(), ro);
 		ocupados = vector<vector<bool>>(mapainfo.alto, vector<bool>(mapainfo.ancho, false));
@@ -60,8 +61,6 @@ Room::Room(Juego * pJ, vector<Room*> * ro, Zona* z) :pJuego(pJ)
 				ocupados[i][j] = Tiles[i][j]->getBody() != nullptr;
 			}
 		}
-		meterInanimados(_infoRoom.PatronObjetos());
-	
 	
 	}
 	//Si no, generamos una zona con niveles aleatorios y to la pesca.
@@ -78,9 +77,6 @@ Room::Room(Juego * pJ, vector<Room*> * ro, Zona* z) :pJuego(pJ)
 				ocupados[i][j] = Tiles[i][j]->getBody() != nullptr;
 			}
 		}
-		meterInanimados(_infoRoom.PatronObjetos());
-		meterEnemigos(_infoRoom.PatronEnemigos());
-		//enemigos.push_back(new Perseguidor(pJuego, 200, 200));
 	}
 }
 
@@ -92,73 +88,6 @@ void Room::stop() {
 	for (int i = 0; i < enemigos.size(); i++) {
 		static_cast<Enemigo*>(enemigos[i])->stop();
 	}
-}
-
-
-void Room::meterInanimados(string const &dir)
-{
-	ifstream fichero(dir);
-	string linea;
-	int i=0;
-	getline(fichero, linea);
-	do
-	{
-		
-		string tipo = "";
-		int posX = -1,posY=-1;
-		float escala = 1;
-		stringstream _lectorLineas(linea);
-		_lectorLineas >> tipo >> posX >> posY >> escala;
-		if (tipo != "") {
-			try
-			{
-				objetos.push_back(creaInanimado(pJuego, tipo, area->x + posX*TILE_WIDTH, area->y + posY*TILE_HEIGHT, escala));
-				bool solapa = false;
-				vector<SDL_Point> _TOcupados = TilesOcupados(*static_cast<Entidad*>(objetos[i])->getRect(), solapa);
-				marcarOcupados(_TOcupados);
-				i++;
-
-			}
-			catch (const std::exception& e)
-			{
-				cout <<e.what();
-			}
-		}
-		getline(fichero, linea);
-	}while (!fichero.fail());
-	fichero.close();
-
-}
-void Room::meterEnemigos(string const & dir){
-	ifstream fichero(dir);
-	string linea;
-	getline(fichero, linea);
-	int i = 0;
-	do
-	{
-		
-		string tipo = "";
-		int posX = -1, posY = -1;
-		int aditional = 1;
-		stringstream _lectorLineas(linea);
-		_lectorLineas >> tipo >> posX >> posY >> aditional;
-		if (tipo != ""&&!ocupados[posY][posX]) {
-			try
-			{
-				enemigos.push_back(creaEnemigo(pJuego, tipo, area->x + posX*TILE_WIDTH, area->y + posY*TILE_HEIGHT, aditional));
-				bool solapa = false;
-				vector<SDL_Point> _TOcupados = TilesOcupados(*static_cast<Entidad*>(enemigos[i])->getRect(), solapa);
-				marcarOcupados(_TOcupados);
-				i++;
-			}
-			catch (std::exception&e)
-			{
-				cout << e.what();
-			}
-		}
-		getline(fichero, linea);
-	} while (!fichero.fail());
-	fichero.close();
 }
 Room::~Room()
 { 
@@ -362,6 +291,10 @@ void Room::SetRoomFichero(string Dir, vector<Room*> * Habitaciones)
 	area = new SDL_Rect{ IniX , IniY, mapainfo.ancho*TILE_WIDTH, mapainfo.alto*TILE_HEIGHT};
 	if (kek != 0)
 		setPuertas(-kek);
+}
+
+void Room::meterEntidades(){
+	mapainfo.Patrones[0].lineas[0];
 }
 
 void Room::render(){

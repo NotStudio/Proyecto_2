@@ -5,9 +5,9 @@
 using namespace std;
 enum TiposArchivo
 {
-	PNG, TTF, CSV,WAV,MP3,INAPAT,ENEPAT,
+	PNG, TTF, CSV,WAV,MP3,INAPAT,ENEPAT,TMX,
 };
-const char * _TiposArchivo[] = { ".png", ".ttf",".csv",".wav",".mp3" , ".inapat",".enepat" };
+const char * _TiposArchivo[] = { ".png", ".ttf",".csv",".wav",".mp3" , ".inapat",".enepat", ".tmx"};
 string Chop(string &str)
 {
 	string res = str;

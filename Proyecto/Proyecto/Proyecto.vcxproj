@@ -35,6 +35,7 @@
     <ClCompile Include="Juego.cpp" />
     <ClCompile Include="Jugable.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="MapData.cpp" />
     <ClCompile Include="MaquinaDePelotas.cpp" />
     <ClCompile Include="MenuPG.cpp" />
     <ClCompile Include="NPC.cpp" />
@@ -72,10 +73,11 @@
     <ClInclude Include="HUD.h" />
     <ClInclude Include="HUDbase.h" />
     <ClInclude Include="Inanimado.h" />
-    <ClInclude Include="InanimadoInfo.h" />
+    <ClInclude Include="factoriaEntidades.h" />
     <ClInclude Include="Item.h" />
     <ClInclude Include="Juego.h" />
     <ClInclude Include="Jugable.h" />
+    <ClInclude Include="MapData.h" />
     <ClInclude Include="MaquinaDePelotas.h" />
     <ClInclude Include="MenuPG.h" />
     <ClInclude Include="NPC.h" />
@@ -160,8 +162,8 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>C:\Users\FRANCISCO-SOLANOLOPE\Desktop\git\Proyecto_2\Proyecto\SDL2_mixer-2.0.1\include;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\Users\FRANCISCO-SOLANOLOPE\Desktop\git\Proyecto_2\Proyecto\SDL2_mixer-2.0.1\lib\x86;$(SolutionDir)SDL2_mixer-2.0.1\lib\x86;$(SolutionDir)Lua;$(SolutionDir)Box2D\lib;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(SolutionDir)SDL2_mixer-2.0.1\include;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SolutionDir)SDL2_mixer-2.0.1\lib\x86;$(SolutionDir)Lua;$(SolutionDir)Box2D\lib;$(LibraryPath)</LibraryPath>
     <OutDir>$(SolutionDir)bin\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">

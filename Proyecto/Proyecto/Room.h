@@ -71,8 +71,7 @@ public:
 	
 	void SetRoomFichero(string Dir, vector<Room*> * Habitaciones);
 	void stop();
-	void meterInanimados(string const &dir);
-	void meterEnemigos(string const & dir);
+	void meterEntidades();
 private:
 	struct keks
 	{

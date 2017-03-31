@@ -183,6 +183,9 @@
     <ClCompile Include="tmxReader.cpp">
       <Filter>Header Files\Niveles</Filter>
     </ClCompile>
+    <ClCompile Include="MapData.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Juego.h">
@@ -314,9 +317,6 @@
     <ClInclude Include="Zona.h">
       <Filter>Header Files\Zonas</Filter>
     </ClInclude>
-    <ClInclude Include="InanimadoInfo.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="tmxReader.h">
       <Filter>Header Files\Niveles</Filter>
     </ClInclude>
@@ -334,6 +334,12 @@
     </ClInclude>
     <ClInclude Include="SelecZonaMenu.h">
       <Filter>Header Files\Estados</Filter>
+    </ClInclude>
+    <ClInclude Include="factoriaEntidades.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MapData.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

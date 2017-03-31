@@ -1,12 +1,11 @@
 #include"tmxReader.h"
 ObjetoInfo::ObjetoInfo(string nombre, string type, int px, int py, int add) { nombreEntidad = nombre; tipo = type; x = (px / 2); y = (py / 2); }
 ObjetoInfo::ObjetoInfo(string nombre, string type, int px, int py, int pw, int ph) { nombreEntidad = (nombre); tipo = type;x = (px / 2); y = (py / 2); w = (pw / 2); h = (ph / 2); };
-Mapinfo lector()
+Mapinfo::Mapinfo (string dir)
 {
 	xml_document<> doc;
 	xml_node<> * root_node;
 	ifstream theFile("untitled.tmx");
-	Mapinfo mapInfo;
 	vector<char> buffer((istreambuf_iterator<char>(theFile)), istreambuf_iterator<char>());
 	buffer.push_back('\0');
 	// Parse the buffer using the xml file parsing library into doc 
@@ -28,30 +27,31 @@ Mapinfo lector()
 		}
 		cout << endl;
 	}
-	mapInfo.Mapa.reserve(height);
+	
+	Mapa.reserve(height);
 	stringstream lector(aux);
 	int _y=0;
 	while (getline(lector,aux, '\n'))
 	{
-		mapInfo.Mapa.push_back(vector<int>());
-		mapInfo.Mapa[_y].reserve(width);
+		Mapa.push_back(vector<int>());
+		Mapa[_y].reserve(width);
 		stringstream lector2(aux);
 		while (getline(lector2, aux, ','))
 		{
-			mapInfo.Mapa[_y].push_back(atoi(aux.c_str()));
+			Mapa[_y].push_back(atoi(aux.c_str()));
 		}
 		_y++;
 	}
 	lector.clear();
-	mapInfo.ancho = width;
-	mapInfo.alto = height;
+	ancho = width;
+	alto = height;
 
 	root_node = doc.first_node("map");
 	int ncapa = -1;
 	for (xml_node<> * capa = root_node->first_node("objectgroup"); capa; capa = capa->next_sibling("objectgroup"))
 	{
 		ncapa++;
-		mapInfo.Patrones.push_back(Patron());
+		Patrones.push_back(Patron());
 		for (xml_node<> * objeto = capa->first_node("object"); objeto; objeto = objeto->next_sibling("object"))
 		{
 
@@ -62,12 +62,12 @@ Mapinfo lector()
 					int x = atoi(objeto->first_attribute("x")->value())/2;
 					int y = atoi(objeto->first_attribute("y")->value())/2;
 					if (type == "enemigo") {
-						mapInfo.Patrones[ncapa].meter(ObjetoInfo(name, type, x, y, 0));
+						Patrones[ncapa].meter(ObjetoInfo(name, type, x, y, 0));
 					}
 					else if (type == "inanimado") {
 						int w = atoi(objeto->first_attribute("width")->value()) / 2;
 						int h = atoi(objeto->first_attribute("height")->value()) / 2;
-						mapInfo.Patrones[ncapa].meter(ObjetoInfo(name, type, x, y, w,h));
+						Patrones[ncapa].meter(ObjetoInfo(name, type, x, y, w,h));
 					}
 					else {
 						cout << "Becario el tipo que has puesto no existe\n";
@@ -84,18 +84,5 @@ Mapinfo lector()
 	}
 	doc.clear();
 	theFile.close();
-	return mapInfo;
 
-}
-
-vector<ObjetoInfo> getPatron(int n)
-{
-	xml_document<> doc;
-	xml_node<> * root_node;
-	ifstream theFile("untitled.tmx");
-	vector<char> buffer((istreambuf_iterator<char>(theFile)), istreambuf_iterator<char>());
-	buffer.push_back('\0');
-	// Parse the buffer using the xml file parsing library into doc 
-	doc.parse<0>(&buffer[0]);
-	return vector<ObjetoInfo>();
 }

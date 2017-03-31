@@ -33,9 +33,9 @@ struct Mapinfo {
 	int ancho, alto;
 	vector<vector<int>> Mapa;
 	vector<Patron> Patrones;
+	Mapinfo(string);
+	Mapinfo(){};
 };
-
-Mapinfo lector();
 	
 
 
