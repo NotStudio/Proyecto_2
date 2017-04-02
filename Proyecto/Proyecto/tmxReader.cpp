@@ -5,7 +5,7 @@ Mapinfo::Mapinfo (string dir)
 {
 	xml_document<> doc;
 	xml_node<> * root_node;
-	ifstream theFile("untitled.tmx");
+	ifstream theFile(dir);
 	vector<char> buffer((istreambuf_iterator<char>(theFile)), istreambuf_iterator<char>());
 	buffer.push_back('\0');
 	// Parse the buffer using the xml file parsing library into doc 

@@ -4,9 +4,7 @@
 #include "Tile.h"
 #include "TileInfo.h"
 #include "Bala.h"
-#include "RoomInfo.h"
 #include "Zona.h"
-#include "tmxReader.h"
 class Room
 {
 private:
@@ -19,8 +17,8 @@ private:
 	vector<Puerta> Puertas;
 	vector<vector<Tile*>> Tiles;
 	vector<vector<bool>> ocupados;
-
-	Mapinfo mapainfo;
+	
+	TMXReader::MapData * mapdat;
 
 	void getTileOcupable(SDL_Rect &);
 	//Vector de enemigos.

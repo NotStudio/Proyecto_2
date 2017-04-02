@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="20" height="20" tilewidth="128" tileheight="128" nextobjectid="27">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="20" height="20" tilewidth="128" tileheight="128" nextobjectid="32">
  <tileset firstgid="1" name="tilesheet_zon1" tilewidth="128" tileheight="128" tilecount="24" columns="4">
   <image source="../Material/Mapa/Tilesets/Tileset_1.png" width="512" height="768"/>
  </tileset>
@@ -31,24 +31,9 @@
   <properties>
    <property name="NPatrones" type="int" value="0"/>
   </properties>
-  <object id="19" name="linea" x="380" y="256">
-   <polyline points="0,0 368,244 -108,96"/>
-  </object>
-  <object id="20" name="poligono" x="1280" y="324">
-   <properties>
-    <property name="a" type="color" value="#ff555500"/>
-    <property name="f" type="bool" value="true"/>
-   </properties>
-   <polygon points="0,0 136,240 -152,232 -304,-104"/>
-  </object>
-  <object id="22" name="imagen" gid="4" x="1700" y="684" width="540" height="520"/>
-  <object id="23" name="ellipse" x="292" y="1004" width="428" height="300.99">
-   <ellipse/>
-  </object>
-  <object id="24" name="rectangulo" x="1120" y="1072" width="472" height="300"/>
-  <object id="26" x="840" y="752">
-   <ellipse/>
-  </object>
+  <object id="27" name="tuberia" type="inanimado" x="1736" y="844" width="484" height="320"/>
+  <object id="28" name="perseguidor" type="enemigo" x="676" y="1848" width="136" height="120"/>
+  <object id="29" name="SelectorZona" type="inanimado" x="896" y="1280" width="592" height="544"/>
  </objectgroup>
  <objectgroup name="Capa de Objetos 2"/>
 </map>

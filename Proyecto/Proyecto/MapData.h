@@ -1,4 +1,7 @@
-#pragma once
+#ifndef MAPDATA_H_
+#define MAPDATA_H_
+
+
 #include <vector>
 #include <string>
 #include <unordered_map>
@@ -93,11 +96,19 @@ namespace TMXReader{
 		Objectgroup();
 		Objectgroup(rapidxml::xml_node<> * nodo);
 		~Objectgroup();
-		void get_object(const string & name, const string & type, ObjectInfo*obj);
+		int groupSize() { return _Objects.size(); };
+		ObjectInfo* getObject(int n) { return _Objects[n]; };
+		ObjectInfo* get_object(const string & name, const string & typ);
 		void get_objects_by_type(const string & type, vector<ObjectInfo*>& objs);
 		void get_objects_by_name(const string & name, vector<ObjectInfo*>& objs);
 		void get_objects_by_type_name(const string & type, const string & name, vector<ObjectInfo*>& objs);
 		void get_undefined_objects(vector<ObjectInfo*>& objs);
+		vector<ObjectInfo*> GetAllObjects() { return _Objects; };
+
+		ObjectInfo* operator[] (size_t i) {
+			return _Objects[i];
+		}
+
 	private:
 		vector<ObjectInfo*> _Objects;
 	};
@@ -109,7 +120,9 @@ namespace TMXReader{
 		Layer();
 		Layer(rapidxml::xml_node<> * nodo);
 		void getMap(vector<vector<int>>&);
-
+		int getCell(int x, int y) {
+			return map[y][x];
+		}
 	private:
 		vector<vector<int>> map;
 	};
@@ -120,12 +133,12 @@ namespace TMXReader{
 		MapData();
 		MapData(string);
 		~MapData();
-		void getLayer(Layer*, int = 0);
-		void getLayer_by_name(Layer*, const string &);
-		void getLayer_by_type(Layer*, const string&);
-		void getLayer_by_type_name(Layer*, const string&, const string&);
-		void getObjectGroup(Objectgroup*, int = 0);
-		void getObjectGroup(Objectgroup*, string);
+		void getLayer(Layer* &, int = 0);
+		void getLayer_by_name(Layer*&, const string &);
+		void getLayer_by_type(Layer*&, const string&);
+		void getLayer_by_type_name(Layer *& , const string&, const string&);
+		void getObjectGroup(Objectgroup*&, int = 0);
+		void getObjectGroup(Objectgroup*&, string);
 		int totalLayers() {
 			return _layers.size();
 		}
@@ -137,4 +150,5 @@ namespace TMXReader{
 		vector<Objectgroup*> _objsGroups;
 	};
 }
+#endif // !MAPDATA_H_
 

@@ -55,7 +55,7 @@ Juego::Juego(b2World* mundo) : error(false), gameOver(false), exit(false), score
 	zona = nullptr;
 
 	pushState(new MenuPG(this));
-	cambiarMusica("Exodus");
+	cambiarMusica("summer");
 	run();
 	
 }
@@ -191,44 +191,26 @@ void Juego::initMedia() {
 };
 
 void Juego::initHabitaciones(){
-	vector<string> ficherosPatronesEnemigos = Buscador(TiposArchivo::ENEPAT);
-	vector<string> ficherosPatronesInanimados = Buscador(TiposArchivo::INAPAT);
-	vector<string> ficherosHabitaciones = Buscador(TiposArchivo::CSV);
-	for (size_t i = 0; i < ficherosHabitaciones.size(); i++)
-	{
-		string id = ficherosHabitaciones[i].substr(ficherosHabitaciones[i].find_last_of('/') + 1);
-		id.erase(id.find_last_of('.'));		
-		if (id == "Base"){
-			base = RoomInfo(ficherosHabitaciones[i]);
-		}
-		else
-			Habitaciones.emplace(make_pair(id, RoomInfo(ficherosHabitaciones[i])));
-	}
-	for (size_t i = 0; i < ficherosPatronesEnemigos.size(); i++)
-	{
-		string id = ficherosPatronesEnemigos[i].substr(ficherosPatronesEnemigos[i].find_last_of('/') + 1);
+	vector<string> ficherosTMX = Buscador(TiposArchivo::TMX);
+	for (auto file : ficherosTMX) {
+		string id = file.substr(file.find_last_of('/') + 1);
 		id.erase(id.find_last_of('.'));
-		if (id == "Base") base.setPatronEnemigos(ficherosPatronesEnemigos[i]);
-		else {
-			try {
-				Habitaciones.at(id).setPatronEnemigos(ficherosPatronesEnemigos[i]);
+		if (id != "Base") {
+			try
+			{
+				Habitaciones.at(id);
+				printf("nombre repetido en el fichero %s \n", file);
 			}
-			catch (out_of_range) {}
+			catch (out_of_range)
+			{
+				Habitaciones.emplace(make_pair(id, nullptr));
+				Habitaciones.at(id) = new TMXReader::MapData(file);
+			}
+		}
+		else {
+			Base = new TMXReader::MapData(file);
 		}
 	}
-	for (size_t i = 0; i < ficherosPatronesInanimados.size(); i++)
-	{
-		string id = ficherosPatronesInanimados[i].substr(ficherosPatronesInanimados[i].find_last_of('/') + 1);
-		id.erase(id.find_last_of('.'));
-		if (id == "Base") base.setPatronInanimados(ficherosPatronesInanimados[i]);
-		else {
-			try {
-				Habitaciones.at(id).setPatronInanimados(ficherosPatronesInanimados[i]);
-			}
-			catch (out_of_range) {}
-		}
-	}
-
 
 }
 //Método que libera las texturas.
@@ -281,6 +263,15 @@ void Juego::freeMedia() {
 		delete objetos[i];
 		objetos[i] = nullptr;
 	}
+
+	for (unordered_map<string,TMXReader::MapData*>::iterator i = Habitaciones.begin(); i !=Habitaciones.end(); i++)
+	{
+		delete Habitaciones.at(i->first);
+		Habitaciones.at(i->first)=nullptr;
+	}
+
+	delete Base;
+	Base = nullptr;
 };
 //Método que inicializa SDL
 bool Juego::initSDL() {

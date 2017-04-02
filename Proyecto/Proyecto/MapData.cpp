@@ -175,9 +175,9 @@ Objectgroup::~Objectgroup()
 		_Objects[i] = nullptr;
 	}
 }
-void Objectgroup::get_object(const string & name, const string & type, ObjectInfo*obj){
+ObjectInfo* Objectgroup::get_object(const string & name, const string & type){
 	size_t i = 0;
-	obj = nullptr;
+	ObjectInfo * obj=nullptr;
 	bool doIt = true;
 	while (i < _Objects.size()&&doIt)
 	{
@@ -187,6 +187,7 @@ void Objectgroup::get_object(const string & name, const string & type, ObjectInf
 		}
 		i++;
 	}
+	return obj;
 }
 void Objectgroup::get_objects_by_type(const string & type, vector<ObjectInfo*>& objs){
 	for (auto obj : _Objects){
@@ -249,7 +250,7 @@ MapData::MapData(string dir)
 {
 	rapidxml::xml_document<> doc;
 	rapidxml::xml_node<> * nodo;
-	ifstream theFile("untitled.tmx");
+	ifstream theFile(dir);
 	vector<char> buffer((istreambuf_iterator<char>(theFile)), istreambuf_iterator<char>());
 	buffer.push_back('\0');
 	// Parse the buffer using the xml file parsing library into doc 
@@ -284,12 +285,12 @@ MapData::~MapData()
 	}
 }
 
-void TMXReader::MapData::getLayer(Layer * l, int n)
+void MapData::getLayer(Layer *& l, int n)
 {
 	l = nullptr;
 	try
 	{
-		l =_layers.at(n);
+		l = _layers.at(n);
 	}
 	catch (out_of_range)
 	{
@@ -297,7 +298,7 @@ void TMXReader::MapData::getLayer(Layer * l, int n)
 	}
 }
 
-void TMXReader::MapData::getLayer_by_name(Layer *l, const string &n)
+void MapData::getLayer_by_name(Layer *& l, const string &n)
 {
 	l = nullptr;
 	for (auto la : _layers) {
@@ -306,7 +307,7 @@ void TMXReader::MapData::getLayer_by_name(Layer *l, const string &n)
 	}
 }
 
-void TMXReader::MapData::getLayer_by_type(Layer *l, const string &t)
+void TMXReader::MapData::getLayer_by_type(Layer *& l, const string &t)
 {
 	l = nullptr;
 	for (auto la : _layers) {
@@ -315,7 +316,7 @@ void TMXReader::MapData::getLayer_by_type(Layer *l, const string &t)
 	}
 }
 
-void TMXReader::MapData::getObjectGroup(Objectgroup *objg, int n)
+void TMXReader::MapData::getObjectGroup(Objectgroup *& objg, int n)
 {
 	try
 	{
@@ -327,7 +328,7 @@ void TMXReader::MapData::getObjectGroup(Objectgroup *objg, int n)
 	}
 }
 
-void TMXReader::MapData::getObjectGroup(Objectgroup * objg, string n)
+void TMXReader::MapData::getObjectGroup(Objectgroup *& objg, string n)
 {
 	objg = nullptr;
 	int i = 0;

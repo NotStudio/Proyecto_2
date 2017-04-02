@@ -47,14 +47,12 @@ Room::Room(Juego * pJ, vector<Room*> * ro, Zona* z) :pJuego(pJ)
 {
 	
 	zona = z;
-	//Si es base, creamos la room de Base.
+	//Si es base, creamos la room de Base
 	if (typeid(ZonaBase) == typeid(*zona)){
 		textTiles = new Tilesheet(TOTAL_TILES, pJuego->getTilesheet(zona));
-		RoomInfo _infoRoom = pJuego->getBaseRoom();
-		mapainfo = Mapinfo("");
-		cout << _infoRoom.fichero() << "\n";
-		SetRoomFichero(_infoRoom.fichero(), ro);
-		ocupados = vector<vector<bool>>(mapainfo.alto, vector<bool>(mapainfo.ancho, false));
+		mapdat = pJuego->getBaseRoom();
+		SetRoomFichero(" ", ro);
+		ocupados = vector<vector<bool>>(mapdat->getH(), vector<bool>(mapdat->getH(), false));
 		for (size_t i = 0; i < ocupados.size(); i++)
 		{
 			for (size_t j = 0; j < ocupados[i].size(); j++)
@@ -62,14 +60,14 @@ Room::Room(Juego * pJ, vector<Room*> * ro, Zona* z) :pJuego(pJ)
 				ocupados[i][j] = Tiles[i][j]->getBody() != nullptr;
 			}
 		}
+		meterEntidades();
 	
 	}
 	//Si no, generamos una zona con niveles aleatorios y to la pesca.
 	else{
 		textTiles = new Tilesheet(TOTAL_TILES, pJuego->getTilesheet(zona));
-		RoomInfo _infoRoom = pJuego->getRoom();
-		cout << _infoRoom.fichero() << "\n";
-		SetRoomFichero(_infoRoom.fichero(), ro);
+		mapdat = pJuego->getRoom();
+		SetRoomFichero(" ", ro);
 		ocupados = vector<vector<bool>>(Tiles.size(), vector<bool>(Tiles[0].size(), false));
 		for (size_t i = 0; i < ocupados.size(); i++)
 		{
@@ -78,6 +76,7 @@ Room::Room(Juego * pJ, vector<Room*> * ro, Zona* z) :pJuego(pJ)
 				ocupados[i][j] = Tiles[i][j]->getBody() != nullptr;
 			}
 		}
+		meterEntidades();
 	}
 }
 
@@ -232,40 +231,14 @@ vector<SDL_Point> Room::TilesOcupados(SDL_Rect const recto, bool & Solapa)
 	return marcados;
 }
 
-//COSAS DE FRAN
-// --------------------------------------------------------------------------------------------------------------
-/*
-
-bool Room::setTiles(string Dirm,b2World * wardo) {
-	
-	int x = 0;
-	int y = 0;
-	return true;
-}
-
-
-
-void Room::DestroyRoom(b2World * wardo)
-{
-	for (size_t i = 0; i < Tiles->size(); i++)
-	{
-			wardo->DestroyBody(Tiles->at(i)->getBody());
-	}
-}
-
-
-int Room::encontrarPosicionTiled(int& const x, int& const y)
-{
-	return(ANCHO_NIVEL / TILE_WIDTH)*((y - (y%TILE_HEIGHT))-1)/TILE_HEIGHT+(1 + (x - (x%TILE_WIDTH)) / TILE_WIDTH);
-}
-
-*/
 void Room::SetRoomFichero(string Dir, vector<Room*> * Habitaciones)
 {
 	int IniX = 0, IniY = 0;
 	int kek = 0;
+	TMXReader::Layer * lay = nullptr; 
+	mapdat->getLayer(lay);
 	if (Habitaciones != nullptr && Habitaciones->size() > 0){
-		SDL_Rect _zona = { 0, 0, mapainfo.ancho*TILE_WIDTH, mapainfo.alto*TILE_HEIGHT };
+		SDL_Rect _zona = { 0, 0, lay->getW()*TILE_WIDTH, lay->getH()*TILE_HEIGHT };
 		Room * _roomConectada;
 		Direcciones D;
 		SDL_Point _nuevaPos = lazyFoo(solapamientoHabitaciones(Habitaciones,_zona),_roomConectada,D);
@@ -275,27 +248,44 @@ void Room::SetRoomFichero(string Dir, vector<Room*> * Habitaciones)
 		kek = D;
 	}
 	int y = IniY;
-	Tiles.reserve(mapainfo.alto);
-	for (size_t i = 0; i < mapainfo.alto; i++)
+
+	Tiles.reserve(lay->getH());
+	for (size_t i = 0; i < Tiles.capacity(); i++)
 	{
 		int x = IniX;
 		Tiles.push_back(vector<Tile*>());
-		Tiles[i].reserve(mapainfo.ancho);
-		for (size_t j = 0; j < mapainfo.ancho; j++)
+		Tiles[i].reserve(lay->getW());
+		for (size_t j = 0; j < mapdat->getW(); j++)
 		{
+			Tiles[i].push_back(new Tile(x,y,lay->getCell(j,i)-1,pJuego->getWorld()));
 			x += TILE_WIDTH;
-			Tiles[i].push_back(new Tile(x,y,mapainfo.Mapa[i][j]-1,pJuego->getWorld()));
 		}
 		y += TILE_HEIGHT;
 	}
 	
-	area = new SDL_Rect{ IniX , IniY, mapainfo.ancho*TILE_WIDTH, mapainfo.alto*TILE_HEIGHT};
+	area = new SDL_Rect{ IniX , IniY, lay->getW()*TILE_WIDTH, lay->getH()*TILE_HEIGHT};
 	if (kek != 0)
 		setPuertas(-kek);
 }
 
 void Room::meterEntidades(){
-	mapainfo.Patrones[0].lineas[0];
+	TMXReader::Objectgroup * objg = nullptr;
+	mapdat->getObjectGroup(objg);
+	if (objg != nullptr) {
+		for (size_t i = 0; i < objg->groupSize(); i++) {
+			TMXReader::ObjectInfo * obj = objg->operator[](i);
+			if (obj->getType() == "inanimado") {
+				objetos.push_back(creaEntidad(pJuego,obj,area->x,area->y));
+				if (objetos.at(objetos.size() - 1) == nullptr)
+					objetos.pop_back();
+			}
+			else if(obj->getType() == "enemigo"){
+				enemigos.push_back(creaEntidad(pJuego, obj, area->x, area->y));
+				if (enemigos.at(enemigos.size() - 1) == nullptr)
+					enemigos.pop_back();
+			}
+		}
+	}
 }
 
 void Room::render(){

@@ -54,3 +54,23 @@ Objeto* creaEnemigo(Juego * pj, string id, int x, int y, int aditional){
 		throw exception("NO EXISTE DICHO ENEMIGO \n");
 	}
 }
+Objeto* creaEntidad(Juego * pj, TMXReader::ObjectInfo * obj, int desvX, int desvY) {
+	try
+	{
+		if (obj->getType() == "inanimado") {
+			return creaInanimado(pj, obj->getName(), obj->getX() / 2 + desvX, obj->getY() / 2 + desvY, obj->getW() / 2, obj->getH() / 2);
+		}
+		else if (obj->getType() == "enemigo") {
+			return creaEnemigo(pj, obj->getName(), obj->getX() / 2 + desvX, obj->getY() / 2 + desvY);
+		}
+		else {
+			printf("this object has no type \n");
+			return nullptr;
+		}
+	}
+	catch (const std::exception&)
+	{
+		return nullptr;
+	}
+	
+}
