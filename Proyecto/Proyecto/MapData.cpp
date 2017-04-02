@@ -7,31 +7,102 @@
 
 
 using namespace TMXReader;
+
+enum tP
+{
+	BOOL,COLOR,FLOAT,FILES,INT,STRING,_end
+};
+const string types[]{ "bool","color","float","file","int","string" };
+ObjectShape::ObjectShape(int x, int y, int w, int h) :_x(x), _y(y), _w(w), _h(h)
+{
+}
+
+
+PolyLine::PolyLine(int x,int y,string points) :ObjectShape(x, y) {
+	stringstream reader(points);
+	while (getline(reader, points, ' '))
+	{
+		int auxX, auxY;
+		stringstream subreader(points);
+		getline(subreader, points, ',');
+		auxX = atoi(points.c_str());
+		getline(subreader, points, ',');
+		auxY = atoi(points.c_str());
+		_ShapePoints.push_back({ auxX, auxY });
+	}
+}
+
+
+Polygon::Polygon(int x, int y, string points) :PolyLine(x, y, points) {
+
+}
+
+
 Properties::Properties()
 {
 }
 Properties::Properties(rapidxml::xml_node<> * nodo)
 {
 	setProperties(nodo);
+	if (nodo->first_node("properties")) {
+		rapidxml::xml_node<> *auxNod = nodo->first_node("properties");
+		setCustomProperties(auxNod);
+	}
 }
 void Properties::setProperties(rapidxml::xml_node<> * nodo){
 	for (rapidxml::xml_attribute<> * att = nodo->first_attribute(); att; att =att->next_attribute())
 	{
 		string name = att->name();
 		string value = att->value();
-		if (value != "" && !atoi(value.c_str())){
+		if (value != "" && !atof(value.c_str())){
 			setValue(name, value);
 		}
 		else{
-			setValue(name, atoi(value.c_str()));
+			setValue(name, atof(value.c_str()));
+		}
+	}
+}
+void Properties::setCustomProperties(rapidxml::xml_node<>* nodo)
+{
+	for (rapidxml::xml_node<> * proper = nodo->first_node("property"); proper; proper = proper->next_sibling()) {
+		string name = proper->first_attribute("name")->value();
+		string type = proper->first_attribute("type")->value();
+		size_t i = 0;
+		bool search = true;
+		while (i!=_end&&search)
+		{
+			if (type == types[i])
+				search = false;
+			else
+				i++;
+		}
+		switch (i)
+		{
+		case BOOL:
+			setValue(name, (proper->first_attribute("value")->value() == "true"));
+			break;
+		case COLOR:
+		case FILES:
+		case STRING:
+			setValue(name, proper->first_attribute("value")->value());
+			break;
+		case INT:
+		case FLOAT:
+			setValue(name, atof(proper->first_attribute("value")->value()));
+			break;
+		default:
+			break;
 		}
 	}
 }
 void Properties::setValue(const string & name, const string & value){
 	_stringValues.emplace(make_pair(name, value));
 }
-void Properties::setValue(const string & name, const int & value){
+void Properties::setValue(const string & name, const double & value){
 	_intValues.emplace(make_pair(name, value));
+}
+void Properties::setValue(const string & name, const bool & value) {
+	_boolValues.emplace(make_pair(name, value));
 }
 void Properties::getValue(const string&name, string&value){
 	try{
@@ -53,17 +124,36 @@ void Properties::getValue(const string&name , int&value){
 }
 ObjectInfo::ObjectInfo(rapidxml::xml_node<> * nodo) :Properties(nodo)
 {
-	_Rect = new Rect{ getX(), getY(), getW(), getH() };
+	if (nodo->first_node()) {
+		rapidxml::xml_node<> * subnode = nodo->first_node();
+		string shape = subnode->name();
+		if (shape == "properties") {
+			subnode = subnode->next_sibling();
+			shape = subnode->name();
+		}
+		if(shape == "ellipse"){
+			_shape = new Ellipse(getX(), getY(), getW(), getH());
+		}
+		else if (shape == "polyline") {
+			_shape = new PolyLine(getX(), getY(), subnode->first_attribute()->value());
+		}
+		else if (shape == "polygon") {
+			_shape = new Polygon(getX(), getY(), subnode->first_attribute()->value());
+		}
+		else {
+			_shape = new ObjectShape(getX(), getY(), getW(), getH());
+		}
+	}
 }
 ObjectInfo::ObjectInfo()
 {
-	_Rect = nullptr;
+	_shape = nullptr;
 }
 
 ObjectInfo::~ObjectInfo()
 {
-	delete _Rect;
-	_Rect = nullptr;
+	delete _shape;
+	_shape = nullptr;
 }
 Objectgroup::Objectgroup()
 {
@@ -73,7 +163,7 @@ Objectgroup::Objectgroup(rapidxml::xml_node<> * nodo) :Properties(nodo)
 {
 	for (rapidxml::xml_node<> * obj = nodo->first_node("object"); obj; obj = obj->next_sibling("object"))
 	{
-		_Objects.push_back(new ObjectInfo(nodo));
+		_Objects.push_back(new ObjectInfo(obj));
 	}
 }
 
@@ -193,3 +283,62 @@ MapData::~MapData()
 		obj = nullptr;
 	}
 }
+
+void TMXReader::MapData::getLayer(Layer * l, int n)
+{
+	l = nullptr;
+	try
+	{
+		l =_layers.at(n);
+	}
+	catch (out_of_range)
+	{
+		printf("layer %s is out of range /n", n);
+	}
+}
+
+void TMXReader::MapData::getLayer_by_name(Layer *l, const string &n)
+{
+	l = nullptr;
+	for (auto la : _layers) {
+		if (la->getName() == n)
+			l = la;
+	}
+}
+
+void TMXReader::MapData::getLayer_by_type(Layer *l, const string &t)
+{
+	l = nullptr;
+	for (auto la : _layers) {
+		if (la->getType() == t)
+			l = la;
+	}
+}
+
+void TMXReader::MapData::getObjectGroup(Objectgroup *objg, int n)
+{
+	try
+	{
+		objg = _objsGroups.at(n);
+	}
+	catch (out_of_range)
+	{
+		objg = nullptr;
+	}
+}
+
+void TMXReader::MapData::getObjectGroup(Objectgroup * objg, string n)
+{
+	objg = nullptr;
+	int i = 0;
+	bool search = true;
+	while (i < _objsGroups.size()&&search)
+	{
+		if(_objsGroups[i]->getName()==n){
+			search = false;
+			objg = _objsGroups[i];
+		}
+		i++;
+	}
+}
+

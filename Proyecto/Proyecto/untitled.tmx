@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="20" height="20" tilewidth="128" tileheight="128" nextobjectid="12">
- <tileset firstgid="1" name="tilesheet_zon1" tilewidth="128" tileheight="128" tilecount="36" columns="4">
-  <image source="../Material/Mapa/Tilesets/Tileset_1.png" width="512" height="1152"/>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="20" height="20" tilewidth="128" tileheight="128" nextobjectid="27">
+ <tileset firstgid="1" name="tilesheet_zon1" tilewidth="128" tileheight="128" tilecount="24" columns="4">
+  <image source="../Material/Mapa/Tilesets/Tileset_1.png" width="512" height="768"/>
  </tileset>
  <layer name="Capa de Patrones 1" width="20" height="20">
   <data encoding="csv">
@@ -31,9 +31,24 @@
   <properties>
    <property name="NPatrones" type="int" value="0"/>
   </properties>
-  <object id="3" name="tuberia" type="inanimado" x="864" y="1696" width="448" height="324"/>
+  <object id="19" name="linea" x="380" y="256">
+   <polyline points="0,0 368,244 -108,96"/>
+  </object>
+  <object id="20" name="poligono" x="1280" y="324">
+   <properties>
+    <property name="a" type="color" value="#ff555500"/>
+    <property name="f" type="bool" value="true"/>
+   </properties>
+   <polygon points="0,0 136,240 -152,232 -304,-104"/>
+  </object>
+  <object id="22" name="imagen" gid="4" x="1700" y="684" width="540" height="520"/>
+  <object id="23" name="ellipse" x="292" y="1004" width="428" height="300.99">
+   <ellipse/>
+  </object>
+  <object id="24" name="rectangulo" x="1120" y="1072" width="472" height="300"/>
+  <object id="26" x="840" y="752">
+   <ellipse/>
+  </object>
  </objectgroup>
- <objectgroup name="Capa de Objetos 2">
-  <object id="10" type="pintamonas" x="768" y="768" width="284" height="100"/>
- </objectgroup>
+ <objectgroup name="Capa de Objetos 2"/>
 </map>
