@@ -8,7 +8,7 @@
 #include "recorreFicheros.h"
 #include <SDL_events.h>
 #include "MenuPG.h"
-#include "ZonaAccion.h"
+#include "ZonaDesguace.h"
 #include "ZonaBase.h"
 
 void operator+=(vector<string>& e,vector<string> o){
@@ -465,10 +465,11 @@ void Juego::setZona(std::string zonaNombre) {
 
 	if (zona != nullptr)
 		delete zona;
-	if (zonaNombre == "ZonaAccion")
-		zona = new ZonaAccion(this);
-	else
+	if (zonaNombre == "ZonaDesguace")
+		zona = new ZonaDesguace(this);
+	else if (zonaNombre == "ZonaBase"){
 		zona = new ZonaBase(this);
+	}
 	
 }
 

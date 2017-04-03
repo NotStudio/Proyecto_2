@@ -8,7 +8,7 @@ SelecZonaMenu::SelecZonaMenu(Juego* pJuego): EstadoPG(pJuego)
 {
 	
 
-	botones.emplace_back(new Boton(pJuego, "boton", 700, 150, goZona1, "Zona1"));
+	botones.emplace_back(new Boton(pJuego, "boton", 700, 150, goZona1, "Desguace"));
 	botones.emplace_back(new Boton(pJuego, "boton", 350, 300, goZona2, "Zona2"));
 	botones.emplace_back(new Boton(pJuego, "boton", 500, 450, goZona3, "Zona3"));
 	botones.emplace_back(new Boton(pJuego, "boton", 100, 550, salir, "Salir"));
@@ -94,7 +94,7 @@ void SelecZonaMenu::doCallBack() {
 		break;
 	case ZONA1:
 		SelecZonaMenu::seleccion = NEUTRO;
-		pJuego->setZona("ZonaAccion");
+		pJuego->setZona("ZonaDesguace");
 		Play::setZona();
 		pJuego->popState();
 		break;

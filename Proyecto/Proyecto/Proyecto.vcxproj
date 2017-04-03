@@ -52,6 +52,7 @@
     <ClCompile Include="Tostadora.cpp" />
     <ClCompile Include="ZonaAccion.cpp" />
     <ClCompile Include="ZonaBase.cpp" />
+    <ClCompile Include="ZonaDesguace.cpp" />
     <ClCompile Include="ZonaJuego.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -97,6 +98,7 @@
     <ClInclude Include="Zona.h" />
     <ClInclude Include="ZonaAccion.h" />
     <ClInclude Include="ZonaBase.h" />
+    <ClInclude Include="ZonaDesguace.h" />
     <ClInclude Include="ZonaJuego.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

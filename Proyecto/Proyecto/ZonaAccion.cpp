@@ -4,19 +4,12 @@
 
 ZonaAccion::ZonaAccion(Juego* punteroJuego): ZonaJuego(punteroJuego)
 {
-	pJuego->cambiarMusica("are");
-	id = "zon2";
-	
+	//Inicializamos el array de habitaciones
 	niveles = new vector<Room*>;
 	niveles->reserve(25);
-	
-	for (size_t i = 0; i < 3; i++)
-	{
-		niveles->push_back(new Room(pJuego, niveles, this));
-	}
-	setRect();
-	setNivelActual();
+	//Cambiamos el estado del jugador
 	static_cast<Jugable*>(pJuego->getPlayer())->cambiaEstado(Jugable::JUGANDO);
+	//Cambiamos su posición al centro del nivel inicial.
 	static_cast<Jugable*>(pJuego->getPlayer())->setPos(50,50);
 }
 
@@ -36,14 +29,13 @@ void ZonaAccion::draw(){
 	ZonaJuego::draw();
 
 	//Descomentar para ver la disposición de las habitaciones
-	/*
+
 	for (size_t i = 0; i < niveles->size(); i++)
 	{
 		SDL_Rect aux = niveles->at(i)->getArea();
 		aux.x /= 64; aux.y /= 64; aux.h /= 64; aux.w /= 64; aux.x += 100; aux.y += 100;
 		SDL_RenderDrawRect(pJuego->getRender(), &aux);
 	}
-	*/
 }
 
 void ZonaAccion::update(){
@@ -67,6 +59,6 @@ void ZonaAccion::setNivelActual(){
 		else niveles->at(i)->stop();
 	}
 	if (nivelActual != anterior)
-		cout << "kek";
+		cout << "Cambio Nivel\n";
 	pJuego->getCamera()->setLimite(nivelActual->getArea());
 }

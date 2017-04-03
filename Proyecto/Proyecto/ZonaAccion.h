@@ -9,18 +9,11 @@ class ZonaAccion :
 	public ZonaJuego
 {
 	SDL_Rect tam;
-	
-	//Enemigos
-	vector<Objeto*> enemigos;
-	//Objetos colisionables: cofres, rocas, mierda en general.
-	vector<Objeto*> obEntorno;
-	//Balas en prinsipito
-	
-	
 
+protected:
+	//Inicializa la varible nivelActual a la habitación en la que se encuentra el jugador.
 	void setNivelActual();
-
-
+	//Método de Fran
 	void setRect() {
 		int minX, minY, MaxX, MaxY;
 		minX = niveles->at(0)->getArea().x;
@@ -38,13 +31,16 @@ class ZonaAccion :
 	}
 
 public:
+
 	ZonaAccion(Juego* punteroJuego);
 	virtual ~ZonaAccion();
 
 	virtual void draw();
 
 	virtual void update();
+	//Devolvemos el nivel actual
 	Room*getNivel(){ return nivelActual; }
+	//Devolvemos el array de niveles.
 	vector<Room*>*getNiveles(){ return niveles; }
 
 };

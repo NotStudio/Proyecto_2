@@ -177,6 +177,9 @@
     <ClCompile Include="SelecZonaMenu.cpp">
       <Filter>Source Files\Estados</Filter>
     </ClCompile>
+    <ClCompile Include="ZonaDesguace.cpp">
+      <Filter>Source Files\Zonas</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Juego.h">
@@ -313,6 +316,9 @@
     </ClInclude>
     <ClInclude Include="SelecZonaMenu.h">
       <Filter>Header Files\Estados</Filter>
+    </ClInclude>
+    <ClInclude Include="ZonaDesguace.h">
+      <Filter>Header Files\Zonas</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
