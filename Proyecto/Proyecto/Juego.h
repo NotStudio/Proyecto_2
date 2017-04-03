@@ -214,9 +214,7 @@ public:
 	void reproducirEfecto(string id) {
 		Mix_PlayChannel(-1,cargarEfecto(id),0);
 	}
-	RoomInfo getRoomBase(){
-		return base;
-	}
+
 
 	TMXReader::MapData* getRoom(){
 		srand(SDL_GetTicks());
