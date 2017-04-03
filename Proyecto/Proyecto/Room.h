@@ -4,11 +4,11 @@
 #include "Tile.h"
 #include "TileInfo.h"
 #include "Bala.h"
-#include "RoomInfo.h"
 #include "Zona.h"
 class Room
 {
 private:
+	
 	SDL_Rect * area;
 	//la zona de la room
 	Juego * pJuego;
@@ -17,6 +17,8 @@ private:
 	vector<Puerta> Puertas;
 	vector<vector<Tile*>> Tiles;
 	vector<vector<bool>> ocupados;
+	
+	TMXReader::MapData * mapdat;
 
 	void getTileOcupable(SDL_Rect &);
 	//Vector de enemigos.
@@ -67,8 +69,7 @@ public:
 	
 	void SetRoomFichero(string Dir, vector<Room*> * Habitaciones);
 	void stop();
-	void meterInanimados(string const &dir);
-	void meterEnemigos(string const & dir);
+	void meterEntidades();
 private:
 	struct keks
 	{

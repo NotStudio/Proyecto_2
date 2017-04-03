@@ -7,12 +7,14 @@
 #include "EnemigoBomba.h"
 #include "MaquinaDePelotas.h"
 #include "Inanimado.h"
-#include "InanimadoInfo.h"
+#include "factoriaEntidades.h"
+#include "MapData.h"
 #include "TileInfo.h"
 #include <time.h>
 #include "Sierra.h"
 #include "Helice.h"
 #include "ZonaBase.h"
+#include "tmxReader.h"
 #define DEBUG
 
 //Update que realiza la habitacion. Ha de actualizarse todo lo que haya en ella (enemigos, objetos, balas, etc)
@@ -43,14 +45,14 @@ void Room::update()
 //No hace falta meter los parametros string para cargar un tilesheet, carga por defecto el de la zona 1
 Room::Room(Juego * pJ, vector<Room*> * ro, Zona* z) :pJuego(pJ)
 {
+	
 	zona = z;
-	//Si es base, creamos la room de Base.
+	//Si es base, creamos la room de Base
 	if (typeid(ZonaBase) == typeid(*zona)){
 		textTiles = new Tilesheet(TOTAL_TILES, pJuego->getTilesheet(zona));
-		RoomInfo _infoRoom = pJuego->getRoomBase();
-		cout << _infoRoom.fichero() << "\n";
-		SetRoomFichero(_infoRoom.fichero(), ro);
-		ocupados = vector<vector<bool>>(Tiles.size(), vector<bool>(Tiles[0].size(), false));
+		mapdat = pJuego->getBaseRoom();
+		SetRoomFichero(" ", ro);
+		ocupados = vector<vector<bool>>(mapdat->getH(), vector<bool>(mapdat->getH(), false));
 		for (size_t i = 0; i < ocupados.size(); i++)
 		{
 			for (size_t j = 0; j < ocupados[i].size(); j++)
@@ -58,16 +60,14 @@ Room::Room(Juego * pJ, vector<Room*> * ro, Zona* z) :pJuego(pJ)
 				ocupados[i][j] = Tiles[i][j]->getBody() != nullptr;
 			}
 		}
-		meterInanimados(_infoRoom.PatronObjetos());
-	
+		meterEntidades();
 	
 	}
 	//Si no, generamos una zona con niveles aleatorios y to la pesca.
 	else{
 		textTiles = new Tilesheet(TOTAL_TILES, pJuego->getTilesheet(zona));
-		RoomInfo _infoRoom = pJuego->getRoom();
-		cout << _infoRoom.fichero() << "\n";
-		SetRoomFichero(_infoRoom.fichero(), ro);
+		mapdat = pJuego->getRoom();
+		SetRoomFichero(" ", ro);
 		ocupados = vector<vector<bool>>(Tiles.size(), vector<bool>(Tiles[0].size(), false));
 		for (size_t i = 0; i < ocupados.size(); i++)
 		{
@@ -76,9 +76,7 @@ Room::Room(Juego * pJ, vector<Room*> * ro, Zona* z) :pJuego(pJ)
 				ocupados[i][j] = Tiles[i][j]->getBody() != nullptr;
 			}
 		}
-		meterInanimados(_infoRoom.PatronObjetos());
-		meterEnemigos(_infoRoom.PatronEnemigos());
-		//enemigos.push_back(new Perseguidor(pJuego, 200, 200));
+		meterEntidades();
 	}
 }
 
@@ -90,73 +88,6 @@ void Room::stop() {
 	for (int i = 0; i < enemigos.size(); i++) {
 		static_cast<Enemigo*>(enemigos[i])->stop();
 	}
-}
-
-
-void Room::meterInanimados(string const &dir)
-{
-	ifstream fichero(dir);
-	string linea;
-	int i=0;
-	getline(fichero, linea);
-	do
-	{
-		
-		string tipo = "";
-		int posX = -1,posY=-1;
-		float escala = 1;
-		stringstream _lectorLineas(linea);
-		_lectorLineas >> tipo >> posX >> posY >> escala;
-		if (tipo != "") {
-			try
-			{
-				objetos.push_back(creaInanimado(pJuego, tipo, area->x + posX*TILE_WIDTH, area->y + posY*TILE_HEIGHT, escala));
-				bool solapa = false;
-				vector<SDL_Point> _TOcupados = TilesOcupados(*static_cast<Entidad*>(objetos[i])->getRect(), solapa);
-				marcarOcupados(_TOcupados);
-				i++;
-
-			}
-			catch (const std::exception& e)
-			{
-				cout <<e.what();
-			}
-		}
-		getline(fichero, linea);
-	}while (!fichero.fail());
-	fichero.close();
-
-}
-void Room::meterEnemigos(string const & dir){
-	ifstream fichero(dir);
-	string linea;
-	getline(fichero, linea);
-	int i = 0;
-	do
-	{
-		
-		string tipo = "";
-		int posX = -1, posY = -1;
-		int aditional = 1;
-		stringstream _lectorLineas(linea);
-		_lectorLineas >> tipo >> posX >> posY >> aditional;
-		if (tipo != ""&&!ocupados[posY][posX]) {
-			try
-			{
-				enemigos.push_back(creaEnemigo(pJuego, tipo, area->x + posX*TILE_WIDTH, area->y + posY*TILE_HEIGHT, aditional));
-				bool solapa = false;
-				vector<SDL_Point> _TOcupados = TilesOcupados(*static_cast<Entidad*>(enemigos[i])->getRect(), solapa);
-				marcarOcupados(_TOcupados);
-				i++;
-			}
-			catch (std::exception&e)
-			{
-				cout << e.what();
-			}
-		}
-		getline(fichero, linea);
-	} while (!fichero.fail());
-	fichero.close();
 }
 Room::~Room()
 { 
@@ -300,64 +231,14 @@ vector<SDL_Point> Room::TilesOcupados(SDL_Rect const recto, bool & Solapa)
 	return marcados;
 }
 
-//COSAS DE FRAN
-// --------------------------------------------------------------------------------------------------------------
-/*
-
-bool Room::setTiles(string Dirm,b2World * wardo) {
-	
-	int x = 0;
-	int y = 0;
-	return true;
-}
-
-
-
-void Room::DestroyRoom(b2World * wardo)
-{
-	for (size_t i = 0; i < Tiles->size(); i++)
-	{
-			wardo->DestroyBody(Tiles->at(i)->getBody());
-	}
-}
-
-
-int Room::encontrarPosicionTiled(int& const x, int& const y)
-{
-	return(ANCHO_NIVEL / TILE_WIDTH)*((y - (y%TILE_HEIGHT))-1)/TILE_HEIGHT+(1 + (x - (x%TILE_WIDTH)) / TILE_WIDTH);
-}
-
-*/
 void Room::SetRoomFichero(string Dir, vector<Room*> * Habitaciones)
 {
 	int IniX = 0, IniY = 0;
-	int x = 0, y = 0, tipo = -1, maxX = 0, acuX = 0, acuY = 0, maxY = 0;
-	
-	
-	string linea;
-	ifstream mapAux(Dir);
-	getline(mapAux, linea);
-
-	stringstream Cuenta(linea);
-	do
-	{
-		char aux;
-		int auxy = -20;
-		Cuenta >> auxy >> aux;
-		if (auxy != -20) acuX++;
-	} while (!Cuenta.fail());
-	maxX = acuX;
-	acuY++;
-	do
-	{
-		getline(mapAux, linea);
-		if(!mapAux.fail())acuY++;
-	} while (!mapAux.fail());
-	mapAux.close();
-	maxY = acuY;
 	int kek = 0;
+	TMXReader::Layer * lay = mapdat->getLayer();
+	
 	if (Habitaciones != nullptr && Habitaciones->size() > 0){
-		SDL_Rect _zona = { 0, 0, maxX*TILE_WIDTH, maxY*TILE_HEIGHT };
+		SDL_Rect _zona = { 0, 0, lay->getW()*TILE_WIDTH, lay->getH()*TILE_HEIGHT };
 		Room * _roomConectada;
 		Direcciones D;
 		SDL_Point _nuevaPos = lazyFoo(solapamientoHabitaciones(Habitaciones,_zona),_roomConectada,D);
@@ -366,39 +247,45 @@ void Room::SetRoomFichero(string Dir, vector<Room*> * Habitaciones)
 		_roomConectada->setPuertas(D);
 		kek = D;
 	}
-	ifstream map(Dir);
+	int y = IniY;
 
-	acuY = 0;
-	y = IniY;
-	getline(map, linea);
-	for (size_t i = 0;!map.fail(); i++)
+	Tiles.reserve(lay->getH());
+	for (size_t i = 0; i < Tiles.capacity(); i++)
 	{
-		x = IniX;
-		char aux;
-		stringstream lee(linea);
-		acuX = 0;
-		if (!lee.fail()) {
-			Tiles.push_back(vector<Tile*>());
-			Tiles[acuY].reserve(28);
-		}
-		do
+		int x = IniX;
+		Tiles.push_back(vector<Tile*>());
+		Tiles[i].reserve(lay->getW());
+		for (size_t j = 0; j < mapdat->getW(); j++)
 		{
-			lee >> tipo >> aux;
-			if (tipo >= 0 && tipo < TOTAL_TILES) {
-				Tiles[acuY].push_back(new Tile(x, y, tipo, pJuego->getWorld()));
-			}
+			Tiles[i].push_back(new Tile(x,y,lay->getCell(j,i)-1,pJuego->getWorld()));
 			x += TILE_WIDTH;
-			acuX++;
-		} while (!lee.fail());
-		(acuX > maxX) ? maxX = acuX : maxX;
+		}
 		y += TILE_HEIGHT;
-		acuY++;
-		getline(map, linea);
 	}
-	map.close();
-	area = new SDL_Rect{ IniX , IniY, maxX*TILE_WIDTH, maxY*TILE_HEIGHT};
+	
+	area = new SDL_Rect{ IniX , IniY, lay->getW()*TILE_WIDTH, lay->getH()*TILE_HEIGHT};
 	if (kek != 0)
 		setPuertas(-kek);
+}
+
+void Room::meterEntidades(){
+	TMXReader::Objectgroup * objg = mapdat->getObjectGroup();
+	
+	if (objg != nullptr) {
+		for (size_t i = 0; i < objg->groupSize(); i++) {
+			TMXReader::ObjectInfo * obj = objg->at(i);
+			if (obj->getType() == "inanimado") {
+				objetos.push_back(creaEntidad(pJuego,obj,area->x,area->y));
+				if (objetos.at(objetos.size() - 1) == nullptr)
+					objetos.pop_back();
+			}
+			else if(obj->getType() == "enemigo"){
+				enemigos.push_back(creaEntidad(pJuego, obj, area->x, area->y));
+				if (enemigos.at(enemigos.size() - 1) == nullptr)
+					enemigos.pop_back();
+			}
+		}
+	}
 }
 
 void Room::render(){

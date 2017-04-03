@@ -39,7 +39,7 @@ class Agujero:
 	public Inanimado
 {
 public:
-	Agujero(Juego * Pj, SDL_Point Pos, float tam) :Inanimado(Pj, SDL_Rect{Pos.x,Pos.y,TILE_WIDTH*tam,TILE_HEIGHT*tam}, "agujero") {
+	Agujero(Juego * Pj, int x,int y, int w,int h) :Inanimado(Pj, SDL_Rect{x,y,w,h}, "agujero") {
 	
 		fDef.filter.categoryBits = Juego::ESCENARIO_NOCOL;
 		fDef.filter.maskBits = Juego::JUGADOR | Juego::ENEMIGO;
@@ -54,7 +54,7 @@ private:
 class Tuberia: public Inanimado
 {
 public:
-	Tuberia(Juego * Pj, SDL_Point Pos, int tam) :Inanimado(Pj, SDL_Rect{ Pos.x,Pos.y,TILE_WIDTH*tam*7,TILE_HEIGHT*tam*3 }, "Tuberia") {
+	Tuberia(Juego * Pj, int x, int y, int w, int h) :Inanimado(Pj, SDL_Rect{ x,y, w,h }, "Tuberia") {
 		fDef.filter.categoryBits = Juego::ESCENARIO;
 		fDef.filter.maskBits = Juego::JUGADOR | Juego::ENEMIGO | Juego::AT_ENEMIGO | Juego::AT_JUGADOR; 
 		body->CreateFixture(&fDef);
@@ -66,7 +66,7 @@ public:
 class Nave : public Inanimado
 {
 public:
-	Nave(Juego * Pj, SDL_Point Pos, int tam) :Inanimado(Pj, SDL_Rect{ Pos.x,Pos.y,TILE_WIDTH*tam*5,TILE_HEIGHT*tam*3 }, "Nave") {
+	Nave(Juego * Pj, int x, int y, int w, int h) :Inanimado(Pj, SDL_Rect{ x,y, w, h}, "Nave") {
 		fDef.filter.categoryBits = Juego::ESCENARIO;
 		fDef.filter.maskBits = Juego::JUGADOR | Juego::ENEMIGO | Juego::AT_ENEMIGO | Juego::AT_JUGADOR;
 		body->CreateFixture(&fDef);
@@ -79,7 +79,7 @@ public:
 class Chatarra : public Inanimado
 {
 public:
-	Chatarra(Juego * Pj, SDL_Point Pos, int tam) :Inanimado(Pj, SDL_Rect{ Pos.x,Pos.y,TILE_WIDTH*tam * 5,TILE_HEIGHT*tam * 3 }, "Chatarra") {
+	Chatarra(Juego * Pj, int x, int y, int w, int h) :Inanimado(Pj, SDL_Rect{ x, y, w,h }, "Chatarra") {
 		fDef.filter.categoryBits = Juego::ESCENARIO;
 		fDef.filter.maskBits = Juego::JUGADOR | Juego::ENEMIGO | Juego::AT_ENEMIGO | Juego::AT_JUGADOR;
 		body->CreateFixture(&fDef);
@@ -92,7 +92,7 @@ public:
 class  SelectorZona : public Inanimado
 {
 public:
-	SelectorZona(Juego * Pj, SDL_Point Pos, int tam) :Inanimado(Pj, SDL_Rect{ Pos.x,Pos.y,TILE_WIDTH*tam * 4,TILE_HEIGHT*tam *4 }, "SelectorZona") {
+	SelectorZona(Juego * Pj, int x, int y, int w, int h) :Inanimado(Pj, SDL_Rect{ x, y, TILE_WIDTH * 4, TILE_HEIGHT * 4 }, "SelectorZona") {
 		fDef.filter.categoryBits = Juego::ESCENARIO;
 		fDef.filter.maskBits = Juego::JUGADOR;
 		body->CreateFixture(&fDef);

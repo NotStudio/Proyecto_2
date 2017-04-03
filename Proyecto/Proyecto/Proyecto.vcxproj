@@ -35,6 +35,7 @@
     <ClCompile Include="Juego.cpp" />
     <ClCompile Include="Jugable.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="MapData.cpp" />
     <ClCompile Include="MaquinaDePelotas.cpp" />
     <ClCompile Include="MenuPG.cpp" />
     <ClCompile Include="NPC.cpp" />
@@ -72,10 +73,11 @@
     <ClInclude Include="HUD.h" />
     <ClInclude Include="HUDbase.h" />
     <ClInclude Include="Inanimado.h" />
-    <ClInclude Include="InanimadoInfo.h" />
+    <ClInclude Include="factoriaEntidades.h" />
     <ClInclude Include="Item.h" />
     <ClInclude Include="Juego.h" />
     <ClInclude Include="Jugable.h" />
+    <ClInclude Include="MapData.h" />
     <ClInclude Include="MaquinaDePelotas.h" />
     <ClInclude Include="MenuPG.h" />
     <ClInclude Include="NPC.h" />
@@ -86,9 +88,12 @@
     <ClInclude Include="Perseguidor.h" />
     <ClInclude Include="Personaje.h" />
     <ClInclude Include="Play.h" />
+    <ClInclude Include="rapidxml-1.13\rapidxml.hpp" />
+    <ClInclude Include="rapidxml-1.13\rapidxml_iterators.hpp" />
+    <ClInclude Include="rapidxml-1.13\rapidxml_print.hpp" />
+    <ClInclude Include="rapidxml-1.13\rapidxml_utils.hpp" />
     <ClInclude Include="recorreFicheros.h" />
     <ClInclude Include="Room.h" />
-    <ClInclude Include="RoomInfo.h" />
     <ClInclude Include="SelecZonaMenu.h" />
     <ClInclude Include="Sierra.h" />
     <ClInclude Include="TexturasSDL.h" />
@@ -156,12 +161,13 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>$(SolutionDir)Lua\include;$(SolutionDir)SDL2_mixer-2.0.1\include;$(SolutionDir)Box2D\include;$(SolutionDir)SDL2-2.0.5\include;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)SDL2_mixer-2.0.1\include;$(IncludePath)</IncludePath>
     <LibraryPath>$(SolutionDir)SDL2_mixer-2.0.1\lib\x86;$(SolutionDir)Lua;$(SolutionDir)Box2D\lib;$(LibraryPath)</LibraryPath>
     <OutDir>$(SolutionDir)bin\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <LibraryPath>C:\Users\fran\Downloads\Proyecto_2\Proyecto\Box2D\lib;$(LibraryPath)</LibraryPath>
+    <LibraryPath>C:\Users\FRANCISCO-SOLANOLOPE\Desktop\git\Proyecto_2\Proyecto\SDL2_mixer-2.0.1\lib\x86;C:\Users\fran\Downloads\Proyecto_2\Proyecto\Box2D\lib;$(LibraryPath)</LibraryPath>
+    <IncludePath>C:\Users\FRANCISCO-SOLANOLOPE\Desktop\git\Proyecto_2\Proyecto\SDL2_mixer-2.0.1\include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -169,6 +175,7 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>C:\Users\FRANCISCO-SOLANOLOPE\Desktop\git\Proyecto_2\Proyecto\Box2D\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <AdditionalLibraryDirectories>$(SolutionDir)Box2D\lib;C:\Users\skinn\Desktop\Proyecto\SDL2-2.0.5\lib\x86;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
@@ -191,6 +198,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>C:\Users\FRANCISCO-SOLANOLOPE\Desktop\git\Proyecto_2\Proyecto\Box2D\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>

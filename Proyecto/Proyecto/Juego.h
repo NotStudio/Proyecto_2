@@ -13,7 +13,7 @@
 #include "HUDbase.h"
 #include <SDL_mixer.h>
 #include "RoomInfo.h"
-
+#include "MapData.h"
 
 class Zona;
 class EstadoJuego;
@@ -78,10 +78,13 @@ class Juego
 	_InfoTecla KEYS[322];
 
 	unordered_map<string, unordered_map<string, TexturasSDL*>> mapTexturas;
-	unordered_map<string, RoomInfo> Habitaciones;
 	unordered_map<string, unordered_map<int, Fuente*>> fuentes;
 	unordered_map<string, Mix_Music*> Musica;
 	unordered_map<string, Mix_Chunk*> Efectos;
+	
+	unordered_map<string, TMXReader::MapData*> Habitaciones;
+	TMXReader::MapData* Base;
+
 	Mix_Music * MusicaActual;
 	Mix_Music * MusicaSig;
 	Camara *Camera;
@@ -89,8 +92,6 @@ class Juego
 	Zona* zona;
 
 	Objeto* personaje;
-
-	RoomInfo base;
 
 	SDL_TimerID timerCambio;
 public:
@@ -217,9 +218,9 @@ public:
 		return base;
 	}
 
-	RoomInfo getRoom(){
+	TMXReader::MapData* getRoom(){
 		srand(SDL_GetTicks());
-		unordered_map<string, RoomInfo>::iterator it = Habitaciones.begin();
+		unordered_map<string, TMXReader::MapData*>::iterator it = Habitaciones.begin();
 		size_t lim = rand() % Habitaciones.size();
 		for (size_t i = 0; i < lim; i++)
 		{
@@ -227,6 +228,11 @@ public:
 		}
 		return Habitaciones.at(it->first);
 	}
+
+	TMXReader::MapData* getBaseRoom() {
+		return Base;
+	}
+
 	unordered_map<string, Animacion*>getAnimaciones(const string & entity){
 		unordered_map<string, Animacion*> an;
 		try {

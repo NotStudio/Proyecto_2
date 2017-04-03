@@ -17,6 +17,7 @@ La mecánica del juego puede dividirse en varios aspectos. Por un lado tenemos e
 - Ataque a melee: ataque a corta distancia que puede realizarse en 4 direcciones. Su rango dependerá del personaje seleccionado.
 
 - Ataque a distancia: el personaje lanza proyectiles que recorren el nivel hasta impactar con algo o llegar a su máximo rango, que dependerá de los atributos del personaje.
+
 ### Dinámica
 El juego tiene 2 rasgos respecto a la dinámica, Survival y Arcade, una necesita de la otra, es necesario realizar la parte Arcade para poder avanzar en la Survival y esta amplia la parte Arcade.
 #### Survival
@@ -24,7 +25,7 @@ Esta parte de la dinámica es la que hace avanzar directamente la historia o des
 #### Arcade
 Esta parte de la dinámica consiste en completar las zonas, que se componen de un número de niveles/habitaciones fijo, para obtener recursos, y estos poder ser usados en la parte Survival del juego. Se desarrolla en las habitaciones, se tienen que acabar con todos los enemigos de la habitción para poder pasar una habitación colindante de la actual y llegar al acceso del siguiente nivel que estará en una habitación del nivel.
 ### Estética
-Cartoon. Estética desenfadada. 
+Cartoon. Estética desenfadada.
 ## Menús
 ### Inicio
 Menú que se muestra al iniciar el juego, desde el que podemos acceder al juego directamente (entraremos en la base), ir al menú de opciones o salir del juego.
@@ -76,9 +77,20 @@ Al estrellarse sobre la superficie terrestre en una pradera aparece entre el hum
 
 | Sprite                                             | Nombre           | Descripción | HP | At | Ve | FA |
 | :-------------:                                    | :-------------   |:---|:---:|:---:|:---:|:---:|
-| <img src="DocImg/pp.jpg" width="50" height="50">   | Toasty           | Personaje principal de la historia es na tostadora | ? | ? | ? | ? |
-| <img src="dirección" width="50" height="50">       | Gotchi           | Personaje desbloqueable, para poder jugar con el se necesitan Pilas | ? | ? | ? | ? |
+| <img src="DocImg/imagenesGDD/toasty.png" width="100">   | Toasty           | Personaje principal de la historia es na tostadora | ? | ? | ? | ? |
+| <img src="dirección" width="100">       | Gotchi           | Personaje desbloqueable, para poder jugar con el se necesitan Pilas | ? | ? | ? | ? |
 
+## Inanimados
+Objetos que son parte del escenario, algunos tienen acciones en determinadas condiciones.
+
+| Sprite                                             | Nombre           | Ratio ideal (en tiles)  | Nota|
+| :-------------:                                    | :-------------   |:---:|:----|
+| <img src="DocImg/imagenesGDD/tuberia.png" width="100">   | Tuberia           | 7*3 |Tiene un parametro|
+| <img src="DocImg/imagenesGDD/nave.png" width="100">   | Nave           | 5*3 |una nave normal y corriente|
+| <img src="DocImg/imagenesGDD/chatarra.png" width="100">   | Chatarra           | 3*2 |Basura corriente|
+| <img src="DocImg/imagenesGDD/agujero.png" width="100">   | Agujero           | 1*1 |Las balas pasan por encima|
+| <img src="DocImg/imagenesGDD/coche.png" width="100">   | Coche           | 3*1 |un coche rojo|
+| <img src="DocImg/imagenesGDD/.png" width="100">   | SelectorZona           | 1*1 |Solo esta en la base y sirve para selacionar zona|
 ## Objetos
 ### Consumible
 Objetos que se agotan y afectan a las stats del jugador. Los cambios no serán permanentes, solo durarán hasta el final de la run, se gastan en el acto.
@@ -86,11 +98,10 @@ Se consiguen matando enemigos o encotrandolos por el mapa.
 
 | Sprite                                             | Nombre           |efecto        |
 | :-------------:                                    |:-------------    |:-------------|
-| <img src="DocImg/pp.jpg" width="50" height="50"> | Objeto generico  | efecto generico |
-| <img src="Direccion" height="50" width="50">     | Bateria de Coche | maxHP+1, HP+1 |
-| <img src="Direccion" height="50" width="50">     | Pila             | HP+1 |
-| <img src="Direccion" height="50" width="50">     | Cable            | Ve+1 |
-| <img src="Direccion" height="50" width="50">     | Transistor       | At+1 |
+| <img src="DocImg/imagenesGDD/bateria.png" width="100">     | Bateria de Coche | maxHP+1, HP+1 |
+| <img src="DocImg/imagenesGDD/pila.png" width="100">     | Pila             | HP+1 |
+| <img src="DocImg/imagenesGDD/cable.png" width="100">     | Cable            | Ve+1 |
+| <img src="DocImg/imagenesGDD/transistor.png" width="100">     | Transistor       | At+1 |
 
 
 
@@ -138,7 +149,7 @@ Para el desarrollo de la historia, se craftean o se consiguen matando a jefes.
 | <img src="dirección" width="50" height="50">     | Scrapper           | Desguace | Debajo | HP | At | Ve | FA |
 
 ####Scrapper
-Enemigo jefe que se mueve solamente en el eje X. Está ubicado en la pared norte del nivel. 
+Enemigo jefe que se mueve solamente en el eje X. Está ubicado en la pared norte del nivel.
 Ataque:
 - 1ª Fase: alterna dos ataques. Con el primero, lanza coches (proyectil mas grande de lo normal) que tiene apilados detrás suya con el gancho que tiene en la mano derecha; en el segundo, lanza ruedas en tres direcciones durante un breve periodo de tiempo.
 - 2ª Fase: alterna los mismos dos ataques, pero ahora tiene una pistola de aceite. Lanza chorros de aceite que si golpean al jugador, o pasa por el charco que ha creado el disparo, se ralentiza el movimiento del jugador.

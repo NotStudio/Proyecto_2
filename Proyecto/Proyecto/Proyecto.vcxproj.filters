@@ -67,6 +67,9 @@
     <Filter Include="Header Files\Niveles">
       <UniqueIdentifier>{b12b9acc-3275-4025-8b00-0b95b19e89c9}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\TMX">
+      <UniqueIdentifier>{ba7757f7-d3fd-44ad-a066-cf9b3ac85965}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -176,6 +179,9 @@
     </ClCompile>
     <ClCompile Include="SelecZonaMenu.cpp">
       <Filter>Source Files\Estados</Filter>
+    </ClCompile>
+    <ClCompile Include="MapData.cpp">
+      <Filter>Source Files\Niveles</Filter>
     </ClCompile>
     <ClCompile Include="ZonaDesguace.cpp">
       <Filter>Source Files\Zonas</Filter>
@@ -299,9 +305,6 @@
     <ClInclude Include="Sierra.h">
       <Filter>Header Files\Personajes\Enemigos</Filter>
     </ClInclude>
-    <ClInclude Include="RoomInfo.h">
-      <Filter>Header Files\Niveles</Filter>
-    </ClInclude>
     <ClInclude Include="ZonaJuego.h">
       <Filter>Header Files\Zonas</Filter>
     </ClInclude>
@@ -311,14 +314,29 @@
     <ClInclude Include="Zona.h">
       <Filter>Header Files\Zonas</Filter>
     </ClInclude>
-    <ClInclude Include="InanimadoInfo.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="rapidxml-1.13\rapidxml.hpp">
+      <Filter>Header Files\TMX</Filter>
+    </ClInclude>
+    <ClInclude Include="rapidxml-1.13\rapidxml_utils.hpp">
+      <Filter>Header Files\TMX</Filter>
+    </ClInclude>
+    <ClInclude Include="rapidxml-1.13\rapidxml_iterators.hpp">
+      <Filter>Header Files\TMX</Filter>
+    </ClInclude>
+    <ClInclude Include="rapidxml-1.13\rapidxml_print.hpp">
+      <Filter>Header Files\TMX</Filter>
     </ClInclude>
     <ClInclude Include="SelecZonaMenu.h">
       <Filter>Header Files\Estados</Filter>
     </ClInclude>
     <ClInclude Include="ZonaDesguace.h">
       <Filter>Header Files\Zonas</Filter>
+    </ClInclude>
+    <ClInclude Include="factoriaEntidades.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MapData.h">
+      <Filter>Header Files\Niveles</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
