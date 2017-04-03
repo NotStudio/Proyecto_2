@@ -57,18 +57,30 @@ namespace TMXReader{
 
 	class Properties
 	{
-	public:
+	protected:
 		Properties();
+		//you don't really care
 		Properties(rapidxml::xml_node<> * nodo);
+		//you don't really care
 		void setProperties(rapidxml::xml_node<> * nodo);
+		//you don't really care
 		void setCustomProperties(rapidxml::xml_node<> * nodo);
+	public:
+		//get an int value from the properties, it will give you 0 if doesn't exists
 		void getValue(const string&, int&);
+		//get an string value from the properties, it will give you null string if doesn't exists
 		void getValue(const string&, string&);
+		//get x 
 		int getX(){ int a; getValue("x", a); return a; };
+		//get y
 		int getY(){ int a; getValue("y", a); return a; };
+		//get the name, if it has a name
 		string getName(){ string a; getValue("name", a); return a; };
+		//get the type, if it has a type
 		string getType(){ string a; getValue("type", a); return a; };
+		//get the width, if it has a width
 		int getW(){ int a; getValue("width", a); return a; };
+		//get the height, if it has a height
 		int getH(){ int a; getValue("height", a); return a; };
 	private:
 		void setValue(const string&, const double&);
@@ -96,17 +108,31 @@ namespace TMXReader{
 		Objectgroup();
 		Objectgroup(rapidxml::xml_node<> * nodo);
 		~Objectgroup();
+		// the number of objects
 		int groupSize() { return _Objects.size(); };
-		ObjectInfo* getObject(int n) { return _Objects[n]; };
+		// get the first object with that name and that type in the group
 		ObjectInfo* get_object(const string & name, const string & typ);
-		void get_objects_by_type(const string & type, vector<ObjectInfo*>& objs);
-		void get_objects_by_name(const string & name, vector<ObjectInfo*>& objs);
-		void get_objects_by_type_name(const string & type, const string & name, vector<ObjectInfo*>& objs);
-		void get_undefined_objects(vector<ObjectInfo*>& objs);
+		// get an array of objects of the same type
+		vector<ObjectInfo*> get_objects_by_type(const string & type);
+		// get an array of objects of the same name
+		vector<ObjectInfo*> get_objects_by_name(const string & name);
+		// get an array of objects of the same name and same type
+		vector<ObjectInfo*> get_objects_by_type_name(const string & type, const string & name);
+		// get an array of objects without type and name
+		vector<ObjectInfo*> get_undefined_objects();
+		// i think the name speaks for it self
 		vector<ObjectInfo*> GetAllObjects() { return _Objects; };
-
-		ObjectInfo* operator[] (size_t i) {
-			return _Objects[i];
+		// get the n object of the array
+		ObjectInfo* at(int n) {
+			try
+			{
+				return _Objects.at(n);
+			}
+			catch (out_of_range)
+			{
+				printf("the number %s is out of range you have to choose between 0 and %s \n", n, _Objects.size());
+				return nullptr;
+			}
 		}
 
 	private:
@@ -119,7 +145,9 @@ namespace TMXReader{
 	public:
 		Layer();
 		Layer(rapidxml::xml_node<> * nodo);
+		// get the map of the layer
 		void getMap(vector<vector<int>>&);
+		// get that cell from the map
 		int getCell(int x, int y) {
 			return map[y][x];
 		}
@@ -131,17 +159,26 @@ namespace TMXReader{
 	{
 	public:
 		MapData();
+		//give the file it will give you the map
 		MapData(string);
 		~MapData();
-		void getLayer(Layer* &, int = 0);
-		void getLayer_by_name(Layer*&, const string &);
-		void getLayer_by_type(Layer*&, const string&);
-		void getLayer_by_type_name(Layer *& , const string&, const string&);
-		void getObjectGroup(Objectgroup*&, int = 0);
-		void getObjectGroup(Objectgroup*&, string);
+		// get the n layer
+		Layer* getLayer( int = 0);
+		// get the layer with that name
+		Layer* getLayer_by_name(const string &);
+		// get the layer with that type
+		Layer* getLayer_by_type( const string&);
+		// get the layer with that name and that type
+		Layer* getLayer_by_type_name(const string&, const string&);
+		// get the n group of objects
+		Objectgroup* getObjectGroup( int = 0);
+		// get the group of objects with that name
+		Objectgroup* getObjectGroup( string);
+		// total of layers
 		int totalLayers() {
 			return _layers.size();
 		}
+		// total of group of objects
 		int totalObjGroups() {
 			return _objsGroups.size();
 		}

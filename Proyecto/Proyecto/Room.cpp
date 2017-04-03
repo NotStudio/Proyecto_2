@@ -235,8 +235,8 @@ void Room::SetRoomFichero(string Dir, vector<Room*> * Habitaciones)
 {
 	int IniX = 0, IniY = 0;
 	int kek = 0;
-	TMXReader::Layer * lay = nullptr; 
-	mapdat->getLayer(lay);
+	TMXReader::Layer * lay = mapdat->getLayer();
+	
 	if (Habitaciones != nullptr && Habitaciones->size() > 0){
 		SDL_Rect _zona = { 0, 0, lay->getW()*TILE_WIDTH, lay->getH()*TILE_HEIGHT };
 		Room * _roomConectada;
@@ -269,11 +269,11 @@ void Room::SetRoomFichero(string Dir, vector<Room*> * Habitaciones)
 }
 
 void Room::meterEntidades(){
-	TMXReader::Objectgroup * objg = nullptr;
-	mapdat->getObjectGroup(objg);
+	TMXReader::Objectgroup * objg = mapdat->getObjectGroup();
+	
 	if (objg != nullptr) {
 		for (size_t i = 0; i < objg->groupSize(); i++) {
-			TMXReader::ObjectInfo * obj = objg->operator[](i);
+			TMXReader::ObjectInfo * obj = objg->at(i);
 			if (obj->getType() == "inanimado") {
 				objetos.push_back(creaEntidad(pJuego,obj,area->x,area->y));
 				if (objetos.at(objetos.size() - 1) == nullptr)

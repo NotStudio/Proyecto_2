@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="24" height="24" tilewidth="128" tileheight="128" nextobjectid="1">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="24" height="24" tilewidth="128" tileheight="128" nextobjectid="8">
  <tileset firstgid="1" name="Zona1" tilewidth="128" tileheight="128" tilecount="24" columns="4">
-  <image source="../Proyecto II/Proyecto_2/Proyecto/Material/tilesheet_zon2.png" width="512" height="768"/>
+  <image source="../../Mapa/Tilesets/Tileset_2.png" width="512" height="768"/>
  </tileset>
  <layer name="Capa de Patrones 1" width="24" height="24">
   <data encoding="csv">
@@ -31,4 +31,11 @@
 20,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,14,19
 </data>
  </layer>
+ <objectgroup name="Capa de Objetos 1">
+  <object id="1" name="perseguidor" type="enemigo" x="1152" y="768" width="128" height="128"/>
+  <object id="2" name="chatarra" type="inanimado" x="2684.97" y="118.182" width="376.485" height="261.333"/>
+  <object id="3" name="helice" type="enemigo" x="896" y="1152" width="128" height="128"/>
+  <object id="4" name="tuberia" type="inanimado" x="0" y="2560" width="512" height="256"/>
+  <object id="7" name="perseguidor" type="enemigo" x="1536" y="2176" width="128" height="128"/>
+ </objectgroup>
 </map>

@@ -50,7 +50,6 @@
     <ClCompile Include="Sierra.cpp" />
     <ClCompile Include="TexturasSDL.cpp" />
     <ClCompile Include="Tile.cpp" />
-    <ClCompile Include="tmxReader.cpp" />
     <ClCompile Include="Tostadora.cpp" />
     <ClCompile Include="ZonaAccion.cpp" />
     <ClCompile Include="ZonaBase.cpp" />
@@ -94,13 +93,11 @@
     <ClInclude Include="rapidxml-1.13\rapidxml_utils.hpp" />
     <ClInclude Include="recorreFicheros.h" />
     <ClInclude Include="Room.h" />
-    <ClInclude Include="RoomInfo.h" />
     <ClInclude Include="SelecZonaMenu.h" />
     <ClInclude Include="Sierra.h" />
     <ClInclude Include="TexturasSDL.h" />
     <ClInclude Include="Tile.h" />
     <ClInclude Include="TileInfo.h" />
-    <ClInclude Include="tmxReader.h" />
     <ClInclude Include="Tostadora.h" />
     <ClInclude Include="Zona.h" />
     <ClInclude Include="ZonaAccion.h" />

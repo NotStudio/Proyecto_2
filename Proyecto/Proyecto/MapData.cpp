@@ -96,13 +96,36 @@ void Properties::setCustomProperties(rapidxml::xml_node<>* nodo)
 	}
 }
 void Properties::setValue(const string & name, const string & value){
-	_stringValues.emplace(make_pair(name, value));
+	try
+	{
+		_stringValues.at(name) = value;
+
+	}
+	catch (out_of_range)
+	{
+		_stringValues.emplace(make_pair(name, value));
+
+	}
 }
 void Properties::setValue(const string & name, const double & value){
-	_intValues.emplace(make_pair(name, value));
+	try
+	{
+		_intValues.at(name) = value;
+	}
+	catch (out_of_range)
+	{
+		_intValues.emplace(make_pair(name, value));
+	}
 }
 void Properties::setValue(const string & name, const bool & value) {
-	_boolValues.emplace(make_pair(name, value));
+	try
+	{
+		_boolValues.at(name) = value;
+	}
+	catch (out_of_range)
+	{
+		_boolValues.emplace(name, value);
+	}
 }
 void Properties::getValue(const string&name, string&value){
 	try{
@@ -119,7 +142,7 @@ void Properties::getValue(const string&name , int&value){
 	}
 	catch (out_of_range){
 		printf(" value %s not found, you get a 0", name.c_str());
-		value = 0;
+		value = NULL;
 	}
 }
 ObjectInfo::ObjectInfo(rapidxml::xml_node<> * nodo) :Properties(nodo)
@@ -189,29 +212,35 @@ ObjectInfo* Objectgroup::get_object(const string & name, const string & type){
 	}
 	return obj;
 }
-void Objectgroup::get_objects_by_type(const string & type, vector<ObjectInfo*>& objs){
+vector<ObjectInfo*> Objectgroup::get_objects_by_type(const string & type){
+	vector<ObjectInfo*> objs;
 	for (auto obj : _Objects){
 		if (obj->getType() == type){
 			objs.push_back(obj);
 		}
 	}
+	return objs;
 }
-void Objectgroup::get_objects_by_name(const string & name, vector<ObjectInfo*>& objs){
+vector<ObjectInfo*> Objectgroup::get_objects_by_name(const string & name){
+	vector<ObjectInfo*> objs;
 	for (auto obj : _Objects){
 		if (obj->getName() == name){
 			objs.push_back(obj);
 		}
 	}
+	return objs;
 }
-void Objectgroup::get_objects_by_type_name(const string & type, const string & name, vector<ObjectInfo*> &objs){
+vector<ObjectInfo*>  Objectgroup::get_objects_by_type_name(const string & type, const string & name){
+	vector<ObjectInfo*> objs;
 	for (auto obj : _Objects){
 		if (obj->getName() == name&&obj->getType() == type){
 			objs.push_back(obj);
 		}
 	}
+	return objs;
 }
-void Objectgroup::get_undefined_objects(vector<ObjectInfo*>& objs){
-	get_objects_by_type_name("", "", objs);
+vector<ObjectInfo*> Objectgroup::get_undefined_objects(){
+	return get_objects_by_type_name("", "");
 }
 
 Layer::Layer(rapidxml::xml_node<> * nodo) :Properties(nodo)
@@ -285,9 +314,9 @@ MapData::~MapData()
 	}
 }
 
-void MapData::getLayer(Layer *& l, int n)
+Layer* MapData::getLayer(int n)
 {
-	l = nullptr;
+	Layer * l = nullptr;
 	try
 	{
 		l = _layers.at(n);
@@ -296,41 +325,46 @@ void MapData::getLayer(Layer *& l, int n)
 	{
 		printf("layer %s is out of range /n", n);
 	}
+	return l;
 }
 
-void MapData::getLayer_by_name(Layer *& l, const string &n)
+Layer* MapData::getLayer_by_name(const string &n)
 {
-	l = nullptr;
+	Layer * l = nullptr;
 	for (auto la : _layers) {
 		if (la->getName() == n)
 			l = la;
 	}
+	return l;
 }
 
-void TMXReader::MapData::getLayer_by_type(Layer *& l, const string &t)
+Layer* TMXReader::MapData::getLayer_by_type(const string &t)
 {
-	l = nullptr;
+	Layer * l = nullptr;
 	for (auto la : _layers) {
 		if (la->getType() == t)
 			l = la;
 	}
+	return l;
 }
 
-void TMXReader::MapData::getObjectGroup(Objectgroup *& objg, int n)
+Objectgroup* TMXReader::MapData::getObjectGroup( int n)
 {
+	Objectgroup * objg = nullptr;
 	try
 	{
 		objg = _objsGroups.at(n);
 	}
 	catch (out_of_range)
 	{
-		objg = nullptr;
+		printf("Object group number %s is out of range the max is %s \n", n, _objsGroups.size());
 	}
+	return objg;
 }
 
-void TMXReader::MapData::getObjectGroup(Objectgroup *& objg, string n)
+Objectgroup* MapData::getObjectGroup(string n)
 {
-	objg = nullptr;
+	Objectgroup* objg = nullptr;
 	int i = 0;
 	bool search = true;
 	while (i < _objsGroups.size()&&search)
@@ -341,5 +375,9 @@ void TMXReader::MapData::getObjectGroup(Objectgroup *& objg, string n)
 		}
 		i++;
 	}
+	if (i < _objsGroups.size()) {
+		printf("the object group %s not found \n",n.c_str());
+	}
+	return objg;
 }
 

@@ -180,11 +180,8 @@
     <ClCompile Include="SelecZonaMenu.cpp">
       <Filter>Source Files\Estados</Filter>
     </ClCompile>
-    <ClCompile Include="tmxReader.cpp">
-      <Filter>Header Files\Niveles</Filter>
-    </ClCompile>
     <ClCompile Include="MapData.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Niveles</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -305,9 +302,6 @@
     <ClInclude Include="Sierra.h">
       <Filter>Header Files\Personajes\Enemigos</Filter>
     </ClInclude>
-    <ClInclude Include="RoomInfo.h">
-      <Filter>Header Files\Niveles</Filter>
-    </ClInclude>
     <ClInclude Include="ZonaJuego.h">
       <Filter>Header Files\Zonas</Filter>
     </ClInclude>
@@ -316,9 +310,6 @@
     </ClInclude>
     <ClInclude Include="Zona.h">
       <Filter>Header Files\Zonas</Filter>
-    </ClInclude>
-    <ClInclude Include="tmxReader.h">
-      <Filter>Header Files\Niveles</Filter>
     </ClInclude>
     <ClInclude Include="rapidxml-1.13\rapidxml.hpp">
       <Filter>Header Files\TMX</Filter>
@@ -339,7 +330,7 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="MapData.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Niveles</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
