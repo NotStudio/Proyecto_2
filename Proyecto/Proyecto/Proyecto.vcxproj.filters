@@ -186,6 +186,9 @@
     <ClCompile Include="ZonaDesguace.cpp">
       <Filter>Source Files\Zonas</Filter>
     </ClCompile>
+    <ClCompile Include="Cambiante.cpp">
+      <Filter>Source Files\Personajes\Jugables</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Juego.h">
@@ -337,6 +340,9 @@
     </ClInclude>
     <ClInclude Include="MapData.h">
       <Filter>Header Files\Niveles</Filter>
+    </ClInclude>
+    <ClInclude Include="Cambiante.h">
+      <Filter>Header Files\Personajes\Jugables</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
