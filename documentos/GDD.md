@@ -73,6 +73,12 @@ Como se ha mencionado antes, los niveles son donde sucede la acción. Los nivele
 ## Historia
 Año 16DB, Estacion espacial “Shuppatsu”, un asteroide colisiona contra la estacion provocando el desprendimiento de uno de los módulos, el cual se precipita sobre la Tierra.
 Al estrellarse sobre la superficie terrestre en una pradera aparece entre el humo una tostadora que debido al impacto se ha encendido.
+Está Tostadora fue una de las primeras de su especie, los Companion Devices, también conocidos como CD. Aparatos electrónicos corrientes con una avanzada inteligencia artificial que emulaba emociones para que los astronautas no se sintieran solos en sus trabajos en el espacio. Debido a la complejidad de dicha inteligencia artificial los diseñadores debían dividirlas en dos módulos.
+Por un lado el módulo de IA “m-4N” que estaba diseñado para poder desarrollar una inteligencia emocional, emulación de emociones y comunicación con humanos progresiva simulando la compañía humana. Por otro lado el módulo “g-0D” era el encargado de las respuestas motoras y control sobre el aparato en sí. Al avanzar la tecnología muchos de los aparatos CD fueron reemplazados por los modelos Fellas Devices, conocidos como FD, que implementan un solo módulo que fusiona el g-0D y el m-4N en uno solo. Debido a este avance los antiguos y obsoletos modelos CD comenzaron a ser retirados y convertidos en chatarra para reutilización en nuevos modelos. 
+Uno de los astronautas, Collin McGuffin , encargado del mantenimiento de la estación desarrolló una relación cercana con una tostadora y llego a bautizarla con el nombre de Toasty, no era muy querida en la estación espacial porque no sabía hacer bien las tostadas, cuando llegó el momento de retirar los CD McGuffin a toasty en uno de los módulos no habitables. Lo desconectó para ahorrar batería con la promesa de que volvería cuando hubiera acabado la recolección de antiguos CDs.
+Después de la colisión Toasty levanta de letargo y al verse en la situación de estar solo, va en la búsqueda de Collin McGuffin, y decide que la mejor idea es volver a la base espacial, y la mejor forma es fabricar un cohete, aquí la aventura comienza, en busca de los materiales sufientes para fabricar un cohete, en la que conoceremos a otros CDs que nos ayudaran en esta jesta, lucharemos contra FD corruptos.
+
+
 ## Personajes
 
 | Sprite                                             | Nombre           | Descripción | HP | At | Ve | FA |
