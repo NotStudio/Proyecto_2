@@ -5,14 +5,14 @@ Sierra::Sierra(Juego* punteroJuego, int x, int y, int dir) : Enemigo(punteroJueg
 {
 	stats.daño = 1;
 	stats.velAtq = 0;
-	stats.velMov = 2;
+	stats.velMov = 10;
 	stats.vida = 1;
 	direccion = dir;
 	for (unordered_map<string, Juego::Animacion*>::iterator i = animaciones.begin(); i != animaciones.end(); i++)
 	{
 		animaciones[i->first]->setNumFrames(30);
 	}
-	currentAnim = animaciones[0];
+	currentAnim = animaciones.at("idle");
 	col = false;
 	
 	body->GetFixtureList()->SetSensor(true);

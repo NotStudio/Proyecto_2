@@ -39,7 +39,7 @@ Objeto* creaEnemigo(Juego * pj, string id, int x, int y, int aditional){
 	}
 	else if (id == "Sierra"||id=="sierra")
 	{
-		return new Sierra(pj, x,y, aditional);
+		return new Sierra(pj, x,y, 0);
 	}
 	else if (id == "helice" || id == "Helice")
 	{

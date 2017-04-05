@@ -11,7 +11,7 @@ Helice::Helice(Juego* punteroJuego, int x, int y) : Enemigo(punteroJuego, {x,y,6
 	currentAnim = animaciones.at("idle");
 	stats.daño = 1;
 	stats.velAtq = 0;
-	stats.velMov = 4;
+	stats.velMov = 10;
 	stats.vida = 3;
 
 	rng = rand() % 2;
@@ -64,9 +64,6 @@ void Helice::move(){
 }
 
 void Helice::disparo(){
-
-
-
 
 	float x = static_cast<Entidad*>(pJuego->getPlayer())->getX();
 	float y = static_cast<Entidad*>(pJuego->getPlayer())->getY();
