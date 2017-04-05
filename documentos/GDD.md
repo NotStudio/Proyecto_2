@@ -45,6 +45,9 @@ El guardado se realizará automaticamente al entrar a la base al volver de una z
 Las zonas son las partes jugables del juego. Estás se dividen en niveles/habitaciones, que es donde realmente sucede la acción. Una zona tiene las siguientes características:
 
 -  Compuesta de varios niveles o habitaciones.
+- Las zonas siguen el siguiente orden de niveles:
+	- El primer nivel es un nivel base, en el que no hay enemigos, objetos etc. Sólo el jugador.
+	- Después, habrá  X niveles en los que sí habrá NPC's y que comparten dificultad. Al superar esos X niveles, habrá una habitación en la que no existirán enemigos. En esta habitación (neutra) podremos volver a base sin perder nuestros recursos, o continuar otros X niveles con un aumento de dificultad.
 - Existe un nivel final con un boss particular.
 - Hay 3 tipos de recursos por zona: Recursos genéricos (comunes entre las diferentes zonas), recursos específicos de cada zona y el recurso que da el boss.
 - La forma de colocar habitaciones es pseudo-aleatoria.
