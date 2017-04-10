@@ -189,6 +189,18 @@
     <ClCompile Include="Cambiante.cpp">
       <Filter>Source Files\Personajes\Jugables</Filter>
     </ClCompile>
+    <ClCompile Include="BalaAceite.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BalaAmiga.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BalaEnemiga.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Jefe1.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Juego.h">

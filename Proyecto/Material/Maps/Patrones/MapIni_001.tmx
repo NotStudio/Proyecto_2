@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="12" height="12" tilewidth="128" tileheight="128" nextobjectid="1">
+ <tileset firstgid="1" name="keloke" tilewidth="128" tileheight="128" tilecount="36" columns="4">
+  <image source="../../Mapa/Tilesets/Tileset_zon1.png" width="512" height="1152"/>
+ </tileset>
+ <layer name="Capa de Patrones 1" width="12" height="12">
+  <data encoding="csv">
+21,16,16,16,16,16,16,16,16,16,16,22,
+15,5,5,5,5,5,5,5,5,5,5,13,
+15,5,5,5,5,5,5,5,5,5,5,13,
+15,5,5,5,5,8,8,5,5,5,5,13,
+15,5,5,5,5,8,8,5,5,5,6,13,
+15,5,5,5,5,5,5,5,5,5,6,13,
+15,5,5,5,5,8,8,5,5,5,5,13,
+15,5,5,5,5,8,8,5,5,5,5,13,
+15,5,8,5,5,5,5,5,5,5,6,13,
+15,5,8,5,5,5,5,5,5,5,5,13,
+15,5,5,5,5,5,5,5,5,5,12,13,
+24,14,14,14,14,14,14,14,14,14,14,23
+</data>
+ </layer>
+</map>

@@ -6,7 +6,7 @@
 ZonaBase::ZonaBase(Juego* punteroJuego):ZonaJuego(punteroJuego)
 {
 	id = "zon1";
-	baseNivel =  new Room(pJuego, nullptr, this);
+	baseNivel =  new Room(pJuego, nullptr, this, "Base");
 	nivelActual = baseNivel;
 	pJuego->getCamera()->setLimite(nivelActual->getArea());
 	static_cast<Jugable*>(pJuego->getPlayer())->cambiaEstado(Jugable::BASE);

@@ -43,7 +43,7 @@ void Room::update()
 
 //Constructora de la habitación. Aquí es donde se lee el nivel, se crea y se añaden los enemigos y objetos.
 //No hace falta meter los parametros string para cargar un tilesheet, carga por defecto el de la zona 1
-Room::Room(Juego * pJ, vector<Room*> * ro, Zona* z) :pJuego(pJ)
+Room::Room(Juego * pJ, vector<Room*> * ro, Zona* z, std::string type) :pJuego(pJ)
 {
 	
 	zona = z;
@@ -64,9 +64,15 @@ Room::Room(Juego * pJ, vector<Room*> * ro, Zona* z) :pJuego(pJ)
 	
 	}
 	//Si no, generamos una zona con niveles aleatorios y to la pesca.
-	else{
+	else {
+		
 		textTiles = new Tilesheet(TOTAL_TILES, pJuego->getTilesheet(zona));
-		mapdat = pJuego->getRoom();
+		if (type == "Ini")
+			mapdat = pJuego->getIniRoom();
+		else if (type == "Boss")
+			mapdat = pJuego->getBossRoom();
+		else if (type == "Normal")
+			mapdat = pJuego->getRoom();
 		SetRoomFichero(" ", ro);
 		ocupados = vector<vector<bool>>(Tiles.size(), vector<bool>(Tiles[0].size(), false));
 		for (size_t i = 0; i < ocupados.size(); i++)
@@ -76,10 +82,11 @@ Room::Room(Juego * pJ, vector<Room*> * ro, Zona* z) :pJuego(pJ)
 				ocupados[i][j] = Tiles[i][j]->getBody() != nullptr;
 			}
 		}
+		
 		meterEntidades();
 	}
 }
-
+//Constructora de niveles dependiendo del string (Boss o inicial)
 
 
 //Metodo que se llama cuando se sale de la habitación. Se llama al stop de todos lo enemigos, que tienen que dejar de hacer ataques. **ESTO ES PROVISIONAL**

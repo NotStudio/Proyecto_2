@@ -83,6 +83,8 @@ class Juego
 	unordered_map<string, Mix_Chunk*> Efectos;
 	
 	unordered_map<string, TMXReader::MapData*> Habitaciones;
+	unordered_map<string, TMXReader::MapData*> HabitacionesIni;
+	unordered_map<string, TMXReader::MapData*> HabitacionesBoss;
 	TMXReader::MapData* Base;
 
 	Mix_Music * MusicaActual;
@@ -225,6 +227,26 @@ public:
 			it++;
 		}
 		return Habitaciones.at(it->first);
+	}
+	TMXReader::MapData* getIniRoom() {
+		srand(SDL_GetTicks());
+		unordered_map<string, TMXReader::MapData*>::iterator it = HabitacionesIni.begin();
+		size_t lim = rand() % HabitacionesIni.size();
+		for (size_t i = 0; i < lim; i++)
+		{
+			it++;
+		}
+		return HabitacionesIni.at(it->first);
+	}
+	TMXReader::MapData* getBossRoom() {
+		srand(SDL_GetTicks());
+		unordered_map<string, TMXReader::MapData*>::iterator it = HabitacionesBoss.begin();
+		size_t lim = rand() % HabitacionesBoss.size();
+		for (size_t i = 0; i < lim; i++)
+		{
+			it++;
+		}
+		return HabitacionesBoss.at(it->first);
 	}
 
 	TMXReader::MapData* getBaseRoom() {

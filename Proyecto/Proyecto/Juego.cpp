@@ -198,17 +198,50 @@ void Juego::initHabitaciones(){
 	for (auto file : ficherosTMX) {
 		string id = file.substr(file.find_last_of('/') + 1);
 		id.erase(id.find_last_of('.'));
-		if (id != "Base") {
-			try
-			{
-				Habitaciones.at(id);
-				printf("nombre repetido en el fichero %s \n", file);
+		string type = id;
+		type = type.substr(0, type.find_first_of('_'));
+		if (type != "Base") {
+			if (type == "Map") {
+				try
+				{
+					Habitaciones.at(id);
+					printf("nombre repetido en el fichero %s \n", file);
+				}
+				catch (out_of_range)
+				{
+					Habitaciones.emplace(make_pair(id, nullptr));
+					Habitaciones.at(id) = new TMXReader::MapData(file);
+				}
 			}
-			catch (out_of_range)
-			{
-				Habitaciones.emplace(make_pair(id, nullptr));
-				Habitaciones.at(id) = new TMXReader::MapData(file);
+			else if (type == "MapIni") {
+				try
+				{
+					HabitacionesIni.at(id);
+					printf("nombre repetido en el fichero %s \n", file);
+				}
+				catch (out_of_range)
+				{
+					HabitacionesIni.emplace(make_pair(id, nullptr));
+					HabitacionesIni.at(id) = new TMXReader::MapData(file);
+				}
+
 			}
+			else if (type == "MapBoss") {
+
+				try
+				{
+					HabitacionesBoss.at(id);
+					printf("nombre repetido en el fichero %s \n", file);
+				}
+				catch (out_of_range)
+				{
+					HabitacionesBoss.emplace(make_pair(id, nullptr));
+					HabitacionesBoss.at(id) = new TMXReader::MapData(file);
+				}
+
+
+			}
+		
 		}
 		else {
 			Base = new TMXReader::MapData(file);
@@ -266,11 +299,23 @@ void Juego::freeMedia() {
 		delete objetos[i];
 		objetos[i] = nullptr;
 	}
-
+	//Borramos los niveles normales
 	for (unordered_map<string,TMXReader::MapData*>::iterator i = Habitaciones.begin(); i !=Habitaciones.end(); i++)
 	{
 		delete Habitaciones.at(i->first);
 		Habitaciones.at(i->first)=nullptr;
+	}
+	//Borrarmos los niveles iniciales
+	for (unordered_map<string, TMXReader::MapData*>::iterator i = HabitacionesIni.begin(); i != HabitacionesIni.end(); i++)
+	{
+		delete HabitacionesIni.at(i->first);
+		HabitacionesIni.at(i->first) = nullptr;
+	}
+	//Borramos los niveles de boses
+	for (unordered_map<string, TMXReader::MapData*>::iterator i = HabitacionesBoss.begin(); i != HabitacionesBoss.end(); i++)
+	{
+		delete HabitacionesBoss.at(i->first);
+		HabitacionesBoss.at(i->first) = nullptr;
 	}
 
 	delete Base;
