@@ -20,6 +20,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Bala.cpp" />
+    <ClCompile Include="BalaAceite.cpp" />
+    <ClCompile Include="BalaAmiga.cpp" />
+    <ClCompile Include="BalaEnemiga.cpp" />
     <ClCompile Include="Boton.cpp" />
     <ClCompile Include="Camara.cpp" />
     <ClCompile Include="Cambiante.cpp" />
@@ -33,6 +36,7 @@
     <ClCompile Include="Helice.cpp" />
     <ClCompile Include="HUD.cpp" />
     <ClCompile Include="Item.cpp" />
+    <ClCompile Include="Jefe1.cpp" />
     <ClCompile Include="Juego.cpp" />
     <ClCompile Include="Jugable.cpp" />
     <ClCompile Include="main.cpp" />
@@ -59,6 +63,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Bala.h" />
+    <ClInclude Include="BalaAceite.h" />
+    <ClInclude Include="BalaAmiga.h" />
+    <ClInclude Include="BalaEnemiga.h" />
     <ClInclude Include="Boton.h" />
     <ClInclude Include="Camara.h" />
     <ClInclude Include="Cambiante.h" />
@@ -77,9 +84,11 @@
     <ClInclude Include="Inanimado.h" />
     <ClInclude Include="factoriaEntidades.h" />
     <ClInclude Include="Item.h" />
+    <ClInclude Include="Jefe1.h" />
     <ClInclude Include="Juego.h" />
     <ClInclude Include="Jugable.h" />
     <ClInclude Include="MapData.h" />
+    <ClInclude Include="LTimer.h" />
     <ClInclude Include="MaquinaDePelotas.h" />
     <ClInclude Include="MenuPG.h" />
     <ClInclude Include="NPC.h" />
@@ -123,7 +132,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v120</PlatformToolset>
+    <PlatformToolset>v140</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>

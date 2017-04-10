@@ -1,5 +1,6 @@
 #include "Tostadora.h"
 #include "Bala.h"
+#include "BalaAmiga.h"
 #include "Play.h"
 #include "checkML.h"
 #include "Room.h"
@@ -42,26 +43,26 @@ void Tostadora::disparo(){
 			aux = Sur;
 				disparar = false;
 				posicion.y += spawnPosition;
-				dynamic_cast<ZonaAccion*>(pJuego->getZona())->getNivel()->nuevaBala(new Bala(pJuego, posicion, sprite, 80.0f, 0, 1, 0));
+				dynamic_cast<ZonaAccion*>(pJuego->getZona())->getNivel()->nuevaBala(new BalaAmiga(pJuego, posicion, 80.0f, 0, 1));
 		}
 		else if (pJuego->inputQuery(SDL_SCANCODE_RIGHT)) {
 			aux = Este;
 			disparar = false;
 			posicion.x += spawnPosition;
-			dynamic_cast<ZonaAccion*>(pJuego->getZona())->getNivel()->nuevaBala(new Bala(pJuego, posicion, sprite, 80.0f, 1, 0, 0));
+			dynamic_cast<ZonaAccion*>(pJuego->getZona())->getNivel()->nuevaBala(new BalaAmiga(pJuego, posicion, 80.0f, 1, 0));
 		}
 		else if (pJuego->inputQuery(SDL_SCANCODE_LEFT)) {
 			aux = Oeste;
 			disparar = false;
 			posicion.x -= spawnPosition;
-			dynamic_cast<ZonaAccion*>(pJuego->getZona())->getNivel()->nuevaBala(new Bala(pJuego, posicion, sprite, 80.0f, -1, 0, 0));
+			dynamic_cast<ZonaAccion*>(pJuego->getZona())->getNivel()->nuevaBala(new BalaAmiga(pJuego, posicion, 80.0f, -1, 0));
 		
 		}
 		else if (pJuego->inputQuery(SDL_SCANCODE_UP)) {
 			aux = Sur;
 			disparar = false;
 			posicion.y -= spawnPosition;
-			dynamic_cast<ZonaAccion*>(pJuego->getZona())->getNivel()->nuevaBala(new Bala(pJuego, posicion, sprite, 80.0f, 0, -1, 0));
+			dynamic_cast<ZonaAccion*>(pJuego->getZona())->getNivel()->nuevaBala(new BalaAmiga(pJuego, posicion, 80.0f, 0, -1));
 		}
 		if (!disparar) {
 			Disparar = SDL_AddTimer(cadencia, timerDisparo, this); pJuego->reproducirEfecto("TShot");

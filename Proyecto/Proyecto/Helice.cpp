@@ -1,5 +1,6 @@
 #include "Helice.h"
 #include "ZonaAccion.h"
+#include "BalaEnemiga.h"
 
 
 Helice::Helice(Juego* punteroJuego, int x, int y) : Enemigo(punteroJuego, {x,y,60,64}, "OV", 500)
@@ -94,7 +95,7 @@ void Helice::disparo(){
 		//contador++;
 		contador = SDL_GetTicks();
 		//cout << " Velx " << velFloat.x << " Vely  " << velFloat.y;
-		dynamic_cast<ZonaAccion*>(pJuego->getZona())->getNivel()->nuevaBala(new Bala(pJuego, posicion, "BallTBala", 80.0f, velFloat.x, velFloat.y, 1));
+		dynamic_cast<ZonaAccion*>(pJuego->getZona())->getNivel()->nuevaBala(new BalaEnemiga(pJuego, posicion, "BallTBala", 80.0f, velFloat.x, velFloat.y));
 	}
 
 }

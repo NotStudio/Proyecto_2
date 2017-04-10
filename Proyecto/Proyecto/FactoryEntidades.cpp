@@ -4,6 +4,7 @@
 #include "Helice.h"
 #include "Perseguidor.h"
 #include "Inanimado.h"
+#include "Jefe1.h"
 #include <stdio.h>
 
 
@@ -48,6 +49,10 @@ Objeto* creaEnemigo(Juego * pj, string id, int x, int y, int aditional){
 	else if (id == "Bomba" || id == "bomba")
 	{
 		return new EnemigoBomba(pj, x, y );
+	}
+	else if (id == "Jefe1" || id == "jefe1")
+	{
+		return new Jefe1(pj, x, y);
 	}
 	else
 	{

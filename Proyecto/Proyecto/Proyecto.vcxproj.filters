@@ -344,5 +344,20 @@
     <ClInclude Include="Cambiante.h">
       <Filter>Header Files\Personajes\Jugables</Filter>
     </ClInclude>
+    <ClInclude Include="Jefe1.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="LTimer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BalaAceite.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BalaAmiga.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BalaEnemiga.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

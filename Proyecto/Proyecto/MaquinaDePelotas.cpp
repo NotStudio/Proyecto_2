@@ -7,7 +7,7 @@
 #include "EstadoPG.h"
 #include "Bala.h"
 #include "ZonaAccion.h"
-
+#include "BalaEnemiga.h"
 
 MaquinaDePelotas::MaquinaDePelotas(Juego* punteroJuego, int x, int y) : Enemigo(punteroJuego, {x,y,128,128}, "BallT", 500)
 {
@@ -63,7 +63,7 @@ void MaquinaDePelotas::move(){
 				//contador++;
 				contador = SDL_GetTicks();
 				//cout << " Velx " << velFloat.x << " Vely  " << velFloat.y;
-				dynamic_cast<ZonaAccion*>(pJuego->getZona())->getNivel()->nuevaBala(new Bala(pJuego, posicion, "BallTBala", 80.0f, velFloat.x, velFloat.y, 1));
+				dynamic_cast<ZonaAccion*>(pJuego->getZona())->getNivel()->nuevaBala(new BalaEnemiga(pJuego, posicion, "BallTBala", 80.0f, velFloat.x, velFloat.y));
 			}
 		}
 	}

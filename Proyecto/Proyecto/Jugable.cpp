@@ -1,5 +1,7 @@
 #include "Jugable.h"
 #include "Enemigo.h"
+#include "BalaEnemiga.h"
+#include "BalaAceite.h"
 #include "Bala.h"
 
 
@@ -24,17 +26,29 @@ Uint32 desactivarInmunidad(Uint32 intervalo, void* param) {
 	//cout << "inmunidad quitada\n";
 	return 0;
 }
+Uint32 velocidadNormal(Uint32 intervalo, void* param){
+	static_cast<Jugable*>(param)->velocidad();
+	return 0;
+}
 void Jugable::onColisionEnter(Objeto * obj){
 	//std::cout << "colision\n";
-	if (dynamic_cast<Enemigo*>(obj)|| dynamic_cast<Bala*>(obj)){
+	
+	if (dynamic_cast<Enemigo*>(obj)|| dynamic_cast<BalaEnemiga*>(obj)){
 		if (!inmune){
-			cout << dynamic_cast<Entidad*>(obj)->getId();
 			inmune = true;
 			//cout << "inmunidad activada\n";
 			stats.vida--;
 			pJuego->reproducirEfecto("scream");
 			//cout << stats.vida << " vidas tienes\n";
 			timerInmune = SDL_AddTimer(350, desactivarInmunidad, this);
+		}
+	}
+	else if (dynamic_cast<BalaAceite*>(obj)){
+		if (!ralentizado){
+			ralentizado = true;
+			stats.velMov /= 4;
+			
+			timerRalentizado = SDL_AddTimer(550, velocidadNormal, this);
 		}
 	}
 }

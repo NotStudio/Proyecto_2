@@ -43,7 +43,7 @@ public:
 		return Puertas.size();
 	}
 	void setPuertas(int dicc);
-	void nuevaBala(Bala*bala){
+	void nuevaBala(Objeto*bala){
 		extras.push_back(bala);
 	}
 	void nuevoObjeto(Objeto* o){

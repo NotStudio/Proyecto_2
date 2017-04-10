@@ -8,6 +8,9 @@
 #include "recorreFicheros.h"
 #include <SDL_events.h>
 #include "MenuPG.h"
+//Constructora que inicializa todos los atributos de la clase Juego
+
+
 #include "ZonaDesguace.h"
 #include "ZonaBase.h"
 

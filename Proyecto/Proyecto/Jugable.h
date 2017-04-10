@@ -28,6 +28,12 @@ public:
 		body->SetTransform(b2Vec2{ x,y }, 0);
 		
 	}
+	
+	void velocidad(){
+		stats.velMov *= 4;
+		ralentizado = false;
+		
+	}
 
 protected:
 	//Booleanas para el control del movimiento, utilizadas en el movControl;
@@ -41,7 +47,9 @@ protected:
 	//void inventario();
 	bool lel = true;
 	bool inmune = false;
+	bool ralentizado = false;
 	SDL_TimerID timerInmune;
+	SDL_TimerID timerRalentizado;
 	estado state;
 	
 };

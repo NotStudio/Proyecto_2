@@ -23,7 +23,7 @@ int main(int argc, char* args[]) {
 	b2Vec2 gravity(0.0f, 0.0f);
 
 	b2World world(gravity);
-	
+
 	Juego juego(&world);
 	
 //	system("PAUSE");
