@@ -6,7 +6,7 @@ class Helice :
 public:
 	Helice(Juego* punteroJuego, int ,int);
 	~Helice();
-	void onColisionEnter(Objeto* contactObject);
+	void onColisionEnter(Objeto* contactObject, b2Body* b1, b2Body* b2);
 	virtual void move();
 	virtual void update();
 	void disparo();

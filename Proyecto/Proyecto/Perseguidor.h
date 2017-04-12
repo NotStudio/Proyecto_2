@@ -17,9 +17,11 @@ public:
 	~Perseguidor();
 	virtual void move();
 	virtual void update();
-	virtual void onColisionEnter(Objeto* contactObject);
+	virtual void onColisionEnter(Objeto* obj, b2Body* b1, b2Body* b2);
 	virtual void dropItems();
 	virtual void comportamiento();
+	virtual void tellBody(b2Body* b);
+	b2Body* b2;
 private:
 	float coefMov;
 	

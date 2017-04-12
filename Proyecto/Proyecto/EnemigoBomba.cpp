@@ -23,14 +23,15 @@ EnemigoBomba::~EnemigoBomba()
 }
 
 
-void EnemigoBomba::onColisionEnter(Objeto* contactObject) {
-	if (contactObject != nullptr)
-		if (dynamic_cast<Jugable*>(contactObject))
+void EnemigoBomba::onColisionEnter(Objeto* contactObject, b2Body* b1, b2Body* b2) {
+	if (contactObject != nullptr){
+		if (b2->GetFixtureList()->GetFilterData().categoryBits == Juego::JUGADOR)
 			muerte();
-		else if (dynamic_cast<Bala*>(contactObject)) {
+		else if (b2->GetFixtureList()->GetFilterData().categoryBits == Juego::AT_JUGADOR) {
 			stats.vida--;
-			(stats.vida <= 0)?muerte():nullptr;
+			(stats.vida <= 0) ? muerte() : nullptr;
 		}
+	}
 }
 
 

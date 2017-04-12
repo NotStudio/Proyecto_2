@@ -69,9 +69,9 @@ void Sierra::update(){
 	Enemigo::update();
 }
 
-void Sierra::onColisionEnter(Objeto* contactObject) {
-
-		col = true;
-
-	
+void Sierra::onColisionEnter(Objeto* contactObject, b2Body* b1, b2Body* b2){
+	if (b2 != nullptr){
+		if (b2->GetFixtureList()->GetFilterData().categoryBits == Juego::ESCENARIO || b2->GetFixtureList()->GetFilterData().categoryBits == Juego::ESCENARIO_NOCOL)
+			col = true;
+	}
 }

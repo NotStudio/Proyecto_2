@@ -11,6 +11,7 @@ public:
 		disparar = true;
 	}
 
+
 protected:
 	SDL_TimerID Disparar;
 	Uint32 cadencia = 350;
@@ -19,15 +20,20 @@ protected:
 	void disparo();
 	void ataqueMele();
 	void forma(bool mele);
+	void cambio();
 
 	virtual void update();
 
-	void cambio();
-
-	float furia = 1.0f;
 
 	bool mele = false;
+	float furia = 1.0f;
 
-	
+
+	b2Shape* st;
+
+	b2BodyDef bdt;
+	b2Body* bt;
+	b2FixtureDef fdt;
+
 };
 

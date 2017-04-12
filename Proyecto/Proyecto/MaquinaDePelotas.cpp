@@ -11,7 +11,10 @@
 
 MaquinaDePelotas::MaquinaDePelotas(Juego* punteroJuego, int x, int y) : Enemigo(punteroJuego, {x,y,128,128}, "BallT", 500)
 {
-	
+	stats.daño = 1;
+	stats.vida = 1;
+	stats.velMov = 0;
+	stats.velAtq = 1;
 
 }
 
@@ -24,8 +27,8 @@ void MaquinaDePelotas::update(){
 	move();
 }
 
-void MaquinaDePelotas::onColisionEnter(Objeto* contactObject){
-	Enemigo::onColisionEnter(contactObject);
+void MaquinaDePelotas::onColisionEnter(Objeto* contactObject, b2Body* b1, b2Body* b2){
+	Enemigo::onColisionEnter(contactObject, b1, b2);
 
 }
 void MaquinaDePelotas::move(){

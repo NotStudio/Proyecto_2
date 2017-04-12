@@ -45,7 +45,7 @@ void Jefe1::update(){
 		}
 	}
 }
-void Jefe1::onColisionEnter(Objeto* contactObject) {
+void Jefe1::onColisionEnter(Objeto* contactObject, b2Body* b1, b2Body* b2) {
 	if (!destruido){
 		cout << "colision" << endl;
 		if (dynamic_cast<BalaAmiga*>(contactObject)){

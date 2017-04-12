@@ -63,7 +63,7 @@ void BalaAceite::update(){
 	}
 }
 
-void BalaAceite::onColisionEnter(Objeto* contactObject) {
+void BalaAceite::onColisionEnter(Objeto* contactObject, b2Body* b1, b2Body* b2) {
 
 	choque = true;
 	

@@ -26,7 +26,7 @@ public:
 	}
 	virtual ~Consumible() {
 	};
-	virtual void onColisionEnter(Objeto* Contacto) {
+	virtual void onColisionEnter(Objeto* Contacto, b2Body* b1, b2Body* b2) {
 		if (dynamic_cast<Jugable*>(Contacto)) {
 			effect();
 			cout << " Tocado "<< id << " \n";

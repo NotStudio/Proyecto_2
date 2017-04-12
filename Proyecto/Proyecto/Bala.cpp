@@ -70,7 +70,7 @@ Bala::~Bala()
 	/*delete shape;
 	shape = nullptr;*/
 }
-void Bala::onColisionEnter(Objeto* contactObject) {
+void Bala::onColisionEnter(Objeto* contactObject, b2Body* b1, b2Body* b2) {
 	destruido = true;
 
 }

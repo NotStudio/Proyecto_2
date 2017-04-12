@@ -48,13 +48,18 @@ void Perseguidor::update() {
 	Enemigo::update();
 	
 }
-void Perseguidor::onColisionEnter(Objeto* contactObject) {
+
+void Perseguidor::tellBody(b2Body* b){
+	b2 = b;
+}
+
+void Perseguidor::onColisionEnter(Objeto* contactObject, b2Body* b1, b2Body* b2) {
 
 	if (contactObject != nullptr) {
-		if (dynamic_cast<Bala*>(contactObject)) {
+		if (b2->GetFixtureList()->GetFilterData().categoryBits == Juego::AT_JUGADOR){
 			stats.vida--;
 			if (stats.vida <= 0){
-				Enemigo::onColisionEnter(contactObject);
+				Enemigo::onColisionEnter(contactObject, b1, b2);
 				needDrop = true;
 			}
 		}

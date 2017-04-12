@@ -9,7 +9,7 @@ public: //dir 0=horizontal, 1= vertical
 
 	virtual void move();
 	virtual void update();
-	virtual void onColisionEnter(Objeto* contactObject = nullptr);
+	virtual void onColisionEnter(Objeto* contactObject, b2Body* b1, b2Body* b2);
 
 private:
 	

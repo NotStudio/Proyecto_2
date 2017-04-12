@@ -12,7 +12,7 @@ public:
 	virtual void update();
 	void grow();
 	LTimer contador;
-	virtual void onColisionEnter(Objeto* contactObject);
+	virtual void onColisionEnter(Objeto* contactObject, b2Body* b1, b2Body* b2);
 private:
 	void changePhase();
 	float32 tiempoCharco;

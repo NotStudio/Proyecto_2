@@ -14,7 +14,7 @@ public:
 	Bala(Juego* punteroJuego, SDL_Rect spritePar, string objectId,float32 vel,float32 dirx,float32 diry, int lanzador);
 	Bala(Juego* punteroJuego, SDL_Rect spritePar, string objectId, float32 vel, float32 dirx, float32 diry, int lanzador,string sensor);//Bala sensor
 	~Bala();
-	virtual void onColisionEnter(Objeto* contactObject);
+	virtual void onColisionEnter(Objeto* contactObject, b2Body* b1, b2Body* b2);
 	int getLanzador();
 };
 #endif

@@ -25,13 +25,14 @@ Helice::Helice(Juego* punteroJuego, int x, int y) : Enemigo(punteroJuego, {x,y,6
 
 	body->GetFixtureList()->SetFilterData(filter);
 }
-void Helice::onColisionEnter(Objeto* contactObject) {
+void Helice::onColisionEnter(Objeto* contactObject, b2Body* b1, b2Body* b2) {
 	
 
 	if (contactObject != nullptr) {
-		if (dynamic_cast<Bala*>(contactObject)) {
+		if (b2->GetFixtureList()->GetFilterData().categoryBits == Juego::AT_JUGADOR) {
 			stats.vida--;
-			if (stats.vida <= 0) Enemigo::onColisionEnter(contactObject);
+			if (stats.vida <= 0)
+				Enemigo::onColisionEnter(contactObject, b1, b2);
 		}
 	}
 }

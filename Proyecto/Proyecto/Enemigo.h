@@ -13,7 +13,7 @@ protected:
 public:
 	Enemigo(Juego* punteroJuego, SDL_Rect spritePar, string objectId, int distancia);
 	~Enemigo();
-	void virtual onColisionEnter(Objeto* contactObject);
+	void virtual onColisionEnter(Objeto* contactObject, b2Body* b1, b2Body* b2);
 	void virtual update();
 	void draw();
 	void stop();

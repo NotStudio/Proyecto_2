@@ -12,7 +12,7 @@ public:
 	void virtual update();
 
 	Personaje::atributos* getStats() { return &stats; };
-	virtual void onColisionEnter(Objeto* obj = nullptr);
+	virtual void onColisionEnter(Objeto* obj , b2Body* b1, b2Body* b2);
 	void quitarInmunidad(){
 		inmune = false;
 	}
@@ -34,6 +34,8 @@ public:
 		ralentizado = false;
 		
 	}
+
+	
 
 protected:
 	//Booleanas para el control del movimiento, utilizadas en el movControl;

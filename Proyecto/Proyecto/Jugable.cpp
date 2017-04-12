@@ -30,28 +30,38 @@ Uint32 velocidadNormal(Uint32 intervalo, void* param){
 	static_cast<Jugable*>(param)->velocidad();
 	return 0;
 }
-void Jugable::onColisionEnter(Objeto * obj){
+void Jugable::onColisionEnter(Objeto* obj, b2Body* b1, b2Body* b2){
 	//std::cout << "colision\n";
-	
-	if (dynamic_cast<Enemigo*>(obj)|| dynamic_cast<BalaEnemiga*>(obj)){
-		if (!inmune){
-			inmune = true;
-			//cout << "inmunidad activada\n";
-			stats.vida--;
-			pJuego->reproducirEfecto("scream");
-			//cout << stats.vida << " vidas tienes\n";
-			timerInmune = SDL_AddTimer(350, desactivarInmunidad, this);
-		}
-	}
-	else if (dynamic_cast<BalaAceite*>(obj)){
-		if (!ralentizado){
-			ralentizado = true;
-			stats.velMov /= 4;
-			
-			timerRalentizado = SDL_AddTimer(550, velocidadNormal, this);
+
+	if (obj != nullptr){
+		if (b2->GetFixtureList()->GetFilterData().categoryBits == Juego::AT_ENEMIGO ||
+			b2->GetFixtureList()->GetFilterData().categoryBits == Juego::ENEMIGO){
+			if (b1->GetFixtureList()->GetFilterData().categoryBits == Juego::JUGADOR){
+
+				if (dynamic_cast<BalaAceite*>(obj)){
+					if (!ralentizado){
+						ralentizado = true;
+						stats.velMov /= 4;
+
+						timerRalentizado = SDL_AddTimer(550, velocidadNormal, this);
+					}
+				}
+
+				else if (!inmune){
+					inmune = true;
+					//cout << "inmunidad activada\n";
+					stats.vida--;
+					pJuego->reproducirEfecto("scream");
+					//cout << stats.vida << " vidas tienes\n";
+					timerInmune = SDL_AddTimer(350, desactivarInmunidad, this);
+				}
+
+
+			}
 		}
 	}
 }
+
 
 void Jugable::movControl(){
 

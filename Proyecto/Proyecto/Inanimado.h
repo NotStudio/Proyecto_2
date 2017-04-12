@@ -30,7 +30,7 @@ public:
 	virtual ~Inanimado() {
 		
 	};
-	virtual void onColisionEnter(Objeto * o ) {};
+	virtual void onColisionEnter(Objeto* o, b2Body* b1, b2Body* b2) {};
 };
 
 //==============================================================================================
@@ -99,7 +99,7 @@ public:
 	};
 	~SelectorZona() {};
 
-	virtual void onColisionEnter(Objeto* o) {
+	virtual void onColisionEnter(Objeto* o, b2Body* b1, b2Body* b2) {
 
 		pJuego->pushState(new SelecZonaMenu(pJuego));
 	}

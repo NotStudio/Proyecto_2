@@ -21,16 +21,16 @@ Enemigo::~Enemigo()
 	
 }
 
-void Enemigo::onColisionEnter(Objeto* contactObject) {
-
-	//Si lo que ha colisionado con nosotros es una bala, comprobamos si es del jugador o de un enemigo
-	if (dynamic_cast<Bala*>(contactObject)){
-		if (static_cast<Bala*>(contactObject)->getLanzador() == 0){
+void Enemigo::onColisionEnter(Objeto* contactObject, b2Body* b1, b2Body* b2) {
+	if (contactObject != nullptr){
+		//Si lo que ha colisionado con nosotros es una bala, comprobamos si es del jugador o de un enemigo
+		if (b2->GetFixtureList()->GetFilterData().categoryBits == Juego::AT_JUGADOR){
 			destruido = true;
 		}
 		//cambiar textura.
 	}
 }
+
 void Enemigo::update(){
 	if (!destruido){
 		Entidad::update();

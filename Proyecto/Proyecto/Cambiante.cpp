@@ -20,6 +20,20 @@ Cambiante::Cambiante(Juego* punteroJuego, SDL_Rect spritePar) :Jugable(punteroJu
 	stats.daño = 1;
 	stats.velAtq = 3;
 	stats.vidaMax = stats.vida;
+
+	bdt.type = b2_dynamicBody;
+	bdt.position.Set(pos.x, pos.y);
+	bdt.fixedRotation = true;
+	bt = pJuego->getWorld()->CreateBody(&bdt);
+
+	bt->SetUserData(this);
+	st = new b2PolygonShape;
+	static_cast<b2PolygonShape*>(st)->SetAsBox(64, 64, { (float)(sprite->w / 2), (float)(sprite->h / 2) }, 0);
+	fdt.shape = st; fdt.density = 5.0f; fdt.friction = 0;
+
+	fdt.filter.categoryBits = Juego::AT_JUGADOR;
+	fdt.filter.maskBits = Juego::ENEMIGO;
+	bt->CreateFixture(&fdt);
 }
 
 
@@ -67,7 +81,7 @@ void Cambiante::disparo(){
 
 		}
 		else if (pJuego->inputQuery(SDL_SCANCODE_UP)) {
-			aux = Sur;
+			aux = Norte;
 			disparar = false;
 			posicion.y -= spawnPosition;
 			dynamic_cast<ZonaAccion*>(pJuego->getZona())->getNivel()->nuevaBala(new Bala(pJuego, posicion, sprite, 80.0f, 0, -1, 0));
@@ -89,9 +103,119 @@ void Cambiante::disparo(){
 
 
 void Cambiante::ataqueMele(){
+	Direccion aux = SinDir;
+	SDL_Rect posicion;
+	int spawnPosition = 50;
+	posicion.x = sprite->x + sprite->w / 2 - 15;
+	posicion.y = sprite->y + sprite->h / 2 - 15;
+	posicion.w = 30;
+	posicion.h = 30;
 
 
+	if (pJuego->inputQuery(SDL_SCANCODE_DOWN)) {
+		b2Fixture* y;
+		y = bt->GetFixtureList();
+		bt->DestroyFixture(y);
+		pJuego->getWorld()->DestroyBody(bt);
+
+
+		bdt.type = b2_dynamicBody;
+		bdt.position.Set(pos.x, pos.y);
+		bdt.fixedRotation = true;
+		bt = pJuego->getWorld()->CreateBody(&bdt);
+
+		bt->SetUserData(this);
+		st = new b2PolygonShape;
+		static_cast<b2PolygonShape*>(st)->SetAsBox(64, 64, { (float)(sprite->w / 2), (float)(sprite->h / 2) + 32 }, 0);
+		fdt.shape = st; fdt.density = 5.0f; fdt.friction = 0;
+
+		fdt.filter.categoryBits = Juego::AT_JUGADOR;
+		fdt.filter.maskBits = Juego::ENEMIGO;
+		bt->CreateFixture(&fdt);
+	}
+
+	else if (pJuego->inputQuery(SDL_SCANCODE_RIGHT)) {
+
+		b2Fixture* y;
+		y = bt->GetFixtureList();
+		bt->DestroyFixture(y);
+		pJuego->getWorld()->DestroyBody(bt);
+
+
+		bdt.type = b2_dynamicBody;
+		bdt.position.Set(pos.x, pos.y);
+		bdt.fixedRotation = true;
+		bt = pJuego->getWorld()->CreateBody(&bdt);
+
+		bt->SetUserData(this);
+		st = new b2PolygonShape;
+		static_cast<b2PolygonShape*>(st)->SetAsBox(64, 64, { (float)(sprite->w / 2) + 32, (float)(sprite->h / 2) }, 0);
+		fdt.shape = st; fdt.density = 5.0f; fdt.friction = 0;
+
+		fdt.filter.categoryBits = Juego::AT_JUGADOR;
+		fdt.filter.maskBits = Juego::ENEMIGO;
+		bt->CreateFixture(&fdt);
+	}
+
+	else if (pJuego->inputQuery(SDL_SCANCODE_LEFT)) {
+		b2Fixture* y;
+		y = bt->GetFixtureList();
+		bt->DestroyFixture(y);
+		pJuego->getWorld()->DestroyBody(bt);
+
+
+		bdt.type = b2_dynamicBody;
+		bdt.position.Set(pos.x, pos.y);
+		bdt.fixedRotation = true;
+		bt = pJuego->getWorld()->CreateBody(&bdt);
+
+		bt->SetUserData(this);
+		st = new b2PolygonShape;
+		static_cast<b2PolygonShape*>(st)->SetAsBox(64, 64, { (float)(sprite->w / 2) - 32, (float)(sprite->h / 2) }, 0);
+		fdt.shape = st; fdt.density = 5.0f; fdt.friction = 0;
+
+		fdt.filter.categoryBits = Juego::AT_JUGADOR;
+		fdt.filter.maskBits = Juego::ENEMIGO;
+		bt->CreateFixture(&fdt);
+	}
+
+	else if (pJuego->inputQuery(SDL_SCANCODE_UP)) {
+		b2Fixture* y;
+		y = bt->GetFixtureList();
+		bt->DestroyFixture(y);
+		pJuego->getWorld()->DestroyBody(bt);
+
+
+		bdt.type = b2_dynamicBody;
+		bdt.position.Set(pos.x, pos.y);
+		bdt.fixedRotation = true;
+		bt = pJuego->getWorld()->CreateBody(&bdt);
+
+		bt->SetUserData(this);
+		st = new b2PolygonShape;
+		static_cast<b2PolygonShape*>(st)->SetAsBox(64, 64, { (float)(sprite->w / 2), (float)(sprite->h / 2) - 32 }, 0);
+		fdt.shape = st; fdt.density = 5.0f; fdt.friction = 0;
+
+		fdt.filter.categoryBits = Juego::AT_JUGADOR;
+		fdt.filter.maskBits = Juego::ENEMIGO;
+		bt->CreateFixture(&fdt);
+	}
+
+
+	if (!disparar) {
+		Disparar = SDL_AddTimer(cadencia, imerDisparo, this); pJuego->reproducirEfecto("TShot");
+		currentAnim = animaciones.at("atqu");
+	}
+
+	if (aux != SinDir) {
+		estadoEntidad.mirando = aux;
+	}
+	else if (!disparar)
+	{
+		estadoEntidad.animacionActual = NoAnim;
+	}
 }
+
 
 void Cambiante::forma(bool mele){// Falta cambiar sprites...
 
