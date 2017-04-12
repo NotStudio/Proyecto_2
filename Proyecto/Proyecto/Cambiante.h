@@ -11,6 +11,9 @@ public:
 		disparar = true;
 	}
 
+	void reactivarMele(){
+		atamele = true;
+	}
 
 protected:
 	SDL_TimerID Disparar;
@@ -27,6 +30,8 @@ protected:
 
 	bool mele = false;
 	float furia = 1.0f;
+	bool atamele = true;
+	bool destroyBody = false;
 
 
 	b2Shape* st;
