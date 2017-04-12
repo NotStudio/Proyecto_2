@@ -2,6 +2,7 @@
 #include "Tostadora.h"
 #include "Camara.h"
 #include "Play.h"
+#include "Pausa.h"
 #include "checkML.h"
 #include "HUD.h"
 #include <io.h>
@@ -80,9 +81,10 @@ Juego::~Juego()
 	pRenderer = nullptr;
 
 	//Liberar estados
-	while (!estados.empty()){
+	freeEstadoss();
+	/*while (!estados.empty()){
 		popState();
-	}
+	}*/
 	//Liberar cosas de la Física
 	//Borrar la camara? delete camera;
 	
@@ -392,6 +394,12 @@ bool Juego::handle_event() {
 		case SDL_KEYUP:
 			KEYS[evento.key.keysym.scancode].presionada = false;
 			KEYS[evento.key.keysym.scancode].mantenida = false;
+			if (evento.key.keysym.sym == SDLK_ESCAPE){
+				EstadoJuego* estado = topState();
+				if (typeid(*estado) == typeid(Play)){
+					changeState(new Pausa(this));
+				}
+			}
 			break;
 		case SDL_TEXTINPUT:
 			break;
@@ -463,8 +471,17 @@ EstadoJuego* Juego::topState(){
 
 void Juego::changeState(EstadoJuego* newState){
 
-	popState();
-	pushState(newState);
+	/*popState();
+	pushState(newState);*/
+
+	if (typeid(*newState) == typeid(Pausa)) {
+		pushState(newState);
+	}
+
+	else {
+		popState();
+		pushState(newState);
+	}
 }
 
 void Juego::pushState(EstadoJuego* newState){
@@ -473,8 +490,21 @@ void Juego::pushState(EstadoJuego* newState){
 
 void Juego::popState(){
 
-	delete topState();
-	estados.pop();
+	/*delete topState();
+	estados.pop();*/
+
+	if (!estados.empty()) {
+		delete topState();
+		estados.pop();
+	}
+}
+
+void Juego::freeEstadoss() {
+
+	while (!estados.empty()) {
+
+		popState();
+	}
 }
 
 

@@ -59,6 +59,8 @@ public:
 	SDL_Rect getArea() {
 		return *area;
 	}
+	//Para reanudar tras el pause.
+	void resume();
 	void update();
 	//Room();
 	Room(Juego *, vector<Room*>*, Zona *);

@@ -153,3 +153,7 @@ void Jugable::update() {
 	move();
 	Personaje::update();
 }
+
+void Jugable::stop() {
+	body->SetLinearVelocity(b2Vec2{ 0, 0 });
+}

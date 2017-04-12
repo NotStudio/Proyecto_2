@@ -35,7 +35,7 @@ public:
 		
 	}
 
-	
+	void stop();
 
 protected:
 	//Booleanas para el control del movimiento, utilizadas en el movControl;

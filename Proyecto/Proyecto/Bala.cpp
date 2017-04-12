@@ -4,6 +4,7 @@
 Bala::Bala(Juego* punteroJuego, SDL_Rect spritePar, string objectId, float32 vel, float32 dirx, float32 diry, int lanzador) :Entidad(punteroJuego, spritePar, objectId), lanzador(lanzador)
 {
 
+	stopBala = false;
 	_vel = vel;
 	x = dirx;
 	y = diry;
@@ -15,7 +16,7 @@ Bala::Bala(Juego* punteroJuego, SDL_Rect spritePar, string objectId, float32 vel
 	static_cast<b2PolygonShape*>(shape)->SetAsBox(sprite->w / 2, sprite->h / 2, { (float)sprite->w / 2, (float)sprite->h / 2 }, 0);
 	fDef.shape = shape; fDef.density = 5.0f; fDef.friction = 0;
 	body->SetUserData(this);
-	b2Vec2 velocidad;
+	//b2Vec2 velocidad;
 	velocidad.x = _vel*x;
 	velocidad.y = _vel*y;
 	//Capa de colision.
@@ -48,7 +49,7 @@ Bala::Bala(Juego* punteroJuego, SDL_Rect spritePar, string objectId, float32 vel
 	fDef.shape = shape; fDef.density = 5.0f; fDef.friction = 0;
 	body->SetUserData(this);
 	
-	b2Vec2 velocidad;
+	
 	velocidad.x = _vel*x;
 	velocidad.y = _vel*y;
 	//Capa de colision.
@@ -70,6 +71,18 @@ Bala::~Bala()
 	/*delete shape;
 	shape = nullptr;*/
 }
+
+void Bala::update(){
+	if (!stopBala){
+		Entidad::update();
+	}
+}
+
+void Bala::resume(){
+	stopBala = false;
+	body->SetLinearVelocity(velocidad);
+}
+
 void Bala::onColisionEnter(Objeto* contactObject, b2Body* b1, b2Body* b2) {
 	destruido = true;
 

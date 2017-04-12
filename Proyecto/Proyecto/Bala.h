@@ -8,6 +8,8 @@ class Bala :
 
 	float32 _vel;
 	int lanzador;
+	bool stopBala;
+	b2Vec2 velocidad;
 	float32 x,y; //1 arriba ,2 derechas, 3 abjo y 4 adivinalo
 public:
 	//lanzador: id enemigo o alido.
@@ -16,5 +18,11 @@ public:
 	~Bala();
 	virtual void onColisionEnter(Objeto* contactObject, b2Body* b1, b2Body* b2);
 	int getLanzador();
+	void update();
+	void stop(){
+		body->SetLinearVelocity({ 0, 0 });
+		stopBala = true;
+	}
+	void resume();
 };
 #endif

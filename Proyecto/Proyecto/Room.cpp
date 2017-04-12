@@ -17,6 +17,15 @@
 #include "tmxReader.h"
 #define DEBUG
 
+void Room::resume(){
+
+	for (int i = 0; i < extras.size(); i++) {
+		if (extras[i] != nullptr)
+			static_cast<Bala*>(extras[i])->resume();
+	}
+
+}
+
 //Update que realiza la habitacion. Ha de actualizarse todo lo que haya en ella (enemigos, objetos, balas, etc)
 void Room::update()
 { 
@@ -94,6 +103,9 @@ void Room::stop() {
 
 	for (int i = 0; i < enemigos.size(); i++) {
 		static_cast<Enemigo*>(enemigos[i])->stop();
+	}
+	for (int i = 0; i < extras.size(); i++) {
+		static_cast<Bala*>(extras[i])->stop();
 	}
 }
 Room::~Room()

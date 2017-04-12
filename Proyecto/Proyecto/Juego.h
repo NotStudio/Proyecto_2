@@ -317,6 +317,8 @@ public:
 	Zona* getZona() {	return zona;}
 
 	void setZona(std::string zonaNombre);
+
+	void freeEstadoss();
 };
 
 
