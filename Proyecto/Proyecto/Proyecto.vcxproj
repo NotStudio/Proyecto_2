@@ -49,6 +49,7 @@
     <ClCompile Include="Pausa.cpp" />
     <ClCompile Include="Perseguidor.cpp" />
     <ClCompile Include="Personaje.cpp" />
+    <ClCompile Include="PjDañoArea.cpp" />
     <ClCompile Include="Play.cpp" />
     <ClCompile Include="Room.cpp" />
     <ClCompile Include="SelecZonaMenu.cpp" />
@@ -98,6 +99,7 @@
     <ClInclude Include="Pausa.h" />
     <ClInclude Include="Perseguidor.h" />
     <ClInclude Include="Personaje.h" />
+    <ClInclude Include="PjDañoArea.h" />
     <ClInclude Include="Play.h" />
     <ClInclude Include="rapidxml-1.13\rapidxml.hpp" />
     <ClInclude Include="rapidxml-1.13\rapidxml_iterators.hpp" />

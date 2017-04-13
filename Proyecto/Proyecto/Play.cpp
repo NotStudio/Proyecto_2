@@ -6,6 +6,7 @@
 #include "Camara.h"
 #include "HUD.h"
 #include "Cambiante.h"
+#include "PjDañoArea.h"
 
 Uint32 callbackCarga(Uint32 param, void *p);
 bool Play::needGetZona = false;
@@ -16,7 +17,9 @@ Play::Play(Juego * juego) : EstadoPG(juego)
 {
 	/*personaje = new Tostadora(juego, SDL_Rect{ 576,75,64,64 });
 	juego->setPlayer(personaje);*/
-	personaje = new Cambiante(juego, SDL_Rect{ 576, 75, 64, 64 });
+	/*personaje = new Cambiante(juego, SDL_Rect{ 576, 75, 64, 64 });
+	juego->setPlayer(personaje);*/
+	personaje = new PjDañoArea(juego, SDL_Rect{ 576, 75, 64, 64 });
 	juego->setPlayer(personaje);
 	Juego::Ventana window = juego->getWindow();
 	Camera = new Camara(static_cast<Entidad*>(personaje)->getRect(), window.ancho, window.alto);

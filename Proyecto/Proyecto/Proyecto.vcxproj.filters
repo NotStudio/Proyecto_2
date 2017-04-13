@@ -201,6 +201,9 @@
     <ClCompile Include="Jefe1.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="PjDañoArea.cpp">
+      <Filter>Source Files\Personajes\Jugables</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Juego.h">
@@ -370,6 +373,9 @@
     </ClInclude>
     <ClInclude Include="BalaEnemiga.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="PjDañoArea.h">
+      <Filter>Header Files\Personajes\Jugables</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
