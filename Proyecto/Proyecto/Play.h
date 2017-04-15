@@ -23,10 +23,12 @@ public:
 	void setState(state s) {
 		estado = s;
 	}
+	
 
 private:
-
-	Objeto* personaje;
+	
+	vector<Objeto*> personaje;
+	
 
 	std::vector<Objeto*> enemigos;
 	

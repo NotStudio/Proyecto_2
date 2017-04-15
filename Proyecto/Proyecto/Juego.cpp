@@ -9,6 +9,7 @@
 #include "recorreFicheros.h"
 #include <SDL_events.h>
 #include "MenuPG.h"
+#include "Cambio.h"
 //Constructora que inicializa todos los atributos de la clase Juego
 
 
@@ -398,6 +399,12 @@ bool Juego::handle_event() {
 				EstadoJuego* estado = topState();
 				if (typeid(*estado) == typeid(Play)){
 					changeState(new Pausa(this));
+				}
+			}
+			else if (evento.key.keysym.sym == SDLK_e){
+				EstadoJuego* estado = topState();
+				if (typeid(*estado) == typeid(Play)){
+				pushState(new Cambio(this, activo,personajes));
 				}
 			}
 			break;

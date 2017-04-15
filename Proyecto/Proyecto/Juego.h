@@ -22,11 +22,13 @@ class Juego
 {
 	
 	int score;
+	int activo = 0;
+	int personajes = 0;
 
 	stack<EstadoJuego*> estados;
 
 
-
+	
 	void initMedia();
 	
 	void initHabitaciones();
@@ -148,6 +150,10 @@ public:
 		ESCENARIO_NOCOL = 0x0040
 
 	};
+
+	void NewPersonaje(){
+		personajes++;
+	}
 
 	Fuente* getTipografia(const string & id, const int & tam=50) {
 		try {
@@ -319,6 +325,12 @@ public:
 	void setZona(std::string zonaNombre);
 
 	void freeEstadoss();
+	void setActivo(int n){
+		activo = n;
+	}
+	int getActivo(){
+		return activo;
+	}
 };
 
 

@@ -204,6 +204,9 @@
     <ClCompile Include="PjDañoArea.cpp">
       <Filter>Source Files\Personajes\Jugables</Filter>
     </ClCompile>
+    <ClCompile Include="Cambio.cpp">
+      <Filter>Source Files\Estados</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Juego.h">
@@ -376,6 +379,9 @@
     </ClInclude>
     <ClInclude Include="PjDañoArea.h">
       <Filter>Header Files\Personajes\Jugables</Filter>
+    </ClInclude>
+    <ClInclude Include="Cambio.h">
+      <Filter>Header Files\Estados</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

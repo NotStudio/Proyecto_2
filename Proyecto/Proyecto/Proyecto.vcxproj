@@ -26,6 +26,7 @@
     <ClCompile Include="Boton.cpp" />
     <ClCompile Include="Camara.cpp" />
     <ClCompile Include="Cambiante.cpp" />
+    <ClCompile Include="Cambio.cpp" />
     <ClCompile Include="contactListener.cpp" />
     <ClCompile Include="Enemigo.cpp" />
     <ClCompile Include="EnemigoBomba.cpp" />
@@ -70,6 +71,7 @@
     <ClInclude Include="Boton.h" />
     <ClInclude Include="Camara.h" />
     <ClInclude Include="Cambiante.h" />
+    <ClInclude Include="Cambio.h" />
     <ClInclude Include="checkML.h" />
     <ClInclude Include="Consumible.h" />
     <ClInclude Include="contactListener.h" />

@@ -15,14 +15,15 @@ Play::state Play::estado = Play::CARGANDO;
 
 Play::Play(Juego * juego) : EstadoPG(juego)
 {
-	/*personaje = new Tostadora(juego, SDL_Rect{ 576,75,64,64 });
-	juego->setPlayer(personaje);*/
-	/*personaje = new Cambiante(juego, SDL_Rect{ 576, 75, 64, 64 });
-	juego->setPlayer(personaje);*/
-	personaje = new PjDañoArea(juego, SDL_Rect{ 576, 75, 64, 64 });
-	juego->setPlayer(personaje);
+	personaje.push_back( new Tostadora(juego, SDL_Rect{ 576, 75, 64, 64 }));
+	juego->NewPersonaje();
+	personaje.push_back( new Cambiante(juego, SDL_Rect{ 576, 75, 64, 64 }));
+	juego->NewPersonaje();
+	personaje.push_back(new PjDañoArea(juego, SDL_Rect{ 576, 75, 64, 64 }));
+	juego->NewPersonaje();
+	juego->setPlayer(personaje[pJuego->getActivo()]);
 	Juego::Ventana window = juego->getWindow();
-	Camera = new Camara(static_cast<Entidad*>(personaje)->getRect(), window.ancho, window.alto);
+	Camera = new Camara(static_cast<Entidad*>(personaje[pJuego->getActivo()])->getRect(), window.ancho, window.alto);
 	juego->setCamera(Camera);
 	juego->setZona("ZonaBase");
 	vidasHUD = new HUD(juego, SDL_Rect{ 20,0,34,55 }, "Battery4", "idle");
@@ -36,7 +37,10 @@ Play::~Play()
 	vidasHUD = nullptr;
 	delete Camera;
 	Camera = nullptr;
-	delete personaje;
+	for (int i = 0; i < personaje.size(); i++){
+		delete personaje[i];
+		personaje[i] = nullptr;
+	}
 	//borrar zona
 	delete zona;
 }
@@ -49,7 +53,7 @@ void Play::draw(){
 	}
 	else {
 		zona->draw();
-		personaje->draw();
+		personaje[pJuego->getActivo()]->draw();
 		vidasHUD->draw();
 	}
 }
@@ -68,7 +72,7 @@ void Play::update(){
 		Camera->update();
 		Camera->setLimite(zona->getNivelActual());
 		zona->update();
-		personaje->update();
+		personaje[pJuego->getActivo()]->update();
 	}
 
 }
