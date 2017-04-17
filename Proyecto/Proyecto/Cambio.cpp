@@ -20,8 +20,6 @@ Cambio::Cambio(Juego * juego,int actual,int Personajes) : EstadoPG(juego)//, pR(
 
 Cambio::~Cambio()
 {
-
-	
 	
 	delete boton;
 		boton = nullptr;
@@ -31,10 +29,18 @@ Cambio::~Cambio()
 
 
 void Cambio::resume(Juego * jg){
-	
+
 	static_cast<ZonaAccion*>(jg->getZona())->getNivel()->resume();
 	
+	Jugable * aux = static_cast<Jugable*>(jg->getActiveCharacter());
+	Camara * auxx = jg->getCamera();
+	auxx->setTarget(aux->getRect());
+	
+	
+	jg->setCamera(auxx);
+	//delete Camera;
 	jg->popState();
+	 
 }
 
 
@@ -62,8 +68,9 @@ void Cambio::update() {
 
 	else if (pJuego->inputQuery(SDL_SCANCODE_RETURN)) {
 		activar(pJuego);
-
 		boton->accion();
+
+
 
 
 	}

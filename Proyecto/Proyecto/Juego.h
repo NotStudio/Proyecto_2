@@ -103,6 +103,10 @@ public:
 	Juego();
 	~Juego();
 
+	 Objeto* getActiveCharacter() {
+		return personaje;
+	}
+
 	struct Ventana { //Struct que contiene el tamaño y el color de la ventana.
 		int ancho;
 		int alto;
@@ -327,6 +331,7 @@ public:
 	void freeEstadoss();
 	void setActivo(int n){
 		activo = n;
+
 	}
 	int getActivo(){
 		return activo;
