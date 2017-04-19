@@ -1,10 +1,10 @@
-# nombre Juego
+# Toasty's Revenge
 ## Resumen
 | Genero | Público | Modos de juego | Plataforma | Calificación |
 |:-------|:--------|:---------------|:-----------|:-------------|
 | Rol, Acción | Jóven (12 - 30)    |1 Jugador| PC  | La puta polla coño |
 ## Descripción
-"Nombre juego" es un juego en 2D que mezcla componentes de rol (crafteo de objetos) con la acción directa, que se ubica temporalmente algunos años mas tarde de nuestra era.  En él, debemos avanzar por distintas zonas con un elenco variado de personajes jugables, máquinas electrónicas de que poseen una IA muy desarrollada. En dichas zonas, debemos derrotar a los enemigos y conseguir recursos para ayudar al personaje principal, 'Nombre tostadora', en su misión por volver a la estación espacial de la que ha caído por error a la Tierra para volver junto con su compañero humano "Nombre del pavo", un astronauta residente en la estación. Sin embargo, "la tostadora" pronto se dará cuenta que no todo continúa como cuando el dejó el planeta.
+"Nombre juego" es un juego en 2D que mezcla componentes de rol (crafteo de objetos) con la acción directa, que se ubica temporalmente algunos años mas tarde de nuestra era.  En él, debemos avanzar por distintas zonas con un elenco variado de personajes jugables, máquinas electrónicas de que poseen una IA muy desarrollada. En dichas zonas, debemos derrotar a los enemigos y conseguir recursos para ayudar al personaje principal, Toasty, en su misión por volver a la estación espacial de la que ha caído por error a la Tierra para volver junto con su compañero humano "Nombre del pavo", un astronauta residente en la estación. Sin embargo, "la tostadora" pronto se dará cuenta que no todo continúa como cuando el dejó el planeta.
 ## Portada
 portada del juego
 
@@ -35,7 +35,7 @@ Durante el juego, podemos pulsar 'P' (ej) para acceder al menu de pausa, que pau
 ### La Base o Refugio
 Donde se realiza parte survival del juego. Estando en la base no podremos realizar ataques, ya que no existirán enemigos. Será un único nivel, pero estará dividido por secciones en la podremos realizar diferentes acciones:
 
-- Comprar?
+
 - Elegir zona para jugar (que nos llevará directamente a la acción).
 - Craftear.
 - Elegir personaje.
@@ -91,8 +91,10 @@ Después de la colisión Toasty levanta de letargo y al verse en la situación d
 
 | <img src="DocImg/imagenesGDD/toasty.png" width="100">   | Toasty           | no te hueles la tostada | ? | ? | ? | ? |
 | :-------------:                                    | :-------------   |:---|:---:|:---:|:---:|:---:|
-
+####Forma de desbloqueo 
 Personaje principal de la historia es una tostadora.
+####Jugabilidad
+Ataca lanzando tostadas a distancia, que hacen daño por contacto con los enemigos.
 
 ### Gotchi
 
@@ -102,7 +104,8 @@ Personaje principal de la historia es una tostadora.
 Se encuentra al final del Hipsters Sanctuary. Dice ser otro CD, que parece inutilizado pero que si lo llevamos a la base podemos meterle pilas y mover el modulo g-0d a él para utilizarlo.
 #### Historia
 El solía ser un jugete para niños pequeños por lo que habla como un niño pequeño, una forma sincera, inocente y a veces cruel. Debido a su personalidad infantil y a la situacion de guerra a la que se enfrentó Gotchi, le afecto seriamente a su personalidad, cuand o habla suele decir comentarios profundos y sadicos, como los de un veterano de guerra pero con lenguaje de niño pequeño.
-
+####Jugabilidad
+Su ataque es melee. Lanza su cadena haciendo una honda a su alrededor, hiriendo a todos los enemigos que encuentra a su paso.
 ### PDST
 | <img src="dirección" width="100"> | PDST           | Una PDA  | ? | ? | ? | ? |
 | :-------------:                                    | :-------------   |:---|:---:|:---:|:---:|:---:|
@@ -111,8 +114,19 @@ El solía ser un jugete para niños pequeños por lo que habla como un niño peq
 En severals motors encuentras una PDA, te dice que está buscando un sitio para alojarse y que no importaría que tu le alojaras, y que depaso si le puede reparar. te lo llevas a la base, necesitas un engranaje para poder repararlo, y así puedes usarlo.
 #### Historia
 Su nombre completo es Personal Digital Schelude Technology, como toda PDA le prometerion que iba a cambiar el mundo, que estaba preparado para cualquier cosa, pero se quedó en nada porque llego otro que le gano en todo, aquello le marcó y le traumatizó (PTSD). Cuando habla suele ser con aires de superioridad y de una forma desagradable, pero de vez en cuando suele soltar un comentario de que estaba destinado a más.
-
-
+####Jugabilidad
+??
+###Switchy
+ |<img src="dirección" width="100">| Switchy 
+| Una PDA  | ? | ? | ? | ? |
+| :-------------:                                    
+| :-------------   |:---|:---:|:---:|:---:|:---:|
+####Forma de desbloqueo
+??
+####Historia
+Es una consola vieja, con la capacidad de transformarse en un aparato de nueva generación para aumentar sus poderes.
+####Jugabilidad
+Al comienzo del gameplay, se encuentra en su 1ª forma. En esta forma, su ataque es a distancia, lanzandos discos que hieren a sus enemigos. Para pasar a su segunda forma, se necesita cargar la barra de energía. Cuando esta llega a su máximo, entra en la forma evolucionada, en la que su ataque pasa a ser melee. Pasado X tiempo, vuelve a su forma normal.
 
 ## Inanimados
 Objetos que son parte del escenario, algunos tienen acciones en determinadas condiciones.
@@ -157,7 +171,7 @@ Estos sirven para craftear otros objetos. Los objetos resultantes pueden ser cla
 | <img src="DocImg/pp.jpg" width="50" height="50"> | Tanque           | Crafteo           | S. Motors Museum |
 | <img src="DocImg/pp.jpg" width="50" height="50"> | Olla a presión   | Crafteo           | S. Motors Museum |
 | <img src="DocImg/pp.jpg" width="50" height="50"> | Tuberías         | Crafteo           | S. Motors Museum |
-| <img src="DocImg/pp.jpg" width="50" height="50"> | Eje              | Crafteo           | Madera + Madera |
+| <img src="DocImg/pp.jpg" width="50" height="50"> | Carbono              | Crafteo           | Madera + Madera |
 | <img src="DocImg/pp.jpg" width="50" height="50"> | Engranaje        | Crafteo           | Chatarra + Chatarra |
 | <img src="DocImg/pp.jpg" width="50" height="50"> | Engranajes       | Crafteo           | Engranaje + Engranaje |
 | <img src="DocImg/pp.jpg" width="50" height="50"> | Circuitos        | Crafteo           | Chatarra + Estaño |
@@ -174,14 +188,30 @@ Para el desarrollo de la historia, se craftean o se consiguen matando a jefes.
 | <img src=" " width="50" height="50"> | Mecanismo(Engranajes)  | Engranajes + Eje        |
 | <img src="" width="50" height="50">  | Circuitos Electronicos | Chip + Estaño        |
 | <img src="" width="50" height="50">  | Combustible            | RE + Petroleo |
-| <img src=" " width="50" height="50"> | Acero                  | Crafteo |
+| <img src=" " width="50" height="50"> | Acero                  | Engranajes + Circuito |
+| <img src=" " width="50" height="50"> | Aluminio                  | Pila Boton + Circuitos |
+| <img src=" " width="50" height="50"> | Titanio                 | Tanque + Litio + Estaño |
+| <img src=" " width="50" height="50"> | Fibra de carbono                 | Carbono + Carbono |
 
-
+####Piezas de Nave
+Objetos que nos permitiran terminar nuestra nave averiada y volver al espacio.
+| Sprite                               | Nombre                 |Obtención        |
+| :-------------:                      |:-------------          |:-------------   |
+| <img src=" " width="50" height="50"> | Motor Principal(Engranajes)  | 5 Acero        |
+| <img src="" width="50" height="50">  | Acelerador  | 2 Acero + Mecanismo        |
+| <img src="" width="50" height="50">  | Modulo de comando            | 3 Circuitos electrónicos + Acero |
+| <img src=" " width="50" height="50"> | Estabilizador                 | 5 Mecanismo |
 ## NPC's
 
 | Sprite                                             | Nombre           |localizaciones    | descripcion | HP | At | Ve | FA |
 | :-------------:                                    | :-------------   |:---|:---|:---:|:---:|:---:|:---:|
-| <img src="dirección" width="50" height="50">     | Scrapper           | Desguace | Debajo | HP | At | Ve | FA |
+| <img src="dirección" width="50" height="50">     | Scrapper (Boss)          | Desguace | Debajo | HP | At | Ve | FA |
+| <img src="dirección" width="50" height="50">     | Iman          | Desguace | Debajo | HP | At | Ve | FA |
+| <img src="dirección" width="50" height="50">     | Hélice          | Desguace | Debajo | HP | At | Ve | FA |
+| <img src="dirección" width="50" height="50">     | Boom-Ba          | Desguace | Debajo | HP | At | Ve | FA |
+| <img src="dirección" width="50" height="50">     | Sierra          | Desguace | Debajo | HP | At | Ve | FA |
+| <img src="dirección" width="50" height="50">     | Lanza-Tornillos         | Desguace | Debajo | HP | At | Ve | FA |
+
 
 ####Scrapper
 Enemigo jefe que se mueve solamente en el eje X. Está ubicado en la pared norte del nivel.
