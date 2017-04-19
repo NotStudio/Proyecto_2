@@ -8,8 +8,8 @@ class MaquinaDePelotas :
 public:
 	MaquinaDePelotas(Juego* punteroJuego, int,int);
 	~MaquinaDePelotas();
-	virtual void move();
-	virtual void update();
+	void ataque();
+	virtual void comportamiento();
 	void virtual onColisionEnter(Objeto* contactObject, b2Body* b1, b2Body* b2);
 };
 

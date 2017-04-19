@@ -9,29 +9,45 @@
 #include "ZonaAccion.h"
 #include "BalaEnemiga.h"
 
-MaquinaDePelotas::MaquinaDePelotas(Juego* punteroJuego, int x, int y) : Enemigo(punteroJuego, {x,y,128,128}, "BallT", 500)
+MaquinaDePelotas::MaquinaDePelotas(Juego* punteroJuego, int x, int y) : Enemigo(punteroJuego, {x,y,128,128}, "Tornillero", 500)
 {
+	fDef.filter.categoryBits = Juego::ENEMIGO;
+	fDef.filter.maskBits = Juego::JUGADOR | Juego::ESCENARIO | Juego::ENEMIGO | Juego::ESCENARIO_NOCOL | Juego::AT_JUGADOR;
+	body->CreateFixture(&fDef);
+	body->SetType(b2_staticBody);
 	stats.daño = 1;
 	stats.vida = 1;
 	stats.velMov = 0;
 	stats.velAtq = 1;
+
+
 
 }
 
 
 MaquinaDePelotas::~MaquinaDePelotas()
 {
+	
 }
-void MaquinaDePelotas::update(){
-	Entidad::update();
-	move();
+
+void MaquinaDePelotas::comportamiento(){
+	ataque();
 }
+
 
 void MaquinaDePelotas::onColisionEnter(Objeto* contactObject, b2Body* b1, b2Body* b2){
-	Enemigo::onColisionEnter(contactObject, b1, b2);
+
+	if (contactObject != nullptr) {
+		if (b2->GetFixtureList()->GetFilterData().categoryBits == Juego::AT_JUGADOR){
+			stats.vida--;
+			if (stats.vida <= 0){
+				muerte();
+			}
+		}
+	}
 
 }
-void MaquinaDePelotas::move(){
+void MaquinaDePelotas::ataque(){
 
 	if (!destruido) {
 

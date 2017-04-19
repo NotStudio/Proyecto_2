@@ -77,7 +77,7 @@ Como se ha mencionado antes, los niveles son donde sucede la acción. Los nivele
 Año 16DB, Estacion espacial “Shuppatsu”, un asteroide colisiona contra la estacion provocando el desprendimiento de uno de los módulos, el cual se precipita sobre la Tierra.
 Al estrellarse sobre la superficie terrestre en una pradera aparece entre el humo una tostadora que debido al impacto se ha encendido.
 Está Tostadora fue una de las primeras de su especie, los Companion Devices, también conocidos como CD. Aparatos electrónicos corrientes con una avanzada inteligencia artificial que emulaba emociones para que los astronautas no se sintieran solos en sus trabajos en el espacio. Debido a la complejidad de dicha inteligencia artificial los diseñadores debían dividirlas en dos módulos.
-Por un lado el módulo de IA “m-4N” que estaba diseñado para poder desarrollar una inteligencia emocional, emulación de emociones y comunicación con humanos progresiva simulando la compañía humana. Por otro lado el módulo “g-0D” era el encargado de las respuestas motoras y control sobre el aparato en sí. Al avanzar la tecnología muchos de los aparatos CD fueron reemplazados por los modelos Fellas Devices, conocidos como FD, que implementan un solo módulo que fusiona el g-0D y el m-4N en uno solo. Debido a este avance los antiguos y obsoletos modelos CD comenzaron a ser retirados y convertidos en chatarra para reutilización en nuevos modelos. 
+Por un lado el módulo de IA “m-4N” que estaba diseñado para poder desarrollar una inteligencia emocional, emulación de emociones y comunicación con humanos progresiva simulando la compañía humana. Por otro lado el módulo “g-0D” era el encargado de las respuestas motoras y control sobre el aparato en sí. Al avanzar la tecnología muchos de los aparatos CD fueron reemplazados por los modelos Fellas Devices, conocidos como FD, que implementan un solo módulo que fusiona el g-0D y el m-4N en uno solo. Debido a este avance los antiguos y obsoletos modelos CD comenzaron a ser retirados y convertidos en chatarra para reutilización en nuevos modelos.
 Uno de los astronautas, Collin McGuffin , encargado del mantenimiento de la estación desarrolló una relación cercana con una tostadora y llego a bautizarla con el nombre de Toasty, no era muy querida en la estación espacial porque no sabía hacer bien las tostadas, cuando llegó el momento de retirar los CD McGuffin a toasty en uno de los módulos no habitables. Lo desconectó para ahorrar batería con la promesa de que volvería cuando hubiera acabado la recolección de antiguos CDs.
 Después de la colisión Toasty levanta de letargo y al verse en la situación de estar solo, va en la búsqueda de Collin McGuffin, y decide que la mejor idea es volver a la base espacial, y la mejor forma es fabricar un cohete, aquí la aventura comienza, en busca de los materiales sufientes para fabricar un cohete, en la que conoceremos a otros CDs que nos ayudaran en esta jesta, lucharemos contra FD corruptos.
 
@@ -91,7 +91,7 @@ Después de la colisión Toasty levanta de letargo y al verse en la situación d
 
 | <img src="DocImg/imagenesGDD/toasty.png" width="100">   | Toasty           | no te hueles la tostada | ? | ? | ? | ? |
 | :-------------:                                    | :-------------   |:---|:---:|:---:|:---:|:---:|
-####Forma de desbloqueo 
+####Forma de desbloqueo
 Personaje principal de la historia es una tostadora.
 ####Jugabilidad
 Ataca lanzando tostadas a distancia, que hacen daño por contacto con los enemigos.
@@ -117,7 +117,7 @@ Su nombre completo es Personal Digital Schelude Technology, como toda PDA le pro
 ####Jugabilidad
 ??
 ###Switchy
- |<img src="dirección" width="100">| Switchy 
+ |<img src="dirección" width="100">| Switchy
 | Una PDA  | ? | ? | ? | ? |
 | :-------------:                                    
 | :-------------   |:---|:---:|:---:|:---:|:---:|
@@ -163,21 +163,26 @@ Estos sirven para craftear otros objetos. Los objetos resultantes pueden ser cla
 | <img src="DocImg/pp.jpg" width="50" height="50"> | Objeto generico  | efecto generico   | generico|
 | <img src="DocImg/pp.jpg" width="50" height="50"> | Chatarra         | Crafteo           | the Natural Preserve |
 | <img src="DocImg/pp.jpg" width="50" height="50"> | Madera           | Crafteo           | the Natural Preserve |
-| <img src="DocImg/pp.jpg" width="50" height="50"> | Estaño           | Crafteo           | Hipsters Sancturary |
-| <img src="DocImg/pp.jpg" width="50" height="50"> | Chip             | Crafteo           | Hipsters Sancturary |
-| <img src="DocImg/pp.jpg" width="50" height="50"> | Litio            | Crafteo           | Hipsters Sancturary |
+| <img src="DocImg/pp.jpg" width="50" height="50"> | Tuercas           | Crafteo           | the Natural Preserve |
+| <img src="DocImg/pp.jpg" width="50" height="50"> | Carbón             | Crafteo           | the Natural Preserve |
+| <img src="DocImg/pp.jpg" width="50" height="50"> | Tanque            | Crafteo           | S.Motors Museum |
 | <img src="DocImg/pp.jpg" width="50" height="50"> | Petroleo         | Crafteo           | S. Motors Museum |
-| <img src="DocImg/pp.jpg" width="50" height="50"> | Carbón           | Crafteo           | S. Motors Museum |
-| <img src="DocImg/pp.jpg" width="50" height="50"> | Tanque           | Crafteo           | S. Motors Museum |
-| <img src="DocImg/pp.jpg" width="50" height="50"> | Olla a presión   | Crafteo           | S. Motors Museum |
+| <img src="DocImg/pp.jpg" width="50" height="50"> | Engranaje           | Crafteo           | S. Motors Museum |
+| <img src="DocImg/pp.jpg" width="50" height="50"> | Fusible           | Crafteo           | S. Motors Museum |
 | <img src="DocImg/pp.jpg" width="50" height="50"> | Tuberías         | Crafteo           | S. Motors Museum |
-| <img src="DocImg/pp.jpg" width="50" height="50"> | Carbono              | Crafteo           | Madera + Madera |
+| <img src="DocImg/pp.jpg" width="50" height="50"> | Estaño        | Crafteo           |  Hipsters Sanctuary |
+| <img src="DocImg/pp.jpg" width="50" height="50"> | Litio        | Crafteo           |  Hipsters Sanctuary |
+| <img src="DocImg/pp.jpg" width="50" height="50"> | Chip        | Crafteo           |  Hipsters Sanctuary |
+| <img src="DocImg/pp.jpg" width="50" height="50"> | Sensor        | Crafteo           |  Hipsters Sanctuary |
+| <img src="DocImg/pp.jpg" width="50" height="50"> | Carbono              | Crafteo           | Madera + Carbón |
 | <img src="DocImg/pp.jpg" width="50" height="50"> | Engranaje        | Crafteo           | Chatarra + Chatarra |
 | <img src="DocImg/pp.jpg" width="50" height="50"> | Engranajes       | Crafteo           | Engranaje + Engranaje |
-| <img src="DocImg/pp.jpg" width="50" height="50"> | Circuitos        | Crafteo           | Chatarra + Estaño |
+| <img src="DocImg/pp.jpg" width="50" height="50"> | Circuito        | Crafteo           | Chip + Estaño |
 | <img src="Direccion" height="50" width="50">     | Pila de botón    | Canjeable por una partida con el Tamagochi | Chatarra + Litio|
-| <img src="DocImg/pp.jpg" width="50" height="50"> | Tanque a Presión TP | Crafteo           | Olla + Tanque |
-| <img src="DocImg/pp.jpg" width="50" height="50"> | Refinador Express RE     | Crafteo           | TP + Tuberías |
+| <img src="DocImg/pp.jpg" width="50" height="50"> | Tanque a Presión (TP) | Crafteo           | Fusible + Tanque |
+| <img src="DocImg/pp.jpg" width="50" height="50"> | Refinador Express (RE)     | Crafteo           | TP + Tuberías |
+| <img src="DocImg/pp.jpg" width="50" height="50"> | Batería de iones     | Crafteo           | Estaño + Litio |
+| <img src="DocImg/pp.jpg" width="50" height="50"> | Sensor de mov.     | Crafteo           | Chip + Sensor |
 
 
 ### Histórico
@@ -185,22 +190,23 @@ Para el desarrollo de la historia, se craftean o se consiguen matando a jefes.
 
 | Sprite                               | Nombre                 |Obtención        |
 | :-------------:                      |:-------------          |:-------------   |
-| <img src=" " width="50" height="50"> | Mecanismo(Engranajes)  | Engranajes + Eje        |
-| <img src="" width="50" height="50">  | Circuitos Electronicos | Chip + Estaño        |
-| <img src="" width="50" height="50">  | Combustible            | RE + Petroleo |
-| <img src=" " width="50" height="50"> | Acero                  | Engranajes + Circuito |
-| <img src=" " width="50" height="50"> | Aluminio                  | Pila Boton + Circuitos |
-| <img src=" " width="50" height="50"> | Titanio                 | Tanque + Litio + Estaño |
-| <img src=" " width="50" height="50"> | Fibra de carbono                 | Carbono + Carbono |
+| <img src=" " width="50" height="50"> | Mecanismo              | Engranajes + Eje + Fusible       |
+| <img src="" width="50" height="50">  | Circuitos Electronicos | Circuito + Batería de iones + "lo que dropea el 3er boss"        |
+| <img src="" width="50" height="50">  | Combustible            | RE + Petróleo |
+| <img src=" " width="50" height="50"> | Fibra de carbono                 | Carbono + Tubería |
+| <img src=" " width="50" height="50"> | ¿?                | Derrotando al 1er boss |
+| <img src=" " width="50" height="50"> | Eje                 | Derrotando al 2º boss |
+| <img src=" " width="50" height="50"> | ¿?                | Derrotando al 3er boss |
 
 ####Piezas de Nave
 Objetos que nos permitiran terminar nuestra nave averiada y volver al espacio.
 | Sprite                               | Nombre                 |Obtención        |
 | :-------------:                      |:-------------          |:-------------   |
-| <img src=" " width="50" height="50"> | Motor Principal(Engranajes)  | 5 Acero        |
-| <img src="" width="50" height="50">  | Acelerador  | 2 Acero + Mecanismo        |
-| <img src="" width="50" height="50">  | Modulo de comando            | 3 Circuitos electrónicos + Acero |
-| <img src=" " width="50" height="50"> | Estabilizador                 | 5 Mecanismo |
+|| <img src="" width="50" height="50">  | Motor principal           | 4 engranajes + 2 baterías de iones |
+| <img src=" " width="50" height="50"> | Acelerador                 | 2 mecánismos + 1 circuito electrónico |
+| <img src=" " width="50" height="50"> | Módulo de comandos                | 3 circuito electrónicos + 1 fibra de carbono|
+| <img src=" " width="50" height="50"> | Estabilizador                 | 4 sensores de mov. + 1 mecanismo |
+
 ## NPC's
 
 | Sprite                                             | Nombre           |localizaciones    | descripcion | HP | At | Ve | FA |

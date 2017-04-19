@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="24" height="24" tilewidth="128" tileheight="128" nextobjectid="8">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="24" height="24" tilewidth="128" tileheight="128" nextobjectid="9">
  <tileset firstgid="1" name="Zona1" tilewidth="128" tileheight="128" tilecount="36" columns="4">
   <image source="../../Mapa/Tilesets/Tileset_zon1.png" width="512" height="1152"/>
  </tileset>
@@ -37,5 +37,6 @@
   <object id="3" name="helice" type="enemigo" x="896" y="1152" width="128" height="128"/>
   <object id="4" name="tuberia" type="inanimado" x="0" y="2560" width="512" height="256"/>
   <object id="7" name="perseguidor" type="enemigo" x="1536" y="2176" width="128" height="128"/>
+  <object id="8" name="Tornillero" type="enemigo" x="2168" y="124" width="144" height="128"/>
  </objectgroup>
 </map>

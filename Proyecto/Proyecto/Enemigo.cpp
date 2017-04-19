@@ -4,12 +4,10 @@
 #include "Consumible.h"
 
 
-Enemigo::Enemigo(Juego* punteroJuego, SDL_Rect spritePar, string objectId, int distancia) : NPC(punteroJuego, spritePar, objectId), needDrop(false)
+Enemigo::Enemigo(Juego* punteroJuego, SDL_Rect spritePar, string objectId, int distancia) : NPC(punteroJuego, spritePar, objectId), needDrop(false), isDead(false)
 {
 	_distancia = distancia;
-	fDef.filter.categoryBits = Juego::ENEMIGO;
-	fDef.filter.maskBits = Juego::JUGADOR | Juego::ESCENARIO | Juego::ENEMIGO | Juego::ESCENARIO_NOCOL | Juego::AT_JUGADOR;
-	body->CreateFixture(&fDef);
+
 
 	dropPool.push_back("Pila");
 	dropPool.push_back("Bateria");
@@ -25,7 +23,7 @@ void Enemigo::onColisionEnter(Objeto* contactObject, b2Body* b1, b2Body* b2) {
 	if (contactObject != nullptr){
 		//Si lo que ha colisionado con nosotros es una bala, comprobamos si es del jugador o de un enemigo
 		if (b2->GetFixtureList()->GetFilterData().categoryBits == Juego::AT_JUGADOR){
-			destruido = true;
+			
 		}
 		//cambiar textura.
 	}
@@ -36,14 +34,26 @@ void Enemigo::update(){
 		Entidad::update();
 		comportamiento();
 	}
-	else {
-		body->SetActive(false);
-		if (needDrop) {
-			dropItems();
-			needDrop = false;
-		}
+	else if(isDead){
+		desactivar();
 	}
 	
+}
+
+void Enemigo::desactivar(){
+
+	body->SetActive(false);
+	if (needDrop) {
+		dropItems();
+		needDrop = false;
+	}
+	isDead = false;
+}
+
+void Enemigo::muerte(){
+	destruido = true;
+	isDead = true;
+	needDrop = true;
 }
 bool Enemigo::distancia() {
 	float distancia = (pos -static_cast<Entidad*>(pJuego->getPlayer())->getBody()->GetPosition()).Length();

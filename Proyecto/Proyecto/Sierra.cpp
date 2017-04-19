@@ -15,18 +15,12 @@ Sierra::Sierra(Juego* punteroJuego, int x, int y, int dir) : Enemigo(punteroJueg
 	currentAnim = animaciones.at("idle");
 	col = false;
 	
-	body->GetFixtureList()->SetSensor(true);
-	b2Filter filter;
-	filter = body->GetFixtureList()->GetFilterData();
+	fDef.density = 2500.0f;
+	fDef.filter.categoryBits = Juego::ENEMIGO;
+	fDef.filter.maskBits = Juego::ESCENARIO | Juego::JUGADOR |  Juego::ESCENARIO_NOCOL;
+	body->CreateFixture(&fDef);
 	
-	filter.categoryBits = Juego::ENEMIGO;
-	filter.maskBits = Juego::ESCENARIO | Juego::JUGADOR |  Juego::ESCENARIO_NOCOL;
-	
-	body->GetFixtureList()->SetFilterData(filter);
-	//HAY QUE PONER EN TILE
-	/* //mShapeDef->filter.categoryBits = Juego::ESCENARIO;
-		//mShapeDef->filter.maskBits = -1; 
-	*/
+
 	
 }
 
@@ -64,14 +58,19 @@ void Sierra::move(){
 
 
 void Sierra::update(){
-	move();
+	//Cambiar a metodo animación
 	currentAnim->ActualizarFrame();
 	Enemigo::update();
 }
 
+void Sierra::comportamiento(){
+	move();
+}
+
 void Sierra::onColisionEnter(Objeto* contactObject, b2Body* b1, b2Body* b2){
 	if (b2 != nullptr){
-		if (b2->GetFixtureList()->GetFilterData().categoryBits == Juego::ESCENARIO || b2->GetFixtureList()->GetFilterData().categoryBits == Juego::ESCENARIO_NOCOL)
+		if (b2->GetFixtureList()->GetFilterData().categoryBits == Juego::ESCENARIO ||
+			b2->GetFixtureList()->GetFilterData().categoryBits == Juego::ESCENARIO_NOCOL)
 			col = true;
 	}
 }

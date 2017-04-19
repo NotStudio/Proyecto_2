@@ -4,6 +4,10 @@
 #include "Bala.h"
 EnemigoBomba::EnemigoBomba(Juego* punteroJuego, int x, int y) : Enemigo(punteroJuego, {x,y,128,128}, "Bomba", 400)
 {
+	fDef.filter.categoryBits = Juego::ENEMIGO;
+	fDef.filter.maskBits = Juego::JUGADOR | Juego::ESCENARIO | Juego::ENEMIGO | Juego::ESCENARIO_NOCOL | Juego::AT_JUGADOR;
+	body->CreateFixture(&fDef);
+
 	for (unordered_map<string, Juego::Animacion*>::iterator i = animaciones.begin(); i != animaciones.end(); i++)
 	{
 		animaciones[i->first]->setNumFrames(30);
@@ -25,8 +29,10 @@ EnemigoBomba::~EnemigoBomba()
 
 void EnemigoBomba::onColisionEnter(Objeto* contactObject, b2Body* b1, b2Body* b2) {
 	if (contactObject != nullptr){
-		if (b2->GetFixtureList()->GetFilterData().categoryBits == Juego::JUGADOR)
+		if (b2->GetFixtureList()->GetFilterData().categoryBits == Juego::JUGADOR){
+			destruido = true;
 			muerte();
+		}
 		else if (b2->GetFixtureList()->GetFilterData().categoryBits == Juego::AT_JUGADOR) {
 			stats.vida--;
 			(stats.vida <= 0) ? muerte() : nullptr;
@@ -114,18 +120,12 @@ void EnemigoBomba::crecer(){
 
 
 void EnemigoBomba::muerte(){
-	destruido = true;
+	Enemigo::muerte();
 }
 
 
-
-
-void EnemigoBomba::update(){
-
-	if (!destruido){
-		Entidad::update();
-		move();
-		crecer();
-	}
-
+void EnemigoBomba::comportamiento(){
+	move();
+	crecer();
 }
+

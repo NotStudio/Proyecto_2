@@ -10,6 +10,9 @@ protected:
 	int _distancia;
 
 	bool needDrop;
+	bool isDead;
+	virtual void muerte();
+	virtual void comportamiento() {};
 public:
 	Enemigo(Juego* punteroJuego, SDL_Rect spritePar, string objectId, int distancia);
 	~Enemigo();
@@ -19,6 +22,7 @@ public:
 	void stop();
 	bool distancia();
 	virtual void dropItems();
-	virtual void comportamiento() {};
+	void desactivar();
+	
 };
 #endif

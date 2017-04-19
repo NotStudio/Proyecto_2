@@ -16,7 +16,6 @@ public:
 	Perseguidor(Juego* punteroJuego, int,int);
 	~Perseguidor();
 	virtual void move();
-	virtual void update();
 	virtual void onColisionEnter(Objeto* obj, b2Body* b1, b2Body* b2);
 	virtual void dropItems();
 	virtual void comportamiento();

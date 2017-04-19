@@ -9,6 +9,7 @@ public:
 	void onColisionEnter(Objeto* contactObject, b2Body* b1, b2Body* b2);
 	virtual void move();
 	virtual void update();
+	virtual void comportamiento();
 	void disparo();
 
 private:
