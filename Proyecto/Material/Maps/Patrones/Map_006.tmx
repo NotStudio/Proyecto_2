@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" orientation="orthogonal" renderorder="right-down" width="24" height="24" tilewidth="128" tileheight="128" nextobjectid="14">
  <tileset firstgid="1" name="Tileset_zon1" tilewidth="128" tileheight="128" tilecount="36" columns="4">
-  <image source="../../../../../../Proyecto II/Proyecto_2/Proyecto/Material/Mapa/Tilesets/Tileset_zon1.png" width="512" height="1152"/>
+  <image source="../../Mapa/Tilesets/Tileset_zon1.png" width="512" height="1152"/>
  </tileset>
  <layer name="Capa de Patrones 1" width="24" height="24">
   <data encoding="csv">
@@ -38,6 +38,6 @@
   <object id="4" name="Sierra" type="enemigo" x="2696" y="768" width="208" height="128"/>
   <object id="11" name="Perseguidor" type="enemigo" x="1688" y="1392" width="136" height="136"/>
   <object id="12" name="Perseguidor" type="enemigo" x="904" y="1416" width="136" height="120"/>
-  <object id="13" name="EnemigoBomba" type="enemigo" x="1840" y="2656" width="160" height="96"/>
+  <object id="13" name="Bomba" type="enemigo" x="1728" y="2344" width="256" height="280"/>
  </objectgroup>
 </map>

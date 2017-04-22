@@ -26,6 +26,8 @@ Dron::Dron(Juego* punteroJuego, int x, int y) : Enemigo(punteroJuego, { x,y,128,
 	stats.velAtq = 20;
 	stats.velMov = 10;
 	stats.vida = 3; stats.vidaMax = stats.vida;
+
+	isKillable = true;
 	//Inicializamos la dirección aleatoriamente.
 	int randAux1 = rand() % 2; int randAux2 = rand() % 2;
 

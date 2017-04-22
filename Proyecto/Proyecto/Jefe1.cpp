@@ -6,6 +6,10 @@
 
 Jefe1::Jefe1(Juego* punteroJuego, int x, int y) : Enemigo(punteroJuego, { x, y, 128, 128}, "Bomba", 1000)// pone bomba pero está claro que no
 {
+	fDef.filter.categoryBits = Juego::ENEMIGO;
+	fDef.filter.maskBits = Juego::JUGADOR | Juego::ESCENARIO | Juego::ENEMIGO | Juego::ESCENARIO_NOCOL | Juego::AT_JUGADOR;
+	body->CreateFixture(&fDef);
+
 	estado = Estados::Idle;
 	fase = Fases::Fase1;
 	contador = 0;// Contador de la en que parte d ela fase te encuentras

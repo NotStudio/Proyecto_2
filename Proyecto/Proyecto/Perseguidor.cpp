@@ -17,7 +17,7 @@ Perseguidor::Perseguidor(Juego* punteroJuego, int x, int y) : Enemigo(punteroJue
 	currentAnim = animaciones.at("walk");
 	stats.daño = 1;
 	stats.vida = 5;
-
+	isKillable = true;
 	
 }
 void Perseguidor::move(){

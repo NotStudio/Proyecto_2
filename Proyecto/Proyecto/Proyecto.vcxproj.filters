@@ -208,10 +208,10 @@
       <Filter>Source Files\Estados</Filter>
     </ClCompile>
     <ClCompile Include="Dron.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Personajes\Enemigos</Filter>
     </ClCompile>
     <ClCompile Include="TrampaElectrica.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Personajes\Enemigos</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

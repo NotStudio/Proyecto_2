@@ -10,7 +10,8 @@ protected:
 	int _distancia;
 
 	bool needDrop;
-	bool isDead;
+	bool isDead_;
+	bool isKillable;
 	virtual void muerte();
 	virtual void comportamiento() {};
 public:
@@ -23,6 +24,7 @@ public:
 	bool distancia();
 	virtual void dropItems();
 	virtual void desactivar();
-	
+	bool killable() { return isKillable; };
+	bool isDead() { return destruido; }
 };
 #endif

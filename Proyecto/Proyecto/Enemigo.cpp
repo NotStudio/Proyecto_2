@@ -4,7 +4,7 @@
 #include "Consumible.h"
 
 
-Enemigo::Enemigo(Juego* punteroJuego, SDL_Rect spritePar, string objectId, int distancia) : NPC(punteroJuego, spritePar, objectId), needDrop(false), isDead(false)
+Enemigo::Enemigo(Juego* punteroJuego, SDL_Rect spritePar, string objectId, int distancia) : NPC(punteroJuego, spritePar, objectId), needDrop(false), isDead_(false)
 {
 	_distancia = distancia;
 
@@ -34,25 +34,26 @@ void Enemigo::update(){
 		Entidad::update();
 		comportamiento();
 	}
-	else if(isDead){
+	else if(isDead_){
 		desactivar();
 	}
 	
 }
 
 void Enemigo::desactivar(){
-
-	body->SetActive(false);
-	if (needDrop) {
-		dropItems();
-		needDrop = false;
+	if (isDead_) {
+		body->SetActive(false);
+		if (needDrop) {
+			dropItems();
+			needDrop = false;
+		}
+		isDead_ = false;
 	}
-	isDead = false;
 }
 
 void Enemigo::muerte(){
 	destruido = true;
-	isDead = true;
+	isDead_ = true;
 	needDrop = true;
 }
 bool Enemigo::distancia() {

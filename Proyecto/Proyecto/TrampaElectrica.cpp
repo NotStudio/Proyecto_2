@@ -13,7 +13,7 @@ TrampaElectrica::TrampaElectrica(Juego* punteroJuego, int x, int y) : Enemigo(pu
 	fDef.filter.maskBits = Juego::JUGADOR | Juego::ESCENARIO;
 	fDef.isSensor = true;
 	body->CreateFixture(&fDef);
-
+	isKillable = false;
 
 }
 

@@ -12,6 +12,7 @@ EnemigoBomba::EnemigoBomba(Juego* punteroJuego, int x, int y) : Enemigo(punteroJ
 	{
 		animaciones[i->first]->setNumFrames(30);
 	}
+	isKillable = true;
 	currentAnim = animaciones.at("walk");
 	stats.daño = 100;
 	stats.velAtq = 0;

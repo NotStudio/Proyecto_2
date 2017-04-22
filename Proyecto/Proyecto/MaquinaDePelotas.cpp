@@ -19,7 +19,7 @@ MaquinaDePelotas::MaquinaDePelotas(Juego* punteroJuego, int x, int y) : Enemigo(
 	stats.vida = 1;
 	stats.velMov = 0;
 	stats.velAtq = 1;
-
+	isKillable = true;
 
 
 }

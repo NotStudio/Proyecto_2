@@ -14,7 +14,7 @@ Helice::Helice(Juego* punteroJuego, int x, int y) : Enemigo(punteroJuego, {x,y,6
 	stats.velAtq = 0;
 	stats.velMov = 10;
 	stats.vida = 3;
-
+	isKillable = true;
 	rng = rand() % 2;
 	fDef.filter.categoryBits = Juego::ENEMIGO;
 	fDef.filter.maskBits = Juego::JUGADOR | Juego::AT_JUGADOR;

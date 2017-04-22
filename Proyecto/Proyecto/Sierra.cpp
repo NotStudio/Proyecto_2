@@ -19,7 +19,7 @@ Sierra::Sierra(Juego* punteroJuego, int x, int y, int dir) : Enemigo(punteroJueg
 	fDef.filter.categoryBits = Juego::ENEMIGO;
 	fDef.filter.maskBits = Juego::ESCENARIO | Juego::JUGADOR |  Juego::ESCENARIO_NOCOL;
 	body->CreateFixture(&fDef);
-	
+	isKillable = false;
 
 	
 }
