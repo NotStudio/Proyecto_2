@@ -7,7 +7,7 @@ uint32 changeActiveCb(Uint32 intervalo, void * param) {
 }
 
 
-TrampaElectrica::TrampaElectrica(Juego* punteroJuego, int x, int y) : Enemigo(punteroJuego, { x,y,64,64 }, "Iman", 300), activated(true), needChange(true)
+TrampaElectrica::TrampaElectrica(Juego* punteroJuego, int x, int y) : Enemigo(punteroJuego, { x,y,128,128 }, "Iman", 300), activated(true), needChange(true)
 {
 	fDef.filter.categoryBits = Juego::ENEMIGO;
 	fDef.filter.maskBits = Juego::JUGADOR | Juego::ESCENARIO;

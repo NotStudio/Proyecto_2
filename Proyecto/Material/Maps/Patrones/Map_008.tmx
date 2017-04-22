@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="16" height="16" tilewidth="128" tileheight="128" nextobjectid="37">
+ <tileset firstgid="1" source="../../../../documentos/Tilesheet configurado.tsx"/>
+ <layer name="Capa de Patrones 1" width="16" height="16">
+  <data encoding="csv">
+17,14,14,14,14,14,14,14,14,14,14,14,14,14,14,18,
+13,5,5,5,6,11,5,6,5,5,5,9,5,5,5,15,
+13,5,7,5,5,6,5,5,5,5,5,5,5,5,5,15,
+13,5,5,5,5,5,5,5,6,9,5,5,5,5,5,15,
+13,5,5,5,5,5,5,7,5,5,5,6,5,5,5,15,
+13,5,5,5,5,6,5,5,8,7,6,5,5,5,8,15,
+13,5,9,6,5,5,5,6,12,5,5,6,8,5,5,15,
+13,5,7,5,5,5,6,5,6,5,6,5,5,5,7,15,
+13,5,5,5,5,5,9,5,5,5,6,8,5,5,5,15,
+13,5,5,9,5,5,6,5,6,9,5,6,7,7,5,15,
+13,6,5,11,5,5,5,5,5,6,7,5,5,5,5,15,
+13,5,5,6,6,12,5,9,5,7,5,5,6,6,5,15,
+13,5,5,5,5,5,7,6,5,6,5,5,5,5,5,15,
+13,5,6,5,6,7,5,5,5,5,5,6,5,5,7,15,
+13,5,5,5,5,6,8,5,5,5,5,5,5,7,5,15,
+20,16,16,16,16,16,16,16,16,16,16,16,16,16,16,19
+</data>
+ </layer>
+ <objectgroup name="Enemigos">
+  <object id="32" name="Dron" type="enemigo" x="432" y="448" width="152" height="128"/>
+  <object id="33" name="Dron" type="enemigo" x="1584" y="448" width="152" height="128"/>
+  <object id="34" name="Dron" type="enemigo" x="1592" y="1592" width="152" height="128"/>
+  <object id="35" name="Dron" type="enemigo" x="312" y="1584" width="152" height="128"/>
+  <object id="36" name="Dron" type="enemigo" x="944" y="928" width="152" height="128"/>
+ </objectgroup>
+</map>
