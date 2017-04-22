@@ -22,7 +22,7 @@ public:
 	void stop();
 	bool distancia();
 	virtual void dropItems();
-	void desactivar();
+	virtual void desactivar();
 	
 };
 #endif

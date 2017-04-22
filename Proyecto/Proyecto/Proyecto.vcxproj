@@ -28,6 +28,7 @@
     <ClCompile Include="Cambiante.cpp" />
     <ClCompile Include="Cambio.cpp" />
     <ClCompile Include="contactListener.cpp" />
+    <ClCompile Include="Dron.cpp" />
     <ClCompile Include="Enemigo.cpp" />
     <ClCompile Include="EnemigoBomba.cpp" />
     <ClCompile Include="Entidad.cpp" />
@@ -58,6 +59,7 @@
     <ClCompile Include="TexturasSDL.cpp" />
     <ClCompile Include="Tile.cpp" />
     <ClCompile Include="Tostadora.cpp" />
+    <ClCompile Include="TrampaElectrica.cpp" />
     <ClCompile Include="ZonaAccion.cpp" />
     <ClCompile Include="ZonaBase.cpp" />
     <ClCompile Include="ZonaDesguace.cpp" />
@@ -75,6 +77,7 @@
     <ClInclude Include="checkML.h" />
     <ClInclude Include="Consumible.h" />
     <ClInclude Include="contactListener.h" />
+    <ClInclude Include="Dron.h" />
     <ClInclude Include="Enemigo.h" />
     <ClInclude Include="EnemigoBomba.h" />
     <ClInclude Include="Entidad.h" />
@@ -115,6 +118,7 @@
     <ClInclude Include="Tile.h" />
     <ClInclude Include="TileInfo.h" />
     <ClInclude Include="Tostadora.h" />
+    <ClInclude Include="TrampaElectrica.h" />
     <ClInclude Include="Zona.h" />
     <ClInclude Include="ZonaAccion.h" />
     <ClInclude Include="ZonaBase.h" />

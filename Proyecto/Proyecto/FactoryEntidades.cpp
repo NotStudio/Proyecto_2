@@ -6,6 +6,8 @@
 #include "Inanimado.h"
 #include "MaquinaDePelotas.h"
 #include "Jefe1.h"
+#include "Dron.h"
+#include "TrampaElectrica.h"
 #include <stdio.h>
 
 
@@ -58,6 +60,12 @@ Objeto* creaEnemigo(Juego * pj, string id, int x, int y, int aditional){
 	else if (id == "Tornillero" || id == "tornillero"){
 
 		return new MaquinaDePelotas(pj, x, y);
+	}
+	else if (id == "TrampaElectrica" || id == "trampaElectrica") {
+		return new TrampaElectrica(pj, x, y);
+	}
+	else if (id == "Dron" || id == "dron") {
+		return new Dron(pj, x, y);
 	}
 	else
 	{
