@@ -404,7 +404,7 @@ bool Juego::handle_event() {
 			else if (evento.key.keysym.sym == SDLK_e){
 				EstadoJuego* estado = topState();
 				if (typeid(*estado) == typeid(Play)){
-				pushState(new Cambio(this, activo,personajes));
+					pushState(new Cambio(this, activo,personajes));
 				}
 			}
 			break;
@@ -496,14 +496,30 @@ void Juego::pushState(EstadoJuego* newState){
 }
 
 void Juego::popState(){
-
+	//Camera = new Camara(static_cast<Entidad*>(personaje[pJuego->getActivo()])->getRect(), window.ancho, window.alto);
+	//juego->setCamera(Camera);
 	/*delete topState();
 	estados.pop();*/
-
+	
 	if (!estados.empty()) {
 		delete topState();
 		estados.pop();
 	}
+
+}
+
+void Juego::popStateandCamera(){
+	
+	
+	if (!estados.empty()) {
+		delete topState();
+		estados.pop();
+	}
+	Play *aux = static_cast<Play*>(topState());
+	SDL_Rect*personajeActivo = (static_cast<Entidad*>(aux->personaje[getActivo()])->getRect());
+	setPlayer(aux->personaje[getActivo()]);
+	
+	Camera->setTarget(personajeActivo);
 }
 
 void Juego::freeEstadoss() {

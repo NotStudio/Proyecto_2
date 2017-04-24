@@ -34,7 +34,7 @@ void Cambio::resume(Juego * jg){
 	
 	static_cast<ZonaAccion*>(jg->getZona())->getNivel()->resume();
 	
-	jg->popState();
+	jg->popStateandCamera();
 }
 
 

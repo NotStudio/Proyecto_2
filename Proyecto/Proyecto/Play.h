@@ -16,6 +16,10 @@ public:
 
 	static void setZona();
 
+	void setCamera(SDL_Rect *target){
+		Camera->setTarget(target);
+	}
+
 	enum state {JUGANDO, CARGANDO};
 
 	static state estado;
@@ -23,11 +27,11 @@ public:
 	void setState(state s) {
 		estado = s;
 	}
-	
+	vector<Objeto*> personaje;
 
 private:
 	
-	vector<Objeto*> personaje;
+	
 	
 
 	std::vector<Objeto*> enemigos;

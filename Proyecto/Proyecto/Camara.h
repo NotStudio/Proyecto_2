@@ -23,15 +23,7 @@ public:
 	SDL_Point getPosRelativa(SDL_Rect rec);
 	SDL_Rect getRecRelativa(SDL_Rect rec);
 private:
-	/*
-	struct Limit
-	{
-		Limit() { topLeft = topRight = bottomLeft = bottomRight = 0; };
-		void set(SDL_Rect r) { topLeft = r.x; topRight = r.x + r.w; topLeft = r.y; bottomRight = r.y + r.h; };
-		void ser(int x, int y, int z, int d){ topLeft = x, topRight = z,  }
-		int topLeft, topRight, bottomLeft, bottomRight;
-	};
-	*/
+	
 	int minX, minY, maxX, maxY;
 	SDL_Point Centro;
 	SDL_Rect * Apuntando;

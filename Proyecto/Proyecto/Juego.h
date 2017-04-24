@@ -305,6 +305,8 @@ public:
 
 	void popState();
 
+	void popStateandCamera(); //Hace lo mismo que el otro pop pero cambia la camara
+
 	EstadoJuego* topState();
 
 	bool inputQuery(int numButton);
