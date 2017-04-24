@@ -83,6 +83,7 @@ Después de la colisión Toasty levanta de letargo y al verse en la situación d
 
 
 ## Personajes
+
 | Sprite                                             | Nombre           | Nota | HP | At | Ve | FA |
 | :-------------:                                    | :-------------   |:---|:---:|:---:|:---:|:---:|
 | imagen del personaje                             | Nombre | trivia informacion sobre el personaje | vida | ataque | velocidad | forma de ataque  |
@@ -91,41 +92,50 @@ Después de la colisión Toasty levanta de letargo y al verse en la situación d
 
 | <img src="DocImg/imagenesGDD/toasty.png" width="100">   | Toasty           | no te hueles la tostada | ? | ? | ? | ? |
 | :-------------:                                    | :-------------   |:---|:---:|:---:|:---:|:---:|
-####Forma de desbloqueo
+
+#### Forma de desbloqueo
 Personaje principal de la historia es una tostadora.
-####Jugabilidad
+#### Jugabilidad
 Ataca lanzando tostadas a distancia, que hacen daño por contacto con los enemigos.
 
 ### Gotchi
 
 | <img src="dirección" width="100"> | Gotchi           | tamagooooochi | ? | ? | ? | ? |
 | :-------------:                                    | :-------------   |:---|:---:|:---:|:---:|:---:|
+
 #### Forma de desbloqueo
 Se encuentra al final del Hipsters Sanctuary. Dice ser otro CD, que parece inutilizado pero que si lo llevamos a la base podemos meterle pilas y mover el modulo g-0d a él para utilizarlo.
 #### Historia
 El solía ser un jugete para niños pequeños por lo que habla como un niño pequeño, una forma sincera, inocente y a veces cruel. Debido a su personalidad infantil y a la situacion de guerra a la que se enfrentó Gotchi, le afecto seriamente a su personalidad, cuand o habla suele decir comentarios profundos y sadicos, como los de un veterano de guerra pero con lenguaje de niño pequeño.
-####Jugabilidad
+
+#### Jugabilidad
 Su ataque es melee. Lanza su cadena haciendo una honda a su alrededor, hiriendo a todos los enemigos que encuentra a su paso.
+
 ### PDST
 | <img src="dirección" width="100"> | PDST           | Una PDA  | ? | ? | ? | ? |
 | :-------------:                                    | :-------------   |:---|:---:|:---:|:---:|:---:|
 
 #### Forma de desbloqueo
 En severals motors encuentras una PDA, te dice que está buscando un sitio para alojarse y que no importaría que tu le alojaras, y que depaso si le puede reparar. te lo llevas a la base, necesitas un engranaje para poder repararlo, y así puedes usarlo.
+
 #### Historia
 Su nombre completo es Personal Digital Schelude Technology, como toda PDA le prometerion que iba a cambiar el mundo, que estaba preparado para cualquier cosa, pero se quedó en nada porque llego otro que le gano en todo, aquello le marcó y le traumatizó (PTSD). Cuando habla suele ser con aires de superioridad y de una forma desagradable, pero de vez en cuando suele soltar un comentario de que estaba destinado a más.
-####Jugabilidad
+
+#### Jugabilidad
 ??
-###Switchy
- |<img src="dirección" width="100">| Switchy
-| Una PDA  | ? | ? | ? | ? |
-| :-------------:                                    
-| :-------------   |:---|:---:|:---:|:---:|:---:|
-####Forma de desbloqueo
+
+### Switchy
+
+|<img src="dirección" width="100">| Switchy| Una PDA  | ? | ? | ? | ? |
+| :-------------: | :-------------   |:---|:---:|:---:|:---:|:---:|
+
+#### Forma de desbloqueo
 ??
-####Historia
+
+#### Historia
 Es una consola vieja, con la capacidad de transformarse en un aparato de nueva generación para aumentar sus poderes.
-####Jugabilidad
+
+#### Jugabilidad
 Al comienzo del gameplay, se encuentra en su 1ª forma. En esta forma, su ataque es a distancia, lanzandos discos que hieren a sus enemigos. Para pasar a su segunda forma, se necesita cargar la barra de energía. Cuando esta llega a su máximo, entra en la forma evolucionada, en la que su ataque pasa a ser melee. Pasado X tiempo, vuelve a su forma normal.
 
 ## Inanimados
