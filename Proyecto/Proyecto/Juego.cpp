@@ -461,7 +461,11 @@ void Juego::run() {
 			lastUpdate = SDL_GetTicks();
 			fpsCount++;
 		}
-		world->Step(1.0f / 60.0f, 6, 2);
+		accumulator += 0.006;
+		while (accumulator > FPSCAP){
+			world->Step(FPSCAP, 6, 2);
+			accumulator -= FPSCAP;
+		}
 		draw();
 		contSeg = SDL_GetTicks();
 	}

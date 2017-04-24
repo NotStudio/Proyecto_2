@@ -21,10 +21,11 @@ using namespace std;
 class Juego
 {
 	
+	float FPSCAP = 1 / 60.0F;
 	int score;
 	int activo = 0;
 	int personajes = 0;
-
+	float accumulator = 0;
 	stack<EstadoJuego*> estados;
 
 

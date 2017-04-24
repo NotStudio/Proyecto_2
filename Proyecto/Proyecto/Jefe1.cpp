@@ -26,8 +26,10 @@ Jefe1::Jefe1(Juego* punteroJuego, int x, int y) : Enemigo(punteroJuego, { x, y, 
 Jefe1::~Jefe1()
 {
 }
-void Jefe1::update(){
-	Entidad::update();
+
+
+void Jefe1::comportamiento(){
+
 	if (!destruido){
 		switch (estado)
 		{
@@ -48,17 +50,20 @@ void Jefe1::update(){
 			break;
 		}
 	}
+
+
 }
+
 void Jefe1::onColisionEnter(Objeto* contactObject, b2Body* b1, b2Body* b2) {
-	if (!destruido){
+	if (contactObject != nullptr){
 		cout << "colision" << endl;
-		if (dynamic_cast<BalaAmiga*>(contactObject)){
+		if (b2->GetFixtureList()->GetFilterData().categoryBits == Juego::AT_JUGADOR){
 
 			stats.vida--;
 			//pJuego->reproducirEfecto("scream");
 			cout << "El jefe tiene " << stats.vida << endl;
 			if (stats.vida == 15)fase = Fases::Fase2;
-			else  if (stats.vida <= 0)destruido = true;
+			else  if (stats.vida <= 0) muerte();
 		}
 	}
 }
