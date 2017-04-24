@@ -404,7 +404,7 @@ bool Juego::handle_event() {
 			else if (evento.key.keysym.sym == SDLK_e){
 				EstadoJuego* estado = topState();
 				if (typeid(*estado) == typeid(Play)){
-				pushState(new Cambio(this, activo,personajes));
+					pushState(new Cambio(this, activo,personajes));
 				}
 			}
 			break;
@@ -518,10 +518,8 @@ void Juego::popStateandCamera(){
 	Play *aux = static_cast<Play*>(topState());
 	SDL_Rect*personajeActivo = (static_cast<Entidad*>(aux->personaje[getActivo()])->getRect());
 	setPlayer(aux->personaje[getActivo()]);
-	setCamera(new Camara(personajeActivo, window.ancho, window.alto));
-	//aux->setCamera(aux->personaje[getActivo()])->getRect());
-	aux->setCamera(personajeActivo);
-
+	
+	Camera->setTarget(personajeActivo);
 }
 
 void Juego::freeEstadoss() {
