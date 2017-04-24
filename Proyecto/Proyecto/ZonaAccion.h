@@ -34,10 +34,9 @@ public:
 
 	ZonaAccion(Juego* punteroJuego);
 	virtual ~ZonaAccion();
-
 	virtual void draw();
-
 	virtual void update();
+
 	//Devolvemos el nivel actual
 	Room*getNivel(){ return nivelActual; }
 	//Devolvemos el array de niveles.

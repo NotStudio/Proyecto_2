@@ -3,7 +3,7 @@
 #include "Juego.h"
 #include "checkML.h"
 
-void Tile::onColisionEnter() { std::cout << "col tile\n"; }
+void Tile::onColisionEnter() {}
 Tile::Tile(int x, int y, int tileType, b2World * wardo)
 {
 
