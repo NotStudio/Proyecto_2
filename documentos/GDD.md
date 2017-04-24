@@ -208,7 +208,7 @@ Para el desarrollo de la historia, se craftean o se consiguen matando a jefes.
 | <img src=" " width="50" height="50"> | Eje                 | Derrotando al 2º boss |
 | <img src=" " width="50" height="50"> | ¿?                | Derrotando al 3er boss |
 
-####Piezas de Nave
+#### Piezas de Nave
 Objetos que nos permitiran terminar nuestra nave averiada y volver al espacio.
 | Sprite                               | Nombre                 |Obtención        |
 | :-------------:                      |:-------------          |:-------------   |
@@ -229,7 +229,7 @@ Objetos que nos permitiran terminar nuestra nave averiada y volver al espacio.
 | <img src="dirección" width="50" height="50">     | Lanza-Tornillos         | Desguace | Debajo | HP | At | Ve | FA |
 
 
-####Scrapper
+#### Scrapper
 Enemigo jefe que se mueve solamente en el eje X. Está ubicado en la pared norte del nivel.
 Ataque:
 - 1ª Fase: alterna dos ataques. Con el primero, lanza coches (proyectil mas grande de lo normal) que tiene apilados detrás suya con el gancho que tiene en la mano derecha; en el segundo, lanza ruedas en tres direcciones durante un breve periodo de tiempo.
