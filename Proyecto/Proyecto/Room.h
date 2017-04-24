@@ -90,13 +90,6 @@ private:
 		int b = rand() % rooms[a].posibles.size();
 		k = rooms[a].hab;
 		D = rooms[a].posibles[b].second;
-		cout << "Se conecta la " << a << " la " << rooms.size() ;
-		if (D == Norte){
-			cout << " Por Norte ";
-		}if (D == Sur){
-			cout << " Por Sur ";
-		}
-		cout << "\n";
 		return{ rooms[a].posibles[b].first.x,rooms[a].posibles[b].first.y };
 	}
 	bool solapa(SDL_Rect const & a, SDL_Rect const & b) {
@@ -114,8 +107,7 @@ private:
 	vector<keks> solapamientoHabitaciones(vector<Room*> * Habitaciones, SDL_Rect & zona) {
 		vector<keks> posiblis;
 		int cont = 0;
-		for (size_t i = 0; i < Habitaciones->size(); i++)
-		{
+		size_t i = Habitaciones->size() - 1;
 			int okX = Habitaciones->at(i)->getArea().x, okY = Habitaciones->at(i)->getArea().y;
 			int okW = Habitaciones->at(i)->getArea().w, okH = Habitaciones->at(i)->getArea().h;
 			bool ayy = false;
@@ -161,8 +153,6 @@ private:
 			if (valido && !ayy) { ayy = true; posiblis.push_back(keks(Habitaciones->at(i), zona,Direcciones::Oeste)); }
 			else if (valido&&ayy)posiblis[cont].posibles.push_back(make_pair(zona, Direcciones::Oeste));
 
-			if (ayy) cont++;
-		}
 		return posiblis;
 	}
 }; // !1

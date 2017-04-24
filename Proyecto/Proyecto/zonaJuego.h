@@ -11,6 +11,8 @@ protected:
 	Juego* pJuego;
 	//Vector de habitaciones/niveles
 	vector<Room*>* niveles;
+	Room* firstRoom_;
+	Room* lastRoom_;
 	//Puntero al nivel actual
 	Room* nivelActual;
 	//Nombre de la zona para pedir el thilesheet al juego

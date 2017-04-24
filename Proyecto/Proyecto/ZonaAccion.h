@@ -9,7 +9,7 @@ class ZonaAccion :
 	public ZonaJuego
 {
 	SDL_Rect tam;
-
+	
 protected:
 	//Inicializa la varible nivelActual a la habitación en la que se encuentra el jugador.
 	void setNivelActual();
