@@ -31,6 +31,6 @@
   <object id="7" x="2432" y="128" width="640" height="384"/>
   <object id="10" x="128" y="640" width="512" height="768"/>
   <object id="11" x="768" y="1536" width="768" height="384"/>
-  <object id="18" name="selectorcambio" type="inanimado" x="2300" y="760" width="512" height="516"/>
+  <object id="18" name="selectorcambio" type="inanimado" x="100" y="760" width="620" height="620"/>
  </objectgroup>
 </map>
