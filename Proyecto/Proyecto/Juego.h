@@ -337,6 +337,9 @@ public:
 	int getPersonajes(){
 		return personajes;
 	}
+	void setGameOver();
+
+	void reiniciar();
 };
 
 

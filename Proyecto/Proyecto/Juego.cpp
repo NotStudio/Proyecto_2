@@ -10,6 +10,7 @@
 #include <SDL_events.h>
 #include "MenuPG.h"
 #include "Cambio.h"
+#include "GameOver.h"
 //Constructora que inicializa todos los atributos de la clase Juego
 
 
@@ -579,4 +580,17 @@ TexturasSDL* Juego::getTilesheet(Zona* z) {
 		printf("El tileset que has pedido no existe toma este por defecto \n");
 		return mapTexturas.at("Tileset").begin()->second;
 	}
+}
+
+void Juego::setGameOver(){
+	gameOver = true;
+	//changeState(new GameOver(this));
+
+	pushState(new GameOver(this));
+}
+
+void Juego::reiniciar(){
+	Jugable::atributos vidaReset;
+	vidaReset.vida = 4;
+	static_cast<Jugable*>(getPlayer())->applyEffect(vidaReset);
 }

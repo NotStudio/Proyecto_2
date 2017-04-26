@@ -74,6 +74,10 @@ void Play::update(){
 		zona->update();
 		personaje[pJuego->getActivo()]->update();
 	}
+	if (static_cast<Jugable*>(pJuego->getPlayer())->getStats()->vida <= 0)
+	{
+		pJuego->setGameOver();	
+	}
 
 }
 
