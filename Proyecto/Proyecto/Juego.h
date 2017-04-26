@@ -334,6 +334,9 @@ public:
 	int getActivo(){
 		return activo;
 	}
+	int getPersonajes(){
+		return personajes;
+	}
 };
 
 

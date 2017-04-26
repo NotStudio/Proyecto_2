@@ -4,6 +4,7 @@
 
 #include "SelecZonaMenu.h"
 #include "Entidad.h"
+#include "Cambio.h"
 
 class Inanimado :
 	public Entidad
@@ -102,6 +103,24 @@ public:
 	virtual void onColisionEnter(Objeto* o, b2Body* b1, b2Body* b2) {
 
 		pJuego->pushState(new SelecZonaMenu(pJuego));
+	}
+};
+
+//==============================================================================================
+//SELECTOR DE Cambio
+class  SelectorCambio : public Inanimado
+{
+public:
+	SelectorCambio(Juego * Pj, int x, int y, int w, int h) :Inanimado(Pj, SDL_Rect{ x, y, TILE_WIDTH * 4, TILE_HEIGHT * 4 }, "SelectorCambio") {
+		fDef.filter.categoryBits = Juego::ESCENARIO;
+		fDef.filter.maskBits = Juego::JUGADOR;
+		body->CreateFixture(&fDef);
+	};
+	~SelectorCambio() {};
+
+	virtual void onColisionEnter(Objeto* o, b2Body* b1, b2Body* b2) {
+
+		pJuego->pushState(new Cambio(pJuego, pJuego->getActivo(), pJuego->getPersonajes()));
 	}
 };
 #endif // INANIMADO_H_

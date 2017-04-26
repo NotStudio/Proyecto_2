@@ -401,13 +401,13 @@ bool Juego::handle_event() {
 					changeState(new Pausa(this));
 				}
 			}
-			else if (evento.key.keysym.sym == SDLK_e){
+			/*else if (evento.key.keysym.sym == SDLK_e){
 				EstadoJuego* estado = topState();
 				if (typeid(*estado) == typeid(Play)){
 					pushState(new Cambio(this, activo,personajes));
 				}
 			}
-			break;
+			break;*/
 		case SDL_TEXTINPUT:
 			break;
 		case SDL_MOUSEMOTION:
