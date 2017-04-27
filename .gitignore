@@ -3,7 +3,7 @@
 *.userosscache
 *.sdf
 *.opensdf
-*.exe
+#*.exe
 *.log
 *.opendb
 *.suo
