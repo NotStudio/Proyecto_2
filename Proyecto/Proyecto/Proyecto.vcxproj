@@ -37,6 +37,7 @@
     <ClCompile Include="GameOver.cpp" />
     <ClCompile Include="Helice.cpp" />
     <ClCompile Include="HUD.cpp" />
+    <ClCompile Include="Inventory.cpp" />
     <ClCompile Include="Item.cpp" />
     <ClCompile Include="Jefe1.cpp" />
     <ClCompile Include="Juego.cpp" />
@@ -89,6 +90,7 @@
     <ClInclude Include="HUDbase.h" />
     <ClInclude Include="Inanimado.h" />
     <ClInclude Include="factoriaEntidades.h" />
+    <ClInclude Include="Inventory.h" />
     <ClInclude Include="Item.h" />
     <ClInclude Include="Jefe1.h" />
     <ClInclude Include="Juego.h" />
