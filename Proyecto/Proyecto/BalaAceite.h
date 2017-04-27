@@ -21,5 +21,6 @@ private:
 	fase faseact;
 	float distMax;
 	bool choque = false;
+
 };
 

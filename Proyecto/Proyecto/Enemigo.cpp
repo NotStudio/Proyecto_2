@@ -1,5 +1,6 @@
 ﻿#include "Enemigo.h"
 #include "Bala.h"
+#include "BalaAmiga.h"
 #include <cmath>
 #include "Consumible.h"
 
@@ -25,7 +26,8 @@ void Enemigo::onColisionEnter(Objeto* contactObject, b2Body* b1, b2Body* b2) {
 	if (contactObject != nullptr){
 		//Si lo que ha colisionado con nosotros es una bala, comprobamos si es del jugador o de un enemigo
 		if (b2->GetFixtureList()->GetFilterData().categoryBits == Juego::AT_JUGADOR){
-			destruido = true;
+			stats.vida -= static_cast<BalaAmiga*>(contactObject)->getDanyo();
+			if (stats.vida <= 0) destruido = false;
 		}
 		//cambiar textura.
 	}

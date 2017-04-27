@@ -1,5 +1,6 @@
 #include "Cambiante.h"
 #include "Bala.h"
+#include "BalaAmiga.h"
 #include "Play.h"
 #include "checkML.h"
 #include "Room.h"
@@ -69,32 +70,30 @@ void Cambiante::disparo(){
 			aux = Sur;
 			disparar = false;
 			posicion.y += spawnPosition;
-			dynamic_cast<ZonaAccion*>(pJuego->getZona())->getNivel()->nuevaBala(new Bala(pJuego, posicion, sprite, 80.0f, 0, 1, 0));
-			
+			dynamic_cast<ZonaAccion*>(pJuego->getZona())->getNivel()->nuevaBala(new BalaAmiga(pJuego, posicion, 80.0f, 0, 1, stats.daño));
 		}
 		else if (pJuego->inputQuery(SDL_SCANCODE_RIGHT)) {
 			aux = Este;
 			disparar = false;
 			posicion.x += spawnPosition;
-			dynamic_cast<ZonaAccion*>(pJuego->getZona())->getNivel()->nuevaBala(new Bala(pJuego, posicion, sprite, 80.0f, 1, 0, 0));
+			dynamic_cast<ZonaAccion*>(pJuego->getZona())->getNivel()->nuevaBala(new BalaAmiga(pJuego, posicion, 80.0f, 1, 0, stats.daño));
 		}
 		else if (pJuego->inputQuery(SDL_SCANCODE_LEFT)) {
 			aux = Oeste;
 			disparar = false;
 			posicion.x -= spawnPosition;
-			dynamic_cast<ZonaAccion*>(pJuego->getZona())->getNivel()->nuevaBala(new Bala(pJuego, posicion, sprite, 80.0f, -1, 0, 0));
+			dynamic_cast<ZonaAccion*>(pJuego->getZona())->getNivel()->nuevaBala(new BalaAmiga(pJuego, posicion, 80.0f, -1, 0, stats.daño));
 
 		}
 		else if (pJuego->inputQuery(SDL_SCANCODE_UP)) {
-			aux = Norte;
+			aux = Sur;
 			disparar = false;
 			posicion.y -= spawnPosition;
-			dynamic_cast<ZonaAccion*>(pJuego->getZona())->getNivel()->nuevaBala(new Bala(pJuego, posicion, sprite, 80.0f, 0, -1, 0));
+			dynamic_cast<ZonaAccion*>(pJuego->getZona())->getNivel()->nuevaBala(new BalaAmiga(pJuego, posicion, 80.0f, 0, -1, stats.daño));
 		}
 		if (!disparar) {
 			Disparar = SDL_AddTimer(cadencia, imerDisparo, this); pJuego->reproducirEfecto("TShot");
 			currentAnim = animaciones.at("atqu");
-		furia += 5;// incrementa furia...............................
 		}
 	}
 	if (aux != SinDir) {

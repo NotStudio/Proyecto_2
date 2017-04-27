@@ -162,7 +162,7 @@ void Jefe1::Ataque4(){
 
 void Jefe1::disparo(string tipo,SDL_Rect posicion, float dirx, float diry,float velocidad){
 	//dynamic_cast<ZonaAccion*>(pJuego->getZona())->getNivel()->nuevaBala(new BalaEnemiga(pJuego, posicion, tipo, velocidad, dirx, diry));
-	dynamic_cast<ZonaAccion*>(pJuego->getZona())->getNivel()->nuevaBala(new BalaEnemiga(pJuego, posicion, tipo, velocidad, dirx, diry));
+	dynamic_cast<ZonaAccion*>(pJuego->getZona())->getNivel()->nuevaBala(new BalaEnemiga(pJuego, posicion, tipo, velocidad, dirx, diry, stats.daño));
 }
 void Jefe1::disparaAceite(float dirx,float diry){
 	b2Vec2 objetivo;

@@ -37,7 +37,6 @@ void Jugable::onColisionEnter(Objeto* obj, b2Body* b1, b2Body* b2){
 		if (b2->GetFixtureList()->GetFilterData().categoryBits == Juego::AT_ENEMIGO ||
 			b2->GetFixtureList()->GetFilterData().categoryBits == Juego::ENEMIGO){
 			if (b1->GetFixtureList()->GetFilterData().categoryBits == Juego::JUGADOR){
-
 				if (dynamic_cast<BalaAceite*>(obj)){
 					if (!ralentizado){
 						ralentizado = true;
@@ -50,7 +49,7 @@ void Jugable::onColisionEnter(Objeto* obj, b2Body* b1, b2Body* b2){
 				else if (!inmune){
 					inmune = true;
 					//cout << "inmunidad activada\n";
-					stats.vida--;
+					stats.vida -= static_cast<BalaEnemiga*>(obj)->getDanyo();
 					pJuego->reproducirEfecto("scream");
 					//cout << stats.vida << " vidas tienes\n";
 					timerInmune = SDL_AddTimer(350, desactivarInmunidad, this);
