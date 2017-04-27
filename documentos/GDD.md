@@ -1,10 +1,10 @@
-# nombre Juego
+# Toasty's Revenge
 ## Resumen
 | Genero | Público | Modos de juego | Plataforma | Calificación |
 |:-------|:--------|:---------------|:-----------|:-------------|
 | Rol, Acción | Jóven (12 - 30)    |1 Jugador| PC  | La puta polla coño |
 ## Descripción
-"Nombre juego" es un juego en 2D que mezcla componentes de rol (crafteo de objetos) con la acción directa, que se ubica temporalmente algunos años mas tarde de nuestra era.  En él, debemos avanzar por distintas zonas con un elenco variado de personajes jugables, máquinas electrónicas de que poseen una IA muy desarrollada. En dichas zonas, debemos derrotar a los enemigos y conseguir recursos para ayudar al personaje principal, 'Nombre tostadora', en su misión por volver a la estación espacial de la que ha caído por error a la Tierra para volver junto con su compañero humano "Nombre del pavo", un astronauta residente en la estación. Sin embargo, "la tostadora" pronto se dará cuenta que no todo continúa como cuando el dejó el planeta.
+"Nombre juego" es un juego en 2D que mezcla componentes de rol (crafteo de objetos) con la acción directa, que se ubica temporalmente algunos años mas tarde de nuestra era.  En él, debemos avanzar por distintas zonas con un elenco variado de personajes jugables, máquinas electrónicas de que poseen una IA muy desarrollada. En dichas zonas, debemos derrotar a los enemigos y conseguir recursos para ayudar al personaje principal, Toasty, en su misión por volver a la estación espacial de la que ha caído por error a la Tierra para volver junto con su compañero humano "Nombre del pavo", un astronauta residente en la estación. Sin embargo, "la tostadora" pronto se dará cuenta que no todo continúa como cuando el dejó el planeta.
 ## Portada
 portada del juego
 
@@ -35,7 +35,7 @@ Durante el juego, podemos pulsar 'P' (ej) para acceder al menu de pausa, que pau
 ### La Base o Refugio
 Donde se realiza parte survival del juego. Estando en la base no podremos realizar ataques, ya que no existirán enemigos. Será un único nivel, pero estará dividido por secciones en la podremos realizar diferentes acciones:
 
-- Comprar?
+
 - Elegir zona para jugar (que nos llevará directamente a la acción).
 - Craftear.
 - Elegir personaje.
@@ -77,12 +77,13 @@ Como se ha mencionado antes, los niveles son donde sucede la acción. Los nivele
 Año 16DB, Estacion espacial “Shuppatsu”, un asteroide colisiona contra la estacion provocando el desprendimiento de uno de los módulos, el cual se precipita sobre la Tierra.
 Al estrellarse sobre la superficie terrestre en una pradera aparece entre el humo una tostadora que debido al impacto se ha encendido.
 Está Tostadora fue una de las primeras de su especie, los Companion Devices, también conocidos como CD. Aparatos electrónicos corrientes con una avanzada inteligencia artificial que emulaba emociones para que los astronautas no se sintieran solos en sus trabajos en el espacio. Debido a la complejidad de dicha inteligencia artificial los diseñadores debían dividirlas en dos módulos.
-Por un lado el módulo de IA “m-4N” que estaba diseñado para poder desarrollar una inteligencia emocional, emulación de emociones y comunicación con humanos progresiva simulando la compañía humana. Por otro lado el módulo “g-0D” era el encargado de las respuestas motoras y control sobre el aparato en sí. Al avanzar la tecnología muchos de los aparatos CD fueron reemplazados por los modelos Fellas Devices, conocidos como FD, que implementan un solo módulo que fusiona el g-0D y el m-4N en uno solo. Debido a este avance los antiguos y obsoletos modelos CD comenzaron a ser retirados y convertidos en chatarra para reutilización en nuevos modelos. 
+Por un lado el módulo de IA “m-4N” que estaba diseñado para poder desarrollar una inteligencia emocional, emulación de emociones y comunicación con humanos progresiva simulando la compañía humana. Por otro lado el módulo “g-0D” era el encargado de las respuestas motoras y control sobre el aparato en sí. Al avanzar la tecnología muchos de los aparatos CD fueron reemplazados por los modelos Fellas Devices, conocidos como FD, que implementan un solo módulo que fusiona el g-0D y el m-4N en uno solo. Debido a este avance los antiguos y obsoletos modelos CD comenzaron a ser retirados y convertidos en chatarra para reutilización en nuevos modelos.
 Uno de los astronautas, Collin McGuffin , encargado del mantenimiento de la estación desarrolló una relación cercana con una tostadora y llego a bautizarla con el nombre de Toasty, no era muy querida en la estación espacial porque no sabía hacer bien las tostadas, cuando llegó el momento de retirar los CD McGuffin a toasty en uno de los módulos no habitables. Lo desconectó para ahorrar batería con la promesa de que volvería cuando hubiera acabado la recolección de antiguos CDs.
 Después de la colisión Toasty levanta de letargo y al verse en la situación de estar solo, va en la búsqueda de Collin McGuffin, y decide que la mejor idea es volver a la base espacial, y la mejor forma es fabricar un cohete, aquí la aventura comienza, en busca de los materiales sufientes para fabricar un cohete, en la que conoceremos a otros CDs que nos ayudaran en esta jesta, lucharemos contra FD corruptos.
 
 
 ## Personajes
+
 | Sprite                                             | Nombre           | Nota | HP | At | Ve | FA |
 | :-------------:                                    | :-------------   |:---|:---:|:---:|:---:|:---:|
 | imagen del personaje                             | Nombre | trivia informacion sobre el personaje | vida | ataque | velocidad | forma de ataque  |
@@ -92,16 +93,23 @@ Después de la colisión Toasty levanta de letargo y al verse en la situación d
 | <img src="DocImg/imagenesGDD/toasty.png" width="100">   | Toasty           | no te hueles la tostada | ? | ? | ? | ? |
 | :-------------:                                    | :-------------   |:---|:---:|:---:|:---:|:---:|
 
+#### Forma de desbloqueo
 Personaje principal de la historia es una tostadora.
+#### Jugabilidad
+Ataca lanzando tostadas a distancia, que hacen daño por contacto con los enemigos.
 
 ### Gotchi
 
 | <img src="dirección" width="100"> | Gotchi           | tamagooooochi | ? | ? | ? | ? |
 | :-------------:                                    | :-------------   |:---|:---:|:---:|:---:|:---:|
+
 #### Forma de desbloqueo
 Se encuentra al final del Hipsters Sanctuary. Dice ser otro CD, que parece inutilizado pero que si lo llevamos a la base podemos meterle pilas y mover el modulo g-0d a él para utilizarlo.
 #### Historia
 El solía ser un jugete para niños pequeños por lo que habla como un niño pequeño, una forma sincera, inocente y a veces cruel. Debido a su personalidad infantil y a la situacion de guerra a la que se enfrentó Gotchi, le afecto seriamente a su personalidad, cuand o habla suele decir comentarios profundos y sadicos, como los de un veterano de guerra pero con lenguaje de niño pequeño.
+
+#### Jugabilidad
+Su ataque es melee. Lanza su cadena haciendo una honda a su alrededor, hiriendo a todos los enemigos que encuentra a su paso.
 
 ### PDST
 | <img src="dirección" width="100"> | PDST           | Una PDA  | ? | ? | ? | ? |
@@ -109,10 +117,26 @@ El solía ser un jugete para niños pequeños por lo que habla como un niño peq
 
 #### Forma de desbloqueo
 En severals motors encuentras una PDA, te dice que está buscando un sitio para alojarse y que no importaría que tu le alojaras, y que depaso si le puede reparar. te lo llevas a la base, necesitas un engranaje para poder repararlo, y así puedes usarlo.
+
 #### Historia
 Su nombre completo es Personal Digital Schelude Technology, como toda PDA le prometerion que iba a cambiar el mundo, que estaba preparado para cualquier cosa, pero se quedó en nada porque llego otro que le gano en todo, aquello le marcó y le traumatizó (PTSD). Cuando habla suele ser con aires de superioridad y de una forma desagradable, pero de vez en cuando suele soltar un comentario de que estaba destinado a más.
 
+#### Jugabilidad
+??
 
+### Switchy
+
+|<img src="dirección" width="100">| Switchy| Una PDA  | ? | ? | ? | ? |
+| :-------------: | :-------------   |:---|:---:|:---:|:---:|:---:|
+
+#### Forma de desbloqueo
+??
+
+#### Historia
+Es una consola vieja, con la capacidad de transformarse en un aparato de nueva generación para aumentar sus poderes.
+
+#### Jugabilidad
+Al comienzo del gameplay, se encuentra en su 1ª forma. En esta forma, su ataque es a distancia, lanzandos discos que hieren a sus enemigos. Para pasar a su segunda forma, se necesita cargar la barra de energía. Cuando esta llega a su máximo, entra en la forma evolucionada, en la que su ataque pasa a ser melee. Pasado X tiempo, vuelve a su forma normal.
 
 ## Inanimados
 Objetos que son parte del escenario, algunos tienen acciones en determinadas condiciones.
@@ -149,21 +173,26 @@ Estos sirven para craftear otros objetos. Los objetos resultantes pueden ser cla
 | <img src="DocImg/pp.jpg" width="50" height="50"> | Objeto generico  | efecto generico   | generico|
 | <img src="DocImg/pp.jpg" width="50" height="50"> | Chatarra         | Crafteo           | the Natural Preserve |
 | <img src="DocImg/pp.jpg" width="50" height="50"> | Madera           | Crafteo           | the Natural Preserve |
-| <img src="DocImg/pp.jpg" width="50" height="50"> | Estaño           | Crafteo           | Hipsters Sancturary |
-| <img src="DocImg/pp.jpg" width="50" height="50"> | Chip             | Crafteo           | Hipsters Sancturary |
-| <img src="DocImg/pp.jpg" width="50" height="50"> | Litio            | Crafteo           | Hipsters Sancturary |
+| <img src="DocImg/pp.jpg" width="50" height="50"> | Tuercas           | Crafteo           | the Natural Preserve |
+| <img src="DocImg/pp.jpg" width="50" height="50"> | Carbón             | Crafteo           | the Natural Preserve |
+| <img src="DocImg/pp.jpg" width="50" height="50"> | Tanque            | Crafteo           | S.Motors Museum |
 | <img src="DocImg/pp.jpg" width="50" height="50"> | Petroleo         | Crafteo           | S. Motors Museum |
-| <img src="DocImg/pp.jpg" width="50" height="50"> | Carbón           | Crafteo           | S. Motors Museum |
-| <img src="DocImg/pp.jpg" width="50" height="50"> | Tanque           | Crafteo           | S. Motors Museum |
-| <img src="DocImg/pp.jpg" width="50" height="50"> | Olla a presión   | Crafteo           | S. Motors Museum |
+| <img src="DocImg/pp.jpg" width="50" height="50"> | Engranaje           | Crafteo           | S. Motors Museum |
+| <img src="DocImg/pp.jpg" width="50" height="50"> | Fusible           | Crafteo           | S. Motors Museum |
 | <img src="DocImg/pp.jpg" width="50" height="50"> | Tuberías         | Crafteo           | S. Motors Museum |
-| <img src="DocImg/pp.jpg" width="50" height="50"> | Eje              | Crafteo           | Madera + Madera |
+| <img src="DocImg/pp.jpg" width="50" height="50"> | Estaño        | Crafteo           |  Hipsters Sanctuary |
+| <img src="DocImg/pp.jpg" width="50" height="50"> | Litio        | Crafteo           |  Hipsters Sanctuary |
+| <img src="DocImg/pp.jpg" width="50" height="50"> | Chip        | Crafteo           |  Hipsters Sanctuary |
+| <img src="DocImg/pp.jpg" width="50" height="50"> | Sensor        | Crafteo           |  Hipsters Sanctuary |
+| <img src="DocImg/pp.jpg" width="50" height="50"> | Carbono              | Crafteo           | Madera + Carbón |
 | <img src="DocImg/pp.jpg" width="50" height="50"> | Engranaje        | Crafteo           | Chatarra + Chatarra |
 | <img src="DocImg/pp.jpg" width="50" height="50"> | Engranajes       | Crafteo           | Engranaje + Engranaje |
-| <img src="DocImg/pp.jpg" width="50" height="50"> | Circuitos        | Crafteo           | Chatarra + Estaño |
+| <img src="DocImg/pp.jpg" width="50" height="50"> | Circuito        | Crafteo           | Chip + Estaño |
 | <img src="Direccion" height="50" width="50">     | Pila de botón    | Canjeable por una partida con el Tamagochi | Chatarra + Litio|
-| <img src="DocImg/pp.jpg" width="50" height="50"> | Tanque a Presión TP | Crafteo           | Olla + Tanque |
-| <img src="DocImg/pp.jpg" width="50" height="50"> | Refinador Express RE     | Crafteo           | TP + Tuberías |
+| <img src="DocImg/pp.jpg" width="50" height="50"> | Tanque a Presión (TP) | Crafteo           | Fusible + Tanque |
+| <img src="DocImg/pp.jpg" width="50" height="50"> | Refinador Express (RE)     | Crafteo           | TP + Tuberías |
+| <img src="DocImg/pp.jpg" width="50" height="50"> | Batería de iones     | Crafteo           | Estaño + Litio |
+| <img src="DocImg/pp.jpg" width="50" height="50"> | Sensor de mov.     | Crafteo           | Chip + Sensor |
 
 
 ### Histórico
@@ -171,19 +200,36 @@ Para el desarrollo de la historia, se craftean o se consiguen matando a jefes.
 
 | Sprite                               | Nombre                 |Obtención        |
 | :-------------:                      |:-------------          |:-------------   |
-| <img src=" " width="50" height="50"> | Mecanismo(Engranajes)  | Engranajes + Eje        |
-| <img src="" width="50" height="50">  | Circuitos Electronicos | Chip + Estaño        |
-| <img src="" width="50" height="50">  | Combustible            | RE + Petroleo |
-| <img src=" " width="50" height="50"> | Acero                  | Crafteo |
+| <img src=" " width="50" height="50"> | Mecanismo              | Engranajes + Eje + Fusible       |
+| <img src="" width="50" height="50">  | Circuitos Electronicos | Circuito + Batería de iones + "lo que dropea el 3er boss"        |
+| <img src="" width="50" height="50">  | Combustible            | RE + Petróleo |
+| <img src=" " width="50" height="50"> | Fibra de carbono                 | Carbono + Tubería |
+| <img src=" " width="50" height="50"> | ¿?                | Derrotando al 1er boss |
+| <img src=" " width="50" height="50"> | Eje                 | Derrotando al 2º boss |
+| <img src=" " width="50" height="50"> | ¿?                | Derrotando al 3er boss |
 
+#### Piezas de Nave
+Objetos que nos permitiran terminar nuestra nave averiada y volver al espacio.
+| Sprite                               | Nombre                 |Obtención        |
+| :-------------:                      |:-------------          |:-------------   |
+|| <img src="" width="50" height="50">  | Motor principal           | 4 engranajes + 2 baterías de iones |
+| <img src=" " width="50" height="50"> | Acelerador                 | 2 mecánismos + 1 circuito electrónico |
+| <img src=" " width="50" height="50"> | Módulo de comandos                | 3 circuito electrónicos + 1 fibra de carbono|
+| <img src=" " width="50" height="50"> | Estabilizador                 | 4 sensores de mov. + 1 mecanismo |
 
 ## NPC's
 
 | Sprite                                             | Nombre           |localizaciones    | descripcion | HP | At | Ve | FA |
 | :-------------:                                    | :-------------   |:---|:---|:---:|:---:|:---:|:---:|
-| <img src="dirección" width="50" height="50">     | Scrapper           | Desguace | Debajo | HP | At | Ve | FA |
+| <img src="dirección" width="50" height="50">     | Scrapper (Boss)          | Desguace | Debajo | HP | At | Ve | FA |
+| <img src="dirección" width="50" height="50">     | Iman          | Desguace | Debajo | HP | At | Ve | FA |
+| <img src="dirección" width="50" height="50">     | Hélice          | Desguace | Debajo | HP | At | Ve | FA |
+| <img src="dirección" width="50" height="50">     | Boom-Ba          | Desguace | Debajo | HP | At | Ve | FA |
+| <img src="dirección" width="50" height="50">     | Sierra          | Desguace | Debajo | HP | At | Ve | FA |
+| <img src="dirección" width="50" height="50">     | Lanza-Tornillos         | Desguace | Debajo | HP | At | Ve | FA |
 
-####Scrapper
+
+#### Scrapper
 Enemigo jefe que se mueve solamente en el eje X. Está ubicado en la pared norte del nivel.
 Ataque:
 - 1ª Fase: alterna dos ataques. Con el primero, lanza coches (proyectil mas grande de lo normal) que tiene apilados detrás suya con el gancho que tiene en la mano derecha; en el segundo, lanza ruedas en tres direcciones durante un breve periodo de tiempo.

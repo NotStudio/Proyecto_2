@@ -1,6 +1,7 @@
 #ifndef GAMEOVER_H_
 #define GAMEOVER_H_
 #include "EstadoPG.h"
+#include "Boton.h"
 
 
 class GameOver :
@@ -11,12 +12,19 @@ public:
 	virtual ~GameOver();
 
 private:
-	
-	static void base(Juego* jg);
-	
-	// cuando mueres sale un boton para ir a la base
 
+
+
+	int activo = 0;
+	std::vector <Boton*> botones;
+
+	static void playAgain(Juego * jg);
+	static void quit(Juego * jg);
+
+	// Estos métodos no irían en EstadoPG, ya que menu y pausa los usan iguales
+	virtual void update();
+	virtual void draw();
 };
 
- 
+
 #endif

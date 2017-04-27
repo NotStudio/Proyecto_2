@@ -10,7 +10,7 @@ public:
 	Jefe1(Juego* punteroJuego, int x, int y);
 	~Jefe1();
 	virtual void move();
-	virtual void update();
+	virtual void comportamiento();
 	virtual void onColisionEnter(Objeto* contactObject, b2Body* b1, b2Body* b2);
 	void changeState();
 	void Idle();

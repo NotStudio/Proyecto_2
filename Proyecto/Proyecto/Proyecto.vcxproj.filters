@@ -207,6 +207,12 @@
     <ClCompile Include="Cambio.cpp">
       <Filter>Source Files\Estados</Filter>
     </ClCompile>
+    <ClCompile Include="Dron.cpp">
+      <Filter>Source Files\Personajes\Enemigos</Filter>
+    </ClCompile>
+    <ClCompile Include="TrampaElectrica.cpp">
+      <Filter>Source Files\Personajes\Enemigos</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Juego.h">
@@ -382,6 +388,12 @@
     </ClInclude>
     <ClInclude Include="Cambio.h">
       <Filter>Header Files\Estados</Filter>
+    </ClInclude>
+    <ClInclude Include="Dron.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TrampaElectrica.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

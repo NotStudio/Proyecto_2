@@ -9,10 +9,9 @@ public:
 	~EnemigoBomba();
 
 	virtual void move();
-	virtual void update();
 	virtual void onColisionEnter(Objeto* contactObject, b2Body* b1, b2Body* b2);
-	void muerte();
-	
+	virtual void muerte();
+	virtual void comportamiento();
 
 private:
 	

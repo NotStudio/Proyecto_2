@@ -64,35 +64,86 @@ void Jugable::onColisionEnter(Objeto* obj, b2Body* b1, b2Body* b2){
 
 void Jugable::movControl(){
 
-	Direccion aux;
+	Direccion aux = SinDir;
 	int lim = stats.velMov;
 	int ac = 0.5 * lim;
 	b2Vec2 v = body->GetLinearVelocity();
-	
-	if (pJuego->inputQuery(SDL_SCANCODE_A)) {
+
+
+	//Escaneo de teclas
+
+
+	if (pJuego->inputQuery(SDL_SCANCODE_A)){
 		aux = Oeste;
-		if (!(v.x < -lim))
-			vel.x -= ac;
-	}else if (pJuego->inputQuery(SDL_SCANCODE_D)) {
-		aux = Este;
-		if (!(v.x > lim)) {
-			vel.x += ac;
-		}
+
 	}
-	else
-		aux = SinDir;
-	if (pJuego->inputQuery(SDL_SCANCODE_W)) {
-		aux = (aux==Este)?NorteEste:(aux==Oeste)?NorteOeste:Norte;
+	else if (pJuego->inputQuery(SDL_SCANCODE_D)){
+		aux = Este;
+	}
+
+
+	if (pJuego->inputQuery(SDL_SCANCODE_W)){
+		if (aux == Este)aux = NorteEste;
+		else if (aux == Oeste) aux = NorteOeste;
+		else aux = Norte;
+	}
+	else if (pJuego->inputQuery(SDL_SCANCODE_S)){
+		if (aux == Este) aux = SurEste;
+		else if (aux == Oeste)aux = SurOeste;
+		else aux = Sur;
+	}
+
+
+
+	//Segun la direccion en que queramos ir, sumamos una cantidad u otra en 
+	//cada eje.
+	switch (aux){
+	case Norte:
 		if (!(v.y < -lim))
 			vel.y -= ac;
-	}
-	else if (pJuego->inputQuery(SDL_SCANCODE_S)) {
-		aux = (aux == Este) ? SurEste : (aux == Oeste) ? SurOeste : Sur;
+		break;
+	case Sur:
 		if (!(v.y > lim))
 			vel.y += ac;
+		break;
+	case Este:
+		if (!(v.x > lim))
+			vel.x += ac;
+		break;
+	case Oeste:
+		if (!(v.x < -lim))
+			vel.x -= ac;
+		break;
+	case NorteEste:
+		//0.785398 = 45º en radianes
+		if (!(v.y < -lim))
+			vel.y -= ac*sin(0.785398);
+		if (!(v.x > lim))
+			vel.x += ac*cos(0.785398f);
+		break;
+	case NorteOeste:
+		if (!(v.y < -lim))
+			vel.y -= ac*sin(0.785398);
+		if (!(v.x < -lim))
+			vel.x -= ac*sin(0.785398);
+		break;
+	case SurEste:
+		if (!(v.y > lim))
+			vel.y += ac*sin(0.785398);
+		if (!(v.x > lim))
+			vel.x += ac*sin(0.785398);
+
+		break;
+	case SurOeste:
+		if (!(v.y > lim))
+			vel.y += ac*sin(0.785398);
+		if (!(v.x < -lim))
+			vel.x -= ac*sin(0.785398);
+
+		break;
 	}
-	//Para que frene solo y para controlar que no se salga.
-	afinarMov(ac, lim, aux);
+		//Para que frene solo y para controlar que no se salga.
+		afinarMov(ac, lim, aux);
 }
 
 void Jugable::afinarMov(int const & ac, int const & lim,Direccion const & aux) {

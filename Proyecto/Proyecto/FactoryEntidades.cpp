@@ -4,7 +4,10 @@
 #include "Helice.h"
 #include "Perseguidor.h"
 #include "Inanimado.h"
+#include "MaquinaDePelotas.h"
 #include "Jefe1.h"
+#include "Dron.h"
+#include "TrampaElectrica.h"
 #include <stdio.h>
 
 
@@ -28,6 +31,9 @@ Objeto * creaInanimado(Juego * pj, string id, int x, int y, int w, int h,float e
 	}
 	else if (id == "SelectorZona" || id == "selectorzona") {
 		return new SelectorZona(pj, x, y, w, h);
+	}
+	else if (id == "SelectorCambio" || id == "selectorcambio") {
+		return new SelectorCambio(pj, x, y, w, h);
 	}
 	{
 		throw exception("NO EXISTE DICHO OBJETO \n");
@@ -53,6 +59,16 @@ Objeto* creaEnemigo(Juego * pj, string id, int x, int y, int aditional){
 	else if (id == "Jefe1" || id == "jefe1")
 	{
 		return new Jefe1(pj, x, y);
+	}
+	else if (id == "Tornillero" || id == "tornillero"){
+
+		return new MaquinaDePelotas(pj, x, y);
+	}
+	else if (id == "TrampaElectrica" || id == "trampaElectrica") {
+		return new TrampaElectrica(pj, x, y);
+	}
+	else if (id == "Dron" || id == "dron") {
+		return new Dron(pj, x, y);
 	}
 	else
 	{

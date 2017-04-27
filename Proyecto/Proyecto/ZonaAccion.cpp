@@ -58,7 +58,10 @@ void ZonaAccion::setNivelActual(){
 		if (niveles->at(i)->dentroRoom(&pj)) nivelActual = niveles->at(i);
 		else niveles->at(i)->stop();
 	}
-	if (nivelActual != anterior)
+	if (nivelActual != anterior) {
 		cout << "Cambio Nivel\n";
+		if (!nivelActual->isEmpty())
+			cout << "Habitación con Enemigos. *Puertas cerradas*";
+	}
 	pJuego->getCamera()->setLimite(nivelActual->getArea());
 }

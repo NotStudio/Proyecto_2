@@ -35,8 +35,9 @@ private:
 	}
 	Zona* zona;
 	
-
-
+	bool isEmpty_;
+	int killableEnemies;
+	void checkAliveEnemies(int);
 
 public:
 	int getNumPuertas() {
@@ -72,6 +73,7 @@ public:
 	void SetRoomFichero(string Dir, vector<Room*> * Habitaciones);
 	void stop();
 	void meterEntidades();
+	bool isEmpty() { return isEmpty_; }
 private:
 	struct keks
 	{

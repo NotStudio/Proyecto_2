@@ -7,6 +7,9 @@
 //HAY QUE CAMBIAR EL STRING QUE PASA COMO ID
 Perseguidor::Perseguidor(Juego* punteroJuego, int x, int y) : Enemigo(punteroJuego, {x,y,64,57}, "Iman", 300), coefMov(20.0f)
 {
+	fDef.filter.categoryBits = Juego::ENEMIGO;
+	fDef.filter.maskBits = Juego::JUGADOR | Juego::ESCENARIO | Juego::ENEMIGO | Juego::ESCENARIO_NOCOL | Juego::AT_JUGADOR;
+	body->CreateFixture(&fDef);
 	for (unordered_map<string,Juego::Animacion*>::iterator i = animaciones.begin(); i != animaciones.end(); i++)
 	{
 		animaciones.at(i->first)->setNumFrames(30);
@@ -14,7 +17,7 @@ Perseguidor::Perseguidor(Juego* punteroJuego, int x, int y) : Enemigo(punteroJue
 	currentAnim = animaciones.at("walk");
 	stats.daño = 1;
 	stats.vida = 5;
-
+	isKillable = true;
 	
 }
 void Perseguidor::move(){
@@ -44,10 +47,7 @@ void Perseguidor::move(){
 		stop();
 	}
 }
-void Perseguidor::update() {
-	Enemigo::update();
-	
-}
+
 
 void Perseguidor::tellBody(b2Body* b){
 	b2 = b;
@@ -59,8 +59,7 @@ void Perseguidor::onColisionEnter(Objeto* contactObject, b2Body* b1, b2Body* b2)
 		if (b2->GetFixtureList()->GetFilterData().categoryBits == Juego::AT_JUGADOR){
 			stats.vida--;
 			if (stats.vida <= 0){
-				Enemigo::onColisionEnter(contactObject, b1, b2);
-				needDrop = true;
+				muerte();
 			}
 		}
 	}

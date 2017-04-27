@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="16" height="16" tilewidth="128" tileheight="128" nextobjectid="32">
+ <tileset firstgid="1" source="../../../../documentos/Tilesheet configurado.tsx"/>
+ <layer name="Capa de Patrones 1" width="16" height="16">
+  <data encoding="csv">
+17,14,14,14,14,14,14,14,14,14,14,14,14,14,14,18,
+13,5,5,5,5,6,6,5,5,5,8,5,5,5,5,15,
+13,5,5,5,5,6,6,5,6,6,6,5,5,5,5,15,
+13,7,5,9,5,5,5,5,6,12,5,5,6,5,5,15,
+13,5,5,5,9,5,7,6,5,5,7,6,5,8,5,15,
+13,7,5,5,6,5,5,5,5,5,5,6,6,5,9,15,
+13,6,5,5,5,5,5,6,6,5,5,9,9,5,5,15,
+13,5,5,5,5,5,5,5,5,5,5,5,5,5,6,15,
+13,5,11,8,5,5,5,5,5,5,7,5,5,5,5,15,
+13,6,5,5,5,5,5,7,5,12,5,9,6,6,7,15,
+13,5,5,5,5,8,5,5,5,5,7,5,9,5,5,15,
+13,5,5,5,5,7,5,5,5,5,5,5,5,5,5,15,
+13,5,5,5,7,5,5,5,5,9,5,6,5,5,5,15,
+13,5,5,5,5,5,7,12,5,6,5,6,5,5,5,15,
+13,5,6,5,5,5,5,8,9,6,5,5,5,8,5,15,
+20,16,16,16,16,16,16,16,16,16,16,16,16,16,16,19
+</data>
+ </layer>
+ <objectgroup name="Enemigos">
+  <object id="2" name="TrampaElectrica" type="enemigo" x="136" y="512" width="120" height="120"/>
+  <object id="3" name="TrampaElectrica" type="enemigo" x="280" y="512" width="120" height="120"/>
+  <object id="4" name="TrampaElectrica" type="enemigo" x="400" y="504" width="120" height="120"/>
+  <object id="5" name="TrampaElectrica" type="enemigo" x="528" y="504" width="120" height="120"/>
+  <object id="6" name="TrampaElectrica" type="enemigo" x="520" y="632" width="120" height="120"/>
+  <object id="7" name="TrampaElectrica" type="enemigo" x="520" y="776" width="120" height="120"/>
+  <object id="8" name="TrampaElectrica" type="enemigo" x="520" y="912" width="120" height="120"/>
+  <object id="9" name="TrampaElectrica" type="enemigo" x="512" y="1040" width="120" height="120"/>
+  <object id="10" name="TrampaElectrica" type="enemigo" x="512" y="1168" width="120" height="120"/>
+  <object id="11" name="TrampaElectrica" type="enemigo" x="520" y="1296" width="120" height="120"/>
+  <object id="12" name="TrampaElectrica" type="enemigo" x="520" y="1424" width="120" height="120"/>
+  <object id="13" name="TrampaElectrica" type="enemigo" x="384" y="1424" width="120" height="120"/>
+  <object id="14" name="TrampaElectrica" type="enemigo" x="264" y="1416" width="120" height="120"/>
+  <object id="15" name="TrampaElectrica" type="enemigo" x="136" y="1416" width="120" height="120"/>
+  <object id="30" name="Perseguidor" type="enemigo" x="1112" y="912" width="144" height="120"/>
+  <object id="31" name="Perseguidor" type="enemigo" x="1120" y="1176" width="160" height="120"/>
+ </objectgroup>
+</map>

@@ -32,6 +32,7 @@ void Cambio::resume(Juego * jg){
 
 	static_cast<ZonaAccion*>(jg->getZona())->getNivel()->resume();
 	
+<<<<<<< HEAD
 	Jugable * aux = static_cast<Jugable*>(jg->getActiveCharacter());
 	Camara * auxx = jg->getCamera();
 	auxx->setTarget(aux->getRect());
@@ -41,6 +42,9 @@ void Cambio::resume(Juego * jg){
 	//delete Camera;
 	jg->popState();
 	 
+=======
+	jg->popStateandCamera();
+>>>>>>> master
 }
 
 

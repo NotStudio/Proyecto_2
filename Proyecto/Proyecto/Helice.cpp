@@ -14,16 +14,12 @@ Helice::Helice(Juego* punteroJuego, int x, int y) : Enemigo(punteroJuego, {x,y,6
 	stats.velAtq = 0;
 	stats.velMov = 10;
 	stats.vida = 3;
-
+	isKillable = true;
 	rng = rand() % 2;
-
-	b2Filter filter;
-	filter = body->GetFixtureList()->GetFilterData();
-
-	filter.categoryBits = Juego::ENEMIGO;
-	filter.maskBits = Juego::JUGADOR | Juego::AT_JUGADOR;
-
-	body->GetFixtureList()->SetFilterData(filter);
+	fDef.filter.categoryBits = Juego::ENEMIGO;
+	fDef.filter.maskBits = Juego::JUGADOR | Juego::AT_JUGADOR;
+	body->CreateFixture(&fDef);
+	
 }
 void Helice::onColisionEnter(Objeto* contactObject, b2Body* b1, b2Body* b2) {
 	
@@ -32,7 +28,7 @@ void Helice::onColisionEnter(Objeto* contactObject, b2Body* b1, b2Body* b2) {
 		if (b2->GetFixtureList()->GetFilterData().categoryBits == Juego::AT_JUGADOR) {
 			stats.vida--;
 			if (stats.vida <= 0)
-				Enemigo::onColisionEnter(contactObject, b1, b2);
+				muerte();
 		}
 	}
 }
@@ -105,19 +101,22 @@ void Helice::disparo(){
 void Helice::update(){
 
 	if (!destruido){
-		Entidad::update();
+		Enemigo::update();
 		currentAnim->ActualizarFrame();
-		if (distancia()){
-
-			if (rng == 0){
-				disparo();
-				stop();
-			}
-			else
-				move();
-		}
-		else
-			rng = rand() % 2;
 	}
 
+}
+
+void Helice::comportamiento(){
+	if (distancia()){
+
+		if (rng == 0){
+			disparo();
+			stop();
+		}
+		else
+			move();
+	}
+	else
+		rng = rand() % 2;
 }

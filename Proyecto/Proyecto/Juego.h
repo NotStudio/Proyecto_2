@@ -21,10 +21,11 @@ using namespace std;
 class Juego
 {
 	
+	float FPSCAP = 1 / 60.0F;
 	int score;
 	int activo = 0;
 	int personajes = 0;
-
+	float accumulator = 0;
 	stack<EstadoJuego*> estados;
 
 
@@ -309,6 +310,8 @@ public:
 
 	void popState();
 
+	void popStateandCamera(); //Hace lo mismo que el otro pop pero cambia la camara
+
 	EstadoJuego* topState();
 
 	bool inputQuery(int numButton);
@@ -336,6 +339,12 @@ public:
 	int getActivo(){
 		return activo;
 	}
+	int getPersonajes(){
+		return personajes;
+	}
+	void setGameOver();
+
+	void reiniciar();
 };
 
 

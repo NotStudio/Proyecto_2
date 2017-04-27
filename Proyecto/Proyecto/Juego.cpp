@@ -10,6 +10,7 @@
 #include <SDL_events.h>
 #include "MenuPG.h"
 #include "Cambio.h"
+#include "GameOver.h"
 //Constructora que inicializa todos los atributos de la clase Juego
 
 
@@ -401,13 +402,13 @@ bool Juego::handle_event() {
 					changeState(new Pausa(this));
 				}
 			}
-			else if (evento.key.keysym.sym == SDLK_e){
+			/*else if (evento.key.keysym.sym == SDLK_e){
 				EstadoJuego* estado = topState();
 				if (typeid(*estado) == typeid(Play)){
-				pushState(new Cambio(this, activo,personajes));
+					pushState(new Cambio(this, activo,personajes));
 				}
 			}
-			break;
+			break;*/
 		case SDL_TEXTINPUT:
 			break;
 		case SDL_MOUSEMOTION:
@@ -461,7 +462,11 @@ void Juego::run() {
 			lastUpdate = SDL_GetTicks();
 			fpsCount++;
 		}
-		world->Step(1.0f / 60.0f, 6, 2);
+		accumulator += 0.006;
+		while (accumulator > FPSCAP){
+			world->Step(FPSCAP, 6, 2);
+			accumulator -= FPSCAP;
+		}
 		draw();
 		contSeg = SDL_GetTicks();
 	}
@@ -496,14 +501,30 @@ void Juego::pushState(EstadoJuego* newState){
 }
 
 void Juego::popState(){
-
+	//Camera = new Camara(static_cast<Entidad*>(personaje[pJuego->getActivo()])->getRect(), window.ancho, window.alto);
+	//juego->setCamera(Camera);
 	/*delete topState();
 	estados.pop();*/
-
+	
 	if (!estados.empty()) {
 		delete topState();
 		estados.pop();
 	}
+
+}
+
+void Juego::popStateandCamera(){
+	
+	
+	if (!estados.empty()) {
+		delete topState();
+		estados.pop();
+	}
+	Play *aux = static_cast<Play*>(topState());
+	SDL_Rect*personajeActivo = (static_cast<Entidad*>(aux->personaje[getActivo()])->getRect());
+	setPlayer(aux->personaje[getActivo()]);
+	
+	Camera->setTarget(personajeActivo);
 }
 
 void Juego::freeEstadoss() {
@@ -559,4 +580,17 @@ TexturasSDL* Juego::getTilesheet(Zona* z) {
 		printf("El tileset que has pedido no existe toma este por defecto \n");
 		return mapTexturas.at("Tileset").begin()->second;
 	}
+}
+
+void Juego::setGameOver(){
+	gameOver = true;
+	//changeState(new GameOver(this));
+
+	pushState(new GameOver(this));
+}
+
+void Juego::reiniciar(){
+	Jugable::atributos vidaReset;
+	vidaReset.vida = 4;
+	static_cast<Jugable*>(getPlayer())->applyEffect(vidaReset);
 }

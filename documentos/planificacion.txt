@@ -1,0 +1,39 @@
+hacer inventario in game////////////----------
+crafteo de los objetos en la base/////////------
+arte de mesa de crafteo y del inventario////////---------
+historia diseño de avance
+implementacion de la historia en el juego
+gestion de animaciones de enemigos y boss/////////--------
+animaciones de las personajes/////////--------
+boss 2 nivel
+boss 3 nivel
+implementacion zona 2
+implementacion zona 3
+guardado
+tilesheet zona 3
+nuevos mapas
+avance de la nave
+volver a organizar los crafteos/////////////----------
+arreglar el selector de personaje///////////-------
+arte de selector de personaje//////////////---------
+fin de zona(al matar al boss) /////////------------
+modificar las salas paras cerrar puertas//////////////--------
+modificar las salas en las que puedes volver a base///////////--------
+modificar mapa der la run //////---------
+arte pj2///////////////---------
+arte pj3///////////---------
+arte pj4
+objetos de la base
+pagina web(ALGABA)////////---------
+arreglo de box2d////////////////------
+HUD (MANU)
+fix del daño de los enemigos y a los enemigos///////////-----------
+presentacion final
+video amazing (prologo)
+pirotecnia dj y efectos luminosos variados
+
+////////////////////***********EXTRAS*************\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+enemigos nuevos(extra)
+zona tutorial(extra)
+posible bloqueo por zonas(extra)
+desbloqueo de personajes, diseño e implementacion(extra)

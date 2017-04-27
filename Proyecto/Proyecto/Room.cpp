@@ -25,12 +25,19 @@ void Room::resume(){
 	}
 
 }
+void Room::checkAliveEnemies(int n) {
+	if (n >= killableEnemies)
+		isEmpty_ = true;
 
+}
 //Update que realiza la habitacion. Ha de actualizarse todo lo que haya en ella (enemigos, objetos, balas, etc)
 void Room::update()
 { 
+	int deadEnemies = 0;
 	for (int i = 0; i < enemigos.size(); i++) {
 		enemigos[i]->update();
+		if (static_cast<Enemigo*>(enemigos[i])->isDead())
+			deadEnemies++;
 	}
 	for (int i = 0; i < extras.size(); i++) {
 		if (extras[i] != nullptr)
@@ -47,12 +54,13 @@ void Room::update()
 			i--;
 		}
 	}
+	checkAliveEnemies(deadEnemies);
 }
 
 
 //Constructora de la habitación. Aquí es donde se lee el nivel, se crea y se añaden los enemigos y objetos.
 //No hace falta meter los parametros string para cargar un tilesheet, carga por defecto el de la zona 1
-Room::Room(Juego * pJ, vector<Room*> * ro, Zona* z, std::string type) :pJuego(pJ)
+Room::Room(Juego * pJ, vector<Room*> * ro, Zona* z, std::string type) :pJuego(pJ), killableEnemies(0), isEmpty_(false)
 {
 	
 	zona = z;
@@ -94,6 +102,7 @@ Room::Room(Juego * pJ, vector<Room*> * ro, Zona* z, std::string type) :pJuego(pJ
 		
 		meterEntidades();
 	}
+	
 }
 //Constructora de niveles dependiendo del string (Boss o inicial)
 
@@ -104,9 +113,9 @@ void Room::stop() {
 	for (int i = 0; i < enemigos.size(); i++) {
 		static_cast<Enemigo*>(enemigos[i])->stop();
 	}
-	for (int i = 0; i < extras.size(); i++) {
+	/*for (int i = 0; i < extras.size(); i++) {
 		static_cast<Bala*>(extras[i])->stop();
-	}
+	}*/
 }
 Room::~Room()
 { 
@@ -299,9 +308,15 @@ void Room::meterEntidades(){
 					objetos.pop_back();
 			}
 			else if(obj->getType() == "enemigo"){
+				
 				enemigos.push_back(creaEntidad(pJuego, obj, area->x, area->y));
+				
 				if (enemigos.at(enemigos.size() - 1) == nullptr)
 					enemigos.pop_back();
+				//Si el enemigo puede matarse, sumamos uno al índice.
+				else if (static_cast<Enemigo*>(enemigos.at(enemigos.size() - 1))->killable()) {
+					killableEnemies++;
+				}
 			}
 		}
 	}
