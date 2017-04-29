@@ -6,11 +6,18 @@
 // ***La cantidad en cada objeto se podría hacer aleatoria***
 Inventory::Inventory()
 {
+	insertItem("Carbono", 1);
 }
 
 
 Inventory::~Inventory()
 {
+	
+}
+
+std::map<std::string, int> Inventory::getMap(){
+
+	return inventory;
 }
 
 bool Inventory::findItem(std::string const & name)

@@ -14,6 +14,7 @@
 #include <SDL_mixer.h>
 #include "RoomInfo.h"
 #include "MapData.h"
+#include "Inventory.h"
 
 class Zona;
 class EstadoJuego;
@@ -27,6 +28,8 @@ class Juego
 	int personajes = 0;
 	float accumulator = 0;
 	stack<EstadoJuego*> estados;
+
+	bool mostrar = false;
 
 
 	
@@ -97,6 +100,8 @@ class Juego
 	Zona* zona;
 
 	Objeto* personaje;
+
+	Inventory* inventario;
 
 	SDL_TimerID timerCambio;
 public:
@@ -340,6 +345,25 @@ public:
 	void setGameOver();
 
 	void reiniciar();
+
+	void changeInventory(){// cambia el estado del inventario
+	
+		mostrar = !mostrar;
+	};
+
+	bool getMostrar(){
+
+		return mostrar;
+	}
+
+	Inventory* getInventory(){
+
+		return inventario;
+	}
+
+	void setInventory(Inventory* i){
+		inventario = i; //establece el inventario creado en Play.
+	}
 };
 
 

@@ -11,6 +11,7 @@
 #include "MenuPG.h"
 #include "Cambio.h"
 #include "GameOver.h"
+#include "HUDinventory.h"
 //Constructora que inicializa todos los atributos de la clase Juego
 
 
@@ -59,6 +60,7 @@ Juego::Juego(b2World* mundo) : error(false), gameOver(false), exit(false), score
 	Camera = nullptr;
 	personaje = nullptr;
 	zona = nullptr;
+	inventario = nullptr;
 
 	pushState(new MenuPG(this));
 	cambiarMusica("summer");
@@ -402,6 +404,10 @@ bool Juego::handle_event() {
 					changeState(new Pausa(this));
 				}
 			}
+			else if (evento.key.keysym.sym == SDLK_i){
+			  
+				changeInventory();
+			}
 			/*else if (evento.key.keysym.sym == SDLK_e){
 				EstadoJuego* estado = topState();
 				if (typeid(*estado) == typeid(Play)){
@@ -594,3 +600,4 @@ void Juego::reiniciar(){
 	vidaReset.vida = 4;
 	static_cast<Jugable*>(getPlayer())->applyEffect(vidaReset);
 }
+

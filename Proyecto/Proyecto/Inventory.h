@@ -12,6 +12,9 @@ public:
 	void removeItem(std::string const & name, int quantity);
 	bool findItem(std::string const & name);
 	int getCantidad(std::string const & name) const;
+	std::map<std::string, int> getMap();
+
+
 
 private:
 
