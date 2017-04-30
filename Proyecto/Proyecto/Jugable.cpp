@@ -41,17 +41,23 @@ void Jugable::onColisionEnter(Objeto* obj, b2Body* b1, b2Body* b2){
 					if (!ralentizado){
 						ralentizado = true;
 						stats.velMov /= 4;
-
 						timerRalentizado = SDL_AddTimer(550, velocidadNormal, this);
 					}
 				}
 
 				else if (!inmune){
 					inmune = true;
-					//cout << "inmunidad activada\n";
-					stats.vida -= static_cast<BalaEnemiga*>(obj)->getDanyo();
+					//Si el objeto es una bala, nos hatrá el danyo estipulado
+					if (dynamic_cast<BalaEnemiga*>(obj) != nullptr){
+						stats.vida -= static_cast<BalaEnemiga*>(obj)->getDanyo();
+					}
+					//Si no, deducimos que estamos colisionando con el cuerpo de un enemigo, 
+					//por lo que restamos una sola vida.
+					else stats.vida--;
+
+					if (stats.vida < 0)stats.vida = 0;
 					pJuego->reproducirEfecto("scream");
-					//cout << stats.vida << " vidas tienes\n";
+	
 					timerInmune = SDL_AddTimer(350, desactivarInmunidad, this);
 				}
 

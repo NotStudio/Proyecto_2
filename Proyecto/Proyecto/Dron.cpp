@@ -22,7 +22,7 @@ Dron::Dron(Juego* punteroJuego, int x, int y) : Enemigo(punteroJuego, { x,y,128,
 		animaciones[i->first]->setNumFrames(30);
 	}
 	//currentAnim = animaciones.at("walk");
-	stats.daño = 100;
+	stats.daño = 2;
 	stats.velAtq = 20;
 	stats.velMov = 10;
 	stats.vida = 3; stats.vidaMax = stats.vida;
@@ -113,7 +113,7 @@ void Dron::spawnBalas() {
 		angle = 360 / ((360.0f / 7.0f) * i);
 		dirx = cos(6.28 / angle);  diry = sin(6.28 / angle);
 		posicion.x = radio * cos(6.28 / angle) + origPos.x;  posicion.y = radio * sin(6.28 / angle) + origPos.y;
-		dynamic_cast<ZonaAccion*>(pJuego->getZona())->getNivel()->nuevaBala(new BalaEnemiga(pJuego, posicion, "BalaN", velocidad, dirx, diry));
+		dynamic_cast<ZonaAccion*>(pJuego->getZona())->getNivel()->nuevaBala(new BalaEnemiga(pJuego, posicion, "BalaN", velocidad, dirx, diry, stats.daño));
 	}
 }
 

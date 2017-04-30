@@ -54,13 +54,10 @@ void Perseguidor::tellBody(b2Body* b){
 }
 
 void Perseguidor::onColisionEnter(Objeto* contactObject, b2Body* b1, b2Body* b2) {
-
+	Enemigo::onColisionEnter(contactObject, b1, b2);
 	if (contactObject != nullptr) {
 		if (b2->GetFixtureList()->GetFilterData().categoryBits == Juego::AT_JUGADOR){
-			stats.vida--;
-			if (stats.vida <= 0){
-				muerte();
-			}
+			
 		}
 	}
 }
