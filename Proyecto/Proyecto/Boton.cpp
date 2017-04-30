@@ -8,6 +8,8 @@ Boton::Boton(Juego* juego, string ID, int x, int y, CallBack_t * cbCons, string 
 	_x = x;
 	_y = y;
 
+	nombre = Nombre;
+
 	rectb.x = x;
 	rectb.y = y;
 
@@ -18,7 +20,7 @@ Boton::Boton(Juego* juego, string ID, int x, int y, CallBack_t * cbCons, string 
 
 	cb = cbCons;
 	Texto.LoadFuente(pjuego->getTipografia("lazy",20));
-	Texto.loadTexto(pjuego->getRender(), Nombre);
+	Texto.loadTexto(pjuego->getRender(), nombre);
 
 }
 

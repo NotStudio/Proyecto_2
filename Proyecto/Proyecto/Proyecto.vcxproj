@@ -51,6 +51,9 @@
     <ClCompile Include="NPC.cpp" />
     <ClCompile Include="ObjetoClave.cpp" />
     <ClCompile Include="ObjetoHistorico.cpp" />
+    <ClCompile Include="Objetos1.cpp" />
+    <ClCompile Include="Objetos2.cpp" />
+    <ClCompile Include="Objetos3.cpp" />
     <ClCompile Include="Pausa.cpp" />
     <ClCompile Include="Perseguidor.cpp" />
     <ClCompile Include="Personaje.cpp" />
@@ -107,6 +110,9 @@
     <ClInclude Include="Objeto.h" />
     <ClInclude Include="ObjetoClave.h" />
     <ClInclude Include="ObjetoHistorico.h" />
+    <ClInclude Include="Objetos1.h" />
+    <ClInclude Include="Objetos2.h" />
+    <ClInclude Include="Objetos3.h" />
     <ClInclude Include="Pausa.h" />
     <ClInclude Include="Perseguidor.h" />
     <ClInclude Include="Personaje.h" />

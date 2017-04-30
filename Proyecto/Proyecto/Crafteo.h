@@ -14,10 +14,9 @@ class Crafteo :
 	static void grado1(Juego* jg);
 	static void grado2(Juego* jg);
 	static void grado3(Juego* jg);
-	static void piezasNave(Juego* jg);
 
-	enum objetosSelec { GRADO1, GRADO2, GRADO3, NAVE, SALIR, NEUTRO };
-	void doCallBack();
+
+	
 
 public:
 	Crafteo(Juego* juego);
