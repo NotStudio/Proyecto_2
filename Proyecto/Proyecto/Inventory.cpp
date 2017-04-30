@@ -7,6 +7,7 @@
 Inventory::Inventory()
 {
 	insertItem("Carbono", 1);
+	insertItem("BalaN", 1);
 }
 
 

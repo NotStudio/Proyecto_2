@@ -30,7 +30,7 @@ Play::Play(Juego * juego) : EstadoPG(juego)
 	juego->setCamera(Camera);
 	juego->setZona("ZonaBase");
 	vidasHUD = new HUD(juego, SDL_Rect{ 20,0,34,55 }, "Battery4", "idle");
-	inventory = new HUDinventory(juego, SDL_Rect{ 150, 500, 500, 100 }, SDL_Rect{ 180, 510, 60, 60 }, "Inventory", "idle");
+	inventory = new HUDinventory(juego, SDL_Rect{ 150, 500, 500, 100 }, "Inventory", "idle");
 	//SDL_Rect{ (WINwidth/2) - width/2, WINheight - height , ... , ...}
 	
 	inventario = new Inventory();

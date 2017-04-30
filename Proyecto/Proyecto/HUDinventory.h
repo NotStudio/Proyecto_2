@@ -5,7 +5,7 @@ class HUDinventory :
 	public HUDbase
 {
 public:
-	HUDinventory(Juego* punteroJuego, SDL_Rect spritePar, SDL_Rect objs, string objectId, string objectAnim);
+	HUDinventory(Juego* punteroJuego, SDL_Rect spritePar, string objectId, string objectAnim);
 	virtual ~HUDinventory();
 
 	void draw();
@@ -13,9 +13,7 @@ public:
 	SDL_Rect * getRect() {
 		return sprite;
 	}
-	SDL_Rect * getRect2() {
-		return obj;
-	}
+	
 
 	bool getInvState(){
 	
@@ -28,10 +26,12 @@ private:
 	Juego* pjuego;
 
 	Juego::Animacion animacion;
-	Juego::Animacion animacion2;
 
 	SDL_Rect* sprite;
-	SDL_Rect* obj;
+	SDL_Rect obj;
+	SDL_Rect obj1;
+	SDL_Rect obj2;
+	SDL_Rect obj3;
 
 	string id;
 

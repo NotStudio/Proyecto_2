@@ -28,7 +28,7 @@
   <object id="3" name="tuberia" type="inanimado" x="57.5758" y="1584.48" width="633.939" height="296.121"/>
   <object id="5" name="nave" type="inanimado" x="1664" y="1536" width="512" height="384"/>
   <object id="6" x="3456" y="640" width="512" height="768"/>
-  <object id="7" x="2432" y="128" width="640" height="384"/>
+  <object id="7" name="selectorcrafteo" type="inanimado" x="2476" y="128" width="596" height="356"/>
   <object id="10" x="128" y="640" width="512" height="768"/>
   <object id="11" x="768" y="1536" width="768" height="384"/>
   <object id="18" name="selectorcambio" type="inanimado" x="100" y="760" width="620" height="620"/>

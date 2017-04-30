@@ -219,6 +219,9 @@
     <ClCompile Include="HUDinventory.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Crafteo.cpp">
+      <Filter>Source Files\Estados</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Juego.h">
@@ -406,6 +409,9 @@
     </ClInclude>
     <ClInclude Include="HUDinventory.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Crafteo.h">
+      <Filter>Header Files\Estados</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

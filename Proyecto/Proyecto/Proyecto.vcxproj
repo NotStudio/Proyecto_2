@@ -28,6 +28,7 @@
     <ClCompile Include="Cambiante.cpp" />
     <ClCompile Include="Cambio.cpp" />
     <ClCompile Include="contactListener.cpp" />
+    <ClCompile Include="Crafteo.cpp" />
     <ClCompile Include="Dron.cpp" />
     <ClCompile Include="Enemigo.cpp" />
     <ClCompile Include="EnemigoBomba.cpp" />
@@ -79,6 +80,7 @@
     <ClInclude Include="checkML.h" />
     <ClInclude Include="Consumible.h" />
     <ClInclude Include="contactListener.h" />
+    <ClInclude Include="Crafteo.h" />
     <ClInclude Include="Dron.h" />
     <ClInclude Include="Enemigo.h" />
     <ClInclude Include="EnemigoBomba.h" />
