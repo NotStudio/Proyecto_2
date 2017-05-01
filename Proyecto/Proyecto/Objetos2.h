@@ -11,6 +11,8 @@ class Objetos2 :
 
 	Juego::Animacion animacion;
 
+	TextoSDL Texto;
+
 public:
 	Objetos2(Juego* juego);
 	virtual ~Objetos2();
@@ -26,6 +28,8 @@ public:
 	static void circuito(Juego* pjuego);
 	static void bateriaIones(Juego* pjuego);
 	static void sensorMov(Juego* pjuego);
+
+	void receta(std::string obj);
 
 };
 

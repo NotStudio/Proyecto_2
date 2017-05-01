@@ -409,6 +409,16 @@ bool Juego::handle_event() {
 			  
 				changeInventory();
 			}
+			else if (evento.key.keysym.sym == SDLK_t){//se puede modificar
+				std::map<std::string, int> mymap = getInventory()->getMap();
+				for (std::map<std::string, int>::iterator it = mymap.begin(); it != mymap.end(); ++it)
+				{
+					baul->insertItem(it->first, it->second);
+					inventario->removeItem(it->first, it->second);
+				}
+			}
+			break;
+
 			/*else if (evento.key.keysym.sym == SDLK_e){
 				EstadoJuego* estado = topState();
 				if (typeid(*estado) == typeid(Play)){

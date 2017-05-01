@@ -10,12 +10,11 @@ Objetos3::Objetos3(Juego* pJuego) : Crafteo(pJuego)
 	botones.emplace_back(new Boton(pJuego, "boton", 50, 250, moduloComandos, "ModuloComandos"));
 	botones.emplace_back(new Boton(pJuego, "boton", 50, 300, mensaje, "Eje"));
 	botones.emplace_back(new Boton(pJuego, "boton", 50, 350, mensaje, "Pantalla"));
-	//botones.emplace_back(new Boton(pJuego, "boton", 50, 200, nullptr, "ModuloComados"));
-	botones.emplace_back(new Boton(pJuego, "boton", 400, 300, salir, "Salir"));
+	//botones.emplace_back(new Boton(pJuego, "boton", 50, 200, mensaje, "ModuloComados"));
+	botones.emplace_back(new Boton(pJuego, "boton", 575, 475, salir, "Salir"));
 	animacion.loadTextura(pJuego->getTextura(botones[0]->getNombre(), "idle"));
 
-	Texto.LoadFuente(pJuego->getTipografia("lazy", 20));
-	Texto.loadTexto(pJuego->getRender(), "0");
+	Texto.LoadFuente(pJuego->getTipografia("lazy", 30));
 }
 
 
@@ -25,28 +24,58 @@ Objetos3::~Objetos3()
 
 void Objetos3::draw() {
 
-	pJuego->getTextura("SelecMapaFondo", "idle")->draw(pJuego->getRender(), SDL_Rect{ 0, 0, 800, 600 }, nullptr);//PROVISIONAL
+	pJuego->getTextura("HudCraft3", "idle")->draw(pJuego->getRender(), SDL_Rect{ 0, 0, 800, 600 }, nullptr);//PROVISIONAL
 
 	for (int i = 0; i < botones.size(); i++)
 	{
 		botones[i]->draw();
 	}
-
-	if (botones[activo]->getNombre() != "Salir"){
+	if (botones[activo]->getNombre() == "Eje" || botones[activo]->getNombre() == "Pantalla"){
+		pJuego->getTextura("HudCraft", "idle")->draw(pJuego->getRender(), SDL_Rect{ 0, 0, 800, 600 }, nullptr);
+		for (int i = 0; i < botones.size(); i++)
+		{
+			botones[i]->draw();
+		}
 		animacion.textura = pJuego->getTextura(botones[activo]->getNombre(), "idle");
-		animacion.textura->draw(pJuego->getRender(), SDL_Rect{ 400, 75, 150, 150 }, animacion.currentRect(), 0.0);
+		animacion.textura->draw(pJuego->getRender(), SDL_Rect{ 530, 20, 125, 125 }, animacion.currentRect(), 0.0);
+
+		//receta(botones[activo]->getNombre());
+
+		if (!pJuego->getBaul()->findItem(botones[activo]->getNombre())){
+
+			Texto.loadTexto(pJuego->getRender(), "0");
+			Texto.draw(pJuego->getRender(), 650, 50);
+		}
+		else{
+			Texto.loadTexto(pJuego->getRender(), std::to_string(pJuego->getBaul()->getCantidad(botones[activo]->getNombre())));
+			Texto.draw(pJuego->getRender(), 650, 50);
+			std::cout << pJuego->getBaul()->getCantidad(botones[activo]->getNombre());
+		}
+	
+	}
+
+	else if (botones[activo]->getNombre() != "Salir"){
+		animacion.textura = pJuego->getTextura(botones[activo]->getNombre(), "idle");
+		animacion.textura->draw(pJuego->getRender(), SDL_Rect{ 530, 20, 125, 125 }, animacion.currentRect(), 0.0);
+
+		receta(botones[activo]->getNombre());
 
 		if (!pJuego->getBaul()->findItem(botones[activo]->getNombre())){
 			
-			//escribir texto con cantidad 0
-			Texto.draw(pJuego->getRender(), 500, 75);
-			std::cout << "0";
+			Texto.loadTexto(pJuego->getRender(), "0");
+			Texto.draw(pJuego->getRender(), 650, 50);
 		}
 		else{
-			// escribit esto con texto pJuego->getBaul()->getCantidad(botones[activo]->getNombre());
 			Texto.loadTexto(pJuego->getRender(), std::to_string(pJuego->getBaul()->getCantidad(botones[activo]->getNombre())));
-			Texto.draw(pJuego->getRender(), 500 , 75);
+			Texto.draw(pJuego->getRender(), 650, 50);
 			std::cout << pJuego->getBaul()->getCantidad(botones[activo]->getNombre());
+		}
+	}
+	else{
+		pJuego->getTextura("HudCraft", "idle")->draw(pJuego->getRender(), SDL_Rect{ 0, 0, 800, 600 }, nullptr);
+		for (int i = 0; i < botones.size(); i++)
+		{
+			botones[i]->draw();
 		}
 	}
 
@@ -137,9 +166,50 @@ void Objetos3::moduloComandos(Juego* pjuego){
 		pjuego->getBaul()->removeItem("Circuito", 2);
 
 	}
+
 }
 
 void Objetos3::mensaje(Juego* pjuego){
 
 	std::cout << "lo dropea un boss";
+}
+
+
+void Objetos3::receta(std::string obj){
+	if (obj == "Mecanismo"){
+		animacion.textura = pJuego->getTextura("Engranajes", "idle");
+		animacion.textura->draw(pJuego->getRender(), SDL_Rect{ 425, 260, 100, 100 }, animacion.currentRect(), 0.0);
+		animacion.textura = pJuego->getTextura("Eje", "idle");
+		animacion.textura->draw(pJuego->getRender(), SDL_Rect{ 650, 260, 100, 100 }, animacion.currentRect(), 0.0);
+		animacion.textura = pJuego->getTextura("Fusible", "idle");
+		animacion.textura->draw(pJuego->getRender(), SDL_Rect{ 525, 260, 100, 100 }, animacion.currentRect(), 0.0);
+	}
+
+	else if (obj == "Combustible"){
+		animacion.textura = pJuego->getTextura("Petroleo", "idle");
+		animacion.textura->draw(pJuego->getRender(), SDL_Rect{ 425, 260, 100, 100 }, animacion.currentRect(), 0.0);
+		animacion.textura = pJuego->getTextura("Petroleo", "idle");
+		animacion.textura->draw(pJuego->getRender(), SDL_Rect{ 650, 260, 100, 100 }, animacion.currentRect(), 0.0);
+		animacion.textura = pJuego->getTextura("Refinador", "idle");
+		animacion.textura->draw(pJuego->getRender(), SDL_Rect{ 525, 260, 100, 100 }, animacion.currentRect(), 0.0);
+	}
+
+	else if (obj == "FibraCarbono"){
+		animacion.textura = pJuego->getTextura("Carbono", "idle");
+		animacion.textura->draw(pJuego->getRender(), SDL_Rect{ 425, 260, 100, 100 }, animacion.currentRect(), 0.0);
+		animacion.textura = pJuego->getTextura("Madera", "idle");
+		animacion.textura->draw(pJuego->getRender(), SDL_Rect{ 650, 260, 100, 100 }, animacion.currentRect(), 0.0);
+		/*animacion.textura = pJuego->getTextura("Madera", "idle"); otra cosa del boss
+		animacion.textura->draw(pJuego->getRender(), SDL_Rect{ 525, 260, 100, 100 }, animacion.currentRect(), 0.0);*/
+	}
+
+	else if (obj == "ModuloComandos"){
+		animacion.textura = pJuego->getTextura("Pantalla", "idle");
+		animacion.textura->draw(pJuego->getRender(), SDL_Rect{ 425, 260, 100, 100 }, animacion.currentRect(), 0.0);
+		animacion.textura = pJuego->getTextura("Circuito", "idle");
+		animacion.textura->draw(pJuego->getRender(), SDL_Rect{ 650, 260, 100, 100 }, animacion.currentRect(), 0.0);
+		animacion.textura = pJuego->getTextura("Circuito", "idle");
+		animacion.textura->draw(pJuego->getRender(), SDL_Rect{ 525, 260, 100, 100 }, animacion.currentRect(), 0.0);
+	}
+
 }

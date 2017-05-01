@@ -9,9 +9,10 @@ class Objetos1 :
 
 	int activo = 0;
 
-	
-
 	Juego::Animacion animacion;
+
+	TextoSDL Texto;
+
 public:
 	Objetos1(Juego* juego);
 	virtual ~Objetos1();

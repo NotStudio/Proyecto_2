@@ -12,7 +12,6 @@ class Objetos3 :
 	Juego::Animacion animacion;
 
 	TextoSDL Texto;
-	//SDL_Rect rectb;
 
 public:
 	Objetos3(Juego* juego);
@@ -27,7 +26,7 @@ public:
 	static void moduloComandos(Juego* pjuego);
 	static void mensaje(Juego* pjuego);
 
-	
+	void receta(std::string obj);
 
 
 };

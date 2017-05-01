@@ -47,7 +47,7 @@ void HUDinventory::draw(){
 			break;
 		case (2) :
 			animacion.textura = pjuego->getTextura(it->first, anim);
-			animacion.textura->draw(pjuego->getRender(), { 310, 510, 60, 60 }, animacion.currentRect(), 0.0);
+			animacion.textura->draw(pjuego->getRender(), SDL_Rect{ 310, 510, 60, 60 }, animacion.currentRect(), 0.0);
 			break;
 		case (3) :
 			animacion.textura = pjuego->getTextura(it->first, anim);

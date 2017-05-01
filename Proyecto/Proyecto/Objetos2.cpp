@@ -12,8 +12,11 @@ Objetos2::Objetos2(Juego* pJuego) : Crafteo(pJuego)
 	botones.emplace_back(new Boton(pJuego, "boton", 50, 300, circuito, "Circuito"));
 	botones.emplace_back(new Boton(pJuego, "boton", 50, 350, bateriaIones, "IonBattery"));
 	botones.emplace_back(new Boton(pJuego, "boton", 50, 400, sensorMov, "SensorMov"));
-	botones.emplace_back(new Boton(pJuego, "boton", 400, 300, salir, "Salir"));
+	botones.emplace_back(new Boton(pJuego, "boton", 575, 475, salir, "Salir"));
+
 	animacion.loadTextura(pJuego->getTextura(botones[0]->getNombre(), "idle"));
+
+	Texto.LoadFuente(pJuego->getTipografia("lazy", 30));
 
 }
 
@@ -24,7 +27,7 @@ Objetos2::~Objetos2()
 
 void Objetos2::draw() {
 
-	pJuego->getTextura("SelecMapaFondo", "idle")->draw(pJuego->getRender(), SDL_Rect{ 0, 0, 800, 600 }, nullptr);//PROVISIONAL
+	pJuego->getTextura("HudCraft2", "idle")->draw(pJuego->getRender(), SDL_Rect{ 0, 0, 800, 600 }, nullptr);
 
 	for (int i = 0; i < botones.size(); i++)
 	{
@@ -33,19 +36,32 @@ void Objetos2::draw() {
 
 	if (botones[activo]->getNombre() != "Salir"){
 		animacion.textura = pJuego->getTextura(botones[activo]->getNombre(), "idle");
-		animacion.textura->draw(pJuego->getRender(), SDL_Rect{ 400, 75, 150, 150 }, animacion.currentRect(), 0.0);
+		if (botones[activo]->getNombre() == "Carbono")
+			animacion.textura->draw(pJuego->getRender(), SDL_Rect{ 540, 20, 100, 100 }, animacion.currentRect(), 0.0);
+		else
+			animacion.textura->draw(pJuego->getRender(), SDL_Rect{ 530, 20, 125, 125 }, animacion.currentRect(), 0.0);
+
+		receta(botones[activo]->getNombre());
 		
 		if (!pJuego->getBaul()->findItem(botones[activo]->getNombre())){
 
-			//escribir texto con cantidad 0
-			std::cout << "0";
+			Texto.loadTexto(pJuego->getRender(), "0");
+			Texto.draw(pJuego->getRender(), 650, 50);
 		}
 		else{
-			// escribit esto con texto pJuego->getBaul()->getCantidad(botones[activo]->getNombre());
-
+			Texto.loadTexto(pJuego->getRender(), std::to_string(pJuego->getBaul()->getCantidad(botones[activo]->getNombre())));
+			Texto.draw(pJuego->getRender(), 650, 50);
 			std::cout << pJuego->getBaul()->getCantidad(botones[activo]->getNombre());
 		}
 	}
+	else{
+		pJuego->getTextura("HudCraft", "idle")->draw(pJuego->getRender(), SDL_Rect{ 0, 0, 800, 600 }, nullptr);
+		for (int i = 0; i < botones.size(); i++)
+		{
+			botones[i]->draw();
+		}
+	}
+
 }
 
 void Objetos2::update() {
@@ -87,8 +103,6 @@ void Objetos2::engranaje(Juego* pjuego) {
 
 		pjuego->getBaul()->insertItem("Engranaje", 1);
 		pjuego->getBaul()->removeItem("Chatarra", 2);
-
-		std::cout << "LOKOOOOOOOOOOOOO ";
 
 	}
 }
@@ -188,5 +202,65 @@ void Objetos2::sensorMov(Juego* pjuego){
 
 }
 
+
+void Objetos2::receta(std::string obj){
+
+	if (obj == "Engranaje"){
+		animacion.textura = pJuego->getTextura("Chatarra", "idle");
+		animacion.textura->draw(pJuego->getRender(), SDL_Rect{ 650, 260, 100, 100 }, animacion.currentRect(), 0.0);
+		animacion.textura->draw(pJuego->getRender(), SDL_Rect{ 425, 260, 100, 100 }, animacion.currentRect(), 0.0);
+	}
+
+	else if (obj == "Carbono"){
+		animacion.textura = pJuego->getTextura("Madera", "idle");
+		animacion.textura->draw(pJuego->getRender(), SDL_Rect{ 425, 260, 100, 100 }, animacion.currentRect(), 0.0);
+		animacion.textura = pJuego->getTextura("Carbon", "idle");
+
+		animacion.textura->draw(pJuego->getRender(), SDL_Rect{ 650, 260, 100, 100 }, animacion.currentRect(), 0.0);
+	}
+
+	else if (obj == "Engranajes"){
+		animacion.textura = pJuego->getTextura("Engranaje", "idle");
+		animacion.textura->draw(pJuego->getRender(), SDL_Rect{ 425, 260, 100, 100 }, animacion.currentRect(), 0.0);
+		animacion.textura = pJuego->getTextura("Tuercas", "idle");
+		animacion.textura->draw(pJuego->getRender(), SDL_Rect{ 650, 260, 100, 100 }, animacion.currentRect(), 0.0);
+	}
+
+	else if (obj == "TanquePresion"){
+		animacion.textura = pJuego->getTextura("Tanque", "idle");
+		animacion.textura->draw(pJuego->getRender(), SDL_Rect{ 425, 260, 100, 100 }, animacion.currentRect(), 0.0);
+		animacion.textura = pJuego->getTextura("Fusible", "idle");
+		animacion.textura->draw(pJuego->getRender(), SDL_Rect{ 650, 260, 100, 100 }, animacion.currentRect(), 0.0);
+	}
+
+	else if (obj == "Refinador"){
+		animacion.textura = pJuego->getTextura("TanquePresion", "idle");
+		animacion.textura->draw(pJuego->getRender(), SDL_Rect{ 425, 260, 100, 100 }, animacion.currentRect(), 0.0);
+		animacion.textura = pJuego->getTextura("Tuberias", "idle");
+		animacion.textura->draw(pJuego->getRender(), SDL_Rect{ 650, 260, 100, 100 }, animacion.currentRect(), 0.0);
+	}
+
+	else if (obj == "Circuito"){
+		animacion.textura = pJuego->getTextura("Estanyo", "idle");
+		animacion.textura->draw(pJuego->getRender(), SDL_Rect{ 425, 260, 100, 100 }, animacion.currentRect(), 0.0);
+		animacion.textura = pJuego->getTextura("Chip", "idle");
+		animacion.textura->draw(pJuego->getRender(), SDL_Rect{ 650, 260, 100, 100 }, animacion.currentRect(), 0.0);
+	}
+
+	else if (obj == "IonBattery"){
+		animacion.textura = pJuego->getTextura("Estanyo", "idle");
+		animacion.textura->draw(pJuego->getRender(), SDL_Rect{ 425, 260, 100, 100 }, animacion.currentRect(), 0.0);
+		animacion.textura = pJuego->getTextura("Litio", "idle");
+		animacion.textura->draw(pJuego->getRender(), SDL_Rect{ 650, 260, 100, 100 }, animacion.currentRect(), 0.0);
+	}
+
+	else if ("SensorMov"){
+		animacion.textura = pJuego->getTextura("Chip", "idle");
+		animacion.textura->draw(pJuego->getRender(), SDL_Rect{ 425, 260, 100, 100 }, animacion.currentRect(), 0.0);
+		animacion.textura = pJuego->getTextura("Sensor", "idle");
+		animacion.textura->draw(pJuego->getRender(), SDL_Rect{ 650, 260, 100, 100 }, animacion.currentRect(), 0.0);
+	}
+
+}
 
  
