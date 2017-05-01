@@ -14,6 +14,7 @@ Jefe1::Jefe1(Juego* punteroJuego, int x, int y) : Enemigo(punteroJuego, { x, y, 
 	fase = Fases::Fase1;
 	contador = 0;// Contador de la en que parte d ela fase te encuentras
 	stats.vida = 30;
+	stats.daño = 1;
 	for (unordered_map<string, Juego::Animacion*>::iterator i = animaciones.begin(); i != animaciones.end(); i++)
 	{
 		animaciones[i->first]->setNumFrames(30);
