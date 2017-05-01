@@ -42,7 +42,9 @@ private:
 
 	Zona* zona;
 
-	Inventory* inventario;
+	Inventory* inventario;//inventario en las rooms
+
+	Inventory* baul;//baul de la base
 
 
 	static bool needGetZona;

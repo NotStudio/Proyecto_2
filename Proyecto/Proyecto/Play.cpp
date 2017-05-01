@@ -36,6 +36,9 @@ Play::Play(Juego * juego) : EstadoPG(juego)
 	inventario = new Inventory();
 	juego->setInventory(inventario);
 
+	baul = new Inventory();
+	juego->setBaul(baul);
+
 }
 
 

@@ -1,13 +1,15 @@
 #pragma once
-#include "EstadoPG.h"
+#include "Crafteo.h"
 #include "Boton.h"
 class Objetos2 :
-	public EstadoPG
+	public Crafteo
 {
 
 	std::vector <Boton*> botones;
 
 	int activo = 0;
+
+	Juego::Animacion animacion;
 
 public:
 	Objetos2(Juego* juego);
@@ -15,6 +17,15 @@ public:
 
 	virtual void update();
 	virtual void draw();
-	static void salir(Juego* pjuego);
+	static void salir(Juego* pjuego); 
+	static void engranaje(Juego* pjuego);
+	static void carbono(Juego* pjuego);
+	static void engranajes(Juego* pjuego);
+	static void tanquePresion(Juego* pjuego);
+	static void refinador(Juego* pjuego);
+	static void circuito(Juego* pjuego);
+	static void bateriaIones(Juego* pjuego);
+	static void sensorMov(Juego* pjuego);
+
 };
 

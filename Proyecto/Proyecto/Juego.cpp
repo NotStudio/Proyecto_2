@@ -61,6 +61,7 @@ Juego::Juego(b2World* mundo) : error(false), gameOver(false), exit(false), score
 	personaje = nullptr;
 	zona = nullptr;
 	inventario = nullptr;
+	baul = nullptr;
 
 	pushState(new MenuPG(this));
 	cambiarMusica("summer");

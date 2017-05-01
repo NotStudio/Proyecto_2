@@ -1,8 +1,8 @@
 #pragma once
-#include "EstadoPG.h"
 #include "Boton.h"
+#include "Crafteo.h"
 class Objetos1 :
-	public EstadoPG
+	public Crafteo
 {
 
 	std::vector <Boton*> botones;

@@ -1,7 +1,7 @@
 #include "Objetos1.h"
 
 
-Objetos1::Objetos1(Juego* pJuego) : EstadoPG(pJuego)
+Objetos1::Objetos1(Juego* pJuego) : Crafteo(pJuego)
 {
 	
 	botones.emplace_back(new Boton(pJuego, "boton", 50, 50, nullptr, "Chatarra"));
@@ -40,6 +40,17 @@ void Objetos1::draw() {
 	if (botones[activo]->getNombre() != "Salir"){
 		animacion.textura = pJuego->getTextura(botones[activo]->getNombre(), "idle");
 		animacion.textura->draw(pJuego->getRender(), SDL_Rect{ 400, 75, 150, 150 }, animacion.currentRect(), 0.0);
+
+		if (!pJuego->getBaul()->findItem(botones[activo]->getNombre())){
+
+			//escribir texto con cantidad 0
+			std::cout << "0";
+		}
+		else{
+			// escribit esto con texto pJuego->getBaul()->getCantidad(botones[activo]->getNombre());
+
+			std::cout << pJuego->getBaul()->getCantidad(botones[activo]->getNombre());
+		}
 	}
 	
 	

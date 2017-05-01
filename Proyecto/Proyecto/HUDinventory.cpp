@@ -11,10 +11,6 @@ HUDinventory::HUDinventory(Juego* punteroJuego, SDL_Rect spritePar, string objec
 	
 	
 	sprite = new SDL_Rect(spritePar);
-	obj = SDL_Rect{ 180, 510, 60, 60 };
-	obj1 = SDL_Rect{ 250, 510, 60, 60 };
-	obj2 = SDL_Rect{ 310, 510, 60, 60 };
-	obj3 = SDL_Rect{ 380, 510, 60, 60 };
 }
 
 
@@ -43,19 +39,19 @@ void HUDinventory::draw(){
 		switch (i){
 		case (0):
 			animacion.textura = pjuego->getTextura(it->first, anim);
-			animacion.textura->draw(pjuego->getRender(), obj, animacion.currentRect(), 0.0);
+			animacion.textura->draw(pjuego->getRender(), SDL_Rect{ 180, 510, 60, 60 }, animacion.currentRect(), 0.0);
 			break;
 		case (1) :
 			animacion.textura = pjuego->getTextura(it->first, anim);
-			animacion.textura->draw(pjuego->getRender(), obj1, animacion.currentRect(), 0.0);
+			animacion.textura->draw(pjuego->getRender(), SDL_Rect{ 250, 510, 60, 60 }, animacion.currentRect(), 0.0);
 			break;
 		case (2) :
 			animacion.textura = pjuego->getTextura(it->first, anim);
-			animacion.textura->draw(pjuego->getRender(), obj2, animacion.currentRect(), 0.0);
+			animacion.textura->draw(pjuego->getRender(), { 310, 510, 60, 60 }, animacion.currentRect(), 0.0);
 			break;
 		case (3) :
 			animacion.textura = pjuego->getTextura(it->first, anim);
-			animacion.textura->draw(pjuego->getRender(), obj3, animacion.currentRect(), 0.0);
+			animacion.textura->draw(pjuego->getRender(), SDL_Rect{ 380, 510, 60, 60 }, animacion.currentRect(), 0.0);
 			break;
 		}
 

@@ -28,10 +28,6 @@ private:
 	Juego::Animacion animacion;
 
 	SDL_Rect* sprite;
-	SDL_Rect obj;
-	SDL_Rect obj1;
-	SDL_Rect obj2;
-	SDL_Rect obj3;
 
 	string id;
 

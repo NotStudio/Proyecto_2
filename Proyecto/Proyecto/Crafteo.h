@@ -23,6 +23,8 @@ public:
 	virtual ~Crafteo();
 	virtual void update();
 	virtual void draw();
+
+
 };
 
 #endif

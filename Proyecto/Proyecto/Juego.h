@@ -103,6 +103,8 @@ class Juego
 
 	Inventory* inventario;
 
+	Inventory* baul;
+
 	SDL_TimerID timerCambio;
 public:
 	Juego(b2World * mundo);
@@ -363,6 +365,15 @@ public:
 
 	void setInventory(Inventory* i){
 		inventario = i; //establece el inventario creado en Play.
+	}
+
+	Inventory* getBaul(){
+	
+		return baul;
+	}
+
+	void setBaul(Inventory* i){
+		baul = i; //establece el baul creado en Play.
 	}
 };
 
