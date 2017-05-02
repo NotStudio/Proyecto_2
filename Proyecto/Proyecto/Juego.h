@@ -292,7 +292,7 @@ public:
 
 	bool handle_event();
 
-	static const Uint32  MSxUpdate = 17;
+	static const Uint32  MSxUpdate = 16;
 
 	Uint32 lastUpdate;
 

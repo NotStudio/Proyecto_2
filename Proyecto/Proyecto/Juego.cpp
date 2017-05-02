@@ -25,8 +25,8 @@ void operator+=(vector<string>& e,vector<string> o){
 // Constructora que inicializa todos los atributos de la clase Juego
 Juego::Juego(b2World* mundo) : error(false), gameOver(false), exit(false), score(0), world(mundo)
 {
-	window.alto = 600; //Tamaño de la ventana.
-	window.ancho = 800;
+	window.alto = 640; //Tamaño de la ventana.
+	window.ancho = 640;
 	fondoRect.x = 0; //Posición y tamaño de la ventana.
 	fondoRect.y = 0;
 	fondoRect.w = window.ancho;
@@ -457,12 +457,13 @@ void Juego::run() {
 	while (!exit) {
 		handle_event();
 		if (SDL_GetTicks() - lastUpdate >= MSxUpdate) {
-			update();
+			
 			lastUpdate = SDL_GetTicks();
 			fpsCount++;
 		}
 		accumulator += 0.006;
 		while (accumulator > FPSCAP){
+			update();
 			world->Step(FPSCAP, 6, 2);
 			accumulator -= FPSCAP;
 		}

@@ -8,9 +8,16 @@ using namespace std;
 class ZonaAccion :
 	public ZonaJuego
 {
+private:
+	bool CheckSolapaRooms(const SDL_Rect& R);
 	SDL_Rect tam;
-	
 protected:
+	void BuildIniRoom(size_t Planta = 0);
+	void BuildRoom(RoomType RoomType_,size_t Planta=0);
+	SDL_Point getPosiblePositionRoom(TMXReader::MapData* Data_,Direcciones&);
+	vector<pair<SDL_Point,Direcciones>>getPosicionesLados(Room* Room_,SDL_Rect&Rect_);
+	// cuantas habitaciones sin contar la del Boss y las vacias, y cuantos descansos.
+	void setHabitaciones(int NumeroHabitaciones, int NumeroParones);
 	//Inicializa la varible nivelActual a la habitación en la que se encuentra el jugador.
 	void setNivelActual();
 	//Método de Fran
@@ -31,7 +38,6 @@ protected:
 	}
 
 public:
-
 	ZonaAccion(Juego* punteroJuego);
 	virtual ~ZonaAccion();
 	virtual void draw();

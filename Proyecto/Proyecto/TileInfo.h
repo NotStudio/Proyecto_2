@@ -8,7 +8,7 @@ enum TiposTile
 	S1 = 0, S2 = 1, S3 = 2, S4 = 3,
 	S5 = 4, S6 = 5, S7 = 6, S8 = 7,
 	S9 = 8, S10 = 9, S11 = 10, S12 = 11,
-	PO = 12, PN=13, PS = 14, PE = 15,
+	PO = 12, PN=13, PE = 14, PS = 15,
 	ENO = 16, ENE = 17, ESO = 18, ESE = 19,
 	INO = 20, INE = 21, ISE = 22, ISO = 23,
 	MH = 24, MV= 25, PUN = 26, PUE = 27,
@@ -22,8 +22,27 @@ enum Direcciones
 	Norte = 1, Este = 2, Sur = -1, Oeste = -2, Sinsitio = 0
 };
 struct Puerta{
+public:
+	Puerta(Direcciones D) {
+		DirPuerta = D;
+		TilesPuerta.reserve(2);
+	};
+	void meteTilePuerta(Tile* T_) {
+		TilesPuerta.push_back(T_);
+	};
+	void abrirPuerta() {
+		for (auto p : TilesPuerta)
+			p->SetTile(S6);
+	};
+	void cerrarPuerta() {
+		for (auto p : TilesPuerta)
+			p->SetTile(ROC);
+	};
+	Direcciones GetDir() {
+		return DirPuerta;
+	};
+private:
 	Direcciones DirPuerta;
-	SDL_Rect posicion;
-	SDL_Rect zonaPuerta;
+	vector<Tile*> TilesPuerta;
 };
 #endif

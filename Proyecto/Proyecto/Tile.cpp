@@ -38,7 +38,7 @@ Tile::~Tile()
 {
 	delete mBox;
 	mBox = nullptr;
-	if (mType > S12) {
+	if (mBody!=nullptr) {
 		mBody->GetWorld()->DestroyBody(mBody);
 		delete mShape;
 		delete mShapeDef;
@@ -78,15 +78,10 @@ b2Body * Tile::getBody()
 void Tile::SetTile(int newType)
 {
 	mType = newType;
-	if (mType <S12 && mBody!=nullptr) {
-		mBody->GetWorld()->DestroyBody(mBody);
-		delete mShape;
-		delete mShapeDef;
-		delete mBodyDef;
-		mBody = nullptr;
-		mShapeDef = nullptr;
-		mShape = nullptr;
-		mBodyDef = nullptr;
+	if (mType <=S12 && mBody!=nullptr) {
+		mBody->SetActive(false);
+	}else if(mBody!= nullptr){
+		mBody->SetActive(true);
 	}
 
 }

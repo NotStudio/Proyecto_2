@@ -43,6 +43,7 @@ Play::~Play()
 	}
 	//borrar zona
 	delete zona;
+	zona = nullptr;
 }
 
 void Play::draw(){
