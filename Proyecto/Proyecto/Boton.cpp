@@ -14,12 +14,12 @@ Boton::Boton(Juego* juego, string ID, int x, int y, CallBack_t * cbCons, string 
 	rectb.y = y;
 
 	rectb.h = 75;
-	rectb.w = 150;
+	rectb.w = 170;
 	
 	id = ID;
 
 	cb = cbCons;
-	Texto.LoadFuente(pjuego->getTipografia("lazy",20));
+	Texto.LoadFuente(pjuego->getTipografia("ethnocen",20));
 	Texto.loadTexto(pjuego->getRender(), nombre);
 
 }
@@ -44,7 +44,7 @@ void Boton::normal(){
 	rectb.y = _y + (100 - rectb.h) / 2;
 	rectb.x = _x + (200 - rectb.w) / 2;
 	rectb.h = 75;
-	rectb.w = 150;
+	rectb.w = 170;
 }
 
 /*bool Boton::onClick(){

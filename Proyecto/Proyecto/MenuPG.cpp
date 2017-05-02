@@ -4,9 +4,9 @@
 
 MenuPG::MenuPG(Juego * juego) :EstadoPG(juego)
 {
-	botones.emplace_back(new Boton(juego, "boton", 415, 175, playBase,"Jugar"));
-	botones.emplace_back(new Boton(juego, "boton", 415, 275, salir,"Opciones"));
-	botones.emplace_back(new Boton(juego, "boton", 415, 375, salir,"Salir"));
+	botones.emplace_back(new Boton(juego, "button", 415, 175, playBase,"Jugar"));
+	botones.emplace_back(new Boton(juego, "button", 415, 275, salir,"Opciones"));
+	botones.emplace_back(new Boton(juego, "button", 415, 375, salir,"Salir"));
 }
 
 
