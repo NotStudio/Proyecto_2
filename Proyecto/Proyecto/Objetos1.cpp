@@ -16,7 +16,7 @@ Objetos1::Objetos1(Juego* pJuego) : Crafteo(pJuego)
 	botones.emplace_back(new Boton(pJuego, "boton", 50, 500, nullptr, "Litio"));
 	botones.emplace_back(new Boton(pJuego, "boton", 50, 550, nullptr, "Chip"));
 	botones.emplace_back(new Boton(pJuego, "boton", 200, 400, nullptr, "Sensor"));
-	botones.emplace_back(new Boton(pJuego, "boton", 400, 300, salir, "Salir"));
+	botones.emplace_back(new Boton(pJuego, "boton", 575, 475, salir, "Salir"));
 
 	animacion.loadTextura(pJuego->getTextura(botones[0]->getNombre(), "idle"));
 
@@ -43,16 +43,16 @@ void Objetos1::draw() {
 
 	if (botones[activo]->getNombre() != "Salir"){
 		animacion.textura = pJuego->getTextura(botones[activo]->getNombre(), "idle");
-		animacion.textura->draw(pJuego->getRender(), SDL_Rect{ 400, 75, 150, 150 }, animacion.currentRect(), 0.0);
+		animacion.textura->draw(pJuego->getRender(), SDL_Rect{ 530, 50, 125, 125 }, animacion.currentRect(), 0.0);
 
 		if (!pJuego->getBaul()->findItem(botones[activo]->getNombre())){
 
 			Texto.loadTexto(pJuego->getRender(), "0");
-			Texto.draw(pJuego->getRender(), 500, 225);
+			Texto.draw(pJuego->getRender(), 650, 75);
 		}
 		else{
 			Texto.loadTexto(pJuego->getRender(), std::to_string(pJuego->getBaul()->getCantidad(botones[activo]->getNombre())));
-			Texto.draw(pJuego->getRender(), 500, 225);
+			Texto.draw(pJuego->getRender(), 650, 75);
 			std::cout << pJuego->getBaul()->getCantidad(botones[activo]->getNombre());
 		}
 	}
