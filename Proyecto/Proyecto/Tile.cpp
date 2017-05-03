@@ -11,7 +11,7 @@ Tile::Tile(int x, int y, int tileType, b2World * wardo)
 	mType = tileType;
 	if (mType > S12) {
 		mBodyDef = new b2BodyDef;
-		mBodyDef->position.Set((float32)mBox->x, (float32)mBox->y);
+		mBodyDef->position.Set((float32)mBox->x / PPM, (float32)mBox->y / PPM);
 		mBodyDef->type = b2_staticBody;
 		mBodyDef->active = true;
 		mBody = wardo->CreateBody(mBodyDef);
@@ -19,9 +19,9 @@ Tile::Tile(int x, int y, int tileType, b2World * wardo)
 		mShape = new b2PolygonShape();
 		b2Vec2 Puntos[4];
 		Puntos[0] = b2Vec2(0, 0);
-		Puntos[1] = b2Vec2(0, TILE_HEIGHT);
-		Puntos[2] = b2Vec2(TILE_WIDTH, TILE_HEIGHT);
-		Puntos[3] = b2Vec2(TILE_WIDTH, 0);
+		Puntos[1] = b2Vec2(0, TILE_HEIGHT / PPM);
+		Puntos[2] = b2Vec2(TILE_WIDTH / PPM, TILE_HEIGHT / PPM);
+		Puntos[3] = b2Vec2(TILE_WIDTH / PPM, 0);
 		mShape->Set(Puntos, 4);
 		mShapeDef->shape = mShape;
 		mShapeDef->filter.categoryBits = Juego::ESCENARIO;
@@ -56,7 +56,7 @@ void Tile::setPos(float32 x, float32 y) {
 	mBox->x += x;
 	mBox->y += y;
 	if(mBody!=nullptr)
-		mBody->SetTransform(b2Vec2(mBox->x, mBox->y), 0);
+		mBody->SetTransform(b2Vec2(mBox->x / PPM, mBox->y / PPM), 0);
 }
 int Tile::getType() {
 	return mType;

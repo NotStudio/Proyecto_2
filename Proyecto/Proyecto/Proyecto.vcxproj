@@ -66,6 +66,7 @@
     <ClCompile Include="ZonaJuego.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\Box2D\include\Box2D\Common\b2Settings.h" />
     <ClInclude Include="Bala.h" />
     <ClInclude Include="BalaAceite.h" />
     <ClInclude Include="BalaAmiga.h" />

@@ -59,7 +59,7 @@ void MaquinaDePelotas::ataque(){
 			velFloat.x = 0.0f;
 			velFloat.y = 0.0f;
 
-			b2Vec2 posJug = b2Vec2(x, y);
+			b2Vec2 posJug = b2Vec2(x / PPM, y / PPM);
 			//Vector para la diferencia entre el vect del jugador y el vect del enemigoPerseguidor
 			b2Vec2 vecDir = posJug - pos;
 
@@ -69,8 +69,8 @@ void MaquinaDePelotas::ataque(){
 			velFloat.x = unitario.x;
 			velFloat.y = unitario.y;
 			SDL_Rect posicion;
-			posicion.x = pos.x + sprite->w / 2;
-			posicion.y = pos.y + sprite->h / 5;
+			posicion.x = pos.x * PPM + sprite->w / 2;
+			posicion.y = pos.y * PPM + sprite->h / 5;
 			posicion.w = 30;
 			posicion.h = 30;
 

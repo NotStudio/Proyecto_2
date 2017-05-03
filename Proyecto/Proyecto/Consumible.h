@@ -14,11 +14,10 @@ protected:
 	Personaje::atributos statsUp;
 	float origPosY;
 	const int diferenciaPos = 8;
-	const float32 velLevitacion = 1.5f;
+	const float32 velLevitacion = 0.05f;
 
 public:
 	Consumible(Juego* punteroJuego, SDL_Rect spritePar, string objectId):Item(punteroJuego, spritePar, objectId) {
-		
 		
 		origPosY = sprite->y;
 		body->SetLinearVelocity(b2Vec2{ 0,velLevitacion });
@@ -86,7 +85,7 @@ class Cable : public Consumible
 {
 public:
 	Cable(Juego* punteroJuego, SDL_Rect spritePar, string objectId) :Consumible(punteroJuego, spritePar, objectId) {
-		statsUp.velMov = 200;
+		statsUp.velMov = 10;
 	}
 	virtual void effect() {
 		Consumible::effect();

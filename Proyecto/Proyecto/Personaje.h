@@ -18,7 +18,7 @@ public:
 		int vida;       static const int vidaLim = 10;         static const int vidaMin = 0;
 		int vidaMax;	static const int vidaMaxLim = 10;	   static const int vidaMaxMin = 0;
 		int daño;		static const int dañoLim = 20;	       static const int dañoMin = 1;
-		int velMov;		static const int velMovLim = 1200;	   static const int velMovMin = 700;
+		int velMov;		static const int velMovLim = 400;	   static const int velMovMin = 200;
 		int velAtq;		static const int velAtqLim = 10;	   static const int velAtqMin = 1;
 
 		atributos() { vida = vidaMax = daño = velMov = velAtq = 0; };
@@ -47,7 +47,7 @@ public:
 			 velAtq += a.velAtq;
 			 if (velAtq < velAtqMin) velAtq = velAtqMin;
 			 else if (velAtq > velAtqLim) velAtq = velAtqLim;
-
+			 
 			return *this;
 		}
 	};

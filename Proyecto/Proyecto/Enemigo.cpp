@@ -60,7 +60,7 @@ void Enemigo::muerte(){
 	needDrop = true;
 }
 bool Enemigo::distancia() {
-	float distancia = (pos -static_cast<Entidad*>(pJuego->getPlayer())->getBody()->GetPosition()).Length();
+	float distancia = (pos - static_cast<Entidad*>(pJuego->getPlayer())->getBody()->GetPosition()).Length() * PPM;
 	if (distancia < _distancia) return true;
 	else return false;
 }
@@ -83,9 +83,9 @@ void Enemigo::dropItems() {
 		for (int i = 0; i < numItemsDropped; i++) {
 
 			int probItem = rand() % 100;
-			
+			//CRASHEA SI LE PONEMOS DE ID BATERIA POR QUE NO HAY ESE OBJETO, HAY QUE CAMBIARLO->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 			if (probItem < Consumible::BATERIA_COCHE) {
-				dynamic_cast<ZonaAccion*>(pJuego->getZona())->getNivel()->nuevoObjeto(new Bateria(pJuego, SDL_Rect{ sprite->x +1,sprite->y +2,48,48 }, "Bateria"));
+				dynamic_cast<ZonaAccion*>(pJuego->getZona())->getNivel()->nuevoObjeto(new Bateria(pJuego, SDL_Rect{ sprite->x +1,sprite->y +2,48,48 }, "Booster"));
 			}
 
 			else if (probItem < Consumible::CABLE) {

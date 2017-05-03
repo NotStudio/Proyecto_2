@@ -51,14 +51,14 @@ void EnemigoBomba::move(){
 		velFloat.x = 0.0f;
 		velFloat.y = 0.0f;
 
-		b2Vec2 posJug = b2Vec2(jugx, jugy);
+		b2Vec2 posJug = b2Vec2(jugx / PPM, jugy / PPM);
 
 		b2Vec2 vecDir = posJug - pos;
 
 		b2Vec2 vUnitario = b2Vec2((vecDir.x / vecDir.Length()), (vecDir.y / vecDir.Length()));
 
-		velFloat.x = vUnitario.x*enemyStats.velMov;
-		velFloat.y = vUnitario.y*enemyStats.velMov;
+		velFloat.x = vUnitario.x*stats.velMov;
+		velFloat.y = vUnitario.y*stats.velMov;
 		if (velFloat.x > 0) {
 			estadoEntidad.mirando = Oeste;
 		}else if (velFloat.x < 0)
@@ -74,8 +74,8 @@ void EnemigoBomba::move(){
 
 void EnemigoBomba::crecer(){
 
-	int i = abs(jugx - pos.x);
-	int j = abs(jugy - pos.y);	
+	int i = abs(jugx - pos.x * PPM);
+	int j = abs(jugy - pos.y* PPM);
 
 	
 	if ((i < 250 || j < 250) && sprite->h <= 70){
@@ -84,10 +84,10 @@ void EnemigoBomba::crecer(){
 		body->DestroyFixture(body->GetFixtureList());
 		delete shape;
 		shape = new b2PolygonShape;
-		static_cast<b2PolygonShape*>(shape)->SetAsBox(sprite->w / 2, sprite->h / 2, { (float)sprite->w / 2, (float)sprite->h / 2 }, 0);
+		static_cast<b2PolygonShape*>(shape)->SetAsBox((sprite->w / PPM) / 2, (sprite->h / PPM) / 2, { (float)(sprite->w / PPM) / 2, (float)(sprite->h / PPM) / 2 }, 0);
 		fDef.shape = shape; fDef.density = 5.0f; fDef.friction = 0;
 		body->CreateFixture(&fDef);
-		enemyStats.velMov = 2;
+		stats.velMov = 2;
 	}
 	if ((i < 175 || j < 175) && sprite->h <= 90){
 		sprite->h++;
@@ -95,10 +95,10 @@ void EnemigoBomba::crecer(){
 		body->DestroyFixture(body->GetFixtureList());
 		delete shape;
 		shape = new b2PolygonShape;
-		static_cast<b2PolygonShape*>(shape)->SetAsBox(sprite->w / 2, sprite->h / 2, { (float)sprite->w / 2, (float)sprite->h / 2 }, 0);
+		static_cast<b2PolygonShape*>(shape)->SetAsBox((sprite->w / PPM) / 2, (sprite->h / PPM) / 2, { (float)(sprite->w / PPM) / 2, (float)(sprite->h / PPM) / 2 }, 0);
 		fDef.shape = shape; fDef.density = 5.0f; fDef.friction = 0;
 		body->CreateFixture(&fDef);
-		enemyStats.velMov = 3;
+		stats.velMov = 3;
 	}
 	if ((i < 100 || j < 100) && sprite->h <= 120){
 		sprite->h++;
@@ -107,10 +107,10 @@ void EnemigoBomba::crecer(){
 		body->DestroyFixture(body->GetFixtureList());
 		delete shape;
 		shape = new b2PolygonShape;
-		static_cast<b2PolygonShape*>(shape)->SetAsBox(sprite->w / 2, sprite->h / 2, { (float)sprite->w / 2, (float)sprite->h / 2 }, 0);
+		static_cast<b2PolygonShape*>(shape)->SetAsBox((sprite->w / PPM) / 2, (sprite->h / PPM) / 2, { (float)(sprite->w / PPM) / 2, (float)(sprite->h / PPM) / 2 }, 0);
 		fDef.shape = shape; fDef.density = 5.0f; fDef.friction = 0;
 		body->CreateFixture(&fDef);
-		enemyStats.velMov = 6;
+		stats.velMov = 6;
 	}
 
 	if ((i > 150 || j > 150) && sprite->h > 50){

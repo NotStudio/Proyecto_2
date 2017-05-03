@@ -5,7 +5,8 @@ Bala::Bala(Juego* punteroJuego, SDL_Rect spritePar, string objectId, float32 vel
 {
 
 	stopBala = false;
-	_vel = vel;
+	
+	_vel = vel * _coefMov;
 	x = dirx;
 	y = diry;
 	bodyDef.type = b2_dynamicBody;
@@ -13,7 +14,7 @@ Bala::Bala(Juego* punteroJuego, SDL_Rect spritePar, string objectId, float32 vel
 	bodyDef.position.Set(pos.x, pos.y);
 	body = pJuego->getWorld()->CreateBody(&bodyDef);
 	shape = new b2PolygonShape;
-	static_cast<b2PolygonShape*>(shape)->SetAsBox(sprite->w / 2, sprite->h / 2, { (float)sprite->w / 2, (float)sprite->h / 2 }, 0);
+	static_cast<b2PolygonShape*>(shape)->SetAsBox((sprite->w / PPM) / 2, (sprite->h / PPM) / 2, { (float)(sprite->w / PPM) / 2, (float)(sprite->h / PPM) / 2 }, 0);
 	fDef.shape = shape; fDef.density = 5.0f; fDef.friction = 0;
 	body->SetUserData(this);
 	//b2Vec2 velocidad;
@@ -37,7 +38,7 @@ Bala::Bala(Juego* punteroJuego, SDL_Rect spritePar, string objectId, float32 vel
 Bala::Bala(Juego* punteroJuego, SDL_Rect spritePar, string objectId, float32 vel, float32 dirx, float32 diry, int lanzador,string sensor) :Entidad(punteroJuego, spritePar, objectId), lanzador(lanzador)
 {
 
-	_vel = vel;
+	_vel = vel * _coefMov;
 	x = dirx;
 	y = diry;
 	bodyDef.type = b2_dynamicBody;
@@ -45,7 +46,7 @@ Bala::Bala(Juego* punteroJuego, SDL_Rect spritePar, string objectId, float32 vel
 	bodyDef.position.Set(pos.x, pos.y);
 	body = pJuego->getWorld()->CreateBody(&bodyDef);
 	shape = new b2PolygonShape;
-	static_cast<b2PolygonShape*>(shape)->SetAsBox(sprite->w / 2, sprite->h / 2, { (float)sprite->w / 2, (float)sprite->h / 2 }, 0);
+	static_cast<b2PolygonShape*>(shape)->SetAsBox((sprite->w / PPM) / 2, (sprite->h / PPM) / 2, { (float)(sprite->w / PPM) / 2, (float)(sprite->h / PPM) / 2 }, 0);
 	fDef.shape = shape; fDef.density = 5.0f; fDef.friction = 0;
 	body->SetUserData(this);
 	
@@ -63,6 +64,9 @@ Bala::Bala(Juego* punteroJuego, SDL_Rect spritePar, string objectId, float32 vel
 	}
 
 	body->CreateFixture(&fDef);
+	velocidad.x = velocidad.x;
+	velocidad.y = velocidad.y;
+
 	body->SetLinearVelocity(velocidad);
 
 }

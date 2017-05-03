@@ -1,5 +1,6 @@
 #include "Entidad.h"
 #include "checkML.h"
+#include <math.h>
 
 Entidad::Entidad(Juego* punteroJuego, SDL_Rect spritePar, string objectId) : pJuego(punteroJuego) 
 {
@@ -8,8 +9,8 @@ Entidad::Entidad(Juego* punteroJuego, SDL_Rect spritePar, string objectId) : pJu
 	animaciones = pJuego->getAnimaciones(id);
 	currentAnim = animaciones.at(animaciones.begin()->first);
 	//Asignacion de los parametros de posicion.
-	pos.x = spritePar.x;
-	pos.y = spritePar.y;
+	pos.x = spritePar.x / PPM;
+	pos.y = spritePar.y / PPM;
 	vel.y = vel.x = 0;
 	//Asignacion de los parametros del SDL_Rect sprite, propio de la clase.
 	sprite = new SDL_Rect(spritePar); 
@@ -42,7 +43,7 @@ void Entidad::draw() {
 void Entidad::update(){
 	//Asignar sprite a body para que se dibuje.
 	pos = body->GetPosition();
-	sprite->x = (int)pos.x; sprite->y = (int)pos.y;
+	sprite->x = (int)round(pos.x * PPM); sprite->y = (int)round(pos.y * PPM);
 
 	
 

@@ -395,5 +395,8 @@
     <ClInclude Include="TrampaElectrica.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="..\Box2D\include\Box2D\Common\b2Settings.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

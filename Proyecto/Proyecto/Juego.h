@@ -15,17 +15,20 @@
 #include "RoomInfo.h"
 #include "MapData.h"
 
+//Variable pixels por metro
+static const float PPM = 128;
+
 class Zona;
 class EstadoJuego;
 using namespace std;
 class Juego
 {
 	
-	float FPSCAP = 1 / 60.0F;
+	float FPSCAP;
 	int score;
 	int activo = 0;
 	int personajes = 0;
-	float accumulator = 0;
+	float accumulator;
 	stack<EstadoJuego*> estados;
 
 

@@ -9,11 +9,12 @@ Item::Item(Juego* punteroJuego, SDL_Rect spritePar, string objectId) : Entidad(p
 	body = punteroJuego->getWorld()->CreateBody(&bodyDef);
 	body->SetUserData(this);
 	shape = new b2PolygonShape;
-	static_cast<b2PolygonShape*>(shape)->SetAsBox(sprite->w / 2, sprite->h / 2, { (float)sprite->w / 2, (float)sprite->h / 2 }, 0);
-	fDef.shape = shape; fDef.density = 1.0f; fDef.friction = 0.5;
+	static_cast<b2PolygonShape*>(shape)->SetAsBox((sprite->w / PPM) / 2, (sprite->h / PPM) / 2, { (float)(sprite->w / PPM) / 2, (float)(sprite->h / PPM) / 2 }, 0);
+	fDef.shape = shape; fDef.density = 5.0f; fDef.friction = 0.5;
 	fDef.filter.categoryBits = Juego::ITEM;
 	fDef.filter.maskBits = Juego::JUGADOR | Juego::ESCENARIO;
 	body->CreateFixture(&fDef);
+	body->GetFixtureList()->SetSensor(true);
 
 }
 
