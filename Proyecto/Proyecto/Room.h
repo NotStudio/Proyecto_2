@@ -5,6 +5,7 @@
 #include "TileInfo.h"
 #include "Bala.h"
 #include "Zona.h"
+#include "Puertas.h"
 class Room
 {
 private:
@@ -14,7 +15,7 @@ private:
 	Juego * pJuego;
 	Tilesheet * textTiles;
 	//el vector de los tiles
-	vector<Puerta> Puertas;
+	vector<Puerta*> Puertas;
 	vector<vector<Tile*>> Tiles;
 	vector<vector<bool>> ocupados;
 	

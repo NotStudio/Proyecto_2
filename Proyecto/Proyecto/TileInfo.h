@@ -16,33 +16,9 @@ enum TiposTile
 	T = 32, TE = 33, TO = 34, ROC = 35,
 };
 
-//Norte = 0, Este = 1, Sur = 2, Oeste = 3, Sinsitio = 4,
+
 enum Direcciones
 {
 	Norte = 1, Este = 2, Sur = -1, Oeste = -2, Sinsitio = 0
-};
-struct Puerta{
-public:
-	Puerta(Direcciones D) {
-		DirPuerta = D;
-		TilesPuerta.reserve(2);
-	};
-	void meteTilePuerta(Tile* T_) {
-		TilesPuerta.push_back(T_);
-	};
-	void abrirPuerta() {
-		for (auto p : TilesPuerta)
-			p->SetTile(S6);
-	};
-	void cerrarPuerta() {
-		for (auto p : TilesPuerta)
-			p->SetTile(ROC);
-	};
-	Direcciones GetDir() {
-		return DirPuerta;
-	};
-private:
-	Direcciones DirPuerta;
-	vector<Tile*> TilesPuerta;
 };
 #endif

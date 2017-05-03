@@ -115,6 +115,11 @@ Room::~Room()
 		extras[i] = nullptr;
 	}
 
+	for (auto p : Puertas) {
+		delete p;
+		p = nullptr;
+	}
+
 
 
 	delete textTiles;
@@ -131,13 +136,13 @@ void Room::marcarOcupados(vector<SDL_Point> const p){
 }
 void Room::setPuertas(Direcciones dirc)
 {
-	Puertas.push_back(Puerta(dirc));
+	Puertas.push_back(new Puerta(dirc));
 }
 
 void Room::initPuertas()
 {
-	for (size_t i = 0; i < Puertas.size(); i++) {
-		Puerta* p = &Puertas[i];
+	for (auto p:Puertas) {
+		
 		Direcciones d = p->GetDir();
 		switch (d)
 		{
@@ -164,7 +169,7 @@ void Room::initPuertas()
 void Room::cerrarPuertas()
 {
 	for (auto puerta : Puertas)
-		puerta.cerrarPuerta();
+		puerta->cerrarPuerta();
 }
 void Room::cerrarPuerta(int dicc)
 {
@@ -201,7 +206,7 @@ void Room::cerrarPuerta(int dicc)
 void Room::abrirPuertas()
 {
 	for (auto puerta : Puertas)
-		puerta.abrirPuerta();
+		puerta->abrirPuerta();
 }
 void Room::getTileOcupable(SDL_Rect & rect)
 {
