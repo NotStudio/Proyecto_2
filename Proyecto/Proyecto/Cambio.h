@@ -3,6 +3,7 @@
 #include "EstadoPG.h"
 #include "Boton.h"
 #include "Room.h"
+#include <vector>
 
 
 
@@ -12,12 +13,16 @@ public:
 	Cambio(Juego * juego,int actual,int Personajes);
 	~Cambio();
 	int activo = 0;
+	int frame;
+
 
 private:
 	int personajes;
 	Room* pR;
-	
+	unordered_map<string, Juego::Animacion*> mapaAnims;
+	vector<Juego::Animacion*> animaciones;
 	Boton*boton;
+	TextoSDL PJSelected;
 
 	static void resume(Juego * jg);
 	static void returnMenu(Juego * jg);
@@ -28,5 +33,7 @@ private:
 	void activar(Juego * jg){
 		jg->setActivo(activo);
 	}
+	void cambiaMapa(int i);
+	void elijeTexto(int i);
 };
 #endif
