@@ -8,10 +8,10 @@ SelecZonaMenu::SelecZonaMenu(Juego* pJuego): EstadoPG(pJuego)
 {
 	
 
-	botones.emplace_back(new Boton(pJuego, "boton", 450, 100, goZona1, "Zona1"));
-	botones.emplace_back(new Boton(pJuego, "boton", 300, 250, goZona2, "Zona2"));
-	botones.emplace_back(new Boton(pJuego, "boton", 100, 330, goZona3, "Desguace"));
-	botones.emplace_back(new Boton(pJuego, "boton", 100, 530, salir, "Salir"));
+	botones.emplace_back(new Boton(pJuego, "Button1", 450, 100, goZona1, "Zona1"));
+	botones.emplace_back(new Boton(pJuego, "Button1", 300, 250, goZona2, "Zona2"));
+	botones.emplace_back(new Boton(pJuego, "Button1", 100, 330, goZona3, "Desguace"));
+	botones.emplace_back(new Boton(pJuego, "Button1", 100, 530, salir, "Salir"));
 }
 
 
