@@ -113,7 +113,7 @@ void Dron::spawnBalas() {
 		angle = 360 / ((360.0f / 7.0f) * i);
 		dirx = cos(6.28 / angle);  diry = sin(6.28 / angle);
 		posicion.x = radio * cos(6.28 / angle) + origPos.x * PPM;  posicion.y = radio * sin(6.28 / angle) + origPos.y * PPM;
-		dynamic_cast<ZonaAccion*>(pJuego->getZona())->getNivel()->nuevaBala(new BalaEnemiga(pJuego, posicion, "BalaN", velocidad, dirx, diry));
+		dynamic_cast<ZonaAccion*>(pJuego->getZona())->getNivel()->nuevaBala(new BalaEnemiga(pJuego, posicion, "BalaN", velocidad, dirx, diry,stats.daño));
 	}
 }
 
