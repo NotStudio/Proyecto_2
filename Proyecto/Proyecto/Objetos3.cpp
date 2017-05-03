@@ -5,17 +5,17 @@
 Objetos3::Objetos3(Juego* pJuego) : Crafteo(pJuego)
 {
 
-	botones.emplace_back(new Boton(pJuego, "boton", 50, 50, mecanismo, "Mecanismo"));
-	botones.emplace_back(new Boton(pJuego, "boton", 50, 150, combustible, "Combustible"));
-	botones.emplace_back(new Boton(pJuego, "boton", 50, 200, fibraCarbono, "FibraCarbono"));
-	botones.emplace_back(new Boton(pJuego, "boton", 50, 250, moduloComandos, "ModuloComandos"));
-	botones.emplace_back(new Boton(pJuego, "boton", 50, 300, mensaje, "Eje"));
-	botones.emplace_back(new Boton(pJuego, "boton", 50, 350, mensaje, "Pantalla"));
+	botones.emplace_back(new Boton(pJuego, "button", 50, 50, mecanismo, "Mecanismo"));
+	botones.emplace_back(new Boton(pJuego, "button", 50, 150, combustible, "Combustible"));
+	botones.emplace_back(new Boton(pJuego, "button", 50, 200, fibraCarbono, "FibraCarbono"));
+	botones.emplace_back(new Boton(pJuego, "button", 50, 250, moduloComandos, "ModuloComandos"));
+	botones.emplace_back(new Boton(pJuego, "button", 50, 300, mensaje, "Eje"));
+	botones.emplace_back(new Boton(pJuego, "button", 50, 350, mensaje, "Pantalla"));
 	//botones.emplace_back(new Boton(pJuego, "boton", 50, 200, mensaje, "ModuloComados"));
-	botones.emplace_back(new Boton(pJuego, "boton", 575, 475, salir, "Salir"));
+	botones.emplace_back(new Boton(pJuego, "button", 575, 475, salir, "Salir"));
 	animacion.loadTextura(pJuego->getTextura(botones[0]->getNombre(), "idle"));
 
-	Texto.LoadFuente(pJuego->getTipografia("lazy", 30));
+	Texto.LoadFuente(pJuego->getTipografia("Acme____", 30));
 }
 
 

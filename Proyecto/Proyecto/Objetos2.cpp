@@ -4,19 +4,19 @@
 Objetos2::Objetos2(Juego* pJuego) : Crafteo(pJuego)
 {
 
-	botones.emplace_back(new Boton(pJuego, "boton", 50, 50, engranaje, "Engranaje"));
-	botones.emplace_back(new Boton(pJuego, "boton", 50, 100, carbono, "Carbono"));
-	botones.emplace_back(new Boton(pJuego, "boton", 50, 150, engranajes, "Engranajes"));
-	botones.emplace_back(new Boton(pJuego, "boton", 50, 200, tanquePresion, "TanquePresion"));
-	botones.emplace_back(new Boton(pJuego, "boton", 50, 250, refinador, "Refinador"));
-	botones.emplace_back(new Boton(pJuego, "boton", 50, 300, circuito, "Circuito"));
-	botones.emplace_back(new Boton(pJuego, "boton", 50, 350, bateriaIones, "IonBattery"));
-	botones.emplace_back(new Boton(pJuego, "boton", 50, 400, sensorMov, "SensorMov"));
-	botones.emplace_back(new Boton(pJuego, "boton", 575, 475, salir, "Salir"));
+	botones.emplace_back(new Boton(pJuego, "button", 50, 50, engranaje, "Engranaje"));
+	botones.emplace_back(new Boton(pJuego, "button", 50, 100, carbono, "Carbono"));
+	botones.emplace_back(new Boton(pJuego, "button", 50, 150, engranajes, "Engranajes"));
+	botones.emplace_back(new Boton(pJuego, "button", 50, 200, tanquePresion, "TanquePresion"));
+	botones.emplace_back(new Boton(pJuego, "button", 50, 250, refinador, "Refinador"));
+	botones.emplace_back(new Boton(pJuego, "button", 50, 300, circuito, "Circuito"));
+	botones.emplace_back(new Boton(pJuego, "button", 50, 350, bateriaIones, "IonBattery"));
+	botones.emplace_back(new Boton(pJuego, "button", 50, 400, sensorMov, "SensorMov"));
+	botones.emplace_back(new Boton(pJuego, "button", 575, 475, salir, "Salir"));
 
 	animacion.loadTextura(pJuego->getTextura(botones[0]->getNombre(), "idle"));
 
-	Texto.LoadFuente(pJuego->getTipografia("lazy", 30));
+	Texto.LoadFuente(pJuego->getTipografia("Acme____", 30));
 
 }
 

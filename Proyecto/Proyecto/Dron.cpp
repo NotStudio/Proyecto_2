@@ -24,7 +24,7 @@ Dron::Dron(Juego* punteroJuego, int x, int y) : Enemigo(punteroJuego, { x,y,128,
 	//currentAnim = animaciones.at("walk");
 	stats.daño = 2;
 	stats.velAtq = 20;
-	stats.velMov = 4;
+	stats.velMov = 2;
 	stats.vida = 3; stats.vidaMax = stats.vida;
 
 	isKillable = true;

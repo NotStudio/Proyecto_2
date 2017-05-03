@@ -35,9 +35,9 @@ Play::Play(Juego * juego) : EstadoPG(juego)
 	
 	inventario = new Inventory();
 	juego->setInventory(inventario);
-	inventario->insertItem("Fusible", 2);
+	/*inventario->insertItem("Fusible", 2);
 	inventario->insertItem("Engranaje", 2);
-	inventario->insertItem("Chip", 2);
+	inventario->insertItem("Chip", 2);*/
 	//inventario->insertItem("Madera", 2);
 
 	baul = new Inventory();
@@ -101,7 +101,7 @@ void Play::update(){
 	}
 	if (static_cast<Jugable*>(pJuego->getPlayer())->getStats()->vida <= 0)
 	{
-		pJuego->setGameOver();	
+		//pJuego->setGameOver();	
 	}
 
 }

@@ -6,7 +6,7 @@
 // ***La cantidad en cada objeto se podría hacer aleatoria***
 Inventory::Inventory()
 {
-	//insertItem("Chatarra", 2);
+	insertItem("Chatarra", 2);
 	//insertItem("BalaN", 1);
 
 }
