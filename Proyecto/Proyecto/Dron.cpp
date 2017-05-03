@@ -8,8 +8,8 @@ Dron::Dron(Juego* punteroJuego, int x, int y) : Enemigo(punteroJuego, { x,y,128,
 	//a ver si funciona
 	delete shape;
 	shape = new b2CircleShape;
-	static_cast<b2CircleShape*>(shape)->m_p.Set(sprite->w / 2, sprite->h / 2);
-	static_cast<b2CircleShape*>(shape)->m_radius = sprite->h / 2;
+	static_cast<b2CircleShape*>(shape)->m_p.Set((sprite->w / PPM) / 2, (sprite->h / PPM) / 2);
+	static_cast<b2CircleShape*>(shape)->m_radius = (sprite->h / PPM) / 2;
 	fDef.shape = shape; fDef.density = 5.0f; fDef.friction = 0;
 
 
@@ -24,7 +24,7 @@ Dron::Dron(Juego* punteroJuego, int x, int y) : Enemigo(punteroJuego, { x,y,128,
 	//currentAnim = animaciones.at("walk");
 	stats.daño = 100;
 	stats.velAtq = 20;
-	stats.velMov = 10;
+	stats.velMov = 4;
 	stats.vida = 3; stats.vidaMax = stats.vida;
 
 	isKillable = true;
@@ -103,7 +103,7 @@ void Dron::desactivar() {
 
 void Dron::spawnBalas() {
 	b2Vec2 origPos = body->GetPosition();
-	float radio = body->GetFixtureList()->GetShape()->m_radius - 20;
+	float radio = (body->GetFixtureList()->GetShape()->m_radius * PPM) - 20;
 	SDL_Rect posicion{ 0,0,24,24 };
 	float velocidad, dirx, diry, angle;
 	velocidad = (float)stats.velAtq;
@@ -112,7 +112,7 @@ void Dron::spawnBalas() {
 	for (float i = 1.0f; i < 8.0f; i++) {
 		angle = 360 / ((360.0f / 7.0f) * i);
 		dirx = cos(6.28 / angle);  diry = sin(6.28 / angle);
-		posicion.x = radio * cos(6.28 / angle) + origPos.x;  posicion.y = radio * sin(6.28 / angle) + origPos.y;
+		posicion.x = radio * cos(6.28 / angle) + origPos.x * PPM;  posicion.y = radio * sin(6.28 / angle) + origPos.y * PPM;
 		dynamic_cast<ZonaAccion*>(pJuego->getZona())->getNivel()->nuevaBala(new BalaEnemiga(pJuego, posicion, "BalaN", velocidad, dirx, diry));
 	}
 }
@@ -126,7 +126,7 @@ void Dron::rebote(b2Body* tileBody) {
 	float collisionDistance;
 
 	if (tileBody->GetFixtureList()->GetShape()->m_type = b2Shape::e_circle) {
-		radius = static_cast<b2CircleShape*>(tileBody->GetFixtureList()->GetShape())->m_radius;
+		radius = static_cast<b2CircleShape*>(tileBody->GetFixtureList()->GetShape())->m_radius * PPM;
 		isCircle = true;
 	}
 	else if (tileBody->GetFixtureList()->GetShape()->m_type = b2Shape::e_polygon)
@@ -136,15 +136,15 @@ void Dron::rebote(b2Body* tileBody) {
 
 	//Hacemos calculos diferentes dependiendo si el shape colisionado es un circulo o un cuadrado.
 	if (isCircle)
-		collisionDistance = radius + body->GetFixtureList()->GetShape()->m_radius;
+		collisionDistance = radius + body->GetFixtureList()->GetShape()->m_radius * PPM;
 	else
-		collisionDistance = boxExtents.y / 2 + body->GetFixtureList()->GetShape()->m_radius;
+		collisionDistance = boxExtents.y / 2 + body->GetFixtureList()->GetShape()->m_radius * PPM;
 
 	//Hacemos los calculos de rebote
-	float myYPos = body->GetPosition().y;
-	float tileYPos = tileBody->GetPosition().y;
-	float myXPos = body->GetPosition().x;
-	float tileXPos = tileBody->GetPosition().x;
+	float myYPos = body->GetPosition().y * PPM;
+	float tileYPos = tileBody->GetPosition().y * PPM;
+	float myXPos = body->GetPosition().x * PPM;
+	float tileXPos = tileBody->GetPosition().x * PPM;
 
 	if (myYPos > tileYPos) {//Comprobamos si se ha rebotado por arriba
 		if (myYPos + collisionDistance >= tileYPos) {//Si que ha habido colisión.

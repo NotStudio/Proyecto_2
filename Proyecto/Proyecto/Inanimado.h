@@ -17,12 +17,12 @@ public:
 		body->SetUserData(this);
 		if (id == "agujero") {
 			shape = new b2CircleShape();
-			static_cast<b2CircleShape*>(shape)->m_p = {(float32)sprite->w / 2,(float32)sprite->h / 2 };
-			static_cast<b2CircleShape*>(shape)->m_radius= Tam.w/2;
+			static_cast<b2CircleShape*>(shape)->m_p = { (float32)(sprite->w / PPM) / 2, (float32)(sprite->h / PPM )/ 2 };
+			static_cast<b2CircleShape*>(shape)->m_radius = (Tam.w / PPM )/ 2;
 		}
 		else {
 			shape = new b2PolygonShape;
-			static_cast<b2PolygonShape*>(shape)->SetAsBox(sprite->w / 2, sprite->h / 2, { (float)sprite->w / 2, (float)sprite->h / 2 }, 0);
+			static_cast<b2PolygonShape*>(shape)->SetAsBox((sprite->w / PPM) / 2, (sprite->h / PPM) / 2, { (float)(sprite->w / PPM) / 2, (float)(sprite->h / PPM) / 2 }, 0);
 		}
 		fDef.shape = shape; fDef.density = 5.0f; fDef.friction = 0;
 		

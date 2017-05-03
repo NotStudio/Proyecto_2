@@ -55,11 +55,11 @@ public:
 
 	std::string getId() { return id; };
 	float getX(){
-		return pos.x;
+		return pos.x * PPM;
 
 	}
 	float getY(){
-		return pos.y;
+		return pos.y * PPM;
 	}
 	SDL_Rect * getRect() {
 		return sprite;

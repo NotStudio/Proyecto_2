@@ -5,7 +5,7 @@ Sierra::Sierra(Juego* punteroJuego, int x, int y, int dir) : Enemigo(punteroJueg
 {
 	stats.daño = 1;
 	stats.velAtq = 0;
-	stats.velMov = 10;
+	stats.velMov = 6;
 	stats.vida = 1;
 	direccion = dir;
 	for (unordered_map<string, Juego::Animacion*>::iterator i = animaciones.begin(); i != animaciones.end(); i++)

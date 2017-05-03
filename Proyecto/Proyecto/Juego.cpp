@@ -48,6 +48,7 @@ Juego::Juego(b2World* mundo) : error(false), gameOver(false), exit(false), score
 	UbicacionSonidos = Buscador(TiposArchivo::WAV);
 	UbicacionSonidos += Buscador(TiposArchivo::MP3);
 	world->SetContactListener(&listener);
+	//b2_maxTranslation
 	
 
 
@@ -444,30 +445,50 @@ void Juego::draw(){
 
 //Bucle principal del juego
 void Juego::run() {
-	
-	int contSeg= 0;
+	FPSCAP = 1 / 60.0F;
+	accumulator = 0;
+	Uint32 delta = 0;
+	float d = 0;
+
+	float fp = FPSCAP * 1000;
+	Uint32 s = 0;
+	Uint32 contSeg= 0;
 	int fpsCount = 0;
 	int lasssst = 0;
 	bool stop = false;
 	cout << "PLAY \n";
 	lastUpdate = SDL_GetTicks();
+	contSeg = SDL_GetTicks();
 	world->Step(1.0f / 60.0f, 6, 2);
 	draw();
 	handle_event();
 	while (!exit) {
 		handle_event();
-		if (SDL_GetTicks() - lastUpdate >= MSxUpdate) {
-			update();
+		/*if (SDL_GetTicks() - lastUpdate >= MSxUpdate) {
 			lastUpdate = SDL_GetTicks();
-			fpsCount++;
-		}
-		accumulator += 0.006;
-		while (accumulator > FPSCAP){
-			world->Step(FPSCAP, 6, 2);
-			accumulator -= FPSCAP;
-		}
-		draw();
+		}*/
+
+		//delta 
+		s = SDL_GetTicks();
+		delta = SDL_GetTicks() - contSeg;
 		contSeg = SDL_GetTicks();
+		d = delta;
+		accumulator += d;
+		while (accumulator > fp){
+			update();
+			world->Step(FPSCAP, 6, 2);
+			fpsCount++;
+			std::cout << "entre!!!!\n";
+			accumulator -= fp;
+		}
+		if (fpsCount >= 60){
+			std::cout << SDL_GetTicks();
+			fpsCount = 0;
+		
+		}
+		//std::cout << fpsCount << "d: "<< d << "\n";
+		
+		draw();
 	}
 	if (exit) cout << "EXIT \n";
 	else if (gameOver) {

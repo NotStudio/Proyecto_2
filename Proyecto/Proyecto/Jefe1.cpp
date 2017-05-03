@@ -116,10 +116,10 @@ void Jefe1::Ataque1(){
 		
 		//disparaAceite();
 		
-		disparo("BalaN", SDL_Rect{ getX(), getY() + 150, 24, 24 }, -0.8, 0.3, 5);
-		disparo("BalaN", SDL_Rect{ getX(), getY() + 150, 24, 24 }, 0, 1, 5);
-		disparo("BalaN", SDL_Rect{ getX(), getY() + 150, 24, 24 }, 0.7, 0.8, 5);
-		disparo("BalaN", SDL_Rect{ getX(), getY() + 150, 24, 24 }, 1.5, 0.4, 5);
+		disparo("BalaN", SDL_Rect{ getX(), getY() + 150, 24, 24 }, -0.8, 0.3, 10);
+		disparo("BalaN", SDL_Rect{ getX(), getY() + 150, 24, 24 }, 0, 1, 10);
+		disparo("BalaN", SDL_Rect{ getX(), getY() + 150, 24, 24 }, 0.7, 0.8, 10);
+		disparo("BalaN", SDL_Rect{ getX(), getY() + 150, 24, 24 }, 1.5, 0.4, 10);
 		
 
 
@@ -139,7 +139,7 @@ void Jefe1::Ataque2(){
 		float randomy = (rand() % 100); randomy /= 100;
 		cout << randomx << " " << randomy << endl;
 
-		disparo("BalaN", SDL_Rect{ getX(), getY() + 200, 60, 60 }, randomx, randomy, 10);
+		disparo("BalaN", SDL_Rect{ getX(), getY() + 200, 60, 60 }, randomx, randomy, 20);
 		//disparaAceite(randomx,randomy);
 
 	}
@@ -176,7 +176,7 @@ void Jefe1::disparo(string tipo,SDL_Rect posicion, float dirx, float diry,float 
 void Jefe1::disparaAceite(float dirx,float diry){
 	b2Vec2 objetivo;
 	
-	SDL_Rect kek{ pos.x, pos.y + 200, 24, 24 };
+	SDL_Rect kek{ pos.x * PPM, pos.y * PPM + 200, 24, 24 };
 
 	dynamic_cast<ZonaAccion*>(pJuego->getZona())->getNivel()->nuevaBala(new BalaAceite(pJuego, kek, dirx*20.0f, diry*20.0f));
 }

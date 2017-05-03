@@ -25,7 +25,7 @@ public:
 	}
 
 	void setPos(float32 x, float32 y) {
-		body->SetTransform(b2Vec2{ x,y }, 0);
+		body->SetTransform(b2Vec2{ x / PPM, y / PPM }, 0);
 		
 	}
 	

@@ -7,7 +7,7 @@ BalaAceite::BalaAceite(Juego *pJuego, SDL_Rect spritePar, float dirx, float diry
 	tiempoCharco = 3000;
 	distViajada = 0;
 	distMax = 300;
-	origen = b2Vec2(spritePar.x, spritePar.y);
+	origen = b2Vec2(spritePar.x / PPM, spritePar.y / PPM);
 	faseact = fase::viajando;
 	
 
@@ -24,7 +24,7 @@ void BalaAceite::grow() {
 	body->DestroyFixture(body->GetFixtureList());
 	delete shape;
 	shape = new b2PolygonShape;
-	static_cast<b2PolygonShape*>(shape)->SetAsBox(sprite->w / 2, sprite->h / 2, { (float)sprite->w / 2, (float)sprite->h / 2 }, 0);
+	static_cast<b2PolygonShape*>(shape)->SetAsBox((sprite->w / PPM) / 2, (sprite->h / PPM) / 2, { (float)(sprite->w / PPM) / 2, (float)(sprite->h / PPM) / 2 }, 0);
 	fDef.shape = shape; fDef.density = 5.0f; fDef.friction = 0;
 	body->CreateFixture(&fDef);
 	body->GetFixtureList()->SetSensor(true);
@@ -44,8 +44,8 @@ void BalaAceite::update(){
 
 	if (faseact == fase::viajando) {
 		float aux1, aux2;
-		aux1 = origen.x - pos.x;
-		aux2 = origen.y - pos.y;
+		aux1 = (origen.x - pos.x) * PPM;
+		aux2 = (origen.y - pos.y) * PPM;
 		distViajada = sqrt(pow(aux1, 2) + pow(aux2, 2));
 
 		if (choque || distViajada > distMax) {

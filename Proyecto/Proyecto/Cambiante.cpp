@@ -136,13 +136,13 @@ void Cambiante::ataqueMele(){
 		if (pJuego->teclaPulsada(SDL_SCANCODE_DOWN)) {
 			
 			bdt.type = b2_dynamicBody;
-			bdt.position.Set(pos.x, pos.y);
+			bdt.position.Set(pos.x / PPM, pos.y / PPM);
 			bdt.fixedRotation = true;
 			bt = pJuego->getWorld()->CreateBody(&bdt);
 
 			bt->SetUserData(this);
 			st = new b2PolygonShape;
-			static_cast<b2PolygonShape*>(st)->SetAsBox(64, 64, { (float)(sprite->w / 2), (float)(sprite->h / 2) + 32 }, 0);
+			static_cast<b2PolygonShape*>(st)->SetAsBox(64 / PPM, 64 / PPM, { (float)((sprite->w / PPM) / 2), (float)((sprite->h / PPM) / 2) + 32 }, 0);
 			fdt.shape = st; fdt.density = 5.0f; fdt.friction = 0;
 
 			fdt.filter.categoryBits = Juego::AT_JUGADOR;
@@ -157,13 +157,13 @@ void Cambiante::ataqueMele(){
 		else if (pJuego->teclaPulsada(SDL_SCANCODE_RIGHT)) {
 
 			bdt.type = b2_dynamicBody;
-			bdt.position.Set(pos.x, pos.y);
+			bdt.position.Set(pos.x / PPM, pos.y / PPM);
 			bdt.fixedRotation = true;
 			bt = pJuego->getWorld()->CreateBody(&bdt);
 
 			bt->SetUserData(this);
 			st = new b2PolygonShape;
-			static_cast<b2PolygonShape*>(st)->SetAsBox(64, 64, { (float)(sprite->w / 2) + 32, (float)(sprite->h / 2) }, 0);
+			static_cast<b2PolygonShape*>(st)->SetAsBox(64 / PPM, 64 / PPM, { (float)((sprite->w / PPM) / 2) + 32, (float)((sprite->h / PPM) / 2) }, 0);
 			fdt.shape = st; fdt.density = 5.0f; fdt.friction = 0;
 
 			fdt.filter.categoryBits = Juego::AT_JUGADOR;
@@ -179,13 +179,13 @@ void Cambiante::ataqueMele(){
 		else if (pJuego->teclaPulsada(SDL_SCANCODE_LEFT)) {
 	
 			bdt.type = b2_dynamicBody;
-			bdt.position.Set(pos.x, pos.y);
+			bdt.position.Set(pos.x / PPM, pos.y / PPM);
 			bdt.fixedRotation = true;
 			bt = pJuego->getWorld()->CreateBody(&bdt);
 
 			bt->SetUserData(this);
 			st = new b2PolygonShape;
-			static_cast<b2PolygonShape*>(st)->SetAsBox(64, 64, { (float)(sprite->w / 2) - 32, (float)(sprite->h / 2) }, 0);
+			static_cast<b2PolygonShape*>(st)->SetAsBox(64 / PPM, 64 / PPM, { (float)((sprite->w / PPM) / 2) - 32, (float)((sprite->h / PPM) / 2) }, 0);
 			fdt.shape = st; fdt.density = 5.0f; fdt.friction = 0;
 
 			fdt.filter.categoryBits = Juego::AT_JUGADOR;
@@ -201,13 +201,13 @@ void Cambiante::ataqueMele(){
 		else if (pJuego->teclaPulsada(SDL_SCANCODE_UP)) {
 			
 			bdt.type = b2_dynamicBody;
-			bdt.position.Set(pos.x, pos.y);
+			bdt.position.Set(pos.x / PPM, pos.y / PPM);
 			bdt.fixedRotation = true;
 			bt = pJuego->getWorld()->CreateBody(&bdt);
 
 			bt->SetUserData(this);
 			st = new b2PolygonShape;
-			static_cast<b2PolygonShape*>(st)->SetAsBox(64, 64, { (float)(sprite->w / 2), (float)(sprite->h / 2) - 32 }, 0);
+			static_cast<b2PolygonShape*>(st)->SetAsBox(64 / PPM, 64 / PPM, { (float)((sprite->w / PPM) / 2), (float)((sprite->h / PPM) / 2) - 32 }, 0);
 			fdt.shape = st; fdt.density = 5.0f; fdt.friction = 0;
 
 			fdt.filter.categoryBits = Juego::AT_JUGADOR;
@@ -255,7 +255,7 @@ void Cambiante::forma(bool mele){// Falta cambiar sprites...
 		body->DestroyFixture(body->GetFixtureList());
 		delete shape;
 		shape = new b2PolygonShape;
-		static_cast<b2PolygonShape*>(shape)->SetAsBox(sprite->w / 2, sprite->h / 2, { (float)sprite->w / 2, (float)sprite->h / 2 }, 0);
+		static_cast<b2PolygonShape*>(shape)->SetAsBox((sprite->w / PPM) / 2, (sprite->h / PPM) / 2, { (float)(sprite->w / PPM) / 2, (float)(sprite->h / PPM) / 2 }, 0);
 		fDef.shape = shape; fDef.density = 5.0f; fDef.friction = 0;
 		body->CreateFixture(&fDef);
 /////////////////////////////////////
@@ -277,7 +277,7 @@ void Cambiante::forma(bool mele){// Falta cambiar sprites...
 		body->DestroyFixture(body->GetFixtureList());
 		delete shape;
 		shape = new b2PolygonShape;
-		static_cast<b2PolygonShape*>(shape)->SetAsBox(sprite->w / 2, sprite->h / 2, { (float)sprite->w / 2, (float)sprite->h / 2 }, 0);
+		static_cast<b2PolygonShape*>(shape)->SetAsBox((sprite->w / PPM) / 2, (sprite->h / PPM) / 2, { (float)(sprite->w / PPM) / 2, (float)(sprite->h / PPM) / 2 }, 0);
 		fDef.shape = shape; fDef.density = 5.0f; fDef.friction = 0;
 		body->CreateFixture(&fDef);
 	}

@@ -7,6 +7,7 @@ class Bala :
 {
 
 	float32 _vel;
+	float32 _coefMov = 0.2;
 	int lanzador;
 	bool stopBala;
 	b2Vec2 velocidad;
