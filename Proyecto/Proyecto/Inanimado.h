@@ -5,6 +5,7 @@
 #include "SelecZonaMenu.h"
 #include "Entidad.h"
 #include "Cambio.h"
+#include "Crafteo.h"
 
 class Inanimado :
 	public Entidad
@@ -121,6 +122,23 @@ public:
 	virtual void onColisionEnter(Objeto* o, b2Body* b1, b2Body* b2) {
 
 		pJuego->pushState(new Cambio(pJuego, pJuego->getActivo(), pJuego->getPersonajes()));
+	}
+};
+	//==============================================================================================
+//SELECTOR DE CRAFTEO
+class  SelectorCrafteo : public Inanimado
+{
+public:
+	SelectorCrafteo(Juego * Pj, int x, int y, int w, int h) :Inanimado(Pj, SDL_Rect{ x, y, TILE_WIDTH * 4, TILE_HEIGHT * 4 }, "SelectorCrafteo") {
+		fDef.filter.categoryBits = Juego::ESCENARIO;
+		fDef.filter.maskBits = Juego::JUGADOR;
+		body->CreateFixture(&fDef);
+	};
+	~SelectorCrafteo() {};
+
+	virtual void onColisionEnter(Objeto* o, b2Body* b1, b2Body* b2) {
+
+		pJuego->pushState(new Crafteo(pJuego));
 	}
 };
 #endif // INANIMADO_H_

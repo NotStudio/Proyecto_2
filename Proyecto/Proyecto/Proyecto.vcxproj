@@ -28,6 +28,7 @@
     <ClCompile Include="Cambiante.cpp" />
     <ClCompile Include="Cambio.cpp" />
     <ClCompile Include="contactListener.cpp" />
+    <ClCompile Include="Crafteo.cpp" />
     <ClCompile Include="Dron.cpp" />
     <ClCompile Include="Enemigo.cpp" />
     <ClCompile Include="EnemigoBomba.cpp" />
@@ -37,6 +38,8 @@
     <ClCompile Include="GameOver.cpp" />
     <ClCompile Include="Helice.cpp" />
     <ClCompile Include="HUD.cpp" />
+    <ClCompile Include="HUDinventory.cpp" />
+    <ClCompile Include="Inventory.cpp" />
     <ClCompile Include="Item.cpp" />
     <ClCompile Include="Jefe1.cpp" />
     <ClCompile Include="Juego.cpp" />
@@ -48,6 +51,9 @@
     <ClCompile Include="NPC.cpp" />
     <ClCompile Include="ObjetoClave.cpp" />
     <ClCompile Include="ObjetoHistorico.cpp" />
+    <ClCompile Include="Objetos1.cpp" />
+    <ClCompile Include="Objetos2.cpp" />
+    <ClCompile Include="Objetos3.cpp" />
     <ClCompile Include="Pausa.cpp" />
     <ClCompile Include="Perseguidor.cpp" />
     <ClCompile Include="Personaje.cpp" />
@@ -78,6 +84,7 @@
     <ClInclude Include="checkML.h" />
     <ClInclude Include="Consumible.h" />
     <ClInclude Include="contactListener.h" />
+    <ClInclude Include="Crafteo.h" />
     <ClInclude Include="Dron.h" />
     <ClInclude Include="Enemigo.h" />
     <ClInclude Include="EnemigoBomba.h" />
@@ -88,8 +95,10 @@
     <ClInclude Include="Helice.h" />
     <ClInclude Include="HUD.h" />
     <ClInclude Include="HUDbase.h" />
+    <ClInclude Include="HUDinventory.h" />
     <ClInclude Include="Inanimado.h" />
     <ClInclude Include="factoriaEntidades.h" />
+    <ClInclude Include="Inventory.h" />
     <ClInclude Include="Item.h" />
     <ClInclude Include="Jefe1.h" />
     <ClInclude Include="Juego.h" />
@@ -102,6 +111,9 @@
     <ClInclude Include="Objeto.h" />
     <ClInclude Include="ObjetoClave.h" />
     <ClInclude Include="ObjetoHistorico.h" />
+    <ClInclude Include="Objetos1.h" />
+    <ClInclude Include="Objetos2.h" />
+    <ClInclude Include="Objetos3.h" />
     <ClInclude Include="Pausa.h" />
     <ClInclude Include="Perseguidor.h" />
     <ClInclude Include="Personaje.h" />

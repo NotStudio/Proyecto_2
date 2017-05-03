@@ -60,7 +60,7 @@ protected:
 struct Fuente
 {
 	Fuente() { fuente = nullptr; }
-	void loadFuente(string const & dir, int const  tam = 50) {
+	void loadFuente(string const & dir, int const  tam = 25) {
 		fuente = TTF_OpenFont(dir.c_str(), tam);
 		if (fuente == nullptr) {
 			cout << "No se ha cargado la fuente \n";

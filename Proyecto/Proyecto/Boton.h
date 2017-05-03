@@ -27,6 +27,11 @@ public:
 		return SDL_PointInRect(&p, &rectb)==SDL_TRUE;
 	}
 
+	std::string getNombre(){
+
+		return nombre;
+	}
+
 protected:
 	CallBack_t * cb;
 
@@ -39,6 +44,7 @@ protected:
 	int mpby;
 	int _x, _y;
 	string id;
+	string nombre;
 };
 
 #endif

@@ -3,6 +3,7 @@
 
 #include "EstadoPG.h"
 #include "Zona.h"
+//#include "Inventory.h"
 class Play :
 	public EstadoPG
 {
@@ -31,16 +32,20 @@ public:
 
 private:
 	
-	
-	
-
 	std::vector<Objeto*> enemigos;
 	
 	HUDbase* vidasHUD;
 
+	HUDbase* inventory;
+
 	Camara *Camera;
 
 	Zona* zona;
+
+	Inventory* inventario;//inventario en las rooms
+
+	Inventory* baul;//baul de la base
+
 
 	static bool needGetZona;
 

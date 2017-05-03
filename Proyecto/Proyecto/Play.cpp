@@ -7,6 +7,7 @@
 #include "HUD.h"
 #include "Cambiante.h"
 #include "PjDañoArea.h"
+#include "HUDinventory.h"
 
 Uint32 callbackCarga(Uint32 param, void *p);
 bool Play::needGetZona = false;
@@ -15,6 +16,8 @@ Play::state Play::estado = Play::CARGANDO;
 
 Play::Play(Juego * juego) : EstadoPG(juego)
 {
+
+	
 	personaje.push_back( new Tostadora(juego, SDL_Rect{ 576, 75, 64, 64 }));
 	juego->NewPersonaje();
 	personaje.push_back( new Cambiante(juego, SDL_Rect{ 576, 75, 64, 64 }));
@@ -27,6 +30,18 @@ Play::Play(Juego * juego) : EstadoPG(juego)
 	juego->setCamera(Camera);
 	juego->setZona("ZonaBase");
 	vidasHUD = new HUD(juego, SDL_Rect{ 20,0,34,55 }, "Battery4", "idle");
+	inventory = new HUDinventory(juego, SDL_Rect{ 150, 500, 500, 100 }, "Inventory", "idle");
+	//SDL_Rect{ (WINwidth/2) - width/2, WINheight - height , ... , ...}
+	
+	inventario = new Inventory();
+	juego->setInventory(inventario);
+	inventario->insertItem("Fusible", 2);
+	inventario->insertItem("Engranaje", 2);
+	inventario->insertItem("Chip", 2);
+	//inventario->insertItem("Madera", 2);
+
+	baul = new Inventory();
+	juego->setBaul(baul);
 
 }
 
@@ -43,6 +58,9 @@ Play::~Play()
 	}
 	//borrar zona
 	delete zona;
+
+	delete inventory;
+	inventory = nullptr;
 }
 
 void Play::draw(){
@@ -54,7 +72,9 @@ void Play::draw(){
 	else {
 		zona->draw();
 		personaje[pJuego->getActivo()]->draw();
-		vidasHUD->draw();
+		vidasHUD->draw();//hacer vector de HUDbase......................
+		
+		if(pJuego->getMostrar()) inventory->draw();
 	}
 }
 
@@ -73,6 +93,7 @@ void Play::update(){
 		Camera->setLimite(zona->getNivelActual());
 		zona->update();
 		personaje[pJuego->getActivo()]->update();
+		pJuego->setInventory(inventario);
 	}
 	if (static_cast<Jugable*>(pJuego->getPlayer())->getStats()->vida <= 0)
 	{
@@ -93,3 +114,4 @@ void Play::setZona() {
 	needGetZona = true;
 	needCarga = true;
 }
+

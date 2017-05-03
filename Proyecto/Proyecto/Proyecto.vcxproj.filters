@@ -213,6 +213,24 @@
     <ClCompile Include="TrampaElectrica.cpp">
       <Filter>Source Files\Personajes\Enemigos</Filter>
     </ClCompile>
+    <ClCompile Include="Inventory.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="HUDinventory.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Crafteo.cpp">
+      <Filter>Source Files\Estados</Filter>
+    </ClCompile>
+    <ClCompile Include="Objetos1.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Objetos2.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Objetos3.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Juego.h">
@@ -396,6 +414,24 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="..\Box2D\include\Box2D\Common\b2Settings.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Inventory.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="HUDinventory.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Crafteo.h">
+      <Filter>Header Files\Estados</Filter>
+    </ClInclude>
+    <ClInclude Include="Objetos1.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Objetos2.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Objetos3.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -14,6 +14,7 @@
 #include <SDL_mixer.h>
 #include "RoomInfo.h"
 #include "MapData.h"
+#include "Inventory.h"
 
 //Variable pixels por metro
 static const float PPM = 128;
@@ -30,6 +31,8 @@ class Juego
 	int personajes = 0;
 	float accumulator;
 	stack<EstadoJuego*> estados;
+
+	bool mostrar = false;
 
 
 	
@@ -100,6 +103,10 @@ class Juego
 	Zona* zona;
 
 	Objeto* personaje;
+
+	Inventory* inventario;
+
+	Inventory* baul;
 
 	SDL_TimerID timerCambio;
 public:
@@ -348,6 +355,34 @@ public:
 	void setGameOver();
 
 	void reiniciar();
+
+	void changeInventory(){// cambia el estado del inventario
+	
+		mostrar = !mostrar;
+	};
+
+	bool getMostrar(){
+
+		return mostrar;
+	}
+
+	Inventory* getInventory(){
+
+		return inventario;
+	}
+
+	void setInventory(Inventory* i){
+		inventario = i; //establece el inventario creado en Play.
+	}
+
+	Inventory* getBaul(){
+	
+		return baul;
+	}
+
+	void setBaul(Inventory* i){
+		baul = i; //establece el baul creado en Play.
+	}
 };
 
 

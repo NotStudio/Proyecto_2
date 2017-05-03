@@ -16,6 +16,8 @@ public:
 		return sprite;
 	}
 
+	//void setInventario(bool state);
+
 private:
 
 	Juego* pjuego;
@@ -27,6 +29,8 @@ private:
 	string id;
 
 	string anim;
+
+	//bool mostrar = true;
 };
 
 #endif 

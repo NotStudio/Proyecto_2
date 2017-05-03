@@ -11,6 +11,7 @@
 #include <stdio.h>
 
 
+
 Objeto * creaInanimado(Juego * pj, string id, int x, int y, int w, int h,float escala ) {
 	
 	if (id == "tuberia" || id == "Tuberia")
@@ -34,6 +35,9 @@ Objeto * creaInanimado(Juego * pj, string id, int x, int y, int w, int h,float e
 	}
 	else if (id == "SelectorCambio" || id == "selectorcambio") {
 		return new SelectorCambio(pj, x, y, w, h);
+	}
+	else if (id == "SelectorCrafteo" || id == "selectorcrafteo") {
+		return new SelectorCrafteo(pj, x, y, w, h);
 	}
 	{
 		throw exception("NO EXISTE DICHO OBJETO \n");

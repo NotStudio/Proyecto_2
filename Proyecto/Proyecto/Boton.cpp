@@ -8,17 +8,19 @@ Boton::Boton(Juego* juego, string ID, int x, int y, CallBack_t * cbCons, string 
 	_x = x;
 	_y = y;
 
+	nombre = Nombre;
+
 	rectb.x = x;
 	rectb.y = y;
 
 	rectb.h = 75;
-	rectb.w = 150;
+	rectb.w = 190;
 	
 	id = ID;
 
 	cb = cbCons;
-	Texto.LoadFuente(pjuego->getTipografia("lazy",20));
-	Texto.loadTexto(pjuego->getRender(), Nombre);
+	Texto.LoadFuente(pjuego->getTipografia("Acme____",16));
+	Texto.loadTexto(pjuego->getRender(), nombre);
 
 }
 
@@ -35,14 +37,14 @@ void Boton::draw(){
 void Boton::aumentar(){
 	rectb.y = _y - (100 - rectb.h)/2;
 	rectb.x = _x - (200 - rectb.w) / 2;
-	rectb.h = 100;
+	rectb.h = 90;
 	rectb.w = 200;
 }
 void Boton::normal(){
 	rectb.y = _y + (100 - rectb.h) / 2;
 	rectb.x = _x + (200 - rectb.w) / 2;
 	rectb.h = 75;
-	rectb.w = 150;
+	rectb.w = 190;
 }
 
 /*bool Boton::onClick(){
