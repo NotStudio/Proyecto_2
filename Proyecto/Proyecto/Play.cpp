@@ -58,7 +58,10 @@ Play::~Play()
 	}
 	//borrar zona
 	delete zona;
-
+	delete baul;
+	baul = nullptr;
+	delete inventario;
+	inventario = nullptr;
 	delete inventory;
 	inventory = nullptr;
 	zona = nullptr;
