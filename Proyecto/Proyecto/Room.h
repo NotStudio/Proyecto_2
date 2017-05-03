@@ -5,6 +5,7 @@
 #include "TileInfo.h"
 #include "Bala.h"
 #include "Zona.h"
+#include "Puertas.h"
 class Room
 {
 private:
@@ -14,7 +15,7 @@ private:
 	Juego * pJuego;
 	Tilesheet * textTiles;
 	//el vector de los tiles
-	vector<Puerta> Puertas;
+	vector<Puerta*> Puertas;
 	vector<vector<Tile*>> Tiles;
 	vector<vector<bool>> ocupados;
 	
@@ -36,6 +37,7 @@ private:
 	Zona* zona;
 	
 	bool isEmpty_;
+	bool open_;
 	int killableEnemies;
 	void checkAliveEnemies(int);
 
@@ -43,7 +45,12 @@ public:
 	int getNumPuertas() {
 		return Puertas.size();
 	}
-	void setPuertas(int dicc);
+	void setPuertas(Direcciones dicc);
+	void initPuertas();
+	void cerrarPuertas();
+	void cerrarPuerta(int dicc);
+	void abrirPuertas();
+	void abrirPuerta(int dicc);
 	void nuevaBala(Objeto*bala){
 		extras.push_back(bala);
 	}
@@ -64,106 +71,16 @@ public:
 	void resume();
 	void update();
 	//Room();
-	Room(Juego *, vector<Room*>*, Zona *);
-	Room(Juego *, vector<Room*>*, Zona *, std::string);
+	Room(Juego *, Zona *, TMXReader::MapData* mapData_,SDL_Point);
 	~Room();
 	void render();
 	void encontrarPosicionTiled(int & const x, int & const y,int & posTileX,int &posTileY);
 	
-	void SetRoomFichero(string Dir, vector<Room*> * Habitaciones);
+	void InitTiles();
+	void InitRoom();
 	void stop();
 	void meterEntidades();
 	bool isEmpty() { return isEmpty_; }
 private:
-	struct keks
-	{
-		Room* hab;
-		vector<std::pair<SDL_Rect,Direcciones>> posibles;
-		keks(Room*h, SDL_Rect r, Direcciones d) {
-			hab = h;
-			posibles.push_back({ r,d });
-		}
-	};
-	SDL_Point lazyFoo(vector<keks> rooms, Room*&k, Direcciones & D) {
-		srand(SDL_GetTicks());
-		int a = rand() % rooms.size();
-		int b = rand() % rooms[a].posibles.size();
-		k = rooms[a].hab;
-		D = rooms[a].posibles[b].second;
-		cout << "Se conecta la " << a << " la " << rooms.size() ;
-		if (D == Norte){
-			cout << " Por Norte ";
-		}if (D == Sur){
-			cout << " Por Sur ";
-		}
-		cout << "\n";
-		return{ rooms[a].posibles[b].first.x,rooms[a].posibles[b].first.y };
-	}
-	bool solapa(SDL_Rect const & a, SDL_Rect const & b) {
-		int leftA, leftB;
-		int rightA, rightB;
-		int topA, topB;
-		int bottomA, bottomB;
-		leftA = a.x; rightA = a.x + a.w; topA = a.y; bottomA = a.y + a.h;
-		leftB = b.x; rightB = b.x + b.w; topB = b.y; bottomB = b.y + b.h;
-		if (bottomA <= topB) { return false; } if (topA >= bottomB) { return false; } if (rightA <= leftB) { return false; } if (leftA >= rightB) { return false; }
-		return true;
-	}
-
-
-	vector<keks> solapamientoHabitaciones(vector<Room*> * Habitaciones, SDL_Rect & zona) {
-		vector<keks> posiblis;
-		int cont = 0;
-		for (size_t i = 0; i < Habitaciones->size(); i++)
-		{
-			int okX = Habitaciones->at(i)->getArea().x, okY = Habitaciones->at(i)->getArea().y;
-			int okW = Habitaciones->at(i)->getArea().w, okH = Habitaciones->at(i)->getArea().h;
-			bool ayy = false;
-
-			zona.x = okX + (okW - zona.w) / 2;
-			zona.y = okY - zona.h;
-			bool valido = true;
-			for (size_t j = 0; j < Habitaciones->size(); j++)
-			{
-				if (solapa(zona, Habitaciones->at(j)->getArea())) valido = false;
-			}
-			if (valido && !ayy) { ayy = true; posiblis.push_back(keks(Habitaciones->at(i), zona,Direcciones::Norte)); }
-			else if (valido &&ayy)posiblis[cont].posibles.push_back(make_pair(zona,Direcciones::Norte));
-			valido = true;
-			zona.x = okX + (okW - zona.w) / 2;
-			zona.y = okY + okH;
-			for (size_t j = 0; j < Habitaciones->size(); j++)
-			{
-				if (solapa(zona, Habitaciones->at(j)->getArea())) valido = false;
-			}
-			if (valido && !ayy) { ayy = true; posiblis.push_back(keks(Habitaciones->at(i), zona,Direcciones::Sur)); }
-			else if (valido&&ayy)posiblis[cont].posibles.push_back(make_pair(zona, Direcciones::Sur));
-
-			zona.y = okY + (okH - zona.h) / 2;
-			zona.x = okX + okW;
-			valido = true;
-
-			for (size_t j = 0; j < Habitaciones->size(); j++)
-			{
-				if (solapa(zona, Habitaciones->at(j)->getArea())) valido = false;
-			}
-
-			if (valido && !ayy) { ayy = true; posiblis.push_back(keks(Habitaciones->at(i), zona,Direcciones::Este)); }
-			else if (valido&&ayy)posiblis[cont].posibles.push_back(make_pair(zona, Direcciones::Este));
-			zona.x = okX - zona.w;
-			valido = true;
-
-			for (size_t j = 0; j < Habitaciones->size(); j++)
-			{
-				if (solapa(zona, Habitaciones->at(j)->getArea())) valido = false;
-			}
-
-			if (valido && !ayy) { ayy = true; posiblis.push_back(keks(Habitaciones->at(i), zona,Direcciones::Oeste)); }
-			else if (valido&&ayy)posiblis[cont].posibles.push_back(make_pair(zona, Direcciones::Oeste));
-
-			if (ayy) cont++;
-		}
-		return posiblis;
-	}
 }; // !1
 #endif // !ROOM_H_

@@ -61,6 +61,7 @@ Play::~Play()
 
 	delete inventory;
 	inventory = nullptr;
+	zona = nullptr;
 }
 
 void Play::draw(){

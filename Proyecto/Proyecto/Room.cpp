@@ -60,47 +60,19 @@ void Room::update()
 
 //Constructora de la habitación. Aquí es donde se lee el nivel, se crea y se añaden los enemigos y objetos.
 //No hace falta meter los parametros string para cargar un tilesheet, carga por defecto el de la zona 1
-Room::Room(Juego * pJ, vector<Room*> * ro, Zona* z, std::string type) :pJuego(pJ), killableEnemies(0), isEmpty_(false)
+Room::Room(Juego * pJ, Zona* z, TMXReader::MapData* mdata,SDL_Point Coor):pJuego(pJ), mapdat(mdata), killableEnemies(0), isEmpty_(false)
 {
 	
+	area = new SDL_Rect{ Coor.x,Coor.y,mapdat->getLayer()->getW()*TILE_WIDTH,mapdat->getLayer()->getH()*TILE_WIDTH };
+	open_ = true;
 	zona = z;
 	//Si es base, creamos la room de Base
 	if (typeid(ZonaBase) == typeid(*zona)){
 		textTiles = new Tilesheet(TOTAL_TILES, pJuego->getTilesheet(zona));
-		mapdat = pJuego->getBaseRoom();
-		SetRoomFichero(" ", ro);
-		ocupados = vector<vector<bool>>(mapdat->getH(), vector<bool>(mapdat->getH(), false));
-		for (size_t i = 0; i < ocupados.size(); i++)
-		{
-			for (size_t j = 0; j < ocupados[i].size(); j++)
-			{
-				ocupados[i][j] = Tiles[i][j]->getBody() != nullptr;
-			}
-		}
-		meterEntidades();
-	
 	}
 	//Si no, generamos una zona con niveles aleatorios y to la pesca.
 	else {
-		
 		textTiles = new Tilesheet(TOTAL_TILES, pJuego->getTilesheet(zona));
-		if (type == "Ini")
-			mapdat = pJuego->getIniRoom();
-		else if (type == "Boss")
-			mapdat = pJuego->getBossRoom();
-		else if (type == "Normal")
-			mapdat = pJuego->getRoom();
-		SetRoomFichero(" ", ro);
-		ocupados = vector<vector<bool>>(Tiles.size(), vector<bool>(Tiles[0].size(), false));
-		for (size_t i = 0; i < ocupados.size(); i++)
-		{
-			for (size_t j = 0; j < ocupados[i].size(); j++)
-			{
-				ocupados[i][j] = Tiles[i][j]->getBody() != nullptr;
-			}
-		}
-		
-		meterEntidades();
 	}
 	
 }
@@ -113,9 +85,8 @@ void Room::stop() {
 	for (int i = 0; i < enemigos.size(); i++) {
 		static_cast<Enemigo*>(enemigos[i])->stop();
 	}
-	/*for (int i = 0; i < extras.size(); i++) {
-		static_cast<Bala*>(extras[i])->stop();
-	}*/
+	abrirPuertas();
+
 }
 Room::~Room()
 { 
@@ -144,6 +115,11 @@ Room::~Room()
 		extras[i] = nullptr;
 	}
 
+	for (auto p : Puertas) {
+		delete p;
+		p = nullptr;
+	}
+
 
 
 	delete textTiles;
@@ -158,63 +134,79 @@ void Room::marcarOcupados(vector<SDL_Point> const p){
 		ocupados[p[i].x][p[i].y] = true;
 	}
 }
-void Room::setPuertas(int dicc)
+void Room::setPuertas(Direcciones dirc)
 {
-	Puerta _p;
+	Puertas.push_back(new Puerta(dirc));
+}
+
+void Room::initPuertas()
+{
+	for (auto p:Puertas) {
+		
+		Direcciones d = p->GetDir();
+		switch (d)
+		{
+		case Norte:
+			p->meteTilePuerta(Tiles[0][Tiles.at(0).size() / 2]);
+			p->meteTilePuerta(Tiles[0][Tiles.at(0).size() / 2 - 1]);
+			break;
+		case Este:
+			p->meteTilePuerta(Tiles[Tiles.size() / 2][Tiles.at(0).size() - 1]);
+			p->meteTilePuerta(Tiles[Tiles.size() / 2 - 1][Tiles.at(0).size() - 1]);
+			break;
+		case Sur:
+			p->meteTilePuerta(Tiles[Tiles.size() - 1][Tiles.at(0).size() / 2]);
+			p->meteTilePuerta(Tiles[Tiles.size() - 1][Tiles.at(0).size() / 2 - 1]);
+			break;
+		case Oeste:
+			p->meteTilePuerta(Tiles[Tiles.size() / 2][0]);
+			p->meteTilePuerta(Tiles[Tiles.size() / 2 - 1][0]);
+			break;
+		}
+	}
+}
+
+void Room::cerrarPuertas()
+{
+	for (auto puerta : Puertas)
+		puerta->cerrarPuerta();
+}
+void Room::cerrarPuerta(int dicc)
+{
 	switch (dicc)
 	{
 	case Direcciones::Norte:
-		Tiles[0][Tiles.at(0).size() / 2 - 2]->SetTile(ISE);
-		Tiles[0][Tiles.at(0).size() / 2]->SetTile(S1);
-		Tiles[0][Tiles.at(0).size() / 2 - 1]->SetTile(S1);
-		Tiles[0][Tiles.at(0).size() / 2 + 1]->SetTile(ISO);
-		_p.posicion = Tiles[0][Tiles.at(0).size() / 2 - 1]->getBox();
-		_p.posicion.w = 2*TILE_WIDTH;
-		_p.posicion.h = 3 * TILE_HEIGHT;
-		_p.DirPuerta = Norte;
+		Tiles[0][Tiles.at(0).size() / 2 - 2]->SetTile(PN);
+		Tiles[0][Tiles.at(0).size() / 2]->SetTile(PN);
+		Tiles[0][Tiles.at(0).size() / 2 - 1]->SetTile(PN);
+		Tiles[0][Tiles.at(0).size() / 2 + 1]->SetTile(PN);
 		break;
 	case Direcciones::Sur:
-		Tiles[Tiles.size() - 1][Tiles.at(0).size() / 2 - 2]->SetTile(INE);
-		Tiles[Tiles.size() - 1][Tiles.at(0).size() / 2]->SetTile(S1);
-		Tiles[Tiles.size() - 1][Tiles.at(0).size() / 2 - 1]->SetTile(S1);
-		Tiles[Tiles.size() - 1][Tiles.at(0).size() / 2 + 1]->SetTile(INO);
-		_p.posicion = Tiles[Tiles.size() - 1][Tiles.at(0).size() / 2 - 1]->getBox();
-		_p.posicion.w = 2 * TILE_WIDTH;
-		_p.posicion.h = -3 * TILE_HEIGHT;
-		_p.DirPuerta = Sur;
+		Tiles[Tiles.size() - 1][Tiles.at(0).size() / 2 - 2]->SetTile(PS);
+		Tiles[Tiles.size() - 1][Tiles.at(0).size() / 2]->SetTile(PS);
+		Tiles[Tiles.size() - 1][Tiles.at(0).size() / 2 - 1]->SetTile(PS);
+		Tiles[Tiles.size() - 1][Tiles.at(0).size() / 2 + 1]->SetTile(PS);
 		break;
 	case Direcciones::Este:
-		Tiles[Tiles.size() / 2 - 2][Tiles.at(0).size() - 1]->SetTile(ISO);
-		Tiles[Tiles.size() / 2][Tiles.at(0).size() - 1]->SetTile(S1);
-		Tiles[Tiles.size() / 2 - 1][Tiles.at(0).size() - 1]->SetTile(S1);
-		Tiles[Tiles.size() / 2 + 1][Tiles.at(0).size() - 1]->SetTile(INO);
-		_p.posicion = Tiles[Tiles.size() / 2 - 1][Tiles.at(0).size() - 1]->getBox();
-		_p.posicion.w = -3 * TILE_WIDTH;
-		_p.posicion.h = 2 * TILE_HEIGHT;
-		_p.DirPuerta = Este;
+		Tiles[Tiles.size() / 2 - 2][Tiles.at(0).size() - 1]->SetTile(PE);
+		Tiles[Tiles.size() / 2][Tiles.at(0).size() - 1]->SetTile(PE);
+		Tiles[Tiles.size() / 2 - 1][Tiles.at(0).size() - 1]->SetTile(PE);
+		Tiles[Tiles.size() / 2 + 1][Tiles.at(0).size() - 1]->SetTile(PE);
 		break;
 	case Direcciones::Oeste:
-		Tiles[Tiles.size() / 2 - 2][0]->SetTile(ISE);
-		Tiles[Tiles.size() / 2][0]->SetTile(S1);
-		Tiles[Tiles.size() / 2 - 1][0]->SetTile(S1);
-		Tiles[Tiles.size() / 2 + 1][0]->SetTile(INE);
-		_p.posicion = Tiles[Tiles.size() / 2 - 1][0]->getBox();
-		_p.posicion.w = 3 * TILE_WIDTH;
-		_p.posicion.h = 2 * TILE_HEIGHT;
-		_p.DirPuerta = Oeste;
+		Tiles[Tiles.size() / 2 - 2][0]->SetTile(PO);
+		Tiles[Tiles.size() / 2][0]->SetTile(PO);
+		Tiles[Tiles.size() / 2 - 1][0]->SetTile(PO);
+		Tiles[Tiles.size() / 2 + 1][0]->SetTile(PO);
 		break;
 	default:
 		break;
 	}
-	for (size_t i = 0; i < objetos.size(); i++)
-	{
-		if (SDL_HasIntersection(static_cast<Entidad*>(objetos[i])->getRect(), &_p.posicion)){
-			delete objetos[i];
-			objetos[i] = nullptr;
-		}
-			
-	}
-	Puertas.push_back(_p);
+}
+void Room::abrirPuertas()
+{
+	for (auto puerta : Puertas)
+		puerta->abrirPuerta();
 }
 void Room::getTileOcupable(SDL_Rect & rect)
 {
@@ -259,28 +251,14 @@ vector<SDL_Point> Room::TilesOcupados(SDL_Rect const recto, bool & Solapa)
 	return marcados;
 }
 
-void Room::SetRoomFichero(string Dir, vector<Room*> * Habitaciones)
+void Room::InitTiles()
 {
-	int IniX = 0, IniY = 0;
-	int kek = 0;
 	TMXReader::Layer * lay = mapdat->getLayer();
-	
-	if (Habitaciones != nullptr && Habitaciones->size() > 0){
-		SDL_Rect _zona = { 0, 0, lay->getW()*TILE_WIDTH, lay->getH()*TILE_HEIGHT };
-		Room * _roomConectada;
-		Direcciones D;
-		SDL_Point _nuevaPos = lazyFoo(solapamientoHabitaciones(Habitaciones,_zona),_roomConectada,D);
-		IniX=_nuevaPos.x;
-		IniY = _nuevaPos.y;
-		_roomConectada->setPuertas(D);
-		kek = D;
-	}
-	int y = IniY;
-
 	Tiles.reserve(lay->getH());
+	int y = area->y;
 	for (size_t i = 0; i < Tiles.capacity(); i++)
 	{
-		int x = IniX;
+		int x = area->x;
 		Tiles.push_back(vector<Tile*>());
 		Tiles[i].reserve(lay->getW());
 		for (size_t j = 0; j < mapdat->getW(); j++)
@@ -290,10 +268,14 @@ void Room::SetRoomFichero(string Dir, vector<Room*> * Habitaciones)
 		}
 		y += TILE_HEIGHT;
 	}
-	
-	area = new SDL_Rect{ IniX , IniY, lay->getW()*TILE_WIDTH, lay->getH()*TILE_HEIGHT};
-	if (kek != 0)
-		setPuertas(-kek);
+}
+
+void Room::InitRoom()
+{
+	InitTiles();
+	initPuertas();
+	meterEntidades();
+
 }
 
 void Room::meterEntidades(){

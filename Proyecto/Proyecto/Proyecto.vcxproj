@@ -59,6 +59,7 @@
     <ClCompile Include="Personaje.cpp" />
     <ClCompile Include="PjDañoArea.cpp" />
     <ClCompile Include="Play.cpp" />
+    <ClCompile Include="Puertas.cpp" />
     <ClCompile Include="Room.cpp" />
     <ClCompile Include="SelecZonaMenu.cpp" />
     <ClCompile Include="Sierra.cpp" />
@@ -119,6 +120,7 @@
     <ClInclude Include="Personaje.h" />
     <ClInclude Include="PjDañoArea.h" />
     <ClInclude Include="Play.h" />
+    <ClInclude Include="Puertas.h" />
     <ClInclude Include="rapidxml-1.13\rapidxml.hpp" />
     <ClInclude Include="rapidxml-1.13\rapidxml_iterators.hpp" />
     <ClInclude Include="rapidxml-1.13\rapidxml_print.hpp" />

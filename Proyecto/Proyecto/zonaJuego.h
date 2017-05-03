@@ -17,6 +17,10 @@ protected:
 	std::string id;
 
 public:
+	enum RoomType
+	{
+		Ini,Normal,Boss,Base
+	};
 	ZonaJuego(Juego* punteroJuego);
 	virtual ~ZonaJuego();
 	virtual void draw();
