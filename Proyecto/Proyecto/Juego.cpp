@@ -149,6 +149,8 @@ void Juego::initMedia() {
 		anim = aux.substr(aux.find_last_of('_')+1);
 		entity.erase(entity.find_last_of('_'));		
 		anim.erase(anim.find_last_of('.'));
+		if (entity == "carstroller")
+			cout << "";
 		try{
 			mapTexturas.at(entity);//Para que no cree la textura dos veces.
 			mapTexturas.at(entity).emplace(std::make_pair(anim, new TexturasSDL));
@@ -456,6 +458,7 @@ void Juego::draw(){
 	
 	SDL_RenderClear(pRenderer);
 	topState()->draw();
+	mapTexturas.at("carstroller").begin()->second->draw(pRenderer, fondoRect, &fondoRect);
 	
 	SDL_RenderPresent(pRenderer);	
 
@@ -496,11 +499,9 @@ void Juego::run() {
 			update();
 			world->Step(FPSCAP, 6, 2);
 			fpsCount++;
-			std::cout << "entre!!!!\n";
 			accumulator -= fp;
 		}
 		if (fpsCount >= 60){
-			std::cout << SDL_GetTicks();
 			fpsCount = 0;
 		
 		}
