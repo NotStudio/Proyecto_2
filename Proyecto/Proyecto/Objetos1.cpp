@@ -4,19 +4,19 @@
 Objetos1::Objetos1(Juego* pJuego) : Crafteo(pJuego)
 {
 	
-	botones.emplace_back(new Boton(pJuego, "boton", 50, 50, nullptr, "Chatarra"));
-	botones.emplace_back(new Boton(pJuego, "boton", 50, 100, nullptr, "Madera"));
-	botones.emplace_back(new Boton(pJuego, "boton", 50, 150, nullptr, "Tuercas"));
-	botones.emplace_back(new Boton(pJuego, "boton", 50, 200, nullptr, "Carbon"));
-	botones.emplace_back(new Boton(pJuego, "boton", 50, 250, nullptr, "Petroleo"));
-	botones.emplace_back(new Boton(pJuego, "boton", 50, 300, nullptr, "Tanque"));
-	botones.emplace_back(new Boton(pJuego, "boton", 50, 350, nullptr, "Fusible"));
-	botones.emplace_back(new Boton(pJuego, "boton", 50, 400, nullptr, "Tuberias"));
-	botones.emplace_back(new Boton(pJuego, "boton", 50, 450, nullptr, "Estanyo"));
-	botones.emplace_back(new Boton(pJuego, "boton", 50, 500, nullptr, "Litio"));
-	botones.emplace_back(new Boton(pJuego, "boton", 50, 550, nullptr, "Chip"));
-	botones.emplace_back(new Boton(pJuego, "boton", 200, 400, nullptr, "Sensor"));
-	botones.emplace_back(new Boton(pJuego, "boton", 575, 475, salir, "Salir"));
+	botones.emplace_back(new Boton(pJuego, "Button1", 50, 50, nullptr, "Chatarra"));
+	botones.emplace_back(new Boton(pJuego, "Button1", 50, 100, nullptr, "Madera"));
+	botones.emplace_back(new Boton(pJuego, "Button1", 50, 150, nullptr, "Tuercas"));
+	botones.emplace_back(new Boton(pJuego, "Button1", 50, 200, nullptr, "Carbon"));
+	botones.emplace_back(new Boton(pJuego, "Button1", 50, 250, nullptr, "Petroleo"));
+	botones.emplace_back(new Boton(pJuego, "Button1", 50, 300, nullptr, "Tanque"));
+	botones.emplace_back(new Boton(pJuego, "Button1", 50, 350, nullptr, "Fusible"));
+	botones.emplace_back(new Boton(pJuego, "Button1", 50, 400, nullptr, "Tuberias"));
+	botones.emplace_back(new Boton(pJuego, "Button1", 50, 450, nullptr, "Estanyo"));
+	botones.emplace_back(new Boton(pJuego, "Button1", 50, 500, nullptr, "Litio"));
+	botones.emplace_back(new Boton(pJuego, "Button1", 50, 550, nullptr, "Chip"));
+	botones.emplace_back(new Boton(pJuego, "Button1", 200, 400, nullptr, "Sensor"));
+	botones.emplace_back(new Boton(pJuego, "Button1", 575, 475, salir, "Salir"));
 
 	animacion.loadTextura(pJuego->getTextura(botones[0]->getNombre(), "idle"));
 
