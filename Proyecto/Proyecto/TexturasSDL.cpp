@@ -31,8 +31,6 @@ bool TexturasSDL::load(SDL_Renderer* pRenderer, std::string const& nombreArch) {
 
 
 	pTexture = SDL_CreateTextureFromSurface(pRenderer, pSurface);
-
-
 	SDL_FreeSurface(pSurface);
 
 	return success = pTexture != nullptr;

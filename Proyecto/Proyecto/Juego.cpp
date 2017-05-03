@@ -44,6 +44,7 @@ Juego::Juego(b2World* mundo) : error(false), gameOver(false), exit(false), score
 	//Primero El idle, para cualquier animacion
 	//Tostadora
 	nombreTexturas = Buscador(TiposArchivo::PNG);
+
 	//Tipografias
 	ubicacionTipografias = Buscador(TiposArchivo::TTF);
 
@@ -149,8 +150,6 @@ void Juego::initMedia() {
 		anim = aux.substr(aux.find_last_of('_')+1);
 		entity.erase(entity.find_last_of('_'));		
 		anim.erase(anim.find_last_of('.'));
-		if (entity == "carstroller")
-			cout << "";
 		try{
 			mapTexturas.at(entity);//Para que no cree la textura dos veces.
 			mapTexturas.at(entity).emplace(std::make_pair(anim, new TexturasSDL));
@@ -458,7 +457,6 @@ void Juego::draw(){
 	
 	SDL_RenderClear(pRenderer);
 	topState()->draw();
-	mapTexturas.at("carstroller").begin()->second->draw(pRenderer, fondoRect, &fondoRect);
 	
 	SDL_RenderPresent(pRenderer);	
 

@@ -32,6 +32,6 @@
 </data>
  </layer>
  <objectgroup name="Capa de Objetos 1" offsetx="-4" offsety="4">
-  <object id="12" name="Jefe1" type="enemigo" x="1482" y="652" width="188" height="168"/>
+  <object id="12" name="Jefe1" type="enemigo" x="1338" y="638.667" width="369.333" height="204"/>
  </objectgroup>
 </map>

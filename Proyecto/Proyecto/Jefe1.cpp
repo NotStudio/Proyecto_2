@@ -4,7 +4,7 @@
 #include "BalaEnemiga.h"
 #include "BalaAmiga.h"
 
-Jefe1::Jefe1(Juego* punteroJuego, int x, int y) : Enemigo(punteroJuego, { x, y, 128, 128}, "carstroller", 1000)// pone bomba pero está claro que no
+Jefe1::Jefe1(Juego* punteroJuego, int x, int y) : Enemigo(punteroJuego, { x, y, 192, 128}, "carstroller", 1000)// pone bomba pero está claro que no
 {
 	fDef.filter.categoryBits = Juego::ENEMIGO;
 	fDef.filter.maskBits = Juego::JUGADOR | Juego::ESCENARIO | Juego::ENEMIGO | Juego::ESCENARIO_NOCOL | Juego::AT_JUGADOR;
@@ -17,7 +17,7 @@ Jefe1::Jefe1(Juego* punteroJuego, int x, int y) : Enemigo(punteroJuego, { x, y, 
 	stats.daño = 1;
 	for (unordered_map<string, Juego::Animacion*>::iterator i = animaciones.begin(); i != animaciones.end(); i++)
 	{
-		animaciones[i->first]->setNumFrames(60);
+		animaciones[i->first]->setNumFrames(30);
 	}
 	currentAnim = animaciones.at("idle");
 	body->SetType(b2_staticBody);
@@ -30,7 +30,7 @@ Jefe1::~Jefe1()
 
 
 void Jefe1::comportamiento(){
-
+	currentAnim->ActualizarFrame();
 	if (!destruido){
 		switch (estado)
 		{

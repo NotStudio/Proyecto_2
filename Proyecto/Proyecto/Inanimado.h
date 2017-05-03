@@ -81,7 +81,7 @@ public:
 class Chatarra : public Inanimado
 {
 public:
-	Chatarra(Juego * Pj, int x, int y, int w, int h) :Inanimado(Pj, SDL_Rect{ x, y, w,h }, "Chatarra") {
+	Chatarra(Juego * Pj, int x, int y, int w, int h) :Inanimado(Pj, SDL_Rect{ x, y, w,h }, "chatarro") {
 		fDef.filter.categoryBits = Juego::ESCENARIO;
 		fDef.filter.maskBits = Juego::JUGADOR | Juego::ENEMIGO | Juego::AT_ENEMIGO | Juego::AT_JUGADOR;
 		body->CreateFixture(&fDef);
