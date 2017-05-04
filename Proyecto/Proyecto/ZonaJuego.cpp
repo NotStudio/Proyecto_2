@@ -10,8 +10,6 @@ ZonaJuego::ZonaJuego(Juego* punteroJuego):pJuego(punteroJuego)
 
 ZonaJuego::~ZonaJuego()
 {
-	
-	nivelActual = nullptr;
 }
 
 void ZonaJuego::draw() {

@@ -92,6 +92,7 @@
     <ClInclude Include="Entidad.h" />
     <ClInclude Include="EstadoJuego.h" />
     <ClInclude Include="EstadoPG.h" />
+    <ClInclude Include="MenuFinDeZona.h" />
     <ClInclude Include="GameOver.h" />
     <ClInclude Include="Helice.h" />
     <ClInclude Include="HUD.h" />

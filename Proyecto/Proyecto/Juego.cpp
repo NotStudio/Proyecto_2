@@ -12,6 +12,7 @@
 #include "Cambio.h"
 #include "GameOver.h"
 #include "HUDinventory.h"
+#include "MenuFinDeZona.h"
 //Constructora que inicializa todos los atributos de la clase Juego
 
 
@@ -235,6 +236,19 @@ void Juego::initHabitaciones(){
 				}
 
 			}
+			else if (type == "MapFin") {
+				try
+				{
+					HabitacionesFin.at(id);
+					printf("nombre repetido en el fichero %s \n", file);
+				}
+				catch (out_of_range)
+				{
+					HabitacionesFin.emplace(make_pair(id, nullptr));
+					HabitacionesFin.at(id) = new TMXReader::MapData(file);
+				}
+
+			}
 			else if (type == "MapBoss") {
 
 				try
@@ -319,6 +333,12 @@ void Juego::freeMedia() {
 	{
 		delete HabitacionesIni.at(i->first);
 		HabitacionesIni.at(i->first) = nullptr;
+	}
+	//Borramos los niveles finales
+	for (unordered_map<string, TMXReader::MapData*>::iterator i = HabitacionesFin.begin(); i != HabitacionesFin.end(); i++)
+	{
+		delete HabitacionesFin.at(i->first);
+		HabitacionesFin.at(i->first) = nullptr;
 	}
 	//Borramos los niveles de boses
 	for (unordered_map<string, TMXReader::MapData*>::iterator i = HabitacionesBoss.begin(); i != HabitacionesBoss.end(); i++)
@@ -624,6 +644,10 @@ void Juego::setGameOver(){
 	//changeState(new GameOver(this));
 
 	pushState(new GameOver(this));
+}
+
+void Juego::setFinZona(){
+	pushState(new MenuFinDeZona(this));
 }
 
 void Juego::reiniciar(){

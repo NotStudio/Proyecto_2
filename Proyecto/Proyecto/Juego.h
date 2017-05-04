@@ -93,6 +93,7 @@ class Juego
 	
 	unordered_map<string, TMXReader::MapData*> Habitaciones;
 	unordered_map<string, TMXReader::MapData*> HabitacionesIni;
+	unordered_map<string, TMXReader::MapData*> HabitacionesFin;
 	unordered_map<string, TMXReader::MapData*> HabitacionesBoss;
 	TMXReader::MapData* Base;
 
@@ -259,6 +260,16 @@ public:
 		}
 		return HabitacionesIni.at(it->first);
 	}
+	TMXReader::MapData* getFinRoom() {
+		srand(SDL_GetTicks());
+		unordered_map<string, TMXReader::MapData*>::iterator it = HabitacionesFin.begin();
+		size_t lim = rand() % HabitacionesFin.size();
+		for (size_t i = 0; i < lim; i++)
+		{
+			it++;
+		}
+		return HabitacionesFin.at(it->first);
+	}
 	TMXReader::MapData* getBossRoom() {
 		srand(SDL_GetTicks());
 		unordered_map<string, TMXReader::MapData*>::iterator it = HabitacionesBoss.begin();
@@ -353,6 +364,8 @@ public:
 		return personajes;
 	}
 	void setGameOver();
+
+	void setFinZona();
 
 	void reiniciar();
 

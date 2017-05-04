@@ -61,7 +61,7 @@ public:
 	float getY(){
 		return pos.y * PPM;
 	}
-	SDL_Rect * getRect() {
+	virtual SDL_Rect * getRect() {
 		return sprite;
 	}
 

@@ -39,6 +39,10 @@ Objeto * creaInanimado(Juego * pj, string id, int x, int y, int w, int h,float e
 	else if (id == "SelectorCrafteo" || id == "selectorcrafteo") {
 		return new SelectorCrafteo(pj, x, y, w, h);
 	}
+	else if (id == "findezona" || id == "FinDeZona") {
+		return new FinZona(pj, x, y, w, h);
+	}
+	else
 	{
 		throw exception("NO EXISTE DICHO OBJETO \n");
 	}

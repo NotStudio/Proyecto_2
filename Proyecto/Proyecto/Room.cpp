@@ -55,6 +55,28 @@ void Room::update()
 		}
 	}
 	checkAliveEnemies(deadEnemies);
+	if (RoomState_ == ABIERTA){
+		if (!isEmpty_)
+		{
+			SDL_Rect aux = *area;
+			aux.x += TILE_WIDTH;
+			aux.y += TILE_WIDTH;
+			aux.w -= TILE_WIDTH;
+			aux.h -= TILE_WIDTH;
+			SDL_IntersectRect(&aux,pJuego->getPlayer()->getRect(),&aux);
+			if (SDL_RectEquals(pJuego->getPlayer()->getRect(), &aux)){
+				cerrarPuertas();
+				RoomState_ = CERRADA;
+			}
+		}
+	}
+	else
+	{
+		if (isEmpty_){
+			abrirPuertas();
+			RoomState_ = ABIERTA;
+		}
+	}
 }
 
 
@@ -62,7 +84,7 @@ void Room::update()
 //No hace falta meter los parametros string para cargar un tilesheet, carga por defecto el de la zona 1
 Room::Room(Juego * pJ, Zona* z, TMXReader::MapData* mdata,SDL_Point Coor):pJuego(pJ), mapdat(mdata), killableEnemies(0), isEmpty_(false)
 {
-	
+	RoomState_ = ABIERTA;
 	area = new SDL_Rect{ Coor.x,Coor.y,mapdat->getLayer()->getW()*TILE_WIDTH,mapdat->getLayer()->getH()*TILE_WIDTH };
 	open_ = true;
 	zona = z;

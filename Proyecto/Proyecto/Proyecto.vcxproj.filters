@@ -436,5 +436,8 @@
     <ClInclude Include="Puertas.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="MenuFinDeZona.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

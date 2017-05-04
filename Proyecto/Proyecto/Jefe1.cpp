@@ -13,13 +13,13 @@ Jefe1::Jefe1(Juego* punteroJuego, int x, int y) : Enemigo(punteroJuego, { x, y, 
 	estado = Estados::Idle;
 	fase = Fases::Fase1;
 	contador = 0;// Contador de la en que parte d ela fase te encuentras
-	stats.vida = 30;
+	stats.vida = 1;
 	stats.daño = 1;
 	for (unordered_map<string, Juego::Animacion*>::iterator i = animaciones.begin(); i != animaciones.end(); i++)
 	{
 		animaciones[i->first]->setNumFrames(30);
 	}
-	currentAnim = animaciones.at("idle");
+	currentAnim = animaciones.at("idlo");
 	body->SetType(b2_staticBody);
 }
 
@@ -57,7 +57,6 @@ void Jefe1::comportamiento(){
 
 void Jefe1::onColisionEnter(Objeto* contactObject, b2Body* b1, b2Body* b2) {
 	if (contactObject != nullptr){
-		cout << "colision" << endl;
 		if (b2->GetFixtureList()->GetFilterData().categoryBits == Juego::AT_JUGADOR){
 
 			stats.vida--;
@@ -111,7 +110,7 @@ void Jefe1::Ataque1(){
 		empezado = true;
 		contador = 0;
 		tiempo.start();
-		SDL_AddTimer(500u, changeStateCb, this);
+		SDL_AddTimer(250, changeStateCb, this);
 	
 		
 		//disparaAceite();

@@ -141,4 +141,22 @@ public:
 		pJuego->pushState(new Crafteo(pJuego));
 	}
 };
+//==============================================================================================
+//SELECTOR DE Cambio
+class  FinZona : public Inanimado
+{
+public:
+	FinZona(Juego * Pj, int x, int y, int w, int h) :Inanimado(Pj, SDL_Rect{ x, y, w, h }, "SelectorCambio") {
+		fDef.filter.categoryBits = Juego::ESCENARIO;
+		fDef.filter.maskBits = Juego::JUGADOR;
+		body->CreateFixture(&fDef);
+	};
+	~FinZona() {};
+
+	virtual void onColisionEnter(Objeto* o, b2Body* b1, b2Body* b2) {
+		pJuego->setFinZona();
+	}
+};
+//==============================================================================================
+
 #endif // INANIMADO_H_
