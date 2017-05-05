@@ -103,7 +103,7 @@ void Play::update(){
 	}
 	if (static_cast<Jugable*>(pJuego->getPlayer())->getStats()->vida <= 0)
 	{
-		//pJuego->setGameOver();	
+		pJuego->setGameOver();	
 	}
 
 }
