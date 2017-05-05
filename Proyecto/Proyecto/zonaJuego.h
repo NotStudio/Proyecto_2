@@ -19,7 +19,7 @@ protected:
 public:
 	enum RoomType
 	{
-		Ini,Normal,Boss,Base
+		Ini,Normal,Boss,Fin,Base
 	};
 	ZonaJuego(Juego* punteroJuego);
 	virtual ~ZonaJuego();

@@ -42,6 +42,8 @@ Play::Play(Juego * juego) : EstadoPG(juego)
 
 	baul = new Inventory();
 	juego->setBaul(baul);
+	zona = pJuego->getZona();
+
 
 }
 
@@ -58,6 +60,7 @@ Play::~Play()
 	}
 	//borrar zona
 	delete zona;
+	zona = nullptr;
 	delete baul;
 	baul = nullptr;
 	delete inventario;
@@ -69,7 +72,6 @@ Play::~Play()
 
 void Play::draw(){
 	if (estado == CARGANDO) {
-		zona = pJuego->getZona();
 		pJuego->getTextura("Loading", "idle")->draw(pJuego->getRender(), SDL_Rect{ 0,0,800,600 }, nullptr);
 
 	}

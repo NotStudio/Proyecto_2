@@ -12,6 +12,7 @@
 #include "Cambio.h"
 #include "GameOver.h"
 #include "HUDinventory.h"
+#include "MenuFinDeZona.h"
 //Constructora que inicializa todos los atributos de la clase Juego
 
 
@@ -44,6 +45,7 @@ Juego::Juego(b2World* mundo) : error(false), gameOver(false), exit(false), score
 	//Primero El idle, para cualquier animacion
 	//Tostadora
 	nombreTexturas = Buscador(TiposArchivo::PNG);
+
 	//Tipografias
 	ubicacionTipografias = Buscador(TiposArchivo::TTF);
 
@@ -234,6 +236,19 @@ void Juego::initHabitaciones(){
 				}
 
 			}
+			else if (type == "MapFin") {
+				try
+				{
+					HabitacionesFin.at(id);
+					printf("nombre repetido en el fichero %s \n", file);
+				}
+				catch (out_of_range)
+				{
+					HabitacionesFin.emplace(make_pair(id, nullptr));
+					HabitacionesFin.at(id) = new TMXReader::MapData(file);
+				}
+
+			}
 			else if (type == "MapBoss") {
 
 				try
@@ -318,6 +333,12 @@ void Juego::freeMedia() {
 	{
 		delete HabitacionesIni.at(i->first);
 		HabitacionesIni.at(i->first) = nullptr;
+	}
+	//Borramos los niveles finales
+	for (unordered_map<string, TMXReader::MapData*>::iterator i = HabitacionesFin.begin(); i != HabitacionesFin.end(); i++)
+	{
+		delete HabitacionesFin.at(i->first);
+		HabitacionesFin.at(i->first) = nullptr;
 	}
 	//Borramos los niveles de boses
 	for (unordered_map<string, TMXReader::MapData*>::iterator i = HabitacionesBoss.begin(); i != HabitacionesBoss.end(); i++)
@@ -496,11 +517,9 @@ void Juego::run() {
 			update();
 			world->Step(FPSCAP, 6, 2);
 			fpsCount++;
-			std::cout << "entre!!!!\n";
 			accumulator -= fp;
 		}
 		if (fpsCount >= 60){
-			std::cout << SDL_GetTicks();
 			fpsCount = 0;
 		
 		}
@@ -625,6 +644,10 @@ void Juego::setGameOver(){
 	//changeState(new GameOver(this));
 
 	pushState(new GameOver(this));
+}
+
+void Juego::setFinZona(){
+	pushState(new MenuFinDeZona(this));
 }
 
 void Juego::reiniciar(){

@@ -13,6 +13,7 @@ private:
 	SDL_Rect tam;
 protected:
 	void BuildIniRoom(size_t Planta = 0);
+	void BuildFinRoom(size_t Planta = 0);
 	void BuildRoom(RoomType RoomType_,size_t Planta=0);
 	SDL_Point getPosiblePositionRoom(TMXReader::MapData* Data_,Direcciones&);
 	vector<pair<SDL_Point,Direcciones>>getPosicionesLados(Room* Room_,SDL_Rect&Rect_);

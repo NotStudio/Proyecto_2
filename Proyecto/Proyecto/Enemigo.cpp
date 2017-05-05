@@ -25,7 +25,8 @@ void Enemigo::onColisionEnter(Objeto* contactObject, b2Body* b1, b2Body* b2) {
 		//Si lo que ha colisionado con nosotros es una bala, comprobamos si es del jugador o de un enemigo
 		if (b2->GetFixtureList()->GetFilterData().categoryBits == Juego::AT_JUGADOR){
 			stats.vida -= static_cast<BalaAmiga*>(contactObject)->getDanyo();
-			if (stats.vida <= 0) destruido = true;
+			if (stats.vida <= 0)
+				muerte();
 
 		}
 		//cambiar textura.
@@ -45,6 +46,7 @@ void Enemigo::update(){
 
 void Enemigo::desactivar(){
 	if (isDead_) {
+		destruido = true;
 		body->SetActive(false);
 		if (needDrop) {
 			dropItems();

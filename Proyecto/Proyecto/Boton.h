@@ -31,6 +31,7 @@ public:
 
 		return nombre;
 	}
+	virtual SDL_Rect * getRect(){ return &rectb; }
 
 protected:
 	CallBack_t * cb;

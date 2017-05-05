@@ -9,6 +9,10 @@
 class Room
 {
 private:
+	enum RoomState
+	{
+		ABIERTA,CERRADA
+	}RoomState_;
 	
 	SDL_Rect * area;
 	//la zona de la room

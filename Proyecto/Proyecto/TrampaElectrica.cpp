@@ -20,6 +20,7 @@ TrampaElectrica::TrampaElectrica(Juego* punteroJuego, int x, int y) : Enemigo(pu
 
 TrampaElectrica::~TrampaElectrica()
 {
+	
 }
 
 void TrampaElectrica::onColisionEnter(Objeto * contactObject, b2Body * b1, b2Body * b2)
@@ -43,7 +44,7 @@ void TrampaElectrica::comportamiento()
 void TrampaElectrica::alternaActivo() {
 
 	if (needChange) {
-		SDL_AddTimer(3000, changeActiveCb, this);
+		//SDL_AddTimer(3000, changeActiveCb, this);
 		needChange = false;
 	}
 }

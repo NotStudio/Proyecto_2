@@ -59,6 +59,10 @@ void ZonaAccion::BuildIniRoom(size_t Planta)
 {
 	BuildRoom(Ini);
 }
+void ZonaAccion::BuildFinRoom(size_t Planta)
+{
+	BuildRoom(Fin);
+}
 
 void ZonaAccion::BuildRoom(RoomType RoomType_, size_t Planta)
 {
@@ -81,6 +85,9 @@ void ZonaAccion::BuildRoom(RoomType RoomType_, size_t Planta)
 		break;
 	case ZonaJuego::Base:
 		MapData_ = pJuego->getBaseRoom();
+		break;
+	case ZonaJuego::Fin:
+		MapData_ = pJuego->getFinRoom();
 		break;
 	default:
 		break;
@@ -155,6 +162,7 @@ void ZonaAccion::setHabitaciones(int NumeroHabitaciones, int cadaCuantasHabitaci
 	}
 	BuildIniRoom();
 	BuildRoom(Boss);
+	BuildFinRoom();
 }
 
 
