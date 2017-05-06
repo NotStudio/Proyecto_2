@@ -230,6 +230,13 @@ void Room::abrirPuertas()
 	for (auto puerta : Puertas)
 		puerta->abrirPuerta();
 }
+void Room::nuevoEnemigo(Objeto * o)
+{
+	enemigos.push_back(o);
+	if (static_cast<Enemigo*>(enemigos.at(enemigos.size() - 1))->killable()) {
+		killableEnemies++;
+	}
+}
 void Room::getTileOcupable(SDL_Rect & rect)
 {
 	srand(SDL_GetTicks());

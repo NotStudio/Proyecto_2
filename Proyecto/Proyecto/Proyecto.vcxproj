@@ -42,6 +42,7 @@
     <ClCompile Include="Inventory.cpp" />
     <ClCompile Include="Item.cpp" />
     <ClCompile Include="Jefe1.cpp" />
+    <ClCompile Include="Jefe2Bouncer.cpp" />
     <ClCompile Include="Juego.cpp" />
     <ClCompile Include="Jugable.cpp" />
     <ClCompile Include="main.cpp" />
@@ -92,6 +93,7 @@
     <ClInclude Include="Entidad.h" />
     <ClInclude Include="EstadoJuego.h" />
     <ClInclude Include="EstadoPG.h" />
+    <ClInclude Include="Jefe2Bouncer.h" />
     <ClInclude Include="MenuFinDeZona.h" />
     <ClInclude Include="GameOver.h" />
     <ClInclude Include="Helice.h" />
@@ -156,7 +158,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v120</PlatformToolset>
+    <PlatformToolset>v140</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>

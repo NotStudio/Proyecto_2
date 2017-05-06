@@ -230,6 +230,9 @@
     <ClCompile Include="Puertas.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Jefe2Bouncer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Juego.h">
@@ -437,6 +440,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="MenuFinDeZona.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Jefe2Bouncer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

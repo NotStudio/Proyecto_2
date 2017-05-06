@@ -8,6 +8,7 @@
 #include "Jefe1.h"
 #include "Dron.h"
 #include "TrampaElectrica.h"
+#include "Jefe2Bouncer.h"
 #include <stdio.h>
 
 
@@ -67,6 +68,9 @@ Objeto* creaEnemigo(Juego * pj, string id, int x, int y, int aditional){
 	else if (id == "Jefe1" || id == "jefe1")
 	{
 		return new Jefe1(pj, x, y);
+	}
+	else if (id == "Jefe2" || id == "jefe2") {
+		return new Jefe2Bouncer(pj, x, y, 1);
 	}
 	else if (id == "Tornillero" || id == "tornillero"){
 
