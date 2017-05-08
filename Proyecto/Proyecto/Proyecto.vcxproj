@@ -145,9 +145,6 @@
     <ClInclude Include="ZonaDesguace.h" />
     <ClInclude Include="ZonaJuego.h" />
   </ItemGroup>
-  <ItemGroup>
-    <None Include="ClassDiagram.cd" />
-  </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{9AEFB5D6-5EFA-4A01-9D4F-1F8F42527E24}</ProjectGuid>
     <RootNamespace>Proyecto</RootNamespace>

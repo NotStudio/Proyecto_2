@@ -64,6 +64,9 @@ public:
 	virtual SDL_Rect * getRect() {
 		return sprite;
 	}
+	Juego::Animacion* getAnimaciones(){
+		return currentAnim;
+	}
 
 
 	

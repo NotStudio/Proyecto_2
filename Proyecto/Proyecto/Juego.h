@@ -156,6 +156,9 @@ public:
 			this->textura = a.textura;
 			return *this;
 		}
+		void draw(SDL_Renderer* r,SDL_Rect rc){
+			textura->draw(r, rc, currentRect());
+		}
 	};
 	enum capaColisiones{
 		ENEMIGO = 0x0001,
