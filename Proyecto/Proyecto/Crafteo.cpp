@@ -6,52 +6,18 @@
 
 
 
-Crafteo::Crafteo(Juego* pJuego) : EstadoPG(pJuego)
+Crafteo::Crafteo(Juego* pJuego) : MenuJuego(pJuego)
 {
-	botones.emplace_back(new Boton(pJuego, "boton", 50, 100, grado1, "1"));
-	botones.emplace_back(new Boton(pJuego, "boton", 50, 250, grado2, "2"));
-	botones.emplace_back(new Boton(pJuego, "boton", 50, 330, grado3, "3"));
-
-	botones.emplace_back(new Boton(pJuego, "boton", 400, 300, salir, "Salir"));
+	Fondo = pJuego->getTextura("SelecMapaFondo", "idle");
+	botones.emplace_back(new Boton(pJuego, "button", 50, 100, grado1, "Baul","Todos los objetos que en en baul"));
+	botones.emplace_back(new Boton(pJuego, "button", 50, 250, grado2, "Objetos Clave","Objetos para craftear objetos clave"));
+	botones.emplace_back(new Boton(pJuego, "button", 50, 330, grado3, "Objetos importantes","Objetos para Desbloquear otras zonas"));
+	botones.emplace_back(new Boton(pJuego, "button", 400, 300, salir, "Salir","Vuelve a la base"));
 }
 
 
 Crafteo::~Crafteo()
 {
-}
-
-void Crafteo::draw() {
-
-	pJuego->getTextura("SelecMapaFondo", "idle")->draw(pJuego->getRender(), SDL_Rect{ 0, 0, 800, 600 }, nullptr);//PROVISIONAL
-
-	for (int i = 0; i < botones.size(); i++)
-	{
-		botones[i]->draw();
-	}
-}
-
-void Crafteo::update() {
-
-
-
-	botones[activo]->normal();
-	if (pJuego->teclaPulsada(SDL_SCANCODE_DOWN)) {
-
-		if (activo < botones.size() - 1) {
-			activo++;
-		}
-	}
-
-	else if (pJuego->teclaPulsada(SDL_SCANCODE_UP)) {
-		if (activo > 0) {
-			activo--;
-		}
-	}
-	botones[activo]->aumentar();
-	if (pJuego->teclaPulsada(SDL_SCANCODE_RETURN)) {
-		botones[activo]->accion();
-	}
-	
 }
 
 void Crafteo::salir(Juego* pJuego) {

@@ -14,6 +14,7 @@ public:
 
 	virtual void draw();
 	virtual void update();
+	virtual void handleEvent(const SDL_Event& event) {};
 	virtual void fixedUpdate(){};
 	vector<Objeto*> extras;//Objetos en el momento de creacion solo tenia balas
 protected:

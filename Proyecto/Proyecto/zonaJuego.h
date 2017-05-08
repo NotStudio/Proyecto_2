@@ -22,6 +22,7 @@ public:
 		Ini,Normal,Boss,Fin,Base
 	};
 	ZonaJuego(Juego* punteroJuego);
+	virtual void initRooms();
 	virtual ~ZonaJuego();
 	virtual void draw();
 	virtual void update();

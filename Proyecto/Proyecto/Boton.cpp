@@ -1,12 +1,14 @@
 #include "Boton.h"
 
 
-Boton::Boton(Juego* juego, string ID, int x, int y, CallBack_t * cbCons, string Nombre)
+Boton::Boton(Juego* juego, string ID, int x, int y, CallBack_t * cbCons, string Nombre,string Descripcion )
 {
-
+	descripcion_ = Descripcion;
+	angulo = 0;
 	pjuego = juego;
 	_x = x;
 	_y = y;
+
 
 	nombre = Nombre;
 
@@ -14,7 +16,15 @@ Boton::Boton(Juego* juego, string ID, int x, int y, CallBack_t * cbCons, string 
 	rectb.y = y;
 
 	rectb.h = 75;
-	rectb.w = 190;
+	rectb.w = 200;
+	
+	realRect = rectb;
+
+	activo.x = x - 25;
+	activo.y = y - 12;
+	activo.w = 250;
+	activo.h = 100;
+
 	
 	id = ID;
 
@@ -30,39 +40,24 @@ Boton::~Boton()
 }
 
 void Boton::draw(){
-	pjuego->getTextura(id, "idle")->draw(pjuego->getRender(), rectb, nullptr);
-	Texto.draw(pjuego->getRender(), rectb.x+(rectb.w- Texto.getAncho())/2, rectb.y+ (rectb.h - Texto.getAlto()) / 2);
+	pjuego->getTextura(id, "idle")->draw(pjuego->getRender(), realRect, nullptr,angulo);
+	Texto.draw(pjuego->getRender(), realRect.x+(realRect.w- Texto.getAncho())/2, realRect.y+ (realRect.h - Texto.getAlto()) / 2);
 }
 
 void Boton::aumentar(){
-	rectb.y = _y - (100 - rectb.h)/2;
-	rectb.x = _x - (200 - rectb.w) / 2;
-	rectb.h = 90;
-	rectb.w = 200;
+	BState_ = BUTTONSTATE_::SELECTED;
+	realRect = activo;
 }
 void Boton::normal(){
-	rectb.y = _y + (100 - rectb.h) / 2;
-	rectb.x = _x + (200 - rectb.w) / 2;
-	rectb.h = 75;
-	rectb.w = 190;
+	BState_ = BUTTONSTATE_::NOT_SELECTED;
+	realRect = rectb;
 }
-
-/*bool Boton::onClick(){
-	pjuego->getMousePos(mpbx, mpby);
-
-	if (dentro(mpbx, mpby)){
-		cb(pjuego);
-		return true;
-	}
-	else
-	{
-
-		return false;
-	}
-
-}*/
-
 void Boton::update(){
+	if (BState_) {
+	}
+	else {
+
+	}
 
 }
 

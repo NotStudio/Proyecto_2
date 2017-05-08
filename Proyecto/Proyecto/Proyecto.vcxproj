@@ -48,6 +48,7 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MapData.cpp" />
     <ClCompile Include="MaquinaDePelotas.cpp" />
+    <ClCompile Include="MenuJuego.cpp" />
     <ClCompile Include="MenuPG.cpp" />
     <ClCompile Include="NPC.cpp" />
     <ClCompile Include="ObjetoClave.cpp" />
@@ -110,6 +111,7 @@
     <ClInclude Include="MapData.h" />
     <ClInclude Include="LTimer.h" />
     <ClInclude Include="MaquinaDePelotas.h" />
+    <ClInclude Include="MenuJuego.h" />
     <ClInclude Include="MenuPG.h" />
     <ClInclude Include="NPC.h" />
     <ClInclude Include="Objeto.h" />

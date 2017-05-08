@@ -95,6 +95,7 @@ class Juego
 	unordered_map<string, TMXReader::MapData*> HabitacionesIni;
 	unordered_map<string, TMXReader::MapData*> HabitacionesFin;
 	unordered_map<string, TMXReader::MapData*> HabitacionesBoss;
+	TMXReader::MapData* HabitacionTutorial;
 	TMXReader::MapData* Base;
 
 	Mix_Music * MusicaActual;

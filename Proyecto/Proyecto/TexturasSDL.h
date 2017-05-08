@@ -22,14 +22,15 @@ public:
 	string getNombreArchivo();
 	virtual void draw(SDL_Renderer* pRenderer, SDL_Rect const& rect, SDL_Rect* const& frame, double angle = 0.0, SDL_Point* center = NULL, SDL_RendererFlip flip = SDL_FLIP_NONE);
 	void draw(SDL_Renderer* pRenderer, SDL_Rect const& rect, SDL_Rect* const& frame, Camara * Camera, bool FlipHorinzontal = false);
-
-protected:
+	bool IsCharged() { return pTexture != nullptr; };
 	void liberar() {
 		if (pTexture != nullptr) {
 			SDL_DestroyTexture(pTexture);
 			pTexture = nullptr;
 		}
 	};
+protected:
+	
 	string nombreArc;
 
 	struct tam {
@@ -52,7 +53,6 @@ protected:
 		return pSurface;
 
 	};
-
 	SDL_Texture* pTexture;
 
 };
@@ -108,6 +108,34 @@ public:
 			SDL_FreeSurface(surfaceText);
 		}
 	}
+	void loadTexto(SDL_Renderer * pRender, string const txto, Uint32 const TamLineaTexto ,SDL_Color const  color = { 0,0,0 }) {
+		liberar();
+		SDL_Surface* surfaceText=nullptr;
+
+		if(TamLineaTexto<=0)
+			surfaceText = TTF_RenderText_Blended(font->fuente, txto.c_str(), color);
+		else
+			surfaceText = TTF_RenderText_Blended_Wrapped(font->fuente, txto.c_str(), color,TamLineaTexto);
+			
+		if (surfaceText == nullptr)
+		{
+			printf("Unable to render text surface! SDL_ttf Error: %s\n", TTF_GetError());
+		}
+		else
+		{
+			texto = txto;
+			pTexture = SDL_CreateTextureFromSurface(pRender, surfaceText);
+			if (pTexture == nullptr) {
+				printf("Unable to create texture from rendered text! SDL Error: %s\n", SDL_GetError());
+			}
+			else {
+				rct = surfaceText->clip_rect;
+				tamTextura.ancho = rct.w;
+				tamTextura.alto = rct.h;
+			}
+			SDL_FreeSurface(surfaceText);
+		}
+	}
 	void cambiarColor(SDL_Color const _color, SDL_Renderer * pRender){
 		loadTexto(pRender, texto, _color);
 	}
@@ -116,10 +144,49 @@ public:
 		SDL_Rect rect = { x,y,tamTextura.ancho,tamTextura.alto };
 		SDL_RenderCopyEx(pRenderer, pTexture, &rct, &rect, 0, NULL, SDL_FLIP_NONE);
 	}
-private:
+protected:
 	SDL_Rect rct;
 	Fuente * font;
 	string texto;
+};
+
+
+class CuadroDeTexto:public TextoSDL
+{
+public:
+	CuadroDeTexto() :TextoSDL() {};
+	void loadTexto(SDL_Renderer * pRender, string const txto, SDL_Color const  foreground = { 0,0,0 }, SDL_Color const  background = { 255,255,255 }) {
+		liberar();
+		SDL_Surface* surfaceText = TTF_RenderText_Shaded(font->fuente, txto.c_str(), foreground, background);
+		if (surfaceText == nullptr)
+		{
+			printf("Unable to render text surface! SDL_ttf Error: %s\n", TTF_GetError());
+		}
+		else
+		{
+			texto = txto;
+			pTexture = SDL_CreateTextureFromSurface(pRender, surfaceText);
+			if (pTexture == nullptr) {
+				printf("Unable to create texture from rendered text! SDL Error: %s\n", SDL_GetError());
+			}
+			else {
+				rct = surfaceText->clip_rect;
+				tamTextura.ancho = rct.w;
+				tamTextura.alto = rct.h;
+			}
+			SDL_FreeSurface(surfaceText);
+		}
+		
+	}
+	virtual void draw(SDL_Renderer* pRenderer, int x, int y) {
+		SDL_Rect rect = { x,y,tamTextura.ancho,tamTextura.alto };
+		SDL_RenderCopyEx(pRenderer, pTexture, &rct, &rect, 0, NULL, SDL_FLIP_NONE);
+		SDL_RenderDrawRect(pRenderer, &rect);
+	}
+
+private:
+
+
 };
 
 struct Tilesheet

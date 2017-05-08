@@ -10,7 +10,7 @@ class Boton : public Objeto
 public:
 	
 	typedef void CallBack_t(Juego* jg);
-	Boton(Juego* juego, string ID, int x, int y, CallBack_t * cbCons, string);
+	Boton(Juego* juego, string ID, int x, int y, CallBack_t * cbCons, string, string descripcion = "No hay descripcion");
 	~Boton();
 	void draw();
 
@@ -31,13 +31,21 @@ public:
 
 		return nombre;
 	}
-	virtual SDL_Rect * getRect(){ return &rectb; }
+	string getDescripcion() {
+		return descripcion_;
+	}
+	virtual SDL_Rect * getRect(){ return &realRect; }
 
 protected:
 	CallBack_t * cb;
 
 	Juego* pjuego;
-
+	enum BUTTONSTATE_
+	{
+		NOT_SELECTED = 0, SELECTED = 1
+	}BState_;
+	double angulo;
+	SDL_Rect realRect;
 	SDL_Rect rectb;
 	SDL_Rect activo;
 	TextoSDL Texto;
@@ -46,6 +54,7 @@ protected:
 	int _x, _y;
 	string id;
 	string nombre;
+	string descripcion_;
 };
 
 #endif

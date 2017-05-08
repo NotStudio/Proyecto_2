@@ -261,9 +261,9 @@ void Juego::initHabitaciones(){
 					HabitacionesBoss.emplace(make_pair(id, nullptr));
 					HabitacionesBoss.at(id) = new TMXReader::MapData(file);
 				}
-
-
 			}
+			else if (type == "Tutorial")
+				HabitacionTutorial = new TMXReader::MapData(file);
 		
 		}
 		else {
@@ -346,6 +346,9 @@ void Juego::freeMedia() {
 		delete HabitacionesBoss.at(i->first);
 		HabitacionesBoss.at(i->first) = nullptr;
 	}
+
+	delete HabitacionTutorial;
+	HabitacionTutorial = nullptr; 
 
 	delete Base;
 	Base = nullptr;
@@ -440,14 +443,6 @@ bool Juego::handle_event() {
 				}
 			}
 			break;
-
-			/*else if (evento.key.keysym.sym == SDLK_e){
-				EstadoJuego* estado = topState();
-				if (typeid(*estado) == typeid(Play)){
-					pushState(new Cambio(this, activo,personajes));
-				}
-			}
-			break;*/
 		case SDL_TEXTINPUT:
 			break;
 		case SDL_MOUSEMOTION:
@@ -457,6 +452,7 @@ bool Juego::handle_event() {
 		default:
 			break;
 		}
+	topState()->handleEvent(evento);
 	} 
 	return true;
 };
@@ -523,7 +519,6 @@ void Juego::run() {
 			fpsCount = 0;
 		
 		}
-		//std::cout << fpsCount << "d: "<< d << "\n";
 		
 		draw();
 	}

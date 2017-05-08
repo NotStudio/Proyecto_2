@@ -1,15 +1,11 @@
 #pragma once
-#include "Crafteo.h"
+
 #include "Boton.h"
+#include "MenuJuego.h"
 class Objetos3 :
-	public Crafteo
+	public MenuJuego
 {
-
-	std::vector <Boton*> botones;
-
-	int activo = 0;
-
-	Juego::Animacion animacion;
+	TexturasSDL * img;
 
 	TextoSDL Texto;
 
