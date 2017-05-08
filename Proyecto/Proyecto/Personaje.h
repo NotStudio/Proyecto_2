@@ -54,7 +54,14 @@ public:
 
 	//Método que utilizan los objetos para sumar sus stats a los del jugador.
 	void applyEffect(atributos &nwEffect) {
+		//Afinamos. Si el personaje tiene vida máxima no podemos sumarle más
+		if (nwEffect.vida >0 && stats.vida >= stats.vidaMax){
+			nwEffect.vida = 0;
+		}
+		
 		stats += nwEffect;
+
+
 	}
 
 protected:
