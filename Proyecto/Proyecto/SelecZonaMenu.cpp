@@ -4,8 +4,10 @@
 
 SelecZonaMenu::SelecZonaMenu(Juego* pJuego): MenuJuego(pJuego)
 {
-	Fondo = pJuego->getTextura("SelecMapaFondo", "idle");
+	static_cast<ZonaAccion*>(pJuego->getZona())->getNivel()->stop();
+	static_cast<Jugable*>(pJuego->getPlayer())->stop();
 
+	Fondo = pJuego->getTextura("SelecMapaFondo", "idle");
 	botones.emplace_back(new Boton(pJuego, "buttonSelecZona", 450, 100, goZona1, "Zona1"));
 	botones.emplace_back(new Boton(pJuego, "buttonSelecZona", 300, 250, goZona2, "Zona2"));
 	botones.emplace_back(new Boton(pJuego, "buttonSelecZona", 100, 330, goZona3, "Desguace"));

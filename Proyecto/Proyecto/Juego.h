@@ -288,6 +288,9 @@ public:
 	TMXReader::MapData* getBaseRoom() {
 		return Base;
 	}
+	TMXReader::MapData* getTutorialRoom() {
+		return HabitacionTutorial;
+	}
 
 	unordered_map<string, Animacion*>getAnimaciones(const string & entity){
 		unordered_map<string, Animacion*> an;

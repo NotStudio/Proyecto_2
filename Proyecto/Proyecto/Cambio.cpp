@@ -34,20 +34,20 @@ void Cambio::draw(){
 	MenuJuego::draw();
 	SDL_Rect rect = { 400, 100, 150, 150 };
 	
-	SDL_Rect frame = { f*img->getAncho() / 30, 0, img->getAncho() / 30 , img->getAlto() };
+	SDL_Rect frame = { 0, 0, img->getAncho() / 30 , img->getAlto() };
 	img->draw(pJuego->getRender(), rect, &frame);
 }
 
 void Cambio::update(){
 	MenuJuego::update();
 	if (botones[activo]->getNombre() != "Salir"){
+		pJuego->setActivo(activo);
 		TexturasSDL * prev = img;
 		img = pJuego->getTextura(botones[activo]->getNombre(), "idle");
 		if (prev == img){
 			f++;
 			if (f > 29)
 				f = 0;
-
 		}
 		else
 			f = 0;

@@ -12,7 +12,7 @@ public:
 	}
 
 protected:
-		
+	virtual void draw();
 	void ataqueMele();
 	virtual void update();
 	bool atamele = true;

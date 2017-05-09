@@ -136,7 +136,6 @@ void Jefe1::Ataque2(){
 		SDL_AddTimer(300u, changeStateCb, this);
 		float randomx = (rand() % 200) + -100; randomx /= 100;
 		float randomy = (rand() % 100); randomy /= 100;
-		cout << randomx << " " << randomy << endl;
 
 		disparo("BalaN", SDL_Rect{ getX(), getY() + 200, 60, 60 }, randomx, randomy, 20);
 		//disparaAceite(randomx,randomy);
@@ -152,7 +151,7 @@ void Jefe1::Ataque3(){
 		SDL_AddTimer(300u, changeStateCb, this);
 		float randomx = (rand() % 200) + -100; randomx /= 100;
 		float randomy = (rand() % 100); randomy /= 100;
-		cout << randomx << " " << randomy << endl;
+		
 
 		//disparo("Bala", SDL_Rect{ getX(), getY() + 200, 24, 24 }, randomx, randomy, 10);
 		disparaAceite(randomx, randomy);

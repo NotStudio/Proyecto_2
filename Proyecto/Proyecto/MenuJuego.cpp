@@ -5,7 +5,7 @@ MenuJuego::MenuJuego(Juego* juego):EstadoPG(juego)
 	MenuState_ = STARTING;
 	kek.LoadFuente(pJuego->getTipografia("ethnocen"));
 	ayuda.LoadFuente(pJuego->getTipografia("a"));
-	ayuda.loadTexto(pJuego->getRender(), "H for help", { 255,255,255,255 });
+	ayuda.loadTexto(pJuego->getRender(), "Press H",200, { 255,255,255,50 });
 }
 
 
