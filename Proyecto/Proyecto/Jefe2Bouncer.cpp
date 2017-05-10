@@ -9,14 +9,14 @@ Jefe2Bouncer::Jefe2Bouncer(Juego* punteroJuego, int x, int y, int lvl):Enemigo(p
 	static_cast<b2CircleShape*>(shape)->m_p.Set((sprite->w / PPM) / 2, (sprite->h / PPM) / 2);
 	static_cast<b2CircleShape*>(shape)->m_radius = (sprite->h / PPM) / 2;
 	fDef.shape = shape; fDef.density = 5.0f; fDef.friction = 0;
-	fDef.isSensor = true;
 	fDef.filter.categoryBits = Juego::ENEMIGO;
-	fDef.filter.maskBits = Juego::JUGADOR | Juego::ESCENARIO | Juego::ENEMIGO | Juego::ESCENARIO_NOCOL | Juego::AT_JUGADOR;
+	fDef.filter.maskBits = Juego::JUGADOR | Juego::ESCENARIO | Juego::ESCENARIO_NOCOL | Juego::AT_JUGADOR;
 	body->CreateFixture(&fDef);
-
-	stats.vida = 1;
+	int velPlus = 2 / lvl;
+	int vidaPlus = 5/lvl;
+	stats.vida = 1 + vidaPlus;
 	stats.daño = 1;
-	stats.velMov = 2;
+	stats.velMov = 4 - velPlus;
 
 	isKillable = true;
 	for (unordered_map<string, Juego::Animacion*>::iterator i = animaciones.begin(); i != animaciones.end(); i++)

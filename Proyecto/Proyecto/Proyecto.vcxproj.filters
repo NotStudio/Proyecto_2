@@ -233,6 +233,9 @@
     <ClCompile Include="Jefe2Bouncer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="ZonaBosque.cpp">
+      <Filter>Source Files\Zonas</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Juego.h">
@@ -444,6 +447,9 @@
     </ClInclude>
     <ClInclude Include="Jefe2Bouncer.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ZonaBosque.h">
+      <Filter>Header Files\Zonas</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
