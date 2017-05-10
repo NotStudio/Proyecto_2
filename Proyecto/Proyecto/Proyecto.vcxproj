@@ -70,6 +70,7 @@
     <ClCompile Include="TrampaElectrica.cpp" />
     <ClCompile Include="ZonaAccion.cpp" />
     <ClCompile Include="ZonaBase.cpp" />
+    <ClCompile Include="ZonaBosque.cpp" />
     <ClCompile Include="ZonaDesguace.cpp" />
     <ClCompile Include="ZonaJuego.cpp" />
   </ItemGroup>
@@ -140,6 +141,7 @@
     <ClInclude Include="Zona.h" />
     <ClInclude Include="ZonaAccion.h" />
     <ClInclude Include="ZonaBase.h" />
+    <ClInclude Include="ZonaBosque.h" />
     <ClInclude Include="ZonaDesguace.h" />
     <ClInclude Include="ZonaJuego.h" />
   </ItemGroup>

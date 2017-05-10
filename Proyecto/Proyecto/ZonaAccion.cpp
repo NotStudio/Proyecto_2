@@ -1,7 +1,9 @@
 #include "ZonaAccion.h"
 #include "checkML.h"
 #include "TileInfo.h"
+
 vector<string> roomtype = { "Ini","Normal","Boss","Base"};
+
 ZonaAccion::ZonaAccion(Juego* punteroJuego): ZonaJuego(punteroJuego)
 {
 	//Inicializamos el array de habitaciones

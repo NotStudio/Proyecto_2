@@ -17,6 +17,7 @@
 
 
 #include "ZonaDesguace.h"
+#include "ZonaBosque.h"
 #include "ZonaBase.h"
 
 void operator+=(vector<string>& e,vector<string> o){
@@ -621,6 +622,8 @@ void Juego::setZona(std::string zonaNombre) {
 		delete zona;
 	if (zonaNombre == "ZonaDesguace")
 		zona = new ZonaDesguace(this);
+	else if (zonaNombre == "ZonaBosque")
+		zona = new ZonaBosque(this);
 	else if (zonaNombre == "ZonaBase"){
 		zona = new ZonaBase(this);
 	}
