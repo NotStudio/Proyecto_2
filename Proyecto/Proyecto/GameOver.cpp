@@ -4,21 +4,15 @@
 
 
 
-GameOver::GameOver(Juego* juego) : EstadoPG(juego)
+GameOver::GameOver(Juego* juego) : MenuJuego(juego)
 {
-	botones.emplace_back(new Boton(juego, "boton", 415, 175, playAgain, "Jugar de nuevo"));
-	botones.emplace_back(new Boton(juego, "boton", 415, 275, quit, "Salir"));
-
+	botones.emplace_back(new Boton(juego, "button", 415, 175, playAgain, "Jugar de nuevo", "Intentalo otra vez, tu puedes"));
+	botones.emplace_back(new Boton(juego, "button", 415, 275, quit, "Salir","Sal perdiendo el culo como el cobarde que eres"));
 }
 
 
 GameOver::~GameOver()
 {
-	for (int i = 0; i < botones.size(); i++)
-	{
-		delete botones[i];
-		botones[i] = nullptr;
-	}
 }
 
 
@@ -34,32 +28,4 @@ void GameOver::playAgain(Juego * jg){
 
 void GameOver::quit(Juego * jg){
 	jg->salir();
-}
-
-void GameOver::draw() {
-	for (int i = 0; i < botones.size(); i++)
-	{
-		botones[i]->draw();
-	}
-}
-
-void GameOver::update() {
-
-	botones[activo]->normal();
-	if (pJuego->teclaPulsada(SDL_SCANCODE_DOWN)) {
-
-		if (activo < botones.size() - 1) {
-			activo++;
-		}
-	}
-
-	else if (pJuego->teclaPulsada(SDL_SCANCODE_UP)) {
-		if (activo > 0) {
-			activo--;
-		}
-	}
-	botones[activo]->aumentar();
-	if (pJuego->teclaPulsada(SDL_SCANCODE_RETURN)) {
-		botones[activo]->accion();
-	}
 }

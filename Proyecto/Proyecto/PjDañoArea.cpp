@@ -1,16 +1,16 @@
 #include "PjDañoArea.h"
 
 
-PjDañoArea::PjDañoArea(Juego* punteroJuego, SDL_Rect spritePar) :Jugable(punteroJuego, spritePar, "Tostadora")
+PjDañoArea::PjDañoArea(Juego* punteroJuego, SDL_Rect spritePar) :Jugable(punteroJuego, spritePar, "p1x4r")
 {
 
 	for (unordered_map<string, Juego::Animacion*>::iterator i = animaciones.begin(); i != animaciones.end(); i++)
 	{
-		animaciones.at(i->first)->setNumFrames(30);
+		animaciones.at(i->first)->setNumFrames(36);
 	}
 	currentAnim = animaciones.at("idle");
 	//Inicializacion de los stats y stats máximos;
-	stats.velMov = 1000;/* Decidir más tarde las características*/
+	stats.velMov = 400;/* Decidir más tarde las características*/
 	stats.vida = 4;
 	stats.daño = 1;
 	stats.velAtq = 3;
@@ -49,12 +49,13 @@ void PjDañoArea::ataqueMele(){//////////// Ataca en área alrededor del personaje
 
 	if (!atamele) {
 		atamele = SDL_AddTimer(1000000, melee2, this); pJuego->reproducirEfecto("TShot");
-		currentAnim = animaciones.at("atqu");
+		//currentAnim = animaciones.at("atqu");
 	}
 
 	if (atamele){
 
-		if (pJuego->teclaPulsada(SDL_SCANCODE_DOWN)) {
+		if (pJuego->teclaPulsada(SDL_SCANCODE_DOWN) || pJuego->teclaPulsada(SDL_SCANCODE_RIGHT) ||
+			pJuego->teclaPulsada(SDL_SCANCODE_LEFT) || pJuego->teclaPulsada(SDL_SCANCODE_UP)) {
 
 			bdt.type = b2_dynamicBody;
 			bdt.position.Set(pos.x, pos.y);
@@ -63,82 +64,15 @@ void PjDañoArea::ataqueMele(){//////////// Ataca en área alrededor del personaje
 
 			bt->SetUserData(this);
 			st = new b2PolygonShape;
-			static_cast<b2PolygonShape*>(st)->SetAsBox(96, 96, { (float)(sprite->w / 2), (float)(sprite->h / 2)}, 0);
+			static_cast<b2PolygonShape*>(st)->SetAsBox(1, 1 , { (float)((sprite->w/PPM) / 2), (float)((sprite->h/PPM) / 2)}, 0);
 			fdt.shape = st; fdt.density = 5.0f; fdt.friction = 0;
 
 			fdt.filter.categoryBits = Juego::AT_JUGADOR;
 			fdt.filter.maskBits = Juego::ENEMIGO;
 			bt->CreateFixture(&fdt);
 
-
 			atamele = false;
 			destroyBody = true;
-		}
-
-		else if (pJuego->teclaPulsada(SDL_SCANCODE_RIGHT)) {
-
-			bdt.type = b2_dynamicBody;
-			bdt.position.Set(pos.x, pos.y);
-			bdt.fixedRotation = true;
-			bt = pJuego->getWorld()->CreateBody(&bdt);
-
-			bt->SetUserData(this);
-			st = new b2PolygonShape;
-			static_cast<b2PolygonShape*>(st)->SetAsBox(96, 96, { (float)(sprite->w / 2), (float)(sprite->h / 2) }, 0);
-			fdt.shape = st; fdt.density = 5.0f; fdt.friction = 0;
-
-			fdt.filter.categoryBits = Juego::AT_JUGADOR;
-			fdt.filter.maskBits = Juego::ENEMIGO;
-			bt->CreateFixture(&fdt);
-
-
-			atamele = false;
-			destroyBody = true;
-
-		}
-
-		else if (pJuego->teclaPulsada(SDL_SCANCODE_LEFT)) {
-
-			bdt.type = b2_dynamicBody;
-			bdt.position.Set(pos.x, pos.y);
-			bdt.fixedRotation = true;
-			bt = pJuego->getWorld()->CreateBody(&bdt);
-
-			bt->SetUserData(this);
-			st = new b2PolygonShape;
-			static_cast<b2PolygonShape*>(st)->SetAsBox(96, 96, { (float)(sprite->w / 2), (float)(sprite->h / 2) }, 0);
-			fdt.shape = st; fdt.density = 5.0f; fdt.friction = 0;
-
-			fdt.filter.categoryBits = Juego::AT_JUGADOR;
-			fdt.filter.maskBits = Juego::ENEMIGO;
-			bt->CreateFixture(&fdt);
-
-
-			atamele = false;
-			destroyBody = true;
-
-		}
-
-		else if (pJuego->teclaPulsada(SDL_SCANCODE_UP)) {
-
-			bdt.type = b2_dynamicBody;
-			bdt.position.Set(pos.x, pos.y);
-			bdt.fixedRotation = true;
-			bt = pJuego->getWorld()->CreateBody(&bdt);
-
-			bt->SetUserData(this);
-			st = new b2PolygonShape;
-			static_cast<b2PolygonShape*>(st)->SetAsBox(96, 96, { (float)(sprite->w / 2), (float)(sprite->h / 2)}, 0);
-			fdt.shape = st; fdt.density = 5.0f; fdt.friction = 0;
-
-			fdt.filter.categoryBits = Juego::AT_JUGADOR;
-			fdt.filter.maskBits = Juego::ENEMIGO;
-			bt->CreateFixture(&fdt);
-
-
-			atamele = false;
-			destroyBody = true;
-
 		}
 
 
@@ -154,6 +88,9 @@ void PjDañoArea::ataqueMele(){//////////// Ataca en área alrededor del personaje
 	}
 }
 
+void PjDañoArea::draw(){
+}
+
 void PjDañoArea::update(){
 	move();
 	if (state == JUGANDO)
@@ -162,14 +99,14 @@ void PjDañoArea::update(){
 	if (!atamele) {
 		if (estadoEntidad.animacionActual != Ataque) {
 			estadoEntidad.animacionActual = Ataque;
-			currentAnim = animaciones.at("atqu");
+			//currentAnim = animaciones.at("atqu");
 		}
 		currentAnim->ActualizarFrame();
 	}
 	else {
 		if (estadoEntidad.animacionActual == Walk)
 		{
-			currentAnim = animaciones.at("walk");
+			//currentAnim = animaciones.at("walk");
 		}
 		else {
 			currentAnim = animaciones.at("idle");

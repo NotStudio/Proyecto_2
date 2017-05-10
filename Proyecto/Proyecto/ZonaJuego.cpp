@@ -7,6 +7,14 @@ ZonaJuego::ZonaJuego(Juego* punteroJuego):pJuego(punteroJuego)
 	
 }
 
+void ZonaJuego::initRooms()
+{
+	for (auto n : *niveles) {
+		n->InitRoom();
+		n->abrirPuertas();
+	}
+}
+
 
 ZonaJuego::~ZonaJuego()
 {

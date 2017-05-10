@@ -7,16 +7,16 @@
 #include "ZonaAccion.h"
 
 
-Cambiante::Cambiante(Juego* punteroJuego, SDL_Rect spritePar) :Jugable(punteroJuego, spritePar, "Tostadora")
+Cambiante::Cambiante(Juego* punteroJuego, SDL_Rect spritePar) :Jugable(punteroJuego, spritePar, "p1x4r")
 {
 
 	for (unordered_map<string, Juego::Animacion*>::iterator i = animaciones.begin(); i != animaciones.end(); i++)
 	{
-		animaciones.at(i->first)->setNumFrames(30);
+		animaciones.at(i->first)->setNumFrames(36);
 	}
 	currentAnim = animaciones.at("idle");
 	//Inicializacion de los stats y stats máximos;
-	stats.velMov = 1000;/* Decidir más tarde las características*/
+	stats.velMov = 400;/* Decidir más tarde las características*/
 	stats.vida = 4;
 	stats.daño = 1;
 	stats.velAtq = 3;
@@ -93,7 +93,7 @@ void Cambiante::disparo(){
 		}
 		if (!disparar) {
 			Disparar = SDL_AddTimer(cadencia, imerDisparo, this); pJuego->reproducirEfecto("TShot");
-			currentAnim = animaciones.at("atqu");
+			//currentAnim = animaciones.at("atqu");
 		}
 	}
 	if (aux != SinDir) {
@@ -127,7 +127,7 @@ void Cambiante::ataqueMele(){
 
 	if (!atamele) {
 		atamele = SDL_AddTimer(1000000, melee, this); pJuego->reproducirEfecto("TShot");
-		currentAnim = animaciones.at("atqu");
+		//currentAnim = animaciones.at("atqu");
 	}
 
 	if (atamele){
@@ -239,7 +239,7 @@ void Cambiante::forma(bool mele){// Falta cambiar sprites...
 
 	if (!mele){//diminuye
 		////////////////////////////////stats
-		stats.velMov += 400;
+		stats.velMov += 200;
 		stats.vida -= 3;
 		stats.daño -= 2;
 		stats.velAtq = 3;
@@ -306,7 +306,6 @@ void Cambiante::cambio(){
 void Cambiante::update(){
 	move();
 	cambio();// Cambia de forma según el valor de la furia.
-	std::cout << furia;
 	if (state == JUGANDO){
 		if (!mele)
 			disparo();
@@ -320,14 +319,14 @@ void Cambiante::update(){
 	if (!disparar) {
 		if (estadoEntidad.animacionActual != Ataque) {
 			estadoEntidad.animacionActual = Ataque;
-			currentAnim = animaciones.at("atqu");
+			//currentAnim = animaciones.at("atqu");
 		}
 		currentAnim->ActualizarFrame();
 	}
 	else {
 		if (estadoEntidad.animacionActual == Walk)
 		{
-			currentAnim = animaciones.at("walk");
+			//currentAnim = animaciones.at("walk");
 		}
 		else {
 			currentAnim = animaciones.at("idle");

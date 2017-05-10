@@ -2,22 +2,15 @@
 #include "Crafteo.h"
 #include "Boton.h"
 class Objetos2 :
-	public Crafteo
+	public MenuJuego
 {
-
-	std::vector <Boton*> botones;
-
-	int activo = 0;
-
-	Juego::Animacion animacion;
-
+	TexturasSDL * img;
 	TextoSDL Texto;
 
 public:
 	Objetos2(Juego* juego);
 	virtual ~Objetos2();
 
-	virtual void update();
 	virtual void draw();
 	static void salir(Juego* pjuego); 
 	static void engranaje(Juego* pjuego);

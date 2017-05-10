@@ -4,7 +4,7 @@
 #include "Jugable.h"
 #include "ZonaAccion.h"
 
-Pausa::Pausa(Juego * juego) : EstadoPG(juego)//, pR(nullptr)
+Pausa::Pausa(Juego * juego) : MenuJuego(juego)//, pR(nullptr)
 {
 
 	//pR->stop();
@@ -12,8 +12,8 @@ Pausa::Pausa(Juego * juego) : EstadoPG(juego)//, pR(nullptr)
 	static_cast<Jugable*>(pJuego->getPlayer())->stop();
 
 
-	botones.emplace_back(new Boton(juego, "boton", 300, 250, resume, "Continuar"));
-	botones.emplace_back(new Boton(juego, "boton", 300, 350, returnMenu, "Salir"));
+	botones.emplace_back(new Boton(juego, "button", 300, 250, resume, "Continuar","Continua jugando"));
+	botones.emplace_back(new Boton(juego, "button", 300, 350, returnMenu, "Salir", "Vuelve al menu"));
 
 	//Para añadir los botones
 }
@@ -21,11 +21,6 @@ Pausa::Pausa(Juego * juego) : EstadoPG(juego)//, pR(nullptr)
 
 Pausa::~Pausa()
 {
-	for (int i = 0; i < botones.size(); i++)
-	{
-		delete botones[i];
-		botones[i] = nullptr;
-	}
 }
 
 
@@ -38,32 +33,4 @@ void Pausa::returnMenu(Juego * jg){
 
 	jg->freeEstadoss();
 	jg->changeState(new MenuPG(jg));
-}
-
-void Pausa::draw() {
-	for (int i = 0; i < botones.size(); i++)
-	{
-		botones[i]->draw();
-	}
-}
-
-void Pausa::update() {
-
-	botones[activo]->normal();
-	if (pJuego->teclaPulsada(SDL_SCANCODE_DOWN)) {
-
-		if (activo < botones.size() - 1) {
-			activo++;
-		}
-	}
-
-	else if (pJuego->teclaPulsada(SDL_SCANCODE_UP)) {
-		if (activo > 0) {
-			activo--;
-		}
-	}
-	botones[activo]->aumentar();
-	if (pJuego->teclaPulsada(SDL_SCANCODE_RETURN)) {
-		botones[activo]->accion();
-	}
 }

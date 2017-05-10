@@ -102,6 +102,7 @@ void Jefe2Bouncer::bounce(b2Body* tileBody)
 }
 
 void Jefe2Bouncer::comportamiento() {
+	currentAnim->ActualizarFrame();
 	move();
 }
 

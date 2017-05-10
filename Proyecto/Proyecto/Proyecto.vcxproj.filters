@@ -66,6 +66,12 @@
     <Filter Include="Header Files\TMX">
       <UniqueIdentifier>{ba7757f7-d3fd-44ad-a066-cf9b3ac85965}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Estados\Menus">
+      <UniqueIdentifier>{25a8acda-fd01-4216-ae50-be9bf08d4731}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Estados\Menus">
+      <UniqueIdentifier>{c795ee78-417a-482b-a463-5ff5a5b1199a}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -86,12 +92,6 @@
     <ClCompile Include="EstadoPG.cpp">
       <Filter>Source Files\Estados</Filter>
     </ClCompile>
-    <ClCompile Include="MenuPG.cpp">
-      <Filter>Source Files\Estados</Filter>
-    </ClCompile>
-    <ClCompile Include="Pausa.cpp">
-      <Filter>Source Files\Estados</Filter>
-    </ClCompile>
     <ClCompile Include="Play.cpp">
       <Filter>Source Files\Estados</Filter>
     </ClCompile>
@@ -109,9 +109,6 @@
     </ClCompile>
     <ClCompile Include="Jugable.cpp">
       <Filter>Source Files\Personajes\Jugables</Filter>
-    </ClCompile>
-    <ClCompile Include="GameOver.cpp">
-      <Filter>Source Files\Estados</Filter>
     </ClCompile>
     <ClCompile Include="ZonaAccion.cpp">
       <Filter>Source Files\Zonas</Filter>
@@ -173,9 +170,6 @@
     <ClCompile Include="ZonaBase.cpp">
       <Filter>Source Files\Zonas</Filter>
     </ClCompile>
-    <ClCompile Include="SelecZonaMenu.cpp">
-      <Filter>Source Files\Estados</Filter>
-    </ClCompile>
     <ClCompile Include="MapData.cpp">
       <Filter>Source Files\Niveles</Filter>
     </ClCompile>
@@ -215,23 +209,38 @@
     <ClCompile Include="HUDinventory.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Crafteo.cpp">
-      <Filter>Source Files\Estados</Filter>
-    </ClCompile>
-    <ClCompile Include="Objetos1.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Objetos2.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Objetos3.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Puertas.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Jefe2Bouncer.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MenuJuego.cpp">
+      <Filter>Source Files\Estados</Filter>
+    </ClCompile>
+    <ClCompile Include="MenuPG.cpp">
+      <Filter>Source Files\Estados\Menus</Filter>
+    </ClCompile>
+    <ClCompile Include="SelecZonaMenu.cpp">
+      <Filter>Source Files\Estados\Menus</Filter>
+    </ClCompile>
+    <ClCompile Include="Crafteo.cpp">
+      <Filter>Source Files\Estados\Menus</Filter>
+    </ClCompile>
+    <ClCompile Include="Objetos1.cpp">
+      <Filter>Source Files\Estados\Menus</Filter>
+    </ClCompile>
+    <ClCompile Include="Objetos2.cpp">
+      <Filter>Source Files\Estados\Menus</Filter>
+    </ClCompile>
+    <ClCompile Include="Objetos3.cpp">
+      <Filter>Source Files\Estados\Menus</Filter>
+    </ClCompile>
+    <ClCompile Include="Pausa.cpp">
+      <Filter>Source Files\Estados\Menus</Filter>
+    </ClCompile>
+    <ClCompile Include="GameOver.cpp">
+      <Filter>Source Files\Estados\Menus</Filter>
     </ClCompile>
     <ClCompile Include="ZonaBosque.cpp">
       <Filter>Source Files\Zonas</Filter>
@@ -256,22 +265,13 @@
     <ClInclude Include="TileInfo.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="MenuPG.h">
-      <Filter>Header Files\Estados</Filter>
-    </ClInclude>
     <ClInclude Include="Play.h">
-      <Filter>Header Files\Estados</Filter>
-    </ClInclude>
-    <ClInclude Include="Pausa.h">
       <Filter>Header Files\Estados</Filter>
     </ClInclude>
     <ClInclude Include="EstadoJuego.h">
       <Filter>Header Files\Estados</Filter>
     </ClInclude>
     <ClInclude Include="EstadoPG.h">
-      <Filter>Header Files\Estados</Filter>
-    </ClInclude>
-    <ClInclude Include="GameOver.h">
       <Filter>Header Files\Estados</Filter>
     </ClInclude>
     <ClInclude Include="Perseguidor.h">
@@ -376,9 +376,6 @@
     <ClInclude Include="rapidxml-1.13\rapidxml_print.hpp">
       <Filter>Header Files\TMX</Filter>
     </ClInclude>
-    <ClInclude Include="SelecZonaMenu.h">
-      <Filter>Header Files\Estados</Filter>
-    </ClInclude>
     <ClInclude Include="ZonaDesguace.h">
       <Filter>Header Files\Zonas</Filter>
     </ClInclude>
@@ -427,26 +424,41 @@
     <ClInclude Include="HUDinventory.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Crafteo.h">
-      <Filter>Header Files\Estados</Filter>
-    </ClInclude>
-    <ClInclude Include="Objetos1.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Objetos2.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Objetos3.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Puertas.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="MenuFinDeZona.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Jefe2Bouncer.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MenuPG.h">
+      <Filter>Header Files\Estados\Menus</Filter>
+    </ClInclude>
+    <ClInclude Include="SelecZonaMenu.h">
+      <Filter>Header Files\Estados\Menus</Filter>
+    </ClInclude>
+    <ClInclude Include="MenuJuego.h">
+      <Filter>Header Files\Estados</Filter>
+    </ClInclude>
+    <ClInclude Include="Pausa.h">
+      <Filter>Header Files\Estados\Menus</Filter>
+    </ClInclude>
+    <ClInclude Include="Objetos1.h">
+      <Filter>Header Files\Estados\Menus</Filter>
+    </ClInclude>
+    <ClInclude Include="Objetos2.h">
+      <Filter>Header Files\Estados\Menus</Filter>
+    </ClInclude>
+    <ClInclude Include="Objetos3.h">
+      <Filter>Header Files\Estados\Menus</Filter>
+    </ClInclude>
+    <ClInclude Include="MenuFinDeZona.h">
+      <Filter>Header Files\Estados\Menus</Filter>
+    </ClInclude>
+    <ClInclude Include="GameOver.h">
+      <Filter>Header Files\Estados\Menus</Filter>
+    </ClInclude>
+    <ClInclude Include="Crafteo.h">
+      <Filter>Header Files\Estados\Menus</Filter>
     </ClInclude>
     <ClInclude Include="ZonaBosque.h">
       <Filter>Header Files\Zonas</Filter>

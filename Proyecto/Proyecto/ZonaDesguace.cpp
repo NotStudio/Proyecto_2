@@ -7,11 +7,7 @@ ZonaDesguace::ZonaDesguace(Juego* punteroJuego) :ZonaAccion(punteroJuego)
 	id = "zon2";
 
 	setHabitaciones(9,4);
-	for (size_t i = 0; i < niveles->size(); i++)
-	{
-		niveles->at(i)->InitRoom();
-		niveles->at(i)->abrirPuertas();
-	}
+	initRooms();
 	setNivelActual();
 }
 

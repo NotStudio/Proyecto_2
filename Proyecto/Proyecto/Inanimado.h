@@ -6,6 +6,7 @@
 #include "Entidad.h"
 #include "Cambio.h"
 #include "Crafteo.h"
+#include "Play.h"
 
 class Inanimado :
 	public Entidad
@@ -121,7 +122,7 @@ public:
 
 	virtual void onColisionEnter(Objeto* o, b2Body* b1, b2Body* b2) {
 
-		pJuego->pushState(new Cambio(pJuego, pJuego->getActivo(), pJuego->getPersonajes()));
+		pJuego->pushState(new Cambio(pJuego, static_cast<Play*>(pJuego->topState())->personaje));
 	}
 };
 	//==============================================================================================

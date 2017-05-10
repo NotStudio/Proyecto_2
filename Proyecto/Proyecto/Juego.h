@@ -94,6 +94,7 @@ class Juego
 	unordered_map<string, TMXReader::MapData*> HabitacionesIni;
 	unordered_map<string, TMXReader::MapData*> HabitacionesFin;
 	unordered_map<string, TMXReader::MapData*> HabitacionesBoss;
+	TMXReader::MapData* HabitacionTutorial;
 	TMXReader::MapData* Base;
 
 	Mix_Music * MusicaActual;
@@ -154,6 +155,9 @@ public:
 		Animacion operator=(Animacion const a){
 			this->textura = a.textura;
 			return *this;
+		}
+		void draw(SDL_Renderer* r,SDL_Rect rc){
+			textura->draw(r, rc, currentRect());
 		}
 	};
 	enum capaColisiones{
@@ -283,6 +287,9 @@ public:
 
 	TMXReader::MapData* getBaseRoom() {
 		return Base;
+	}
+	TMXReader::MapData* getTutorialRoom() {
+		return HabitacionTutorial;
 	}
 
 	unordered_map<string, Animacion*>getAnimaciones(const string & entity){

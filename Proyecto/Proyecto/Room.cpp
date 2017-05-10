@@ -67,6 +67,7 @@ void Room::update()
 			if (SDL_RectEquals(pJuego->getPlayer()->getRect(), &aux)){
 				cerrarPuertas();
 				RoomState_ = CERRADA;
+				pJuego->reproducirEfecto("Door");
 			}
 		}
 	}
