@@ -89,7 +89,6 @@ void PjDañoArea::ataqueMele(){//////////// Ataca en área alrededor del personaje
 }
 
 void PjDañoArea::draw(){
-	if ()
 }
 
 void PjDañoArea::update(){
