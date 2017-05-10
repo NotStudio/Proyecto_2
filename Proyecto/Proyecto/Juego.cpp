@@ -462,7 +462,7 @@ bool Juego::handle_event() {
 };
 
 //Método de consulta de la variable de control 'error'.
-bool Juego::getError() {	return error;};
+bool Juego::getError()const {	return error;};
 //Método que cierra el juego activando el booleano 'exit'
 void Juego::salir() {	exit = true;}
 

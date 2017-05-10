@@ -53,11 +53,11 @@ void Jefe2Bouncer::bounce(b2Body* tileBody)
 	float radius = 0;
 	float collisionDistance;
 
-	if (tileBody->GetFixtureList()->GetShape()->m_type = b2Shape::e_circle) {
+	if (tileBody->GetFixtureList()->GetShape()->m_type == b2Shape::e_circle) {
 		radius = static_cast<b2CircleShape*>(tileBody->GetFixtureList()->GetShape())->m_radius * PPM;
 		isCircle = true;
 	}
-	else if (tileBody->GetFixtureList()->GetShape()->m_type = b2Shape::e_polygon)
+	else if (tileBody->GetFixtureList()->GetShape()->m_type == b2Shape::e_polygon)
 		boxExtents = static_cast<b2PolygonShape*>(tileBody->GetFixtureList()->GetShape())->GetVertex(1);
 
 

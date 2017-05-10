@@ -7,7 +7,7 @@ class HUD: public HUDbase
 {
 public:
 	HUD(Juego* punteroJuego, SDL_Rect spritePar, string objectId, string objectAnim);
-	~HUD();
+	virtual ~HUD();
 
 
 	void draw();

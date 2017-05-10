@@ -6,7 +6,7 @@ class Inventory
 {
 public:
 	Inventory();
-	~Inventory();
+	virtual ~Inventory();
 
 	void insertItem(std::string const & name, int quantity);
 	void removeItem(std::string const & name, int quantity);

@@ -21,16 +21,15 @@ static const float PPM = 128;
 
 class Zona;
 class EstadoJuego;
-using namespace std;
+//using namespace std;
 class Juego
 {
-	
 	float FPSCAP;
 	int score;
 	int activo = 0;
 	int personajes = 0;
 	float accumulator;
-	stack<EstadoJuego*> estados;
+	std::stack<EstadoJuego*> estados;
 
 	bool mostrar = false;
 
@@ -115,7 +114,7 @@ public:
 	Juego();
 	~Juego();
 
-	 Objeto* getActiveCharacter() {
+	 inline Objeto* getActiveCharacter() {
 		return personaje;
 	}
 
@@ -130,7 +129,8 @@ public:
 		TexturasSDL* textura;
 		int numFrames;
 		int frameActual;
-		Animacion() { rect = { 0,0,0,0 }; textura = nullptr; frameActual = 0; numFrames = 0; };
+		//Animacion() { rect = { 0,0,0,0 }; textura = nullptr; frameActual = 0; numFrames = 0; };
+		Animacion() : rect ({ 0, 0, 0, 0 }), textura(nullptr), frameActual(0), numFrames(0) { };
 		void loadTextura(TexturasSDL*text, int nFrames = 1) {
 			textura = text;
 			numFrames = nFrames;
@@ -140,7 +140,7 @@ public:
 			numFrames = nFrames;
 			rect.w = textura->getAncho() / numFrames;
 		}
-		SDL_Rect* currentRect(){
+		inline SDL_Rect* currentRect(){
 			return &rect;
 		}
 		void ActualizarFrame() {
@@ -171,7 +171,7 @@ public:
 		personajes++;
 	}
 
-	Fuente* getTipografia(const string & id, const int & tam=50) {
+	Fuente* getTipografia(const string & id, int tam=50) {
 		try {
 			return fuentes.at(id).at(tam);
 		}
@@ -220,10 +220,10 @@ public:
 		newVol=(newVol<125 ) ? newVol:125 ;
 		Mix_VolumeMusic(newVol);
 	}
-	void reproducirMusica(int loops= -1) {
+	inline void reproducirMusica(int loops= -1) {
 		Mix_PlayMusic(MusicaActual, loops);
 	}
-	void pararMusica(){
+	inline void pararMusica(){
 		Mix_PauseMusic();
 	}
 	//El id es la cancion que quieres meter;
@@ -301,9 +301,9 @@ public:
 	}
 	TexturasSDL* getTextura(const string &entity, const string &anim);
 
-	void setPlayer(Objeto* pj) { personaje = pj; };
+	inline void setPlayer(Objeto* pj) { personaje = pj; };
 
-	void setCamera(Camara* c) { Camera = c; };
+	inline void setCamera(Camara* c) { Camera = c; };
 
 	Ventana getWindow() { return window; };
 
@@ -311,7 +311,7 @@ public:
 
 	void getMousePos(int &mpx, int &mpy) const;
 
-	bool getError();
+	bool getError() const;
 
 	void salir();
 
@@ -379,7 +379,7 @@ public:
 		return mostrar;
 	}
 
-	Inventory* getInventory(){
+	inline Inventory* getInventory(){
 
 		return inventario;
 	}
@@ -388,12 +388,12 @@ public:
 		inventario = i; //establece el inventario creado en Play.
 	}
 
-	Inventory* getBaul(){
+	inline Inventory* getBaul(){
 	
 		return baul;
 	}
 
-	void setBaul(Inventory* i){
+	inline void setBaul(Inventory* i){
 		baul = i; //establece el baul creado en Play.
 	}
 };
