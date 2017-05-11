@@ -5,7 +5,7 @@
 
 ZonaBase::ZonaBase(Juego* punteroJuego):ZonaJuego(punteroJuego)
 {
-	id = "zon1";
+	id = "base";
 	baseNivel = new Room(pJuego, this, pJuego->getBaseRoom(), {0,0});
 	nivelActual = baseNivel;
 	pJuego->getCamera()->setLimite(nivelActual->getArea());

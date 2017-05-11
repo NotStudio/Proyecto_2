@@ -27,7 +27,7 @@ void SelecZonaMenu::salir(Juego* pJuego) {
 
 void SelecZonaMenu::goZona1(Juego* pJuego) {
 
-	pJuego->setZona("ZonaDesguace");
+	pJuego->setZona("ZonaBosque");
 	Play::setZona();
 	pJuego->popState();
 
@@ -35,7 +35,7 @@ void SelecZonaMenu::goZona1(Juego* pJuego) {
 
 void SelecZonaMenu::goZona2(Juego* pJuego) {
 
-	pJuego->setZona("ZonaBosque");
+	pJuego->setZona("ZonaDesguace");
 	Play::setZona();
 	pJuego->popState();
 }

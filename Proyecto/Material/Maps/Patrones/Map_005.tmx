@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" orientation="orthogonal" renderorder="right-down" width="24" height="12" tilewidth="128" tileheight="128" nextobjectid="5">
  <tileset firstgid="1" name="Tilesheet" tilewidth="128" tileheight="128" tilecount="36" columns="4">
-  <image source="../../../../../../Proyecto II/Proyecto_2/Proyecto/Material/Mapa/Tilesets/Tileset_zon1.png" width="512" height="1152"/>
- </tileset>
- <tileset firstgid="37" name="tilesheet 2" tilewidth="128" tileheight="128" tilecount="36" columns="4">
-  <image source="../../../../../../Proyecto II/Proyecto_2/Proyecto/Material/Mapa/Tilesets/Tileset_zon2.png" width="512" height="1152"/>
+  <image source="../../Mapa/Tilesets/Tileset_zon1.png" width="512" height="1152"/>
  </tileset>
  <layer name="Capa de Patrones 1" width="24" height="12">
   <data encoding="csv">
@@ -23,8 +20,8 @@
 </data>
  </layer>
  <objectgroup name="Enemigos">
-  <object id="1" name="Dron" type="enemigo" x="472" y="408" width="136" height="104"/>
-  <object id="2" name="Dron" type="enemigo" x="496" y="1024" width="112" height="112"/>
+  <object id="1" name="Dron" type="enemigo" x="956" y="652" width="136" height="104"/>
+  <object id="2" name="Dron" type="enemigo" x="165.333" y="1261.82" width="112" height="112"/>
   <object id="3" name="Dron" type="enemigo" x="2232" y="752" width="152" height="128"/>
   <object id="4" name="Perseguidor" type="enemigo" x="1736" y="784" width="120" height="96"/>
  </objectgroup>

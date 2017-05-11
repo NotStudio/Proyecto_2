@@ -4,6 +4,7 @@
 #include "Bala.h"
 EnemigoBomba::EnemigoBomba(Juego* punteroJuego, int x, int y) : Enemigo(punteroJuego, {x,y,128,128}, "Bomba", 400)
 {
+	fDef.shape = shape; fDef.density = 5.0f; fDef.friction = 0;
 	fDef.filter.categoryBits = Juego::ENEMIGO;
 	fDef.filter.maskBits = Juego::JUGADOR | Juego::ESCENARIO | Juego::ENEMIGO | Juego::ESCENARIO_NOCOL | Juego::AT_JUGADOR;
 	body->CreateFixture(&fDef);
@@ -110,7 +111,7 @@ void EnemigoBomba::crecer(){
 		static_cast<b2PolygonShape*>(shape)->SetAsBox((sprite->w / PPM) / 2, (sprite->h / PPM) / 2, { (float)(sprite->w / PPM) / 2, (float)(sprite->h / PPM) / 2 }, 0);
 		fDef.shape = shape; fDef.density = 5.0f; fDef.friction = 0;
 		body->CreateFixture(&fDef);
-		stats.velMov = 6;
+		stats.velMov = 4.5;
 	}
 
 	if ((i > 150 || j > 150) && sprite->h > 50){

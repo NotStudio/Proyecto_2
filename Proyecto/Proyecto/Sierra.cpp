@@ -5,7 +5,7 @@ Sierra::Sierra(Juego* punteroJuego, int x, int y, int dir) : Enemigo(punteroJueg
 {
 	stats.daño = 1;
 	stats.velAtq = 0;
-	stats.velMov = 6;
+	stats.velMov = 5.5;
 	stats.vida = 1;
 	direccion = dir;
 	for (unordered_map<string, Juego::Animacion*>::iterator i = animaciones.begin(); i != animaciones.end(); i++)
@@ -18,6 +18,7 @@ Sierra::Sierra(Juego* punteroJuego, int x, int y, int dir) : Enemigo(punteroJueg
 	fDef.density = 2500.0f;
 	fDef.filter.categoryBits = Juego::ENEMIGO;
 	fDef.filter.maskBits = Juego::ESCENARIO | Juego::JUGADOR |  Juego::ESCENARIO_NOCOL;
+	fDef.shape = shape; fDef.density = 5.0f; fDef.friction = 0;
 	body->CreateFixture(&fDef);
 	isKillable = false;
 

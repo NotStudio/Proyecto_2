@@ -11,8 +11,10 @@
 
 MaquinaDePelotas::MaquinaDePelotas(Juego* punteroJuego, int x, int y) : Enemigo(punteroJuego, {x,y,128,128}, "Tornillero", 500)
 {
+
 	fDef.filter.categoryBits = Juego::ENEMIGO;
 	fDef.filter.maskBits = Juego::JUGADOR | Juego::ESCENARIO | Juego::ENEMIGO | Juego::ESCENARIO_NOCOL | Juego::AT_JUGADOR;
+	fDef.shape = shape; fDef.density = 5.0f; fDef.friction = 0;
 	body->CreateFixture(&fDef);
 	body->SetType(b2_staticBody);
 	stats.daño = 1;
@@ -82,7 +84,7 @@ void MaquinaDePelotas::ataque(){
 				//contador++;
 				contador = SDL_GetTicks();
 				//cout << " Velx " << velFloat.x << " Vely  " << velFloat.y;
-				dynamic_cast<ZonaAccion*>(pJuego->getZona())->getNivel()->nuevaBala(new BalaEnemiga(pJuego, posicion, "BallTBala", 80.0f, velFloat.x, velFloat.y, stats.daño));
+				dynamic_cast<ZonaAccion*>(pJuego->getZona())->getNivel()->nuevaBala(new BalaEnemiga(pJuego, posicion, "BallTBala", 43.0f, velFloat.x, velFloat.y, stats.daño));
 			}
 		}
 	}

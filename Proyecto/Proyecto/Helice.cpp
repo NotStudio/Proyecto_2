@@ -3,7 +3,7 @@
 #include "BalaEnemiga.h"
 
 
-Helice::Helice(Juego* punteroJuego, int x, int y) : Enemigo(punteroJuego, {x,y,60,64}, "OV", 500)
+Helice::Helice(Juego* punteroJuego, int x, int y) : Enemigo(punteroJuego, {x,y,60,64}, "OV", 475)
 {
 	for (unordered_map<string, Juego::Animacion*>::iterator i = animaciones.begin(); i != animaciones.end(); i++)
 	{
@@ -18,6 +18,7 @@ Helice::Helice(Juego* punteroJuego, int x, int y) : Enemigo(punteroJuego, {x,y,6
 	rng = rand() % 2;
 	fDef.filter.categoryBits = Juego::ENEMIGO;
 	fDef.filter.maskBits = Juego::JUGADOR | Juego::AT_JUGADOR;
+	fDef.shape = shape; fDef.density = 5.0f; fDef.friction = 0;
 	body->CreateFixture(&fDef);
 	
 }
@@ -92,17 +93,7 @@ void Helice::disparo(){
 		//contador++;
 		contador = SDL_GetTicks();
 		//cout << " Velx " << velFloat.x << " Vely  " << velFloat.y;
-		dynamic_cast<ZonaAccion*>(pJuego->getZona())->getNivel()->nuevaBala(new BalaEnemiga(pJuego, posicion, "BallTBala", 80.0f, velFloat.x, velFloat.y, stats.daño));
-	}
-
-}
-
-
-void Helice::update(){
-
-	if (!destruido){
-		Enemigo::update();
-		currentAnim->ActualizarFrame();
+		dynamic_cast<ZonaAccion*>(pJuego->getZona())->getNivel()->nuevaBala(new BalaEnemiga(pJuego, posicion, "BallTBala", 43.0f, velFloat.x, velFloat.y, stats.daño));
 	}
 
 }

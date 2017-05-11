@@ -38,6 +38,6 @@
   <object id="4" name="Sierra" type="enemigo" x="2696" y="768" width="208" height="128"/>
   <object id="11" name="Perseguidor" type="enemigo" x="1688" y="1392" width="136" height="136"/>
   <object id="12" name="Perseguidor" type="enemigo" x="904" y="1416" width="136" height="120"/>
-  <object id="13" name="Bomba" type="enemigo" x="1728" y="2344" width="256" height="280"/>
+  <object id="13" name="Bomba" type="enemigo" x="2148" y="1944" width="256" height="280"/>
  </objectgroup>
 </map>

@@ -33,7 +33,6 @@
  </layer>
  <objectgroup name="Capa de Objetos 1">
   <object id="1" name="perseguidor" type="enemigo" x="1152" y="768" width="128" height="128"/>
-  <object id="2" name="chatarra" type="inanimado" x="2684.97" y="118.182" width="376.485" height="261.333"/>
   <object id="3" name="helice" type="enemigo" x="896" y="1152" width="128" height="128"/>
   <object id="4" name="tuberia" type="inanimado" x="0" y="2560" width="512" height="256"/>
   <object id="7" name="perseguidor" type="enemigo" x="1536" y="2176" width="128" height="128"/>

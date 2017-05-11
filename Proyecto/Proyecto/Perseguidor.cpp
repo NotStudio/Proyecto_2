@@ -9,6 +9,7 @@ Perseguidor::Perseguidor(Juego* punteroJuego, int x, int y) : Enemigo(punteroJue
 {
 	fDef.filter.categoryBits = Juego::ENEMIGO;
 	fDef.filter.maskBits = Juego::JUGADOR | Juego::ESCENARIO | Juego::ENEMIGO | Juego::ESCENARIO_NOCOL | Juego::AT_JUGADOR;
+	fDef.shape = shape; fDef.density = 5.0f; fDef.friction = 0;
 	body->CreateFixture(&fDef);
 	for (unordered_map<string,Juego::Animacion*>::iterator i = animaciones.begin(); i != animaciones.end(); i++)
 	{
