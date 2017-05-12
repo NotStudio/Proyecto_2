@@ -109,6 +109,8 @@ class Juego
 
 	Inventory* baul;
 
+	std::map <std::string, bool> mem;
+
 	SDL_TimerID timerCambio;
 public:
 	Juego(b2World * mundo);
@@ -403,6 +405,14 @@ public:
 	inline void setBaul(Inventory* i){
 		baul = i; //establece el baul creado en Play.
 	}
+
+	 inline std::map<std::string, bool> getMemoria(){
+		 return mem;
+	}
+
+	 void setMemoria(std::map<std::string, bool>mem_){
+		 mem = mem_;
+	 }
 };
 
 

@@ -46,6 +46,7 @@ private:
 
 	Inventory* baul;//baul de la base
 
+	std::map<std::string, bool> memorias;
 
 	static bool needGetZona;
 

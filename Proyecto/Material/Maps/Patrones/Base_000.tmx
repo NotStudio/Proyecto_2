@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" orientation="orthogonal" renderorder="right-down" width="32" height="16" tilewidth="128" tileheight="128" nextobjectid="21">
- <tileset firstgid="1" name="Tileset_base" tilewidth="128" tileheight="128" tilecount="32" columns="4">
-  <image source="../../Mapa/Tilesets/Tileset_base.png" width="512" height="1024"/>
+ <tileset firstgid="1" name="Tileset_base" tilewidth="128" tileheight="128" tilecount="36" columns="4">
+  <image source="../../Mapa/Tilesets/Tileset_base.png" width="512" height="1152"/>
  </tileset>
  <layer name="Capa de Patrones 1" width="32" height="16">
   <data encoding="csv">
@@ -24,13 +24,13 @@
 </data>
  </layer>
  <objectgroup name="Capa de Objetos 1">
-  <object id="1" name="selectorzona" type="inanimado" x="1536" y="640" width="512" height="512"/>
-  <object id="3" name="tuberia" type="inanimado" x="57.5758" y="1584.48" width="633.939" height="296.121"/>
-  <object id="5" name="nave" type="inanimado" x="1664" y="1536" width="512" height="384"/>
+  <object id="1" name="selectorzona" type="inanimado" x="1280" y="848" width="512" height="512"/>
+  <object id="3" name="tuberia" type="inanimado" x="29.5758" y="1604.48" width="633.939" height="296.121"/>
+  <object id="5" name="nave" type="inanimado" x="1828" y="1560" width="512" height="384"/>
   <object id="6" x="3456" y="640" width="512" height="768"/>
   <object id="7" name="selectorcrafteo" type="inanimado" x="2476" y="128" width="596" height="356"/>
-  <object id="10" x="128" y="640" width="512" height="768"/>
-  <object id="11" x="768" y="1536" width="768" height="384"/>
-  <object id="18" name="selectorcambio" type="inanimado" x="100" y="760" width="620" height="620"/>
+  <object id="10" x="108" y="640" width="512" height="768"/>
+  <object id="11" name="Historia" type="inanimado" x="1576" y="132" width="211.758" height="121.212"/>
+  <object id="18" name="selectorcambio" type="inanimado" x="48" y="688" width="620" height="620"/>
  </objectgroup>
 </map>

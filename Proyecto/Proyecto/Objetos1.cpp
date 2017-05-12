@@ -13,7 +13,7 @@ Objetos1::Objetos1(Juego* pJuego) : MenuJuego(pJuego)
 	for (map<string, int>::iterator it = Baul.begin(); it !=Baul.end(); it++)
 	{
 		if (it->second > 0) {
-			botones.emplace_back(new Boton(pJuego, "button", contX*170+ 20, contY*50, salir, it->first));
+			botones.emplace_back(new Boton(pJuego, "button", contX*170 + 20, contY * 50, salir, it->first));
 			contY++;
 			if (contY == 6) {
 				contY = 1;
@@ -53,16 +53,12 @@ void Objetos1::draw() {
 void Objetos1::update() {
 	MenuJuego::update();
 	
-
-
 	
 }
 
 
 void Objetos1::salir(Juego* pJuego) {
 
-
 	pJuego->popState();
-
 
 }

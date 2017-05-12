@@ -5,7 +5,7 @@
 class Inventory
 {
 public:
-	Inventory();
+	Inventory(int espacio);
 	virtual ~Inventory();
 
 	void insertItem(std::string const & name, int quantity);
@@ -17,6 +17,8 @@ public:
 
 
 private:
+
+	int espacioI;
 
 	std::map<std::string, int> inventory;
 };

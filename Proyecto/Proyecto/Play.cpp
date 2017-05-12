@@ -33,15 +33,23 @@ Play::Play(Juego * juego) : EstadoPG(juego)
 	inventory = new HUDinventory(juego, SDL_Rect{ 150, 500, 500, 100 }, "Inventory", "idle");
 	//SDL_Rect{ (WINwidth/2) - width/2, WINheight - height , ... , ...}
 	
-	inventario = new Inventory();
+	inventario = new Inventory(4);
 	juego->setInventory(inventario);
-	/*inventario->insertItem("Fusible", 2);
-	inventario->insertItem("Engranaje", 2);
+	inventario->insertItem("Fusible", 2);
+	/*inventario->insertItem("Engranaje", 2);
 	inventario->insertItem("Chip", 2);*/
 	//inventario->insertItem("Madera", 2);
 
-	baul = new Inventory();
+	baul = new Inventory(100);
 	juego->setBaul(baul);
+
+	for (int i = 0; i < 4; i++)
+	{
+		std::string aux = "tarjeta" + std::to_string(i + 1);
+		memorias.insert(std::pair<std::string, bool>(aux, false));
+	}
+	juego->setMemoria(memorias);
+
 	zona = pJuego->getZona();
 
 

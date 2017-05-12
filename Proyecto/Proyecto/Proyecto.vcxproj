@@ -37,6 +37,7 @@
     <ClCompile Include="FactoryEntidades.cpp" />
     <ClCompile Include="GameOver.cpp" />
     <ClCompile Include="Helice.cpp" />
+    <ClCompile Include="Historia.cpp" />
     <ClCompile Include="HUD.cpp" />
     <ClCompile Include="HUDinventory.cpp" />
     <ClCompile Include="Inventory.cpp" />
@@ -48,6 +49,7 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MapData.cpp" />
     <ClCompile Include="MaquinaDePelotas.cpp" />
+    <ClCompile Include="MarcoHistorico.cpp" />
     <ClCompile Include="MenuJuego.cpp" />
     <ClCompile Include="MenuPG.cpp" />
     <ClCompile Include="NPC.cpp" />
@@ -95,7 +97,9 @@
     <ClInclude Include="Entidad.h" />
     <ClInclude Include="EstadoJuego.h" />
     <ClInclude Include="EstadoPG.h" />
+    <ClInclude Include="Historia.h" />
     <ClInclude Include="Jefe2Bouncer.h" />
+    <ClInclude Include="MarcoHistorico.h" />
     <ClInclude Include="MenuFinDeZona.h" />
     <ClInclude Include="GameOver.h" />
     <ClInclude Include="Helice.h" />

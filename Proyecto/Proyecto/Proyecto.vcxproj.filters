@@ -245,6 +245,12 @@
     <ClCompile Include="ZonaBosque.cpp">
       <Filter>Source Files\Zonas</Filter>
     </ClCompile>
+    <ClCompile Include="Historia.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MarcoHistorico.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Juego.h">
@@ -462,6 +468,12 @@
     </ClInclude>
     <ClInclude Include="ZonaBosque.h">
       <Filter>Header Files\Zonas</Filter>
+    </ClInclude>
+    <ClInclude Include="Historia.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MarcoHistorico.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -7,6 +7,7 @@
 #include "Cambio.h"
 #include "Crafteo.h"
 #include "Play.h"
+#include "Historia.h"
 
 class Inanimado :
 	public Entidad
@@ -140,6 +141,23 @@ public:
 	virtual void onColisionEnter(Objeto* o, b2Body* b1, b2Body* b2) {
 
 		pJuego->pushState(new Crafteo(pJuego));
+	}
+};
+//==============================================================================================
+//HISTORIA	
+class  VerHistoria : public Inanimado
+{
+public:
+	VerHistoria(Juego * Pj, int x, int y, int w, int h) :Inanimado(Pj, SDL_Rect{ x, y, TILE_WIDTH * 4, TILE_HEIGHT * 4 }, "SelectorCrafteo") {
+		fDef.filter.categoryBits = Juego::ESCENARIO;
+		fDef.filter.maskBits = Juego::JUGADOR;
+		body->CreateFixture(&fDef);
+	};
+	~VerHistoria() {};
+
+	virtual void onColisionEnter(Objeto* o, b2Body* b1, b2Body* b2) {
+
+		pJuego->pushState(new Historia(pJuego));
 	}
 };
 //==============================================================================================

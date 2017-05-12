@@ -27,12 +27,16 @@ void Objetos3::draw() {
 	MenuJuego::draw();
 
 	if (botones[activo]->getNombre() != "Salir"){
-		
+		if (botones[activo]->getNombre() != "Eje" || botones[activo]->getNombre() != "Pantalla" /*|| botones[activo]->getNombre() != "Salir"*/)
+			Fondo = pJuego->getTextura("HudCraft", "idle");
+
+		Fondo = pJuego->getTextura("HudCraft3", "idle");
 		img->draw(pJuego->getRender(), SDL_Rect{ 530, 20, 125, 125 }, nullptr);
 		receta(botones[activo]->getNombre());
 		Texto.draw(pJuego->getRender(), 650, 50);
 	}
 	else{
+		Fondo = pJuego->getTextura("HudCraft", "idle");
 
 	}
 

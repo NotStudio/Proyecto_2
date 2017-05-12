@@ -4,10 +4,12 @@
 // En la colisión con un objeto (este tiene que tener un atributo string que le identifique y otro para la cantidad)
 //si es del tipo de objeto para el crafteo se inserta ese objeto con el identificador y la cantidad correspondiente.
 // ***La cantidad en cada objeto se podría hacer aleatoria***
-Inventory::Inventory()
+Inventory::Inventory(int espacio)
 {
+
+	espacioI = espacio;
 	insertItem("Chatarra", 2);
-	//insertItem("BalaN", 1);
+	insertItem("Fusible", 1);
 
 }
 
@@ -37,11 +39,12 @@ bool Inventory::findItem(std::string const & name)
 }
 
 void Inventory::insertItem(std::string const & name, int quantity){
-
-	if(!findItem(name))
-		inventory.insert(std::pair<std::string, int>(name, quantity));
-	else 
-		inventory.at(name) += quantity;
+	if (inventory.size() <= espacioI){
+		if (!findItem(name))
+			inventory.insert(std::pair<std::string, int>(name, quantity));
+		else
+			inventory.at(name) += quantity;
+	}
 }
 
 
