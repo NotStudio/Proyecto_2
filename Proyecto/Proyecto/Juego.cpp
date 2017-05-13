@@ -68,7 +68,7 @@ Juego::Juego(b2World* mundo) : error(false), gameOver(false), exit(false), score
 	baul = nullptr;
 
 	pushState(new MenuPG(this));
-	cambiarMusica("summer");
+	//cambiarMusica("summer");
 	run();
 	
 }
@@ -638,6 +638,7 @@ TexturasSDL* Juego::getTilesheet(Zona* z) {
 }
 
 void Juego::setGameOver(){
+	reproducirEfecto("Muerte");
 	gameOver = true;
 	//changeState(new GameOver(this));
 

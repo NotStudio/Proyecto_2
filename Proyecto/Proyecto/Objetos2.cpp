@@ -3,6 +3,7 @@
 
 Objetos2::Objetos2(Juego* pJuego) : MenuJuego(pJuego)
 {
+	pJuego->reproducirEfecto("Multiusos");
 	Fondo = pJuego->getTextura("HudCraft2", "idle");
 	botones.emplace_back(new Boton(pJuego, "button", 20, 50, engranaje, "Engranaje"));
 	botones.emplace_back(new Boton(pJuego, "button", 20, 100, carbono, "Carbono"));

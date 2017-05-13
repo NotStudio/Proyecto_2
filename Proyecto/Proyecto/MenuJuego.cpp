@@ -59,17 +59,22 @@ void MenuJuego::handleEvent(const SDL_Event & event)
 		{
 		case SDL_SCANCODE_DOWN:
 			if (activo < botones.size() - 1) {
+				pJuego->reproducirEfecto("Menu");
 				activo++;
 			}
 			break;
 		case SDL_SCANCODE_UP:
 			if (activo > 0) {
+				pJuego->reproducirEfecto("Menu");
 				activo--;
 			}
 			break;
-		case SDL_SCANCODE_RETURN:
-			botones[activo]->accion();
-			break;
+		case SDL_SCANCODE_RETURN:{
+									 pJuego->reproducirEfecto("Click");
+									 botones[activo]->accion();
+									
+									 break;
+		}
 		case SDL_SCANCODE_H:
 			if (kek.IsCharged())
 				kek.liberar();
@@ -85,6 +90,7 @@ void MenuJuego::handleEvent(const SDL_Event & event)
 				i--;
 			}
 			if (i > -1) {
+				pJuego->reproducirEfecto("Menu");
 				activo = i;
 			}
 		}
@@ -92,6 +98,7 @@ void MenuJuego::handleEvent(const SDL_Event & event)
 	case SDL_MOUSEBUTTONUP:
 		if (event.button.button == SDL_BUTTON_LEFT) {
 			if (botones[activo]->Dentro(event.button.x, event.button.y))
+				pJuego->reproducirEfecto("Click");
 				botones[activo]->accion();
 		}
 		break;

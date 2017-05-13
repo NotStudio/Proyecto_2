@@ -6,7 +6,7 @@
 
 Pausa::Pausa(Juego * juego) : MenuJuego(juego)//, pR(nullptr)
 {
-
+	pJuego->reproducirEfecto("Multiusos");
 	//pR->stop();
 	static_cast<ZonaAccion*>(pJuego->getZona())->getNivel()->stop();
 	static_cast<Jugable*>(pJuego->getPlayer())->stop();

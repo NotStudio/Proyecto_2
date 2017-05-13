@@ -7,6 +7,7 @@
 
 Cambio::Cambio(Juego * juego,vector<Objeto*>& Personajes) : MenuJuego(juego)//, pR(nullptr)
 {
+	pJuego->reproducirEfecto("Multiusos");
 	static_cast<ZonaAccion*>(pJuego->getZona())->getNivel()->stop();
 	static_cast<Jugable*>(pJuego->getPlayer())->stop();
 	int contY = 0;

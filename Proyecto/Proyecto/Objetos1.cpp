@@ -4,7 +4,7 @@
 
 Objetos1::Objetos1(Juego* pJuego) : MenuJuego(pJuego)
 {
-
+	pJuego->reproducirEfecto("Multiusos");
 	Baul = pJuego->getBaul()->getMap();
 	Fondo = pJuego->getTextura("HudCraft", "idle");
 	int contX = 0;
