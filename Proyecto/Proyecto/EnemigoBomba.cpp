@@ -122,6 +122,7 @@ void EnemigoBomba::crecer(){
 
 
 void EnemigoBomba::muerte(){
+	pJuego->reproducirEfecto("Boom");
 	Enemigo::muerte();
 }
 

@@ -56,7 +56,7 @@ void Jugable::onColisionEnter(Objeto* obj, b2Body* b1, b2Body* b2){
 					else stats.vida--;
 
 					if (stats.vida < 0)stats.vida = 0;
-					pJuego->reproducirEfecto("ScreamMetalico");
+					
 	
 					timerInmune = SDL_AddTimer(350, desactivarInmunidad, this);
 				}

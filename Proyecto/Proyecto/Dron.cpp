@@ -27,7 +27,7 @@ Dron::Dron(Juego* punteroJuego, int x, int y) : Enemigo(punteroJuego, { x,y,128,
 	stats.velMov = 1.6;
 	stats.vida = 3; stats.vidaMax = stats.vida;
 
-	isKillable = true;
+	isKillable = true; 
 	//Inicializamos la dirección aleatoriamente.
 	int randAux1 = rand() % 2; int randAux2 = rand() % 2;
 
@@ -113,6 +113,7 @@ void Dron::spawnBalas() {
 		angle = 360 / ((360.0f / 7.0f) * i);
 		dirx = cos(6.28 / angle);  diry = sin(6.28 / angle);
 		posicion.x = radio * cos(6.28 / angle) + origPos.x * PPM;  posicion.y = radio * sin(6.28 / angle) + origPos.y * PPM;
+		pJuego->reproducirEfecto("Shoot2");
 		dynamic_cast<ZonaAccion*>(pJuego->getZona())->getNivel()->nuevaBala(new BalaEnemiga(pJuego, posicion, "BalaN", velocidad, dirx, diry,stats.daño));
 	}
 }
