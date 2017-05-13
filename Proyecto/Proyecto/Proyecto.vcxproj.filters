@@ -245,6 +245,15 @@
     <ClCompile Include="ZonaBosque.cpp">
       <Filter>Source Files\Zonas</Filter>
     </ClCompile>
+    <ClCompile Include="HUDObjeto.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="HUDObj.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="HUDImage.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Juego.h">
@@ -462,6 +471,15 @@
     </ClInclude>
     <ClInclude Include="ZonaBosque.h">
       <Filter>Header Files\Zonas</Filter>
+    </ClInclude>
+    <ClInclude Include="HUDObjeto.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="HUDObj.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="HUDImage.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

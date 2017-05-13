@@ -53,3 +53,7 @@ void TexturasSDL::draw(SDL_Renderer * pRenderer, SDL_Rect const & rect, SDL_Rect
 	relRect.y -= Camera->getPlano().y;
 	SDL_RenderCopyEx(pRenderer, pTexture, frame, &relRect, Camera->getAngulo(),&Centro , (FlipHorinzontal)?SDL_FLIP_HORIZONTAL: SDL_FLIP_NONE);
 }
+void TexturasSDL::draw(SDL_Renderer * pRender, SDL_Rect const &rectDest){
+	SDL_Rect rectSrc{ 0, 0, getAncho(), getAlto() };
+	SDL_RenderCopyEx(pRender, pTexture, &rectSrc, &rectDest, 0.0, NULL, SDL_FLIP_NONE);
+}

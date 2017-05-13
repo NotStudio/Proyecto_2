@@ -3,6 +3,7 @@
 #define HUD_H_
 #include "HUDbase.h"
 #include "Juego.h"
+#include "HUDImage.h"
 class HUD: public HUDbase
 {
 public:
@@ -30,6 +31,7 @@ private:
 
 	string anim;
 
+	HUDImage kek;
 	//bool mostrar = true;
 };
 

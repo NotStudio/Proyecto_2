@@ -62,7 +62,6 @@ class Juego
 		return 0;
 	}
 	SDL_Window* pWindow;
-
 	SDL_Renderer* pRenderer;
 	vector<string> nombreTexturas;
 	vector<string> ubicacionTipografias;
