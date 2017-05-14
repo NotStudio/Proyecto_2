@@ -18,7 +18,7 @@ public:
 
 private:
 
-	int espacioI;
+	int espacio_;
 
 	std::map<std::string, int> inventory;
 };

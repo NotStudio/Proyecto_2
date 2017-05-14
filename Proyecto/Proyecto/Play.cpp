@@ -33,9 +33,10 @@ Play::Play(Juego * juego) : EstadoPG(juego)
 	inventory = new HUDinventory(juego, SDL_Rect{ 150, 500, 500, 100 }, "Inventory", "idle");
 	//SDL_Rect{ (WINwidth/2) - width/2, WINheight - height , ... , ...}
 	
-	inventario = new Inventory(4);
-	juego->setInventory(inventario);
+	inventario = new Inventory(3);
 	inventario->insertItem("Fusible", 2);
+	juego->setInventory(inventario);
+	
 	/*inventario->insertItem("Engranaje", 2);
 	inventario->insertItem("Chip", 2);*/
 	//inventario->insertItem("Madera", 2);

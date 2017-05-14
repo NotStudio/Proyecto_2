@@ -7,9 +7,12 @@
 Inventory::Inventory(int espacio)
 {
 
-	espacioI = espacio;
+	espacio_ = espacio;
 	insertItem("Chatarra", 2);
 	insertItem("Fusible", 1);
+	insertItem("Chip", 1);
+	insertItem("Carbon", 1);
+	insertItem("Engranaje", 1);
 
 }
 
@@ -39,12 +42,19 @@ bool Inventory::findItem(std::string const & name)
 }
 
 void Inventory::insertItem(std::string const & name, int quantity){
+	
+	if (findItem(name)) inventory.at(name) += quantity;
+
+	else {
+		if (inventory.size()  <= espacio_ ) inventory.insert(std::pair<std::string, int>(name, quantity));
+	}
+	/*
 	if (inventory.size() <= espacioI){
 		if (!findItem(name))
 			inventory.insert(std::pair<std::string, int>(name, quantity));
 		else
 			inventory.at(name) += quantity;
-	}
+	}*/
 }
 
 
