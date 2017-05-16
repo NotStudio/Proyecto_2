@@ -11,6 +11,25 @@ HUD::HUD(Juego* punteroJuego, SDL_Rect spritePar, string objectId, string object
 	//porque en juego initMedia() se hace substr de una cadena de 4 caracteres.
 	sprite = new SDL_Rect(spritePar);
 }
+void HUD::updateHUD(){
+	Jugable * jugador;
+	jugador = static_cast<Jugable *> (pjuego->getActiveCharacter());
+	switch (jugador->getVida()){
+	case 1:
+		vida.loadImage("Battery1");
+		break;
+	case 2:
+		vida.loadImage("Battery2");
+		break;
+	case 3:
+		vida.loadImage("Battery3");
+		break;
+	case 4:
+		vida.loadImage("Battery4");
+		break;
+	}
+	//FALTA HACER QUE SE ACTUALICE EL HUD
+}
 
 
 HUD::~HUD()
@@ -24,10 +43,9 @@ void HUD::draw(){
 
 	int n;
 
-	n = static_cast<Jugable*>(pjuego->getPlayer())->getStats()->vida;
+/*	n = static_cast<Jugable*>(pjuego->getPlayer())->getStats()->vida;
 	
-	kek.draw(0, 0, 150, 150);
-	kruk.draw(" Hola ");
+
 	switch (n){
 		
 	case 4:// Tengo que ver como hacer para cuando se suman vidas que se vuelva a poner "Cuatro"
@@ -49,6 +67,6 @@ void HUD::draw(){
 		animacion.textura = pjuego->getTextura(id, anim);
 		animacion.textura->draw(pjuego->getRender(), *getRect(), animacion.currentRect(), 90);
 		break;
-	}
+	}*/
 	
 }

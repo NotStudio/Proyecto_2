@@ -18,6 +18,8 @@ public:
 		return sprite;
 	}
 
+	void updateHUD();
+
 	//void setInventario(bool state);
 
 private:
@@ -35,6 +37,16 @@ private:
 	HUDImage kek;
 
 	HUDText kruk;
+
+	HUDImage vida; 
+
+	HUDText statAtaque;
+
+	HUDText statVelmov;
+
+	HUDText statvelAtaque;
+
+
 	//bool mostrar = true;
 };
 

@@ -29,3 +29,7 @@ void HUDImage::draw(int x, int y, int x1, int y1){
 void HUDImage::draw(){
 	text->draw(pRend, pos);
 }
+void HUDImage::loadImage(string image){
+	text = pJuego->getTextura(image, "idle");
+
+}
