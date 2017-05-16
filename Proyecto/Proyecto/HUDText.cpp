@@ -30,6 +30,11 @@ void HUDText::draw(int x1, int y1, int x2, int y2){
 void HUDText::draw(){
 	txt->draw(pRend, pos.x, pos.y);
 }
+void HUDText::draw(string text){
+	setTexto(text);
+	draw();
+}
+
 void HUDText::setTexto(string aux){
 	texto = aux;
 	txt->loadTexto(pRend, texto, color);
@@ -51,6 +56,6 @@ void HUDText::setTamanyo(int auxx){
 }
 HUDText::~HUDText()
 {
-	delete fuente;
+	fuente = nullptr;
 	delete txt;
 }

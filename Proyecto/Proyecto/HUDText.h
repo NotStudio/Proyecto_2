@@ -15,6 +15,7 @@ public:
 	void setColor(SDL_Color color);
 	void draw(int x1, int y1, int x2, int y2);
 	void draw();
+	void draw(string texto);
 	void setTamanyo(int tam);
 	inline void setPos(int x1, int y1, int x2, int y2){
 		pos = SDL_Rect{ x1, y1, x2, y2 };

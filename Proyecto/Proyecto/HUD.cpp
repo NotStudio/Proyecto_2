@@ -2,7 +2,7 @@
 #include "Jugable.h"
 
 
-HUD::HUD(Juego* punteroJuego, SDL_Rect spritePar, string objectId, string objectAnim) : pjuego(punteroJuego), kek(pjuego, "Flecha"), kruk(pjuego, "TEXTOPRUEBA", 30)
+HUD::HUD(Juego* punteroJuego, SDL_Rect spritePar, string objectId, string objectAnim) : pjuego(punteroJuego), kruk(pjuego, "TEXTOPRUEBA", 30)
 {
 	id = objectId;
 	anim = objectAnim;// Para las vidas esto tiene que ser: "Cuatro", solo al principio
@@ -10,7 +10,6 @@ HUD::HUD(Juego* punteroJuego, SDL_Rect spritePar, string objectId, string object
 	// No se si el nombre este tiene que tener longitud 4, 
 	//porque en juego initMedia() se hace substr de una cadena de 4 caracteres.
 	sprite = new SDL_Rect(spritePar);
-	
 }
 
 
@@ -28,7 +27,7 @@ void HUD::draw(){
 	n = static_cast<Jugable*>(pjuego->getPlayer())->getStats()->vida;
 	
 	kek.draw(0, 0, 150, 150);
-	kruk.draw();
+	kruk.draw(" Hola ");
 	switch (n){
 		
 	case 4:// Tengo que ver como hacer para cuando se suman vidas que se vuelva a poner "Cuatro"
