@@ -18,7 +18,7 @@ HUD::~HUD()
 {
 
 	delete sprite;
-	// sprite = nullptr;
+	pjuego = nullptr;
 }
 
 void HUD::draw(){

@@ -51,7 +51,6 @@ void HUDText::setTamanyo(int auxx){
 }
 HUDText::~HUDText()
 {
-
 	delete fuente;
 	delete txt;
 }
