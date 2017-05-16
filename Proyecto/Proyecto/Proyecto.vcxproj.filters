@@ -254,6 +254,9 @@
     <ClCompile Include="HUDImage.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="HUDText.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Juego.h">
@@ -479,6 +482,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="HUDImage.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="HUDText.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

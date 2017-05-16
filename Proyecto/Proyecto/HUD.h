@@ -4,6 +4,7 @@
 #include "HUDbase.h"
 #include "Juego.h"
 #include "HUDImage.h"
+#include "HUDText.h"
 class HUD: public HUDbase
 {
 public:
@@ -32,6 +33,8 @@ private:
 	string anim;
 
 	HUDImage kek;
+
+	HUDText kruk;
 	//bool mostrar = true;
 };
 

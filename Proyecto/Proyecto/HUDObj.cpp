@@ -8,4 +8,6 @@ HUDObj::HUDObj() :active(false), pos(SDL_Rect{ 0, 0, 0, 0 }), pJuego(nullptr), p
 
 HUDObj::~HUDObj()
 {
+	pRend = nullptr;
+	pJuego = nullptr;
 }
