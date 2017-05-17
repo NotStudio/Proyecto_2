@@ -1,9 +1,9 @@
 ﻿#include "Enemigo.h"
-#include "Bala.h"
 #include "BalaAmiga.h"
 #include <cmath>
 #include "Consumible.h"
 #include "ObjetoHistorico.h"
+
 
 
 Enemigo::Enemigo(Juego* punteroJuego, SDL_Rect spritePar, string objectId, int distancia) : NPC(punteroJuego, spritePar, objectId), needDrop(false), isDead_(false)
@@ -125,11 +125,13 @@ void Enemigo::dropItems() {
 
 			for (int i = 0; i < numItemsDropped; i++) {
 				int x; int y;
-				x = rand() % 10;
-				y = rand() % 10;
+				int pos = rand() % 2;
+				if (pos == 0) pos = -1;
+				x = rand() % 10 * pos;
+				y = rand() % 10 * (pos * -1);
 				int cantidad = rand() % 5;
 				int objeto = rand() % dropPool.size();
-				dynamic_cast<ZonaAccion*>(pJuego->getZona())->getNivel()->nuevoObjeto(new ObjetoHistorico(pJuego, {x,y,48,48},dropPool[objeto],cantidad));
+				dynamic_cast<ZonaAccion*>(pJuego->getZona())->getNivel()->nuevoObjeto(new ObjetoHistorico(pJuego, {sprite->x + x,sprite->y + y,48,48},dropPool[objeto],cantidad));
 			
 			}
 		}

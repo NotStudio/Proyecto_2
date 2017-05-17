@@ -33,15 +33,6 @@ Play::Play(Juego * juego) : EstadoPG(juego)
 	inventory = new HUDinventory(juego, SDL_Rect{ 150, 500, 500, 100 }, "Inventory", "idle");
 	//SDL_Rect{ (WINwidth/2) - width/2, WINheight - height , ... , ...}
 	
-	inventario = new Inventory();
-	juego->setInventory(inventario);
-	/*inventario->insertItem("Fusible", 2);
-	inventario->insertItem("Engranaje", 2);
-	inventario->insertItem("Chip", 2);*/
-	//inventario->insertItem("Madera", 2);
-
-	baul = new Inventory();
-	juego->setBaul(baul);
 	zona = pJuego->getZona();
 
 
@@ -61,12 +52,10 @@ Play::~Play()
 	//borrar zona
 	delete zona;
 	zona = nullptr;
-	delete baul;
-	baul = nullptr;
-	delete inventario;
-	inventario = nullptr;
-	delete inventory;
-	inventory = nullptr;
+	
+
+	
+	
 	zona = nullptr;
 }
 
@@ -99,7 +88,7 @@ void Play::update(){
 		Camera->setLimite(zona->getNivelActual());
 		zona->update();
 		personaje[pJuego->getActivo()]->update();
-		pJuego->setInventory(inventario);
+		
 	}
 	if (static_cast<Jugable*>(pJuego->getPlayer())->getStats()->vida <= 0)
 	{

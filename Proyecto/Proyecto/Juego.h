@@ -106,10 +106,10 @@ class Juego
 	Zona* zona;
 
 	Objeto* personaje;
-
-	Inventory* inventario;
-
-	Inventory* baul;
+	//Mochila durante el juego.
+	Inventory inventario;
+	//Contenedor de objetos de la base.
+	Inventory baul;
 
 	SDL_TimerID timerCambio;
 public:
@@ -394,21 +394,33 @@ public:
 
 	inline Inventory* getInventory(){
 
-		return inventario;
-	}
-
-	void setInventory(Inventory* i){
-		inventario = i; //establece el inventario creado en Play.
+		return &inventario;
 	}
 
 	inline Inventory* getBaul(){
 	
-		return baul;
+		return &baul;
 	}
 
-	inline void setBaul(Inventory* i){
-		baul = i; //establece el baul creado en Play.
+	inline void addItemToInventary(string id, int cantidad){
+	
+		inventario.insertItem(id, cantidad);
 	}
+
+	inline void vaciaInventario(){
+		inventario.vaciar();
+	}
+
+	inline void inventarioToBaul(){
+		std::map<std::string, int> mymap = inventario.getMap();
+		for (std::map<std::string, int>::iterator it = mymap.begin(); it != mymap.end(); ++it)
+		{
+		baul.insertItem(it->first, it->second);
+		inventario.removeItem(it->first, it->second);
+		}
+	}
+
+
 };
 
 

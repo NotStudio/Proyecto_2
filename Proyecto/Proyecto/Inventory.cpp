@@ -6,8 +6,6 @@
 // ***La cantidad en cada objeto se podría hacer aleatoria***
 Inventory::Inventory()
 {
-	insertItem("Chatarra", 2);
-	//insertItem("BalaN", 1);
 
 }
 
@@ -58,4 +56,13 @@ void Inventory::removeItem(std::string const & name, int cantidad)
 
 int Inventory::getCantidad(std::string const & name) const {
 	return inventory.at(name);
+}
+
+void Inventory::vaciar(){
+
+	
+		inventory.clear();
+		
+	
+
 }

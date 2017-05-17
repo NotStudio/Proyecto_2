@@ -16,6 +16,8 @@ Item::Item(Juego* punteroJuego, SDL_Rect spritePar, string objectId) : Entidad(p
 	body->CreateFixture(&fDef);
 	body->GetFixtureList()->SetSensor(true);
 
+	origPosY = sprite->y;
+	body->SetLinearVelocity(b2Vec2{ 0, velLevitacion });
 }
 
 
@@ -26,4 +28,17 @@ Item::~Item()
 
 void Item::update() {
 	Entidad::update();
+	levitar();
+}
+
+//void Item::onColisionEnter(Objeto* Contacto, b2Body* b1, b2Body* b2){}
+
+void Item::levitar(){
+	if (sprite->y >= origPosY + diferenciaPos) {
+		body->SetLinearVelocity(b2Vec2{ 0, -velLevitacion });
+	}
+	else if (sprite->y <= origPosY - diferenciaPos) {
+		body->SetLinearVelocity(b2Vec2{ 0, velLevitacion });
+	}
+
 }

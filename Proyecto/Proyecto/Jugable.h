@@ -19,6 +19,8 @@ public:
 
 	enum estado{JUGANDO, BASE};
 
+	estado getEstado(){ return state; }
+
 	void cambiaEstado(estado s) {
 
 		state = s;

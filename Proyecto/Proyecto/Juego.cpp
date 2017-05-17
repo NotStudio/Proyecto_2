@@ -64,8 +64,10 @@ Juego::Juego(b2World* mundo) : error(false), gameOver(false), exit(false), score
 	Camera = nullptr;
 	personaje = nullptr;
 	zona = nullptr;
-	inventario = nullptr;
-	baul = nullptr;
+	
+	//Cargar baul de un metodo leyendo de texto o de donde se guarde
+								/*AQUI CARGA BAUL*/
+
 
 	pushState(new MenuPG(this));
 	//cambiarMusica("summer");
@@ -436,12 +438,8 @@ bool Juego::handle_event() {
 				changeInventory();
 			}
 			else if (evento.key.keysym.sym == SDLK_t){//se puede modificar
-				std::map<std::string, int> mymap = getInventory()->getMap();
-				for (std::map<std::string, int>::iterator it = mymap.begin(); it != mymap.end(); ++it)
-				{
-					baul->insertItem(it->first, it->second);
-					inventario->removeItem(it->first, it->second);
-				}
+				if (static_cast<Jugable*>(personaje)->getEstado())
+					inventarioToBaul();
 			}
 			break;
 		case SDL_TEXTINPUT:
@@ -641,6 +639,8 @@ void Juego::setGameOver(){
 	reproducirEfecto("Muerte");
 	gameOver = true;
 	//changeState(new GameOver(this));
+	//Reiniciamos el inventario
+	vaciaInventario();
 
 	pushState(new GameOver(this));
 }

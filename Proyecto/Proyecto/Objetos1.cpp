@@ -23,7 +23,9 @@ Objetos1::Objetos1(Juego* pJuego) : MenuJuego(pJuego)
 		}
 	}
 	botones.emplace_back(new Boton(pJuego, "button", 565, 470, salir, "Salir"));
+	if (cantidad.size() > 0)
 	cantidad.emplace_back(cantidad[cantidad.size() - 1]);
+	else cantidad.emplace_back(0);
 	Texto.LoadFuente(pJuego->getTipografia("Acme____", 30));
 	imgObj = pJuego->getTextura(botones[activo]->getNombre(), "idle");
 	Texto.loadTexto(pJuego->getRender(), std::to_string(cantidad[activo]));

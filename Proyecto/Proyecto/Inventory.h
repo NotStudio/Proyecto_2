@@ -13,7 +13,7 @@ public:
 	bool findItem(std::string const & name);
 	int getCantidad(std::string const & name) const;
 	std::map<std::string, int> getMap();
-
+	void vaciar();
 
 
 private:
