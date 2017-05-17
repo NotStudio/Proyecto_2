@@ -3,6 +3,7 @@
 #include "BalaAmiga.h"
 #include <cmath>
 #include "Consumible.h"
+#include "ObjetoHistorico.h"
 
 
 Enemigo::Enemigo(Juego* punteroJuego, SDL_Rect spritePar, string objectId, int distancia) : NPC(punteroJuego, spritePar, objectId), needDrop(false), isDead_(false)
@@ -10,8 +11,17 @@ Enemigo::Enemigo(Juego* punteroJuego, SDL_Rect spritePar, string objectId, int d
 	_distancia = distancia;
 
 
-	dropPool.push_back("Pila");
-	dropPool.push_back("Bateria");
+	dropPool.push_back("Carbon");
+	dropPool.push_back("Madera");
+	dropPool.push_back("Chatarra");
+	dropPool.push_back("Engranaje");
+	dropPool.push_back("Tuercas");
+	dropPool.push_back("Tuberias");
+	dropPool.push_back("Fusible");
+	dropPool.push_back("Estanyo");
+	dropPool.push_back("Chip");
+	dropPool.push_back("Sensor");
+	dropPool.push_back("Litio");
 }
 
 
@@ -77,30 +87,50 @@ void Enemigo::draw(){
 }
 
 void Enemigo::dropItems() {
-	int prob = rand() % 100;
-	int numItemsDropped = 1;
-	//Probabilidades de dropear algo.
-	if (prob >= 50) {
 
-		for (int i = 0; i < numItemsDropped; i++) {
+	//30% de spawnear ALGO
+	int probSpawnSomething = rand() % 100;
+	if (probSpawnSomething < 30) {
+		//50% de spawnear item u objeto clave
 
-			int probItem = rand() % 100;
-			//CRASHEA SI LE PONEMOS DE ID BATERIA POR QUE NO HAY ESE OBJETO, HAY QUE CAMBIARLO->>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-			if (probItem < Consumible::BATERIA_COCHE) {
-				dynamic_cast<ZonaAccion*>(pJuego->getZona())->getNivel()->nuevoObjeto(new Bateria(pJuego, SDL_Rect{ sprite->x +1,sprite->y +2,48,48 }, "Booster"));
-			}
+		int probSpawnItem = rand() % 100; //si probSpawnItem < 50 ---> spawn item. Else, spawn objetoclave
+		int numItemsDropped = 1;
+		
+		if (probSpawnItem < 50) {
 
-			else if (probItem < Consumible::CABLE) {
-				dynamic_cast<ZonaAccion*>(pJuego->getZona())->getNivel()->nuevoObjeto(new Cable(pJuego, SDL_Rect{ sprite->x - 2, sprite->y + 3, 48, 48 }, "Cable"));
+			for (int i = 0; i < numItemsDropped; i++) {
+
+				int probItem = rand() % 100;
+
+				if (probItem < Consumible::BATERIA_COCHE) {
+					dynamic_cast<ZonaAccion*>(pJuego->getZona())->getNivel()->nuevoObjeto(new Bateria(pJuego, SDL_Rect{ sprite->x + 1,sprite->y + 2,48,48 }, "Booster"));
+				}
+
+				else if (probItem < Consumible::CABLE) {
+					dynamic_cast<ZonaAccion*>(pJuego->getZona())->getNivel()->nuevoObjeto(new Cable(pJuego, SDL_Rect{ sprite->x - 2, sprite->y + 3, 48, 48 }, "Cable"));
+				}
+				else if (probItem < Consumible::BOOSTER) {
+					dynamic_cast<ZonaAccion*>(pJuego->getZona())->getNivel()->nuevoObjeto(new Booster(pJuego, SDL_Rect{ sprite->x - 5, sprite->y + 7, 48, 48 }, "Booster"));
+				}
+				else if (probItem < Consumible::TRANSISTOR) {
+					dynamic_cast<ZonaAccion*>(pJuego->getZona())->getNivel()->nuevoObjeto(new Transistor(pJuego, SDL_Rect{ sprite->x, sprite->y, 48, 48 }, "Transistor"));
+				}
+				else if (probItem < Consumible::PILA) {
+					dynamic_cast<ZonaAccion*>(pJuego->getZona())->getNivel()->nuevoObjeto(new Pila(pJuego, SDL_Rect{ sprite->x, sprite->y, 48, 48 }, "Pila"));
+				}
 			}
-			else if (probItem < Consumible::BOOSTER) {
-				dynamic_cast<ZonaAccion*>(pJuego->getZona())->getNivel()->nuevoObjeto(new Booster(pJuego, SDL_Rect{ sprite->x -5, sprite->y + 7, 48, 48 }, "Booster"));
-			}
-			else if (probItem < Consumible::TRANSISTOR) {
-				dynamic_cast<ZonaAccion*>(pJuego->getZona())->getNivel()->nuevoObjeto(new Transistor(pJuego, SDL_Rect{ sprite->x, sprite->y, 48, 48 }, "Transistor"));
-			}
-			else if (probItem < Consumible::PILA) {
-				dynamic_cast<ZonaAccion*>(pJuego->getZona())->getNivel()->nuevoObjeto(new Pila(pJuego, SDL_Rect{ sprite->x, sprite->y, 48, 48 }, "Pila"));
+		}
+		//Spawn objetoClave
+		else {
+
+			for (int i = 0; i < numItemsDropped; i++) {
+				int x; int y;
+				x = rand() % 10;
+				y = rand() % 10;
+				int cantidad = rand() % 5;
+				int objeto = rand() % dropPool.size();
+				dynamic_cast<ZonaAccion*>(pJuego->getZona())->getNivel()->nuevoObjeto(new ObjetoHistorico(pJuego, {x,y,48,48},dropPool[objeto],cantidad));
+			
 			}
 		}
 	}

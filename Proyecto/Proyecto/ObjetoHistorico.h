@@ -7,17 +7,16 @@ class ObjetoHistorico :
 {
 public:
 
-	ObjetoHistorico(Juego* punteroJuego, SDL_Rect spritePar, string objectId);
+	ObjetoHistorico(Juego* punteroJuego, SDL_Rect spritePar, string objectId, int cantidad);
 	~ObjetoHistorico();
-	int getCantidad(){ return cantidad; };
+	int getCantidad(){ return cantidad_; };
 	void sumarCantidad(int x){
-		cantidad += x;
-
+		cantidad_ += x;
 	}
 
 	bool restarCantidad(int x){
-		if (cantidad - x >= 0){
-			cantidad -= x;
+		if (cantidad_ - x >= 0){
+			cantidad_ -= x;
 			return true;
 		}
 		else return false;
@@ -26,8 +25,10 @@ public:
 
 
 private:
-	int cantidad = 0;
+	int cantidad_;
 	string tipo;
+
+	virtual void onColisionEnter(Objeto* Contacto, b2Body* b1, b2Body* b2);
 };
 
 #endif
