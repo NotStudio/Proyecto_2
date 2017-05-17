@@ -16,6 +16,8 @@
 #include "MapData.h"
 #include "Inventory.h"
 
+
+
 //Variable pixels por metro
 static const float PPM = 128;
 
@@ -274,15 +276,19 @@ public:
 		}
 		return HabitacionesFin.at(it->first);
 	}
-	TMXReader::MapData* getBossRoom() {
+	TMXReader::MapData* getBossRoom(string id) {
 		srand(SDL_GetTicks());
 		unordered_map<string, TMXReader::MapData*>::iterator it = HabitacionesBoss.begin();
 		size_t lim = rand() % HabitacionesBoss.size();
+
+		
+		/*
 		for (size_t i = 0; i < lim; i++)
 		{
 			it++;
-		}
-		return HabitacionesBoss.at(it->first);
+		}*/
+		string i = "MapBoss_" + id;
+		return HabitacionesBoss.at(i);
 	}
 
 	TMXReader::MapData* getBaseRoom() {
