@@ -4,12 +4,10 @@
 
 Historia::Historia(Juego* pJuego) : MenuJuego(pJuego)
 {
-
+	Fondo = pJuego->getTextura("SelecMapaFondo", "idle");
 	botones.emplace_back(new Boton(pJuego, "button", 150, 150, marcoHis, "Historia", "Contexto historico"));
 	//botones.emplace_back(new Boton(pJuego, "button", 500, 100, toastyHis, "Pasado de Toasty", "Pasado de Toasty"));
 	botones.emplace_back(new Boton(pJuego, "button", 420, 150, salir, "Salir", "Vuelve a la base"));
-	Fondo = pJuego->getTextura("SelectorHistoria", "idle");
-
 }
 
 

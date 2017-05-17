@@ -4,15 +4,19 @@
 // En la colisión con un objeto (este tiene que tener un atributo string que le identifique y otro para la cantidad)
 //si es del tipo de objeto para el crafteo se inserta ese objeto con el identificador y la cantidad correspondiente.
 // ***La cantidad en cada objeto se podría hacer aleatoria***
-Inventory::Inventory(int espacio)
+Inventory::Inventory(int espacio, Fuente* tipografia, SDL_Renderer* render)
 {
 
 	espacio_ = espacio;
 	insertItem("Chatarra", 2);
 	insertItem("Fusible", 1);
-	insertItem("Chip", 1);
+	insertItem("Madera", 2);
 	insertItem("Carbon", 1);
-	insertItem("Engranaje", 1);
+	insertItem("Engranaje", 2);
+	insertItem("Chip", 1);
+	texto.LoadFuente(tipografia);
+	texto.loadTexto(render,"No tienes espacio");
+	render_ = render;
 
 }
 
@@ -42,19 +46,16 @@ bool Inventory::findItem(std::string const & name)
 }
 
 void Inventory::insertItem(std::string const & name, int quantity){
-	
-	if (findItem(name)) inventory.at(name) += quantity;
-
-	else {
-		if (inventory.size()  <= espacio_ ) inventory.insert(std::pair<std::string, int>(name, quantity));
+	if (findItem(name)){
+		inventory.at(name) += quantity;
 	}
-	/*
-	if (inventory.size() <= espacioI){
-		if (!findItem(name))
+	else {
+		if (inventory.size() <= espacio_) {
 			inventory.insert(std::pair<std::string, int>(name, quantity));
-		else
-			inventory.at(name) += quantity;
-	}*/
+		}
+	/*	else
+			texto.draw(render_, 400, 10);*/
+	}
 }
 
 

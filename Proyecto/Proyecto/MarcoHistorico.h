@@ -14,9 +14,9 @@ public:
 	TextoSDL Texto;
 
 protected:
-	/*virtual void update();
+	virtual void update();
 	virtual void draw();
 	static void salir(Juego * jg);
-	*/
+	
 };
 

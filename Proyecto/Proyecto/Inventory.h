@@ -2,10 +2,12 @@
 #ifndef INVENTORY_H_
 #define INVENTORY_H_
 #include <map>
+#include "TexturasSDL.h"
+
 class Inventory
 {
 public:
-	Inventory(int espacio);
+	Inventory(int espacio, Fuente* tipografia, SDL_Renderer* render);
 	virtual ~Inventory();
 
 	void insertItem(std::string const & name, int quantity);
@@ -19,7 +21,8 @@ public:
 private:
 
 	int espacio_;
-
+	TextoSDL texto;
+	SDL_Renderer* render_;
 	std::map<std::string, int> inventory;
 };
 #endif 
