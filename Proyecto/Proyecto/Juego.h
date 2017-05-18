@@ -254,6 +254,7 @@ public:
 		{
 			it++;
 		}
+		std::cout << it->first << endl;
 		return Habitaciones.at(it->first);
 	}
 	TMXReader::MapData* getIniRoom() {

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="16" height="16" tilewidth="128" tileheight="128" nextobjectid="34">
+ <tileset firstgid="1" name="Tileset1" tilewidth="128" tileheight="128" tilecount="36" columns="4">
+  <image source="../../Mapa/Tilesets/Tileset_zon1.png" width="512" height="1152"/>
+  <tile id="4" probability="0.6"/>
+  <tile id="5" probability="0.1"/>
+  <tile id="6" probability="0.025"/>
+  <tile id="7" probability="0.025"/>
+  <tile id="8" probability="0.025"/>
+  <tile id="9" probability="0.001"/>
+  <tile id="10" probability="0.002"/>
+  <tile id="11" probability="0.002"/>
+ </tileset>
+ <layer name="Capa de Patrones 1" width="16" height="16">
+  <data encoding="csv">
+17,14,14,14,14,14,14,14,14,14,14,14,14,14,14,18,
+13,5,6,7,6,8,8,9,5,6,11,9,10,9,11,15,
+13,5,6,5,5,9,5,5,9,5,5,5,5,6,5,15,
+13,6,6,7,5,9,5,9,5,7,5,5,5,6,5,15,
+13,5,8,6,8,5,5,5,5,6,5,5,5,6,5,15,
+13,5,5,6,5,6,7,5,9,9,5,6,6,6,9,15,
+13,9,5,6,5,6,6,7,5,5,8,5,6,5,9,15,
+13,5,5,5,5,6,5,5,9,6,6,5,5,5,9,15,
+13,7,11,7,6,5,9,5,6,5,6,5,5,5,5,15,
+13,8,7,6,5,6,6,8,6,6,5,7,8,5,6,15,
+13,12,6,5,5,5,7,5,6,8,5,9,8,5,7,15,
+13,5,5,5,5,5,6,9,5,9,5,6,5,9,5,15,
+13,6,9,5,8,5,5,5,11,5,5,6,5,5,8,15,
+13,5,5,5,5,6,5,6,5,6,6,6,5,5,7,15,
+13,5,5,6,6,9,6,5,5,8,6,8,6,5,5,15,
+20,16,16,16,16,16,16,16,16,16,16,16,16,16,16,19
+</data>
+ </layer>
+ <objectgroup name="Enemigos">
+  <object id="15" name="Sierra" type="enemigo" x="1800" y="1540" width="120" height="120"/>
+  <object id="18" name="Sierra" type="enemigo" x="132" y="1280" width="120" height="120"/>
+  <object id="19" name="Sierra" type="enemigo" x="128" y="388" width="120" height="120"/>
+  <object id="20" name="Sierra" type="enemigo" x="1796" y="644" width="120" height="120"/>
+  <object id="22" name="TrampaElectrica" type="enemigo" x="641.333" y="769.333" width="124" height="124"/>
+  <object id="23" name="TrampaElectrica" type="enemigo" x="641.333" y="896.606" width="124" height="124"/>
+  <object id="24" name="TrampaElectrica" type="enemigo" x="641.333" y="1019.61" width="124" height="124"/>
+  <object id="25" name="TrampaElectrica" type="enemigo" x="641.333" y="1149.61" width="124" height="124"/>
+  <object id="26" name="TrampaElectrica" type="enemigo" x="1280.73" y="1155.67" width="124" height="124"/>
+  <object id="27" name="TrampaElectrica" type="enemigo" x="1280.73" y="1025.67" width="124" height="124"/>
+  <object id="28" name="TrampaElectrica" type="enemigo" x="1280.73" y="896.667" width="124" height="124"/>
+  <object id="29" name="TrampaElectrica" type="enemigo" x="1280.73" y="769.667" width="124" height="124"/>
+ </objectgroup>
+</map>

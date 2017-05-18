@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="16" height="16" tilewidth="128" tileheight="128" nextobjectid="14">
+ <tileset firstgid="1" name="Tileset1" tilewidth="128" tileheight="128" tilecount="36" columns="4">
+  <image source="../../Mapa/Tilesets/Tileset_zon1.png" width="512" height="1152"/>
+  <tile id="4" probability="0.6"/>
+  <tile id="5" probability="0.1"/>
+  <tile id="6" probability="0.025"/>
+  <tile id="7" probability="0.025"/>
+  <tile id="8" probability="0.025"/>
+  <tile id="9" probability="0.001"/>
+  <tile id="10" probability="0.002"/>
+  <tile id="11" probability="0.002"/>
+ </tileset>
+ <layer name="Capa de Patrones 1" width="16" height="16">
+  <data encoding="csv">
+17,14,14,14,14,14,14,14,14,14,14,14,14,14,14,18,
+13,5,8,5,7,8,5,5,5,5,5,5,5,5,5,15,
+13,6,5,6,5,5,5,5,5,5,5,5,5,5,5,15,
+13,5,5,5,6,6,6,5,6,5,7,5,5,5,7,15,
+13,6,8,5,5,5,5,5,5,5,5,5,5,5,12,15,
+13,6,5,5,5,9,5,5,5,5,5,5,5,5,5,15,
+13,5,5,5,5,6,5,5,5,6,5,5,5,6,5,15,
+13,8,5,5,5,5,5,5,5,5,5,6,5,5,5,15,
+13,5,6,9,5,5,5,5,8,6,5,6,5,5,5,15,
+13,5,5,7,5,5,5,5,6,5,6,6,6,5,6,15,
+13,5,5,5,5,6,5,5,6,5,5,5,5,5,5,15,
+13,5,6,5,9,5,5,6,5,5,5,5,5,6,5,15,
+13,5,5,5,5,5,5,5,5,5,6,5,5,5,5,15,
+13,5,5,5,5,9,5,5,6,5,5,5,5,5,5,15,
+13,5,5,6,5,5,5,6,5,5,8,5,5,7,5,15,
+20,16,16,16,16,16,16,16,16,16,16,16,16,16,16,19
+</data>
+ </layer>
+ <objectgroup name="Enemigos">
+  <object id="8" name="Bomba" type="enemigo" x="1664" y="1664" width="248" height="248"/>
+  <object id="9" name="Bomba" type="enemigo" x="136" y="132" width="248" height="248"/>
+  <object id="10" name="TrampaElectrica" type="enemigo" x="896" y="896" width="128" height="128"/>
+  <object id="11" name="TrampaElectrica" type="enemigo" x="1156" y="896" width="128" height="128"/>
+  <object id="12" name="TrampaElectrica" type="enemigo" x="1024" y="896" width="127" height="128"/>
+  <object id="13" name="TrampaElectrica" type="enemigo" x="768" y="896" width="128" height="128"/>
+ </objectgroup>
+</map>

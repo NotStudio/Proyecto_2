@@ -41,6 +41,8 @@ Play::Play(Juego * juego) : EstadoPG(juego)
 
 Play::~Play()
 {
+	delete inventory;
+	inventory = nullptr;
 	delete vidasHUD;
 	vidasHUD = nullptr;
 	delete Camera;
