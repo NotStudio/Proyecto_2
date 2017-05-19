@@ -69,7 +69,9 @@ void Jefe1::onColisionEnter(Objeto* contactObject, b2Body* b1, b2Body* b2) {
 
 
 void Jefe1::move(){
-	currentAnim->ActualizarFrame();
+	contador++;
+	if (contador%=2==0)
+		currentAnim->ActualizarFrame();
 }
 uint32 changeStateCb(Uint32 intervalo, void * param){
 	static_cast<Jefe1*>(param)->changeState();
@@ -78,6 +80,7 @@ uint32 changeStateCb(Uint32 intervalo, void * param){
 
 void Jefe1::changeState(){// El metodo no es el más bonito lo sé
 	empezado = false;
+	Estados viejo = estado;
 	if (estado == Estados::Idle ){
 		
 		int rdm = rand() % 2;
@@ -92,6 +95,31 @@ void Jefe1::changeState(){// El metodo no es el más bonito lo sé
 	
 	}
 	else estado = Estados::Idle;
+	if (estado != viejo){
+		currentAnim->restart();
+		switch (estado)
+		{
+		case  Estados::Idle:
+			currentAnim = animaciones.at("idlo");
+			break;
+		case  Estados::Ataque1:
+			currentAnim = animaciones.at("atqu");
+			break;
+		case  Estados::Ataque2:
+			currentAnim = animaciones.at("aceite");
+			break;
+		case  Estados::Ataque3:
+			currentAnim = animaciones.at("aceite");
+			break;
+		case  Estados::Ataque4:
+			break;
+		default:
+			currentAnim = animaciones.at("idlo");
+			break;
+		}
+
+
+	}
 }
 
 void Jefe1::Idle(){

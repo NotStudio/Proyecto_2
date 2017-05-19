@@ -14,7 +14,7 @@ public:
 
 	virtual void onColisionEnter(Objeto* contactObject, b2Body* b1, b2Body* b2);
 	virtual void comportamiento();
-	uint32 changeState() { activated = !activated; needChange = true; std::cout << activated; return 0; };
+	uint32 changeState() { activated = !activated; needChange = true; return 0; };
 	//virtual void desactivar();
 };
 

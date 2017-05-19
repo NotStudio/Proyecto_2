@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="13" height="12" tilewidth="128" tileheight="128" nextobjectid="1">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="13" height="12" tilewidth="128" tileheight="128" nextobjectid="2">
  <tileset firstgid="1" name="keloke" tilewidth="128" tileheight="128" tilecount="36" columns="4">
   <image source="../../Mapa/Tilesets/Tileset_zon1.png" width="512" height="1152"/>
  </tileset>

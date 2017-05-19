@@ -2,7 +2,7 @@
 
 
 
-Jefe2Bouncer::Jefe2Bouncer(Juego* punteroJuego, int x, int y, int lvl):Enemigo(punteroJuego, { x, y, 300-(lvl*40), 300-(lvl*40) }, "carstroller", 1000), level(lvl), doDivision(false)
+Jefe2Bouncer::Jefe2Bouncer(Juego* punteroJuego, int x, int y, int lvl):Enemigo(punteroJuego, { x, y, 300-(lvl*40), 300-(lvl*40) }, "PlasmaBall", 1000), level(lvl), doDivision(false)
 {
 	delete shape;
 	shape = new b2CircleShape;
@@ -23,7 +23,7 @@ Jefe2Bouncer::Jefe2Bouncer(Juego* punteroJuego, int x, int y, int lvl):Enemigo(p
 	{
 		animaciones[i->first]->setNumFrames(30);
 	}
-	currentAnim = animaciones.at("idlo");
+	currentAnim = animaciones.at("atqu");
 
 	int randAux1 = rand() % 2; int randAux2 = rand() % 2;
 
