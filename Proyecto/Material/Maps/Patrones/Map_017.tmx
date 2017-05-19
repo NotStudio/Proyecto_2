@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="16" height="32" tilewidth="128" tileheight="128" nextobjectid="60">
+ <tileset firstgid="1" name="Tileset1" tilewidth="128" tileheight="128" tilecount="36" columns="4">
+  <image source="../../Mapa/Tilesets/Tileset_zon1.png" width="512" height="1152"/>
+  <tile id="0" probability="0.5"/>
+  <tile id="1" probability="0.1"/>
+  <tile id="2" probability="0.1"/>
+  <tile id="3" probability="0.1"/>
+  <tile id="4" probability="0.6"/>
+  <tile id="5" probability="0.1"/>
+  <tile id="6" probability="0.025"/>
+  <tile id="7" probability="0.025"/>
+  <tile id="8" probability="0.025"/>
+  <tile id="9" probability="0.001"/>
+  <tile id="10" probability="0.002"/>
+  <tile id="11" probability="0.002"/>
+ </tileset>
+ <layer name="Capa de Patrones 1" width="16" height="32">
+  <data encoding="csv">
+17,14,14,14,14,14,14,14,14,14,14,14,14,14,14,18,
+13,5,5,5,8,9,5,5,5,5,5,5,5,5,5,15,
+13,5,6,5,5,5,5,5,5,5,5,5,5,5,5,15,
+13,6,6,5,5,5,5,5,5,6,6,5,6,8,5,15,
+13,5,5,9,5,5,5,5,5,5,5,5,5,5,5,15,
+13,5,5,5,5,5,5,5,5,5,5,6,5,5,5,15,
+13,5,5,5,6,5,5,5,8,6,6,7,5,5,5,15,
+13,5,5,6,5,5,5,7,5,6,5,5,5,6,5,15,
+13,5,5,5,5,5,5,5,5,5,5,5,5,5,5,15,
+13,5,5,7,6,6,5,5,5,7,5,5,5,5,5,15,
+13,5,5,5,5,5,6,5,5,5,8,5,6,5,9,15,
+13,5,5,5,5,6,6,6,5,5,5,5,6,5,6,15,
+13,6,6,6,26,5,5,6,5,5,8,26,5,9,5,15,
+13,5,5,5,33,5,9,5,5,5,6,33,5,5,6,15,
+13,5,5,5,33,9,5,5,5,5,5,33,5,5,5,15,
+13,5,5,5,33,6,5,5,5,5,5,33,5,5,6,15,
+13,6,5,5,33,5,5,6,5,5,5,33,5,5,5,15,
+13,5,5,5,33,5,5,7,5,5,5,33,5,5,5,15,
+13,5,5,5,28,5,5,5,5,9,5,28,5,5,5,15,
+13,5,7,5,7,5,5,5,9,5,6,9,5,5,6,15,
+13,5,5,5,5,6,5,7,5,5,5,5,6,5,5,15,
+13,6,8,5,6,5,5,8,5,5,5,5,7,5,5,15,
+13,6,5,5,5,5,5,5,5,5,5,5,5,6,5,15,
+13,5,5,6,5,5,5,5,5,6,5,5,5,5,5,15,
+13,7,5,5,6,5,5,5,5,6,5,5,6,5,5,15,
+13,5,5,5,5,5,12,9,5,7,5,6,8,5,5,15,
+13,9,6,7,6,5,5,5,5,5,5,5,6,6,5,15,
+13,5,5,5,5,5,6,7,9,6,5,6,5,5,6,15,
+13,9,8,5,5,5,6,5,5,6,5,5,5,5,6,15,
+13,5,5,5,5,5,5,5,5,5,5,5,5,5,5,15,
+13,5,7,5,5,6,5,5,7,5,5,5,5,5,5,15,
+20,16,16,16,16,16,16,16,16,16,16,16,16,16,16,19
+</data>
+ </layer>
+ <objectgroup name="Enemigos">
+  <object id="51" name="Dron" type="enemigo" x="644" y="1668" width="120" height="120"/>
+  <object id="52" name="Dron" type="enemigo" x="1280" y="2180" width="120" height="120"/>
+  <object id="54" name="Sierra" type="enemigo" x="128" y="516" width="120" height="120"/>
+  <object id="55" name="Sierra" type="enemigo" x="1800" y="772" width="120" height="120"/>
+  <object id="56" name="Sierra" type="enemigo" x="132" y="1028" width="120" height="120"/>
+  <object id="57" name="Sierra" type="enemigo" x="1799.03" y="3463.03" width="120" height="120"/>
+  <object id="58" name="Sierra" type="enemigo" x="130.303" y="3203.27" width="120" height="120"/>
+  <object id="59" name="Sierra" type="enemigo" x="1798.3" y="2947.27" width="120" height="120"/>
+ </objectgroup>
+</map>
