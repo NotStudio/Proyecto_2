@@ -2,6 +2,7 @@
 #include <math.h>
 #include "Jugable.h"
 #include "Bala.h"
+#include "BalaAmiga.h"
 EnemigoBomba::EnemigoBomba(Juego* punteroJuego, int x, int y) : Enemigo(punteroJuego, {x,y,128,128}, "Bomba", 400)
 {
 	fDef.shape = shape; fDef.density = 5.0f; fDef.friction = 0;
@@ -15,10 +16,10 @@ EnemigoBomba::EnemigoBomba(Juego* punteroJuego, int x, int y) : Enemigo(punteroJ
 	}
 	isKillable = true;
 	currentAnim = animaciones.at("walk");
-	stats.daño = 100;
+	stats.daño = 20;
 	stats.velAtq = 0;
 	stats.velMov = 1;
-	stats.vida = 3;
+	stats.vida = 40;
 	visible = true;
 	
 }
@@ -32,11 +33,10 @@ EnemigoBomba::~EnemigoBomba()
 void EnemigoBomba::onColisionEnter(Objeto* contactObject, b2Body* b1, b2Body* b2) {
 	if (contactObject != nullptr){
 		if (b2->GetFixtureList()->GetFilterData().categoryBits == Juego::JUGADOR){
-			destruido = true;
 			muerte();
 		}
 		else if (b2->GetFixtureList()->GetFilterData().categoryBits == Juego::AT_JUGADOR) {
-			stats.vida--;
+			stats.vida -= static_cast<BalaAmiga*>(contactObject)->getDanyo();
 			(stats.vida <= 0) ? muerte() : nullptr;
 		}
 	}
@@ -88,7 +88,7 @@ void EnemigoBomba::crecer(){
 		static_cast<b2PolygonShape*>(shape)->SetAsBox((sprite->w / PPM) / 2, (sprite->h / PPM) / 2, { (float)(sprite->w / PPM) / 2, (float)(sprite->h / PPM) / 2 }, 0);
 		fDef.shape = shape; fDef.density = 5.0f; fDef.friction = 0;
 		body->CreateFixture(&fDef);
-		stats.velMov = 2;
+		stats.velMov = 2.3;
 	}
 	if ((i < 175 || j < 175) && sprite->h <= 90){
 		sprite->h++;
@@ -99,7 +99,7 @@ void EnemigoBomba::crecer(){
 		static_cast<b2PolygonShape*>(shape)->SetAsBox((sprite->w / PPM) / 2, (sprite->h / PPM) / 2, { (float)(sprite->w / PPM) / 2, (float)(sprite->h / PPM) / 2 }, 0);
 		fDef.shape = shape; fDef.density = 5.0f; fDef.friction = 0;
 		body->CreateFixture(&fDef);
-		stats.velMov = 3;
+		stats.velMov = 3.5;
 	}
 	if ((i < 100 || j < 100) && sprite->h <= 120){
 		sprite->h++;
@@ -111,7 +111,7 @@ void EnemigoBomba::crecer(){
 		static_cast<b2PolygonShape*>(shape)->SetAsBox((sprite->w / PPM) / 2, (sprite->h / PPM) / 2, { (float)(sprite->w / PPM) / 2, (float)(sprite->h / PPM) / 2 }, 0);
 		fDef.shape = shape; fDef.density = 5.0f; fDef.friction = 0;
 		body->CreateFixture(&fDef);
-		stats.velMov = 4.5;
+		stats.velMov = 5;
 	}
 
 	if ((i > 150 || j > 150) && sprite->h > 50){

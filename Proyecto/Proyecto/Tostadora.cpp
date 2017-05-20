@@ -13,11 +13,11 @@ Tostadora::Tostadora(Juego* punteroJuego, SDL_Rect spritePar):Jugable(punteroJue
 	}
 	currentAnim = animaciones.at("idle");
 	//Inicializacion de los stats y stats máximos;
-	stats.velMov = 150;    
-	stats.vida = 4;			
-	stats.daño = 1000;			
+	stats.velMov = 130;    
+	stats.vida = 40;			
+	stats.daño = 10;			
 	stats.velAtq = 3;		
-	stats.vidaMax = stats.vida; 
+	stats.vidaMax = 5;
 	
 }
 

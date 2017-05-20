@@ -4,7 +4,7 @@
 class TrampaElectrica :
 	public Enemigo
 {
-
+	int cadencia;
 	bool activated;
 	bool needChange;
 	void alternaActivo();

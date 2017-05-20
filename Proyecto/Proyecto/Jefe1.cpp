@@ -13,8 +13,9 @@ Jefe1::Jefe1(Juego* punteroJuego, int x, int y) : Enemigo(punteroJuego, { x, y, 
 	estado = Estados::Idle;
 	fase = Fases::Fase1;
 	contador = 0;// Contador de la en que parte d ela fase te encuentras
-	stats.vida = 1;
-	stats.daño = 1;
+	stats.daño = 10;
+	stats.vida = 300;
+	stats.velMov = 0;
 	for (unordered_map<string, Juego::Animacion*>::iterator i = animaciones.begin(); i != animaciones.end(); i++)
 	{
 		animaciones[i->first]->setNumFrames(30);
@@ -136,9 +137,9 @@ void Jefe1::Ataque2(){
 		SDL_AddTimer(300u, changeStateCb, this);
 		float randomx = (rand() % 200) + -100; randomx /= 100;
 		float randomy = (rand() % 100); randomy /= 100;
-
+		stats.daño = 20;
 		disparo("BalaN", SDL_Rect{ getX(), getY() + 200, 60, 60 }, randomx, randomy, 20);
-		//disparaAceite(randomx,randomy);
+		stats.daño = 10;
 
 	}
 }

@@ -1,6 +1,7 @@
 #include "Helice.h"
 #include "ZonaAccion.h"
 #include "BalaEnemiga.h"
+#include "BalaAmiga.h"
 
 
 Helice::Helice(Juego* punteroJuego, int x, int y) : Enemigo(punteroJuego, {x,y,60,64}, "OV", 475)
@@ -10,10 +11,11 @@ Helice::Helice(Juego* punteroJuego, int x, int y) : Enemigo(punteroJuego, {x,y,6
 		animaciones[i->first]->setNumFrames(30);
 	}
 	currentAnim = animaciones.at("idle");
-	stats.daño = 1;
-	stats.velAtq = 0;
-	stats.velMov = 3;
-	stats.vida = 3;
+	stats.daño = 10;
+	stats.velAtq = 1.4;
+	cadencia = stats.velAtq * 1000;
+	stats.velMov = 2;
+	stats.vida = 20;
 	isKillable = true;
 	rng = rand() % 2;
 	fDef.filter.categoryBits = Juego::ENEMIGO;
@@ -27,7 +29,7 @@ void Helice::onColisionEnter(Objeto* contactObject, b2Body* b1, b2Body* b2) {
 
 	if (contactObject != nullptr) {
 		if (b2->GetFixtureList()->GetFilterData().categoryBits == Juego::AT_JUGADOR) {
-			stats.vida--;
+			stats.vida -= static_cast<BalaAmiga*>(contactObject)->getDanyo();
 			if (stats.vida <= 0)
 				muerte();
 		}

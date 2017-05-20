@@ -412,9 +412,6 @@
     <ClInclude Include="Dron.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="TrampaElectrica.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="..\Box2D\include\Box2D\Common\b2Settings.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -462,6 +459,9 @@
     </ClInclude>
     <ClInclude Include="ZonaBosque.h">
       <Filter>Header Files\Zonas</Filter>
+    </ClInclude>
+    <ClInclude Include="TrampaElectrica.h">
+      <Filter>Header Files\Personajes\Enemigos</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

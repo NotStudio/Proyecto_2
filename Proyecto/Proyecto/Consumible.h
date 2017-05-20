@@ -42,7 +42,7 @@ class Pila : public Consumible
 
 public:
 	Pila(Juego* punteroJuego, SDL_Rect spritePar, string objectId):Consumible(punteroJuego,spritePar,objectId){
-		statsUp.vida = 1;
+		statsUp.vida = 10;
 	}
 	virtual void effect() {
 		Consumible::effect();
@@ -54,7 +54,7 @@ class Bateria : public Consumible
 {
 public:
 	Bateria(Juego* punteroJuego, SDL_Rect spritePar, string objectId) :Consumible(punteroJuego, spritePar, objectId) {
-		statsUp.vidaMax = 1;
+		statsUp.vidaMax = 10;
 	}
 	virtual void effect() {
 		Consumible::effect();
@@ -76,7 +76,7 @@ class Transistor : public Consumible
 {
 public:
 	Transistor(Juego* punteroJuego, SDL_Rect spritePar, string objectId) :Consumible(punteroJuego, spritePar, objectId) {
-		statsUp.velAtq = 10;
+		statsUp.velAtq = 1;
 	}
 
 	virtual void effect() {
@@ -88,7 +88,7 @@ class Booster : public Consumible
 {
 public:
 	Booster(Juego* punteroJuego, SDL_Rect spritePar, string objectId) :Consumible(punteroJuego, spritePar, objectId) {
-		statsUp.daño = 10;
+		statsUp.daño = 5;
 	}
 
 	virtual void effect() {

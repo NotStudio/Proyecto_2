@@ -13,9 +13,9 @@ Jefe2Bouncer::Jefe2Bouncer(Juego* punteroJuego, int x, int y, int lvl):Enemigo(p
 	fDef.filter.maskBits = Juego::JUGADOR | Juego::ESCENARIO | Juego::ESCENARIO_NOCOL | Juego::AT_JUGADOR;
 	body->CreateFixture(&fDef);
 	int velPlus = 2 / lvl;
-	int vidaPlus = 5/lvl;
-	stats.vida = 1 + vidaPlus;
-	stats.daño = 1;
+	int vidaPlus = 50 / lvl;
+	stats.vida = vidaPlus;
+	stats.daño = 10;
 	stats.velMov = 4 - velPlus;
 
 	isKillable = true;

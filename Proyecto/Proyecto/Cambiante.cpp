@@ -16,11 +16,10 @@ Cambiante::Cambiante(Juego* punteroJuego, SDL_Rect spritePar) :Jugable(punteroJu
 	}
 	currentAnim = animaciones.at("idle");
 	//Inicializacion de los stats y stats máximos;
-	stats.velMov = 400;/* Decidir más tarde las características*/
-	stats.vida = 4;
-	stats.daño = 1;
+	stats.velMov = 130;/* Decidir más tarde las características*/
+	stats.vida = 40;
+	stats.daño = 8;
 	stats.velAtq = 3;
-	stats.vidaMax = stats.vida;
 
 	/*bdt.type = b2_dynamicBody;
 	bdt.position.Set(pos.x, pos.y);
@@ -71,18 +70,21 @@ void Cambiante::disparo(){
 			disparar = false;
 			posicion.y += spawnPosition;
 			dynamic_cast<ZonaAccion*>(pJuego->getZona())->getNivel()->nuevaBala(new BalaAmiga(pJuego, posicion, 80.0f, 0, 1, stats.daño));
+			furia += 5;
 		}
 		else if (pJuego->inputQuery(SDL_SCANCODE_RIGHT)) {
 			aux = Este;
 			disparar = false;
 			posicion.x += spawnPosition;
 			dynamic_cast<ZonaAccion*>(pJuego->getZona())->getNivel()->nuevaBala(new BalaAmiga(pJuego, posicion, 80.0f, 1, 0, stats.daño));
+			furia += 5;
 		}
 		else if (pJuego->inputQuery(SDL_SCANCODE_LEFT)) {
 			aux = Oeste;
 			disparar = false;
 			posicion.x -= spawnPosition;
 			dynamic_cast<ZonaAccion*>(pJuego->getZona())->getNivel()->nuevaBala(new BalaAmiga(pJuego, posicion, 80.0f, -1, 0, stats.daño));
+			furia += 5;
 
 		}
 		else if (pJuego->inputQuery(SDL_SCANCODE_UP)) {
@@ -90,6 +92,7 @@ void Cambiante::disparo(){
 			disparar = false;
 			posicion.y -= spawnPosition;
 			dynamic_cast<ZonaAccion*>(pJuego->getZona())->getNivel()->nuevaBala(new BalaAmiga(pJuego, posicion, 80.0f, 0, -1, stats.daño));
+			furia += 5;
 		}
 		if (!disparar) {
 			Disparar = SDL_AddTimer(cadencia, imerDisparo, this); pJuego->reproducirEfecto("TShot");
@@ -239,11 +242,14 @@ void Cambiante::forma(bool mele){// Falta cambiar sprites...
 
 	if (!mele){//diminuye
 		////////////////////////////////stats
-		stats.velMov += 200;
+		stats.velMov = 130;
 		stats.vida -= 3;
-		stats.daño -= 2;
+		if (stats.vida < 1)
+			stats.vida = 1;
+		stats.daño = 8;
 		stats.velAtq = 3;
-		stats.vidaMax = stats.vida;
+		stats.vidaMax -= 3;
+
 	
 		/////////////////////////////////////////tamaño sprite y colision,  , , , ,, falta cambiar sprite
 		while (sprite->h >= 65){
@@ -261,12 +267,12 @@ void Cambiante::forma(bool mele){// Falta cambiar sprites...
 	}
 
 	if (mele){//aumenta
-
-		stats.velMov -= 400;/* Decidir más tarde las características*/
-		stats.vida += 3;
-		stats.daño += 2;
+		
+		stats.velMov = 100;/* Decidir más tarde las características*/
+		stats.vida += 30;
+		stats.daño = 15;
 		stats.velAtq = 3;
-		stats.vidaMax = stats.vida;
+		stats.vidaMax += 3;
 
 		while (sprite->h < 96){
 			sprite->h++;

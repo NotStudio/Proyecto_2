@@ -14,6 +14,9 @@ TrampaElectrica::TrampaElectrica(Juego* punteroJuego, int x, int y) : Enemigo(pu
 	fDef.isSensor = true;
 	body->CreateFixture(&fDef);
 	isKillable = false;
+	stats.velAtq = 2;
+	stats.daño = 5;
+	cadencia = stats.velAtq * 1000;
 
 }
 
@@ -44,7 +47,7 @@ void TrampaElectrica::comportamiento()
 void TrampaElectrica::alternaActivo() {
 
 	if (needChange) {
-		//SDL_AddTimer(3000, changeActiveCb, this);
+		SDL_AddTimer(cadencia, changeActiveCb, this);
 		needChange = false;
 	}
 }

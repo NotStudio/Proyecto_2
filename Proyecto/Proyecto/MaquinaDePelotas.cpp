@@ -8,6 +8,7 @@
 #include "Bala.h"
 #include "ZonaAccion.h"
 #include "BalaEnemiga.h"
+#include "BalaAmiga.h"
 
 MaquinaDePelotas::MaquinaDePelotas(Juego* punteroJuego, int x, int y) : Enemigo(punteroJuego, {x,y,128,128}, "Tornillero", 500)
 {
@@ -17,11 +18,12 @@ MaquinaDePelotas::MaquinaDePelotas(Juego* punteroJuego, int x, int y) : Enemigo(
 	fDef.shape = shape; fDef.density = 5.0f; fDef.friction = 0;
 	body->CreateFixture(&fDef);
 	body->SetType(b2_staticBody);
-	stats.daño = 1;
-	stats.vida = 1;
+	stats.daño = 10;
+	stats.vida = 40;
 	stats.velMov = 0;
-	stats.velAtq = 1;
+	stats.velAtq = 1.4;
 	isKillable = true;
+	cadencia = stats.velAtq * 1000;
 
 
 }
@@ -41,7 +43,7 @@ void MaquinaDePelotas::onColisionEnter(Objeto* contactObject, b2Body* b1, b2Body
 
 	if (contactObject != nullptr) {
 		if (b2->GetFixtureList()->GetFilterData().categoryBits == Juego::AT_JUGADOR){
-			stats.vida--;
+			stats.vida -= static_cast<BalaAmiga*>(contactObject)->getDanyo();
 			if (stats.vida <= 0){
 				muerte();
 			}

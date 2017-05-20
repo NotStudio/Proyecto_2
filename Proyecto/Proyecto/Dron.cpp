@@ -1,5 +1,6 @@
 #include "Dron.h"
 #include "BalaEnemiga.h"
+#include "BalaAmiga.h"
 
 
 
@@ -22,10 +23,9 @@ Dron::Dron(Juego* punteroJuego, int x, int y) : Enemigo(punteroJuego, { x,y,128,
 		animaciones[i->first]->setNumFrames(30);
 	}
 	//currentAnim = animaciones.at("walk");
-	stats.daño = 2;
-	stats.velAtq = 20;
+	stats.daño = 10;
 	stats.velMov = 1.6;
-	stats.vida = 3; stats.vidaMax = stats.vida;
+	stats.vida = 30; 
 
 	isKillable = true; 
 	//Inicializamos la dirección aleatoriamente.
@@ -54,8 +54,7 @@ void Dron::move() {
 void Dron::onColisionEnter(Objeto* contactObject, b2Body* b1, b2Body* b2) {
 	if (b2 != nullptr) {
 		if (b2->GetFixtureList()->GetFilterData().categoryBits == Juego::AT_JUGADOR) {
-			//hit(static_cast<Jugable*>(contactObject)->getStats()->daño);
-			muerte();
+			hit(static_cast<BalaAmiga*>(contactObject)->getDanyo());
 		}
 		else if (b2->GetFixtureList()->GetFilterData().categoryBits == Juego::ESCENARIO) {
 			rebote(b2);
@@ -114,7 +113,7 @@ void Dron::spawnBalas() {
 		dirx = cos(6.28 / angle);  diry = sin(6.28 / angle);
 		posicion.x = radio * cos(6.28 / angle) + origPos.x * PPM;  posicion.y = radio * sin(6.28 / angle) + origPos.y * PPM;
 		pJuego->reproducirEfecto("Shoot2");
-		dynamic_cast<ZonaAccion*>(pJuego->getZona())->getNivel()->nuevaBala(new BalaEnemiga(pJuego, posicion, "BalaN", velocidad, dirx, diry,stats.daño));
+		dynamic_cast<ZonaAccion*>(pJuego->getZona())->getNivel()->nuevaBala(new BalaEnemiga(pJuego, posicion, "BalaN", 43.0f, dirx, diry,stats.daño));
 	}
 }
 

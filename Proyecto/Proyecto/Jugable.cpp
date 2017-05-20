@@ -47,15 +47,17 @@ void Jugable::onColisionEnter(Objeto* obj, b2Body* b1, b2Body* b2){
 
 				else if (!inmune){
 					inmune = true;
-					//Si el objeto es una bala, nos hatrá el danyo estipulado
+					//Si el objeto es una bala, nos hará el danyo estipulado
 					if (dynamic_cast<BalaEnemiga*>(obj) != nullptr){
 						stats.vida -= static_cast<BalaEnemiga*>(obj)->getDanyo();
 					}
 					//Si no, deducimos que estamos colisionando con el cuerpo de un enemigo, 
 					//por lo que restamos una sola vida.
-					else stats.vida--;
+					else {
+						stats.vida -= static_cast<Enemigo*>(obj)->getDanyoContacto();
+					}
 
-					if (stats.vida < 0)stats.vida = 0;
+					if (stats.vida <= 0)stats.vida = 0;
 					
 	
 					timerInmune = SDL_AddTimer(350, desactivarInmunidad, this);

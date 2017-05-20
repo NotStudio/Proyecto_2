@@ -26,5 +26,6 @@ public:
 	virtual void desactivar();
 	bool killable() { return isKillable; };
 	bool isDead() { return destruido; }
+	int getDanyoContacto(){ return stats.daño; }
 };
 #endif

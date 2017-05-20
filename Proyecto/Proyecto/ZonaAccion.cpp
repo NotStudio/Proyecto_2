@@ -79,7 +79,6 @@ void ZonaAccion::BuildRoom(RoomType RoomType_, size_t Planta)
 		break;
 	case ZonaJuego::Normal:
 		MapData_ = pJuego->getRoom();
-
 		break;
 	case ZonaJuego::Boss:
 		MapData_ = pJuego->getBossRoom(id);

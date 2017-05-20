@@ -9,7 +9,7 @@
 Crafteo::Crafteo(Juego* pJuego) : MenuJuego(pJuego)
 {
 	pJuego->reproducirEfecto("Multiusos");
-	Fondo = pJuego->getTextura("SelecMapaFondo", "idle");
+	Fondo = pJuego->getTextura("SelecCrafteoFondo", "idle");
 	botones.emplace_back(new Boton(pJuego, "button", 50, 100, grado1, "Baul","Todos los objetos que en en baul"));
 	botones.emplace_back(new Boton(pJuego, "button", 50, 250, grado2, "Objetos Clave","Objetos para craftear objetos clave"));
 	botones.emplace_back(new Boton(pJuego, "button", 50, 330, grado3, "Objetos importantes","Objetos para Desbloquear otras zonas"));
