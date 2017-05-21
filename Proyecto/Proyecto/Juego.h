@@ -117,6 +117,8 @@ public:
 	Juego();
 	~Juego();
 
+	int volumen = 50;
+
 	 inline Objeto* getActiveCharacter() {
 		return personaje;
 	}
@@ -222,9 +224,17 @@ public:
 		}
 	}
 	
-	void setVolumenMusica(int newVol) {
-		newVol=(newVol<125 ) ? newVol:125 ;
-		Mix_VolumeMusic(newVol);
+	void masVolumen() {
+		volumen += 10;
+		if (volumen > 150)volumen = 150;
+		Mix_Volume(-1,volumen);
+		Mix_VolumeMusic(volumen);
+	}
+	void menosVolumen() {
+		volumen -= 10;
+		if (volumen <0 )volumen = 0;
+		Mix_Volume(-1, volumen);
+		Mix_VolumeMusic(volumen);
 	}
 	inline void reproducirMusica(int loops= -1) {
 		Mix_PlayMusic(MusicaActual, loops);

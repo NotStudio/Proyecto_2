@@ -68,7 +68,8 @@ Juego::Juego(b2World* mundo) : error(false), gameOver(false), exit(false), score
 	//Cargar baul de un metodo leyendo de texto o de donde se guarde
 								/*AQUI CARGA BAUL*/
 
-
+	Mix_Volume(-1,volumen);
+	Mix_VolumeMusic(volumen);
 	pushState(new MenuPG(this));
 	//cambiarMusica("summer");
 	run();

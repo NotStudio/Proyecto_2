@@ -3,6 +3,7 @@
 #include "MenuPG.h"
 #include "Jugable.h"
 #include "ZonaAccion.h"
+#include "Opciones.h"
 
 Pausa::Pausa(Juego * juego) : MenuJuego(juego)//, pR(nullptr)
 {
@@ -13,7 +14,8 @@ Pausa::Pausa(Juego * juego) : MenuJuego(juego)//, pR(nullptr)
 
 
 	botones.emplace_back(new Boton(juego, "button", 300, 250, resume, "Continuar","Continua jugando"));
-	botones.emplace_back(new Boton(juego, "button", 300, 350, returnMenu, "Salir", "Vuelve al menu"));
+	botones.emplace_back(new Boton(juego, "button", 300, 350, opciones, "Opciones", "Pues opciones y tal"));
+	botones.emplace_back(new Boton(juego, "button", 300, 450, returnMenu, "Salir", "Vuelve al menu"));
 
 	//Para añadir los botones
 }
@@ -33,4 +35,8 @@ void Pausa::returnMenu(Juego * jg){
 
 	jg->freeEstadoss();
 	jg->changeState(new MenuPG(jg));
+}
+
+void Pausa::opciones(Juego * jg){
+	jg->pushState(new Opciones(jg));
 }

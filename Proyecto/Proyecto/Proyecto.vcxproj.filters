@@ -245,6 +245,9 @@
     <ClCompile Include="ZonaBosque.cpp">
       <Filter>Source Files\Zonas</Filter>
     </ClCompile>
+    <ClCompile Include="Opciones.cpp">
+      <Filter>Source Files\Estados\Menus</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Juego.h">
@@ -462,6 +465,9 @@
     </ClInclude>
     <ClInclude Include="TrampaElectrica.h">
       <Filter>Header Files\Personajes\Enemigos</Filter>
+    </ClInclude>
+    <ClInclude Include="Opciones.h">
+      <Filter>Header Files\Estados</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

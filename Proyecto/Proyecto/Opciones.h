@@ -1,22 +1,19 @@
-#ifndef MENU_H_
-#define MENU_H_
+#pragma once
+
 #include "MenuJuego.h"
 #include "Boton.h"
 
 //Clase inicio...
-class MenuPG :
+class Opciones :
 	public MenuJuego
 {
 public:
-	MenuPG(Juego * juego);
-	virtual ~MenuPG();
+	Opciones(Juego * juego);
+	virtual ~Opciones();
 
 private:
 	static void salir(Juego * jg);
 	static void playBase(Juego * jg);
-	static void cargar(Juego* jg);
-	static void opciones(Juego* jg);
-
+	static void sube(Juego* jg);
+	static void baja(Juego* jg);
 };
-
-#endif
