@@ -7,5 +7,6 @@ public:
 protected:
 	virtual void draw() = 0;
 	virtual void draw(int x, int y) = 0;
+	virtual void draw(int x, int y, int x1, int y1) = 0;
 };
 

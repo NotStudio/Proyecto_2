@@ -21,9 +21,10 @@ HUD::HUD(Juego* punteroJuego, SDL_Rect spritePar, string objectId, string object
 	medAncho = (ancho + 0.0) / 64;
 	medAlto = (alto + 0.0) / 32;
 
-	statVelMov = new HUDText(pjuego, 5.5*medAncho, medAlto *23,"NULL");
-	statDanyo = new HUDText(pjuego, 5.5*medAncho, medAlto *26,  "NULL");
-	statVelAtaq = new HUDText(pjuego, 5.5*medAncho, medAlto*29,  "NULL");
+	statVelMov = new HUDText(pjuego, 5.5*medAncho, medAlto * 24, "hudfont");
+	statDanyo = new HUDText(pjuego, 5.5*medAncho, medAlto * 27, "hudfont");
+	statVelAtaq = new HUDText(pjuego, 5.5*medAncho, medAlto * 30,  "hudfont");
+	
 
 
 	marcoStats = new HUDImage(pjuego, 0, medAlto * 22, 13 * medAncho, alto, "marco");
@@ -37,18 +38,8 @@ HUD::HUD(Juego* punteroJuego, SDL_Rect spritePar, string objectId, string object
 
 	fondoVida = new HUDImage(pjuego, 3, 3, (4*medAncho*maxVidas) + medAncho*2, 3 * medAlto, "fondovida");
 	cables = new HUDImage(pjuego, 0, 0, ancho, alto, "cables");
-
-	statVelMov->setTamanyo(10);
-	statDanyo->setTamanyo(10);
-	statVelMov->setTamanyo(25);
-
-	statVelMov->cambiaFuente("hudfont");
-	statDanyo->cambiaFuente("hudfont");
-	statVelAtaq->cambiaFuente("hudfont");
-
 	updateHUD();
 }
-
 
 HUD::~HUD()
 {
@@ -72,6 +63,7 @@ void HUD::draw(){
 	velMov->draw(); 
 	ataque->draw();
 
+
 	fondoVida->draw();
 	for (size_t i = 0; i < vidasAct; i++){
 		vida->draw(5 + (i*(fondoVida->getPos().w-30 / maxVidas))+5, 7, (i + 1)*(fondoVida->getPos().w-30 / maxVidas)-5, 3 * medAlto - 5);
@@ -86,6 +78,5 @@ void HUD::updateHUD(){
 	statVelMov->setTexto(to_string(aux->getStats()->velMov).substr(0, 3));
 	statDanyo->setTexto(to_string(aux->getStats()->daño).substr(0, 4));
 	statVelAtaq->setTexto(to_string(aux->getStats()->velAtq).substr(0, 4));
-
 
 }

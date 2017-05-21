@@ -145,6 +145,10 @@ public:
 		SDL_Rect rect = { x,y,tamTextura.ancho,tamTextura.alto };
 		SDL_RenderCopyEx(pRenderer, pTexture, &rct, &rect, 0, NULL, SDL_FLIP_NONE);
 	}
+	virtual void draw(SDL_Renderer * pRenderer, SDL_Rect dest){
+		SDL_RenderCopyEx(pRenderer, pTexture, &rct, &dest, 0, NULL, SDL_FLIP_NONE);
+	}
+
 protected:
 	SDL_Rect rct;
 	Fuente * font;

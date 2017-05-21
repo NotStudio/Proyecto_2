@@ -55,6 +55,8 @@ void Jugable::onColisionEnter(Objeto* obj, b2Body* b1, b2Body* b2){
 					//por lo que restamos una sola vida.
 					else stats.vida--;
 
+					//Actualizamos el HUD
+
 					if (stats.vida < 0)stats.vida = 0;
 					pJuego->reproducirEfecto("scream");
 	

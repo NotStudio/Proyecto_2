@@ -18,6 +18,7 @@ public:
 		return sprite;
 	}
 
+
 	//void setInventario(bool state);
 
 private:
@@ -49,7 +50,6 @@ private:
 	int maxVidas;
 	int vidasAct;
 	float medAlto, medAncho;
-
 	//bool mostrar = true;
 };
 

@@ -33,3 +33,7 @@ void HUDImage::draw(int x, int y){
 	pos = SDL_Rect{ x, y, text->getAncho(), text->getAlto() };
 	text->draw(pRend, pos);
 }
+void HUDImage::loadImage(string image){
+	text = pJuego->getTextura(image, "idle");
+
+}
