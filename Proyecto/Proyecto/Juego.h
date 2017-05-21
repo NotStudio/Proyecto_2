@@ -189,7 +189,7 @@ public:
 			}
 			catch (out_of_range)
 			{
-				cout << "Error al cargar la tipografia, tome tipografia por defecto\n";
+				cout << "Error al cargar la tipografia de nombre " << id <<", tome tipografia por defecto\n";
 				return fuentes.at(fuentes.begin()->first).at(50);
 			}
 			

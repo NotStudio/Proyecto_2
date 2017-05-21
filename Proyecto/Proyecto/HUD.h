@@ -5,15 +5,15 @@
 #include "Juego.h"
 #include "HUDImage.h"
 #include "HUDText.h"
-class HUD: public HUDbase
+class HUD : public HUDbase
 {
 public:
 	HUD(Juego* punteroJuego, SDL_Rect spritePar, string objectId, string objectAnim);
 	virtual ~HUD();
 
-
+	void updateHUD();
 	void draw();
-	
+
 	SDL_Rect * getRect() {
 		return sprite;
 	}
@@ -22,6 +22,8 @@ public:
 
 private:
 
+	HUDImage * fondoVida;
+	HUDImage * vida;
 	Juego* pjuego;
 
 	Juego::Animacion animacion;
@@ -32,9 +34,22 @@ private:
 
 	string anim;
 
-	HUDImage kek;
+	HUDImage * velMov;
+	HUDImage * ataque;
+	HUDImage * velAtaq;
+	HUDImage * personaje;
 
-	HUDText kruk;
+	HUDText *statVelMov;
+	HUDText *statDanyo;
+	HUDText *statVelAtaq;
+
+	HUDImage * marcoStats;
+	HUDImage * cables;
+	int alto, ancho;
+	int maxVidas;
+	int vidasAct;
+	float medAlto, medAncho;
+
 	//bool mostrar = true;
 };
 

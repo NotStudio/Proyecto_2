@@ -21,10 +21,23 @@ HUDText::HUDText(Juego * pJ, string tx, int tamano, SDL_Color clr , string fte):
 	txt->LoadFuente(fuente);
 	txt->loadTexto(pRend, texto, color);
 }
+HUDText::HUDText(Juego * pJ, int x1, int y1, string txto):fuente(new Fuente()), txt(new TextoSDL()), tam(25){
+	pJuego = pJ;
+	texto = txto;
+	pos = SDL_Rect{ x1, y1, txt->getAncho(), txt->getAlto()};
+	
+	fuente = pJuego->getTipografia("");
+	pRend = pJuego->getRender();
+	fuente->loadFuente(fuente->fichero, tam);
+	txt->LoadFuente(fuente);
+	txt->loadTexto(pRend, texto, color);
 
 
-void HUDText::draw(int x1, int y1, int x2, int y2){
-	pos = SDL_Rect{ x1, y1, x2, y2 };
+}
+
+
+void HUDText::draw(int x1, int y1){
+	pos = SDL_Rect{ x1, y1, txt->getAncho(), txt->getAlto() };
 	txt->draw(pRend, pos.x, pos.y);
 }
 void HUDText::draw(){
@@ -37,22 +50,23 @@ void HUDText::draw(string text){
 
 void HUDText::setTexto(string aux){
 	texto = aux;
-	txt->loadTexto(pRend, texto, color);
+	txt->LoadFuente(pJuego->getTipografia(nFuente));
+	txt->loadTexto(pRend, aux, color);
 }
 void HUDText::setColor(SDL_Color aux){
 	color = aux;
+	txt->LoadFuente(pJuego->getTipografia(nFuente));
 	txt->loadTexto(pRend, texto, color);
 }
 void HUDText::cambiaFuente(string fnte){
 	nFuente = fnte;
-	fuente = pJuego->getTipografia(fnte, tam);
-	fuente->loadFuente(fnte, tam);
-	txt->LoadFuente(fuente);
+	txt->LoadFuente(pJuego->getTipografia(nFuente));
+	txt->loadTexto(pRend, texto, color);
 }
 void HUDText::setTamanyo(int auxx){
 	tam = auxx;
-	fuente->loadFuente(nFuente, tam);
-	
+	txt->LoadFuente(pJuego->getTipografia(nFuente,auxx));
+	txt->loadTexto(pRend, texto, color);
 }
 HUDText::~HUDText()
 {

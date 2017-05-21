@@ -11,6 +11,7 @@ public:
 	virtual ~HUDImage();
 	void draw();
 	void draw(int x, int y, int x1, int y1);
+	void draw(int x, int y);
 private:
 	TexturasSDL* text;
 };

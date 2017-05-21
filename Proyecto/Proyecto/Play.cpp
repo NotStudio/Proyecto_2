@@ -4,10 +4,10 @@
 #include "ZonaAccion.h"
 #include "Tostadora.h"
 #include "Camara.h"
-#include "HUD.h"
 #include "Cambiante.h"
 #include "PjDañoArea.h"
 #include "HUDinventory.h"
+#include "HUD.h"
 
 Uint32 callbackCarga(Uint32 param, void *p);
 bool Play::needGetZona = false;

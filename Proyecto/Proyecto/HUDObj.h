@@ -14,7 +14,7 @@ public:
 	bool getActive();
 	void setActive(bool aux);
 	SDL_Rect getPos(){ return pos; };
-	void setPos(SDL_Rect k){ pos = k; };
+	inline void setPos(SDL_Rect k){ pos = k; };
 protected:
 	SDL_Rect pos;
 	bool active;
