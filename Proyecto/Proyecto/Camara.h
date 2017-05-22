@@ -23,22 +23,23 @@ public:
 	void setLimite(SDL_Rect const &  area);
 	SDL_Point getPosRelativa(SDL_Rect rec);
 	SDL_Rect getRecRelativa(SDL_Rect rec);
-	void sacudirCamara(Uint32 ms);
+	//para sacudir la camara
+	//primer parametro, el numero de ms
+	//segundo parametro, la intensidad
+	void sacudirCamara(Uint32 ms, Uint16 intensidad = 4);
 	// parar de mover la camara
 	void restaurarCamara() {
 		CameraState_ = NORMAL;
 	};
-private:
 	enum CAMERASTATE
 	{
 		NORMAL, SACUDIDA
-	}CameraState_;
-	static Uint32 restart(Uint32 interval, void* Param) {
-		(CAMERASTATE&)Param = NORMAL;
-		return 1;
-	}
-	SDL_TimerID TemporazidorEfecto;
+	};
+private:
+	CAMERASTATE CameraState_ = NORMAL;
 	
+	SDL_TimerID TemporazidorEfecto;
+	Uint16 fuerzaTerremoto = 0;
 	int minX, minY, maxX, maxY;
 	SDL_Point Centro;
 	SDL_Rect * Apuntando;

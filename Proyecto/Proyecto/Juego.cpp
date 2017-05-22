@@ -441,9 +441,6 @@ bool Juego::handle_event() {
 				if (static_cast<Jugable*>(personaje)->getEstado())
 					inventarioToBaul();
 			}
-			else if (evento.key.keysym.sym == SDLK_3) {
-				Camera->sacudirCamara(1000);
-			}
 
 
 			break;

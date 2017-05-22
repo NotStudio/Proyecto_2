@@ -32,10 +32,35 @@ void Camara::update()
 	Centro = { Apuntando->x + Apuntando->w / 2,Apuntando->y + Apuntando->h/ 2 };
 	plano.x = Centro.x - plano.w / 2;
 	plano.y = Centro.y - plano.h / 2;
-
+	bool izq = false, der = false, top = false, bot = false;
 	if (plano.x <= minX) {
-		plano.x = minX;
-		Centro.x = plano.x+plano.w / 2;
+		izq = true;
+	}
+
+	if (plano.x + plano.w > maxX) {
+		der = true;
+	}
+	if (izq&&der) {
+		
+	}
+	 else {
+		 if (izq) {
+			 plano.x = minX;
+
+		 }
+		 if (der) {
+			 plano.x = maxX - plano.w;
+		 }
+		Centro.x = plano.x + plano.w / 2;
+	 }
+	
+	if (plano.y <= minY) {
+		plano.y = minY;
+		Centro.y = plano.h / 2;
+	}
+	if (plano.y + plano.h > maxY) {
+		plano.y = maxY - plano.h;
+		Centro.y = plano.h / 2;
 	}
 	
 	if (plano.x+plano.w > maxX) {
@@ -55,8 +80,8 @@ void Camara::update()
 	case Camara::NORMAL:
 		break;
 	case Camara::SACUDIDA:
-		plano.x += rand() % 4 - 2;
-		plano.y += rand() % 4 - 2;
+		plano.x += rand() % fuerzaTerremoto - fuerzaTerremoto/2;
+		plano.y += rand() % fuerzaTerremoto - fuerzaTerremoto/2;
 		break;
 	default:
 		break;
@@ -83,12 +108,16 @@ SDL_Rect Camara::getRecRelativa(SDL_Rect rec) {
 	rec.y -= plano.y;
 	return rec;
 }
-
-void Camara::sacudirCamara(Uint32 ms)
+Uint32 restart(Uint32 interval, void* Param) {
+	static_cast<Camara*>(Param)->restaurarCamara();
+	return 1;
+}
+void Camara::sacudirCamara(Uint32 ms, Uint16 intensidad)
 {
+	fuerzaTerremoto = intensidad;
 	CameraState_ = SACUDIDA;
 	SDL_RemoveTimer(TemporazidorEfecto);
-	TemporazidorEfecto = SDL_AddTimer(ms, restart, &CameraState_);
+	TemporazidorEfecto = SDL_AddTimer(ms, restart, this);
 
 }
 
