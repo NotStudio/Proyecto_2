@@ -105,10 +105,12 @@ class Juego
 	Zona* zona;
 
 	Objeto* personaje;
-	//Mochila durante el juego.
-	Inventory inventario;
-	//Contenedor de objetos de la base.
-	Inventory baul;
+
+	Inventory* inventario;
+
+	Inventory* baul;
+
+	std::map <std::string, bool> mem;
 
 	SDL_TimerID timerCambio;
 public:
@@ -432,7 +434,13 @@ public:
 		}
 	}
 
+	 inline std::map<std::string, bool> getMemoria(){
+		 return mem;
+	}
 
+	 void setMemoria(std::map<std::string, bool>mem_){
+		 mem = mem_;
+	 }
 };
 
 

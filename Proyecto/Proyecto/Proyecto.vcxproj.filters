@@ -260,6 +260,12 @@
     <ClCompile Include="HUDText.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="MarcoHistorico.cpp">
+      <Filter>Source Files\Estados\Menus</Filter>
+    </ClCompile>
+    <ClCompile Include="Historia.cpp">
+      <Filter>Source Files\Estados\Menus</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Juego.h">
@@ -492,6 +498,12 @@
     </ClInclude>
     <ClInclude Include="HUDText.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Historia.h">
+      <Filter>Header Files\Estados\Menus</Filter>
+    </ClInclude>
+    <ClInclude Include="MarcoHistorico.h">
+      <Filter>Header Files\Estados\Menus</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

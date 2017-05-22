@@ -12,6 +12,7 @@ public:
 	virtual ~Objetos2();
 
 	virtual void draw();
+	virtual void update();
 	static void salir(Juego* pjuego); 
 	static void engranaje(Juego* pjuego);
 	static void carbono(Juego* pjuego);

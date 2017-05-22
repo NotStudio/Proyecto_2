@@ -9,6 +9,7 @@
 #include "Dron.h"
 #include "TrampaElectrica.h"
 #include "Jefe2Bouncer.h"
+#include "Historia.h"
 #include <stdio.h>
 
 
@@ -39,6 +40,9 @@ Objeto * creaInanimado(Juego * pj, string id, int x, int y, int w, int h,float e
 	}
 	else if (id == "SelectorCrafteo" || id == "selectorcrafteo") {
 		return new SelectorCrafteo(pj, x, y, w, h);
+	}
+	else if (id == "Historia" || id == "historia") {
+		return new VerHistoria(pj, x, y, w, h);
 	}
 	else if (id == "findezona" || id == "FinDeZona") {
 		return new FinZona(pj, x, y, w, h);

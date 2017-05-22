@@ -48,6 +48,10 @@ private:
 
 	Inventory* inventario;//inventario en las rooms
 
+	Inventory* baul;//baul de la base
+
+	std::map<std::string, bool> memorias;
+
 	static bool needGetZona;
 
 	static bool needCarga;

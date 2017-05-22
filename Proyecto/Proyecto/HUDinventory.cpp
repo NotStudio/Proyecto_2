@@ -39,19 +39,19 @@ void HUDinventory::draw(){
 		switch (i){
 		case (0):
 			animacion.textura = pjuego->getTextura(it->first, anim);
-			animacion.textura->draw(pjuego->getRender(), SDL_Rect{ 180, 510, 60, 60 }, animacion.currentRect(), 0.0);
+			animacion.textura->draw(pjuego->getRender(), SDL_Rect{ sprite->x + 50, sprite->y + 10, 60, 60 }, animacion.currentRect(), 0.0);
 			break;
 		case (1) :
 			animacion.textura = pjuego->getTextura(it->first, anim);
-			animacion.textura->draw(pjuego->getRender(), SDL_Rect{ 250, 510, 60, 60 }, animacion.currentRect(), 0.0);
+			animacion.textura->draw(pjuego->getRender(), SDL_Rect{ sprite->x + 160, sprite->y + 10 , 60, 60 }, animacion.currentRect(), 0.0);
 			break;
 		case (2) :
 			animacion.textura = pjuego->getTextura(it->first, anim);
-			animacion.textura->draw(pjuego->getRender(), SDL_Rect{ 310, 510, 60, 60 }, animacion.currentRect(), 0.0);
+			animacion.textura->draw(pjuego->getRender(), SDL_Rect{ sprite->x + 270, sprite->y + 10, 60, 60 }, animacion.currentRect(), 0.0);
 			break;
 		case (3) :
 			animacion.textura = pjuego->getTextura(it->first, anim);
-			animacion.textura->draw(pjuego->getRender(), SDL_Rect{ 380, 510, 60, 60 }, animacion.currentRect(), 0.0);
+			animacion.textura->draw(pjuego->getRender(), SDL_Rect{ sprite->x + 380, sprite->y + 10, 60, 60 }, animacion.currentRect(), 0.0);
 			break;
 		}
 

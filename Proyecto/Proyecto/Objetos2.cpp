@@ -30,6 +30,7 @@ void Objetos2::draw() {
 	MenuJuego::draw();
 
 	if (botones[activo]->getNombre() != "Salir"){
+		Fondo = pJuego->getTextura("HudCraft2", "idle");
 		img = pJuego->getTextura(botones[activo]->getNombre(), "idle");
 		if (botones[activo]->getNombre() == "Carbono")
 			img->draw(pJuego->getRender(), SDL_Rect{ 540, 20, 100, 100 }, nullptr, 0.0);
@@ -49,7 +50,23 @@ void Objetos2::draw() {
 		}
 	}
 	else{
+		Fondo = pJuego->getTextura("HudCraft", "idle");
 	}
+
+}
+
+void Objetos2::update() {
+	MenuJuego::update();
+	if (botones[activo]->getNombre() != "Salir") {
+		img = pJuego->getTextura(botones[activo]->getNombre(), "idle");
+		if (!pJuego->getBaul()->findItem(botones[activo]->getNombre())) {
+			Texto.loadTexto(pJuego->getRender(), "0");
+		}
+		else {
+			Texto.loadTexto(pJuego->getRender(), std::to_string(pJuego->getBaul()->getCantidad(botones[activo]->getNombre())));
+		}
+	}
+
 
 }
 
