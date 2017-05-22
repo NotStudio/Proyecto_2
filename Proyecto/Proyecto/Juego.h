@@ -136,6 +136,7 @@ public:
 		int frameActual;
 		//Animacion() { rect = { 0,0,0,0 }; textura = nullptr; frameActual = 0; numFrames = 0; };
 		Animacion() : rect ({ 0, 0, 0, 0 }), textura(nullptr), frameActual(0), numFrames(0) { };
+		void restart(){ frameActual = 0; };
 		void loadTextura(TexturasSDL*text, int nFrames = 1) {
 			textura = text;
 			numFrames = nFrames;

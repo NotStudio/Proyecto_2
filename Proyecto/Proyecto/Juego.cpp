@@ -605,7 +605,7 @@ bool Juego::teclaPulsada(int numButton) {
 
 //Retornamos el mundo físico
 b2World* Juego::getWorld() {
-	return world;
+	return world;	
 }
 
 //Metodo que controla el cambio de zona (zonaJugable-Base)
