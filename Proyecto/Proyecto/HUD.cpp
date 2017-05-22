@@ -9,7 +9,6 @@ HUD::HUD(Juego* punteroJuego, SDL_Rect spritePar, string objectId, string object
 	animacion.loadTextura(pjuego->getTextura(id, anim));
 	// No se si el nombre este tiene que tener longitud 4, 
 	//porque en juego initMedia() se hace substr de una cadena de 4 caracteres.
-	sprite = new SDL_Rect(spritePar);
 
 
 	int ancho = pjuego->getWindow().ancho;
@@ -44,8 +43,15 @@ HUD::HUD(Juego* punteroJuego, SDL_Rect spritePar, string objectId, string object
 
 HUD::~HUD()
 {
-	delete statDanyo, statVelAtaq, statVelMov;
-	delete velMov, ataque, velAtaq, cables;
+	delete statDanyo;
+	delete statVelAtaq;
+	delete statVelMov;
+	delete velMov;
+	delete ataque;
+	delete velAtaq; 
+	delete cables;
+	delete vida;
+	delete fondoVida;
 	delete marcoStats;
 	pjuego = nullptr;
 }
