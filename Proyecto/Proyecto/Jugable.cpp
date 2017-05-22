@@ -208,7 +208,6 @@ void Jugable::move() {
 }
 
 void Jugable::update() {
-	std::cout << stats.vida << "\n";
 	move();
 	Personaje::update();
 }
