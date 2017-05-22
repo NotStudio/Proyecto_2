@@ -12,7 +12,7 @@ ZonaAccion::ZonaAccion(Juego* punteroJuego): ZonaJuego(punteroJuego)
 	//Cambiamos el estado del jugador
 	static_cast<Jugable*>(pJuego->getPlayer())->cambiaEstado(Jugable::JUGANDO);
 	//Cambiamos su posición al centro del nivel inicial.
-	static_cast<Jugable*>(pJuego->getPlayer())->setPos(50,50);
+ 	static_cast<Jugable*>(pJuego->getPlayer())->setPos(50,50);
 }
 
 
@@ -182,5 +182,12 @@ void ZonaAccion::setNivelActual(){
 			nivelActual = niveles->at(i);
 		else niveles->at(i)->stop();
 	}
-	pJuego->getCamera()->setLimite(nivelActual->getArea());
+	try
+	{
+		pJuego->getCamera()->setLimite(nivelActual->getArea());
+	}
+	catch (const std::exception&)
+	{
+		pJuego->getCamera()->setLimite(niveles->front()->getArea());
+	}
 }

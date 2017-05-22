@@ -89,7 +89,7 @@ void MenuJuego::handleEvent(const SDL_Event & event)
 			{
 				i--;
 			}
-			if (i > -1) {
+			if (i > -1 && activo != i) {
 				pJuego->reproducirEfecto("Menu");
 				activo = i;
 			}

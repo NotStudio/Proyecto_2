@@ -10,7 +10,7 @@ ZonaBosque::ZonaBosque(Juego* punteroJuego) :ZonaAccion(punteroJuego)
 	for (size_t i = 0; i < niveles->size(); i++)
 	{
 		niveles->at(i)->InitRoom();
-		niveles->at(i)->abrirPuertas();
+		niveles->at(i)->abrirPuertas();	
 	}
 	setNivelActual();
 	
