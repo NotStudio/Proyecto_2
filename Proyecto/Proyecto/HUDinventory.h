@@ -5,7 +5,7 @@ class HUDinventory :
 	public HUDbase
 {
 public:
-	HUDinventory(Juego* punteroJuego, SDL_Rect spritePar, string objectId, string objectAnim);
+	HUDinventory(Juego* punteroJuego, SDL_Rect spritePar, string objectId, string objectAnim, Inventory *);
 	virtual ~HUDinventory();
 
 	void draw();
@@ -24,6 +24,7 @@ public:
 private:
 
 	Juego* pjuego;
+	Inventory * inventario_;
 
 	Juego::Animacion animacion;
 

@@ -67,6 +67,8 @@ Juego::Juego(b2World* mundo) : error(false), gameOver(false), exit(false), score
 	
 	//Cargar baul de un metodo leyendo de texto o de donde se guarde
 								/*AQUI CARGA BAUL*/
+	inventario = new Inventory(3, getTipografia("Acme____", 30), getRender());
+	baul = new Inventory(100, getTipografia("Acme____", 30), getRender());
 
 	Mix_Volume(-1,volumen);
 	Mix_VolumeMusic(volumen);
@@ -83,7 +85,8 @@ Juego::Juego()
 }
 Juego::~Juego()
 {
-
+	delete inventario;
+	delete baul;
 	//Liberamos los objetos.
 	freeMedia();
 	
@@ -526,6 +529,7 @@ void Juego::run() {
 	else if (gameOver) {
 		cout << "GAME OVER \n";
 	}
+	
 }
 
 //MÉTODOS DE CONTROL DE MÁQUINA DE ESTADOS.

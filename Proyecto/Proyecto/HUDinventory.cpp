@@ -2,9 +2,9 @@
 
 
 
-HUDinventory::HUDinventory(Juego* punteroJuego, SDL_Rect spritePar, string objectId, string objectAnim) : pjuego(punteroJuego)
+HUDinventory::HUDinventory(Juego* punteroJuego, SDL_Rect spritePar, string objectId, string objectAnim, Inventory * inventario) : pjuego(punteroJuego), inventario_(inventario)
 {
-
+	
 	id = objectId;
 	anim = objectAnim;
 	animacion.loadTextura(pjuego->getTextura(id, anim));
@@ -29,7 +29,7 @@ void HUDinventory::draw(){
 	
 	
 	 
-	std::map<std::string, int> mymap = pjuego->getInventory()->getMap();
+	std::map<std::string, int> mymap = inventario_->getMap();
 	
 	int i = 0;
 	//Recorrer el map del inventario e ir dibujando los objetos.

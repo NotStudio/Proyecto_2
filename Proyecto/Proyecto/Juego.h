@@ -408,29 +408,29 @@ public:
 
 	inline Inventory* getInventory(){
 
-		return &inventario;
+		return inventario;
 	}
 
 	inline Inventory* getBaul(){
 	
-		return &baul;
+		return baul;
 	}
 
 	inline void addItemToInventary(string id, int cantidad){
 	
-		inventario.insertItem(id, cantidad);
+		inventario->insertItem(id, cantidad);
 	}
 
 	inline void vaciaInventario(){
-		inventario.vaciar();
+		inventario->vaciar();
 	}
 
 	inline void inventarioToBaul(){
-		std::map<std::string, int> mymap = inventario.getMap();
+		std::map<std::string, int> mymap = inventario->getMap();
 		for (std::map<std::string, int>::iterator it = mymap.begin(); it != mymap.end(); ++it)
 		{
-		baul.insertItem(it->first, it->second);
-		inventario.removeItem(it->first, it->second);
+		baul->insertItem(it->first, it->second);
+		inventario->removeItem(it->first, it->second);
 		}
 	}
 
