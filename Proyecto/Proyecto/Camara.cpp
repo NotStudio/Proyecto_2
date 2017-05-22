@@ -19,6 +19,7 @@ Camara::Camara(SDL_Rect * target, int w, int h)
 
 Camara::~Camara()
 {
+	SDL_RemoveTimer(TemporazidorEfecto);
 }
 
 void Camara::setTarget(SDL_Rect *target)
@@ -31,8 +32,6 @@ void Camara::update()
 	Centro = { Apuntando->x + Apuntando->w / 2,Apuntando->y + Apuntando->h/ 2 };
 	plano.x = Centro.x - plano.w / 2;
 	plano.y = Centro.y - plano.h / 2;
-#ifndef DEBUG
- // !DEBUG
 
 	if (plano.x <= minX) {
 		plano.x = minX;
@@ -51,7 +50,17 @@ void Camara::update()
 		plano.y = maxY-plano.h;
 		Centro.y = plano.h / 2;
 	}
-#endif
+	switch (CameraState_)
+	{
+	case Camara::NORMAL:
+		break;
+	case Camara::SACUDIDA:
+		plano.x += rand() % 4 - 2;
+		plano.y += rand() % 4 - 2;
+		break;
+	default:
+		break;
+	}
 	ultimoPlano = plano;
 }
 
@@ -73,5 +82,13 @@ SDL_Rect Camara::getRecRelativa(SDL_Rect rec) {
 	rec.x -= plano.x;
 	rec.y -= plano.y;
 	return rec;
+}
+
+void Camara::sacudirCamara(Uint32 ms)
+{
+	CameraState_ = SACUDIDA;
+	SDL_RemoveTimer(TemporazidorEfecto);
+	TemporazidorEfecto = SDL_AddTimer(ms, restart, &CameraState_);
+
 }
 

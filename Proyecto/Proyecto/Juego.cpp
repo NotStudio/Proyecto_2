@@ -435,13 +435,17 @@ bool Juego::handle_event() {
 				}
 			}
 			else if (evento.key.keysym.sym == SDLK_i){
-			  
 				changeInventory();
 			}
 			else if (evento.key.keysym.sym == SDLK_t){//se puede modificar
 				if (static_cast<Jugable*>(personaje)->getEstado())
 					inventarioToBaul();
 			}
+			else if (evento.key.keysym.sym == SDLK_3) {
+				Camera->sacudirCamara(1000);
+			}
+
+
 			break;
 		case SDL_TEXTINPUT:
 			break;
