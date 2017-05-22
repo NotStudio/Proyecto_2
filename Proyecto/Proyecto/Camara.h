@@ -2,6 +2,7 @@
 #define CAMARA_H_
 #include<SDL.h>
 #include<SDL_image.h>
+#include"LTimer.h"
 class Camara
 {
 public:
@@ -22,8 +23,23 @@ public:
 	void setLimite(SDL_Rect const &  area);
 	SDL_Point getPosRelativa(SDL_Rect rec);
 	SDL_Rect getRecRelativa(SDL_Rect rec);
+	//para sacudir la camara
+	//primer parametro, el numero de ms
+	//segundo parametro, la intensidad
+	void sacudirCamara(Uint32 ms, Uint16 intensidad = 4);
+	// parar de mover la camara
+	void restaurarCamara() {
+		CameraState_ = NORMAL;
+	};
+	enum CAMERASTATE
+	{
+		NORMAL, SACUDIDA
+	};
 private:
+	CAMERASTATE CameraState_ = NORMAL;
 	
+	SDL_TimerID TemporazidorEfecto;
+	Uint16 fuerzaTerremoto = 0;
 	int minX, minY, maxX, maxY;
 	SDL_Point Centro;
 	SDL_Rect * Apuntando;
