@@ -18,7 +18,7 @@ Cambiante::Cambiante(Juego* punteroJuego, SDL_Rect spritePar) :Jugable(punteroJu
 	//Inicializacion de los stats y stats máximos;
 	stats.velMov = 130;/* Decidir más tarde las características*/
 	stats.vida = 40;
-	stats.daño = 8;
+	stats.daño = 7;
 	stats.velAtq = 3;
 
 	/*bdt.type = b2_dynamicBody;
@@ -246,7 +246,7 @@ void Cambiante::forma(bool mele){// Falta cambiar sprites...
 		stats.vida -= 3;
 		if (stats.vida < 1)
 			stats.vida = 1;
-		stats.daño = 8;
+		stats.daño = 7;
 		stats.velAtq = 3;
 		stats.vidaMax -= 3;
 
@@ -268,7 +268,7 @@ void Cambiante::forma(bool mele){// Falta cambiar sprites...
 
 	if (mele){//aumenta
 		
-		stats.velMov = 100;/* Decidir más tarde las características*/
+		stats.velMov = 90;/* Decidir más tarde las características*/
 		stats.vida += 30;
 		stats.daño = 15;
 		stats.velAtq = 3;

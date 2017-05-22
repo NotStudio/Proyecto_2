@@ -15,12 +15,12 @@ public:
 	struct atributos {
 
 		//Atributos		//Límite por arriba						//Límite por abajo
-		int vida;       static const int vidaLim = 10;         static const int vidaMin = 0;
-		int vidaMax;	static const int vidaMaxLim = 10;	   static const int vidaMaxMin = 0;
-		int daño;		static const int dañoLim = 20;	       static const int dañoMin = 1;
-		float velMov;		static const int velMovLim = 400;	   static const int velMovMin = 200;
-		int velAtq;		static const int velAtqLim = 10;	   static const int velAtqMin = 1;
-
+		int vida;       static const int vidaLim = 100;         static const int vidaMin = 0;
+		int vidaMax;	static const int vidaMaxLim = 100;	   static const int vidaMaxMin = 0;
+		int daño;		static const int dañoLim = 30;	       static const int dañoMin = 1;
+		float velMov;		static const int velMovLim = 210;  static const int velMovMin = 80;
+		int velAtq;		static const int velAtqLim = 6;	   static const int velAtqMin = 1.5;
+		
 		atributos() { vida = vidaMax = daño = velMov = velAtq = 0; };
 
 		//Sobrecarga del operador que controla que no se sobrepase por arriba ni por abajo.

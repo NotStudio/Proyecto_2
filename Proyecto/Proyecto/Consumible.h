@@ -65,7 +65,7 @@ class Cable : public Consumible
 {
 public:
 	Cable(Juego* punteroJuego, SDL_Rect spritePar, string objectId) :Consumible(punteroJuego, spritePar, objectId) {
-		statsUp.velMov = 10;
+		statsUp.velMov = 20;
 	}
 	virtual void effect() {
 		Consumible::effect();
@@ -76,7 +76,7 @@ class Transistor : public Consumible
 {
 public:
 	Transistor(Juego* punteroJuego, SDL_Rect spritePar, string objectId) :Consumible(punteroJuego, spritePar, objectId) {
-		statsUp.velAtq = 1;
+		statsUp.velAtq = -0.3;
 	}
 
 	virtual void effect() {

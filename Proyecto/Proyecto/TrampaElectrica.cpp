@@ -17,6 +17,8 @@ TrampaElectrica::TrampaElectrica(Juego* punteroJuego, int x, int y) : Enemigo(pu
 	stats.velAtq = 2;
 	stats.daño = 5;
 	cadencia = stats.velAtq * 1000;
+	sprite->h = 32;
+	sprite->w = 32;
 
 }
 

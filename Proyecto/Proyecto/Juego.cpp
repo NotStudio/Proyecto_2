@@ -652,7 +652,7 @@ void Juego::setFinZona(){
 
 void Juego::reiniciar(){
 	Jugable::atributos vidaReset;
-	vidaReset.vida = 4;
+	vidaReset.vida = 40;
 	static_cast<Jugable*>(getPlayer())->applyEffect(vidaReset);
 }
 

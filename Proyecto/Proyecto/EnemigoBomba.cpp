@@ -18,7 +18,7 @@ EnemigoBomba::EnemigoBomba(Juego* punteroJuego, int x, int y) : Enemigo(punteroJ
 	currentAnim = animaciones.at("walk");
 	stats.daño = 20;
 	stats.velAtq = 0;
-	stats.velMov = 1;
+	stats.velMov = 0.7;
 	stats.vida = 40;
 	visible = true;
 	
@@ -88,7 +88,7 @@ void EnemigoBomba::crecer(){
 		static_cast<b2PolygonShape*>(shape)->SetAsBox((sprite->w / PPM) / 2, (sprite->h / PPM) / 2, { (float)(sprite->w / PPM) / 2, (float)(sprite->h / PPM) / 2 }, 0);
 		fDef.shape = shape; fDef.density = 5.0f; fDef.friction = 0;
 		body->CreateFixture(&fDef);
-		stats.velMov = 2.3;
+		stats.velMov = 1.2;
 	}
 	if ((i < 175 || j < 175) && sprite->h <= 90){
 		sprite->h++;
@@ -99,7 +99,7 @@ void EnemigoBomba::crecer(){
 		static_cast<b2PolygonShape*>(shape)->SetAsBox((sprite->w / PPM) / 2, (sprite->h / PPM) / 2, { (float)(sprite->w / PPM) / 2, (float)(sprite->h / PPM) / 2 }, 0);
 		fDef.shape = shape; fDef.density = 5.0f; fDef.friction = 0;
 		body->CreateFixture(&fDef);
-		stats.velMov = 3.5;
+		stats.velMov = 2.1;
 	}
 	if ((i < 100 || j < 100) && sprite->h <= 120){
 		sprite->h++;
@@ -111,7 +111,7 @@ void EnemigoBomba::crecer(){
 		static_cast<b2PolygonShape*>(shape)->SetAsBox((sprite->w / PPM) / 2, (sprite->h / PPM) / 2, { (float)(sprite->w / PPM) / 2, (float)(sprite->h / PPM) / 2 }, 0);
 		fDef.shape = shape; fDef.density = 5.0f; fDef.friction = 0;
 		body->CreateFixture(&fDef);
-		stats.velMov = 5;
+		stats.velMov = 3.5;
 	}
 
 	if ((i > 150 || j > 150) && sprite->h > 50){
