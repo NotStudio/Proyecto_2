@@ -66,6 +66,7 @@ void Tostadora::disparo(){
 			dynamic_cast<ZonaAccion*>(pJuego->getZona())->getNivel()->nuevaBala(new BalaAmiga(pJuego, posicion, 80.0f, 0, -1, stats.daño));
 		}
 		if (!disparar) {
+			cadencia = stats.velAtq * 100 + 50;
 			Disparar = SDL_AddTimer(cadencia, timerDisparo, this); pJuego->reproducirEfecto("TShot");
 			currentAnim = animaciones.at("atqu");
 		}
@@ -79,10 +80,10 @@ void Tostadora::disparo(){
 	}
 }
 void Tostadora::update(){
-	move();
 	if (state == JUGANDO)
 		disparo();
-	Entidad::update();
+	
+	Jugable::update();
 	if (!disparar) {
 		if (estadoEntidad.animacionActual != Ataque) {
 			estadoEntidad.animacionActual = Ataque;

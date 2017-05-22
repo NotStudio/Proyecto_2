@@ -130,7 +130,7 @@ public:
 class  SelectorCrafteo : public Inanimado
 {
 public:
-	SelectorCrafteo(Juego * Pj, int x, int y, int w, int h) :Inanimado(Pj, SDL_Rect{ x, y, TILE_WIDTH * 4, TILE_HEIGHT * 4 }, "SelectorCrafteo") {
+	SelectorCrafteo(Juego * Pj, int x, int y, int w, int h) :Inanimado(Pj, SDL_Rect{ x, y, TILE_WIDTH * 4, TILE_HEIGHT * 3 }, "SelectorCrafteo") {
 		fDef.filter.categoryBits = Juego::ESCENARIO;
 		fDef.filter.maskBits = Juego::JUGADOR;
 		body->CreateFixture(&fDef);

@@ -27,6 +27,6 @@
 </data>
  </layer>
  <objectgroup name="Inanimados">
-  <object id="1" name="findezona" type="inanimado" x="944" y="688" width="160" height="160"/>
+  <object id="1" name="findezona" type="inanimado" x="944" y="688" width="256" height="256"/>
  </objectgroup>
 </map>
