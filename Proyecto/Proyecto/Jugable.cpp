@@ -57,9 +57,8 @@ void Jugable::onColisionEnter(Objeto* obj, b2Body* b1, b2Body* b2){
 						stats.vida -= static_cast<Enemigo*>(obj)->getDanyoContacto();
 					}
 
-					if (stats.vida <= 0)stats.vida = 0;
-					
-	
+					if (stats.vida < 0)stats.vida = 0;
+			
 					timerInmune = SDL_AddTimer(350, desactivarInmunidad, this);
 				}
 

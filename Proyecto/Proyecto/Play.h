@@ -3,6 +3,7 @@
 
 #include "EstadoPG.h"
 #include "Zona.h"
+#include "HUD.h"
 //#include "Inventory.h"
 class Play :
 	public EstadoPG
@@ -19,6 +20,9 @@ public:
 
 	void setCamera(SDL_Rect *target){
 		Camera->setTarget(target);
+	}
+	inline void updateHUD(){
+		static_cast<HUD*>(vidasHUD)->updateHUD();
 	}
 
 	enum state {JUGANDO, CARGANDO};

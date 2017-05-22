@@ -20,6 +20,7 @@ Cambiante::Cambiante(Juego* punteroJuego, SDL_Rect spritePar) :Jugable(punteroJu
 	stats.vida = 40;
 	stats.daño = 7;
 	stats.velAtq = 3;
+	stats.vidaMax = stats.vida;
 
 	/*bdt.type = b2_dynamicBody;
 	bdt.position.Set(pos.x, pos.y);

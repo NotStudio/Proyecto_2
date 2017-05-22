@@ -38,7 +38,11 @@
     <ClCompile Include="GameOver.cpp" />
     <ClCompile Include="Helice.cpp" />
     <ClCompile Include="HUD.cpp" />
+    <ClCompile Include="HUDImage.cpp" />
     <ClCompile Include="HUDinventory.cpp" />
+    <ClCompile Include="HUDObj.cpp" />
+    <ClCompile Include="HUDObjeto.cpp" />
+    <ClCompile Include="HUDText.cpp" />
     <ClCompile Include="Inventory.cpp" />
     <ClCompile Include="Item.cpp" />
     <ClCompile Include="Jefe1.cpp" />
@@ -96,6 +100,10 @@
     <ClInclude Include="Entidad.h" />
     <ClInclude Include="EstadoJuego.h" />
     <ClInclude Include="EstadoPG.h" />
+    <ClInclude Include="HUDImage.h" />
+    <ClInclude Include="HUDObj.h" />
+    <ClInclude Include="HUDObjeto.h" />
+    <ClInclude Include="HUDText.h" />
     <ClInclude Include="Jefe2Bouncer.h" />
     <ClInclude Include="MenuFinDeZona.h" />
     <ClInclude Include="GameOver.h" />
