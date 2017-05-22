@@ -5,7 +5,7 @@
 #include "Bala.h"
 
 
-Jugable::Jugable(Juego* punteroJuego, SDL_Rect spritePar, string objectId):Personaje(punteroJuego, spritePar, objectId)
+Jugable::Jugable(Juego* punteroJuego, SDL_Rect spritePar, string objectId) :Personaje(punteroJuego, spritePar, objectId), alphaFactor(255), alphaMultiplicador(-1)
 {
 	//Capa de colision.
 	fDef.filter.categoryBits = Juego::JUGADOR;
@@ -19,6 +19,7 @@ Jugable::Jugable(Juego* punteroJuego, SDL_Rect spritePar, string objectId):Perso
 Jugable::~Jugable()
 {
 	SDL_RemoveTimer(timerInmune);
+	SDL_RemoveTimer(timerRalentizado);
 	
 }
 Uint32 desactivarInmunidad(Uint32 intervalo, void* param) {
@@ -46,10 +47,12 @@ void Jugable::onColisionEnter(Objeto* obj, b2Body* b1, b2Body* b2){
 				}
 
 				else if (!inmune){
-					inmune = true;
+					int vidaAux = stats.vida;
+					
 					//Si el objeto es una bala, nos hará el danyo estipulado
 					if (dynamic_cast<BalaEnemiga*>(obj) != nullptr){
 						stats.vida -= static_cast<BalaEnemiga*>(obj)->getDanyo();
+						
 					}
 					//Si no, deducimos que estamos colisionando con el cuerpo de un enemigo, 
 					//por lo que restamos una sola vida.
@@ -58,8 +61,11 @@ void Jugable::onColisionEnter(Objeto* obj, b2Body* b1, b2Body* b2){
 					}
 
 					if (stats.vida < 0)stats.vida = 0;
-			
-					timerInmune = SDL_AddTimer(350, desactivarInmunidad, this);
+
+					if (vidaAux > stats.vida){
+						timerInmune = SDL_AddTimer(2500, desactivarInmunidad, this);
+						inmune = true;
+					}
 				}
 
 
@@ -207,10 +213,34 @@ void Jugable::move() {
 }
 
 void Jugable::update() {
-	move();
 	Personaje::update();
+	move();
+	if (inmune)
+		feedbackInvulnerable();
 }
 
 void Jugable::stop() {
 	body->SetLinearVelocity(b2Vec2{ 0, 0 });
+}
+
+void Jugable::feedbackInvulnerable(){
+
+	if (alphaFactor <= 0)
+		alphaMultiplicador = 1;
+	else if (alphaFactor >= 255){
+		alphaMultiplicador = -1;
+	}
+
+	alphaFactor += (20 * alphaMultiplicador);
+
+	SDL_SetTextureAlphaMod(currentAnim->textura->getTexture(), alphaFactor);
+
+}
+void Jugable::resetAlpha(){
+
+	unordered_map<string,Juego::Animacion*>::iterator it = animaciones.begin();
+	while (it != animaciones.end()){
+		SDL_SetTextureAlphaMod(animaciones.at(it->first)->textura->getTexture(), 255);
+		it++;
+	}
 }

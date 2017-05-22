@@ -6,7 +6,7 @@ ZonaBosque::ZonaBosque(Juego* punteroJuego) :ZonaAccion(punteroJuego)
 	pJuego->cambiarMusica("are");
 	id = "zon1";
 
-	setHabitaciones(1,1);
+	setHabitaciones(10,5);
 	initRooms();
 	setNivelActual();
 	

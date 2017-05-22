@@ -8,6 +8,7 @@ class TrampaElectrica :
 	bool activated;
 	bool needChange;
 	void alternaActivo();
+	uint32 timerInmune;
 public:
 	TrampaElectrica(Juego* punteroJuego, int x, int y);
 	virtual ~TrampaElectrica();
