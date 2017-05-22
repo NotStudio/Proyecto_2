@@ -20,6 +20,6 @@
 </data>
  </layer>
  <objectgroup name="Capa de Objetos 1">
-  <object id="1" name="FinDeZona" type="inanimado" x="640" y="384" width="256" height="256"/>
+  <object id="1" name="FinDeZona" type="inanimado" x="761.212" y="638.545" width="256" height="256"/>
  </objectgroup>
 </map>
