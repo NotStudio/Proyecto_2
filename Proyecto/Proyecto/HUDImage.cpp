@@ -20,7 +20,7 @@ HUDImage::HUDImage(Juego * pJuego, string nText){
 }
 HUDImage::~HUDImage()
 {
-	delete text;
+	text = nullptr;
 }
 void HUDImage::draw(int x, int y, int x1, int y1){
 	pos = SDL_Rect{ x, y, x1-x, y1-y };

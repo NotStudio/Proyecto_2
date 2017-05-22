@@ -16,7 +16,8 @@ HUD::HUD(Juego* punteroJuego, SDL_Rect spritePar, string objectId, string object
 	int alto = pjuego->getWindow().alto;
 
 
-	maxVidas = static_cast<Jugable*>(pjuego->getActiveCharacter())->getStats()->vidaMax;
+	
+	
 
 	medAncho = (ancho + 0.0) / 64;
 	medAlto = (alto + 0.0) / 32;
@@ -36,7 +37,7 @@ HUD::HUD(Juego* punteroJuego, SDL_Rect spritePar, string objectId, string object
 
 
 
-	fondoVida = new HUDImage(pjuego, 3, 3, (4*medAncho*maxVidas) + medAncho*2.5+5, 3.5 * medAlto, "fondovida");
+	fondoVida = new HUDImage(pjuego, 3, 3, (33*medAncho)+6 + medAncho*2.5+5, 3.5 * medAlto, "fondovida");
 	cables = new HUDImage(pjuego, 0, 0, ancho, alto, "cables");
 	updateHUD();
 }
@@ -61,18 +62,28 @@ void HUD::draw(){
 	velAtaq->draw();
 	velMov->draw(); 
 	ataque->draw();
-
+	int x0 = fondoVida->getPos().x+5;
+	int y0 = fondoVida->getPos().y;
+	int separacion = 1;
+	int anchoseccion = fondoVida->getPos().w / maxVidas;
+	int anchobarra = anchoseccion - separacion;
 
 	fondoVida->draw();
+
 	for (size_t i = 0; i < vidasAct; i++){
-		vida->draw(5 + (medAncho*i) * 4,3+ medAlto*0.25 , (medAncho*(i + 1)*4), (medAlto * 3.25));
+		if (i>vidasAct - 1)separacion = 0;
+		vida->draw(x0+(i * (anchobarra)), 3 + medAlto*0.25, x0 + ((i+1)*anchobarra) - separacion, (medAlto * 3.25));
+	
 	}
 
 	//vidas.draw();
 }
 void HUD::updateHUD(){
+	maxVidas = static_cast<Jugable*>(pjuego->getActiveCharacter())->getStats()->vidaMax;
 	Jugable * aux = static_cast<Jugable*>(pjuego->getActiveCharacter());
 	vidasAct = static_cast<Jugable*>(pjuego->getActiveCharacter())->getStats()->vida;
+
+	
 
 	statVelMov->setTexto(to_string(aux->getStats()->velMov).substr(0, 3));
 	statDanyo->setTexto(to_string(aux->getStats()->daño).substr(0, 4));
