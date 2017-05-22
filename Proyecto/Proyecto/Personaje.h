@@ -63,6 +63,7 @@ public:
 
 
 	}
+	inline int getVida(){ return stats.vida; };
 
 protected:
 	atributos stats;

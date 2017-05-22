@@ -1,4 +1,4 @@
-ï»¿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
     <Filter Include="Source Files">
@@ -191,7 +191,7 @@
     <ClCompile Include="Jefe1.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="PjDaÃ±oArea.cpp">
+    <ClCompile Include="PjDañoArea.cpp">
       <Filter>Source Files\Personajes\Jugables</Filter>
     </ClCompile>
     <ClCompile Include="Cambio.cpp">
@@ -247,6 +247,18 @@
     </ClCompile>
     <ClCompile Include="Opciones.cpp">
       <Filter>Source Files\Estados\Menus</Filter>
+    <ClCompile Include="HUDObjeto.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="HUDObj.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="HUDImage.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="HUDText.cpp">
+      <Filter>Source Files</Filter>
+
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -406,7 +418,7 @@
     <ClInclude Include="BalaEnemiga.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="PjDaÃ±oArea.h">
+    <ClInclude Include="PjDañoArea.h">
       <Filter>Header Files\Personajes\Jugables</Filter>
     </ClInclude>
     <ClInclude Include="Cambio.h">
@@ -468,6 +480,18 @@
     </ClInclude>
     <ClInclude Include="Opciones.h">
       <Filter>Header Files\Estados</Filter>
+    <ClInclude Include="HUDObjeto.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="HUDObj.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="HUDImage.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="HUDText.h">
+      <Filter>Header Files</Filter>
+
     </ClInclude>
   </ItemGroup>
 </Project>
