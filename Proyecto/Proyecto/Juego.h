@@ -116,7 +116,8 @@ public:
 
 	 inline Objeto* getActiveCharacter() {
 		return personaje;
-	}
+	 }
+
 
 	struct Ventana { //Struct que contiene el tamaño y el color de la ventana.
 		int ancho;

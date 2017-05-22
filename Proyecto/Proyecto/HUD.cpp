@@ -27,26 +27,25 @@ HUD::HUD(Juego* punteroJuego, SDL_Rect spritePar, string objectId, string object
 	
 
 
-	marcoStats = new HUDImage(pjuego, 0, medAlto * 22, 13 * medAncho, alto, "marco");
+	marcoStats = new HUDImage(pjuego, 0, medAlto * 22, 11 * medAncho, alto, "marco");
 
-	velMov = new  HUDImage(pjuego, 0.5 * medAncho, medAlto*23, medAncho*5, medAlto * 25, "velmov");
-	ataque = new HUDImage(pjuego, 0.5*medAncho, medAlto *26, 5* medAncho, medAlto * 28, "ataque");
-	velAtaq = new HUDImage(pjuego, 0.5*medAncho, medAlto *29, 5* medAncho, medAlto * 31, "velataq");
+	velMov = new  HUDImage(pjuego, 0.5 * medAncho, medAlto*23, medAncho*4.5, medAlto * 25, "velmov");
+	ataque = new HUDImage(pjuego, 0.5*medAncho, medAlto *26, 4.5* medAncho, medAlto * 28, "ataque");
+	velAtaq = new HUDImage(pjuego, 0.5*medAncho, medAlto *29, 4.5* medAncho, medAlto * 31, "velataq");
 	vida = new HUDImage(pjuego, "vida");
 
 
 
-	fondoVida = new HUDImage(pjuego, 3, 3, (4*medAncho*maxVidas) + medAncho*2, 3 * medAlto, "fondovida");
+	fondoVida = new HUDImage(pjuego, 3, 3, (4*medAncho*maxVidas) + medAncho*2.5+5, 3.5 * medAlto, "fondovida");
 	cables = new HUDImage(pjuego, 0, 0, ancho, alto, "cables");
 	updateHUD();
 }
 
 HUD::~HUD()
 {
-	delete marcoStats;
-
-
 	delete statDanyo, statVelAtaq, statVelMov;
+	delete velMov, ataque, velAtaq, cables;
+	delete marcoStats;
 	pjuego = nullptr;
 }
 
@@ -66,7 +65,7 @@ void HUD::draw(){
 
 	fondoVida->draw();
 	for (size_t i = 0; i < vidasAct; i++){
-		vida->draw(5 + (i*(fondoVida->getPos().w-30 / maxVidas))+5, 7, (i + 1)*(fondoVida->getPos().w-30 / maxVidas)-5, 3 * medAlto - 5);
+		vida->draw(5 + (medAncho*i) * 4,3+ medAlto*0.25 , (medAncho*(i + 1)*4), (medAlto * 3.25));
 	}
 
 	//vidas.draw();

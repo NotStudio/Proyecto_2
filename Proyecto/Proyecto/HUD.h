@@ -38,7 +38,6 @@ private:
 	HUDImage * velMov;
 	HUDImage * ataque;
 	HUDImage * velAtaq;
-	HUDImage * personaje;
 
 	HUDText *statVelMov;
 	HUDText *statDanyo;
