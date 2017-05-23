@@ -160,7 +160,7 @@ void ZonaAccion::setHabitaciones(int NumeroHabitaciones, int cadaCuantasHabitaci
 			BuildRoom(Normal);
 		}
 	}
-	BuildIniRoom();
+	
 	BuildRoom(Boss);
 	BuildFinRoom();
 }
