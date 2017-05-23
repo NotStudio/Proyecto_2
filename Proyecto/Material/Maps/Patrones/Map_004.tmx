@@ -33,8 +33,8 @@
  </layer>
  <objectgroup name="Enemigos">
   <object id="1" name="perseguidor" type="enemigo" x="508" y="388" width="168" height="140"/>
-  <object id="2" name="helice" type="enemigo" x="1428" y="2688" width="212" height="148"/>
-  <object id="3" name="perseguidor" type="enemigo" x="1268" y="384" width="188" height="152"/>
+  <object id="2" name="helice" type="enemigo" x="1812" y="2004" width="212" height="148"/>
+  <object id="3" name="perseguidor" type="enemigo" x="1456" y="1184" width="188" height="152"/>
   <object id="4" name="sierra" type="enemigo" x="308" y="1700" width="216" height="176"/>
   <object id="5" name="bomba" type="enemigo" x="2492" y="936" width="220" height="172"/>
  </objectgroup>

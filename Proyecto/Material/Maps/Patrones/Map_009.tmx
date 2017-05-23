@@ -24,11 +24,11 @@
  <objectgroup name="Enemigo">
   <object id="38" name="Sierra" type="enemigo" x="1672" y="456" width="192" height="104"/>
   <object id="39" name="Sierra" type="enemigo" x="168" y="1496" width="192" height="120"/>
-  <object id="40" name="Helice" type="enemigo" x="896" y="712" width="200" height="112"/>
-  <object id="41" name="Helice" type="enemigo" x="872" y="1024" width="200" height="112"/>
-  <object id="42" name="TrampaElectrica" type="enemigo" x="1176" y="880" width="128" height="128"/>
-  <object id="43" name="TrampaElectrica" type="enemigo" x="920" y="1216" width="128" height="128"/>
-  <object id="44" name="TrampaElectrica" type="enemigo" x="632" y="880" width="128" height="128"/>
-  <object id="45" name="TrampaElectrica" type="enemigo" x="928" y="512" width="128" height="128"/>
+  <object id="40" name="Helice" type="enemigo" x="892.97" y="721.091" width="130.303" height="112"/>
+  <object id="41" name="Helice" type="enemigo" x="890.182" y="1024" width="139.394" height="112"/>
+  <object id="42" name="TrampaElectrica" type="enemigo" x="1151.76" y="892.121" width="128" height="128"/>
+  <object id="43" name="TrampaElectrica" type="enemigo" x="898.788" y="1276.61" width="128" height="128"/>
+  <object id="44" name="TrampaElectrica" type="enemigo" x="641.091" y="892.121" width="128" height="128"/>
+  <object id="45" name="TrampaElectrica" type="enemigo" x="897.697" y="512" width="128" height="128"/>
  </objectgroup>
 </map>

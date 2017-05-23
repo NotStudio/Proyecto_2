@@ -37,6 +37,6 @@
   <object id="3" name="bomba" type="enemigo" x="1512" y="1352" width="120" height="88"/>
   <object id="4" name="perseguidor" type="enemigo" x="2536" y="324" width="128" height="96"/>
   <object id="5" name="perseguidor" type="enemigo" x="1940" y="952" width="144" height="96"/>
-  <object id="9" name="helice" type="enemigo" x="1464" y="2152" width="128" height="104"/>
+  <object id="9" name="helice" type="enemigo" x="1660" y="1660" width="128" height="104"/>
  </objectgroup>
 </map>
