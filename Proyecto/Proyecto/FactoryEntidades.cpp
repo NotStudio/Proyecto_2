@@ -52,14 +52,16 @@ Objeto * creaInanimado(Juego * pj, string id, int x, int y, int w, int h,float e
 		throw exception("NO EXISTE DICHO OBJETO \n");
 	}
 }
-Objeto* creaEnemigo(Juego * pj, string id, int x, int y, int aditional){
+Objeto* creaEnemigo(Juego * pj, string id, int x, int y, TMXReader::Properties * properties ){
 	if (id == "perseguidor" || id == "Perseguidor")
 	{
 		return new Perseguidor(pj, x,y);
 	}
 	else if (id == "Sierra"||id=="sierra")
 	{
-		return new Sierra(pj, x,y, 0);
+		int dir;
+		properties->getValue("Dir", dir);
+		return new Sierra(pj, x,y, dir);
 	}
 	else if (id == "helice" || id == "Helice")
 	{
@@ -98,7 +100,7 @@ Objeto* creaEntidad(Juego * pj, TMXReader::ObjectInfo * obj, int desvX, int desv
 			return creaInanimado(pj, obj->getName(), obj->getX() / 2 + desvX, obj->getY() / 2 + desvY, obj->getW() / 2, obj->getH() / 2);
 		}
 		else if (obj->getType() == "enemigo") {
-			return creaEnemigo(pj, obj->getName(), obj->getX() / 2 + desvX, obj->getY() / 2 + desvY);
+			return creaEnemigo(pj, obj->getName(), obj->getX() / 2 + desvX, obj->getY() / 2 + desvY,obj);
 		}
 		else {
 			printf("this object has no type \n");

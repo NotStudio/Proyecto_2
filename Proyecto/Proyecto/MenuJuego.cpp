@@ -113,7 +113,7 @@ void MenuJuego::updateBotones()
 	for (size_t i = 0; i < botones.size(); i++)
 	{
 		if (i == activo) {
-			botones[i]->aumentar();
+			botones[i]->activo();
 		}
 		else
 		{

@@ -3,71 +3,87 @@
 
 Boton::Boton(Juego* juego, string ID, int x, int y, CallBack_t * cbCons, string Nombre,string Descripcion )
 {
+	realRect.x = x;
+	realRect.y = y;
+	nombre = Nombre;
+	id = ID;
 	descripcion_ = Descripcion;
 	angulo = 0;
 	pjuego = juego;
-	_x = x;
-	_y = y;
-
-
-	nombre = Nombre;
-
-	rectb.x = x;
-	rectb.y = y;
-
-	rectb.h = 75;
-	rectb.w = 200;
-	
-	realRect = rectb;
-
-	activo.x = x - 25;
-	activo.y = y - 12;
-	activo.w = 250;
-	activo.h = 100;
-
-	
-	id = ID;
-
+	Anim = pjuego->getAnimaciones(ID).begin()->second;
 	cb = cbCons;
+	Texto = TextoSDL();
 	Texto.LoadFuente(pjuego->getTipografia("Acme____",16));
 	Texto.loadTexto(pjuego->getRender(), nombre);
 
 }
 
+Boton::Boton(Juego * juego, string ID, SDL_Rect rect, CallBack_t * cbCons, string texto, string descripcion):Boton(juego,ID,rect.x,rect.y,cbCons,texto,descripcion)
+{
+	realRect.w = rect.w;
+	realRect.h = rect.h;	
+}
+
 
 Boton::~Boton()
 {
+	delete Anim;
 }
 
 void Boton::draw(){
-	pjuego->getTextura(id, "idle")->draw(pjuego->getRender(), realRect, nullptr,angulo);
+	Anim->draw(pjuego->getRender(), realRect);
 	Texto.draw(pjuego->getRender(), realRect.x+(realRect.w- Texto.getAncho())/2, realRect.y+ (realRect.h - Texto.getAlto()) / 2);
 }
 
-void Boton::aumentar(){
+void Boton::activo(){
 	BState_ = BUTTONSTATE_::SELECTED;
-	realRect = activo;
 }
 void Boton::normal(){
 	BState_ = BUTTONSTATE_::NOT_SELECTED;
-	realRect = rectb;
 }
 void Boton::update(){
 	if (BState_) {
+		Anim->ActualizarFrame();
 	}
 	else {
 
 	}
-
 }
 
 
-/*bool Boton::dentro(int x, int y) const{
-	if (x >= pimgx && x <= pimgx + ancho && y >= pimgy && y <= pimgy + alto){
-		return true;
-	}
-	return false;
-}
 
+
+BotonMecanico::BotonMecanico(Juego * juego, int x, int y, CallBack_t * cbCons, string Nombre, string descripcion) :Boton(juego, "buttonSelecZona", { x, y , 176,152}, cbCons, Nombre, descripcion)
+{
+	Anim->setNumFrames(10);
 	
-*/
+}
+
+void BotonMecanico::update()
+{
+	if (BState_) {
+		Anim->ActualizarFrame();
+	}
+	else {
+
+	}
+}
+
+BotonFuturista::BotonFuturista(Juego * juego, int x, int y, CallBack_t * cbCons, string Nombre, string descripcion):Boton(juego, "Button1", { x, y , 159,58 }, cbCons, Nombre, descripcion)
+{
+	Anim->setNumFrames(10);
+}
+
+void BotonFuturista::update()
+{
+	if (BState_) {
+		if(!Anim->animacionAcabada())
+			Anim->ActualizarFrame();
+	}
+	else {
+		if (!Anim->primerFrame())
+			Anim->AnteriorFrame();
+	}
+}
+
+

@@ -6,9 +6,9 @@
 MenuPG::MenuPG(Juego * juego) :MenuJuego(juego)
 {
 	Fondo = juego->getTextura("MenuInicio", "idle");
-	botones.emplace_back(new Boton(juego, "Button1", 400, 175, playBase,"Jugar","Play the fucking game"));
-	botones.emplace_back(new Boton(juego, "Button1", 400, 275, opciones,"Opciones","Configura el juego a tu gusto"));
-	botones.emplace_back(new Boton(juego, "Button1", 400, 375, salir,"Salir","Get out of my fucking game"));
+	botones.emplace_back(new BotonFuturista(juego, 400, 175, playBase,"Jugar","Play the fucking game"));
+	botones.emplace_back(new BotonFuturista(juego, 400, 275, opciones,"Opciones","Configura el juego a tu gusto"));
+	botones.emplace_back(new BotonFuturista(juego,  400, 375, salir,"Salir","Get out of my fucking game"));
 }
 
 

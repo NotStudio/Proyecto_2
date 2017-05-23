@@ -101,6 +101,7 @@ void Helice::disparo(){
 }
 
 void Helice::comportamiento(){
+	currentAnim->ActualizarFrame();
 	if (distancia()){
 
 		if (rng == 0){

@@ -10,21 +10,23 @@ class Boton : public Objeto
 public:
 	
 	typedef void CallBack_t(Juego* jg);
-	Boton(Juego* juego, string ID, int x, int y, CallBack_t * cbCons, string, string descripcion = "No hay descripcion");
-	~Boton();
-	void draw();
+	Boton(Juego* juego, string ID, int x, int y, CallBack_t * cbCons, string texto, string descripcion = "No hay descripcion");
+	Boton(Juego* juego, string ID, SDL_Rect rect, CallBack_t * cbCons, string texto, string descripcion = "No hay descripcion");
 
-	void update();
+	virtual ~Boton();
+	virtual void draw();
 
-	void aumentar();
+	virtual void update();
 
-	void normal();
+	virtual void activo();
+
+	virtual void normal();
 
 	void onColisionEnter(Objeto* contactObject, b2Body* b1, b2Body* b2) {};//Hay que ponerlo para que no sea bastracto
 	void accion() { cb(pjuego); };
  	bool Dentro(int x, int y) {
 		SDL_Point p = { x,y };
-		return SDL_PointInRect(&p, &rectb)==SDL_TRUE;
+		return SDL_PointInRect(&p, &realRect)==SDL_TRUE;
 	}
 
 	std::string getNombre(){
@@ -38,7 +40,7 @@ public:
 
 protected:
 	CallBack_t * cb;
-
+	Juego::Animacion * Anim;
 	Juego* pjuego;
 	enum BUTTONSTATE_
 	{
@@ -46,8 +48,7 @@ protected:
 	}BState_;
 	double angulo;
 	SDL_Rect realRect;
-	SDL_Rect rectb;
-	SDL_Rect activo;
+	
 	TextoSDL Texto;
 	int mpbx;
 	int mpby;
@@ -55,6 +56,27 @@ protected:
 	string id;
 	string nombre;
 	string descripcion_;
+};
+class BotonMecanico:public Boton
+{
+public:
+	BotonMecanico(Juego* juego, int x, int y, CallBack_t * cbCons, string Nombre, string descripcion = "No hay descripcion");
+	virtual ~BotonMecanico() {};
+	virtual void update();
+
+private:
+
+};
+
+class BotonFuturista :public Boton
+{
+public:
+	BotonFuturista(Juego* juego, int x, int y, CallBack_t * cbCons, string Nombre, string descripcion = "No hay descripcion");
+	virtual ~BotonFuturista() {};
+	virtual void update();
+
+private:
+
 };
 
 #endif
