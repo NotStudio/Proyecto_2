@@ -12,7 +12,6 @@ protected:
 	bool needDrop;
 	bool isDead_;
 	bool isKillable;
-	virtual void muerte();
 	virtual void comportamiento() {};
 public:
 	Enemigo(Juego* punteroJuego, SDL_Rect spritePar, string objectId, int distancia);
@@ -24,6 +23,7 @@ public:
 	bool distancia();
 	virtual void dropItems();
 	virtual void desactivar();
+	virtual void muerte();
 	bool killable() { return isKillable; };
 	bool isDead() { return destruido; }
 	int getDanyoContacto(){ return stats.daño; }

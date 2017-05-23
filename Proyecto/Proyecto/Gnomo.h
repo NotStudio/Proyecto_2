@@ -1,9 +1,10 @@
 #pragma once
 #include "Enemigo.h"
 #include "LTimer.h"
+#include "Sierra.h"
 
-enum Estados{ Idle, Movimiento , Ataque1 , Ataque2 , Ataque3};
-enum  Fases{ Fase1 = 1, Fase2 = 2 };// Fase 1: hace el Ataque1 y el Ataque2. Fase2: hace los tres ataques.
+enum Estados{ IDLE, MOVIMIENTO , ATAQUE1, ATAQUE2 , ATAQUE3};
+enum  Fases{ FASE1 , FASE2};// Fase 1: hace el Ataque1 y el Ataque2. Fase2: hace los tres ataques.
 class Gnomo :
 	public Enemigo
 {
@@ -23,11 +24,14 @@ public:
 
 	void changeState();
 	void disparo();
+	void eliminaSierra();
 
 	Estados estado;
 	Fases fase;
 	bool empezado = false;
 	LTimer tiempo;
 	int contador;
+
+	vector<Objeto*> sierras;
 };
 
