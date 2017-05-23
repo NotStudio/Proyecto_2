@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" renderorder="right-down" width="16" height="32" tilewidth="128" tileheight="128" nextobjectid="65">
+<map version="1.0" orientation="orthogonal" renderorder="right-down" width="16" height="32" tilewidth="128" tileheight="128" nextobjectid="69">
  <tileset firstgid="1" name="Tileset1" tilewidth="128" tileheight="128" tilecount="36" columns="4">
   <image source="../../Mapa/Tilesets/Tileset_zon1.png" width="512" height="1152"/>
   <tile id="0" probability="0.5"/>
@@ -52,9 +52,11 @@
 </data>
  </layer>
  <objectgroup name="Enemigos">
-  <object id="60" name="TrampaElectrica" type="enemigo" x="896" y="640" width="124" height="124"/>
   <object id="62" name="TrampaElectrica" type="enemigo" x="1026.67" y="1922.67" width="124" height="124"/>
   <object id="63" name="TrampaElectrica" type="enemigo" x="897.333" y="1921.33" width="124" height="124"/>
-  <object id="64" name="TrampaElectrica" type="enemigo" x="1025.33" y="3329.33" width="124" height="124"/>
+  <object id="65" name="TrampaElectrica" type="enemigo" x="512.67" y="3714.67" width="124" height="124"/>
+  <object id="66" name="TrampaElectrica" type="enemigo" x="510.67" y="3844.67" width="124" height="124"/>
+  <object id="67" name="TrampaElectrica" type="enemigo" x="1278.67" y="260.67" width="124" height="124"/>
+  <object id="68" name="TrampaElectrica" type="enemigo" x="1280.67" y="130.67" width="124" height="124"/>
  </objectgroup>
 </map>
