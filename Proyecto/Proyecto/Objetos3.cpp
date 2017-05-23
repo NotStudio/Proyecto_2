@@ -6,14 +6,14 @@ Objetos3::Objetos3(Juego* pJuego) : MenuJuego(pJuego)
 {
 	pJuego->reproducirEfecto("Multiusos");
 	Fondo = pJuego->getTextura("HudCraft3", "idle");
-	botones.emplace_back(new Boton(pJuego, "button", 20, 50, mecanismo, "Mecanismo"));
-	botones.emplace_back(new Boton(pJuego, "button", 20, 100, combustible, "Combustible"));
-	botones.emplace_back(new Boton(pJuego, "button", 20, 150, fibraCarbono, "FibraCarbono"));
-	botones.emplace_back(new Boton(pJuego, "button", 20, 200, moduloComandos, "ModuloComandos"));
-	botones.emplace_back(new Boton(pJuego, "button", 20, 250, mensaje, "Eje"));
-	botones.emplace_back(new Boton(pJuego, "button", 20, 300, mensaje, "Pantalla"));
+	botones.emplace_back(new BotonIluminado(pJuego, 20, 50, mecanismo, "Mecanismo"));
+	botones.emplace_back(new BotonIluminado(pJuego, 20, 100, combustible, "Combustible"));
+	botones.emplace_back(new BotonIluminado(pJuego, 20, 150, fibraCarbono, "FibraCarbono"));
+	botones.emplace_back(new BotonIluminado(pJuego, 20, 200, moduloComandos, "ModuloComandos"));
+	botones.emplace_back(new BotonIluminado(pJuego, 20, 250, mensaje, "Eje"));
+	botones.emplace_back(new BotonIluminado(pJuego, 20, 300, mensaje, "Pantalla"));
 	//botones.emplace_back(new Boton(pJuego, "boton", 50, 200, mensaje, "ModuloComados"));
-	botones.emplace_back(new Boton(pJuego, "button", 575, 475, salir, "Salir"));
+	botones.emplace_back(new BotonIluminado(pJuego, 575, 475, salir, "Salir"));
 	img = pJuego->getTextura(botones[0]->getNombre(), "idle");
 
 	Texto.LoadFuente(pJuego->getTipografia("Acme____", 30));

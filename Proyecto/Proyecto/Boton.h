@@ -78,5 +78,15 @@ public:
 private:
 
 };
+class BotonIluminado :public Boton
+{
+public:
+	BotonIluminado(Juego* juego, int x, int y, CallBack_t * cbCons, string Nombre, string descripcion = "No hay descripcion");
+	virtual ~BotonIluminado() {};
+	virtual void update();
+
+private:
+
+};
 
 #endif

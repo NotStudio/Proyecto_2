@@ -31,8 +31,10 @@ void MenuJuego::draw() {
 	
 	for (int i = 0; i < botones.size(); i++)
 	{
-		botones[i]->draw();
+		if (i!=activo)
+			botones[i]->draw();
 	}
+	botones[activo]->draw();
 	ayuda.draw(pJuego->getRender(), 0, 0);
 	if (kek.IsCharged())
 		kek.draw(pJuego->getRender(), 0, 0);

@@ -86,4 +86,21 @@ void BotonFuturista::update()
 	}
 }
 
+BotonIluminado::BotonIluminado(Juego * juego, int x, int y, CallBack_t * cbCons, string Nombre, string descripcion) :Boton( juego ,"button", { x, y, 190, 75 }, cbCons, Nombre, descripcion)
+{
+	Anim->setNumFrames(6);
+}
+
+void BotonIluminado::update()
+{
+	if (BState_) {
+		if (!Anim->animacionAcabada())
+			Anim->ActualizarFrame();
+	}
+	else {
+		if (!Anim->primerFrame())
+			Anim->AnteriorFrame();
+	}
+}
+
 
