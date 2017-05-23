@@ -15,6 +15,9 @@ public:
 	virtual void onColisionEnter(Objeto* obj , b2Body* b1, b2Body* b2);
 	void quitarInmunidad(){
 		inmune = false;
+		resetAlpha();
+		
+		
 	}
 
 	enum estado{JUGANDO, BASE};
@@ -40,6 +43,7 @@ public:
 	void stop();
 
 protected:
+
 	//Booleanas para el control del movimiento, utilizadas en el movControl;
 	//Mueve.
 	void move();
@@ -55,6 +59,11 @@ protected:
 	SDL_TimerID timerInmune;
 	SDL_TimerID timerRalentizado;
 	estado state;
+private:
+	int alphaFactor;
+	int alphaMultiplicador;
+	void feedbackInvulnerable();
+	void resetAlpha();
 	
 };
 #endif

@@ -35,6 +35,7 @@ void Enemigo::onColisionEnter(Objeto* contactObject, b2Body* b1, b2Body* b2) {
 		//Si lo que ha colisionado con nosotros es una bala, comprobamos si es del jugador o de un enemigo
 		if (b2->GetFixtureList()->GetFilterData().categoryBits == Juego::AT_JUGADOR){
 			stats.vida -= static_cast<BalaAmiga*>(contactObject)->getDanyo();
+			
 			if (stats.vida <= 0)
 				muerte();
 
@@ -131,7 +132,7 @@ void Enemigo::dropItems() {
 				y = rand() % 10 * (pos * -1);
 				int cantidad = rand() % 5;
 				int objeto = rand() % dropPool.size();
-				dynamic_cast<ZonaAccion*>(pJuego->getZona())->getNivel()->nuevoObjeto(new ObjetoHistorico(pJuego, {sprite->x + x,sprite->y + y,48,48},dropPool[objeto],cantidad));
+				dynamic_cast<ZonaAccion*>(pJuego->getZona())->getNivel()->nuevoObjeto(new ObjetoHistorico(pJuego, {sprite->x + x,sprite->y + y,64,64},dropPool[objeto],cantidad));
 			
 			}
 		}

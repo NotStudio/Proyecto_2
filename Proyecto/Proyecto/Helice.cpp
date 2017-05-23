@@ -95,7 +95,7 @@ void Helice::disparo(){
 		//contador++;
 		contador = SDL_GetTicks();
 		//cout << " Velx " << velFloat.x << " Vely  " << velFloat.y;
-		dynamic_cast<ZonaAccion*>(pJuego->getZona())->getNivel()->nuevaBala(new BalaEnemiga(pJuego, posicion, "BallTBala", 43.0f, velFloat.x, velFloat.y, stats.daño));
+		dynamic_cast<ZonaAccion*>(pJuego->getZona())->getNivel()->nuevaBala(new BalaEnemiga(pJuego, posicion, "BallTBala", 15.0f, velFloat.x, velFloat.y, stats.daño));
 	}
 
 }

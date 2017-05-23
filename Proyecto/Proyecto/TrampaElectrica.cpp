@@ -7,7 +7,7 @@ uint32 changeActiveCb(Uint32 intervalo, void * param) {
 }
 
 
-TrampaElectrica::TrampaElectrica(Juego* punteroJuego, int x, int y) : Enemigo(punteroJuego, { x,y,128,128 }, "trampa", 300), activated(true), needChange(true)
+TrampaElectrica::TrampaElectrica(Juego* punteroJuego, int x, int y) : Enemigo(punteroJuego, { x,y,64,64 }, "trampa", 300), activated(true), needChange(true)
 {
 	for (unordered_map<string, Juego::Animacion*>::iterator i = animaciones.begin(); i != animaciones.end(); i++)
 	{
@@ -22,39 +22,32 @@ TrampaElectrica::TrampaElectrica(Juego* punteroJuego, int x, int y) : Enemigo(pu
 	stats.velAtq = 2;
 	stats.daño = 5;
 	cadencia = stats.velAtq * 1000;
-	sprite->h = 32;
-	sprite->w = 32;
-
-
+	
 }
 
 
 TrampaElectrica::~TrampaElectrica()
 {
-	
+	SDL_RemoveTimer(timerInmune);
 }
 
 void TrampaElectrica::onColisionEnter(Objeto * contactObject, b2Body * b1, b2Body * b2)
 {
-	if (b2 != nullptr) {
-		if (b2->GetFixtureList()->GetFilterData().categoryBits == Juego::JUGADOR) {
-			if (activated) {
-			}
-		}
-	}
 }
 
 
 void TrampaElectrica::comportamiento()
 {
-	currentAnim->ActualizarFrame();
+	
+	activated ? currentAnim->ActualizarFrame() : currentAnim->restart();
 	alternaActivo();
 }
 
 void TrampaElectrica::alternaActivo() {
 
 	if (needChange) {
-		SDL_AddTimer(cadencia, changeActiveCb, this);
+		timerInmune = SDL_AddTimer(cadencia, changeActiveCb, this);
+		activated ? stats.daño = 5 : stats.daño = 0;
 		needChange = false;
 	}
 }

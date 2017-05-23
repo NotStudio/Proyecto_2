@@ -30,6 +30,7 @@ public:
 			pTexture = nullptr;
 		}
 	};
+	SDL_Texture* getTexture(){ return pTexture; }
 protected:
 	
 	string nombreArc;
