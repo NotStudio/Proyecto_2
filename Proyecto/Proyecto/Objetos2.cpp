@@ -5,15 +5,15 @@ Objetos2::Objetos2(Juego* pJuego) : MenuJuego(pJuego)
 {
 	pJuego->reproducirEfecto("Multiusos");
 	Fondo = pJuego->getTextura("HudCraft2", "idle");
-	botones.emplace_back(new Boton(pJuego, "button", 20, 50, engranaje, "Engranaje"));
-	botones.emplace_back(new Boton(pJuego, "button", 20, 100, carbono, "Carbono"));
-	botones.emplace_back(new Boton(pJuego, "button", 20, 150, engranajes, "Engranajes"));
-	botones.emplace_back(new Boton(pJuego, "button", 20, 200, tanquePresion, "TanquePresion"));
-	botones.emplace_back(new Boton(pJuego, "button", 20, 250, refinador, "Refinador"));
-	botones.emplace_back(new Boton(pJuego, "button", 20, 300, circuito, "Circuito"));
-	botones.emplace_back(new Boton(pJuego, "button", 190, 50, bateriaIones, "IonBattery"));
-	botones.emplace_back(new Boton(pJuego, "button", 190, 100, sensorMov, "SensorMov"));
-	botones.emplace_back(new Boton(pJuego, "button", 565, 470, salir, "Salir"));
+	botones.emplace_back(new BotonIluminado(pJuego,  20, 50, engranaje, "Engranaje"));
+	botones.emplace_back(new BotonIluminado(pJuego,  20, 100, carbono, "Carbono"));
+	botones.emplace_back(new BotonIluminado(pJuego,  20, 150, engranajes, "Engranajes"));
+	botones.emplace_back(new BotonIluminado(pJuego,  20, 200, tanquePresion, "TanquePresion"));
+	botones.emplace_back(new BotonIluminado(pJuego,  20, 250, refinador, "Refinador"));
+	botones.emplace_back(new BotonIluminado(pJuego,  20, 300, circuito, "Circuito"));
+	botones.emplace_back(new BotonIluminado(pJuego,  190, 50, bateriaIones, "IonBattery"));
+	botones.emplace_back(new BotonIluminado(pJuego,  190, 100, sensorMov, "SensorMov"));
+	botones.emplace_back(new BotonIluminado(pJuego,  565, 470, salir, "Salir"));
 
 	img = pJuego->getTextura(botones[0]->getNombre(), "idle");
 

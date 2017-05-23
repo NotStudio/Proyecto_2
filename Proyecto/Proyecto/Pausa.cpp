@@ -13,9 +13,9 @@ Pausa::Pausa(Juego * juego) : MenuJuego(juego)//, pR(nullptr)
 	static_cast<Jugable*>(pJuego->getPlayer())->stop();
 
 
-	botones.emplace_back(new Boton(juego, "button", 300, 250, resume, "Continuar","Continua jugando"));
-	botones.emplace_back(new Boton(juego, "button", 300, 350, opciones, "Opciones", "Pues opciones y tal"));
-	botones.emplace_back(new Boton(juego, "button", 300, 450, returnMenu, "Salir", "Vuelve al menu"));
+	botones.emplace_back(new BotonIluminado(pJuego, 300, 250, resume, "Continuar","Continua jugando"));
+	botones.emplace_back(new BotonIluminado(pJuego, 300, 350, opciones, "Opciones", "Pues opciones y tal"));
+	botones.emplace_back(new BotonIluminado(pJuego, 300, 450, returnMenu, "Salir", "Vuelve al menu"));
 
 	//Para añadir los botones
 }

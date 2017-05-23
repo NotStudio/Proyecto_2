@@ -7,12 +7,12 @@ MarcoHistorico::MarcoHistorico(Juego* pJuego) : MenuJuego(pJuego)
 	memorias = pJuego->getMemoria();
 	int contX = 0;
 	int contY = 1;
-	botones.emplace_back(new Boton(pJuego, "button", 420, 150, salir, "Salir", "Vuelve a historia"));
+	botones.emplace_back(new BotonIluminado(pJuego, 420, 150, salir, "Salir", "Vuelve a historia"));
 
 	for (map<string, bool>::iterator it = memorias.begin(); it != memorias.end(); it++)
 	{
 		if (it->second){
-			botones.emplace_back(new Boton(pJuego, "button", contX * 170 + 20, contY * 50, salir, it->first));
+			botones.emplace_back(new BotonIluminado(pJuego, contX * 170 + 20, contY * 50, salir, it->first));
 			contY++;
 			if (contY == 6) {
 				contY = 1;

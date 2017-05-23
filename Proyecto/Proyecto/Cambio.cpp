@@ -14,14 +14,14 @@ Cambio::Cambio(Juego * juego,vector<Objeto*>& Personajes) : MenuJuego(juego)//, 
 	Fondo = pJuego->getTextura("SelecPersonajeFondo", "idle");
 
 	for (auto p : Personajes){
-			botones.emplace_back(new Boton(juego, "button", 30 + 50 * contY, 300, resume, static_cast<Jugable*>(p)->getId()));
+			botones.emplace_back(new BotonIluminado(pJuego, 30 + 50 * contY, 300, resume, static_cast<Jugable*>(p)->getId()));
 		contY += 5;
 	}
 	f = 0;
 	activo = 0;
 	img = pJuego->getTextura(botones[activo]->getNombre(), "idle");
 
-	botones.push_back(new Boton(juego, "button", 300, 500, resume, "Salir"));
+	botones.push_back(new BotonIluminado(pJuego, 300, 500, resume, "Salir"));
 	
 	//Para añadir los botones
 

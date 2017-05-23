@@ -6,8 +6,8 @@
 
 GameOver::GameOver(Juego* juego) : MenuJuego(juego)
 {
-	botones.emplace_back(new Boton(juego, "button", 415, 175, playAgain, "Jugar de nuevo", "Intentalo otra vez, tu puedes"));
-	botones.emplace_back(new Boton(juego, "button", 415, 275, quit, "Salir","Sal perdiendo el culo como el cobarde que eres"));
+	botones.emplace_back(new BotonIluminado(juego, 415, 175, playAgain, "Jugar de nuevo", "Intentalo otra vez, tu puedes"));
+	botones.emplace_back(new BotonIluminado(juego, 415, 275, quit, "Salir", "Sal perdiendo el culo como el cobarde que eres"));
 }
 
 
