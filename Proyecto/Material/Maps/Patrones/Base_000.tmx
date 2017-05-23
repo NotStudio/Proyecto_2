@@ -25,12 +25,9 @@
  </layer>
  <objectgroup name="Capa de Objetos 1">
   <object id="1" name="selectorzona" type="inanimado" x="1280" y="848" width="512" height="512"/>
-  <object id="3" name="tuberia" type="inanimado" x="29.5758" y="1604.48" width="633.939" height="296.121"/>
-  <object id="5" name="nave" type="inanimado" x="1828" y="1560" width="512" height="384"/>
+  <object id="5" name="historia" type="inanimado" x="2240" y="1640" width="316" height="268"/>
   <object id="6" x="3456" y="640" width="512" height="768"/>
   <object id="7" name="selectorcrafteo" type="inanimado" x="2604.79" y="18.4848" width="440" height="359.333"/>
-  <object id="10" x="128" y="640" width="512" height="768"/>
-  <object id="11" x="768" y="1536" width="768" height="384"/>
   <object id="18" name="selectorcambio" type="inanimado" x="100" y="760" width="620" height="620"/>
  </objectgroup>
 </map>

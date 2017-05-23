@@ -16,6 +16,7 @@ public:
 	Tostadora(Juego* punteroJuego, SDL_Rect spritePar);
 	virtual ~Tostadora();
 	void disparo();
+	void setStats();
 
 	virtual void update();
 };

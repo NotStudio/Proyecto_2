@@ -54,6 +54,7 @@ public:
 	b2Body* getBody();
 
 	std::string getId() { return id; };
+	void setId(string s) { id = s; };
 	float getX(){
 		return pos.x * PPM;
 

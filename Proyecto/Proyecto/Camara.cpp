@@ -2,6 +2,7 @@
 #include <SDL.h>
 #include <SDL_image.h>
 #include "checkML.h"
+#include <time.h>
 Camara::Camara() {
 	Apuntando = nullptr;
 }
@@ -80,6 +81,7 @@ void Camara::update()
 	case Camara::NORMAL:
 		break;
 	case Camara::SACUDIDA:
+
 		plano.x += rand() % fuerzaTerremoto - fuerzaTerremoto/2;
 		plano.y += rand() % fuerzaTerremoto - fuerzaTerremoto/2;
 		break;

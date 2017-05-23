@@ -60,7 +60,7 @@ void Jefe1::onColisionEnter(Objeto* contactObject, b2Body* b1, b2Body* b2) {
 	if (contactObject != nullptr){
 		if (b2->GetFixtureList()->GetFilterData().categoryBits == Juego::AT_JUGADOR){
 
-			stats.vida--;
+			stats.vida -= stats.vida -= static_cast<BalaEnemiga*>(contactObject)->getDanyo();
 			//pJuego->reproducirEfecto("scream");
 			if (stats.vida == 15)fase = Fases::Fase2;
 			else  if (stats.vida <= 0) muerte();

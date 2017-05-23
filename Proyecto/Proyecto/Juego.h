@@ -21,6 +21,7 @@
 //Variable pixels por metro
 static const float PPM = 128;
 
+
 class Zona;
 class EstadoJuego;
 //using namespace std;
@@ -113,6 +114,8 @@ class Juego
 	std::map <std::string, bool> mem;
 
 	SDL_TimerID timerCambio;
+	Objeto* nave;
+	int progresoNave;
 public:
 	Juego(b2World * mundo);
 	Juego();
@@ -122,6 +125,15 @@ public:
 
 	 inline Objeto* getActiveCharacter() {
 		return personaje;
+	 }
+
+	 
+	 void setNave(Objeto* o){
+		 nave = o;	 
+	 }
+	 void changeProgresoNave(string id);
+	 int getProgresoNave(){
+		return progresoNave;
 	 }
 
 

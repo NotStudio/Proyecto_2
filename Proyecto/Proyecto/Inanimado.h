@@ -177,5 +177,46 @@ public:
 	}
 };
 //==============================================================================================
+//Nave
+class  NaveJuego : public Inanimado
+{
+	enum Estado { FASE0 = 0, FASE1 = 1, FASE2 = 2, FASE3 = 3, READY = 4};
+	Estado estado = FASE0;
+public:
+	NaveJuego(Juego * Pj, int x, int y, int w, int h) : Inanimado(Pj, SDL_Rect{ x, y, w, h }, "NaveFase0") {
+		fDef.filter.categoryBits = Juego::ESCENARIO;
+		fDef.filter.maskBits = Juego::JUGADOR;
+		body->CreateFixture(&fDef);
+		estado = (Estado)pJuego->getProgresoNave();
+		switch (estado)
+		{
+		case NaveJuego::FASE0:
+			id = "NaveFase0";
+			break;
+		case NaveJuego::FASE1:
+			id = "NaveFase1";
+			break;
+		case NaveJuego::FASE2:
+			id = "NaveFase2";
+			break;
+		case NaveJuego::FASE3:
+			id = "NaveFase3";
+			break;
+		case NaveJuego::READY:
+			id = "NaveFase4";
+			break;
+		default:
+			break;
+		}
+		Pj->setNave(this);
+	};
+	~NaveJuego() {};
 
+	virtual void onColisionEnter(Objeto* o, b2Body* b1, b2Body* b2) {
+	}
+	void changeTexture(string i){
+		currentAnim->textura = animaciones.at(i)->textura;	
+	}
+};
+//==============================================================================================
 #endif // INANIMADO_H_

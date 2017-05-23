@@ -32,6 +32,7 @@ protected:
 	float furia = 1.0f;
 	bool atamele = true;
 	bool destroyBody = false;
+	void setStats();
 
 
 	b2Shape* st;

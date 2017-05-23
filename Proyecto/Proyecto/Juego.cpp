@@ -13,6 +13,7 @@
 #include "GameOver.h"
 #include "HUDinventory.h"
 #include "MenuFinDeZona.h"
+#include "Inanimado.h"
 //Constructora que inicializa todos los atributos de la clase Juego
 
 
@@ -64,6 +65,8 @@ Juego::Juego(b2World* mundo) : error(false), gameOver(false), exit(false), score
 	Camera = nullptr;
 	personaje = nullptr;
 	zona = nullptr;
+	nave = nullptr;
+	progresoNave = 0;
 	
 	//Cargar baul de un metodo leyendo de texto o de donde se guarde
 								/*AQUI CARGA BAUL*/
@@ -105,6 +108,10 @@ Juego::~Juego()
 	
 	
 	
+}
+void Juego::changeProgresoNave(string id){
+	progresoNave++;
+	static_cast<NaveJuego*>(nave)->changeTexture(id);
 }
 
 
@@ -656,8 +663,6 @@ void Juego::setFinZona(){
 }
 
 void Juego::reiniciar(){
-	Jugable::atributos vidaReset;
-	vidaReset.vida = 40;
-	static_cast<Jugable*>(getPlayer())->applyEffect(vidaReset);
+	static_cast<Jugable*>(getPlayer())->setStats();
 }
 

@@ -1,4 +1,5 @@
 #include "Jefe2Bouncer.h"
+#include "BalaEnemiga.h"
 
 
 
@@ -110,9 +111,11 @@ void Jefe2Bouncer::onColisionEnter(Objeto * contactObject, b2Body * b1, b2Body *
 {
 	if (b2 != nullptr) {
 		if (b2->GetFixtureList()->GetFilterData().categoryBits == Juego::AT_JUGADOR) {
-			//hit(static_cast<Jugable*>(contactObject)->getStats()->daño);
-			doDivision = true;
-			muerte();
+			stats.vida -= static_cast<BalaEnemiga*>(contactObject)->getDanyo();		
+			if (stats.vida <= 0){
+				doDivision = true;
+				muerte();
+			}
 		}
 		else if (b2->GetFixtureList()->GetFilterData().categoryBits == Juego::ESCENARIO) {
 			bounce(b2);

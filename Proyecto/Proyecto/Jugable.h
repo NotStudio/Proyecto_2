@@ -28,6 +28,7 @@ public:
 
 		state = s;
 	}
+	virtual void setStats(){};
 
 	void setPos(float32 x, float32 y) {
 		body->SetTransform(b2Vec2{ x / PPM, y / PPM }, 0);

@@ -41,7 +41,15 @@ Cambiante::Cambiante(Juego* punteroJuego, SDL_Rect spritePar) :Jugable(punteroJu
 Cambiante::~Cambiante()
 {
 }
+void Cambiante::setStats(){
+	stats.velMov = 130;/* Decidir más tarde las características*/
+	stats.vida = 40;
+	stats.daño = 7;
+	stats.velAtq = 3;
+	stats.vidaMax = stats.vida;
+	furia = 0;
 
+}
 
 Uint32 imerDisparo(Uint32 intervalo, void* param) {
 	static_cast<Cambiante*>(param)->reactivarDisparo();
@@ -244,12 +252,12 @@ void Cambiante::forma(bool mele){// Falta cambiar sprites...
 	if (!mele){//diminuye
 		////////////////////////////////stats
 		stats.velMov = 130;
-		stats.vida -= 3;
-		if (stats.vida < 1)
-			stats.vida = 1;
+		stats.vida -= 30;
+		if (stats.vida < 10)
+			stats.vida = 10;
 		stats.daño = 7;
 		stats.velAtq = 3;
-		stats.vidaMax -= 3;
+		stats.vidaMax -= 30;
 
 	
 		/////////////////////////////////////////tamaño sprite y colision,  , , , ,, falta cambiar sprite

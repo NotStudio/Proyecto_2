@@ -14,8 +14,8 @@ Cambio::Cambio(Juego * juego,vector<Objeto*>& Personajes) : MenuJuego(juego)//, 
 	Fondo = pJuego->getTextura("SelecPersonajeFondo", "idle");
 
 	for (auto p : Personajes){
-			botones.emplace_back(new Boton(juego, "button", 30 + 50 * contY, 300, resume, static_cast<Jugable*>(p)->getId()));
-		contY += 5;
+			botones.emplace_back(new Boton(juego, "button", 120 + 50 * contY, 300, resume, static_cast<Jugable*>(p)->getId()));
+		contY += 7;
 	}
 	f = 0;
 	activo = 0;

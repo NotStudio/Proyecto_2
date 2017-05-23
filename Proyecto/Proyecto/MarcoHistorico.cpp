@@ -3,7 +3,7 @@
 
 MarcoHistorico::MarcoHistorico(Juego* pJuego) : MenuJuego(pJuego)
 {
-	Fondo = pJuego->getTextura("SelecMapaFondo", "idle");
+	Fondo = pJuego->getTextura("SelectorHistoria", "idle");
 	memorias = pJuego->getMemoria();
 	int contX = 0;
 	int contY = 1;

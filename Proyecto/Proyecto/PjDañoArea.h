@@ -12,6 +12,7 @@ public:
 	}
 
 protected:
+	virtual void setStats(){}
 	virtual void draw();
 	void ataqueMele();
 	virtual void update();

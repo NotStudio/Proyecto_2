@@ -22,8 +22,6 @@ Play::Play(Juego * juego) : EstadoPG(juego)
 	juego->NewPersonaje();
 	personaje.push_back( new Cambiante(juego, SDL_Rect{ 576, 75, 64, 64 }));
 	juego->NewPersonaje();
-	personaje.push_back(new PjDañoArea(juego, SDL_Rect{ 576, 75, 64, 64 }));
-	juego->NewPersonaje();
 	juego->setPlayer(personaje[pJuego->getActivo()]);
 	Juego::Ventana window = juego->getWindow();
 	Camera = new Camara(static_cast<Entidad*>(personaje[pJuego->getActivo()])->getRect(), window.ancho, window.alto);
