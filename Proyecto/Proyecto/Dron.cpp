@@ -4,7 +4,7 @@
 
 
 
-Dron::Dron(Juego* punteroJuego, int x, int y) : Enemigo(punteroJuego, { x,y,128,128 }, "OV", 200), doDieAction(false)
+Dron::Dron(Juego* punteroJuego, int x, int y) : Enemigo(punteroJuego, { x,y,128,64 }, "Dron", 200), doDieAction(false)
 {
 	//a ver si funciona
 	delete shape;
@@ -22,7 +22,7 @@ Dron::Dron(Juego* punteroJuego, int x, int y) : Enemigo(punteroJuego, { x,y,128,
 	{
 		animaciones[i->first]->setNumFrames(30);
 	}
-	//currentAnim = animaciones.at("walk");
+	currentAnim = animaciones.at("idle");
 	stats.daño = 10;
 	stats.velMov = 1.6;
 	stats.vida = 30; 
@@ -91,7 +91,7 @@ void Dron::muerte() {
 	Enemigo::muerte();
 };
 void Dron::comportamiento() {
-
+	currentAnim->ActualizarFrame();
 	move();
 
 };
@@ -126,11 +126,11 @@ void Dron::rebote(b2Body* tileBody) {
 	float radius = 0;
 	float collisionDistance;
 
-	if (tileBody->GetFixtureList()->GetShape()->m_type = b2Shape::e_circle) {
+	if (tileBody->GetFixtureList()->GetShape()->m_type == b2Shape::e_circle) {
 		radius = static_cast<b2CircleShape*>(tileBody->GetFixtureList()->GetShape())->m_radius * PPM;
 		isCircle = true;
 	}
-	else if (tileBody->GetFixtureList()->GetShape()->m_type = b2Shape::e_polygon)
+	else if (tileBody->GetFixtureList()->GetShape()->m_type == b2Shape::e_polygon)
 		boxExtents = static_cast<b2PolygonShape*>(tileBody->GetFixtureList()->GetShape())->GetVertex(1);
 
 
