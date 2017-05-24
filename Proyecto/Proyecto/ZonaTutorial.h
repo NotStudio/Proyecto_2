@@ -4,8 +4,13 @@
 class ZonaTutorial :
 	public ZonaAccion
 {
+	TextoSDL texto_;
+
+	void setTextos();
 public:
 	ZonaTutorial(Juego* j);
 	virtual ~ZonaTutorial();
+
+	virtual void draw();
 };
 #endif //ZONA_TUTORIAL_H

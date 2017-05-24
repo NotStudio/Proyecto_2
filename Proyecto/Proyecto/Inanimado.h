@@ -223,7 +223,7 @@ public:
 class  TriggerDisparo : public Inanimado
 {
 public:
-	TriggerDisparo(Juego * Pj, int x, int y, int w, int h) :Inanimado(Pj, SDL_Rect{ x, y, w, h }, "SelectorCambio") {
+	TriggerDisparo(Juego * Pj, int x, int y, int w, int h) :Inanimado(Pj, SDL_Rect{ x, y, w, h }, "Trigger") {
 		fDef.filter.categoryBits = Juego::ESCENARIO;
 		fDef.filter.maskBits = Juego::JUGADOR;
 		fDef.isSensor = true;
@@ -241,7 +241,7 @@ public:
 class  TriggerBase : public Inanimado
 {
 public:
-	TriggerBase(Juego * Pj, int x, int y, int w, int h) :Inanimado(Pj, SDL_Rect{ x, y, w, h }, "SelectorCambio") {
+	TriggerBase(Juego * Pj, int x, int y, int w, int h) :Inanimado(Pj, SDL_Rect{ x, y, w, h }, "Trigger") {
 		fDef.filter.categoryBits = Juego::ESCENARIO;
 		fDef.filter.maskBits = Juego::JUGADOR;
 		fDef.isSensor = true;

@@ -16,9 +16,26 @@ ZonaTutorial::ZonaTutorial(Juego* punteroJuego) :ZonaAccion(punteroJuego)
 	setNivelActual();
 
 	static_cast<Jugable*>(pJuego->getPlayer())->cambiaEstado(Jugable::BASE);
+
+	texto_.LoadFuente(pJuego->getTipografia("Acme____", 30));
 }
 
 
 ZonaTutorial::~ZonaTutorial()
 {
+}
+
+void ZonaTutorial::setTextos() {
+
+	texto_.loadTexto(pJuego->getRender(), "'Utiliza AWSD para controlar mi motor de movimiento'");
+	texto_.draw(pJuego->getRender(), 10, 20);
+
+
+
+
+}
+
+void ZonaTutorial::draw() {
+	ZonaAccion::draw();
+	setTextos();
 }
