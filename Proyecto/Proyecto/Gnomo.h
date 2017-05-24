@@ -2,6 +2,7 @@
 #include "Enemigo.h"
 #include "LTimer.h"
 #include "Sierra.h"
+#include "BalaHacha.h"
 
 enum Estados{ IDLE, MOVIMIENTO , ATAQUE1, ATAQUE2 , ATAQUE3};
 enum  Fases{ FASE1 , FASE2};// Fase 1: hace el Ataque1 y el Ataque2. Fase2: hace los tres ataques.
@@ -23,8 +24,9 @@ public:
 	void Ataque3();// Carga hacia un lado con la motosierra extendida.
 
 	void changeState();
-	void disparo();
+	void disparo(string tipo, SDL_Rect posicion, float dirx, float diry, float velocidad);
 	void eliminaSierra();
+
 
 	Estados estado;
 	Fases fase;
@@ -33,5 +35,9 @@ public:
 	int contador;
 
 	vector<Objeto*> sierras;
+
+
+	float jugx;
+	float jugy;
 };
 

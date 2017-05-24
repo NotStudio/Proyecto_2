@@ -13,7 +13,7 @@ Gnomo::Gnomo(Juego* punteroJuego, int x, int y) : Enemigo(punteroJuego, { x, y, 
 
 	stats.daño = 10;
 	stats.vida = 300;
-	stats.velMov = 0;
+	stats.velMov = 80;
 
 	/*for (unordered_map<string, Juego::Animacion*>::iterator i = animaciones.begin(); i != animaciones.end(); i++)
 	{
@@ -67,11 +67,6 @@ void Gnomo::onColisionEnter(Objeto* contactObject, b2Body* b1, b2Body* b2) {
 	}
 }
 
-void Gnomo::eliminaSierra() {
-
-	dynamic_cast<Enemigo*>(sierras[sierras.size() - 1])->muerte();
-	sierras.pop_back();
-}
 
 
 uint32 changeStateCB(Uint32 intervalo, void * param){
@@ -79,10 +74,6 @@ uint32 changeStateCB(Uint32 intervalo, void * param){
 	return 0;
 }
 
-uint32 quitarSierraCB(Uint32 intervalo, void * param) {
-	static_cast<Gnomo*>(param)->eliminaSierra();
-	return 0;
-}
 
 void Gnomo::changeState(){
 
@@ -145,6 +136,36 @@ void Gnomo::Idle(){
 	}
 }
 
+void Gnomo::Movimiento(){
+	if (distancia()){
+		jugx = static_cast<Entidad*>(pJuego->getPlayer())->getX();
+		jugy = static_cast<Entidad*>(pJuego->getPlayer())->getY();
+
+		b2Vec2 velFloat;
+		velFloat.x = 0.0f;
+		velFloat.y = 0.0f;
+
+		b2Vec2 posJug = b2Vec2(jugx / PPM, jugy / PPM);
+
+		b2Vec2 vecDir = posJug - pos;
+
+		b2Vec2 vUnitario = b2Vec2((vecDir.x / vecDir.Length()), (vecDir.y / vecDir.Length()));
+
+		velFloat.x = vUnitario.x*stats.velMov;
+		velFloat.y = vUnitario.y*stats.velMov;
+		if (velFloat.x > 0) {
+			estadoEntidad.mirando = Oeste;
+		}
+		else if (velFloat.x < 0)
+			estadoEntidad.mirando = Este;
+		body->SetLinearVelocity(velFloat);
+		currentAnim->ActualizarFrame();
+	}
+	else {
+		stop();
+	}
+}
+
 void Gnomo::Ataque1() {// Invocar sierras
 
 	if (sierras.size() >= 2) {
@@ -152,11 +173,34 @@ void Gnomo::Ataque1() {// Invocar sierras
 	}
 
 	auto it = sierras.emplace(sierras.begin(), new Sierra(pJuego, getX(), getY(), 0));
-	
+
 	SDL_AddTimer(10000u, quitarSierraCB, this);// No se si estará bien aqui.
 
 
-	/*auto it = myvector.emplace(myvector.begin() + 1, 100);
-	myvector.emplace(it, 200);
-	myvector.emplace(myvector.end(), 300);*/
 }
+
+uint32 quitarSierraCB(Uint32 intervalo, void * param) {
+	static_cast<Gnomo*>(param)->eliminaSierra();
+	return 0;
+}
+
+void Gnomo::eliminaSierra() {
+
+	dynamic_cast<Enemigo*>(sierras[sierras.size() - 1])->muerte();
+	sierras.pop_back();
+}
+
+
+
+void Gnomo::Ataque2(){
+
+}
+
+void Gnomo::disparo(string tipo, SDL_Rect posicion, float dirx, float diry, float velocidad){
+	dynamic_cast<ZonaAccion*>(pJuego->getZona())->getNivel()->nuevaBala(new BalaHacha(pJuego, posicion, tipo, velocidad, dirx, diry, stats.daño));
+}
+
+void Gnomo::Ataque3(){
+
+}
+
