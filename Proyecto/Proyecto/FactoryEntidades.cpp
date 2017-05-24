@@ -47,7 +47,7 @@ Objeto * creaInanimado(Juego * pj, string id, int x, int y, int w, int h,float e
 	else if (id == "findezona" || id == "FinDeZona") {
 		return new FinZona(pj, x, y, w, h);
 	}
-	else if (id == "nave" || id == "Nave"){
+	else if (id == "naveJuego" || id == "NaveJuego"){
 		return new NaveJuego(pj, x, y, w, h);
 	}
 	else

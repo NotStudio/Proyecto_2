@@ -30,7 +30,7 @@ HUD::HUD(Juego* punteroJuego, SDL_Rect spritePar, string objectId, string object
 	
 
 
-	//marcoStats = new HUDImage(pjuego, 0, medAlto * 22, 11 * medAncho, alto, "marco");
+	marcoStats = new HUDImage(pjuego, -100, medAlto * 17,11 * medAncho, alto -50, "marco");
 
 	velMov = new  HUDImage(pjuego, 0.5 * medAncho, medAlto*19, medAncho*4.5, medAlto * 21, "velmov");
 	ataque = new HUDImage(pjuego, 0.5*medAncho, medAlto *22, 4.5* medAncho, medAlto * 25, "ataque");
@@ -55,14 +55,14 @@ HUD::~HUD()
 	delete cables;
 	delete vida;
 	delete fondoVida;
-	//delete marcoStats;
+	delete marcoStats;
 	pjuego = nullptr;
 }
 
 void HUD::draw(){
 	updateHUD();
 	cables->draw();
-	//marcoStats->draw();
+	marcoStats->draw();
 	statVelMov->draw();
 	statDanyo->draw();
 	statVelAtaq->draw();
