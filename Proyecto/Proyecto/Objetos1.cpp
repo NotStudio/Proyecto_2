@@ -13,7 +13,7 @@ Objetos1::Objetos1(Juego* pJuego) : MenuJuego(pJuego)
 	for (map<string, int>::iterator it = Baul.begin(); it != Baul.end(); it++)
 	{
 		if (it->second > 0) {
-			botones.emplace_back(new Boton(pJuego, "button", contX * 170 + 20, contY * 50, salir, it->first));
+			insertarBoton(Boton::ILUMINADO, 3 + contX*3,contY*5,salir,it->first);
 			contY++;
 			if (contY == 6) {
 				contY = 1;
@@ -22,7 +22,7 @@ Objetos1::Objetos1(Juego* pJuego) : MenuJuego(pJuego)
 			cantidad.emplace_back(it->second);
 		}
 	}
-	botones.emplace_back(new Boton(pJuego, "button", 565, 470, salir, "Salir"));
+	insertarBoton(Boton::ILUMINADO,60 , 60, salir, "Salir");
 	if (cantidad.size() > 0) {
 		cantidad.emplace_back(cantidad[cantidad.size() - 1]);
 		imgObj = pJuego->getTextura(botones[activo]->getNombre(), "idle");

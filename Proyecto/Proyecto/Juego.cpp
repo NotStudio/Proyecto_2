@@ -13,7 +13,9 @@
 #include "GameOver.h"
 #include "HUDinventory.h"
 #include "MenuFinDeZona.h"
+
 #include "Inanimado.h"
+
 //Constructora que inicializa todos los atributos de la clase Juego
 
 
@@ -30,8 +32,8 @@ void operator+=(vector<string>& e,vector<string> o){
 // Constructora que inicializa todos los atributos de la clase Juego
 Juego::Juego(b2World* mundo) : error(false), gameOver(false), exit(false), score(0), world(mundo)
 {
-	window.alto = 600; //Tamaño de la ventana.
-	window.ancho = 800;
+	window.alto = 720; //Tamaño de la ventana.
+	window.ancho = 1080;
 	fondoRect.x = 0; //Posición y tamaño de la ventana.
 	fondoRect.y = 0;
 	fondoRect.w = window.ancho;
@@ -41,6 +43,7 @@ Juego::Juego(b2World* mundo) : error(false), gameOver(false), exit(false), score
 		error = true;
 		std::cout << "Ha ocurrido un error con SDL";
 	}
+	
 	//Esto es el wall de mexico los estados hundidos
 
 	//Añadimos al vector del nombre de las texturas los nombres de las imágenes. Tienen que tener un orden concreto.
@@ -387,17 +390,27 @@ bool Juego::initSDL() {
 		if (Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048) < 0)
 			cout << "kek";
 		//Create window: SDL_CreateWindow("SDL Hello World", posX, posY, width, height, SDL_WINDOW_SHOWN);
-		pWindow = SDL_CreateWindow("NOT A STUDIO", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, window.ancho, window.alto, SDL_WINDOW_SHOWN);
+		pWindow = SDL_CreateWindow("NOT A STUDIO", 0, 0,100, 100, SDL_WINDOW_SHOWN);
+		SDL_SetWindowBordered(pWindow, SDL_FALSE);
+		SDL_MaximizeWindow(pWindow);
+		//SDL_SetWindowFullscreen(pWindow, SDL_WINDOW_FULLSCREEN);
 		if (pWindow == nullptr) {
 			cout << "Window could not be created! \nSDL_Error: " << SDL_GetError() << '\n';	
 			success = false;
 		}
 		else {
+		
+			
 			//Get window surface:
 			pRenderer = SDL_CreateRenderer(pWindow, -1, SDL_RENDERER_ACCELERATED);
-			//SDL_SetWindowFullscreen(pWindow, SDL_WINDOW_FULLSCREEN);
 			//SDL_SetRenderDrawColor(pRenderer, 100, 126, 97, 255); //Set background color to black 
-			SDL_SetRenderDrawColor(pRenderer, 0, 0,0 , 255); //Set background color to black 
+			SDL_SetRenderDrawColor(pRenderer, 0, 0,0 , 150); //Set background color to black 
+			SDL_RenderClear(pRenderer);
+			SDL_RenderPresent(pRenderer);
+			int ancho = 0, alto = 0;
+			SDL_GetWindowSize(pWindow, &ancho, &alto);
+			window.alto = alto;
+			window.ancho = ancho;
 
 			if (pRenderer == nullptr) {
 				cout << "Renderer could not be created! \nSDL_Error: " << SDL_GetError() << '\n';

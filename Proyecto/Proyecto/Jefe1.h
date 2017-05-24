@@ -25,6 +25,7 @@ public:
 	Fases fase;
 	bool empezado = false;
 	LTimer tiempo;
+	SDL_TimerID temp;
 	int contador;
 };
 

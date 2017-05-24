@@ -15,6 +15,7 @@ public:
 		STARTING=0,STARTED=1
 	};
 protected:
+	void insertarBoton(Boton::ButtonType type, Uint8 factorX, Uint8 factorY, Boton::CallBack_t * accion, string nombre, string descripcion="no hay descripcion");
 	MenuState MenuState_;
 	CuadroDeTexto kek;
 	TextoSDL ayuda;
@@ -23,5 +24,7 @@ protected:
 	vector<Boton*>botones;
 	TexturasSDL*Fondo=nullptr;
 	Uint8 alpha=0;
+	int fx;
+	int fy;
 };
 

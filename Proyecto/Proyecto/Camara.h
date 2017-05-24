@@ -36,6 +36,9 @@ public:
 		NORMAL, SACUDIDA
 	};
 private:
+	bool BloquearEjeY = false;
+	bool BloquearEjeX = false;
+
 	CAMERASTATE CameraState_ = NORMAL;
 	
 	SDL_TimerID TemporazidorEfecto;

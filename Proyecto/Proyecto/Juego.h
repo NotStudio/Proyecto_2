@@ -171,6 +171,21 @@ public:
 			}
 			rect.x = frameActual*rect.w;
 		}
+		bool animacionAcabada() {
+			return frameActual >= numFrames-1;
+		}
+		bool primerFrame() {
+			return frameActual <= 0;
+		}
+		void AnteriorFrame() {
+			frameActual--;
+			if (primerFrame())
+			{
+				frameActual = 0;
+			}
+			rect.x = frameActual*rect.w;
+
+		}
 		Animacion operator=(Animacion const a){
 			this->textura = a.textura;
 			return *this;

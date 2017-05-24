@@ -27,6 +27,7 @@ Jefe1::Jefe1(Juego* punteroJuego, int x, int y) : Enemigo(punteroJuego, { x, y, 
 
 Jefe1::~Jefe1()
 {
+	SDL_RemoveTimer(temp);
 }
 
 
@@ -128,7 +129,7 @@ void Jefe1::Idle(){
 		empezado = true;
 		Uint32 random = (rand() % 2000) + 1000;
 	
-		SDL_AddTimer(random, changeStateCb, this);
+		temp = SDL_AddTimer(random, changeStateCb, this);
 		//timers
 		//El timer que se activa mas tarde es el changestate
 	}

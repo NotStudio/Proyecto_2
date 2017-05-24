@@ -26,7 +26,5 @@
 20,16,16,16,16,16,16,16,16,16,16,19
 </data>
  </layer>
- <objectgroup name="Inanimados">
-  <object id="1" name="findezona" type="inanimado" x="752" y="684" width="256" height="256"/>
- </objectgroup>
+ <objectgroup name="Inanimados"/>
 </map>

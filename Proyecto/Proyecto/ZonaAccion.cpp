@@ -12,7 +12,6 @@ ZonaAccion::ZonaAccion(Juego* punteroJuego): ZonaJuego(punteroJuego)
 	//Cambiamos el estado del jugador
 	static_cast<Jugable*>(pJuego->getPlayer())->cambiaEstado(Jugable::JUGANDO);
 	//Cambiamos su posición al centro del nivel inicial.
-	static_cast<Jugable*>(pJuego->getPlayer())->setPos(150,250);
 }
 
 
@@ -149,18 +148,34 @@ vector<pair<SDL_Point, Direcciones>> ZonaAccion::getPosicionesLados(Room * Room_
 
 }
 
-void ZonaAccion::setHabitaciones(int NumeroHabitaciones, int cadaCuantasHabitacionesParon)
+void ZonaAccion::setHabitaciones(int NumeroHabitaciones, int NumeroDescansos)
 {
+	BuildIniRoom();
+	static_cast<Jugable*>(pJuego->getPlayer())->setPos(niveles->at(0)->getArea().w/2, niveles->at(0)->getArea().h/2);
+	RoomType lastType = Ini;
+	int descansos = 1;
 	for (size_t i = 0; i <NumeroHabitaciones; i++)
 	{
-		if (i%cadaCuantasHabitacionesParon == 0) {
-			BuildIniRoom();
+		if (lastType == Ini) {
+			BuildRoom(Normal);
+			lastType = Normal;
 		}
 		else {
-			BuildRoom(Normal);
+			if (rand() % NumeroHabitaciones <= NumeroDescansos) {
+				BuildIniRoom();
+				lastType = Ini;
+				NumeroDescansos--;
+			}
+			else {
+				BuildRoom(Normal);
+				lastType = Normal;
+			}
+
 		}
 	}
-	
+	if (lastType == Ini) {
+		BuildIniRoom();
+	}	
 	BuildRoom(Boss);
 	BuildFinRoom();
 }
@@ -170,7 +185,13 @@ void ZonaAccion::setHabitaciones(int NumeroHabitaciones, int cadaCuantasHabitaci
 void ZonaAccion::setNivelActual(){
 	//Actualizamos el parametro que indica el nivel en el que estamos
 	//y  se lo notificamos a la cámara.
-	Room * anterior = nivelActual;
+	Room * anterior ;
+	if (nivelActual) {
+		anterior = nivelActual;
+	}
+	else {
+		anterior = niveles->at(0);
+	}
 	SDL_Point pj;
 	pj.x = static_cast<Entidad*>(pJuego->getPlayer())->getX();
 	pj.y = static_cast<Entidad*>(pJuego->getPlayer())->getY();
@@ -190,4 +211,5 @@ void ZonaAccion::setNivelActual(){
 	{
 		pJuego->getCamera()->setLimite(niveles->front()->getArea());
 	}
+
 }

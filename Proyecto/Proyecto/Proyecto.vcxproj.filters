@@ -72,6 +72,9 @@
     <Filter Include="Header Files\Estados\Menus">
       <UniqueIdentifier>{c795ee78-417a-482b-a463-5ff5a5b1199a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Objetos\Botones">
+      <UniqueIdentifier>{277d781c-f211-42ca-8d44-ea2602364826}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -120,9 +123,6 @@
       <Filter>Source Files\Objetos</Filter>
     </ClCompile>
     <ClCompile Include="Item.cpp">
-      <Filter>Source Files\Objetos</Filter>
-    </ClCompile>
-    <ClCompile Include="Boton.cpp">
       <Filter>Source Files\Objetos</Filter>
     </ClCompile>
     <ClCompile Include="Personaje.cpp">
@@ -265,6 +265,9 @@
     </ClCompile>
     <ClCompile Include="Historia.cpp">
       <Filter>Source Files\Estados\Menus</Filter>
+    </ClCompile>
+    <ClCompile Include="Boton.cpp">
+      <Filter>Source Files\Objetos\Botones</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

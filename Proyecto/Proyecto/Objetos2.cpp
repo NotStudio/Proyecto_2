@@ -5,15 +5,16 @@ Objetos2::Objetos2(Juego* pJuego) : MenuJuego(pJuego)
 {
 	pJuego->reproducirEfecto("Multiusos");
 	Fondo = pJuego->getTextura("HudCraft2", "idle");
-	botones.emplace_back(new Boton(pJuego, "button", 20, 50, engranaje, "Engranaje"));
-	botones.emplace_back(new Boton(pJuego, "button", 20, 100, carbono, "Carbono"));
-	botones.emplace_back(new Boton(pJuego, "button", 20, 150, engranajes, "Engranajes"));
-	botones.emplace_back(new Boton(pJuego, "button", 20, 200, tanquePresion, "TanquePresion"));
-	botones.emplace_back(new Boton(pJuego, "button", 20, 250, refinador, "Refinador"));
-	botones.emplace_back(new Boton(pJuego, "button", 20, 300, circuito, "Circuito"));
-	botones.emplace_back(new Boton(pJuego, "button", 190, 50, bateriaIones, "IonBattery"));
-	botones.emplace_back(new Boton(pJuego, "button", 190, 100, sensorMov, "SensorMov"));
-	botones.emplace_back(new Boton(pJuego, "button", 565, 470, salir, "Salir"));
+	activo = 0;
+	insertarBoton(Boton::ILUMINADO, 2, 5,engranaje,"Engranaje");
+	insertarBoton(Boton::ILUMINADO, 2, 8, engranajes, "Engranajes");
+	insertarBoton(Boton::ILUMINADO, 2, 11, tanquePresion, "TanquePresion");
+	insertarBoton(Boton::ILUMINADO, 2, 14, refinador, "Refinador");
+	insertarBoton(Boton::ILUMINADO, 2, 17, circuito, "Circuito");
+	insertarBoton(Boton::ILUMINADO, 2, 20, bateriaIones, "IonBattery");
+	insertarBoton(Boton::ILUMINADO, 2, 23, sensorMov, "SensorMov");
+	insertarBoton(Boton::ILUMINADO, 2, 26, carbono, "Carbono");
+	insertarBoton(Boton::ILUMINADO, 50, 50, salir, "Salir");
 
 	img = pJuego->getTextura(botones[0]->getNombre(), "idle");
 
@@ -30,27 +31,26 @@ void Objetos2::draw() {
 	MenuJuego::draw();
 
 	if (botones[activo]->getNombre() != "Salir"){
-		Fondo = pJuego->getTextura("HudCraft2", "idle");
 		img = pJuego->getTextura(botones[activo]->getNombre(), "idle");
+
 		if (botones[activo]->getNombre() == "Carbono")
-			img->draw(pJuego->getRender(), SDL_Rect{ 540, 20, 100, 100 }, nullptr, 0.0);
-		else
-			img->draw(pJuego->getRender(), SDL_Rect{ 530, 20, 125, 125 }, nullptr, 0.0);
+			img->draw(pJuego->getRender(), SDL_Rect{ 50*fx, 5*fy, 100, 100 }, nullptr, 0.0);
+		else if (img)
+			img->draw(pJuego->getRender(), SDL_Rect{ 50*fx, 5*fy, 125, 125 }, nullptr, 0.0);
 
 		receta(botones[activo]->getNombre());
 		
 		if (!pJuego->getBaul()->findItem(botones[activo]->getNombre())){
 
 			Texto.loadTexto(pJuego->getRender(), "0");
-			Texto.draw(pJuego->getRender(), 650, 50);
+			Texto.draw(pJuego->getRender(), 55*fx, fy*10);
 		}
 		else{
 			Texto.loadTexto(pJuego->getRender(), std::to_string(pJuego->getBaul()->getCantidad(botones[activo]->getNombre())));
-			Texto.draw(pJuego->getRender(), 650, 50);
+			Texto.draw(pJuego->getRender(), 55 * fx, fy * 10);
 		}
 	}
 	else{
-		Fondo = pJuego->getTextura("HudCraft", "idle");
 	}
 
 }
@@ -228,8 +228,8 @@ void Objetos2::receta(std::string obj){
 		
 	}
 	if (T1 != nullptr) {
-		T1->draw(pJuego->getRender(), SDL_Rect{ 650, 260, 100, 100 }, nullptr);
-		T2->draw(pJuego->getRender(), SDL_Rect{ 425, 260, 100, 100 }, nullptr);
+		T1->draw(pJuego->getRender(), SDL_Rect{ fx*50, fy*20, 100, 100 }, nullptr);
+		T2->draw(pJuego->getRender(), SDL_Rect{ fx*60, fy*20, 100, 100 }, nullptr);
 	}
 
 }
