@@ -60,6 +60,7 @@ void Sierra::update(){
 	//Cambiar a metodo animación
 	currentAnim->ActualizarFrame();
 	Enemigo::update();
+	
 }
 
 void Sierra::comportamiento(){
@@ -72,4 +73,23 @@ void Sierra::onColisionEnter(Objeto* contactObject, b2Body* b1, b2Body* b2){
 			b2->GetFixtureList()->GetFilterData().categoryBits == Juego::ESCENARIO_NOCOL)
 			col = true;
 	}
+}
+
+
+void Sierra::activate(){
+	destruido = false;
+
+}
+
+
+void Sierra::deactivate(){
+	destruido = true;
+
+}
+
+
+void Sierra::setPos(float x, float y){
+	pos.x = x / PPM;
+	pos.y = y / PPM;
+
 }

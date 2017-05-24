@@ -40,6 +40,6 @@
 </data>
  </layer>
  <objectgroup name="Enemigos">
-  <object id="2" name="Jefe2" type="enemigo" x="1408" y="1296" width="256" height="224"/>
+  <object id="2" name="gnomo" type="enemigo" x="1408" y="1296" width="256" height="224"/>
  </objectgroup>
 </map>

@@ -3,9 +3,10 @@
 #include "LTimer.h"
 #include "Sierra.h"
 #include "BalaHacha.h"
+#include "Room.h"
 
-enum Estados{ IDLE, MOVIMIENTO , ATAQUE1, ATAQUE2 , ATAQUE3};
-enum  Fases{ FASE1 , FASE2};// Fase 1: hace el Ataque1 y el Ataque2. Fase2: hace los tres ataques.
+enum States{ IDLE, MOVIMIENTO , ATAQUE1, ATAQUE2 , ATAQUE3};
+enum  Phase{ FASE1 , FASE2};// Fase 1: hace el Ataque1 y el Ataque2. Fase2: hace los tres ataques.
 class Gnomo :
 	public Enemigo
 {
@@ -28,16 +29,26 @@ public:
 	void eliminaSierra();
 
 
-	Estados estado;
-	Fases fase;
+	States estado;
+	Phase fase;
 	bool empezado = false;
 	LTimer tiempo;
 	int contador;
 
 	vector<Objeto*> sierras;
 
+	Sierra* s1;
+	Sierra* s2;
+	Sierra* s3;
+
+	Room* r = static_cast<ZonaJuego*>(pJuego->getZona())->getRoomActual();
 
 	float jugx;
 	float jugy;
+
+	int conts = 3;
+	int contr = 3;
+
+	vector<Objeto*>aux;
 };
 

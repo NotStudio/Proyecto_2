@@ -46,6 +46,10 @@ private:
 	void checkAliveEnemies(int);
 
 public:
+	vector<Objeto*> getEnemigos(){
+		return enemigos;
+	};
+
 	int getNumPuertas() {
 		return Puertas.size();
 	}

@@ -1,6 +1,7 @@
 #include "Gnomo.h"
 
 
+
 Gnomo::Gnomo(Juego* punteroJuego, int x, int y) : Enemigo(punteroJuego, { x, y, 96, 96}, "gnomo", 1000)
 {
 
@@ -13,14 +14,27 @@ Gnomo::Gnomo(Juego* punteroJuego, int x, int y) : Enemigo(punteroJuego, { x, y, 
 
 	stats.daño = 10;
 	stats.vida = 300;
-	stats.velMov = 80;
+	stats.velMov = 2;
 
 	/*for (unordered_map<string, Juego::Animacion*>::iterator i = animaciones.begin(); i != animaciones.end(); i++)
 	{
 		animaciones[i->first]->setNumFrames(30);
 	}
 	currentAnim = animaciones.at("idlo");*/
-	body->SetType(b2_staticBody);
+	body->SetType(b2_dynamicBody);
+
+	s1 = new Sierra(pJuego, 0, 0, 0);
+	s2 = new Sierra(pJuego, 0, 0, 0);
+	s3 = new Sierra(pJuego, 0, 0, 0);
+	s1->deactivate();
+	s2->deactivate();
+	s3->deactivate();
+
+	r->nuevoEnemigo(s1);
+	r->nuevoEnemigo(s2);
+	r->nuevoEnemigo(s3);
+
+	aux = r->getEnemigos();
 }
 
 
@@ -34,19 +48,19 @@ void Gnomo::comportamiento() {
 	if (!destruido) {
 		switch (estado)
 		{
-		case Estados::IDLE:
+		case IDLE:
 			Idle();
 			break;
-		case Estados::MOVIMIENTO:
+		case MOVIMIENTO:
 			Movimiento();
 			break;
-		case Estados::ATAQUE1:
+		case ATAQUE1:
 			Ataque1();
 			break;
-		case Estados::ATAQUE2:
+		case ATAQUE2:
 			Ataque2();
 			break;
-		case Estados::ATAQUE3:
+		case ATAQUE3:
 			Ataque3();
 			break;
 		
@@ -68,35 +82,48 @@ void Gnomo::onColisionEnter(Objeto* contactObject, b2Body* b1, b2Body* b2) {
 }
 
 
-
 uint32 changeStateCB(Uint32 intervalo, void * param){
 	static_cast<Gnomo*>(param)->changeState();
 	return 0;
 }
 
+void Gnomo::Idle(){
+
+	if (!empezado){
+		empezado = true;
+
+		stop();
+		SDL_AddTimer(2000u, changeStateCB, this);
+	}
+}
+
+
+
+
 
 void Gnomo::changeState(){
 
 	empezado = false;
-	Estados viejo = estado;
-	if (estado == Estados::IDLE) {
-
+	States viejo = estado;
+	if (estado == IDLE) {
+		estado = ATAQUE1;
 		int rdm = rand() % 2;
 		if (rdm == 0) estado = ATAQUE1;
 		if (rdm == 1)
 		{
-			if (fase == FASE1)
+			/*if (fase == FASE1)
 				estado = ATAQUE2;
 			else if (fase == FASE2) {
 				rdm = rand() % 2;
 				if (rdm == 0) estado = ATAQUE2;
 				if (rdm == 1) estado = ATAQUE3;
-			}
+			}*/
+			std::cout << "sdsd";
 		}
 
 	}
-	else estado = IDLE;
-	if (estado != viejo) {
+	//else estado = IDLE;
+	/*if (estado != viejo) {
 		currentAnim->restart();
 		switch (estado)
 		{
@@ -121,23 +148,14 @@ void Gnomo::changeState(){
 		}
 
 
-	}
+	}*/
 }
 
-void Gnomo::Idle(){
-
-	if (!empezado){
-		empezado = true;
-
-
-		SDL_AddTimer(2000u, changeStateCB, this);
-		//timers
-		//El timer que se activa mas tarde es el changestate
-	}
-}
 
 void Gnomo::Movimiento(){
+
 	if (distancia()){
+
 		jugx = static_cast<Entidad*>(pJuego->getPlayer())->getX();
 		jugy = static_cast<Entidad*>(pJuego->getPlayer())->getY();
 
@@ -160,23 +178,14 @@ void Gnomo::Movimiento(){
 			estadoEntidad.mirando = Este;
 		body->SetLinearVelocity(velFloat);
 		currentAnim->ActualizarFrame();
+
 	}
-	else {
+	else
+	{
 		stop();
 	}
-}
-
-void Gnomo::Ataque1() {// Invocar sierras
-
-	if (sierras.size() >= 2) {
-		eliminaSierra();
-	}
-
-	auto it = sierras.emplace(sierras.begin(), new Sierra(pJuego, getX(), getY(), 0));
-
-	SDL_AddTimer(10000u, quitarSierraCB, this);// No se si estará bien aqui.
-
-
+	
+	
 }
 
 uint32 quitarSierraCB(Uint32 intervalo, void * param) {
@@ -184,20 +193,50 @@ uint32 quitarSierraCB(Uint32 intervalo, void * param) {
 	return 0;
 }
 
-void Gnomo::eliminaSierra() {
 
-	dynamic_cast<Enemigo*>(sierras[sierras.size() - 1])->muerte();
-	sierras.pop_back();
+void Gnomo::Ataque1() {// Invocar sierras
+	
+	
+	
+	static_cast<Sierra*>(aux[aux.size() - conts])->activate();
+	conts--;
+	if (conts == 0){
+		conts = 3;
+	}
+
+	SDL_AddTimer(1000, quitarSierraCB, this);
+
+
+	/*if (sierras.size() >= 2) {
+		eliminaSierra();
+	}
+	*/
+	
+	//auto it = sierras.emplace(sierras.begin(), new Sierra(pJuego, getX(), getY(), 0));
+
+//	SDL_AddTimer(1000, quitarSierraCB, this);// No se si estará bien aqui.
+
+
 }
 
 
+void Gnomo::eliminaSierra() {
 
+
+	static_cast<Sierra*>(aux[aux.size() - contr])->deactivate();
+	contr--;
+	if (contr == 0)
+		contr = 3;
+	
+
+
+}
 void Gnomo::Ataque2(){
-
+	//llama a disparo
 }
 
 void Gnomo::disparo(string tipo, SDL_Rect posicion, float dirx, float diry, float velocidad){
-	dynamic_cast<ZonaAccion*>(pJuego->getZona())->getNivel()->nuevaBala(new BalaHacha(pJuego, posicion, tipo, velocidad, dirx, diry, stats.daño));
+	//dynamic_cast<ZonaAccion*>(pJuego->getZona())->getNivel()->nuevaBala(new BalaHacha(pJuego, posicion, tipo, velocidad, dirx, diry, stats.daño));
 }
 
 void Gnomo::Ataque3(){
