@@ -5,10 +5,10 @@
 Opciones::Opciones(Juego * juego) :MenuJuego(juego)
 {
 	Fondo = juego->getTextura("MenuInicio", "idle");
-	botones.emplace_back(new BotonFuturista(juego, 400, 175, playBase, "Volver", "Comeback to the fucking game"));
-	botones.emplace_back(new BotonFuturista(juego, 400, 275, sube, "Subir Volumen", "Sube el volumen locaso"));
-	botones.emplace_back(new BotonFuturista(juego, 400, 375, baja, "Bajar Volumen", "Baja el volumen locaso"));
-	botones.emplace_back(new BotonFuturista(juego, 400, 475, salir, "Salir", "Get out of my fucking game"));
+	insertarBoton(Boton::ILUMINADO, 32, 20, playBase, "Volver", "kek");
+	insertarBoton(Boton::ILUMINADO, 32, 26, sube, "Subir Volumen", "kek");
+	insertarBoton(Boton::ILUMINADO, 32, 32, baja, "Bajar Volumen", "kek");
+	insertarBoton(Boton::ILUMINADO, 32, 38, salir, "Salir", "kek");
 }
 
 

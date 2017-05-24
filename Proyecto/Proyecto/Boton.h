@@ -8,6 +8,10 @@
 class Boton : public Objeto
 {
 public:
+	enum ButtonType
+	{
+		ILUMINADO,MECANICO,FUTURISTA
+	};
 	
 	typedef void CallBack_t(Juego* jg);
 	Boton(Juego* juego, string ID, int x, int y, CallBack_t * cbCons, string texto, string descripcion = "No hay descripcion");

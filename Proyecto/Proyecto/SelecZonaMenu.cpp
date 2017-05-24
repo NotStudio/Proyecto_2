@@ -4,17 +4,16 @@
 
 SelecZonaMenu::SelecZonaMenu(Juego* pJuego): MenuJuego(pJuego)
 {
+	Fondo = pJuego->getTextura("SelecMapaFondo", "idle");
 	pJuego->reproducirEfecto("Multiusos");
 	static_cast<ZonaAccion*>(pJuego->getZona())->getNivel()->stop();
 	static_cast<Jugable*>(pJuego->getPlayer())->stop();
 
 
-	botones.emplace_back(new BotonMecanico(pJuego, 450, 100, goZona1, "Bosque"));
-	botones.emplace_back(new BotonMecanico(pJuego,300, 250, goZona2, "Desguace"));
-	botones.emplace_back(new BotonMecanico(pJuego,100, 330, goZona3, "Zona3"));
-	Fondo = pJuego->getTextura("SelecMapaFondo", "idle");
-
-	botones.emplace_back(new BotonFuturista(pJuego, 100, 530, salir, "Salir"));
+	insertarBoton(Boton::MECANICO, 55, 10, goZona1, "Bosque");
+	insertarBoton(Boton::MECANICO, 30, 25, goZona2, "Desguace");
+	insertarBoton(Boton::MECANICO, 20, 40, goZona3, "Zona3");
+	insertarBoton(Boton::FUTURISTA, 10, 55, salir, "Salir", "kek");
 }
 
 

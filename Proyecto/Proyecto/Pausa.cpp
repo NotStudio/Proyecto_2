@@ -12,10 +12,9 @@ Pausa::Pausa(Juego * juego) : MenuJuego(juego)//, pR(nullptr)
 	static_cast<ZonaAccion*>(pJuego->getZona())->getNivel()->stop();
 	static_cast<Jugable*>(pJuego->getPlayer())->stop();
 
-
-	botones.emplace_back(new BotonIluminado(pJuego, 300, 250, resume, "Continuar","Continua jugando"));
-	botones.emplace_back(new BotonIluminado(pJuego, 300, 350, opciones, "Opciones", "Pues opciones y tal"));
-	botones.emplace_back(new BotonIluminado(pJuego, 300, 450, returnMenu, "Salir", "Vuelve al menu"));
+	insertarBoton(Boton::FUTURISTA, 32, 20, resume, "Continuar", "kek");
+	insertarBoton(Boton::FUTURISTA, 32, 26, opciones, "Opciones", "kek");
+	insertarBoton(Boton::FUTURISTA, 32, 32, returnMenu, "Vuelve al menu", "kek");
 
 	//Para añadir los botones
 }

@@ -6,9 +6,9 @@ ZonaBosque::ZonaBosque(Juego* punteroJuego) :ZonaAccion(punteroJuego)
 	pJuego->cambiarMusica("are");
 	id = "zon1";
 
-	setHabitaciones(5,3);	
-	initRooms();
+	setHabitaciones(20,5);	
 	setNivelActual();
+	initRooms();
 	
 	//pJuego->getCamera()->setLimite({ pJuego->getCameraRect().x, pJuego->getCameraRect().y, pJuego->getCameraRect().w + 500, pJuego->getCameraRect().h + 500 });
 

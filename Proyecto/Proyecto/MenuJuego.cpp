@@ -2,6 +2,9 @@
 
 MenuJuego::MenuJuego(Juego* juego):EstadoPG(juego)
 {
+	fx = pJuego->getWindow().ancho / 64;
+	fy = pJuego->getWindow().alto / 64;
+
 	MenuState_ = STARTING;
 	kek.LoadFuente(pJuego->getTipografia("ethnocen"));
 	ayuda.LoadFuente(pJuego->getTipografia("a"));
@@ -26,8 +29,11 @@ void MenuJuego::update() {
 
 }
 void MenuJuego::draw() {
-	if(Fondo!=nullptr)
-		Fondo->draw(pJuego->getRender(), { 0,0,pJuego->window.ancho,pJuego->window.alto }, nullptr);
+	if (Fondo != nullptr) {
+		float fl = pJuego->getWindow().alto/Fondo->getAlto();
+		SDL_Rect tamFondo = { (pJuego->getWindow().ancho - Fondo->getAncho()*fl)/2,0,Fondo->getAncho()*fl ,pJuego->getWindow().alto };
+		Fondo->draw(pJuego->getRender(), tamFondo, nullptr);
+	}
 	
 	for (int i = 0; i < botones.size(); i++)
 	{
@@ -105,6 +111,25 @@ void MenuJuego::handleEvent(const SDL_Event & event)
 		}
 		break;
 		
+	default:
+		break;
+	}
+}
+
+void MenuJuego::insertarBoton(Boton::ButtonType type, Uint8 factorX, Uint8 factorY, Boton::CallBack_t * accion, string nombre, string descripcion)
+{
+	switch (type)
+	{
+	case Boton::ILUMINADO:
+		botones.push_back(new BotonIluminado(pJuego, factorX*fx, fy*factorY, accion, nombre, descripcion));
+		break;
+	case Boton::MECANICO:
+		botones.push_back(new BotonMecanico(pJuego, factorX*fx, fy*factorY, accion, nombre, descripcion));
+
+		break;
+	case Boton::FUTURISTA:
+		botones.push_back(new BotonFuturista(pJuego, factorX*fx, fy*factorY, accion, nombre, descripcion));
+		break;
 	default:
 		break;
 	}

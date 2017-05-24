@@ -10,10 +10,10 @@ Crafteo::Crafteo(Juego* pJuego) : MenuJuego(pJuego)
 {
 	pJuego->reproducirEfecto("Multiusos");
 	Fondo = pJuego->getTextura("SelecCrafteoFondo", "idle");
-	botones.emplace_back(new BotonIluminado(pJuego, 50, 100, grado1, "Baul", "Todos los objetos que en en baul"));
-	botones.emplace_back(new BotonIluminado(pJuego, 50, 250, grado2, "Objetos Clave", "Objetos para craftear objetos clave"));
-	botones.emplace_back(new BotonIluminado(pJuego, 50, 330, grado3, "Objetos importantes", "Objetos para Desbloquear otras zonas"));
-	botones.emplace_back(new BotonIluminado(pJuego, 400, 300, salir, "Salir", "Vuelve a la base"));
+	insertarBoton(Boton::ILUMINADO, 10, 10, grado1, "Baul", "caja de objetos");
+	insertarBoton(Boton::ILUMINADO, 10, 20, grado2, "Crafteo 2", "craftea entre 2 objetos");
+	insertarBoton(Boton::ILUMINADO, 10, 30, grado3, "Crafteo 3", "craftea entre 3 objetos");
+	insertarBoton(Boton::ILUMINADO, 10, 40, salir, "Salir", "volver a base");
 }
 
 
