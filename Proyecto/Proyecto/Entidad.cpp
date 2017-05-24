@@ -44,6 +44,7 @@ void Entidad::update(){
 	//Asignar sprite a body para que se dibuje.
 	pos = body->GetPosition();
 	sprite->x = (int)round(pos.x * PPM); sprite->y = (int)round(pos.y * PPM);
+	
 
 	
 

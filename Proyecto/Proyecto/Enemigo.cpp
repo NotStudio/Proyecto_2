@@ -45,14 +45,27 @@ void Enemigo::onColisionEnter(Objeto* contactObject, b2Body* b1, b2Body* b2) {
 }
 
 void Enemigo::update(){
+	
 	if (!destruido){
 		Entidad::update();
 		comportamiento();
 	}
-	else if(isDead_){
-		desactivar();
+
+	else {
+		if (noDeadAnim){
+			desactivar();
+			return;
+
+		}
+		if (isDead_){
+			//Entidad::update();
+
+			nextFrame();
+			if (currentAnim->animacionAcabada()){
+				desactivar();
+			}
+		}
 	}
-	
 }
 
 void Enemigo::desactivar(){
@@ -71,6 +84,13 @@ void Enemigo::muerte(){
 	destruido = true;
 	isDead_ = true;
 	needDrop = true;
+	try{
+		currentAnim = animaciones.at("dead");
+	}
+	catch (...)// Esto es que pilla todas las expeciones
+	{
+		noDeadAnim = true;
+	}
 }
 bool Enemigo::distancia() {
 	float distancia = (pos - static_cast<Entidad*>(pJuego->getPlayer())->getBody()->GetPosition()).Length() * PPM;
@@ -82,7 +102,7 @@ void Enemigo::stop() {
 }
 
 void Enemigo::draw(){
-	if (!destruido){
+	if (!destruido || isDead_){
 		Entidad::draw();
 	}
 }

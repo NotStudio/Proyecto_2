@@ -11,9 +11,13 @@ protected:
 
 	bool needDrop;
 	bool isDead_;
+	bool noDeadAnim = false;
 	bool isKillable;
 	virtual void muerte();
 	virtual void comportamiento() {};
+	void nextFrame(){
+		currentAnim->ActualizarFrame();
+	}
 public:
 	Enemigo(Juego* punteroJuego, SDL_Rect spritePar, string objectId, int distancia);
 	~Enemigo();

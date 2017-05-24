@@ -172,7 +172,7 @@ public:
 			rect.x = frameActual*rect.w;
 		}
 		bool animacionAcabada() {
-			return frameActual >= numFrames-1;
+			return frameActual >= numFrames - 1;
 		}
 		bool primerFrame() {
 			return frameActual <= 0;
