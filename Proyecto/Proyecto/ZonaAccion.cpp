@@ -89,6 +89,8 @@ void ZonaAccion::BuildRoom(RoomType RoomType_, size_t Planta)
 	case ZonaJuego::Fin:
 		MapData_ = pJuego->getFinRoom();
 		break;
+	case ZonaJuego::Tutorial:
+		MapData_ = pJuego->getTutorialRoom();
 	default:
 		break;
 	}

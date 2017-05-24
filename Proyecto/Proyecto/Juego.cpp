@@ -14,6 +14,7 @@
 #include "HUDinventory.h"
 #include "MenuFinDeZona.h"
 #include "Inanimado.h"
+#include "ZonaTutorial.h"
 //Constructora que inicializa todos los atributos de la clase Juego
 
 
@@ -64,6 +65,7 @@ Juego::Juego(b2World* mundo) : error(false), gameOver(false), exit(false), score
 	//inicializamos los punteros a nullptr porque el estado play es el que hace new.
 	Camera = nullptr;
 	personaje = nullptr;
+	
 	zona = nullptr;
 	nave = nullptr;
 	progresoNave = 0;
@@ -276,8 +278,10 @@ void Juego::initHabitaciones(){
 					HabitacionesBoss.at(id) = new TMXReader::MapData(file);
 				}
 			}
-			else if (type == "Tutorial")
-				HabitacionTutorial = new TMXReader::MapData(file);
+			else if (type == "Tutorial") {
+				if(HabitacionTutorial == nullptr)
+					HabitacionTutorial = new TMXReader::MapData(file);
+			}
 		
 		}
 		else {
@@ -632,6 +636,9 @@ void Juego::setZona(std::string zonaNombre) {
 		zona = new ZonaBosque(this);
 	else if (zonaNombre == "ZonaBase"){
 		zona = new ZonaBase(this);
+	}
+	else if (zonaNombre == "ZonaTutorial") {
+		zona = new ZonaTutorial(this);
 	}
 	
 }

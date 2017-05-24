@@ -50,6 +50,12 @@ Objeto * creaInanimado(Juego * pj, string id, int x, int y, int w, int h,float e
 	else if (id == "nave" || id == "Nave"){
 		return new NaveJuego(pj, x, y, w, h);
 	}
+	else if (id == "TriggerDisparo") {
+		return new TriggerDisparo(pj, x, y, w, h);
+	}
+	else if (id == "TriggerBase") {
+		return new TriggerBase(pj, x, y, w, h);
+	}
 	else
 	{
 		throw exception("NO EXISTE DICHO OBJETO \n");
