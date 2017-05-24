@@ -20,18 +20,21 @@ HUD::HUD(Juego* punteroJuego, SDL_Rect spritePar, string objectId, string object
 
 	medAncho = (ancho + 0.0) / 64;
 	medAlto = (alto + 0.0) / 32;
-
-	statVelMov = new HUDText(pjuego, 5.5*medAncho, medAlto * 24, "hudfont");
-	statDanyo = new HUDText(pjuego, 5.5*medAncho, medAlto * 27, "hudfont");
-	statVelAtaq = new HUDText(pjuego, 5.5*medAncho, medAlto * 30,  "hudfont");
+	SDL_Color color = { 1.0, 1.0, 1.0 };
+	statVelMov = new HUDText(pjuego, 5.5*medAncho, medAlto * 19, "hudfont");
+	statVelMov->setColor(color);
+	statDanyo = new HUDText(pjuego, 5.5*medAncho, medAlto * 22, "hudfont");
+	statDanyo->setColor(color);
+	statVelAtaq = new HUDText(pjuego, 5.5*medAncho, medAlto * 25,  "hudfont");
+	statVelAtaq->setColor(color);
 	
 
 
-	marcoStats = new HUDImage(pjuego, 0, medAlto * 22, 11 * medAncho, alto, "marco");
+	//marcoStats = new HUDImage(pjuego, 0, medAlto * 22, 11 * medAncho, alto, "marco");
 
-	velMov = new  HUDImage(pjuego, 0.5 * medAncho, medAlto*23, medAncho*4.5, medAlto * 25, "velmov");
-	ataque = new HUDImage(pjuego, 0.5*medAncho, medAlto *26, 4.5* medAncho, medAlto * 28, "ataque");
-	velAtaq = new HUDImage(pjuego, 0.5*medAncho, medAlto *29, 4.5* medAncho, medAlto * 31, "velataq");
+	velMov = new  HUDImage(pjuego, 0.5 * medAncho, medAlto*19, medAncho*4.5, medAlto * 21, "velmov");
+	ataque = new HUDImage(pjuego, 0.5*medAncho, medAlto *22, 4.5* medAncho, medAlto * 25, "ataque");
+	velAtaq = new HUDImage(pjuego, 0.5*medAncho, medAlto *25, 4.5* medAncho, medAlto * 28, "velataq");
 	vida = new HUDImage(pjuego, "vida");
 
 
@@ -52,14 +55,14 @@ HUD::~HUD()
 	delete cables;
 	delete vida;
 	delete fondoVida;
-	delete marcoStats;
+	//delete marcoStats;
 	pjuego = nullptr;
 }
 
 void HUD::draw(){
 	updateHUD();
 	cables->draw();
-	marcoStats->draw();
+	//marcoStats->draw();
 	statVelMov->draw();
 	statDanyo->draw();
 	statVelAtaq->draw();

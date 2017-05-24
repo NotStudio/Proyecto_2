@@ -64,12 +64,14 @@ struct Fuente
 	Fuente() { fuente = nullptr; }
 	void loadFuente(string const & dir, int const  tam = 25) {
 		fuente = TTF_OpenFont(dir.c_str(), tam);
+		fuente2 = TTF_OpenFont(dir.c_str(), tam);
 		if (fuente == nullptr) {
 			cout << "No se ha cargado la fuente \n";
 		}
 		else {
 			fichero = dir;
 			tamFuente = tam;
+			TTF_SetFontOutline(fuente2, 1);
 		}
 	}
 	~Fuente() {
@@ -77,6 +79,7 @@ struct Fuente
 		fuente = nullptr;
 	}
 	TTF_Font * fuente;
+	TTF_Font * fuente2;
 	int tamFuente;
 	string fichero;
 };
@@ -90,7 +93,9 @@ public:
 	//funcion para meter un texto en la textura
 	void loadTexto(SDL_Renderer * pRender ,string const txto,SDL_Color const  color = {0,0,0}) {
 		liberar();
+		SDL_Color const  color2 = { 1.0, 1.0, 1.0 };
 		SDL_Surface* surfaceText = TTF_RenderText_Blended(font->fuente, txto.c_str(), color);
+		SDL_Surface* surfaceText2 = TTF_RenderText_Blended(font->fuente2, txto.c_str(), color2);
 		if (surfaceText == nullptr)
 		{
 			printf("Unable to render text surface! SDL_ttf Error: %s\n", TTF_GetError());
@@ -103,7 +108,7 @@ public:
 				printf("Unable to create texture from rendered text! SDL Error: %s\n", SDL_GetError());
 			}
 			else {
-				rct = surfaceText->clip_rect;
+				rct = surfaceText2->clip_rect;
 				tamTextura.ancho = rct.w;
 				tamTextura.alto = rct.h;
 			}
