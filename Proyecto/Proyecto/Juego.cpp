@@ -382,10 +382,10 @@ bool Juego::initSDL() {
 		if (Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048) < 0)
 			cout << "kek";
 		//Create window: SDL_CreateWindow("SDL Hello World", posX, posY, width, height, SDL_WINDOW_SHOWN);
-		pWindow = SDL_CreateWindow("NOT A STUDIO", 0, 0,100, 100, SDL_WINDOW_ALWAYS_ON_TOP);
+		pWindow = SDL_CreateWindow("NOT A STUDIO", 0, 0,100, 100, SDL_WINDOW_SHOWN);
 		SDL_SetWindowBordered(pWindow, SDL_FALSE);
 		SDL_MaximizeWindow(pWindow);
-		SDL_SetWindowFullscreen(pWindow, SDL_WINDOW_FULLSCREEN);
+		//SDL_SetWindowFullscreen(pWindow, SDL_WINDOW_FULLSCREEN);
 		if (pWindow == nullptr) {
 			cout << "Window could not be created! \nSDL_Error: " << SDL_GetError() << '\n';	
 			success = false;

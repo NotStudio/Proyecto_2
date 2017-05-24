@@ -22,7 +22,7 @@ Objetos1::Objetos1(Juego* pJuego) : MenuJuego(pJuego)
 			cantidad.emplace_back(it->second);
 		}
 	}
-	insertarBoton(Boton::ILUMINADO,60 , 60, salir, "salir");
+	insertarBoton(Boton::ILUMINADO,60 , 60, salir, "Salir");
 	if (cantidad.size() > 0) {
 		cantidad.emplace_back(cantidad[cantidad.size() - 1]);
 		imgObj = pJuego->getTextura(botones[activo]->getNombre(), "idle");

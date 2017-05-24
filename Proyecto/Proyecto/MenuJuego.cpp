@@ -30,9 +30,7 @@ void MenuJuego::update() {
 }
 void MenuJuego::draw() {
 	if (Fondo != nullptr) {
-		float fl = pJuego->getWindow().alto/Fondo->getAlto();
-		SDL_Rect tamFondo = { (pJuego->getWindow().ancho - Fondo->getAncho()*fl)/2,0,Fondo->getAncho()*fl ,pJuego->getWindow().alto };
-		Fondo->draw(pJuego->getRender(), tamFondo, nullptr);
+		Fondo->draw(pJuego->getRender(),{0,0, pJuego->window.ancho, pJuego->window.alto}, nullptr);
 	}
 	
 	for (int i = 0; i < botones.size(); i++)
