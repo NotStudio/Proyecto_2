@@ -84,7 +84,7 @@ Juego::Juego(b2World* mundo) : error(false), gameOver(false), exit(false), score
 	zona = nullptr;
 	nave = nullptr;
 	progresoNave = 0;
-	
+
 	//Cargar baul de un metodo leyendo de texto o de donde se guarde
 								/*AQUI CARGA BAUL*/
 	inventario = new Inventory(3, getTipografia("Acme____", 30), getRender());
