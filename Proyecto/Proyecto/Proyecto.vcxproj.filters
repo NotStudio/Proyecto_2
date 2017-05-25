@@ -266,10 +266,10 @@
     <ClCompile Include="Historia.cpp">
       <Filter>Source Files\Estados\Menus</Filter>
     </ClCompile>
-    <ClCompile Include="Boton.cpp">
+	<ClCompile Include="ZonaTutorial.cpp">
+      <Filter>Source Files</Filter>	</ClCompile>	<ClCompile Include="Boton.cpp">
       <Filter>Source Files\Objetos\Botones</Filter>
-    </ClCompile>
-  </ItemGroup>
+    </ClCompile>  </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Juego.h">
       <Filter>Header Files</Filter>
@@ -507,6 +507,9 @@
     </ClInclude>
     <ClInclude Include="MarcoHistorico.h">
       <Filter>Header Files\Estados\Menus</Filter>
+    </ClInclude>
+    <ClInclude Include="ZonaTutorial.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -81,6 +81,7 @@
     <ClCompile Include="ZonaBosque.cpp" />
     <ClCompile Include="ZonaDesguace.cpp" />
     <ClCompile Include="ZonaJuego.cpp" />
+    <ClCompile Include="ZonaTutorial.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Box2D\include\Box2D\Common\b2Settings.h" />
@@ -160,6 +161,7 @@
     <ClInclude Include="ZonaBosque.h" />
     <ClInclude Include="ZonaDesguace.h" />
     <ClInclude Include="ZonaJuego.h" />
+    <ClInclude Include="ZonaTutorial.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{9AEFB5D6-5EFA-4A01-9D4F-1F8F42527E24}</ProjectGuid>

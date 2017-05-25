@@ -33,7 +33,7 @@
  </layer>
  <objectgroup name="Enemigos">
   <object id="14" name="Sierra" type="enemigo" x="128" y="388" width="120" height="120"/>
-  <object id="15" name="Sierra" type="enemigo" x="1800" y="1540" width="120" height="120"/>
+  <object id="15" name="Sierra" type="enemigo" x="1800" y="1458" width="120" height="120"/>
   <object id="16" name="helice" type="enemigo" x="900" y="900" width="116" height="116"/>
  </objectgroup>
 </map>

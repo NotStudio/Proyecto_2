@@ -219,4 +219,39 @@ public:
 	}
 };
 //==============================================================================================
+//TriggerDisparo
+class  TriggerDisparo : public Inanimado
+{
+public:
+	TriggerDisparo(Juego * Pj, int x, int y, int w, int h) :Inanimado(Pj, SDL_Rect{ x, y, w, h }, "Trigger") {
+		fDef.filter.categoryBits = Juego::ESCENARIO;
+		fDef.filter.maskBits = Juego::JUGADOR;
+		fDef.isSensor = true;
+		body->CreateFixture(&fDef);
+	};
+	~TriggerDisparo() {};
+
+	virtual void onColisionEnter(Objeto* o, b2Body* b1, b2Body* b2) {
+		static_cast<Jugable*>(pJuego->getPlayer())->cambiaEstado(Jugable::JUGANDO);
+	}
+};
+
+//================================================================================================
+//TriggerBase
+class  TriggerBase : public Inanimado
+{
+public:
+	TriggerBase(Juego * Pj, int x, int y, int w, int h) :Inanimado(Pj, SDL_Rect{ x, y, w, h }, "Trigger") {
+		fDef.filter.categoryBits = Juego::ESCENARIO;
+		fDef.filter.maskBits = Juego::JUGADOR;
+		fDef.isSensor = true;
+		body->CreateFixture(&fDef);
+	};
+	~TriggerBase() {};
+
+	virtual void onColisionEnter(Objeto* o, b2Body* b1, b2Body* b2) {
+		pJuego->setFinZona();
+	}
+};
+
 #endif // INANIMADO_H_
