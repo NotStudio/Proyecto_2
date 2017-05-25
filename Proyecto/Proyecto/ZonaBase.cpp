@@ -8,7 +8,7 @@ ZonaBase::ZonaBase(Juego* punteroJuego):ZonaJuego(punteroJuego)
 	id = "base";
 	baseNivel = new Room(pJuego, this, pJuego->getBaseRoom(), {0,0});
 	nivelActual = baseNivel;
-	pJuego->getCamera()->setLimite(nivelActual->getArea());
+	pJuego->getCamera()->setLimite(*nivelActual->getArea());
 	static_cast<Jugable*>(pJuego->getPlayer())->cambiaEstado(Jugable::BASE);
 	
 	static_cast<Jugable*>(pJuego->getPlayer())->setPos(200,50);
@@ -24,7 +24,7 @@ ZonaBase::~ZonaBase()
 
  SDL_Rect ZonaBase::getNivelActual() {
 
-	 return nivelActual->getArea();
+	 return *nivelActual->getArea();
 };
  
  void ZonaBase::draw() {

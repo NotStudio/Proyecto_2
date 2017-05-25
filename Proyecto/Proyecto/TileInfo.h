@@ -2,6 +2,7 @@
 #define TILEINFO_H_
 
 const int TILE_WIDTH = 64, TILE_HEIGHT = 64;
+const float32 TILE_WIDTH_F = 64.0F, TILE_HEIGHT_F = 64.0F;
 const int TOTAL_TILES = 36;
 enum TiposTile
 {

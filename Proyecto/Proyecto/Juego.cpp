@@ -544,7 +544,7 @@ void Juego::run() {
 		
 		}
 		
-		draw();
+			draw();
 	}
 	if (exit) cout << "EXIT \n";
 	else if (gameOver) {

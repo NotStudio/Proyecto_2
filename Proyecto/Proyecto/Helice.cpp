@@ -20,7 +20,7 @@ Helice::Helice(Juego* punteroJuego, int x, int y) : Enemigo(punteroJuego, {x,y,6
 	rng = rand() % 2;
 	fDef.filter.categoryBits = Juego::ENEMIGO;
 	fDef.filter.maskBits = Juego::JUGADOR | Juego::AT_JUGADOR;
-	fDef.shape = shape; fDef.density = 5.0f; fDef.friction = 0;
+	fDef.shape = shape; fDef.density = 5.0f; fDef.friction = 1.0f;
 	body->CreateFixture(&fDef);
 	
 }

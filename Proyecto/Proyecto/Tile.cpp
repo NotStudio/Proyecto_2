@@ -10,26 +10,26 @@ Tile::Tile(int x, int y, int tileType, b2World * wardo)
 	mBox = new SDL_Rect{ x,y,TILE_WIDTH,TILE_HEIGHT };
 	mType = tileType;
 	if (mType > S12) {
+		float32 fx = x, fy=y;
 		b2FixtureDef mShapeDef;
 		b2PolygonShape mShape;
 		b2BodyDef mBodyDef;
 		mBodyDef = b2BodyDef();
-		mBodyDef.position.Set((float32)mBox->x / PPM, (float32)mBox->y / PPM);
+		mBodyDef.position.Set((float32)fx / PPM, (float32)fy / PPM);
 		mBodyDef.type = b2_staticBody;
 		mBodyDef.active = true;
 		mBody = wardo->CreateBody(&mBodyDef);
 		mShapeDef = b2FixtureDef();
 		mShape = b2PolygonShape();
 		b2Vec2 Puntos[4];
-		Puntos[0] = b2Vec2(0, 0);
-		Puntos[1] = b2Vec2(0, TILE_HEIGHT / PPM);
-		Puntos[2] = b2Vec2(TILE_WIDTH / PPM, TILE_HEIGHT / PPM);
-		Puntos[3] = b2Vec2(TILE_WIDTH / PPM, 0);
+		Puntos[0] = b2Vec2(0.0F, 0.0F);
+		Puntos[1] = b2Vec2(0.0F, TILE_HEIGHT_F / PPM);
+		Puntos[2] = b2Vec2(TILE_WIDTH_F / PPM, TILE_HEIGHT_F / PPM);
+		Puntos[3] = b2Vec2(TILE_WIDTH_F / PPM, 0.0F);
 		mShape.Set(Puntos, 4);
 		mShapeDef.shape = &mShape;
 		mShapeDef.filter.categoryBits = Juego::ESCENARIO;
 		mShapeDef.filter.maskBits = -1;
-	
 		mBody->CreateFixture(&mShapeDef);
 		mBody->SetUserData(this);
 	}
