@@ -5,10 +5,10 @@
 Opciones::Opciones(Juego * juego) :MenuJuego(juego)
 {
 	Fondo = juego->getTextura("MenuInicio", "idle");
-	insertarBoton(Boton::ILUMINADO, 32, 20, playBase, "Volver", "kek");
-	insertarBoton(Boton::ILUMINADO, 32, 26, sube, "Subir Volumen", "kek");
-	insertarBoton(Boton::ILUMINADO, 32, 32, baja, "Bajar Volumen", "kek");
-	insertarBoton(Boton::ILUMINADO, 32, 38, salir, "Salir", "kek");
+	insertarBoton(Boton::FUTURISTA, 37, 20, playBase, "Volver", "kek");
+	insertarBoton(Boton::FUTURISTA, 37, 26, sube, "Subir Volumen", "kek");
+	insertarBoton(Boton::FUTURISTA, 37, 32, baja, "Bajar Volumen", "kek");
+	insertarBoton(Boton::FUTURISTA, 37, 38, salir, "Salir", "kek");
 }
 
 
