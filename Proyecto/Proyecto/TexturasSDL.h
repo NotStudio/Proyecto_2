@@ -95,7 +95,6 @@ public:
 		liberar();
 		SDL_Color const  color2 = { 1.0, 1.0, 1.0 };
 		SDL_Surface* surfaceText = TTF_RenderText_Blended(font->fuente, txto.c_str(), color);
-		SDL_Surface* surfaceText2 = TTF_RenderText_Blended(font->fuente2, txto.c_str(), color2);
 		if (surfaceText == nullptr)
 		{
 			printf("Unable to render text surface! SDL_ttf Error: %s\n", TTF_GetError());

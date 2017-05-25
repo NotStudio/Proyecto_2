@@ -33,7 +33,7 @@ void ZonaAccion::draw(){
 
 	for (size_t i = 0; i < niveles->size(); i++)
 	{
-		SDL_Rect aux = niveles->at(i)->getArea();
+		SDL_Rect aux = *niveles->at(i)->getArea();
 		aux.x /= 64; aux.y /= 64; aux.h /= 64; aux.w /= 64; aux.x += 100; aux.y += 100;
 		SDL_RenderDrawRect(pJuego->getRender(), &aux);
 	}
@@ -50,7 +50,7 @@ bool ZonaAccion::CheckSolapaRooms(const SDL_Rect & R)
 	bool flag = true;
 	for (size_t i = 0; i < niveles->size()&&flag; i++)
 	{
-		if (SDL_HasIntersection(&R, &niveles->at(i)->getArea()))
+		if (SDL_HasIntersection(&R, niveles->at(i)->getArea()))
 			flag = false;
 	}
 	return flag;
@@ -129,7 +129,7 @@ SDL_Point ZonaAccion::getPosiblePositionRoom( TMXReader::MapData * Data_,Direcci
 }
 vector<pair<SDL_Point, Direcciones>> ZonaAccion::getPosicionesLados(Room * Room_, SDL_Rect&Rect_)
 {
-	SDL_Rect aux_ = Room_->getArea();
+	SDL_Rect aux_ = *Room_->getArea();
 	vector<pair<SDL_Point, Direcciones>> Points;
 	Points.reserve(4);
 	Rect_.x = aux_.x + (aux_.w - Rect_.w) / 2;
@@ -153,7 +153,7 @@ vector<pair<SDL_Point, Direcciones>> ZonaAccion::getPosicionesLados(Room * Room_
 void ZonaAccion::setHabitaciones(int NumeroHabitaciones, int NumeroDescansos)
 {
 	BuildIniRoom();
-	static_cast<Jugable*>(pJuego->getPlayer())->setPos(niveles->at(0)->getArea().w/2, niveles->at(0)->getArea().h/2);
+	static_cast<Jugable*>(pJuego->getPlayer())->setPos(niveles->at(0)->getArea()->w/2, niveles->at(0)->getArea()->h/2);
 	RoomType lastType = Ini;
 	int descansos = 1;
 	for (size_t i = 0; i <NumeroHabitaciones; i++)
@@ -195,8 +195,8 @@ void ZonaAccion::setNivelActual(){
 		anterior = niveles->at(0);
 	}
 	SDL_Point pj;
-	pj.x = static_cast<Entidad*>(pJuego->getPlayer())->getX();
-	pj.y = static_cast<Entidad*>(pJuego->getPlayer())->getY();
+	pj.x = pJuego->getPlayer()->getRect()->x;
+	pj.y = pJuego->getPlayer()->getRect()->y;
 	int i = 0;
 	bool stop = false;
 	for (size_t i = 0; i < niveles->size(); i++)
@@ -205,13 +205,11 @@ void ZonaAccion::setNivelActual(){
 			nivelActual = niveles->at(i);
 		else niveles->at(i)->stop();
 	}
-	try
-	{
-		pJuego->getCamera()->setLimite(nivelActual->getArea());
+	if (nivelActual->getArea()!=nullptr) {
+		
 	}
-	catch (const std::exception&)
-	{
-		pJuego->getCamera()->setLimite(niveles->front()->getArea());
+	else {
+		
 	}
 
 }

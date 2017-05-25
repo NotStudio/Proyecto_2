@@ -10,6 +10,7 @@ Jugable::Jugable(Juego* punteroJuego, SDL_Rect spritePar, string objectId) :Pers
 	//Capa de colision.
 	fDef.filter.categoryBits = Juego::JUGADOR;
 	fDef.filter.maskBits = Juego::ENEMIGO | Juego::ITEM | Juego::ESCENARIO | Juego::ESCENARIO_NOCOL | Juego::AT_ENEMIGO;
+	fDef.friction = 0.0F;
 	body->CreateFixture(&fDef);
 	
 	state = BASE;

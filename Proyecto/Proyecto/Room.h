@@ -69,8 +69,8 @@ public:
 		return !(area->x >= box.x + box.w || area->x + area->w <= box.x || area->y >= box.y + box.h || area->y + area->h <= box.y);
 	}
 	//para saber las puertas donde estan
-	SDL_Rect getArea() {
-		return *area;
+	SDL_Rect * getArea() {
+		return area;
 	}
 	//Para reanudar tras el pause.
 	void resume();

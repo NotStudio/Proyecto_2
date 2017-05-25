@@ -27,7 +27,7 @@ void ZonaJuego::draw() {
 
 SDL_Rect ZonaJuego::getNivelActual() {
 
-	return nivelActual->getArea();
+	return *nivelActual->getArea();
 }
 
 void ZonaJuego::update() {
