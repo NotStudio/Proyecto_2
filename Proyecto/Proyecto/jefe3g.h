@@ -1,54 +1,50 @@
 #pragma once
 #include "Enemigo.h"
-#include "LTimer.h"
-#include "Sierra.h"
 #include "BalaHacha.h"
+#include "Bala.h"
 #include "Room.h"
+#include "Sierra.h"
 
-enum States{ IDLE, MOVIMIENTO , ATAQUE1, ATAQUE2 , ATAQUE3};
-enum  Phase{ FASE1 , FASE2};// Fase 1: hace el Ataque1 y el Ataque2. Fase2: hace los tres ataques.
-class Gnomo :
-	public Enemigo
+
+enum States{ IDLE, MOVIMIENTO, ATAQUE1, ATAQUE2, ATAQUE3 };
+enum  Phases{ FASE1, FASE2 };// Fase 1: hace el Ataque1 y el Ataque2. Fase2: hace los tres ataques.
+
+class jefe3g : public Enemigo
 {
 public:
-	Gnomo(Juego* punteroJuego, int x, int y);
-	virtual ~Gnomo();
+	jefe3g(Juego* punteroJuego, int x, int y);
+	~jefe3g();
 
-	
+
 	virtual void comportamiento();// como si fuese el update
 	virtual void onColisionEnter(Objeto* contactObject, b2Body* b1, b2Body* b2);
 
-	void Idle();// Espera cierto tiempo
+	void estar();
 	void Movimiento();// Te persigue como los "imanes" pero más lento.
 	void Ataque1();// Invoca sierras.
 	void Ataque2();// Lanza un proyectil que rebota ciertas veces.
 	void Ataque3();// Carga hacia un lado con la motosierra extendida.
 
 	void changeState();
-	void disparo(string tipo, SDL_Rect posicion, float dirx, float diry, float velocidad);
 	void eliminaSierra();
+	void disparo();
 
 
 	States estado;
-	Phase fase;
+	States viejo;
+	Phases fase;
 	bool empezado = false;
-	LTimer tiempo;
 	int contador;
-
-	vector<Objeto*> sierras;
-
-	Sierra* s1;
-	Sierra* s2;
-	Sierra* s3;
-
-	Room* r = static_cast<ZonaJuego*>(pJuego->getZona())->getRoomActual();
 
 	float jugx;
 	float jugy;
 
 	int conts = 3;
 	int contr = 3;
+	int ewwe = 0;
+	//////////////////////////////////////////////////////
 
-	vector<Objeto*>aux;
+	vector<Objeto*> sierras;
+	int t = 0;
 };
 

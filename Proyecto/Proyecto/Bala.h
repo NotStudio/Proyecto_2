@@ -25,5 +25,6 @@ public:
 		stopBala = true;
 	}
 	void resume();
+
 };
 #endif

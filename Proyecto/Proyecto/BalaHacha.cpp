@@ -1,7 +1,7 @@
 #include "BalaHacha.h"
 
 
-BalaHacha::BalaHacha(Juego *pJuego, SDL_Rect spritePar, float dirx, float diry) :Bala(pJuego, spritePar, "BalaA", 1.0f, dirx, diry, 1)
+BalaHacha::BalaHacha(Juego *pJuego, SDL_Rect spritePar, float dirx, float diry) : BalaEnemiga(pJuego, spritePar, "BalaN", 10.0f, dirx, diry, 5)
 {
 	dirx_ = dirx;
 	diry_ = diry;
@@ -13,7 +13,7 @@ BalaHacha::~BalaHacha()
 }
 
 void BalaHacha::update(){
-	Entidad::update();
+	Bala::update();
 }
 
 void BalaHacha::onColisionEnter(Objeto* contactObject, b2Body* b1, b2Body* b2){
@@ -23,15 +23,22 @@ void BalaHacha::onColisionEnter(Objeto* contactObject, b2Body* b1, b2Body* b2){
 	}
 
 	else{
-		if (b2->GetFixtureList()->GetFilterData().maskBits == Juego::JUGADOR)
+		if (b2->GetFixtureList()->GetFilterData().categoryBits == Juego::JUGADOR)
 			destruido = true;
 
-		else{
-			int rnd = rand() % 2;
-			if (rnd == 0)
-				dirx_ = -dirx_;
-			if (rnd == 1)
-				diry_ = -diry_;
+		else if (b2->GetFixtureList()->GetFilterData().categoryBits == Juego::ESCENARIO 
+			|| b2->GetFixtureList()->GetFilterData().categoryBits == Juego::ESCENARIO_NOCOL){//mirar porque no cambia de dirreccion
+		
+			/******************
+			*
+			*
+			*
+			*
+			hacer aqui que cambie la direccion y darsela
+			*
+			*
+			*
+			********************/
 			rebotes++;
 		}
 	}

@@ -1,6 +1,7 @@
 #pragma once
-#include "Bala.h"
-class BalaHacha : Bala
+#include "BalaEnemiga.h"
+
+class BalaHacha : public BalaEnemiga
 {
 public:
 	BalaHacha(Juego *pJuego, SDL_Rect spritePar, float dirx, float diry);
@@ -11,7 +12,7 @@ public:
 private:
 	int rebotes = 3;
 	int cont = 0;
-	float dirx_;
-	float diry_;
+	float dirx_ = 0;
+	float diry_ = 0;
 };
 
