@@ -127,9 +127,16 @@ void Jefe2Bouncer::move() {
 	body->SetLinearVelocity(vel);
 }
 
-void Jefe2Bouncer::desactivar() {
+
+void Jefe2Bouncer::muerte() {
+	Enemigo::muerte();
+}
+
+void Jefe2Bouncer::desactivar()
+{
 	Enemigo::desactivar();
 	spawnSons();
+
 }
 
 void Jefe2Bouncer::spawnSons() {

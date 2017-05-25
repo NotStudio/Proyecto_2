@@ -72,13 +72,16 @@ void BotonMecanico::update()
 BotonFuturista::BotonFuturista(Juego * juego, int x, int y, CallBack_t * cbCons, string Nombre, string descripcion):Boton(juego, "Button1", { x, y , 159,58 }, cbCons, Nombre, descripcion)
 {
 	Anim->setNumFrames(10);
+	
 }
 
 void BotonFuturista::update()
 {
+
 	if (BState_) {
-		if(!Anim->animacionAcabada())
+		if (!Anim->animacionAcabada()) {
 			Anim->ActualizarFrame();
+		}
 	}
 	else {
 		if (!Anim->primerFrame())

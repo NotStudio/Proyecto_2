@@ -6,6 +6,7 @@ vector<string> roomtype = { "Ini","Normal","Boss","Base"};
 
 ZonaAccion::ZonaAccion(Juego* punteroJuego): ZonaJuego(punteroJuego)
 {
+	pJuego->reproducirMusicaBatalla();
 	//Inicializamos el array de habitaciones
 	niveles = new vector<Room*>;
 	niveles->reserve(25);

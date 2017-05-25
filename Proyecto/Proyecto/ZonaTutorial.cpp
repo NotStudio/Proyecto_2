@@ -6,7 +6,6 @@
 
 ZonaTutorial::ZonaTutorial(Juego* punteroJuego) :ZonaAccion(punteroJuego), timerTexto_(255)
 {
-	pJuego->cambiarMusica("are");
 	id = "zon1";
 
 	

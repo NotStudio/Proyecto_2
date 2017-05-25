@@ -70,7 +70,14 @@ public:
 	}
 	//para saber las puertas donde estan
 	SDL_Rect * getArea() {
-		return area;
+		try
+		{
+			return area;
+		}
+		catch (...)
+		{
+			return nullptr;
+		}
 	}
 	//Para reanudar tras el pause.
 	void resume();

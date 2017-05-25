@@ -19,7 +19,7 @@ TrampaElectrica::TrampaElectrica(Juego* punteroJuego, int x, int y) : Enemigo(pu
 	fDef.isSensor = true;
 	body->CreateFixture(&fDef);
 	isKillable = false;
-	stats.velAtq = 2;
+	stats.velAtq = 3;
 	stats.daño = 5;
 	cadencia = stats.velAtq * 1000;
 	

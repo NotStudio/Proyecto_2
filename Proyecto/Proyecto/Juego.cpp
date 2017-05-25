@@ -21,6 +21,8 @@
 #include "ZonaDesguace.h"
 #include "ZonaBosque.h"
 #include "ZonaBase.h"
+#include <SDL_thread.h>
+bool load = false;
 
 void operator+=(vector<string>& e,vector<string> o){
 	for (size_t i = 0; i < o.size(); i++)
@@ -28,9 +30,19 @@ void operator+=(vector<string>& e,vector<string> o){
 		e.push_back(o[i]);
 	}
 }
+int threadFunction(void* data) { //Print incoming data
+	system("start loading.exe");
+	while (!load)
+	{
+
+	}
+	system("taskkill /IM loading.exe >nul");
+	return 0; 
+}
 // Constructora que inicializa todos los atributos de la clase Juego
 Juego::Juego(b2World* mundo) : error(false), gameOver(false), exit(false), score(0), world(mundo)
 {
+	int data = 9;
 	window.alto = 720; //Tamaño de la ventana.
 	window.ancho = 1080;
 	fondoRect.x = 0; //Posición y tamaño de la ventana.
@@ -42,6 +54,8 @@ Juego::Juego(b2World* mundo) : error(false), gameOver(false), exit(false), score
 		error = true;
 		std::cout << "Ha ocurrido un error con SDL";
 	}
+	SDL_Thread* threadID = SDL_CreateThread(threadFunction, "LazyThread", nullptr);
+	
 	
 	//Esto es el wall de mexico los estados hundidos
 
@@ -78,6 +92,7 @@ Juego::Juego(b2World* mundo) : error(false), gameOver(false), exit(false), score
 
 	Mix_Volume(-1,volumen);
 	Mix_VolumeMusic(volumen);
+	load = true;
 	pushState(new MenuPG(this));
 	//cambiarMusica("summer");
 	run();
@@ -216,6 +231,10 @@ void Juego::initMedia() {
 			Musica.at(id) = Mix_LoadMUS(UbicacionSonidos[i].c_str());
 			if (!Musica.at(id))
 				printf("SDL_mixer could not initialize! SDL_mixer Error: %s\n", Mix_GetError());
+			else {
+				if(!id.find("Battle")) 
+					MusicaBatalla.push_back(Musica.at(id));
+			}
 		}
 	}
 };

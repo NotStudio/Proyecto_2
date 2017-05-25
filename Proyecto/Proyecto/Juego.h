@@ -90,6 +90,8 @@ class Juego
 	unordered_map<string, unordered_map<string, TexturasSDL*>> mapTexturas;
 	unordered_map<string, unordered_map<int, Fuente*>> fuentes;
 	unordered_map<string, Mix_Music*> Musica;
+	vector< Mix_Music*> MusicaBatalla;
+	
 	unordered_map<string, Mix_Chunk*> Efectos;
 	
 	unordered_map<string, TMXReader::MapData*> Habitaciones;
@@ -241,6 +243,11 @@ public:
 			printf("No se ha encontrado la cancion, Cancion por Defecto\n");
 			return Musica.at(Musica.begin()->first);
 		}
+	}
+	void reproducirMusicaBatalla() {
+		srand(SDL_GetTicks());
+		MusicaActual = MusicaBatalla[rand() % MusicaBatalla.size()];
+		Mix_PlayMusic(MusicaActual, -1);
 	}
 	Mix_Chunk* cargarEfecto(string id) {
 		try

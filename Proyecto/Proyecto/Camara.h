@@ -26,7 +26,7 @@ public:
 	//para sacudir la camara
 	//primer parametro, el numero de ms
 	//segundo parametro, la intensidad
-	void sacudirCamara(Uint32 ms, Uint16 intensidad = 4);
+	void sacudirCamara(Uint32 ms=100, Uint16 intensidad = 4);
 	// parar de mover la camara
 	void restaurarCamara() {
 		CameraState_ = NORMAL;

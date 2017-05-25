@@ -5,6 +5,7 @@
 
 ZonaBase::ZonaBase(Juego* punteroJuego):ZonaJuego(punteroJuego)
 {
+	pJuego->cambiarMusica("base");
 	id = "base";
 	baseNivel = new Room(pJuego, this, pJuego->getBaseRoom(), {0,0});
 	nivelActual = baseNivel;

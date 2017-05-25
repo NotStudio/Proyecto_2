@@ -122,7 +122,7 @@ void EnemigoBomba::crecer(){
 
 
 void EnemigoBomba::muerte(){
-	pJuego->reproducirEfecto("Boom");
+	Mix_PlayChannel(-1, pJuego->cargarEfecto("Boom"), 0);
 	Enemigo::muerte();
 }
 
