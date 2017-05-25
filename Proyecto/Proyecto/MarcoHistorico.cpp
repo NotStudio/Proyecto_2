@@ -7,13 +7,13 @@ MarcoHistorico::MarcoHistorico(Juego* pJuego) : MenuJuego(pJuego)
 	memorias = pJuego->getMemoria();
 	int contX = 0;
 	int contY = 1;
-	botones.emplace_back(new BotonIluminado(pJuego, 420, 150, salir, "Salir", "Vuelve a historia"));
-
+	insertarBoton(Boton::ILUMINADO, 55, 63, salir, "Salir", "Vuelve a historia");
+	
 	for (map<string, bool>::iterator it = memorias.begin(); it != memorias.end(); it++)
 	{
 		if (it->second){
-			botones.emplace_back(new BotonIluminado(pJuego, contX * 170 + 20, contY * 50, salir, it->first));
-			contY++;
+			insertarBoton(Boton::ILUMINADO, 17, 11 + contY, salir, it->first, "kek");
+			contY += 4;
 			if (contY == 6) {
 				contY = 1;
 				contX++;
@@ -39,7 +39,7 @@ void MarcoHistorico::draw(){
 	MenuJuego::draw();
 	if (botones[activo]->getNombre() != "Salir") {
 		imgObj = pJuego->getTextura(botones[activo]->getNombre(), "idle");
-		//imgObj->draw(pJuego->getRender(), SDL_Rect{ 530, 50, 125, 125 }, nullptr);
+		imgObj->draw(pJuego->getRender(), SDL_Rect{ pJuego->getWindow().ancho / 2 + 100, pJuego->getWindow().alto / 2 - 200, 500, 600 }, nullptr);
 	}
 }
 

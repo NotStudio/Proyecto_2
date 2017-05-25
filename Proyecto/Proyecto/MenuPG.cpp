@@ -6,9 +6,9 @@
 MenuPG::MenuPG(Juego * juego) :MenuJuego(juego)
 {
 	Fondo = juego->getTextura("MenuInicio", "idle");
-	insertarBoton(Boton::FUTURISTA, 32, 20, playBase, "Jugar", "kek");
-	insertarBoton(Boton::FUTURISTA, 32, 26, opciones, "Opciones", "kek");
-	insertarBoton(Boton::FUTURISTA, 32, 32, salir, "Salir", "kek");
+	insertarBoton(Boton::FUTURISTA, 37, 20, playBase, "Jugar", "kek");
+	insertarBoton(Boton::FUTURISTA, 37, 31, opciones, "Opciones", "kek");
+	insertarBoton(Boton::FUTURISTA, 37, 41, salir, "Salir", "kek");
 	
 }
 

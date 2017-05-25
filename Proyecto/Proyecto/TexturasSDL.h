@@ -108,7 +108,7 @@ public:
 				printf("Unable to create texture from rendered text! SDL Error: %s\n", SDL_GetError());
 			}
 			else {
-				rct = surfaceText2->clip_rect;
+				rct = surfaceText->clip_rect;
 				tamTextura.ancho = rct.w;
 				tamTextura.alto = rct.h;
 			}

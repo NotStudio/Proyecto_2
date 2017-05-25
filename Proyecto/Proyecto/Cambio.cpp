@@ -14,14 +14,15 @@ Cambio::Cambio(Juego * juego,vector<Objeto*>& Personajes) : MenuJuego(juego)//, 
 	Fondo = pJuego->getTextura("SelecPersonajeFondo", "idle");
 
 	for (auto p : Personajes){
-		botones.emplace_back(new BotonIluminado(pJuego, 30 + 50 * contY, 300, resume, static_cast<Jugable*>(p)->getId()));
-		contY += 5;
+		insertarBoton(Boton::ILUMINADO, 21 + contY, 33, resume, static_cast<Jugable*>(p)->getId(), "kek");
+		contY += 15 ;
 	}
 	f = 0;
 	activo = 0;
 	img = pJuego->getTextura(botones[activo]->getNombre(), "idle");
 
-	botones.push_back(new BotonIluminado(pJuego, 300, 500, resume, "Salir"));
+	insertarBoton(Boton::ILUMINADO, 30, 56, resume, "Salir", "kek");
+	
 	
 	//Para añadir los botones
 
@@ -34,7 +35,8 @@ Cambio::~Cambio()
 }
 void Cambio::draw(){
 	MenuJuego::draw();
-	SDL_Rect rect = { 315, 100, 150, 150 };
+	
+	SDL_Rect rect = { pJuego->getWindow().ancho / 2 - 100, pJuego->getWindow().alto / 5, 150, 150 };
 	
 	SDL_Rect frame = { 0, 0, img->getAncho() / 30 , img->getAlto() };
 	img->draw(pJuego->getRender(), rect, &frame);
