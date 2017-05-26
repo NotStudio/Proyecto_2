@@ -90,7 +90,5 @@ void Sierra::deactivate(){
 
 void Sierra::setPos(float x, float y){
 	//spamear en la posicio del boss
-	pos.x = 0;
-	pos.y = 1;
-
+	body->SetTransform(b2Vec2{ x, y}, 0);
 }
