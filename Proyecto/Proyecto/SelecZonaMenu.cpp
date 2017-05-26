@@ -13,7 +13,7 @@ SelecZonaMenu::SelecZonaMenu(Juego* pJuego): MenuJuego(pJuego)
 	insertarBoton(Boton::MECANICO, 15, 10, goZona1, "Bosque");
 	insertarBoton(Boton::MECANICO, 28, 25, goZona2, "Desguace");
 	insertarBoton(Boton::MECANICO, 9, 40, goZona3, "Zona3");
-	insertarBoton(Boton::ILUMINADO, 55, 63, salir, "Salir", "kek");
+	insertarBoton(Boton::MECANICO, 55, 63, salir, "Salir", "kek");
 }
 
 

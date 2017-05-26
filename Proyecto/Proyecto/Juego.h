@@ -133,7 +133,7 @@ public:
 	 void setNave(Objeto* o){
 		 nave = o;	 
 	 }
-	 void changeProgresoNave(string id);
+	 void changeProgresoNave();
 	 int getProgresoNave(){
 		return progresoNave;
 	 }

@@ -1,18 +1,18 @@
 #include "Objetos3.h"
 #include "checkML.h"
 
-
+bool Objetos3::moduloB = false;
+bool Objetos3::mecanismoB = false;
+bool Objetos3::fibraB = false;
+bool Objetos3::combustibleB = false;
 Objetos3::Objetos3(Juego* pJuego) : MenuJuego(pJuego)
 {
 	pJuego->reproducirEfecto("Multiusos");
 	Fondo = pJuego->getTextura("HudCraft3", "idle");
-	insertarBoton(Boton::ILUMINADO, 2, 5, mecanismo, "Mecanismo");
-	insertarBoton(Boton::ILUMINADO, 2, 10, combustible, "Combustible");
-	insertarBoton(Boton::ILUMINADO, 2, 15, fibraCarbono, "FibraCarbono");
-	insertarBoton(Boton::ILUMINADO, 2, 20, moduloComandos, "ModuloComandos");
-	insertarBoton(Boton::ILUMINADO, 2, 25, mensaje, "Eje");
-	insertarBoton(Boton::ILUMINADO, 2, 30, mensaje, "Pantalla");
-	//botones.emplace_back(new Boton(pJuego, "boton", 50, 200, mensaje, "ModuloComados"));
+	insertarBoton(Boton::ILUMINADO, 2, 10, mecanismo, "Mecanismo");
+	insertarBoton(Boton::ILUMINADO, 2, 15, combustible, "Combustible");
+	insertarBoton(Boton::ILUMINADO, 2, 20, fibraCarbono, "FibraCarbono");
+	insertarBoton(Boton::ILUMINADO, 2, 25, moduloComandos, "ModuloComandos");
 	insertarBoton(Boton::ILUMINADO, 2, 5, salir, "Salir");
 	img = pJuego->getTextura(botones[0]->getNombre(), "idle");
 
@@ -72,6 +72,10 @@ void Objetos3::combustible(Juego* pjuego){
 		pjuego->getBaul()->insertItem("Combustible", 1);
 		pjuego->getBaul()->removeItem("Petroleo", 1);
 		pjuego->getBaul()->removeItem("Refinador", 1);
+		if (!combustibleB){
+			pjuego->changeProgresoNave();
+			combustibleB = true;
+		}
 
 	}
 
@@ -88,6 +92,10 @@ void Objetos3::mecanismo(Juego* pjuego){
 		pjuego->getBaul()->removeItem("Engranajes", 1);
 		pjuego->getBaul()->removeItem("Eje", 1);
 		pjuego->getBaul()->removeItem("Fusible", 1);
+		if (!mecanismoB){
+			pjuego->changeProgresoNave();
+			mecanismoB = true;
+		}
 
 	}
 }
@@ -100,6 +108,10 @@ void Objetos3::fibraCarbono(Juego* pjuego){
 		pjuego->getBaul()->insertItem("FibraCarbono", 1);
 		pjuego->getBaul()->removeItem("Carbono", 1);
 		pjuego->getBaul()->removeItem("Madera", 1);
+		if (!fibraB){
+			pjuego->changeProgresoNave();
+			fibraB = true;
+		}
 
 	}
 }
@@ -113,12 +125,17 @@ void Objetos3::moduloComandos(Juego* pjuego){
 		pjuego->getBaul()->insertItem("ModuloComandos", 1);
 		pjuego->getBaul()->removeItem("Pantalla", 1);
 		pjuego->getBaul()->removeItem("Circuito", 2);
-
+		if (!moduloB){
+			pjuego->changeProgresoNave();
+			moduloB = true;
+		}
 	}
 
 }
 
 void Objetos3::mensaje(Juego* pjuego){
+
+
 }
 
 
@@ -139,7 +156,7 @@ void Objetos3::receta(std::string obj){
 	else if (obj == "FibraCarbono"){
 		T1 = pJuego->getTextura("Carbono", "idle");
 		T2 = pJuego->getTextura("Madera", "idle");
-		/*pJuego->getTextura("Madera", "idle")->draw(pJuego->getRender(), SDL_Rect{ 525, 260, 100, 100 }, nullptr, 0.0);*/
+		T3 = pJuego->getTextura("NucleoPlasma", "idle");
 	}
 
 	else if (obj == "ModuloComandos"){
@@ -148,9 +165,9 @@ void Objetos3::receta(std::string obj){
 		T3 = pJuego->getTextura("Circuito", "idle");
 	}
 	if (T1)
-		T1->draw(pJuego->getRender(), { fx * 50, fy * 20, 100, 100 });
+		T1->draw(pJuego->getRender(), { fx * 40, fy * 20, 100, 100 });
 	if (T2)
-		T2->draw(pJuego->getRender(), { fx * 55, fy * 20, 100, 100 });
+		T2->draw(pJuego->getRender(), { fx * 45, fy * 20, 100, 100 });
 	if (T3)
-		T3->draw(pJuego->getRender(), { fx * 60, fy * 20, 100, 100 });
+		T3->draw(pJuego->getRender(), { fx * 50, fy * 20, 100, 100 });
 }

@@ -127,9 +127,12 @@ Juego::~Juego()
 	
 	
 }
-void Juego::changeProgresoNave(string id){
+void Juego::changeProgresoNave(){
 	progresoNave++;
-	static_cast<NaveJuego*>(nave)->changeTexture(id);
+	if (progresoNave > 4)
+		progresoNave = 4;
+	string s = "NaveFase" + to_string(progresoNave);
+	static_cast<NaveJuego*>(nave)->changeTexture(s);
 }
 
 
