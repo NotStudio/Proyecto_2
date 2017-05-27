@@ -81,6 +81,7 @@
     <ClCompile Include="ZonaBosque.cpp" />
     <ClCompile Include="ZonaDesguace.cpp" />
     <ClCompile Include="ZonaJuego.cpp" />
+    <ClCompile Include="ZonaPinApple.cpp" />
     <ClCompile Include="ZonaTutorial.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -161,6 +162,7 @@
     <ClInclude Include="ZonaBosque.h" />
     <ClInclude Include="ZonaDesguace.h" />
     <ClInclude Include="ZonaJuego.h" />
+    <ClInclude Include="ZonaPinApple.h" />
     <ClInclude Include="ZonaTutorial.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

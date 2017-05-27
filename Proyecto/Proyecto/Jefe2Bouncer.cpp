@@ -1,5 +1,6 @@
 #include "Jefe2Bouncer.h"
 #include "BalaEnemiga.h"
+#include "ObjetoClave.h"
 
 
 
@@ -18,7 +19,7 @@ Jefe2Bouncer::Jefe2Bouncer(Juego* punteroJuego, int x, int y, int lvl):Enemigo(p
 	stats.vida = vidaPlus;
 	stats.daño = 10;
 	stats.velMov = 4 - velPlus;
-
+	tarjetaSpawned = false;
 	isKillable = true;
 	for (unordered_map<string, Juego::Animacion*>::iterator i = animaciones.begin(); i != animaciones.end(); i++)
 	{
@@ -121,6 +122,13 @@ void Jefe2Bouncer::onColisionEnter(Objeto * contactObject, b2Body * b1, b2Body *
 			bounce(b2);
 		}
 	}
+}
+
+void Jefe2Bouncer::dropItems()
+{
+	if (level == 1)
+		dynamic_cast<ZonaAccion*>(pJuego->getZona())->getNivel()->nuevoObjeto(new ObjetoClave(pJuego, { sprite->x,sprite->y,64,64 }));
+	
 }
 
 void Jefe2Bouncer::move() {

@@ -4,7 +4,7 @@
 ZonaDesguace::ZonaDesguace(Juego* punteroJuego) :ZonaAccion(punteroJuego)
 {
 	id = "zon2";
-	setHabitaciones(10,3);
+	setHabitaciones(1,1);
 	initRooms();
 	setNivelActual();
 }

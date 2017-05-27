@@ -10,9 +10,9 @@ SelecZonaMenu::SelecZonaMenu(Juego* pJuego): MenuJuego(pJuego)
 	static_cast<Jugable*>(pJuego->getPlayer())->stop();
 
 
-	insertarBoton(Boton::MECANICO, 15, 10, goZona1, "Bosque");
-	insertarBoton(Boton::MECANICO, 28, 25, goZona2, "Desguace");
-	insertarBoton(Boton::MECANICO, 9, 40, goZona3, "Zona3");
+	insertarBoton(Boton::MECANICO, 15, 10, goZona1, "The Natural Preserve");
+	insertarBoton(Boton::MECANICO, 28, 25, goZona2, "Several Motors");
+	insertarBoton(Boton::MECANICO, 9, 40, goZona3, "Hipsters Sanctuary");
 	insertarBoton(Boton::MECANICO, 55, 63, salir, "Salir", "kek");
 }
 
@@ -41,6 +41,9 @@ void SelecZonaMenu::goZona2(Juego* pJuego) {
 }
 
 void SelecZonaMenu::goZona3(Juego* pJuego) {
-	goZona1(pJuego);
+
+	pJuego->setZona("ZonaPinApple");
+	Play::setZona();
+	pJuego->popState();
 }
 

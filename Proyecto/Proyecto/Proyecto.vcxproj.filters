@@ -266,10 +266,16 @@
     <ClCompile Include="Historia.cpp">
       <Filter>Source Files\Estados\Menus</Filter>
     </ClCompile>
-	<ClCompile Include="ZonaTutorial.cpp">
-      <Filter>Source Files</Filter>	</ClCompile>	<ClCompile Include="Boton.cpp">
+    <ClCompile Include="ZonaTutorial.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Boton.cpp">
       <Filter>Source Files\Objetos\Botones</Filter>
-    </ClCompile>  </ItemGroup>
+    </ClCompile>
+    <ClCompile Include="ZonaPinApple.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Juego.h">
       <Filter>Header Files</Filter>
@@ -509,6 +515,9 @@
       <Filter>Header Files\Estados\Menus</Filter>
     </ClInclude>
     <ClInclude Include="ZonaTutorial.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="ZonaPinApple.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

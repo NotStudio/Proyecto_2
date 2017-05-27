@@ -118,6 +118,9 @@ class Juego
 	SDL_TimerID timerCambio;
 	Objeto* nave;
 	int progresoNave;
+
+	int tarjetasRecogidas;
+
 public:
 	Juego(b2World * mundo);
 	Juego();
@@ -474,6 +477,11 @@ public:
 
 	 void setMemoria(std::map<std::string, bool>mem_){
 		 mem = mem_;
+	 }
+
+	 inline void addTarjeta() {
+		 if (tarjetasRecogidas < 3)
+			 tarjetasRecogidas++;
 	 }
 };
 

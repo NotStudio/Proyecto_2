@@ -21,6 +21,7 @@
 #include "ZonaDesguace.h"
 #include "ZonaBosque.h"
 #include "ZonaBase.h"
+#include "ZonaPinApple.h"
 #include <SDL_thread.h>
 bool load = false;
 
@@ -43,6 +44,7 @@ int threadFunction(void* data) { //Print incoming data
 Juego::Juego(b2World* mundo) : error(false), gameOver(false), exit(false), score(0), world(mundo)
 {
 	int data = 9;
+	
 	window.alto = 720; //Tamaño de la ventana.
 	window.ancho = 1080;
 	fondoRect.x = 0; //Posición y tamaño de la ventana.
@@ -89,6 +91,8 @@ Juego::Juego(b2World* mundo) : error(false), gameOver(false), exit(false), score
 								/*AQUI CARGA BAUL*/
 	inventario = new Inventory(3, getTipografia("Acme____", 30), getRender());
 	baul = new Inventory(100, getTipografia("Acme____", 30), getRender());
+
+	tarjetasRecogidas = 0;
 
 	Mix_Volume(-1,volumen);
 	Mix_VolumeMusic(volumen);
@@ -669,6 +673,9 @@ void Juego::setZona(std::string zonaNombre) {
 		zona = new ZonaBosque(this);
 	else if (zonaNombre == "ZonaBase"){
 		zona = new ZonaBase(this);
+	}
+	else if (zonaNombre == "ZonaPinApple") {
+		zona = new ZonaPinApple(this);
 	}
 	else if (zonaNombre == "ZonaTutorial") {
 		zona = new ZonaTutorial(this);

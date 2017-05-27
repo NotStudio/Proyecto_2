@@ -12,6 +12,7 @@ public:
 	virtual void move();
 	virtual void comportamiento();
 	virtual void onColisionEnter(Objeto* contactObject, b2Body* b1, b2Body* b2);
+	virtual void dropItems();
 	void changeState();
 	void Idle();
 	void Ataque1();

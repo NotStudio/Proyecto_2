@@ -6,9 +6,10 @@ class ObjetoClave :
 	public Item
 {
 public:
-	ObjetoClave(Juego* punteroJuego, SDL_Rect spritePar, string objectId);
+	ObjetoClave(Juego* punteroJuego, SDL_Rect spritePar);
 	~ObjetoClave();
 	
+	virtual void onColisionEnter(Objeto* o, b2Body* b1, b2Body* b2);
 };
 
 #endif

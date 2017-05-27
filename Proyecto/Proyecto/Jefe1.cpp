@@ -3,6 +3,7 @@
 
 #include "BalaEnemiga.h"
 #include "BalaAmiga.h"
+#include "ObjetoClave.h"
 
 Jefe1::Jefe1(Juego* punteroJuego, int x, int y) : Enemigo(punteroJuego, { x, y, 192, 128}, "carstroller", 1000)// pone bomba pero está claro que no
 {
@@ -209,4 +210,8 @@ void Jefe1::disparaAceite(float dirx,float diry){
 	dynamic_cast<ZonaAccion*>(pJuego->getZona())->getNivel()->nuevaBala(new BalaAceite(pJuego, kek, dirx*20.0f, diry*20.0f));
 }
 
+void Jefe1::dropItems() {
 
+	dynamic_cast<ZonaAccion*>(pJuego->getZona())->getNivel()->nuevoObjeto(new ObjetoClave(pJuego, { sprite->x,sprite->y,64,64 }));
+
+}
