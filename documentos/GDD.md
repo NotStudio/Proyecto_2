@@ -98,11 +98,11 @@ Como se ha mencionado antes, los niveles son donde sucede la acción. Los niveles
 
 | Sprite                                             | Nombre           | Nota | HP | At | Ve | FA |
 | :-------------:                                    | :-------------   |:---|:---:|:---:|:---:|:---:|
-| imagen del personaje                             | Nombre | trivia informacion sobre el personaje | vida | ataque | velocidad | forma de ataque  |
+| imagen del personaje                             | Nombre | Tipo de Ataque | vida maxima | ataque | velocidad | vel.ataque  |
 
 ### Toasty
 
-| <img src="DocImg/imagenesGDD/toasty.png" width="100">   | Toasty           | Ataque a Distancia | ? | ? | ? | ? |
+| <img src="DocImg/imagenesGDD/toasty.png" width="100">   | Toasty           | Ataque a Distancia | 40 | 10 | 130 | 3 |
 | :-------------:                                    | :-------------   |:---|:---:|:---:|:---:|:---:|
 
 #### Forma de desbloqueo
@@ -111,10 +111,16 @@ Personaje principal de la historia es una tostadora.
 Ataca lanzando tostadas a distancia, que hacen daño por contacto con los enemigos.
 
 
-### Switchy
+### Switchy (fase 1)
 
-|<img src="dirección" width="100">| Switchy| Una PDA  | ? | ? | ? | ? |
-| :-------------: | :-------------   |:---|:---:|:---:|:---:|:---:|
+| <img src="DocImg/imagenesGDD/toasty.png" width="100">   | Toasty           | Ataque a Distancia | 40 | 7 | 130 | 3 |
+| :-------------:                                   | :-------------   |:---|:---:|:---:|:---:|:---:|
+
+### Switchy (fase 2)
+
+| <img src="DocImg/imagenesGDD/toasty.png" width="100">   | Toasty           | Ataque a Distancia | 70 | 15 | 90 | 3 |
+| :-------------:                                    | :-------------   |:---|:---:|:---:|:---:|:---:|
+
 
 #### Forma de desbloqueo
 ??
@@ -194,7 +200,7 @@ Para el desarrollo de la historia, se craftean o se consiguen matando a jefes.
 | <img src=" " width="50" height="50"> | Eje                 | Derrotando al 2Âº boss |
 | <img src=" " width="50" height="50"> | Â¿?                | Derrotando al 3er boss |
 
-#### Piezas de Nave
+### Piezas de Nave
 Objetos que nos permitiran terminar nuestra nave averiada y volver al espacio.
 | Sprite                               | Nombre                 |Obtención        |
 | :-------------:                      |:-------------          |:-------------   |
