@@ -5,7 +5,7 @@
 class Bala :
 	public Entidad
 {
-
+protected:
 	float32 _vel;
 	float32 _coefMov = 0.2;
 	int lanzador;

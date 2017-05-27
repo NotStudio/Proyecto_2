@@ -50,9 +50,9 @@ uint32 quitarSierraCB(Uint32 intervalo, void * param) {
 void jefe3g::changeState(){
 	empezado = false;
 	viejo = estado;
-	if (estado == IDLE || estado == MOVIMIENTO){
+	/*if (estado == IDLE || estado == MOVIMIENTO){
 		int rdm = rand() % 3;
-		if (rdm == 0 || rdm == 1) 
+		if (rdm == 0 || rdm == 1)
 			estado = MOVIMIENTO;
 		if (rdm == 2)
 		{
@@ -65,16 +65,16 @@ void jefe3g::changeState(){
 			}
 			if (fase == FASE2) {
 				rdm = rand() % 3;
-				if (rdm == 0) 
+				if (rdm == 0)
 					estado = ATAQUE1;
-				if (rdm == 1) 
+				if (rdm == 1)
 					estado = ATAQUE2;
 				if (rdm == 2)
 					estado = ATAQUE3;
 			}
-			
+
 		}
-	}
+	}*/ estado = ATAQUE2;
 }
 
 
