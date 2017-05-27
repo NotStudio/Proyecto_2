@@ -213,10 +213,8 @@ Objetos que nos permitiran terminar nuestra nave averiada y volver al espacio.
 | <img src="../Proyecto/Material/Enemies/FotoEnemigos/Sierraf_idle.png" width="50" height="50">     | Sierra          | Desguace | Debajo | HP | At | Ve | FA |
 | <img src="../Proyecto/Material/Enemies/FotoEnemigos/Tornillerof_idle.png" width="50" height="50">     | Lanza-Tornillos         | Desguace | Debajo | HP | At | Ve | FA |
 | <img src="../Proyecto/Material/Enemies/FotoEnemigos/Trampaf_idle.png" width="50" height="50">     | Trampa Eléctrica         | Desguace | Debajo | HP | At | Ve | FA |
-
-
 | <img src="../Proyecto/Material/Enemies/FotoEnemigos/Carstrollerf_idle.png" width="50" height="50">     | Carstroller (Boss)          | Desguace | Debajo | HP | At | Ve | FA |
-
+| <img src="../Proyecto/Material/Enemies/FotoEnemigos/Gnomof_idle.png" width="50" height="50">     | Gnomo (Boss)          | Desguace | Debajo | HP | At | Ve | FA |
 
 #### Carstroller
 Enemigo jefe que se mueve solamente en el eje X. Está ubicado en la pared norte del nivel.
@@ -225,7 +223,7 @@ Ataque:
 - 2ª Fase: alterna los mismos dos ataques, pero ahora tiene una pistola de aceite. Lanza chorros de aceite que si golpean al jugador, o pasa por el charco que ha creado el disparo, se ralentiza el movimiento del jugador.
 
 
-| <img src="../Proyecto/Material/Enemies/FotoEnemigos/Gnomof_idle.png" width="50" height="50">     | Gnomo (Boss)          | Desguace | Debajo | HP | At | Ve | FA |
+
 
 ## Referencias
 - The binding of Isaac.
