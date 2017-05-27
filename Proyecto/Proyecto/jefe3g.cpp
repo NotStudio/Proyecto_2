@@ -74,7 +74,7 @@ void jefe3g::changeState(){
 			}
 
 		}
-	}*/ estado = ATAQUE2;
+	}*/ estado = ATAQUE3;
 }
 
 
@@ -82,6 +82,8 @@ void jefe3g::changeState(){
 
 ////////////////////////////////
 void jefe3g::comportamiento(){
+
+	std::cout << pos.x << "    " << pos.y << "\n";
 
 	if (ewwe == 0)
 	{
@@ -218,7 +220,12 @@ void jefe3g::Ataque2(){
 
 
 void jefe3g::disparo(){
-	dynamic_cast<ZonaAccion*>(pJuego->getZona())->getNivel()->nuevaBala(new BalaHacha(pJuego, SDL_Rect{ getX(), getY() + 150, 24, 24 }, 1, 1));
+	jugx = static_cast<Entidad*>(pJuego->getPlayer())->getX();
+	jugy = static_cast<Entidad*>(pJuego->getPlayer())->getY();
+	b2Vec2 posJug = b2Vec2(jugx / PPM, jugy / PPM);
+	b2Vec2 vecDir = posJug - pos;
+
+	dynamic_cast<ZonaAccion*>(pJuego->getZona())->getNivel()->nuevaBala(new BalaHacha(pJuego, SDL_Rect{ getX(), getY() + 150, 24, 24 }, vecDir.x, vecDir.y));
 
 }
 
@@ -226,10 +233,10 @@ void jefe3g::disparo(){
 /////////////////////////////////////////////////////////////////////////////
 void jefe3g::Ataque3(){
 
-	b2Vec2 posDestino = b2Vec2(0, 0); ////realmente esquina de abajo
+	b2Vec2 posDestino = b2Vec2(5, -5); ////realmente esquina de abajo
 	b2Vec2 posFinal = b2Vec2(0, 0); ////hasta donde quieres que llegue
 
-	while (pos.x != posDestino.x && pos.y != posDestino.y){
+	if (pos.x != posDestino.x && pos.y != posDestino.y){
 
 		b2Vec2 velFloat;
 		velFloat.x = 0.0f;
@@ -249,9 +256,11 @@ void jefe3g::Ataque3(){
 			estadoEntidad.mirando = Este;
 		body->SetLinearVelocity(velFloat);
 		currentAnim->ActualizarFrame();
+		if (pos.x == 5 && pos.y == -5)
+			true;
 	}
-
-	while (pos.x != posFinal.x && pos.y != posFinal.y){
+	/*
+	if (pos.x != posFinal.x && pos.y != posFinal.y){
 
 		b2Vec2 velFloat;
 		velFloat.x = 0.0f;
@@ -273,5 +282,5 @@ void jefe3g::Ataque3(){
 	}
 
 	if (pos == posFinal)
-		estado = IDLE;
+		estado = IDLE;*/
 }
