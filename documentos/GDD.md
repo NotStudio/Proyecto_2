@@ -163,7 +163,7 @@ Estos sirven para craftear otros objetos. Los objetos resultantes pueden ser cla
 | <img src="../Proyecto/Material/ObjetosCrafteo/Madera_idle.png" width="50" height="50"> | Madera           | Crafteo           | the Natural Preserve |
 | <img src="../Proyecto/Material/ObjetosCrafteo/Tuercas_idle.png" width="50" height="50"> | Tuercas           | Crafteo           | the Natural Preserve |
 | <img src="../Proyecto/Material/ObjetosCrafteo/Carbon_idle.png" width="50" height="50"> | Carbón             | Crafteo           | the Natural Preserve |
-| <img src="../Proyecto/Material/ObjetosCrafteo/tanque_idle.png" width="50" height="50"> | Tanque            | Crafteo           | S.Motors Museum |
+| <img src="../Proyecto/Material/ObjetosCrafteo/Tanque_idle.png" width="50" height="50"> | Tanque            | Crafteo           | S.Motors Museum |
 | <img src="../Proyecto/Material/ObjetosCrafteo/Petroleo_idle.png" width="50" height="50"> | Petroleo         | Crafteo           | S. Motors Museum |
 | <img src="../Proyecto/Material/ObjetosCrafteo/Fusible_idle.png" width="50" height="50"> | Fusible           | Crafteo           | S. Motors Museum |
 | <img src="../Proyecto/Material/ObjetosCrafteo/Tuberias_idle.png" width="50" height="50"> | Tuberí­as         | Crafteo           | S. Motors Museum |
@@ -175,7 +175,6 @@ Estos sirven para craftear otros objetos. Los objetos resultantes pueden ser cla
 | <img src="../Proyecto/Material/ObjetosCrafteo/Engranaje_idle.png" width="50" height="50"> | Engranaje        | Crafteo           | Chatarra + Chatarra |
 | <img src="../Proyecto/Material/ObjetosCrafteo/Engranajes_idle.png" width="50" height="50"> | Engranajes       | Crafteo           | Engranaje + Engranaje |
 | <img src="../Proyecto/Material/ObjetosCrafteo/Circuito_idle.png" width="50" height="50"> | Circuito        | Crafteo           | Chip + Estaño |
-| <img src="Direccion" height="50" width="50">     | Pila de botón    | Canjeable por una partida con el Tamagochi | Chatarra + Litio|
 | <img src="../Proyecto/Material/ObjetosCrafteo/TanquePresion_idle.png" width="50" height="50"> | Tanque a Presión (TP) | Crafteo           | Fusible + Tanque |
 | <img src="../Proyecto/Material/ObjetosCrafteo/Refinador_idle.png" width="50" height="50"> | Refinador Express (RE)     | Crafteo           | TP + Tuberí­as |
 | <img src="../Proyecto/Material/ObjetosCrafteo/IonBattery_idle.png" width="50" height="50"> | Baterí­a de iones     | Crafteo           | Estaño + Litio |
@@ -187,7 +186,7 @@ Para el desarrollo de la historia, se craftean o se consiguen matando a jefes.
 
 | Sprite                               | Nombre                 |Obtención        |
 | :-------------:                      |:-------------          |:-------------   |
-| <img src=" " width="50" height="50"> | Mecanismo              | Engranajes + Eje + Fusible       |
+| <img src="../Proyecto/Material/ObjetosCrafteo/Mecanismo_idle.png " width="50" height="50"> | Mecanismo              | Engranajes + Eje + Fusible       |
 | <img src="" width="50" height="50">  | Circuitos Electronicos | Circuito + Baterí­a de iones + "lo que dropea el 3er boss"        |
 | <img src="" width="50" height="50">  | Combustible            | RE + Petróleo |
 | <img src=" " width="50" height="50"> | Fibra de carbono                 | Carbono + Tuberí­a |
@@ -208,19 +207,25 @@ Objetos que nos permitiran terminar nuestra nave averiada y volver al espacio.
 
 | Sprite                                             | Nombre           |localizaciones    | descripcion | HP | At | Ve | FA |
 | :-------------:                                    | :-------------   |:---|:---|:---:|:---:|:---:|:---:|
-| <img src="dirección" width="50" height="50">     | Scrapper (Boss)          | Desguace | Debajo | HP | At | Ve | FA |
-| <img src="dirección" width="50" height="50">     | Iman          | Desguace | Debajo | HP | At | Ve | FA |
-| <img src="dirección" width="50" height="50">     | Hélice          | Desguace | Debajo | HP | At | Ve | FA |
-| <img src="dirección" width="50" height="50">     | Boom-Ba          | Desguace | Debajo | HP | At | Ve | FA |
-| <img src="dirección" width="50" height="50">     | Sierra          | Desguace | Debajo | HP | At | Ve | FA |
-| <img src="dirección" width="50" height="50">     | Lanza-Tornillos         | Desguace | Debajo | HP | At | Ve | FA |
+| <img src="../Proyecto/Material/Enemies/FotoEnemigos/Imanf_idle.png" width="50" height="50">     | Roomba          | Desguace | Debajo | HP | At | Ve | FA |
+| <img src="../Proyecto/Material/Enemies/FotoEnemigos/OVf_idle.png" width="50" height="50">     | OV          | Desguace | Debajo | HP | At | Ve | FA |
+| <img src="../Proyecto/Material/Enemies/FotoEnemigos/Bombaf_idle.png" width="50" height="50">     | Boom-Ba          | Desguace | Debajo | HP | At | Ve | FA |
+| <img src="../Proyecto/Material/Enemies/FotoEnemigos/Sierraf_idle.png" width="50" height="50">     | Sierra          | Desguace | Debajo | HP | At | Ve | FA |
+| <img src="../Proyecto/Material/Enemies/FotoEnemigos/Tornillerof_idle.png" width="50" height="50">     | Lanza-Tornillos         | Desguace | Debajo | HP | At | Ve | FA |
+| <img src="../Proyecto/Material/Enemies/FotoEnemigos/Trampaf_idle.png" width="50" height="50">     | Trampa Eléctrica         | Desguace | Debajo | HP | At | Ve | FA |
 
 
-#### Scrapper
+| <img src="../Proyecto/Material/Enemies/FotoEnemigos/Carstrollerf_idle.png" width="50" height="50">     | Carstroller (Boss)          | Desguace | Debajo | HP | At | Ve | FA |
+
+
+#### Carstroller
 Enemigo jefe que se mueve solamente en el eje X. Está ubicado en la pared norte del nivel.
 Ataque:
-- 1Âª Fase: alterna dos ataques. Con el primero, lanza coches (proyectil mas grande de lo normal) que tiene apilados detrás suya con el gancho que tiene en la mano derecha; en el segundo, lanza ruedas en tres direcciones durante un breve periodo de tiempo.
-- 2Âª Fase: alterna los mismos dos ataques, pero ahora tiene una pistola de aceite. Lanza chorros de aceite que si golpean al jugador, o pasa por el charco que ha creado el disparo, se ralentiza el movimiento del jugador.
+- 1ª Fase: alterna dos ataques. Con el primero, lanza coches (proyectil mas grande de lo normal) que tiene apilados detrás suya con el gancho que tiene en la mano derecha; en el segundo, lanza ruedas en tres direcciones durante un breve periodo de tiempo.
+- 2ª Fase: alterna los mismos dos ataques, pero ahora tiene una pistola de aceite. Lanza chorros de aceite que si golpean al jugador, o pasa por el charco que ha creado el disparo, se ralentiza el movimiento del jugador.
+
+
+| <img src="../Proyecto/Material/Enemies/FotoEnemigos/Gnomof_idle.png" width="50" height="50">     | Gnomo (Boss)          | Desguace | Debajo | HP | At | Ve | FA |
 
 ## Referencias
 - The binding of Isaac.
