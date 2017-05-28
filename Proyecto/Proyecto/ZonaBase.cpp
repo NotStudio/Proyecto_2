@@ -36,7 +36,7 @@ void ZonaBase::setTextos() {
 	texto3_.loadTexto(pJuego->getRender(), frase3_, { 0, 0, 0 });
 	texto1_.draw(pJuego->getRender(), pJuego->getWindow().ancho * 0.2, pJuego->getWindow().alto - (pJuego->getWindow().alto * 0.2));
 	texto2_.draw(pJuego->getRender(), pJuego->getWindow().ancho * 0.2, pJuego->getWindow().alto - (pJuego->getWindow().alto * 0.15));
-	texto2_.draw(pJuego->getRender(), pJuego->getWindow().ancho * 0.2, pJuego->getWindow().alto - (pJuego->getWindow().alto * 0.1));
+	texto3_.draw(pJuego->getRender(), pJuego->getWindow().ancho * 0.2, pJuego->getWindow().alto - (pJuego->getWindow().alto * 0.1));
 
 
 }
@@ -44,57 +44,43 @@ void ZonaBase::setTextos() {
 void ZonaBase::updateTextos()
 {
 	SDL_Rect* playerPos = pJuego->getPlayer()->getRect();
-	if (playerPos->x > 66 && playerPos->x < 270 && playerPos->y > 240 && playerPos->y < 650) {
-		if (!personaje)
-			frase1_ = "Hmmm, parece que tengo algun compañero para ayudarme.";
-		else
-			frase1_ = "";
+	if (playerPos->x > 66 && playerPos->x < 270 && playerPos->y > 240 && playerPos->y < 650){
+		frase1_ = "Hmmm, parece que tengo algún compañero para ayudarme.";
 		frase2_ = "Selector de personaje.";
 		frase3_ = "";
-		personaje = true;
 	}
 
 	else if (playerPos->x > 560 && playerPos->x < 915 && playerPos->y > 330 && playerPos->y < 710) {
-		if (!misiones)
-			frase1_ = "Con este mapa podré ir avanzando en las zonas para conseguir recursos.";
-		else
-			frase1_ = "";
-		frase2_ = "Misiones.";
+		frase1_ = "Con este mapa podré ir avanzando en las zonas donde puedo conseguir recursos.";
+		frase2_ = "Misiones";
 		frase3_ = "";
 		misiones = true;
 	}
 
 	else if (playerPos->x > 1200 && playerPos->x < 1470 && playerPos->y > 66 && playerPos->y < 240) {
-		if (!materiales){
-			frase1_ = "Esta mesa con herramientas me ayudará a fabricar las piezas para mi nave.";
-			frase2_ = "Que no se me olvide guardar las cosas de mi mochila con la t en el baúl.";
-		}
-		else{
-			frase1_ = "";
-			frase2_ = "";
-		}
-		frase3_ = "Zona de contruccion de materiales.";
+		frase1_ = "Esta mesa con herramientas me ayudará a fabricar las piezas para mi nave.";
+		frase2_ = "Que no se me olvide guardar las cosas de mi mochila con la tecla 't' en el baúl.";
+		frase3_ = "Fabricación de materiales.";
 		materiales = true;
 	}
 
 	else if (playerPos->x > 1000 && playerPos->x < 1500 && playerPos->y > 650 && playerPos->y < 900) {
-		if (!historia)
-			frase1_ = "Vaya parece un buen sitio para guardar la informacion recogida en las misiones.";
-		else
-			frase1_ = "";
+		frase1_ = "Vaya, aqui puedo ver la información recogida.";
 		frase2_ = "Historia";
 		frase3_ = "";
 		historia = true;
 	}
 
 	else if (playerPos->x > 1600) {
-		if (!nave)
-			frase1_ = "Parece un buen lugar para contruir mi nueva nave.";
-		else
-			frase1_ = "";
+		frase1_ = "Este parece un buen lugar para construir mi nueva nave.";
 		frase2_ = "Nave";
 		frase3_ = "";
 		nave = true;
+	}
+	else{
+		frase1_ = "";
+		frase2_ = "";
+		frase3_ = "";
 	}
 }
 
@@ -105,6 +91,7 @@ void ZonaBase::updateTextos()
  
  void ZonaBase::draw() {
 	 ZonaJuego::draw();
+	 setTextos();
  };
 
  void ZonaBase::update() {
