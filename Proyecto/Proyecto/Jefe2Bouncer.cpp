@@ -17,7 +17,7 @@ Jefe2Bouncer::Jefe2Bouncer(Juego* punteroJuego, int x, int y, int lvl):Enemigo(p
 	int velPlus = 3 / lvl;
 	int vidaPlus = 50 / lvl;
 	stats.vida = vidaPlus;
-	stats.daño = 11;
+	stats.daño = 10;
 	stats.velMov = 4 - velPlus;
 	tarjetaSpawned = false;
 	isKillable = true;

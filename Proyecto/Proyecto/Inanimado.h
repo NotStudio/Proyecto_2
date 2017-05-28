@@ -114,7 +114,7 @@ public:
 class  SelectorCambio : public Inanimado
 {
 public:
-	SelectorCambio(Juego * Pj, int x, int y, int w, int h) :Inanimado(Pj, SDL_Rect{ x, y, TILE_WIDTH * 4, TILE_HEIGHT * 4 }, "SelectorCambio") {
+	SelectorCambio(Juego * Pj, int x, int y, int w, int h) :Inanimado(Pj, SDL_Rect{ x, y, TILE_WIDTH * 4, TILE_HEIGHT * 4 }, "SelectorPersonaje") {
 		fDef.filter.categoryBits = Juego::ESCENARIO;
 		fDef.filter.maskBits = Juego::JUGADOR;
 		body->CreateFixture(&fDef);

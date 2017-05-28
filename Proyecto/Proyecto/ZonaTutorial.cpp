@@ -41,41 +41,44 @@ void ZonaTutorial::setTextos() {
 void ZonaTutorial::updateTextos()
 {
 	SDL_Rect* playerPos = pJuego->getPlayer()->getRect();
-	if (playerPos->y < 400) {
-		frase1_ = "Utiliza AWSD para controlar mi motor de movimiento";
+	if (playerPos->y < 500 && !AWSD) {
+		frase1_ = "Utiliza AWSD para controlar mi movimiento.";
 		frase2_ = " ";
+		AWSD = true;
 
 	}
-	else if (playerPos->y > 400 && playerPos->y < 800) {
+	else if (playerPos->y > 500 && playerPos->y < 800 && !bateria) {
 		frase1_ = "Eso parece una batería. Podría resultarme útil.";
 		frase2_ = "Puede que haya mas objetos repartidos por ahí.";
-
+		bateria = true;
 	}
-	else if (playerPos->y > 800 && playerPos->y < 1200) {
+	else if (playerPos->y > 800 && playerPos->y < 1200 && !ataque) {
 		frase1_ = "Las teclas de dirección te permiten usar mi sistema de ataque.";
 		frase2_ = " ";
-
+		ataque = true;
 	}
-	else if (playerPos->y > 1500 && playerPos->y < 2000) {
+	else if (playerPos->y > 1300 && playerPos->y < 1900 && ! CDS) {
 		frase1_ = "Parece que los algunos CD's se han vuelto hostiles.";
 		frase2_ = " ";
-
+		CDS = true;
 	}
-	else if (playerPos->y > 2000 && playerPos->y < 2400) {
+	else if (playerPos->y > 1900 && playerPos->y < 2300 && !sierra) {
 		frase1_ = "No puedo hacer daño a esa sierra. Tendré que esquivarla.";
 		frase2_ = " ";
-
+		sierra = true;
 	}
-	else if (playerPos->y > 2500 && playerPos->y < 3000) {
-		frase1_ = "Algo extraño está ocurriendo en la Tierra";
+	else if (playerPos->y > 2500 && playerPos->y < 3000 && !ocurriendo) {
+		frase1_ = "Algo extraño está ocurriendo.";
 		frase2_ = " ";
+		ocurriendo = true;
 	}
-	else if (playerPos->y > 3300 && playerPos->y < 3800) {
+	else if (playerPos->y > 3300 && playerPos->y < 3600 && !materiales) {
 		frase1_ = "Recogeré materiales para reconstruir la nave." ;
-		frase2_ = "Puedes abrir mi sistema de almacenamiento con la tecla I";
+		frase2_ = "Puedes abrir mi sistema de almacenamiento con la tecla I.";
+		materiales = true;
 	}
-	else if(playerPos->y > 3800){
-		frase1_ = "Parece que este camino lleva a una fábrica abandonada";
+	else if(playerPos->y > 3600){
+		frase1_ = "Parece que este camino lleva a una fábrica abandonada.";
 		frase2_ = " ";
 	}
 }
