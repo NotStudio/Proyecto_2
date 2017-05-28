@@ -14,10 +14,10 @@ Jefe2Bouncer::Jefe2Bouncer(Juego* punteroJuego, int x, int y, int lvl):Enemigo(p
 	fDef.filter.categoryBits = Juego::ENEMIGO;
 	fDef.filter.maskBits = Juego::JUGADOR | Juego::ESCENARIO | Juego::ESCENARIO_NOCOL | Juego::AT_JUGADOR;
 	body->CreateFixture(&fDef);
-	int velPlus = 2 / lvl;
+	int velPlus = 3 / lvl;
 	int vidaPlus = 50 / lvl;
 	stats.vida = vidaPlus;
-	stats.daño = 10;
+	stats.daño = 11;
 	stats.velMov = 4 - velPlus;
 	tarjetaSpawned = false;
 	isKillable = true;

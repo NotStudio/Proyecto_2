@@ -175,17 +175,34 @@ void Jefe1::Ataque2(){
 }
 
 void Jefe1::Ataque3(){
+
+	
+
+
 	if (!empezado){
 		empezado = true;
 		contador = 0;
 		tiempo.start();
 		SDL_AddTimer(300u, changeStateCb, this);
-		float randomx = (rand() % 200) + -100; randomx /= 100;
-		float randomy = (rand() % 100); randomy /= 100;
-		
+		/*float randomx = (rand() % 200) + -100; randomx /= 100;
+		float randomy = (rand() % 100); randomy /= 100;*/
+
+		jugx = static_cast<Entidad*>(pJuego->getPlayer())->getX();
+		jugy = static_cast<Entidad*>(pJuego->getPlayer())->getY();
+
+		b2Vec2 velFloat;
+		velFloat.x = 0.0f;
+		velFloat.y = 0.0f;
+
+		b2Vec2 posJug = b2Vec2(jugx / PPM, jugy / PPM);
+
+		b2Vec2 vecDir = posJug - pos;
+
+		b2Vec2 vUnitario = b2Vec2((vecDir.x / vecDir.Length()), (vecDir.y / vecDir.Length()));
+
 
 		//disparo("Bala", SDL_Rect{ getX(), getY() + 200, 24, 24 }, randomx, randomy, 10);
-		disparaAceite(randomx, randomy);
+		disparaAceite(vUnitario.x, vUnitario.y);
 	}
 }
 

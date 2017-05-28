@@ -28,5 +28,9 @@ public:
 	LTimer tiempo;
 	SDL_TimerID temp;
 	int contador;
+
+
+	float jugx;
+	float jugy;
 };
 
