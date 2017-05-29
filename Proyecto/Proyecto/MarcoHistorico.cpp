@@ -7,7 +7,7 @@ MarcoHistorico::MarcoHistorico(Juego* pJuego) : MenuJuego(pJuego)
 	memorias = pJuego->getMemoria();
 	int contX = 0;
 	int contY = 1;
-	insertarBoton(Boton::ILUMINADO, 55, 63, salir, "Salir", "Vuelve a historia");
+	insertarBoton(Boton::ILUMINADO, 47, 50, salir, "Salir", "Vuelve a historia");
 	
 	for (map<string, bool>::iterator it = memorias.begin(); it != memorias.end(); it++)
 	{

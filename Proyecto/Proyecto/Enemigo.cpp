@@ -118,7 +118,7 @@ void Enemigo::dropItems() {
 				int probItem = rand() % 100;
 
 				if (probItem < Consumible::BATERIA_COCHE) {
-					dynamic_cast<ZonaAccion*>(pJuego->getZona())->getNivel()->nuevoObjeto(new Bateria(pJuego, SDL_Rect{ sprite->x + 1,sprite->y + 2,48,48 }, "Booster"));
+					dynamic_cast<ZonaAccion*>(pJuego->getZona())->getNivel()->nuevoObjeto(new Bateria(pJuego, SDL_Rect{ sprite->x + 1,sprite->y + 2,48,48 }, "BateriaCoche"));
 				}
 
 				else if (probItem < Consumible::CABLE) {
