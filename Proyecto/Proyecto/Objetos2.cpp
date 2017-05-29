@@ -6,14 +6,14 @@ Objetos2::Objetos2(Juego* pJuego) : MenuJuego(pJuego)
 	pJuego->reproducirEfecto("Multiusos");
 	Fondo = pJuego->getTextura("HudCraft2", "idle");
 	activo = 0;
-	insertarBoton(Boton::ILUMINADO, 2, 5,engranaje,"Engranaje");
-	insertarBoton(Boton::ILUMINADO, 2, 8, engranajes, "Engranajes");
-	insertarBoton(Boton::ILUMINADO, 2, 11, tanquePresion, "TanquePresion");
-	insertarBoton(Boton::ILUMINADO, 2, 14, refinador, "Refinador");
-	insertarBoton(Boton::ILUMINADO, 2, 17, circuito, "Circuito");
-	insertarBoton(Boton::ILUMINADO, 2, 20, bateriaIones, "IonBattery");
-	insertarBoton(Boton::ILUMINADO, 2, 23, sensorMov, "SensorMov");
-	insertarBoton(Boton::ILUMINADO, 2, 26, carbono, "Carbono");
+	insertarBoton(Boton::ILUMINADO, 18, 11, engranaje, "Engranaje");
+	insertarBoton(Boton::ILUMINADO, 18, 16, engranajes, "Engranajes");
+	insertarBoton(Boton::ILUMINADO, 18, 21, tanquePresion, "TanquePresion");
+	insertarBoton(Boton::ILUMINADO, 18, 26, refinador, "Refinador");
+	insertarBoton(Boton::ILUMINADO, 18, 31, circuito, "Circuito");
+	insertarBoton(Boton::ILUMINADO, 18, 36, bateriaIones, "IonBattery");
+	insertarBoton(Boton::ILUMINADO, 18, 41, sensorMov, "SensorMov");
+	insertarBoton(Boton::ILUMINADO, 18, 46, carbono, "Carbono");
 	insertarBoton(Boton::ILUMINADO, 50, 50, salir, "Salir");
 
 	img = pJuego->getTextura(botones[0]->getNombre(), "idle");
@@ -34,20 +34,20 @@ void Objetos2::draw() {
 		img = pJuego->getTextura(botones[activo]->getNombre(), "idle");
 
 		if (botones[activo]->getNombre() == "Carbono")
-			img->draw(pJuego->getRender(), SDL_Rect{ 50*fx, 5*fy, 100, 100 }, nullptr, 0.0);
+			img->draw(pJuego->getRender(), SDL_Rect{ 44*fx, 8*fy, 100, 100 }, nullptr, 0.0);
 		else if (img)
-			img->draw(pJuego->getRender(), SDL_Rect{ 50*fx, 5*fy, 125, 125 }, nullptr, 0.0);
+			img->draw(pJuego->getRender(), SDL_Rect{ 44*fx, 8*fy, 125, 125 }, nullptr, 0.0);
 
 		receta(botones[activo]->getNombre());
 		
 		if (!pJuego->getBaul()->findItem(botones[activo]->getNombre())){
 
 			Texto.loadTexto(pJuego->getRender(), "0");
-			Texto.draw(pJuego->getRender(), 55*fx, fy*10);
+			Texto.draw(pJuego->getRender(), 52*fx, fy*10);
 		}
 		else{
 			Texto.loadTexto(pJuego->getRender(), std::to_string(pJuego->getBaul()->getCantidad(botones[activo]->getNombre())));
-			Texto.draw(pJuego->getRender(), 55 * fx, fy * 10);
+			Texto.draw(pJuego->getRender(), 52 * fx, fy * 10);
 		}
 	}
 	else{
@@ -228,8 +228,8 @@ void Objetos2::receta(std::string obj){
 		
 	}
 	if (T1 != nullptr) {
-		T1->draw(pJuego->getRender(), SDL_Rect{ fx*50, fy*20, 100, 100 }, nullptr);
-		T2->draw(pJuego->getRender(), SDL_Rect{ fx*60, fy*20, 100, 100 }, nullptr);
+		T1->draw(pJuego->getRender(), SDL_Rect{ fx*36, fy*30, 100, 100 }, nullptr);
+		T2->draw(pJuego->getRender(), SDL_Rect{ fx*52, fy*30, 100, 100 }, nullptr);
 	}
 
 }

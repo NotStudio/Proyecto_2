@@ -49,7 +49,7 @@ Play::Play(Juego * juego) : EstadoPG(juego)
 
 	for (int i = 0; i < 4; i++)
 	{
-		std::string aux = "tarjeta" + std::to_string(i + 1);
+		std::string aux = "SD " + std::to_string(i + 1);
 		memorias.insert(std::pair<std::string, bool>(aux, true));
 	}
 	juego->setMemoria(memorias);

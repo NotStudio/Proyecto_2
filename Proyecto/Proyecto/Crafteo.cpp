@@ -9,11 +9,11 @@
 Crafteo::Crafteo(Juego* pJuego) : MenuJuego(pJuego)
 {
 	pJuego->reproducirEfecto("Multiusos");
-	Fondo = pJuego->getTextura("SelecCrafteoFondo", "idle");
-	insertarBoton(Boton::ILUMINADO, 10, 10, grado1, "Baul", "caja de objetos");
-	insertarBoton(Boton::ILUMINADO, 10, 20, grado2, "Crafteo 2", "craftea entre 2 objetos");
-	insertarBoton(Boton::ILUMINADO, 10, 30, grado3, "Crafteo 3", "craftea entre 3 objetos");
-	insertarBoton(Boton::ILUMINADO, 10, 40, salir, "Salir", "volver a base");
+	Fondo = pJuego->getTextura("HudCraft", "idle");
+	insertarBoton(Boton::ILUMINADO, 30, 10, grado1, "Baul", "caja de objetos");
+	insertarBoton(Boton::ILUMINADO, 15, 30, grado2, "Nivel 1", "craftea entre 2 objetos");
+	insertarBoton(Boton::ILUMINADO, 45, 30, grado3, "Nivel 2", "craftea entre 3 objetos");
+	insertarBoton(Boton::ILUMINADO, 50, 55, salir, "Salir", "volver a base");
 }
 
 

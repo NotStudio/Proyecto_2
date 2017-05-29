@@ -5,7 +5,7 @@
 Historia::Historia(Juego* pJuego) : MenuJuego(pJuego)
 {
 
-	Fondo = pJuego->getTextura("SelecMapaFondo", "idle");
+	Fondo = pJuego->getTextura("SelectorHistoria1", "idle");
 	
 	insertarBoton(Boton::ILUMINADO, 21, 18, marcoHis, "Historia", "Contexto historico");
 	insertarBoton(Boton::ILUMINADO, 31, 18, salir, "Salir", "Vuelve a la base");

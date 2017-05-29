@@ -3,7 +3,7 @@
 
 MarcoHistorico::MarcoHistorico(Juego* pJuego) : MenuJuego(pJuego)
 {
-	Fondo = pJuego->getTextura("SelectorHistoria", "idle");
+	Fondo = pJuego->getTextura("SelectorHistoria2", "idle");
 	memorias = pJuego->getMemoria();
 	int contX = 0;
 	int contY = 1;
@@ -12,12 +12,9 @@ MarcoHistorico::MarcoHistorico(Juego* pJuego) : MenuJuego(pJuego)
 	for (map<string, bool>::iterator it = memorias.begin(); it != memorias.end(); it++)
 	{
 		if (it->second){
-			insertarBoton(Boton::ILUMINADO, 17, 11 + contY, salir, it->first, "kek");
-			contY += 4;
-			if (contY == 6) {
-				contY = 1;
-				contX++;
-			}
+			insertarBoton(Boton::ILUMINADO, 13, 11 + contY, salir, it->first, "kek");
+			contY += 4.6;
+			
 		}
 	}
 	Texto.LoadFuente(pJuego->getTipografia("Acme____", 30));
@@ -39,7 +36,7 @@ void MarcoHistorico::draw(){
 	MenuJuego::draw();
 	if (botones[activo]->getNombre() != "Salir") {
 		imgObj = pJuego->getTextura(botones[activo]->getNombre(), "idle");
-		imgObj->draw(pJuego->getRender(), SDL_Rect{ pJuego->getWindow().ancho / 2 + 100, pJuego->getWindow().alto / 2 - 200, 500, 600 }, nullptr);
+		imgObj->draw(pJuego->getRender(), SDL_Rect{ pJuego->getWindow().ancho / 2 - pJuego->getWindow().ancho * 0.1, pJuego->getWindow().alto / 2 - pJuego->getWindow().alto * 0.3, 800, 600 }, nullptr);
 	}
 }
 

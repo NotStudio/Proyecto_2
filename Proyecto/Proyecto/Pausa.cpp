@@ -15,6 +15,7 @@ Pausa::Pausa(Juego * juego) : MenuJuego(juego)//, pR(nullptr)
 	insertarBoton(Boton::FUTURISTA, 32, 20, resume, "Continuar", "kek");
 	insertarBoton(Boton::FUTURISTA, 32, 26, opciones, "Opciones", "kek");
 	insertarBoton(Boton::FUTURISTA, 32, 32, returnMenu, "Vuelve al menu", "kek");
+	Fondo = pJuego->getTextura("Pause", "idle");
 
 	//Para añadir los botones
 }

@@ -9,11 +9,11 @@ Objetos3::Objetos3(Juego* pJuego) : MenuJuego(pJuego)
 {
 	pJuego->reproducirEfecto("Multiusos");
 	Fondo = pJuego->getTextura("HudCraft3", "idle");
-	insertarBoton(Boton::ILUMINADO, 2, 10, mecanismo, "Mecanismo");
-	insertarBoton(Boton::ILUMINADO, 2, 15, combustible, "Combustible");
-	insertarBoton(Boton::ILUMINADO, 2, 20, fibraCarbono, "FibraCarbono");
-	insertarBoton(Boton::ILUMINADO, 2, 25, moduloComandos, "ModuloComandos");
-	insertarBoton(Boton::ILUMINADO, 2, 5, salir, "Salir");
+	insertarBoton(Boton::ILUMINADO, 18, 11, mecanismo, "Mecanismo");
+	insertarBoton(Boton::ILUMINADO, 18, 21, combustible, "Combustible");
+	insertarBoton(Boton::ILUMINADO, 18, 31, fibraCarbono, "FibraCarbono");
+	insertarBoton(Boton::ILUMINADO, 18, 41, moduloComandos, "ModuloComandos");
+	insertarBoton(Boton::ILUMINADO, 50, 50, salir, "Salir");
 	img = pJuego->getTextura(botones[0]->getNombre(), "idle");
 
 	Texto.LoadFuente(pJuego->getTipografia("Acme____", 30));
@@ -28,9 +28,9 @@ void Objetos3::draw() {
 	MenuJuego::draw();
 
 	if (botones[activo]->getNombre() != "Salir"){
-		img->draw(pJuego->getRender(), SDL_Rect{ 530, 20, 125, 125 }, nullptr);
+		img->draw(pJuego->getRender(), SDL_Rect{ 44 * fx, 8 * fy, 125, 125 }, nullptr);
 		receta(botones[activo]->getNombre());
-		Texto.draw(pJuego->getRender(), 650, 50);
+		Texto.draw(pJuego->getRender(), 52 * fx, fy * 10);
 	}
 	else{
 		
@@ -165,9 +165,9 @@ void Objetos3::receta(std::string obj){
 		T3 = pJuego->getTextura("Circuito", "idle");
 	}
 	if (T1)
-		T1->draw(pJuego->getRender(), { fx * 40, fy * 20, 100, 100 });
+		T1->draw(pJuego->getRender(), { fx * 36, fy * 30, 100, 100 });
 	if (T2)
-		T2->draw(pJuego->getRender(), { fx * 45, fy * 20, 100, 100 });
+		T2->draw(pJuego->getRender(), { fx * 44, fy * 30, 100, 100 });
 	if (T3)
-		T3->draw(pJuego->getRender(), { fx * 50, fy * 20, 100, 100 });
+		T3->draw(pJuego->getRender(), { fx * 52, fy * 30, 100, 100 });
 }

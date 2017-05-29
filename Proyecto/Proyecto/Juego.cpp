@@ -91,6 +91,19 @@ Juego::Juego(b2World* mundo) : error(false), gameOver(false), exit(false), score
 								/*AQUI CARGA BAUL*/
 	inventario = new Inventory(3, getTipografia("Acme____", 30), getRender());
 	baul = new Inventory(100, getTipografia("Acme____", 30), getRender());
+	baul->insertItem("Engranaje", 1); 
+	baul->insertItem("Engranajes", 1);
+	baul->insertItem("TanquePresion", 1);
+	baul->insertItem("Refinador", 1);
+	baul->insertItem("Circuito", 1);
+	baul->insertItem("Refinador", 2);
+	baul->insertItem("SensorMov", 1);
+	baul->insertItem("Carbono", 1);
+	baul->insertItem("IonBattery", 1);
+	baul->insertItem("Mecanismo", 1);
+	baul->insertItem("Combustible", 1);
+
+
 
 	tarjetasRecogidas = 0;
 

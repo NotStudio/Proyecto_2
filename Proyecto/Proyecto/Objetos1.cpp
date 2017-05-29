@@ -8,21 +8,21 @@ Objetos1::Objetos1(Juego* pJuego) : MenuJuego(pJuego)
 	Baul = pJuego->getBaul()->getMap();
 	Fondo = pJuego->getTextura("HudCraft", "idle");
 	int contX = 0;
-	int contY = 1;
+	int contY = 0;
 
 	for (map<string, int>::iterator it = Baul.begin(); it != Baul.end(); it++)
 	{
 		if (it->second > 0) {
-			insertarBoton(Boton::ILUMINADO, 3 + contX*3,contY*5,salir,it->first);
+			insertarBoton(Boton::ILUMINADO, 10 + contX * 7, 11 + contY * 5 ,salir,it->first);
 			contY++;
-			if (contY == 6) {
-				contY = 1;
+			if (contY == 7) {
+				contY = 0;
 				contX++;
 			}
 			cantidad.emplace_back(it->second);
 		}
 	}
-	insertarBoton(Boton::ILUMINADO,60 , 60, salir, "Salir");
+	insertarBoton(Boton::ILUMINADO, 50, 55, salir, "Salir");
 	if (cantidad.size() > 0) {
 		cantidad.emplace_back(cantidad[cantidad.size() - 1]);
 		imgObj = pJuego->getTextura(botones[activo]->getNombre(), "idle");
@@ -42,10 +42,10 @@ void Objetos1::draw() {
 	MenuJuego::draw();
 	if (botones[activo]->getNombre() != "Salir") {
 		imgObj = pJuego->getTextura(botones[activo]->getNombre(), "idle");
-		imgObj->draw(pJuego->getRender(), SDL_Rect{ 530, 50, 125, 125 }, nullptr);
+		imgObj->draw(pJuego->getRender(), SDL_Rect{ 40 * fx, 20 * fy, 250, 250 }, nullptr);
 
 		Texto.loadTexto(pJuego->getRender(), std::to_string(cantidad[activo]));
-		Texto.draw(pJuego->getRender(), 650, 75);
+		Texto.draw(pJuego->getRender(), 38 * fx, fy * 20);
 	}
 	
 }
