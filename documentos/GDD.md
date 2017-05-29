@@ -1,19 +1,19 @@
-# Toasty's Revenge
+# !Human
 ## Resumen
 | Genero | Público | Modos de juego | Plataforma |
 |:-------|:--------|:---------------|:-----------|
 | Acción, Rol | Jóven(12 - 30)    |1 Jugador| PC  
 
 ##Descripción
-"Nombre juego" es un juego en 2D que mezcla componentes de rol (crafteo de objetos) con la acción directa, que se ubica temporalmente 1000 años mas tarde de nuestra era.  En él, debemos avanzar por distintas zonas con un elenco variado de personajes jugables, máquinas electrónicas de que poseen una IA muy desarrollada. En dichas zonas, debemos derrotar a los enemigos y conseguir recursos para ayudar al personaje principal, Toasty, en su misión por volver a la estación espacial de la que ha caí­do por error a la Tierra para volver junto con su compañero humano "Collin McGuffin", un astronauta residente en la estación. Sin embargo, Toasty ponto se dará cuenta que no todo continúa como cuando el dejó el planeta.
+!Human es un juego en 2D que mezcla componentes de rol (crafteo de objetos) con la acción directa, que se ubica temporalmente 1000 años mas tarde de nuestra era.  En él, debemos avanzar por distintas zonas con un elenco variado de personajes jugables, máquinas electrónicas de que poseen una IA muy desarrollada. En dichas zonas, debemos derrotar a los enemigos y conseguir recursos para ayudar al personaje principal, Toasty, en su misión por volver a la estación espacial de la que ha caí­do por error a la Tierra para volver junto con su compañero humano "Collin McGuffin", un astronauta residente en la estación. Sin embargo, Toasty ponto se dará cuenta que no todo continúa como cuando el dejó el planeta.
 ## Portada
 portada del juego
 
 ## Historia
-Año 16DB, Estacion espacial â€œShuppatsuâ€, un asteroide colisiona contra la estacion provocando el desprendimiento de uno de los módulos, el cual se precipita sobre la Tierra.
+Año 16DB, Estacion espacial **Shuppatsu** un asteroide colisiona contra la estacion provocando el desprendimiento de uno de los módulos, el cual se precipita sobre la Tierra.
 Al estrellarse sobre la superficie terrestre en una pradera aparece entre el humo una tostadora que debido al impacto se ha encendido.
 Ésta tostadora fue una de las primeras de su especie, los Companion Devices, también conocidos como CD. Aparatos electrónicos corrientes con una avanzada inteligencia artificial que emulaba emociones para que los astronautas no se sintieran solos en sus trabajos en el espacio. Debido a la complejidad de dicha inteligencia artificial los diseñadores debí­an dividirlas en dos módulos.
-Por un lado el módulo de IA â€œm-4Nâ€ que estaba diseñado para poder desarrollar una inteligencia emocional, emulación de emociones y comunicación con humanos progresiva simulando la compañí­a humana. Por otro lado el módulo â€œg-0Dâ€ era el encargado de las respuestas motoras y control sobre el aparato en sí­. 
+Por un lado el módulo de IA **m-4N** que estaba diseñado para poder desarrollar una inteligencia emocional, emulación de emociones y comunicación con humanos progresiva simulando la compañí­a humana. Por otro lado el módulo **g-0D** era el encargado de las respuestas motoras y control sobre el aparato en sí­. 
 
 Pero llegado un momento, la gran cantidad de CDs sobre la tierra sumada a la escasez energética que sufría la tierra ocasiona la retirada de servicio de los CDs, cuyo gasto energético es muy alto. Durante esta retirada, en la estación espacial, el astronauta Collin McGuffin decide esconder a su amigo Toasty en un modulo de rescate para que no se lo llevaran con la promesa de volver a encenderlo cuando todo pasara. Ese es el último recuerdo de nuestro personaje, justo antes de despertarse desorientado en la superficie de la tierra, sin saber que hacer.
 
@@ -22,7 +22,10 @@ Toasty deberá abrirse paso a través de una tierra poco parecida a la que le ha
 
 
 ## 5 Primeros minutos del Juego
-Durante los primeros momentos del juego, se realiza una especie de tutorial en la que el jugador va aprendiendo poco a poco las mecánicas básicas del juego: movimiento, ataque, recolección de items, crafteo, etc. Al completar el tutorial, el jugador llegará a lo que será su base durante todo el juego.
+Durante los primeros momentos del juego, se realiza una especie de tutorial en la que el jugador va aprendiendo poco a poco las mecánicas básicas del juego: movimiento, ataque, recolección de items, crafteo, etc.
+Al iniciar el tutorial, el jugador aparece con Toasty en medio de un lugar inhóspito. Se le muestra un primer mensaje que muestra como mover a Toasty. A medida que avanza por el nivel, se le irá dando instrucciones básicas para que se familiarice con el gameplay del juego: movimiento, ataque, objetos... A mitad del nivel, aparecerá el primer enemigo, un perseguidor. Con él, el jugador pondrá en práctica las mecánicas enseñadas anteriormente. A continuación, el jugador volverá a toparse con una serie de enemigos, diferentes al perseguidor. Momentos antes de llegar al fin del nivel, el jugador se encuentra con un objeto junto con un mensaje que informa al jugador sobre el sistema de almacenamiento de objetos durante el juego. Finalmente, el jugador saldrá del nivel y será llevado a la Base.
+Éste es el lugar en el que se administran todos los aspectos del juego, y para ello cada objeto interactivo en la base contiene una descripción que provee de conocimientos al jugador para que sepa utilizar todos ellos.  
+
 ## Jugabilidad
 ### Mecánica
 ####Movimiento
@@ -33,32 +36,46 @@ En cuanto al ataque, se ejecuta con las teclas de dirección. Existen varias for
 - Ataque a melee: ataque a corta distancia que puede realizarse en 4 direcciones. Su rango dependerá del personaje seleccionado.
 
 - Ataque a distancia: el personaje lanza proyectiles que recorren el nivel hasta impactar con algo o llegar a su máximo rango, que dependerá de los atributos del personaje.
+####Creación de objetos
+Durante el juego, iremos recogiendo objetos que se almacenarán en nuestro inventario. Para abrir el inventario y observar los materiales que hemos recogido hasta el momento, utilizamos la tecla I.
+Una vez en la base, para guardar todos estos objetos en el baúl pulsamos la tecla T y se almacenan automáticamente en él.
+
 
 ### Dinámica
-El juego tiene 2 partes correlacionadas. Una parte arcade, en la que lucharemos contra los CDs en la tierra y conseguiremos piezas mecánicas y la segunda, una parte de supervivencia/elaboración en la que, con esas piezas, fabricaremos componentes que nos servirán tanto para completar la nave como para desbloquear nuevas zonas)
+El juego tiene 2 partes correlacionadas. Una parte arcade, en la que lucharemos contra los CDs en la tierra y conseguiremos piezas mecánicas y la segunda, una parte de supervivencia/elaboración en la que, con esas piezas, fabricaremos componentes que nos servirán para completar la nave.
 
-#### Parte de Elaboración
-Esta parte de la dinámica es la que hace avanzar directamente la historia o desarrollo del juego y se desarrolla en Refugio/Base. Tiene que ver con desbloqueo de zonas, lo que amplia la parte Arcade, crafteo de objetos, y el desarrollo de los Personajes (selección de los personajes). El objetivo principal de esta parte es el desbloqueo de todas las zonas para llegar a la ultima zona y acabar el juego.
+#### Elaboración de objetos
+Esta parte de la dinámica es la que hace avanzar directamente la historia o desarrollo del juego y se desarrolla en Refugio/Base. Tiene que ver con desbloqueo de piezas para la Nave. El objetivo principal de esta parte es conseguir los objetos necesarios para construir la nave al completo y así poder escapar.
 
-#### Parte Arcade
-Esta parte de la dinámica consiste en completar las zonas, que se componen de un número de niveles/habitaciones fijo, para obtener recursos, y estos poder ser usados en la parte Survival del juego. Se desarrolla en las habitaciones, se tienen que acabar con todos los enemigos de la habitción para poder pasar una habitación colindante de la actual y llegar al acceso del siguiente nivel que estará en una habitación del nivel.
+####Arcade
+Se desarrolla en las habitaciones. Éstas están repletas de enemigos que intentarán frenar nuestra misión. Si conseguimos eliminar a todos, se abrirán las puertas que nos permiten acceder a la siguiente.
+
+Al morir, los enemigos pueden dejar en el suelo una gran variedad de objetos: algunos consumibles que aumentan las estadísticas de nuestro personaje durante esa partida (hasta volver a base) y otros que nos servirán como materiales para fabricar las piezas de la nave.
+
+Si nosotros somos derrotamos, moriremos todos los objetos que hayamos recolectado hasta el momento. Para evitar esta pérdida de inventario, existirán habitaciones durante la zona que nos permitirán volver a base sanos y salvos con nuestros objetos, pero nos impedirán llegar al final de la zona.
+ 
+Al final de cada zona, nos enfrentaremos a un enemigo de una dificultad mayor al resto: el __boss__ de ese lugar. Si conseguimos derrotarlo, éste soltará una tarjeta SD con la que obtendremos más información sobre el contexto y la historia de !Human. Además, se abrirá la puerta a otra habitación que nos permitirá volver a base con todos nuestros objetos.
 ### Estética
-Cartoon. Estética desenfadada.
+Modelo top-down. Cartoon. Estética desenfadada.
 ## Menús
 ### Inicio
 Menú que se muestra al iniciar el juego, desde el que podemos acceder al juego directamente (entraremos en la base), ir al menú de opciones o salir del juego.
 ###Opciones
-Aqí podremos bajar y subir el volumen del juego y volver al menú anterior
+Aquí podremos bajar y subir el volumen del juego y volver al menú anterior
 ### Pausa
-Durante el juego, podemos pulsar 'P' (ej) para acceder al menu de pausa, que pausará el juego y nos mostrará dos opciones: Reanudar el juego o salir de él (se volverá a la base y se perderán los avances en el nivel).
+Durante el juego, podemos pulsar 'ESC' para acceder al menú de pausa, que detendrá el juego y nos mostrará dos opciones: Reanudar el juego o salir de él (se volverá a la base y se perderán los avances en el nivel).
+###Game Over
+Cuando el jugador muere, se muestra éste menú que únicamente nos permite volver a base.
 ## Localidades
 ### La Base o Refugio
-Donde se realiza parte survival del juego. Estando en la base no podremos realizar ataques, ya que no existirán enemigos. Será un único nivel, pero estará dividido por secciones en la podremos realizar diferentes acciones:
+Aquí no podremos realizar ataques, ya que no existirán enemigos. Será un único nivel, pero estará dividido por secciones. Para poder realizar las diferentes acciones disponibles en la base, el jugador ha de acercarse al objeto correspodiente. Así, podremos:
 
 
-- Elegir zona para jugar (que nos llevará directamente a la acción).
-- Elaborar componentes.
-- Elegir personaje.
+- Elegir zona para jugar: se despliega un mapa en el que podemos ver la localización de las diferentes zonas y elegir a la que queramos ir. Al seleccionar una de las zonas, aparecemos en un nivel preparados para la acción.
+- Elaborar componentes: desde aquí, podemos ver los objetos que tenemos almacenados en el baúl. Por otro lado, tendremos la posibilidad de elaborar nuevos objetos a partir de los que ya poseemos. 
+- Elegir personaje: para cambiar entre Toasty y Switchy, podemos seleccionar uno de los dos. Una vez seleccionado, pasaremos a controlar dicho personaje.
+
+- Leer las tarjetas SD: para poder acceder a la información de las tarjetas recogidas, podemos reproducirlas desde el Ordenador. 
 
 El guardado se realizará automaticamente al entrar a la base al volver de una zona o al salir del juego si estás en la base.
 ### Zonas
