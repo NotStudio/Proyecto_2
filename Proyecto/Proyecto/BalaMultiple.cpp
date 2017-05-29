@@ -1,7 +1,7 @@
 #include "BalaMultiple.h"
 
 
-BalaMultiple::BalaMultiple(Juego *pJuego, SDL_Rect spritePar, float dirx, float diry) :BalaEnemiga(pJuego, spritePar, "BalaN", 5, dirx, diry, 10)
+BalaMultiple::BalaMultiple(Juego *pJuego, SDL_Rect spritePar, float dirx, float diry) :BalaEnemiga(pJuego, spritePar, "BalaN", 5, dirx, diry, 15)
 {
 	distViajada = 0;
 	distMax = 400;
@@ -18,10 +18,16 @@ BalaMultiple::~BalaMultiple()
 
 
 void BalaMultiple::dividir() {
-	dynamic_cast<ZonaAccion*>(pJuego->getZona())->getNivel()->nuevaBala(new Bala(pJuego, { pos.x * PPM, pos.y* PPM, 32, 32 }, "BalaN", 10, 1, 1, 1));
-	dynamic_cast<ZonaAccion*>(pJuego->getZona())->getNivel()->nuevaBala(new Bala(pJuego, { pos.x * PPM, pos.y* PPM, 32, 32 }, "BalaN", 10, -1, 1, 1));
-	dynamic_cast<ZonaAccion*>(pJuego->getZona())->getNivel()->nuevaBala(new Bala(pJuego, { pos.x * PPM, pos.y* PPM, 32, 32 }, "BalaN", 10, 1, -1, 1));
-	dynamic_cast<ZonaAccion*>(pJuego->getZona())->getNivel()->nuevaBala(new Bala(pJuego, { pos.x * PPM, pos.y* PPM, 32, 32 }, "BalaN", 10, -1, -1, 1));
+	
+	dynamic_cast<ZonaAccion*>(pJuego->getZona())->getNivel()->nuevaBala(new BalaEnemiga(pJuego, { pos.x * PPM, pos.y* PPM, 32, 32 }, "BalaN", 5, 1, 0, 5));
+	dynamic_cast<ZonaAccion*>(pJuego->getZona())->getNivel()->nuevaBala(new BalaEnemiga(pJuego, { pos.x * PPM, pos.y* PPM, 32, 32 }, "BalaN", 5, -1, 0, 5));
+	dynamic_cast<ZonaAccion*>(pJuego->getZona())->getNivel()->nuevaBala(new BalaEnemiga(pJuego, { pos.x * PPM, pos.y* PPM, 32, 32 }, "BalaN", 5, 0, 1, 5));
+	dynamic_cast<ZonaAccion*>(pJuego->getZona())->getNivel()->nuevaBala(new BalaEnemiga(pJuego, { pos.x * PPM, pos.y* PPM, 32, 32 }, "BalaN", 5, 0, -1, 5));
+	
+	dynamic_cast<ZonaAccion*>(pJuego->getZona())->getNivel()->nuevaBala(new BalaEnemiga(pJuego, { pos.x * PPM, pos.y* PPM, 32, 32 }, "BalaN", 10, 1, 1, 5));
+	dynamic_cast<ZonaAccion*>(pJuego->getZona())->getNivel()->nuevaBala(new BalaEnemiga(pJuego, { pos.x * PPM, pos.y* PPM, 32, 32 }, "BalaN", 10, -1, 1, 5));
+	dynamic_cast<ZonaAccion*>(pJuego->getZona())->getNivel()->nuevaBala(new BalaEnemiga(pJuego, { pos.x * PPM, pos.y* PPM, 32, 32 }, "BalaN", 10, 1, -1, 5));
+	dynamic_cast<ZonaAccion*>(pJuego->getZona())->getNivel()->nuevaBala(new BalaEnemiga(pJuego, { pos.x * PPM, pos.y* PPM, 32, 32 }, "BalaN", 10, -1, -1, 5));
 
 }
 

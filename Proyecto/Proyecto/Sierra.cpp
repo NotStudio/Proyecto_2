@@ -83,8 +83,10 @@ void Sierra::activate(){
 
 
 void Sierra::deactivate(){
-	destruido = true;
-	body->SetActive(false);
+	if (this != nullptr){
+		destruido = true;
+		body->SetActive(false);
+	}
 }
 
 

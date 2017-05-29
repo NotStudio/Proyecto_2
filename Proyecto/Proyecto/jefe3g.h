@@ -45,7 +45,13 @@ public:
 	int ewwe = 0;
 	//////////////////////////////////////////////////////
 
+	SDL_TimerID est;
+	SDL_TimerID mov;
+	SDL_TimerID att1;
+
+	static Uint32 changeStateCB(Uint32 intervalo, void * param);
+	static Uint32 quitarSierraCB(Uint32 intervalo, void * param);
+	static Uint32 changeIdleCB(Uint32 intervalo, void * param);
 	vector<Objeto*> sierras;
-	int t = 0;
 };
 

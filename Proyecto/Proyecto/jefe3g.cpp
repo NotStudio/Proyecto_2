@@ -10,8 +10,8 @@ jefe3g::jefe3g(Juego* punteroJuego, int x, int y) : Enemigo(punteroJuego, { x, y
 	estado = IDLE;
 	fase = FASE1;
 
-	stats.daño = 10;
-	stats.vida = 1;
+	stats.daño = 5;
+	stats.vida = 700;
 	stats.velMov = 2;
 
 	/*for (unordered_map<string, Juego::Animacion*>::iterator i = animaciones.begin(); i != animaciones.end(); i++)
@@ -31,16 +31,26 @@ jefe3g::jefe3g(Juego* punteroJuego, int x, int y) : Enemigo(punteroJuego, { x, y
 
 jefe3g::~jefe3g()
 {
+	SDL_RemoveTimer(est);
+	SDL_RemoveTimer(mov);
+	SDL_RemoveTimer(att1);
+	
+
 }
 
 /////////////////////////////////////////
 
-uint32 changeStateCB(Uint32 intervalo, void * param){
+Uint32 jefe3g::changeStateCB(Uint32 intervalo, void * param){
 	static_cast<jefe3g*>(param)->changeState();
 	return 0;
 }
 
-uint32 quitarSierraCB(Uint32 intervalo, void * param) {
+Uint32 jefe3g::changeIdleCB(Uint32 intervalo, void * param){
+	static_cast<jefe3g*>(param)->estar();
+	return 0;
+}
+
+Uint32 jefe3g::quitarSierraCB(Uint32 intervalo, void * param) {
 	static_cast<jefe3g*>(param)->eliminaSierra();
 	return 0;
 }
@@ -52,9 +62,9 @@ void jefe3g::changeState(){
 	viejo = estado;
 	/*if (estado == IDLE || estado == MOVIMIENTO){
 		int rdm = rand() % 3;
-		if (rdm == 0 || rdm == 1)
+		if (rdm == 0 )
 			estado = MOVIMIENTO;
-		if (rdm == 2)
+		if (rdm == 2 || rdm == 1)
 		{
 			if (fase == FASE1){
 				int rmg = rand() % 2;
@@ -74,7 +84,8 @@ void jefe3g::changeState(){
 			}
 
 		}
-	}*/ estado = ATAQUE3;
+	}*/
+	estado = ATAQUE1;
 }
 
 
@@ -90,9 +101,18 @@ void jefe3g::comportamiento(){
 		sierras = static_cast<ZonaJuego*>(pJuego->getZona())->getRoomActual()->getEnemigos();
 	
 		for (int i = 1; i < sierras.size(); i++){
-			static_cast<Sierra*>(sierras[i])->deactivate();
+			if (sierras[i] != nullptr){
+				static_cast<Sierra*>(sierras[i])->deactivate();
+			}
+			else {
+				for (int i = 1; i < 4; i++){
+					static_cast<Sierra*>(sierras[i])->deactivate();
+
+				}
 		}
 		ewwe++;
+	}
+	
 	}
 
 	if (!destruido) {
@@ -136,9 +156,8 @@ void jefe3g::onColisionEnter(Objeto* contactObject, b2Body* b1, b2Body* b2){
 void jefe3g::estar(){
 	if (!empezado){
 		empezado = true;
-
 		stop();
-		SDL_AddTimer(2000u, changeStateCB, this);
+		est = SDL_AddTimer(2000u, changeStateCB, this);
 	}
 
 }
@@ -171,26 +190,24 @@ void jefe3g::Movimiento(){
 		body->SetLinearVelocity(velFloat);
 		currentAnim->ActualizarFrame();
 
+		mov = SDL_AddTimer(10000u, changeIdleCB, this);
 	}
-	else
-	{
-		stop();
-	}
-
 }
 
 
 ////////////////////////////////////////////////////////////////////////////
 void jefe3g::Ataque1(){
 
-	if (conts == 4){
+	if (conts >= 4){
 		conts = 1;
 	}
-	static_cast<Sierra*>(sierras[conts])->activate();
-	static_cast<Sierra*>(sierras[conts])->setPos(pos.x, pos.y);
-	conts++;
+	if (sierras[conts] != nullptr){
+		static_cast<Sierra*>(sierras[conts])->activate();
+		static_cast<Sierra*>(sierras[conts])->setPos(pos.x, pos.y);
+		conts++;
+	}
 
-	SDL_AddTimer(5000, quitarSierraCB, this);
+	att1 = SDL_AddTimer(10000, quitarSierraCB, this);
 	
 	estado = IDLE;
 	
@@ -202,11 +219,21 @@ void jefe3g::Ataque1(){
 
 
 void jefe3g::eliminaSierra(){
-	if (contr == 4){
+	if (contr >= 4){
 		contr = 1;
 	}
-	static_cast<Sierra*>(sierras[contr])->deactivate();
-	contr++;
+	if (sierras[contr] != nullptr){
+		static_cast<Sierra*>(sierras[contr])->deactivate();
+		contr++;
+	}
+	else {
+		for (int i = 1; i < 4; i++){
+			static_cast<Sierra*>(sierras[i])->deactivate();
+
+		}
+	}
+
+	SDL_RemoveTimer(att1);
 
 }
 
@@ -232,12 +259,12 @@ void jefe3g::disparo(){
 
 /////////////////////////////////////////////////////////////////////////////
 void jefe3g::Ataque3(){
-	if (i < 1){
+	
 		jugx = static_cast<Entidad*>(pJuego->getPlayer())->getX();
 		jugy = static_cast<Entidad*>(pJuego->getPlayer())->getY();
 		b2Vec2 posJug = b2Vec2(jugx / PPM, jugy / PPM);
 		b2Vec2 vecDir = posJug - pos;
 		dynamic_cast<ZonaAccion*>(pJuego->getZona())->getNivel()->nuevaBala(new BalaMultiple(pJuego, SDL_Rect{ getX(), getY() + 150, 24, 24 }, vecDir.x, vecDir.y));
-		i++;
-	}
+		
+	estado = IDLE;
 }
