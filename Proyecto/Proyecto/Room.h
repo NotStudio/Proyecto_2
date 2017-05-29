@@ -76,7 +76,7 @@ public:
 		}
 		catch (...)
 		{
-			return nullptr;
+			throw new exception("Area");
 		}
 	}
 	//Para reanudar tras el pause.

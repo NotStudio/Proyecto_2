@@ -687,20 +687,25 @@ void Juego::setZona(std::string zonaNombre) {
 
 	if (zona != nullptr)
 		delete zona;
-	if (zonaNombre == "ZonaDesguace")
-		zona = new ZonaDesguace(this);
-	else if (zonaNombre == "ZonaBosque")
-		zona = new ZonaBosque(this);
-	else if (zonaNombre == "ZonaBase"){
-		zona = new ZonaBase(this);
+	try{
+		if (zonaNombre == "ZonaDesguace")
+			zona = new ZonaDesguace(this);
+		else if (zonaNombre == "ZonaBosque")
+			zona = new ZonaBosque(this);
+		else if (zonaNombre == "ZonaBase"){
+			zona = new ZonaBase(this);
+		}
+		else if (zonaNombre == "ZonaPinApple") {
+			zona = new ZonaPinApple(this);
+		}
+		else if (zonaNombre == "ZonaTutorial") {
+			zona = new ZonaTutorial(this);
+		}
 	}
-	else if (zonaNombre == "ZonaPinApple") {
-		zona = new ZonaPinApple(this);
+	catch (...){
+		std::cout << "hubiera petado \n";
+		setZona(zonaNombre);
 	}
-	else if (zonaNombre == "ZonaTutorial") {
-		zona = new ZonaTutorial(this);
-	}
-	
 }
 
 TexturasSDL* Juego::getTilesheet(Zona* z) {
