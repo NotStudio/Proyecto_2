@@ -1,6 +1,7 @@
 #pragma once
 #include "Enemigo.h"
 #include "BalaHacha.h"
+#include "BalaMultiple.h"
 #include "Bala.h"
 #include "Room.h"
 #include "Sierra.h"
@@ -29,7 +30,7 @@ public:
 	void eliminaSierra();
 	void disparo();
 
-
+	int i = 0;
 	States estado;
 	States viejo;
 	Phases fase;

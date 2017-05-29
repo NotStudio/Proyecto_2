@@ -12,7 +12,7 @@ public:
 
 	void bounce(b2Body* tileBody);// Rebote del hacha;
 private:
-	int rebotes = 3;
+	int rebotes = 2;
 	int numRebotes = 0;
 	float dirx_ = 0;
 	float diry_ = 0;

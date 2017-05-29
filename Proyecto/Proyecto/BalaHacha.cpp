@@ -1,7 +1,7 @@
 #include "BalaHacha.h"
 
 
-BalaHacha::BalaHacha(Juego *pJuego, SDL_Rect spritePar, float dirx, float diry) : BalaEnemiga(pJuego, spritePar, "BalaN", 10.0f, dirx, diry, 5)
+BalaHacha::BalaHacha(Juego *pJuego, SDL_Rect spritePar, float dirx, float diry) : BalaEnemiga(pJuego, spritePar, "BalaN", 12, dirx, diry, 10)
 {
 	dirx_ = dirx;
 	diry_ = diry;
@@ -18,7 +18,7 @@ void BalaHacha::update(){
 
 void BalaHacha::onColisionEnter(Objeto* contactObject, b2Body* b1, b2Body* b2){
 
-	if (numRebotes == rebotes){// La siguiente vez que choque despues de 3 rebotes se destruye.
+	if (numRebotes == rebotes){
 		destruido = true;
 	}
 

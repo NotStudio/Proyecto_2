@@ -63,6 +63,7 @@
     <ClCompile Include="ZonaJuego.cpp" />
     <ClCompile Include="BalaHacha.cpp" />
     <ClCompile Include="jefe3g.cpp" />
+    <ClCompile Include="BalaMultiple.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\Box2D\include\Box2D\Common\b2Settings.h" />
@@ -142,5 +143,6 @@
     <ClInclude Include="ZonaJuego.h" />
     <ClInclude Include="BalaHacha.h" />
     <ClInclude Include="jefe3g.h" />
+    <ClInclude Include="BalaMultiple.h" />
   </ItemGroup>
 </Project>

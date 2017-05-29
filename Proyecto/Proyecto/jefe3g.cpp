@@ -232,55 +232,12 @@ void jefe3g::disparo(){
 
 /////////////////////////////////////////////////////////////////////////////
 void jefe3g::Ataque3(){
-
-	b2Vec2 posDestino = b2Vec2(5, -5); ////realmente esquina de abajo
-	b2Vec2 posFinal = b2Vec2(0, 0); ////hasta donde quieres que llegue
-
-	if (pos.x != posDestino.x && pos.y != posDestino.y){
-
-		b2Vec2 velFloat;
-		velFloat.x = 0.0f;
-		velFloat.y = 0.0f;
-
-
-		b2Vec2 vecDir = posDestino - pos;
-
-		b2Vec2 vUnitario = b2Vec2((vecDir.x / vecDir.Length()), (vecDir.y / vecDir.Length()));
-
-		velFloat.x = vUnitario.x*stats.velMov;
-		velFloat.y = vUnitario.y*stats.velMov;
-		if (velFloat.x > 0) {
-			estadoEntidad.mirando = Oeste;
-		}
-		else if (velFloat.x < 0)
-			estadoEntidad.mirando = Este;
-		body->SetLinearVelocity(velFloat);
-		currentAnim->ActualizarFrame();
-		if (pos.x == 5 && pos.y == -5)
-			true;
+	if (i < 1){
+		jugx = static_cast<Entidad*>(pJuego->getPlayer())->getX();
+		jugy = static_cast<Entidad*>(pJuego->getPlayer())->getY();
+		b2Vec2 posJug = b2Vec2(jugx / PPM, jugy / PPM);
+		b2Vec2 vecDir = posJug - pos;
+		dynamic_cast<ZonaAccion*>(pJuego->getZona())->getNivel()->nuevaBala(new BalaMultiple(pJuego, SDL_Rect{ getX(), getY() + 150, 24, 24 }, vecDir.x, vecDir.y));
+		i++;
 	}
-	/*
-	if (pos.x != posFinal.x && pos.y != posFinal.y){
-
-		b2Vec2 velFloat;
-		velFloat.x = 0.0f;
-		velFloat.y = 0.0f;
-
-		b2Vec2 vecDir = posFinal - pos;
-
-		b2Vec2 vUnitario = b2Vec2((vecDir.x / vecDir.Length()), (vecDir.y / vecDir.Length()));
-
-		velFloat.x = vUnitario.x*stats.velMov;
-		velFloat.y = vUnitario.y*stats.velMov;
-		if (velFloat.x > 0) {
-			estadoEntidad.mirando = Oeste;
-		}
-		else if (velFloat.x < 0)
-			estadoEntidad.mirando = Este;
-		body->SetLinearVelocity(velFloat);
-		currentAnim->ActualizarFrame();
-	}
-
-	if (pos == posFinal)
-		estado = IDLE;*/
 }

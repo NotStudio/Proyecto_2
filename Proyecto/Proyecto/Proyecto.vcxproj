@@ -24,6 +24,7 @@
     <ClCompile Include="BalaAmiga.cpp" />
     <ClCompile Include="BalaEnemiga.cpp" />
     <ClCompile Include="BalaHacha.cpp" />
+    <ClCompile Include="BalaMultiple.cpp" />
     <ClCompile Include="Boton.cpp" />
     <ClCompile Include="Camara.cpp" />
     <ClCompile Include="Cambiante.cpp" />
@@ -89,6 +90,7 @@
     <ClInclude Include="BalaAmiga.h" />
     <ClInclude Include="BalaEnemiga.h" />
     <ClInclude Include="BalaHacha.h" />
+    <ClInclude Include="BalaMultiple.h" />
     <ClInclude Include="Boton.h" />
     <ClInclude Include="Camara.h" />
     <ClInclude Include="Cambiante.h" />
