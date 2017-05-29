@@ -127,7 +127,10 @@ public:
 	~Juego();
 
 	int volumen = 50;
-
+	void tarjetasRecogida();
+	inline int getNumTarjetas(){
+		return tarjetasRecogidas;
+	}
 	 inline Objeto* getActiveCharacter() {
 		return personaje;
 	 }

@@ -126,8 +126,10 @@ void Jefe2Bouncer::onColisionEnter(Objeto * contactObject, b2Body * b1, b2Body *
 
 void Jefe2Bouncer::dropItems()
 {
-	if (level == 1)
-		dynamic_cast<ZonaAccion*>(pJuego->getZona())->getNivel()->nuevoObjeto(new ObjetoClave(pJuego, { sprite->x,sprite->y,64,64 }));
+	if (level == 1){
+		if (pJuego->getNumTarjetas() < 4)
+			dynamic_cast<ZonaAccion*>(pJuego->getZona())->getNivel()->nuevoObjeto(new ObjetoClave(pJuego, { sprite->x, sprite->y, 64, 64 }));
+	}
 	
 }
 

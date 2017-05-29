@@ -151,7 +151,14 @@ void Juego::changeProgresoNave(){
 	string s = "NaveFase" + to_string(progresoNave);
 	static_cast<NaveJuego*>(nave)->changeTexture(s);
 }
+void Juego::tarjetasRecogida(){
+	
+	tarjetasRecogidas++;
+	string s = "SD " + to_string(tarjetasRecogidas);
+	
+	mem.at(s) = true;
 
+}
 
 void Juego::cambiarMusica(string id)
 {

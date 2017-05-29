@@ -50,7 +50,7 @@ Play::Play(Juego * juego) : EstadoPG(juego)
 	for (int i = 0; i < 4; i++)
 	{
 		std::string aux = "SD " + std::to_string(i + 1);
-		memorias.insert(std::pair<std::string, bool>(aux, true));
+		memorias.insert(std::pair<std::string, bool>(aux, false));
 	}
 	juego->setMemoria(memorias);
 
@@ -98,6 +98,7 @@ void Play::draw(){
 		if(pJuego->getMostrar()) inventory->draw();
 	}
 }
+
 
 void Play::update(){
 	if (estado == CARGANDO) {

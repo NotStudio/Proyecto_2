@@ -14,5 +14,6 @@ ObjetoClave::~ObjetoClave()
 void ObjetoClave::onColisionEnter(Objeto * o, b2Body * b1, b2Body * b2)
 {
 	//NOTIFICAR DE QUE SE HA RECOGIDO UNA TARJETA
+	pJuego->tarjetasRecogida();
 	destruido = true;
 }

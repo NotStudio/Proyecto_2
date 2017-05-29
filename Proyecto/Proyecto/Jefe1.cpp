@@ -228,7 +228,7 @@ void Jefe1::disparaAceite(float dirx,float diry){
 }
 
 void Jefe1::dropItems() {
-
-	dynamic_cast<ZonaAccion*>(pJuego->getZona())->getNivel()->nuevoObjeto(new ObjetoClave(pJuego, { sprite->x,sprite->y,64,64 }));
+	if (pJuego->getNumTarjetas() < 4)
+		dynamic_cast<ZonaAccion*>(pJuego->getZona())->getNivel()->nuevoObjeto(new ObjetoClave(pJuego, { sprite->x,sprite->y,64,64 }));
 
 }
