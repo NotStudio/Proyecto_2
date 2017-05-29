@@ -122,10 +122,11 @@ class Juego
 	int tarjetasRecogidas;
 
 public:
+	bool firstPlay = true;	
 	Juego(b2World * mundo);
 	Juego();
 	~Juego();
-
+	
 	int volumen = 50;
 	void tarjetasRecogida();
 	inline int getNumTarjetas(){
@@ -411,8 +412,7 @@ public:
 	
 	b2World* getWorld();
 
-	Objeto* getPlayer(){	return personaje ;
-}
+	Objeto* getPlayer(){	return personaje ;}
 	TexturasSDL*getTilesheet(Zona * z);
 
 	Zona* getZona() {	return zona;}
@@ -474,6 +474,8 @@ public:
 		}
 	}
 
+	void guardarJuego();
+	bool cargarJuego();
 	 inline std::map<std::string, bool> getMemoria(){
 		 return mem;
 	}

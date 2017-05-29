@@ -23,6 +23,8 @@
 #include "ZonaBase.h"
 #include "ZonaPinApple.h"
 #include <SDL_thread.h>
+#include <iostream>
+#include <fstream>
 bool load = false;
 
 void operator+=(vector<string>& e,vector<string> o){
@@ -86,22 +88,10 @@ Juego::Juego(b2World* mundo) : error(false), gameOver(false), exit(false), score
 	zona = nullptr;
 	nave = nullptr;
 	progresoNave = 0;
-
+	
 	//Cargar baul de un metodo leyendo de texto o de donde se guarde
-								/*AQUI CARGA BAUL*/
 	inventario = new Inventory(3, getTipografia("Acme____", 30), getRender());
 	baul = new Inventory(100, getTipografia("Acme____", 30), getRender());
-	baul->insertItem("Engranaje", 1); 
-	baul->insertItem("Engranajes", 1);
-	baul->insertItem("TanquePresion", 1);
-	baul->insertItem("Refinador", 1);
-	baul->insertItem("Circuito", 1);
-	baul->insertItem("Refinador", 2);
-	baul->insertItem("SensorMov", 1);
-	baul->insertItem("Carbono", 1);
-	baul->insertItem("IonBattery", 1);
-	baul->insertItem("Mecanismo", 1);
-	baul->insertItem("Combustible", 1);
 
 
 
@@ -109,9 +99,10 @@ Juego::Juego(b2World* mundo) : error(false), gameOver(false), exit(false), score
 
 	Mix_Volume(-1,volumen);
 	Mix_VolumeMusic(volumen);
+	cargarJuego();
 	load = true;
 	pushState(new MenuPG(this));
-	//cambiarMusica("summer");
+	
 	run();
 	
 }
@@ -524,6 +515,8 @@ bool Juego::handle_event() {
 		default:
 			break;
 		}
+		if (evento.type == SDL_KEYUP&&evento.key.keysym.sym == SDLK_s)
+			guardarJuego();
 	topState()->handleEvent(evento);
 	} 
 	return true;
@@ -701,6 +694,7 @@ void Juego::setZona(std::string zonaNombre) {
 		zona = new ZonaTutorial(this);
 	}
 	
+	
 }
 
 TexturasSDL* Juego::getTilesheet(Zona* z) {
@@ -731,5 +725,77 @@ void Juego::setFinZona(){
 
 void Juego::reiniciar(){
 	static_cast<Jugable*>(getPlayer())->setStats();
+}
+
+void Juego::guardarJuego()
+{
+	ofstream kek;
+	kek.open("save.kek");
+	//ya ha jugado
+	(firstPlay) ? kek<<0: kek<<1;
+	kek << endl;
+	//progreso nave
+	kek << progresoNave << endl;
+	//guardado baul
+	kek << baul->getMap().size()<<endl;
+	std::map<string,int> subbaul =baul->getMap();
+	for (std::map<string, int>::iterator it = subbaul.begin(); it != subbaul.end();it++) {
+		kek << it->first << " " << it->second<<endl;
+	}
+	
+	//guardado inventario
+	kek << inventario->getMap().size() << endl;
+	subbaul = inventario->getMap();
+	for (std::map<string, int>::iterator it = subbaul.begin(); it != subbaul.end(); it++) {
+		kek << it->first << " " << it->second << endl;
+	}
+	
+	//guardado SD
+	kek << mem.size() << endl;
+	for (std::map<std::string, bool>::iterator it = mem.begin(); it != mem.end(); it++) {
+		kek << it->first << " " << ((it->second)?'1':'0')<< endl;
+	}
+
+	kek.close();
+}
+
+bool Juego::cargarJuego()
+{
+	ifstream kek;
+	kek.open("save.kek");
+	if (!kek.fail()) {
+		int aux;
+		kek >> aux;
+		firstPlay = aux;
+		kek >> aux;
+		progresoNave = aux;
+		int nLineas = 0;
+		kek >> nLineas;
+		for (int i = 0; i < nLineas; i++) {
+			string nomObjeto;
+			int cantObjeto;
+			kek >> nomObjeto >> cantObjeto;
+			baul->insertItem(nomObjeto, cantObjeto);
+
+		}
+		kek >> nLineas;
+		for (int i = 0; i < nLineas; i++) {
+			string nomObjeto;
+			int cantObjeto;
+			kek >> nomObjeto >> cantObjeto;
+			inventario->insertItem(nomObjeto, cantObjeto);
+
+		}
+
+		for (int i = 0; i < nLineas; i++) {
+			string nomObjeto;
+			int cantObjeto;
+			kek >> nomObjeto >> cantObjeto;
+			mem.insert(std::pair<std::string, bool>(nomObjeto, (cantObjeto) ? true : false));
+
+		}
+		kek.close();
+	}
+	return true;
 }
 
