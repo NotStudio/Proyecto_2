@@ -319,11 +319,14 @@ Enemigo de tipo Jefe que divide su comportamiento en 2 fases:
 <img src="DocImg/imagenesGDD/Planificacion_2.png" width="1167" height="449">
 ## Recta final
 <img src="DocImg/imagenesGDD/Planificacion_3.png" width="519" height="376">
+
 # **POST-MORTEM**
+
 ##Proyecto
-| Nombre | Desarrolladora | Plataforma desarrollo| Duración proceso |
-|:-------|:--------|:---------------|:-----------|
-| !Human | Not a Studio    |Visual Studio (C++)| nosecuando - 31/05/2017 
+
+| Nombre | Desarrolladora | Plataforma desarrollo| Duración proceso       |
+|:------:|:--------       |:---------------      |:-----------            |
+| !Human | Not a Studio   |Visual Studio (C++)   | 11/02/2017 - 31/05/2017|
   
 
 !Human es un juego TopDown en 2D basado en la acción directa, con componentes de rol desarrollado para Ordenador. En él, nuestro personaje principal ha de enfrentarse a diferentes enemigos para lograr su propósito principal: volver a su nave. Pensado para salir a la venta en la plataforma Steam en el verano de 2017.
@@ -358,8 +361,8 @@ Por un lado, y como ya se ha descrito anteriormente, el optar por ser totalmente
 Otro riesgo que aceptamos fue utilizar la librería Box2D sin conocimientos previos de la misma. No obstante, supimos arreglar los problemas surgidos a partir de este hecho, de forma que el impacto negativo ha sido el mínimo posible.
 ### Evaluación del proceso
 Aquí vamos ha llevar acabo un pequeño auto análisis más profundo, puntuando cómo de satisfactorios han sido algunos de los aspectos del desarrollo del 1 ( más pobre) al 10 (más satisfactorio):
-|Criterio    | Puntuación   
-| :-------------:|:-------------        
+|Criterio                       | Puntuación   |
+| :-------------:               |:-------------|        
 |Planificación del proyecto| 5  
 |Seguimiento de la planificación| 7  
 |Actuación frente a problemas inesperados| 8  
@@ -435,20 +438,22 @@ Los estados del juego
 # **Documentación varia**
 
 ## Capas de colisiones
-<img src="DocImg/imagenesGDD/CapasColision.png" height = "585" width="939">
+
+<img src="DocImg/imagenesGDD/CapaColisiones.png" height = "585" width="939">
 
 
 ----------
 
 
 ##Bocetos
-<img src="DocImg/Bocetos/Boceto1.png" width="602" height="364">
 
-<img src="DocImg/Bocetos/Boceto2.png" width="602" height="364">
+<img src="DocImg/imagenesGDD/Boceto1.png" width="602" height="364">
 
-<img src="DocImg/Bocetos/Boceto3.png" width="602" height="364">
+<img src="DocImg/imagenesGDD/Boceto2.png" width="602" height="364">
 
-<img src="DocImg/Bocetos/Boceto4.png" width="602" height="364">
+<img src="DocImg/imagenesGDD/Boceto3.png" width="602" height="364">
+
+<img src="DocImg/imagenesGDD/Boceto4.png" width="602" height="364">
 
 
 ----------
