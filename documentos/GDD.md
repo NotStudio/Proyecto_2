@@ -317,6 +317,7 @@ Enemigo de tipo Jefe que divide su comportamiento en 2 fases:
 
 ## Línea de Tiempo
 <img src="DocImg/imagenesGDD/Planificacion_2.png" width="1167" height="449">
+
 ## Recta final
 <img src="DocImg/imagenesGDD/Planificacion_3.png" width="519" height="376">
 
@@ -361,15 +362,16 @@ Por un lado, y como ya se ha descrito anteriormente, el optar por ser totalmente
 Otro riesgo que aceptamos fue utilizar la librería Box2D sin conocimientos previos de la misma. No obstante, supimos arreglar los problemas surgidos a partir de este hecho, de forma que el impacto negativo ha sido el mínimo posible.
 ### Evaluación del proceso
 Aquí vamos ha llevar acabo un pequeño auto análisis más profundo, puntuando cómo de satisfactorios han sido algunos de los aspectos del desarrollo del 1 ( más pobre) al 10 (más satisfactorio):
-|Criterio                       | Puntuación   |
-| :----------------------------:|:-------------|        
-|Planificación del proyecto| 5  |
-|Seguimiento de la planificación| 7|  
+
+|Criterio                                | Puntuación   |
+|:--------------------------------------:|:-------------|        
+|Planificación del proyecto              | 5  |
+|Seguimiento de la planificación         | 7|  
 |Actuación frente a problemas inesperados| 8|  
-|Rendimiento general| 6  |
-|Comunicación| 6  |
-|Cooperación como equipo| 7 | 
-|Utilización de los recursos| 7 | 
+|Rendimiento general                     | 6  |
+|Comunicación                            | 6  |
+|Cooperación como equipo                 | 7 | 
+|Utilización de los recursos             | 7 | 
 
 ## Conocimientos adquiridos
 Para concluir el POST-MORTEM, vamos a señalar cuáles han sido las mayores lecciones y conocimientos que hemos sacado de todo el proceso así como las consideraciones para siguientes proyectos.
