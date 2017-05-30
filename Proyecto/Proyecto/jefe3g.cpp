@@ -14,18 +14,12 @@ jefe3g::jefe3g(Juego* punteroJuego, int x, int y) : Enemigo(punteroJuego, { x, y
 	stats.vida = 700;
 	stats.velMov = 2;
 
-	/*for (unordered_map<string, Juego::Animacion*>::iterator i = animaciones.begin(); i != animaciones.end(); i++)
+	for (unordered_map<string, Juego::Animacion*>::iterator i = animaciones.begin(); i != animaciones.end(); i++)
 	{
 	animaciones[i->first]->setNumFrames(30);
 	}
-	currentAnim = animaciones.at("idlo");*/
+	currentAnim = animaciones.at("move");
 	body->SetType(b2_dynamicBody);
-
-	/*for (int i = 1; i < 4; i++){
-		static_cast <Sierra*>(static_cast<ZonaJuego*>(pJuego->getZona())->getRoomActual()->getEnemigos()[i])->deactivate();
-	}
-	*/
-
 }
 
 
@@ -86,9 +80,6 @@ void jefe3g::changeState(){
 
 ////////////////////////////////
 void jefe3g::comportamiento(){
-
-	std::cout << pos.x << "    " << pos.y << "\n";
-
 	if (ewwe == 0)
 	{
 		sierras = static_cast<ZonaJuego*>(pJuego->getZona())->getRoomActual()->getEnemigos();
@@ -109,6 +100,7 @@ void jefe3g::comportamiento(){
 	}
 
 	if (!destruido) {
+		currentAnim->ActualizarFrame();
 		switch (estado)
 		{
 		case IDLE:

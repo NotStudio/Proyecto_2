@@ -34,24 +34,6 @@ Play::Play(Juego * juego) : EstadoPG(juego)
 
 	inventory = new HUDinventory(juego, SDL_Rect{ 150, 500, 500, 100 }, "Inventory", "idle",inventario);
 	//SDL_Rect{ (WINwidth/2) - width/2, WINheight - height , ... , ...}
-	
-
-
-
-	
-	
-	
-	
-
-
-
-
-
-	
-
-
-
-
 	zona = pJuego->getZona();
 
 
@@ -89,7 +71,8 @@ void Play::draw(){
 		zona->draw();
 		personaje[pJuego->getActivo()]->draw();
 		vidasHUD->draw();//hacer vector de HUDbase......................
-		
+		if (dynamic_cast<ZonaAccion*>(zona))
+			dynamic_cast<ZonaAccion*>(zona)->dibujarMapa();
 		if(pJuego->getMostrar()) inventory->draw();
 	}
 }

@@ -45,8 +45,6 @@ int threadFunction(void* data) { //Print incoming data
 // Constructora que inicializa todos los atributos de la clase Juego
 Juego::Juego(b2World* mundo) : error(false), gameOver(false), exit(false), score(0), world(mundo)
 {
-	int data = 9;
-	
 	window.alto = 720; //Tamaño de la ventana.
 	window.ancho = 1080;
 	fondoRect.x = 0; //Posición y tamaño de la ventana.
@@ -114,6 +112,7 @@ Juego::~Juego()
 {
 	delete inventario;
 	delete baul;
+	delete zona;
 	//Liberamos los objetos.
 	freeMedia();
 	
@@ -694,7 +693,8 @@ void Juego::setZona(std::string zonaNombre) {
 		}
 	}
 	catch (...){
-		std::cout << "hubiera petado \n";
+		delete zona;
+			std::cout << "hubiera petado \n";
 		setZona(zonaNombre);
 	}
 }
@@ -771,7 +771,7 @@ bool Juego::cargarJuego()
 		firstPlay = aux;
 		kek >> aux;
 		progresoNave = aux;
-		nave = new NaveJuego(this, 3598.42,597.576,348.364,549.818);
+		
 		/*string i = "NaveFase" + to_string(aux);
 		static_cast<NaveJuego*>(nave)->changeTexture(i);*/
 		int nLineas = 0;
@@ -803,7 +803,7 @@ bool Juego::cargarJuego()
 	}
 	else {
 		for (int i = 0; i < 4; i++){
-			std::string aux = "SD_" + std::to_string(i + 1);
+			std::string aux = "SD " + std::to_string(i + 1);
 			mem.insert(std::pair<std::string, bool>(aux, false));
 			}
 	}

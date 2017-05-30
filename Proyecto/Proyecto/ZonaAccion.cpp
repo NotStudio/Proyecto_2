@@ -32,19 +32,27 @@ void ZonaAccion::draw(){
 	ZonaJuego::draw();
 
 	//Descomentar para ver la disposición de las habitaciones
-
-	for (size_t i = 0; i < niveles->size(); i++)
-	{
-		SDL_Rect aux = *niveles->at(i)->getArea();
-		aux.x /= 64; aux.y /= 64; aux.h /= 64; aux.w /= 64; aux.x += 100; aux.y += 100;
-		SDL_RenderDrawRect(pJuego->getRender(), &aux);
-	}
 }
 
 void ZonaAccion::update(){
 	//Sin terminar. LLamar solo a setNivelActual cuando se cambie de nivel, no todo el rato.
 	setNivelActual();
 	ZonaJuego::update();
+}
+
+void ZonaAccion::dibujarMapa()
+{
+	for (size_t i = 0; i < niveles->size(); i++)
+	{
+		
+		SDL_Rect aux = *niveles->at(i)->getArea();
+		aux.x /= 64; aux.y /= 64; aux.h /= 64; aux.w /= 64; aux.x += (pJuego->window.ancho / 64) * 53; aux.y += (pJuego->window.alto / 32 )* 4;
+		if (niveles->at(i) == nivelActual)
+			SDL_RenderFillRect(pJuego->getRender(), &aux);
+		else
+			SDL_RenderDrawRect(pJuego->getRender(), &aux);
+
+	}
 }
 
 bool ZonaAccion::CheckSolapaRooms(const SDL_Rect & R)

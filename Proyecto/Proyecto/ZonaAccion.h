@@ -43,7 +43,7 @@ public:
 	virtual ~ZonaAccion();
 	virtual void draw();
 	virtual void update();
-
+	void dibujarMapa();
 	//Devolvemos el nivel actual
 	Room*getNivel(){ return nivelActual; }
 	//Devolvemos el array de niveles.

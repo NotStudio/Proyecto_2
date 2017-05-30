@@ -47,13 +47,13 @@ void ZonaBase::updateTextos()
 	if (playerPos->x > 66 && playerPos->x < 270 && playerPos->y > 240 && playerPos->y < 650){
 		frase1_ = "Hmmm, parece que tengo algún compañero para ayudarme.";
 		frase2_ = "Selector de personaje.";
-		frase3_ = "";
+		frase3_ = " ";
 	}
 
 	else if (playerPos->x > 560 && playerPos->x < 915 && playerPos->y > 330 && playerPos->y < 710) {
 		frase1_ = "Con este mapa podré ir avanzando en las zonas donde puedo conseguir recursos.";
 		frase2_ = "Misiones";
-		frase3_ = "";
+		frase3_ = " ";
 		misiones = true;
 	}
 
@@ -67,20 +67,20 @@ void ZonaBase::updateTextos()
 	else if (playerPos->x > 1000 && playerPos->x < 1500 && playerPos->y > 650 && playerPos->y < 900) {
 		frase1_ = "Vaya, aqui puedo ver la información recogida.";
 		frase2_ = "Historia";
-		frase3_ = "";
+		frase3_ = " ";
 		historia = true;
 	}
 
 	else if (playerPos->x > 1600) {
 		frase1_ = "Este parece un buen lugar para construir mi nueva nave.";
 		frase2_ = "Nave";
-		frase3_ = "";
+		frase3_ = " ";
 		nave = true;
 	}
 	else{
-		frase1_ = "";
-		frase2_ = "";
-		frase3_ = "";
+		frase1_ = " ";
+		frase2_ = " ";
+		frase3_ = " ";
 	}
 }
 

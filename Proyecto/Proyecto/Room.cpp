@@ -120,6 +120,7 @@ Room::~Room()
 	}
 	for (size_t i = 0; i < objetos.size(); i++)
 	{
+		
 		delete objetos[i];
 		objetos[i] = nullptr;
 	}
