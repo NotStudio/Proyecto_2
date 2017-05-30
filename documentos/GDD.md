@@ -322,11 +322,11 @@ Enemigo de tipo Jefe que divide su comportamiento en 2 fases:
 
 
 # **Planificación**
-##Modelo 1
+## Modelo 1
 <img src="DocImg/imagenesGDD/Planificacion_1.png" width="602" height="364">
-##Línea de Tiempo
+## Línea de Tiempo
 <img src="DocImg/imagenesGDD/Planificacion_2.png" width="1167" height="449">
-##Recta final
+## Recta final
 <img src="DocImg/imagenesGDD/Planificacion_3.png" width="519" height="376">
 # **POST-MORTEM**
 ##Proyecto
@@ -336,14 +336,14 @@ Enemigo de tipo Jefe que divide su comportamiento en 2 fases:
   
 
 !Human es un juego TopDown en 2D basado en la acción directa, con componentes de rol desarrollado para Ordenador. En él, nuestro personaje principal ha de enfrentarse a diferentes enemigos para lograr su propósito principal: volver a su nave. Pensado para salir a la venta en la plataforma Steam en el verano de 2017.
-##Desarrollo
-###Logros
+## Desarrollo
+### Logros
 Para empezar a desarrollar los aspectos positivos del proceso, vamos a especificar qué nos ha ido bien.
 
  Lo más importante y que ya es algo que caracteriza a Not a Studio es la buena conexión que existe entre todos los componentes del estudio. A pesar de estar sometidos en algunos momentos a mucha presión, hemos sido conscientes de que enfadarse o alejarse del resto de compañeros es algo que afectaría negativamente al proyecto. Evidentemente han existido momentos de tensión, pero hemos sabido resolverlos de la forma más cómoda posible para todo el equipo. En general, la comunicación ha sido muy buena y eso ha facilitado mucho el desarrollo.
 
 Una de las cosas que también hemos encontrado mucho más útil y cómoda de lo que nos la esperábamos es la herramienta de control de versiones GitHub. Todos la conocíamos pero prácticamente ninguno sabíamos, al principio del proyecto, manejarnos correctamente con ella. Sin embargo, a base de 'fuerza' hemos aprendido a utilizarla lo suficientemente bien como para que nos facilite mucho el dividir trabajo y no tener miedo de juntar las tareas.
-###Problemas
+### Problemas
 Aquí vamos a definir los principales obstáculos que nos han surgido durante el desarrollo así como las consecuencias que estos han tenido en el mismo.
 
 El principal problema que hemos encontrado ha sido el tiempo. Al comienzo del proyecto, no fuimos conscientes de la importancia de tener unan planificación lo suficientemente concreta como para plantearnos si el tiempo del que disponíamos era suficiente para desarrollar el proyecto. No fuimos conscientes de esto hasta pasado el hito 1.
@@ -359,13 +359,13 @@ A parte de todos estos problemas surgidos durante el proceso, también nos hemos
 
  - La inclusión de Box2D en el proyecto por primera vez ha hecho que los desarrolladores que se ocupaban de la programación hayan tenido que ocupar parte de su tiempo para aprender, o al menos intentar, manejar correctamente la librería física. Además, un obstáculo concreto que nos impidió avanzar durante algún tiempo fue un problema surgido a partir de la mala utilización de la librería, pues no entendíamos por qué existía un límite de velocidad que no podíamo superar. Al cabo de algunos días, logramos solucionarlo.
  - La inteligencia artificial de los enemigos también nos ha supuesto un gran bache en el desarrollo. Intentamos por varios caminos implementar el algoritmo 'A*', pero terminamos por descargar esta opción ya que no suponía una gran pérdida de tiempo. Optamos por una IA más sencilla.
-###Riesgos
+### Riesgos
 A parte de logros y problemas, han existido ciertos riesgos que hemos tomado y que han dado diferentes resultados.
 
 Por un lado, y como ya se ha descrito anteriormente, el optar por ser totalmente productores del arte del juego ha resultado peor de lo que esperábamos.
 
 Otro riesgo que aceptamos fue utilizar la librería Box2D sin conocimientos previos de la misma. No obstante, supimos arreglar los problemas surgidos a partir de este hecho, de forma que el impacto negativo ha sido el mínimo posible.
-###Evaluación del proceso
+### Evaluación del proceso
 Aquí vamos ha llevar acabo un pequeño auto análisis más profundo, puntuando cómo de satisfactorios han sido algunos de los aspectos del desarrollo del 1 ( más pobre) al 10 (más satisfactorio):
 |Criterio    | Puntuación   
 | :-------------:|:-------------        
@@ -377,7 +377,7 @@ Aquí vamos ha llevar acabo un pequeño auto análisis más profundo, puntuando 
 |Cooperación como equipo| 7  
 |Utilización de los recursos| 7 
 
-##Conocimientos adquiridos
+## Conocimientos adquiridos
 Para concluir el POST-MORTEM, vamos a señalar cuáles han sido las mayores lecciones y conocimientos que hemos sacado de todo el proceso así como las consideraciones para siguientes proyectos.
 
 En primer lugar, vamos a señalar cuáles han sido los principales conocimientos adquiridos a través de todo este tiempo en el desarrollo de !Human:
