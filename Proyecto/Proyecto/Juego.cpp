@@ -34,7 +34,7 @@ void operator+=(vector<string>& e,vector<string> o){
 	}
 }
 int threadFunction(void* data) { //Print incoming data
-	system("start loading.exe");
+	system("start ../Material/loading.exe");
 	while (!load)
 	{
 
@@ -92,9 +92,7 @@ Juego::Juego(b2World* mundo) : error(false), gameOver(false), exit(false), score
 	//Cargar baul de un metodo leyendo de texto o de donde se guarde
 	inventario = new Inventory(3, getTipografia("Acme____", 30), getRender());
 	baul = new Inventory(100, getTipografia("Acme____", 30), getRender());
-
-
-
+	
 	tarjetasRecogidas = 0;
 
 	Mix_Volume(-1,volumen);
@@ -145,7 +143,7 @@ void Juego::changeProgresoNave(){
 void Juego::tarjetasRecogida(){
 	
 	tarjetasRecogidas++;
-	string s = "SD " + to_string(tarjetasRecogidas);
+	string s = "SD_" + to_string(tarjetasRecogidas);
 	
 	mem.at(s) = true;
 
@@ -773,6 +771,9 @@ bool Juego::cargarJuego()
 		firstPlay = aux;
 		kek >> aux;
 		progresoNave = aux;
+		nave = new NaveJuego(this, 3598.42,597.576,348.364,549.818);
+		/*string i = "NaveFase" + to_string(aux);
+		static_cast<NaveJuego*>(nave)->changeTexture(i);*/
 		int nLineas = 0;
 		kek >> nLineas;
 		for (int i = 0; i < nLineas; i++) {
@@ -799,6 +800,12 @@ bool Juego::cargarJuego()
 
 		}
 		kek.close();
+	}
+	else {
+		for (int i = 0; i < 4; i++){
+			std::string aux = "SD_" + std::to_string(i + 1);
+			mem.insert(std::pair<std::string, bool>(aux, false));
+			}
 	}
 	return true;
 }

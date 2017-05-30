@@ -6,6 +6,7 @@ vector<string> roomtype = { "Ini","Normal","Boss","Base"};
 
 ZonaAccion::ZonaAccion(Juego* punteroJuego): ZonaJuego(punteroJuego)
 {
+	nivelActual = nullptr;
 	pJuego->reproducirMusicaBatalla();
 	//Inicializamos el array de habitaciones
 	niveles = new vector<Room*>;
@@ -188,13 +189,14 @@ void ZonaAccion::setHabitaciones(int NumeroHabitaciones, int NumeroDescansos)
 void ZonaAccion::setNivelActual(){
 	//Actualizamos el parametro que indica el nivel en el que estamos
 	//y  se lo notificamos a la cámara.
-	Room * anterior ;
+	Room * anterior;
 	if (nivelActual) {
 		anterior = nivelActual;
 	}
 	else {
 		anterior = niveles->at(0);
 	}
+	nivelActual = niveles->at(0);
 	SDL_Point pj;
 	pj.x = pJuego->getPlayer()->getRect()->x;
 	pj.y = pJuego->getPlayer()->getRect()->y;
@@ -202,15 +204,17 @@ void ZonaAccion::setNivelActual(){
 	bool stop = false;
 	for (size_t i = 0; i < niveles->size(); i++)
 	{
-		if (niveles->at(i)->dentroRoom(&pj)) 
+		if (niveles->at(i)->dentroRoom(&pj))
 			nivelActual = niveles->at(i);
 		else niveles->at(i)->stop();
 	}
-	if (nivelActual->getArea()!=nullptr) {
-		
-	}
-	else {
-		
+	if (nivelActual != nullptr){
+		if (nivelActual->getArea() != nullptr) {
+
+		}
+		else {
+
+		}
 	}
 
 }

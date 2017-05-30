@@ -31,6 +31,7 @@ void Objetos2::draw() {
 	MenuJuego::draw();
 
 	if (botones[activo]->getNombre() != "Salir"){
+		Fondo = pJuego->getTextura("HudCraft2", "idle");
 		img = pJuego->getTextura(botones[activo]->getNombre(), "idle");
 
 		if (botones[activo]->getNombre() == "Carbono")
@@ -51,6 +52,7 @@ void Objetos2::draw() {
 		}
 	}
 	else{
+		Fondo = pJuego->getTextura("HudCraft4", "idle");
 	}
 
 }

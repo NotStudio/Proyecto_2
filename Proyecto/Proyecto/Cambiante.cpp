@@ -7,12 +7,12 @@
 #include "ZonaAccion.h"
 
 
-Cambiante::Cambiante(Juego* punteroJuego, SDL_Rect spritePar) :Jugable(punteroJuego, spritePar, "p1x4r")
+Cambiante::Cambiante(Juego* punteroJuego, SDL_Rect spritePar) :Jugable(punteroJuego, spritePar, "Switchy")
 {
 
 	for (unordered_map<string, Juego::Animacion*>::iterator i = animaciones.begin(); i != animaciones.end(); i++)
 	{
-		animaciones.at(i->first)->setNumFrames(36);
+		animaciones.at(i->first)->setNumFrames(30);
 	}
 	currentAnim = animaciones.at("idle");
 	//Inicializacion de los stats y stats máximos;
@@ -104,7 +104,8 @@ void Cambiante::disparo(){
 			furia += 5;
 		}
 		if (!disparar) {
-			Disparar = SDL_AddTimer(cadencia, imerDisparo, this); pJuego->reproducirEfecto("TShot");
+			Disparar = SDL_AddTimer(cadencia, imerDisparo, this);
+			pJuego->reproducirEfecto("TShot");
 			//currentAnim = animaciones.at("atqu");
 		}
 	}
@@ -334,17 +335,17 @@ void Cambiante::update(){
 	if (!disparar) {
 		if (estadoEntidad.animacionActual != Ataque) {
 			estadoEntidad.animacionActual = Ataque;
-			//currentAnim = animaciones.at("atqu");
+			currentAnim = animaciones.at("Atk2");
 		}
 		currentAnim->ActualizarFrame();
 	}
 	else {
 		if (estadoEntidad.animacionActual == Walk)
 		{
-			//currentAnim = animaciones.at("walk");
+			currentAnim = (mele) ? animaciones.at("walk2") : animaciones.at("walk");
 		}
 		else {
-			currentAnim = animaciones.at("idle");
+			currentAnim = (mele)?animaciones.at("idle2"): animaciones.at("idle");
 		}
 
 	}

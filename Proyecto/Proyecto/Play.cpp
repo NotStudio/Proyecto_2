@@ -71,7 +71,7 @@ Play::~Play()
 		personaje[i] = nullptr;
 	}
 	//borrar zona
-	delete zona;
+	//delete zona;
 	zona = nullptr;
 	
 

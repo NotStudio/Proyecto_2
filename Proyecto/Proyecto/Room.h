@@ -72,7 +72,10 @@ public:
 	SDL_Rect * getArea() {
 		try
 		{
-			return area;
+			if (!this)
+				throw new exception();
+			else
+				return area;
 		}
 		catch (...)
 		{

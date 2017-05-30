@@ -8,11 +8,15 @@ class Objetos3 :
 	TexturasSDL * img;
 
 	TextoSDL Texto;
+	TextoSDL text2;
+	int cont;
 public:
+	static bool activate;
 	static bool mecanismoB;
 	static bool fibraB;
 	static bool combustibleB;
 	static bool moduloB;
+	static bool renderMsg;
 
 	Objetos3(Juego* juego);
 	virtual ~Objetos3();

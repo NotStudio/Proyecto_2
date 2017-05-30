@@ -10,7 +10,8 @@ class MenuFinDeZona :
 public:
 	MenuFinDeZona(Juego* juego): MenuJuego(juego)
 	{
-		botones.emplace_back(new BotonIluminado(pJuego, fx*32,fy*32, goToBase, "Volver A la Base"));
+		Fondo = pJuego->getTextura("SelecMapaFondo", "idle");
+		insertarBoton(Boton::MECANICO, 32, 32, goToBase, "Volver A la Base");
 	};
 	virtual ~MenuFinDeZona(){};
 
