@@ -433,12 +433,5 @@ Para diseñar un nuveo tilesheet existe un patrón común que define que cuales 
 La arquitectura está basada en abstracción y herencia, todo lo que tenga una cierta relación viene heredado de una clase superior que contiene el código común, por ejemplo en el caso de la clase Objeto que tiene un Update y Draw a modo de interfaz que luego heredan los objetos y personajes entre otros.
 Hemos usado dos librerías externas, SDL y Box2D. 
 Por ultimo las clases que necesitan introducir un mapa o enemigos usan la clase rapidxml.
-El HUD dividido entre el de juego y el de interaccion de la base
-<img src="DocImg/imagenesGDD/hud.png" height = "362" width="100%">
-La clase Objeto de donde heredan los personajes, enemigos ,objetos y botones entre otros
-<img src="DocImg/imagenesGDD/objeto.png" height = "630" width="100%">
-Las diferentes zonas.
-<img src="DocImg/imagenesGDD/zona.png" height = "542" width="100%">
-Los estados del juego
-<img src="DocImg/imagenesGDD/estadojuego.png" height = "387" width="100%">
 
+<img src="DocImg/imagenesGDD/diagClases.png" height = "200" width="100%">
