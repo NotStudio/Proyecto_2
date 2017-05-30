@@ -23,6 +23,8 @@
     <ClCompile Include="BalaAceite.cpp" />
     <ClCompile Include="BalaAmiga.cpp" />
     <ClCompile Include="BalaEnemiga.cpp" />
+    <ClCompile Include="BalaHacha.cpp" />
+    <ClCompile Include="BalaMultiple.cpp" />
     <ClCompile Include="Boton.cpp" />
     <ClCompile Include="Camara.cpp" />
     <ClCompile Include="Cambiante.cpp" />
@@ -48,6 +50,7 @@
     <ClCompile Include="Item.cpp" />
     <ClCompile Include="Jefe1.cpp" />
     <ClCompile Include="Jefe2Bouncer.cpp" />
+    <ClCompile Include="jefe3g.cpp" />
     <ClCompile Include="Juego.cpp" />
     <ClCompile Include="Jugable.cpp" />
     <ClCompile Include="main.cpp" />
@@ -90,6 +93,8 @@
     <ClInclude Include="BalaAceite.h" />
     <ClInclude Include="BalaAmiga.h" />
     <ClInclude Include="BalaEnemiga.h" />
+    <ClInclude Include="BalaHacha.h" />
+    <ClInclude Include="BalaMultiple.h" />
     <ClInclude Include="Boton.h" />
     <ClInclude Include="Camara.h" />
     <ClInclude Include="Cambiante.h" />
@@ -110,6 +115,7 @@
     <ClInclude Include="HUDText.h" />
     <ClInclude Include="Historia.h" />
     <ClInclude Include="Jefe2Bouncer.h" />
+    <ClInclude Include="jefe3g.h" />
     <ClInclude Include="MarcoHistorico.h" />
     <ClInclude Include="MenuFinDeZona.h" />
     <ClInclude Include="GameOver.h" />

@@ -11,6 +11,9 @@ public: //dir 0=horizontal, 1= vertical
 	virtual void update();
 	virtual void onColisionEnter(Objeto* contactObject, b2Body* b1, b2Body* b2);
 	virtual void comportamiento();
+	void activate();
+	void deactivate();
+	void setPos(float x, float y);
 
 private:
 	

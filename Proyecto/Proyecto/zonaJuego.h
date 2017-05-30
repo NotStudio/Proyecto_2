@@ -26,6 +26,7 @@ public:
 	virtual ~ZonaJuego();
 	virtual void draw();
 	virtual void update();
+	virtual Room* getRoomActual(){ return nivelActual; };
 	virtual SDL_Rect getNivelActual();
 	std::string getId() { return id; };
 	

@@ -13,7 +13,6 @@ protected:
 	bool isDead_;
 	bool noDeadAnim = false;
 	bool isKillable;
-	virtual void muerte();
 	virtual void comportamiento() {};
 	void nextFrame(){
 		currentAnim->ActualizarFrame();
@@ -28,6 +27,7 @@ public:
 	bool distancia();
 	virtual void dropItems();
 	virtual void desactivar();
+	virtual void muerte();
 	bool killable() { return isKillable; };
 	bool isDead() { return destruido; }
 	int getDanyoContacto(){ return stats.daño; }

@@ -12,7 +12,7 @@ Sierra::Sierra(Juego* punteroJuego, int x, int y, int dir) : Enemigo(punteroJueg
 	}
 	currentAnim = animaciones.at("idle");
 	col = false;
-	
+
 	fDef.density = 2500.0f;
 	fDef.filter.categoryBits = Juego::ENEMIGO;
 	fDef.filter.maskBits = Juego::ESCENARIO | Juego::JUGADOR |  Juego::ESCENARIO_NOCOL;
@@ -60,6 +60,7 @@ void Sierra::update(){
 	//Cambiar a metodo animación
 	currentAnim->ActualizarFrame();
 	Enemigo::update();
+	
 }
 
 void Sierra::comportamiento(){
@@ -72,4 +73,24 @@ void Sierra::onColisionEnter(Objeto* contactObject, b2Body* b1, b2Body* b2){
 			b2->GetFixtureList()->GetFilterData().categoryBits == Juego::ESCENARIO_NOCOL)
 			col = true;
 	}
+}
+
+
+void Sierra::activate(){
+	destruido = false;
+	body->SetActive(true);
+}
+
+
+void Sierra::deactivate(){
+	if (this != nullptr){
+		destruido = true;
+		body->SetActive(false);
+	}
+}
+
+
+void Sierra::setPos(float x, float y){
+	//spamear en la posicio del boss
+	body->SetTransform(b2Vec2{ x, y}, 0);
 }
