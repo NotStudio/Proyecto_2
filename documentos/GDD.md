@@ -1,14 +1,14 @@
 # !Human
 
 
-## GDD
+# **GDD**
 
 | Genero | Público | Modos de juego | Plataforma |
 |:-------|:--------|:---------------|:-----------|
 | Acción, Rol | Jóven(12 - 30)    |1 Jugador| PC  
 
 ### Descripción
-!Human es un juego en 2D que mezcla componentes de rol (crafteo de objetos) con la acción directa, que se ubica temporalmente 1000 años mas tarde de nuestra era.  En él, debemos avanzar por distintas zonas con un elenco variado de personajes jugables, máquinas electrónicas de que poseen una IA muy desarrollada. En dichas zonas, debemos derrotar a los enemigos y conseguir recursos para ayudar al personaje principal, Toasty, en su misión por volver a la estación espacial de la que ha caí­do por error a la Tierra para volver junto con su compañero humano "Collin McGuffin", un astronauta residente en la estación. Sin embargo, Toasty ponto se dará cuenta que no todo continúa como cuando el dejó el planeta.
+!Human es un juego en 2D que mezcla componentes de rol (elaboración de objetos) con la acción directa, que se ubica temporalmente unos cuantos miles años más tarde de nuestra era.  En él, debemos avanzar por distintas zonas con distintos personajes jugables, máquinas electrónicas de que poseen una IA muy desarrollada. En dichas zonas, debemos derrotar a los enemigos y conseguir recursos para ayudar al personaje principal, Toasty, en su misión por volver a la estación espacial de la que ha caído por error a la Tierra para volver junto con su compañero humano "Collin McGuffin", un astronauta residente en la estación. Sin embargo, Toasty pronto se dará cuenta que no todo continúa como cuando el dejó el planeta.
 ### Portada
 portada del juego
 
@@ -16,7 +16,7 @@ portada del juego
 Año 16DB, Estacion espacial **Shuppatsu** un asteroide colisiona contra la estacion provocando el desprendimiento de uno de los módulos, el cual se precipita sobre la Tierra.
 Al estrellarse sobre la superficie terrestre en una pradera aparece entre el humo una tostadora que debido al impacto se ha encendido.
 Ésta tostadora fue una de las primeras de su especie, los Companion Devices, también conocidos como CD. Aparatos electrónicos corrientes con una avanzada inteligencia artificial que emulaba emociones para que los astronautas no se sintieran solos en sus trabajos en el espacio. Debido a la complejidad de dicha inteligencia artificial los diseñadores debí­an dividirlas en dos módulos.
-Por un lado el módulo de IA **m-4N** que estaba diseñado para poder desarrollar una inteligencia emocional, emulación de emociones y comunicación con humanos progresiva simulando la compañí­a humana. Por otro lado el módulo **g-0D** era el encargado de las respuestas motoras y control sobre el aparato en sí­.
+Por un lado el módulo de IA **m-4N** que estaba diseñado para poder desarrollar una inteligencia emocional, emulación de emociones y comunicación con humanos progresiva simulando la compañía humana. Por otro lado el módulo **g-0D** era el encargado de las respuestas motoras y control sobre el aparato en sí.
 
 Pero llegado un momento, la gran cantidad de CDs sobre la tierra sumada a la escasez energética que sufría la tierra ocasiona la retirada de servicio de los CDs, cuyo gasto energético es muy alto. Durante esta retirada, en la estación espacial, el astronauta Collin McGuffin decide esconder a su amigo Toasty en un modulo de rescate para que no se lo llevaran con la promesa de volver a encenderlo cuando todo pasara. Ese es el último recuerdo de nuestro personaje, justo antes de despertarse desorientado en la superficie de la tierra, sin saber que hacer.
 
@@ -30,7 +30,8 @@ Al iniciar el tutorial, el jugador aparece con Toasty en medio de un lugar inhó
 Éste es el lugar en el que se administran todos los aspectos del juego, y para ello cada objeto interactivo en la base contiene una descripción que provee de conocimientos al jugador para que sepa utilizar todos ellos.  
 
 ### Jugabilidad
-#### Mecánicas
+Para poder explicar correctamente este apartado del juego, vamos a dividirlo en varios aspectos.
+#### Mecánica
 ##### Movimiento
 Movimiento en 8 direcciones con las teclas WASD. La velocidad de desplazamiento dependerá del atributo correspondiente del personaje.
 ##### Ataque
@@ -59,7 +60,7 @@ Si nosotros somos derrotamos, moriremos todos los objetos que hayamos recolectad
 
 Al final de cada zona, nos enfrentaremos a un enemigo de una dificultad mayor al resto: el __boss__ de ese lugar. Si conseguimos derrotarlo, éste soltará una tarjeta SD con la que obtendremos más información sobre el contexto y la historia de !Human. Además, se abrirá la puerta a otra habitación que nos permitirá volver a base con todos nuestros objetos.
 #### Estética
-Modelo top-down. Cartoon. Estética desenfadada.
+Modelo top-down. Cartoon. Estética desenfadada. Todo el arte gráfico y la mayor parte del apartado sonoro ha sido desarrollado por nosotros.
 ### Menús
 #### Inicio
 Menú que se muestra al iniciar el juego, desde el que podemos acceder al juego directamente (entraremos en la base), ir al menú de opciones o salir del juego.
@@ -82,52 +83,41 @@ Aquí no podremos realizar ataques, ya que no existirán enemigos. Será un úni
 
 El guardado se realizará automaticamente al entrar a la base al volver de una zona o al salir del juego si estás en la base.
 #### Zonas
-Las zonas son las partes jugables del juego. Estás se dividen en niveles/habitaciones, que es donde realmente sucede la acción. Una zona tiene las siguientes caracterí­sticas:
+Las zonas son las partes en las que se da lugar el verdadero _gameplay_ del juego. Estás se dividen en niveles/habitaciones, que es donde realmente sucede la acción. Una zona tiene las siguientes características:
 
 -  Compuesta de varios niveles o habitaciones.
 - Las zonas siguen el siguiente orden de niveles:
 	- El primer nivel es un nivel base, en el que no hay enemigos, objetos etc. Sólo el jugador.
-	- Después, habrá  X niveles en los que sí­ habrá NPC's y que comparten dificultad. Al superar esos X niveles, habrá una habitación en la que no existirán enemigos. En esta habitación (neutra) podremos volver a base sin perder nuestros recursos, o continuar otros X niveles con un aumento de dificultad.
+	- Después, habrá  5 niveles en los que sí­ habrá NPC's y que comparten dificultad. Al superar esos niveles, habrá una habitación en la que no existirán enemigos. En esta habitación (neutra) podremos volver a base sin perder nuestros recursos, o continuar otros 5 niveles y arriesgarnos a perder nuestros materiales.
 - Existe un nivel final con un boss particular.
 - Hay 3 tipos de recursos por zona: Recursos genéricos (comunes entre las diferentes zonas), recursos especí­ficos de cada zona y el recurso que da el boss.
 - La forma de colocar habitaciones es pseudo-aleatoria.
 - Enemigos diferentes por zona, puediendo existir enemigos "comunes" a todas las zonas.
 - Tilesheets propio por zona, que definirá la estética de sus niveles, que lógicamente será la misma.
 
-##### The Natural Preserve (Zona Tutorial)
-Un bosque de chatarra, es la primera zona que tienes al comenzar el juego. Aquí aprenderemos lo básico sobre cómo jugar.
+##### The Natural Preserve 
+Un bosque de chatarra, es la primera zona que tienes al comenzar el juego. El tutorial, además, se desarrollará en esta zona también. Aquí aprenderemos lo básico sobre cómo jugar.
 ##### Hipsters Sancturary
-Una PinApple Store, es la segunda zona que se desbloquea, se desbloquea cuando se craftea los engranajes.
+Una PinApple Store, es la segunda zona a la que podremos acceder.
 ##### Several Motors Museum
-Un Desguace.
-##### Beautiful Refinery
-Hornos
+Un Desguace repleto de enemigos y trampas.
 
 #### Habitaciones/Niveles
 Como se ha mencionado antes, los niveles son donde sucede la acción. Los niveles se caracterí­zan por:
 
-- Tener un escenario, compuesto por objetos que dan profundidad al nivel. Los objetos pueden ser mera decoración o interactuables, como cofres.
-- Tener enemigos. No obstante, pueden existir niveles que no tengan enemigos pero que la propia disposición del escenario suponga un desafí­o para superarlo.
-- Hay X variantes de una misma habitación.
-- Estar conectada minimo a otra habitación.
-- Hasta que no se ha acabado con todos los enemigos, no se podrá avanzar al siguiente nivel.(?)
+- Tener un escenario, compuesto por objetos que dan profundidad al nivel. Los objetos pueden ser mera decoración o interactivos.
+- Tener enemigos. No obstante, pueden existir niveles que no tengan enemigos pero que la propia disposición del escenario suponga un desafío para superarlo.
+- Estar conectada mínimo a otra habitación.
+- Hasta que no se ha acabado con todos los enemigos, no se podrá avanzar al siguiente nivel.
 - Poder regresar a la base durante él, pero se perderá el progreso en la zona, es decir, se empezará desde el primer nivel al volver a jugar la zona.
 
 
 ### Personajes
-
-| Sprite                                             | Nombre           | Nota | HP | At | Ve | FA |
-| :-------------:                                    | :-------------   |:---|:---:|:---:|:---:|:---:|
-| imagen del personaje                             | Nombre | Tipo de Ataque | vida maxima | ataque | velocidad | vel.ataque  |
-
 #### Toasty
 <table>
 <tr>
 <td>
 <img src="DocImg/imagenesGDD/toasty.png" width="100">
-</td>
-<td>
-  <strong>Switchy fase 1</strong>
 </td>
 <td>
   <strong>Ataque a Distancia </strong>
@@ -150,9 +140,10 @@ Como se ha mencionado antes, los niveles son donde sucede la acción. Los nivele
 
 ##### Jugabilidad
 Ataca lanzando tostadas a distancia, que hacen daño por contacto con los enemigos.
+####Switchy
+Switchy es una consola de una antigüedad parecida a Toasty. 
 
-
-#### Switchy (fase 1)
+##### Switchy (fase 1)
 
 <table>
 <tr>
@@ -182,7 +173,7 @@ Ataca lanzando tostadas a distancia, que hacen daño por contacto con los enemig
 </table>
 
 
-#### Switchy (fase 2)
+#####Switchy (fase 2)
 
 <table>
 <tr>
@@ -214,7 +205,7 @@ Ataca lanzando tostadas a distancia, que hacen daño por contacto con los enemig
 Es una consola vieja, con la capacidad de transformarse en un aparato de nueva generación para aumentar sus poderes.
 
 ##### Jugabilidad
-Al comienzo del gameplay, se encuentra en su 1Âª forma. En esta forma, su ataque es a distancia, lanzandos discos que hieren a sus enemigos. Para pasar a su segunda forma, se necesita cargar la barra de energí­a. Cuando esta llega a su máximo, entra en la forma evolucionada, en la que su ataque pasa a ser melee. Pasado X tiempo, vuelve a su forma normal.
+Al comienzo del gameplay, se encuentra en su 1ª forma. En esta forma, su ataque es a distancia, lanzando discos que hieren a sus enemigos. Para pasar a su segunda forma, se necesita cargar la barra de energí­a. Cuando esta llega a su máximo, entra en la forma evolucionada, en la que su ataque pasa a ser melee, es decir, a poca distancia. Pasado cierto tiempo, vuelve a su forma normal.
 
 ### Inanimados
 Objetos que son parte del escenario, algunos tienen acciones en determinadas condiciones.
@@ -229,6 +220,9 @@ Objetos que son parte del escenario, algunos tienen acciones en determinadas con
 | <img src="DocImg/imagenesGDD/agujero.png" width="100">   | Agujero           | 1\*1 |Las balas pasan por encima|
 | <img src="DocImg/imagenesGDD/coche.png" width="100">   | Coche           | 3\*1 |un coche rojo|
 | <img src="DocImg/imagenesGDD/selector.png" width="100">   | SelectorZona           | 1\*1 |Solo esta en la base y sirve para selacionar zona|
+| <img src="DocImg/imagenesGDD/CambioPersonaje.png" width="100">   | SelectorPersonaje           | 1\*1 |Solo esta en la base y sirve para cambiar de personaje|
+| <img src="DocImg/imagenesGDD/Crafteo.png" width="100">   | SelectorZona           | 2\*2 |Solo esta en la base y sirve para elaborar nuevos objetos|
+| <img src="DocImg/imagenesGDD/NaveToasty.png" width="100">   | SelectorZona           | 3\*1 |Nave que muestra el proceso de reconstrucción de la misma. Tiene diferentes estados.|
 
 ### Objetos
 #### Consumible
@@ -241,6 +235,7 @@ Se consiguen matando enemigos o encotrandolos por el mapa.
 | <img src="DocImg/imagenesGDD/pila.png" width="100">     | Pila             | HP+1 |
 | <img src="DocImg/imagenesGDD/cable.png" width="100">     | Cable            | Ve+1 |
 | <img src="DocImg/imagenesGDD/transistor.png" width="100">     | Transistor       | At+1 |
+| <img src="DocImg/imagenesGDD/booster.png" width="100">     | Booster       | At+1 |
 
 
 
@@ -250,26 +245,26 @@ Estos sirven para craftear otros objetos. Los objetos resultantes pueden ser cla
 
 | Sprite                                           | Nombre           |Uso                | Obtención |
 | :-------------:                                  |:-------------    |:-------------     |:---|
-| <img src="../Proyecto/Material/ObjetosCrafteo/Chatarra_idle.png" width="50" height="50"> | Chatarra         | Crafteo           | the Natural Preserve |
-| <img src="../Proyecto/Material/ObjetosCrafteo/Madera_idle.png" width="50" height="50"> | Madera           | Crafteo           | the Natural Preserve |
-| <img src="../Proyecto/Material/ObjetosCrafteo/Tuercas_idle.png" width="50" height="50"> | Tuercas           | Crafteo           | the Natural Preserve |
-| <img src="../Proyecto/Material/ObjetosCrafteo/Carbon_idle.png" width="50" height="50"> | Carbón             | Crafteo           | the Natural Preserve |
-| <img src="../Proyecto/Material/ObjetosCrafteo/Tanque_idle.png" width="50" height="50"> | Tanque            | Crafteo           | S.Motors Museum |
-| <img src="../Proyecto/Material/ObjetosCrafteo/Petroleo_idle.png" width="50" height="50"> | Petroleo         | Crafteo           | S. Motors Museum |
-| <img src="../Proyecto/Material/ObjetosCrafteo/Fusible_idle.png" width="50" height="50"> | Fusible           | Crafteo           | S. Motors Museum |
-| <img src="../Proyecto/Material/ObjetosCrafteo/Tuberias_idle.png" width="50" height="50"> | Tuberí­as         | Crafteo           | S. Motors Museum |
-| <img src="../Proyecto/Material/ObjetosCrafteo/Estanyo_idle.png" width="50" height="50"> | Estaño        | Crafteo           |  Hipsters Sanctuary |
-| <img src="../Proyecto/Material/ObjetosCrafteo/Litio_idle.png" width="50" height="50"> | Litio        | Crafteo           |  Hipsters Sanctuary |
-| <img src="../Proyecto/Material/ObjetosCrafteo/Chip_idle.png" width="50" height="50"> | Chip        | Crafteo           |  Hipsters Sanctuary |
-| <img src="../Proyecto/Material/ObjetosCrafteo/Sensor_idle.png" width="50" height="50"> | Sensor        | Crafteo           |  Hipsters Sanctuary |
-| <img src="../Proyecto/Material/ObjetosCrafteo/FibraCarbono_idle.png" width="50" height="50"> | Carbono              | Crafteo           | Madera + Carbón |
-| <img src="../Proyecto/Material/ObjetosCrafteo/Engranaje_idle.png" width="50" height="50"> | Engranaje        | Crafteo           | Chatarra + Chatarra |
-| <img src="../Proyecto/Material/ObjetosCrafteo/Engranajes_idle.png" width="50" height="50"> | Engranajes       | Crafteo           | Engranaje + Engranaje |
-| <img src="../Proyecto/Material/ObjetosCrafteo/Circuito_idle.png" width="50" height="50"> | Circuito        | Crafteo           | Chip + Estaño |
-| <img src="../Proyecto/Material/ObjetosCrafteo/TanquePresion_idle.png" width="50" height="50"> | Tanque a Presión (TP) | Crafteo           | Fusible + Tanque |
-| <img src="../Proyecto/Material/ObjetosCrafteo/Refinador_idle.png" width="50" height="50"> | Refinador Express (RE)     | Crafteo           | TP + Tuberí­as |
-| <img src="../Proyecto/Material/ObjetosCrafteo/IonBattery_idle.png" width="50" height="50"> | Baterí­a de iones     | Crafteo           | Estaño + Litio |
-| <img src="../Proyecto/Material/ObjetosCrafteo/SensorMov_idle.png" width="50" height="50"> | Sensor de mov.     | Crafteo           | Chip + Sensor |
+| <img src="DocImg/imagenesGDD/Chatarra_idle.png" width="50" height="50"> | Chatarra         | Crafteo           | Enemigos |
+| <img src="DocImg/imagenesGDD/Madera_idle.png" width="50" height="50"> | Madera           | Crafteo           | Enemigos |
+| <img src="DocImg/imagenesGDD/Tuercas_idle.png" width="50" height="50"> | Tuercas           | Crafteo           | Enemigos |
+| <img src="DocImg/imagenesGDD/Carbon_idle.png" width="50" height="50"> | Carbón             | Crafteo           | Enemigos |
+| <img src="DocImg/imagenesGDD/Tanque_idle.png" width="50" height="50"> | Tanque            | Crafteo           | Enemigos |
+| <img src="DocImg/imagenesGDD/Petroleo_idle.png" width="50" height="50"> | Petroleo         | Crafteo           | Enemigos |
+| <img src="DocImg/imagenesGDD/Fusible_idle.png" width="50" height="50"> | Fusible           | Crafteo           | Enemigos |
+| <img src="DocImg/imagenesGDD/Tuberias_idle.png" width="50" height="50"> | Tuberí­as         | Crafteo           | Enemigos |
+| <img src="DocImg/imagenesGDD/Estanyo_idle.png" width="50" height="50"> | Estaño        | Crafteo           |  Enemigos |
+| <img src="DocImg/imagenesGDD/Litio_idle.png" width="50" height="50"> | Litio        | Crafteo           |  Enemigos|
+| <img src="DocImg/imagenesGDD/Chip_idle.png" width="50" height="50"> | Chip        | Crafteo           |  Enemigos |
+| <img src="DocImg/imagenesGDD/Sensor_idle.png" width="50" height="50"> | Sensor        | Crafteo           |  Enemigos |
+| <img src="DocImg/imagenesGDD/FibraCarbono_idle.png" width="50" height="50"> | Carbono              | Crafteo           | Madera + Carbón |
+| <img src="DocImg/imagenesGDD/Engranaje_idle.png" width="50" height="50"> | Engranaje        | Crafteo           | Chatarra + Chatarra |
+| <img src="DocImg/imagenesGDD/Engranajes_idle.png" width="50" height="50"> | Engranajes       | Crafteo           | Engranaje + Engranaje |
+| <img src="DocImg/imagenesGDD/Circuito_idle.png" width="50" height="50"> | Circuito        | Crafteo           | Chip + Estaño |
+| <img src="DocImg/imagenesGDD/TanquePresion_idle.png" width="50" height="50"> | Tanque a Presión (TP) | Crafteo           | Fusible + Tanque |
+| <img src="DocImg/imagenesGDD/Refinador_idle.png" width="50" height="50"> | Refinador Express (RE)     | Crafteo           | TP + Tuberí­as |
+| <img src="DocImg/imagenesGDD/IonBattery_idle.png" width="50" height="50"> | Baterí­a de iones     | Crafteo           | Estaño + Litio |
+| <img src="DocImg/imagenesGDD/SensorMov_idle.png" width="50" height="50"> | Sensor de mov.     | Crafteo           | Chip + Sensor |
 
 
 #### Histórico
@@ -277,18 +272,16 @@ Para el desarrollo de la historia, se craftean o se consiguen matando a jefes.
 
 | Sprite                               | Nombre                 |Obtención        |
 | :-------------:                      |:-------------          |:-------------   |
-| <img src="../Proyecto/Material/ObjetosCrafteo/Mecanismo_idle.png " width="50" height="50"> | Mecanismo              | Engranajes + Eje + Fusible       |
-| <img src="" width="50" height="50">  | Circuitos Electronicos | Circuito + Baterí­a de iones + "lo que dropea el 3er boss"        |
-| <img src="" width="50" height="50">  | Combustible            | RE + Petróleo |
-| <img src=" " width="50" height="50"> | Fibra de carbono                 | Carbono + Tuberí­a |
-| <img src=" " width="50" height="50"> | Â¿?                | Derrotando al 1er boss |
-| <img src=" " width="50" height="50"> | Eje                 | Derrotando al 2Âº boss |
-| <img src=" " width="50" height="50"> | Â¿?                | Derrotando al 3er boss |
+| <img src="DocImg/imagenesGDD/Mecanismo_idle.png " width="50" height="50"> | Mecanismo              | Engranajes + Eje + Fusible       |
+| <img src="DocImg/imagenesGDD/Circuito_idle.png" width="50" height="50">  | Circuitos Electronicos | Circuito + Baterí­a de iones + "lo que dropea el 3er boss"        |
+| <img src="DocImg/imagenesGDD/Combustible_idle.png" width="50" height="50">  | Combustible            | RE + Petróleo |
+| <img src="DocImg/imagenesGDD/FibraCarbono_idle.png" width="50" height="50"> | Fibra de carbono                 | Carbono + Tuberí­a |
+| <img src="DocImg/imagenesGDD/ModuloComandos_idle.png" width="50" height="50"> | Módulo de comando                | Chip + Chip + Pantalla |
 
 #### Piezas de Nave
 Objetos que nos permitiran terminar nuestra nave averiada y volver al espacio.
 
-| Sprite     | Nombre   |Obtención        |
+| Sprite     | Nombre   |Obtención |
 | :-------------:                      |:-------------          |:-------------   |
 || <img src="" width="50" height="50">  | Motor principal           | 4 engranajes + 2 baterí­as de iones |
 | <img src=" " width="50" height="50"> | Acelerador                 | 2 mecánismos + 1 circuito electrónico |
@@ -321,7 +314,6 @@ Enemigo de tipo Jefe que divide su comportamiento en 2 fases:
 
 ### Referencias
 - The binding of Isaac.
-
 - Enter the gungeon.
 
 ### Agradecimientos
@@ -329,18 +321,112 @@ Enemigo de tipo Jefe que divide su comportamiento en 2 fases:
 - Facultad de Informática.
 
 
-# Planificación
-//INSERTAR PLANIFICACION
+# **Planificación**
+##Modelo 1
+<img src="DocImg/imagenesGDD/Planificacion_1.png" width="602" height="364">
+##Línea de Tiempo
+<img src="DocImg/imagenesGDD/Planificacion_2.png" width="1167" height="449">
+##Recta final
+<img src="DocImg/imagenesGDD/Planificacion_3.png" width="519" height="376">
+# **POST-MORTEM**
+##Proyecto
+| Nombre | Desarrolladora | Plataforma desarrollo| Duración proceso |
+|:-------|:--------|:---------------|:-----------|
+| !Human | Not a Studio    |Visual Studio (C++)| nosecuando - 31/05/2017 
+  
 
-## DOCUMENTOS POST-MORTEM
-//POST-MORTEMS
+!Human es un juego TopDown en 2D basado en la acción directa, con componentes de rol desarrollado para Ordenador. En él, nuestro personaje principal ha de enfrentarse a diferentes enemigos para lograr su propósito principal: volver a su nave. Pensado para salir a la venta en la plataforma Steam en el verano de 2017.
+##Desarrollo
+###Logros
+Para empezar a desarrollar los aspectos positivos del proceso, vamos a especificar qué nos ha ido bien.
 
-## METODOLOGÍAS
-//SCRUM Y DEMÁS
+ Lo más importante y que ya es algo que caracteriza a Not a Studio es la buena conexión que existe entre todos los componentes del estudio. A pesar de estar sometidos en algunos momentos a mucha presión, hemos sido conscientes de que enfadarse o alejarse del resto de compañeros es algo que afectaría negativamente al proyecto. Evidentemente han existido momentos de tensión, pero hemos sabido resolverlos de la forma más cómoda posible para todo el equipo. En general, la comunicación ha sido muy buena y eso ha facilitado mucho el desarrollo.
 
-# Arquitectura del proyecto.
-La arquitectura está basada en abstracción y herencia, todo lo que tenga una cierta relación viene heredando de una clase superior que contiene el código común, por ejemplo en el caso de la clase Objeto que tiene un Update y Draw a modo de interfaz que luego heredan los objetos y personajes entre otros.
-Hemos usado dos librerías externas, SDL y Box2D.
+Una de las cosas que también hemos encontrado mucho más útil y cómoda de lo que nos la esperábamos es la herramienta de control de versiones GitHub. Todos la conocíamos pero prácticamente ninguno sabíamos, al principio del proyecto, manejarnos correctamente con ella. Sin embargo, a base de 'fuerza' hemos aprendido a utilizarla lo suficientemente bien como para que nos facilite mucho el dividir trabajo y no tener miedo de juntar las tareas.
+###Problemas
+Aquí vamos a definir los principales obstáculos que nos han surgido durante el desarrollo así como las consecuencias que estos han tenido en el mismo.
+
+El principal problema que hemos encontrado ha sido el tiempo. Al comienzo del proyecto, no fuimos conscientes de la importancia de tener unan planificación lo suficientemente concreta como para plantearnos si el tiempo del que disponíamos era suficiente para desarrollar el proyecto. No fuimos conscientes de esto hasta pasado el hito 1.
+Esto afectó directamente al juego, ya que tuvimos que recortar varias 'features' para ganar tiempo.
+
+Otro aspecto en el que hemos cometido errores ha sido en el arte. Al comienzo del proyecto, fuimos demasiado optimistas, lanzándonos a crear todo lo referente al estilo del juego(imágenes, música, etc.) por nosotros mismo. Esto produjo que a mitad del desarrollo tuvimos que dejar de lado algunos aspectos de la programación para introducir alguna persona mas a la creación de texturas.
+Además, también surgieron algunas diferencias en torno al estilo de dibujo que queríamos para el juego. Al final, se solucionó pero esto produjo que no todos los componentes del estudio estuviesen del todo de acuerdo con el resultado.
+
+Algo que tampoco ha funcionado del todo bien es el reparto de tareas. Comenzamos utilizando PivotalTracker para el reparto de las mismas, usando los comienzos de sprint como fecha para asignarlas. Pero como no poseíamos una planificación estricta, han surgido muchos problemas en torno a esto: en ocasiones existían dudas de quién estaba haciendo qué cosa; otras, al no notificar del comienzo/finalización de una tarea, había mas de una persona realizando el mismo trabajo.
+Esto va de la mano con la falta de comunicación que existió en algunos momentos. A pesar de haber una buena compenetración entre todos, el no asistir a las reuniones semanales o no utilizar las herramientas de comunicación ha tenido un impacto muy negativo al proyecto.
+
+A parte de todos estos problemas surgidos durante el proceso, también nos hemos encontrado con diferentes desafíos técnicos que nos han relantizado:
+
+ - La inclusión de Box2D en el proyecto por primera vez ha hecho que los desarrolladores que se ocupaban de la programación hayan tenido que ocupar parte de su tiempo para aprender, o al menos intentar, manejar correctamente la librería física. Además, un obstáculo concreto que nos impidió avanzar durante algún tiempo fue un problema surgido a partir de la mala utilización de la librería, pues no entendíamos por qué existía un límite de velocidad que no podíamo superar. Al cabo de algunos días, logramos solucionarlo.
+ - La inteligencia artificial de los enemigos también nos ha supuesto un gran bache en el desarrollo. Intentamos por varios caminos implementar el algoritmo 'A*', pero terminamos por descargar esta opción ya que no suponía una gran pérdida de tiempo. Optamos por una IA más sencilla.
+###Riesgos
+A parte de logros y problemas, han existido ciertos riesgos que hemos tomado y que han dado diferentes resultados.
+
+Por un lado, y como ya se ha descrito anteriormente, el optar por ser totalmente productores del arte del juego ha resultado peor de lo que esperábamos.
+
+Otro riesgo que aceptamos fue utilizar la librería Box2D sin conocimientos previos de la misma. No obstante, supimos arreglar los problemas surgidos a partir de este hecho, de forma que el impacto negativo ha sido el mínimo posible.
+###Evaluación del proceso
+Aquí vamos ha llevar acabo un pequeño auto análisis más profundo, puntuando cómo de satisfactorios han sido algunos de los aspectos del desarrollo del 1 ( más pobre) al 10 (más satisfactorio):
+|Criterio    | Puntuación   
+| :-------------:|:-------------        
+|Planificación del proyecto| 5  
+|Seguimiento de la planificación| 7  
+|Actuación frente a problemas inesperados| 8  
+|Rendimiento general| 6  
+|Comunicación| 6  
+|Cooperación como equipo| 7  
+|Utilización de los recursos| 7 
+
+##Conocimientos adquiridos
+Para concluir el POST-MORTEM, vamos a señalar cuáles han sido las mayores lecciones y conocimientos que hemos sacado de todo el proceso así como las consideraciones para siguientes proyectos.
+
+En primer lugar, vamos a señalar cuáles han sido los principales conocimientos adquiridos a través de todo este tiempo en el desarrollo de !Human:
+
+ - Introducción a Box2D, algo que sin duda encontramos muy positivo ya que ahora conocemos muchos aspectos y toda la utilidad de esta librería, por lo que la siguiente vez que decidamo utilizarla será un proceso más familiar y por supuesto más facil
+ - Al igual que con Box2D, nuestro manejo en Git y GitHub ha mejorado mucho. Hemos aprendido a, en la medida de lo posible, hacer merges que no dañen la estructura del proyecto.
+ - Y por supuesto programación en general y C++ en concreto. El haber utilizado una arquitectura basada en herencia y abstracción ha hecho que aprendamos, a base de prueba y error, cómo utilizar este tipo de estructuración. 
+
+A parte de todo esto, también hemos visto qué prácticas y procesos nos han salido bien y cuáles mal. 
+
+Por un lado,  el no utilizar un estándar de código ha supuesto que cada vez que alguien tenía que tocar código de otra persona, ésta tenía que preguntar al que ha implementado esa parte para poder entender qué es lo que hace. Como es lógico, esto supuso una gran pérdida de tiempo. 
+
+Por el contrario, el realizar las tareas de programación en pareja nos ha resultado muy cómodo y útil, ya que donde uno puede atascarse, el compañero puede resolverlo y ahorrar tiempo.
+
+Por último, algunas de las consideraciones que vamos a tener en cuenta para próximos proyectos son:
+
+- Medir bien la cantidad de arte que necesitamos para el juego, y si es demasiado alta, utilizar material de licencia libre para ahorrar trabajo.
+-  Hacer una planificación concreta y realista desde el principio del proyecto, pues nos han surgido muchos problemas
+- Junto con la planificación, tener un buen documento de diseño que facilite la implementación de esta planificación.
+
+# **METODOLOGÍAS**
+En el desarrollo de este proyecto utilizamos **Scrum**. Para ello, al comienzo del proceso definimos los *sprints*, las fechas de las reuniones y todo lo necesario para seguir un desarrollo cómodo para todos los integrantes.
+ Los sprints ocupan una semana de trabajo, y las fechas de comienzo y, por tanto finalización de estos, fueron ubicadas en lunes. Sin embargo, a partir del hito 1 decidimos cambiarlas a miércoles por unanimidad, ya que nos permitía más flexibilidad a la hora de completar las tareas. Así pues, cada miércoles antes de comenzar el reparto de tareas y comenzar a trabajar, tiene lugar una pequeña reunión de los componentes del grupo en los que analizamos el avance de cada uno durante ese sprint. Después de esa breve reunión, se procedía al reparto de tareas para el siguiente sprint. Para ellos, utilizamos **PivotalTracker** como se especifica en el apartado de Herramientas.
+## Toma decisiones
+La toma general de decisiones sobre las tareas se deposita en las personas que han realizado ese trabajo, ya que lo han hecho según está descrito en la tarea (GDD y PivotalTracker). Es decir, cada avance en el desarrollo del juego es responsabilidad de las personas que han de implementarlo. Ahora bien, toda implementación está expuesta a crítica y evaluación del resto de componentes del estudio. En el caso de no haber concordancia de opiniones entre todos los desarrolladores, la decisión final residirá en las personas que la han implementado.
+En cuanto a las decisiones importantes, cómo modificar, quitar o añadir nuevas 'features' al juego, debe llegarse a consenso entre todos los componentes del estudio. Si no se llega a consenso, no se lleva a cabo el cambio.
+## Modus Operandi
+El estudio está conformado actualmente por 8 personas. Para organizarnos y repartir las tareas, utilizamos distintas herramientas:
+
+ 1. Skype / Discord: herramientas principales para hablar mientras realizamos tareas fuera de la Universidad, hacer reuniones, etc.
+
+ 2. Pivotal Tracker: cada persona tiene una tarea activa en todo momento en Pivotal, de modo que siempre sabe cuál es su trabajo para esa semana. Al comenzar la tarea, hay que notificarlo en la aplicación. Así también, al terminar debemos marcarla como terminada. Los demás componentes del grupo han de evaluarla antes de aceptarla.
+
+ 3. Git y GitHub: repositorios en los que se encuentra el proyecto. En el máster en todo momento ha de haber una versión jugable del proyecto, pudiendo existir ramas que estén en desarrollo.
+## Tareas especificas
+### Diseñar una room
+Para diseñar una habitación e implementarla utilizamos Tiled. Al diseñar una Room se han de cumplir estas condiciones para que dicha room sea válida:
+
+ 1. El tamaño (tanto del ancho como del alto) ha de ser divisible por dos.
+ 2. Los tiles centrales de cada lado del nivel han de estar libres, es decir, no pueden estar ocupados por algún tile que no sea de pared normal. Esto permite que se puedan crear las puertas mediante código autáticamente.
+ 3. Para añadir enemigos, debe crearse una capa de Objetos. Una vez en ella, se crea un rectángulo. A éste se le pone el nombre del PNJ que vayamos a colocar y en el campo Tipo se pone _enemigo_.
+
+###Diseñar un tilesheet
+Para diseñar un nuveo tilesheet existe un patrón común que define que cuales de los tiles han de ser colisionables, cuales son de terreno superior y cuales son de terreno normal (por el que podemos desplazarnos.) 
+//IMAGEN AQUÍ
+
+# **Arquitectura del proyecto**
+La arquitectura está basada en abstracción y herencia, todo lo que tenga una cierta relación viene heredado de una clase superior que contiene el código común, por ejemplo en el caso de la clase Objeto que tiene un Update y Draw a modo de interfaz que luego heredan los objetos y personajes entre otros.
+Hemos usado dos librerías externas, SDL y Box2D. 
 Por ultimo las clases que necesitan introducir un mapa o enemigos usan la clase rapidxml.
 
 <img src="DocImg/imagenesGDD/diagClases.png" height = "200" width="100%">
