@@ -445,15 +445,15 @@ Los estados del juego
 ----------
 
 
-##Bocetos
+## Bocetos
 
-<img src="DocImg/imagenesGDD/Boceto1.png" width="602" height="364">
+<img src="DocImg/imagenesGDD/Boceto1.jpeg" width="602" height="364">
 
-<img src="DocImg/imagenesGDD/Boceto2.png" width="602" height="364">
+<img src="DocImg/imagenesGDD/Boceto2.jpeg" width="602" height="364">
 
-<img src="DocImg/imagenesGDD/Boceto3.png" width="602" height="364">
+<img src="DocImg/imagenesGDD/Boceto3.jpeg" width="602" height="364">
 
-<img src="DocImg/imagenesGDD/Boceto4.png" width="602" height="364">
+<img src="DocImg/imagenesGDD/Boceto4.jpeg" width="602" height="364">
 
 
 ----------
