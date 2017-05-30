@@ -514,7 +514,7 @@ para poder meter objetos (enemigos o inanimados), se tiene que crear una capa de
 
 ----------
 
-##Post-mortem Hito  1
+## Post-mortem Hito  1
 ### Que si/no ha funcionado
 - Ha funcionado el consenso de que iba ir el juego, La idea principal del juego, todo el mundo esta de acuerdo en la idea primitiva del juego.
 - No ha funcionado parcialmente el uso correcto del repositiorio tenemos un miedo al merge fallido
