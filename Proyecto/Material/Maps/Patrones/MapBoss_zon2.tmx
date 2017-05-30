@@ -43,6 +43,5 @@
   <object id="2" name="gnomo" type="enemigo" x="1408" y="1296" width="256" height="224"/>
   <object id="3" name="Sierra" type="enemigo" x="764" y="508" width="208" height="172"/>
   <object id="6" name="Sierra" type="enemigo" x="1980" y="528" width="280" height="264"/>
-  <object id="7" name="Sierra" type="enemigo" x="604" y="2388" width="524" height="224"/>
  </objectgroup>
 </map>

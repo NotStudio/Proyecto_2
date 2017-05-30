@@ -32,9 +32,7 @@ jefe3g::jefe3g(Juego* punteroJuego, int x, int y) : Enemigo(punteroJuego, { x, y
 jefe3g::~jefe3g()
 {
 	SDL_RemoveTimer(est);
-	SDL_RemoveTimer(mov);
-	SDL_RemoveTimer(att1);
-	
+	SDL_RemoveTimer(mov);	
 
 }
 
@@ -50,26 +48,23 @@ Uint32 jefe3g::changeIdleCB(Uint32 intervalo, void * param){
 	return 0;
 }
 
-Uint32 jefe3g::quitarSierraCB(Uint32 intervalo, void * param) {
-	static_cast<jefe3g*>(param)->eliminaSierra();
-	return 0;
-}
+
 
 ////////////////////////////////////////
 
 void jefe3g::changeState(){
 	empezado = false;
 	viejo = estado;
-	/*if (estado == IDLE || estado == MOVIMIENTO){
+	if (estado == IDLE || estado == MOVIMIENTO){
 		int rdm = rand() % 3;
-		if (rdm == 0 )
+		if (rdm == 0)
 			estado = MOVIMIENTO;
 		if (rdm == 2 || rdm == 1)
 		{
 			if (fase == FASE1){
 				int rmg = rand() % 2;
 				if (rmg == 0)
-					estado = ATAQUE1;
+					estado = ATAQUE3;
 				if (rmg == 1)
 					estado = ATAQUE2;
 			}
@@ -84,10 +79,8 @@ void jefe3g::changeState(){
 			}
 
 		}
-	}*/
-	estado = ATAQUE1;
+	}
 }
-
 
 
 
@@ -142,10 +135,9 @@ void jefe3g::comportamiento(){
 void jefe3g::onColisionEnter(Objeto* contactObject, b2Body* b1, b2Body* b2){
 	if (contactObject != nullptr) {
 		if (b2->GetFixtureList()->GetFilterData().categoryBits == Juego::AT_JUGADOR) {
-			stats.vida--;
-			//stats.vida--; Hay que fixearlo...
+			stats.vida -= static_cast<BalaEnemiga*>(contactObject)->getDanyo();
 
-			//if (stats.vida == 15) fase = FASE2;// Sería la mitad de la vida...
+			if (stats.vida <= 350) fase = FASE2;// Sería la mitad de la vida...
 			if (stats.vida <= 0) muerte();
 		}
 	}
@@ -198,44 +190,21 @@ void jefe3g::Movimiento(){
 ////////////////////////////////////////////////////////////////////////////
 void jefe3g::Ataque1(){
 
-	if (conts >= 4){
+	if (conts >= 3){
 		conts = 1;
 	}
+
 	if (sierras[conts] != nullptr){
 		static_cast<Sierra*>(sierras[conts])->activate();
 		static_cast<Sierra*>(sierras[conts])->setPos(pos.x, pos.y);
 		conts++;
 	}
-
-	att1 = SDL_AddTimer(10000, quitarSierraCB, this);
 	
-	estado = IDLE;
-	
+	estado = MOVIMIENTO;
 
-
-
-	
 }
 
 
-void jefe3g::eliminaSierra(){
-	if (contr >= 4){
-		contr = 1;
-	}
-	if (sierras[contr] != nullptr){
-		static_cast<Sierra*>(sierras[contr])->deactivate();
-		contr++;
-	}
-	else {
-		for (int i = 1; i < 4; i++){
-			static_cast<Sierra*>(sierras[i])->deactivate();
-
-		}
-	}
-
-	SDL_RemoveTimer(att1);
-
-}
 
 ////////////////////////////////////////////////////////////////////////////
 void jefe3g::Ataque2(){
