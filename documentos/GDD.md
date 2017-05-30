@@ -363,13 +363,13 @@ Otro riesgo que aceptamos fue utilizar la librería Box2D sin conocimientos prev
 Aquí vamos ha llevar acabo un pequeño auto análisis más profundo, puntuando cómo de satisfactorios han sido algunos de los aspectos del desarrollo del 1 ( más pobre) al 10 (más satisfactorio):
 |Criterio                       | Puntuación   |
 | :-------------:               |:-------------|        
-|Planificación del proyecto| 5  
-|Seguimiento de la planificación| 7  
-|Actuación frente a problemas inesperados| 8  
-|Rendimiento general| 6  
-|Comunicación| 6  
-|Cooperación como equipo| 7  
-|Utilización de los recursos| 7 
+|Planificación del proyecto| 5  |
+|Seguimiento de la planificación| 7|  
+|Actuación frente a problemas inesperados| 8|  
+|Rendimiento general| 6  |
+|Comunicación| 6  |
+|Cooperación como equipo| 7 | 
+|Utilización de los recursos| 7 | 
 
 ## Conocimientos adquiridos
 Para concluir el POST-MORTEM, vamos a señalar cuáles han sido las mayores lecciones y conocimientos que hemos sacado de todo el proceso así como las consideraciones para siguientes proyectos.
