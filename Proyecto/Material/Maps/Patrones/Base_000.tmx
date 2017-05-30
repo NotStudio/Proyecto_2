@@ -24,10 +24,10 @@
 </data>
  </layer>
  <objectgroup name="Capa de Objetos 1">
-  <object id="1" name="selectorzona" type="inanimado" x="1792" y="1508" width="436" height="404"/>
-  <object id="5" name="historia" type="inanimado" x="1424" y="136" width="316" height="268"/>
+  <object id="1" name="selectorzona" type="inanimado" x="1795.03" y="1035.27" width="436" height="404"/>
+  <object id="5" name="historia" type="inanimado" x="1442.18" y="5.69697" width="316" height="268"/>
   <object id="6" name="naveJuego" type="inanimado" x="3598.42" y="597.576" width="348.364" height="549.818"/>
   <object id="7" name="selectorcrafteo" type="inanimado" x="2604.79" y="18.4848" width="440" height="359.333"/>
-  <object id="18" name="selectorcambio" type="inanimado" x="100" y="760" width="620" height="620"/>
+  <object id="18" name="selectorcambio" type="inanimado" x="124.242" y="990.303" width="620" height="620"/>
  </objectgroup>
 </map>

@@ -5,6 +5,7 @@ bool Objetos3::moduloB = false;
 bool Objetos3::mecanismoB = false;
 bool Objetos3::fibraB = false;
 bool Objetos3::combustibleB = false;
+bool Objetos3::renderMsg = false;
 Objetos3::Objetos3(Juego* pJuego) : MenuJuego(pJuego)
 {
 	pJuego->reproducirEfecto("Multiusos");
@@ -17,6 +18,9 @@ Objetos3::Objetos3(Juego* pJuego) : MenuJuego(pJuego)
 	img = pJuego->getTextura(botones[0]->getNombre(), "idle");
 
 	Texto.LoadFuente(pJuego->getTipografia("Acme____", 30));
+	text2.LoadFuente(pJuego->getTipografia("Acme____", 30));
+	text2.loadTexto(pJuego->getRender(), "Para fabricar el combustible necesitas tener la nave preparada");
+	cont = 0;
 }
 
 
@@ -31,10 +35,14 @@ void Objetos3::draw() {
 		img->draw(pJuego->getRender(), SDL_Rect{ 44 * fx, 8 * fy, 125, 125 }, nullptr);
 		receta(botones[activo]->getNombre());
 		Texto.draw(pJuego->getRender(), 52 * fx, fy * 10);
+		
 	}
 	else{
 		
 
+	}
+	if (renderMsg){
+		text2.draw(pJuego->getRender(), 20 * fx, fy * 8);
 	}
 
 }
@@ -42,6 +50,7 @@ void Objetos3::draw() {
 void Objetos3::update() {
 	MenuJuego::update();
 	if (botones[activo]->getNombre() != "Salir") {
+		Fondo = pJuego->getTextura("HudCraft3", "idle");
 		img = pJuego->getTextura(botones[activo]->getNombre(), "idle");
 		if (!pJuego->getBaul()->findItem(botones[activo]->getNombre())) {
 			Texto.loadTexto(pJuego->getRender(), "0");
@@ -50,7 +59,17 @@ void Objetos3::update() {
 			Texto.loadTexto(pJuego->getRender(),std::to_string(pJuego->getBaul()->getCantidad(botones[activo]->getNombre())));
 		}
 	}
+	else{
+		Fondo = pJuego->getTextura("HudCraft4", "idle");
+	}
+	if (renderMsg)
+		cont++;
+	if (cont >= 500){
+		renderMsg = false;
+		cont = 0;
+	}
 	
+		
 
 }
 
@@ -67,7 +86,7 @@ void Objetos3::combustible(Juego* pjuego){
 
 	if ((pjuego->getBaul()->findItem("Petroleo") && pjuego->getBaul()->getCantidad("Petroleo") >= 1) &&
 
-		(pjuego->getBaul()->findItem("Refinador") && pjuego->getBaul()->getCantidad("Refinador") >= 1)){
+		(pjuego->getBaul()->findItem("Refinador") && pjuego->getBaul()->getCantidad("Refinador") >= 1) && pjuego->getProgresoNave() > 2){
 
 		pjuego->getBaul()->insertItem("Combustible", 1);
 		pjuego->getBaul()->removeItem("Petroleo", 1);
@@ -78,6 +97,10 @@ void Objetos3::combustible(Juego* pjuego){
 		}
 
 	}
+	else{
+		renderMsg = true;	
+	}
+
 
 }
 void Objetos3::mecanismo(Juego* pjuego){
@@ -88,14 +111,14 @@ void Objetos3::mecanismo(Juego* pjuego){
 		
 		(pjuego->getBaul()->findItem("Fusible") && pjuego->getBaul()->getCantidad("Fusible") >= 1)){
 
+		if (pjuego->getBaul()->getCantidad("Mecanismo") < 1){
+			pjuego->changeProgresoNave();
+		}
 		pjuego->getBaul()->insertItem("Mecanismo", 1);
 		pjuego->getBaul()->removeItem("Engranajes", 1);
 		pjuego->getBaul()->removeItem("Eje", 1);
 		pjuego->getBaul()->removeItem("Fusible", 1);
-		if (!mecanismoB){
-			pjuego->changeProgresoNave();
-			mecanismoB = true;
-		}
+		
 
 	}
 }
@@ -105,14 +128,14 @@ void Objetos3::fibraCarbono(Juego* pjuego){
 
 		(pjuego->getBaul()->findItem("Madera") && pjuego->getBaul()->getCantidad("Madera") >= 1)){//y algo	que dropea el 1er boss...
 
+
+		if (pjuego->getBaul()->getCantidad("FibraCarbono") < 1){
+			pjuego->changeProgresoNave();
+		}
 		pjuego->getBaul()->insertItem("FibraCarbono", 1);
 		pjuego->getBaul()->removeItem("Carbono", 1);
 		pjuego->getBaul()->removeItem("Madera", 1);
-		if (!fibraB){
-			pjuego->changeProgresoNave();
-			fibraB = true;
-		}
-
+		
 	}
 }
 
@@ -122,13 +145,13 @@ void Objetos3::moduloComandos(Juego* pjuego){
 
 		(pjuego->getBaul()->findItem("Circuito") && pjuego->getBaul()->getCantidad("Circuito") >= 2)){
 
+		if (pjuego->getBaul()->getCantidad("ModuloComandos") < 1){
+			pjuego->changeProgresoNave();
+		}
 		pjuego->getBaul()->insertItem("ModuloComandos", 1);
 		pjuego->getBaul()->removeItem("Pantalla", 1);
 		pjuego->getBaul()->removeItem("Circuito", 2);
-		if (!moduloB){
-			pjuego->changeProgresoNave();
-			moduloB = true;
-		}
+		
 	}
 
 }

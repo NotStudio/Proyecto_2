@@ -208,6 +208,7 @@ public:
 		default:
 			break;
 		}
+		changeTexture(id);
 		Pj->setNave(this);
 	};
 	~NaveJuego() {};
@@ -215,7 +216,7 @@ public:
 	virtual void onColisionEnter(Objeto* o, b2Body* b1, b2Body* b2) {
 	}
 	void changeTexture(string i){
-		currentAnim->textura = animaciones.at(i)->textura;	
+		currentAnim->textura = pJuego->getTextura(i, "idle");
 	}
 };
 //==============================================================================================

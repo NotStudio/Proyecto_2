@@ -33,7 +33,8 @@ void Pausa::resume(Juego * jg){
 
 void Pausa::returnMenu(Juego * jg){
 
-	jg->freeEstadoss();
+	//jg->reiniciar();
+	//jg->freeEstadoss();
 	jg->changeState(new MenuPG(jg));
 }
 
