@@ -278,16 +278,6 @@ Para el desarrollo de la historia, se craftean o se consiguen matando a jefes.
 | <img src="DocImg/imagenesGDD/FibraCarbono_idle.png" width="50" height="50"> | Fibra de carbono                 | Carbono + Tuberí­a |
 | <img src="DocImg/imagenesGDD/ModuloComandos_idle.png" width="50" height="50"> | Módulo de comando                | Chip + Chip + Pantalla |
 
-#### Piezas de Nave
-Objetos que nos permitiran terminar nuestra nave averiada y volver al espacio.
-
-| Sprite     | Nombre   |Obtención |
-| :-------------:                      |:-------------          |:-------------   |
-|| <img src="" width="50" height="50">  | Motor principal           | 4 engranajes + 2 baterí­as de iones |
-| <img src=" " width="50" height="50"> | Acelerador                 | 2 mecánismos + 1 circuito electrónico |
-| <img src=" " width="50" height="50"> | Módulo de comandos                | 3 circuito electrónicos + 1 fibra de carbono|
-| <img src=" " width="50" height="50"> | Estabilizador                 | 4 sensores de mov. + 1 mecanismo |
-
 ### NPC's
 
 | Sprite                                             | Nombre           |localizaciones    | descripcion | HP | At | Ve | FA |
@@ -320,23 +310,20 @@ Enemigo de tipo Jefe que divide su comportamiento en 2 fases:
 - Universidad Complutense de Madrid.
 - Facultad de Informática.
 
+
 # **Planificación**
 ## Modelo 1
 <img src="DocImg/imagenesGDD/Planificacion_1.png" width="602" height="364">
 
 ## Línea de Tiempo
 <img src="DocImg/imagenesGDD/Planificacion_2.png" width="1167" height="449">
-
 ## Recta final
 <img src="DocImg/imagenesGDD/Planificacion_3.png" width="519" height="376">
-
 # **POST-MORTEM**
-
-## Proyecto
-
+##Proyecto
 | Nombre | Desarrolladora | Plataforma desarrollo| Duración proceso |
-|:------:|:--------       |:---------------      |:-----------             |
-| !Human | Not a Studio   |Visual Studio (C++)   | nosecuando - 31/05/2017 |
+|:-------|:--------|:---------------|:-----------|
+| !Human | Not a Studio    |Visual Studio (C++)| nosecuando - 31/05/2017 
   
 
 !Human es un juego TopDown en 2D basado en la acción directa, con componentes de rol desarrollado para Ordenador. En él, nuestro personaje principal ha de enfrentarse a diferentes enemigos para lograr su propósito principal: volver a su nave. Pensado para salir a la venta en la plataforma Steam en el verano de 2017.
@@ -371,16 +358,15 @@ Por un lado, y como ya se ha descrito anteriormente, el optar por ser totalmente
 Otro riesgo que aceptamos fue utilizar la librería Box2D sin conocimientos previos de la misma. No obstante, supimos arreglar los problemas surgidos a partir de este hecho, de forma que el impacto negativo ha sido el mínimo posible.
 ### Evaluación del proceso
 Aquí vamos ha llevar acabo un pequeño auto análisis más profundo, puntuando cómo de satisfactorios han sido algunos de los aspectos del desarrollo del 1 ( más pobre) al 10 (más satisfactorio):
-
-|Criterio                                | Puntuación   |
-| :---------:                            |:-------------  |      
-|Planificación del proyecto| 5  |
-|Seguimiento de la planificación| 7 | 
-|Actuación frente a problemas inesperados| 8 | 
-|Rendimiento general| 6  |
-|Comunicación| 6  |
-|Cooperación como equipo| 7 | 
-|Utilización de los recursos| 7 |
+|Criterio    | Puntuación   
+| :-------------:|:-------------        
+|Planificación del proyecto| 5  
+|Seguimiento de la planificación| 7  
+|Actuación frente a problemas inesperados| 8  
+|Rendimiento general| 6  
+|Comunicación| 6  
+|Cooperación como equipo| 7  
+|Utilización de los recursos| 7 
 
 ## Conocimientos adquiridos
 Para concluir el POST-MORTEM, vamos a señalar cuáles han sido las mayores lecciones y conocimientos que hemos sacado de todo el proceso así como las consideraciones para siguientes proyectos.
@@ -425,14 +411,18 @@ Para diseñar una habitación e implementarla utilizamos Tiled. Al diseñar una 
  2. Los tiles centrales de cada lado del nivel han de estar libres, es decir, no pueden estar ocupados por algún tile que no sea de pared normal. Esto permite que se puedan crear las puertas mediante código autáticamente.
  3. Para añadir enemigos, debe crearse una capa de Objetos. Una vez en ella, se crea un rectángulo. A éste se le pone el nombre del PNJ que vayamos a colocar y en el campo Tipo se pone _enemigo_.
 
-###Diseñar un tilesheet
-Para diseñar un nuveo tilesheet existe un patrón común que define que cuales de los tiles han de ser colisionables, cuales son de terreno superior y cuales son de terreno normal (por el que podemos desplazarnos.) 
-//IMAGEN AQUÍ
+### Diseñar un tilesheet
+Para diseñar un nuevo tilesheet existe un patrón común que define que cuales de los tiles han de ser colisionables, cuales son de terreno superior y cuales son de terreno normal (por el que podemos desplazarnos.) 
+
 
 # **Arquitectura del proyecto**
+
 La arquitectura está basada en abstracción y herencia, todo lo que tenga una cierta relación viene heredado de una clase superior que contiene el código común, por ejemplo en el caso de la clase Objeto que tiene un Update y Draw a modo de interfaz que luego heredan los objetos y personajes entre otros.
 Hemos usado dos librerías externas, SDL y Box2D. 
 Por ultimo las clases que necesitan introducir un mapa o enemigos usan la clase rapidxml.
+
+<img src="DocImg/imagenesGDD/diagClases.png" height = "200" width="100%">
+
 El HUD dividido entre el de juego y el de interaccion de la base
 <img src="DocImg/imagenesGDD/hud.png" height = "362" width="100%">
 La clase Objeto de donde heredan los personajes, enemigos ,objetos y botones entre otros
@@ -441,4 +431,125 @@ Las diferentes zonas.
 <img src="DocImg/imagenesGDD/zona.png" height = "542" width="100%">
 Los estados del juego
 <img src="DocImg/imagenesGDD/estadojuego.png" height = "387" width="100%">
+
+# **Documentación varia**
+
+## Capas de colisiones
+<img src="DocImg/imagenesGDD/CapasColision.png" height = "585" width="939">
+
+
+----------
+
+
+##Bocetos
+<img src="DocImg/Bocetos/Boceto1.png" width="602" height="364">
+
+<img src="DocImg/Bocetos/Boceto2.png" width="602" height="364">
+
+<img src="DocImg/Bocetos/Boceto3.png" width="602" height="364">
+
+<img src="DocImg/Bocetos/Boceto4.png" width="602" height="364">
+
+
+----------
+## Guía como hacer un nivel
+Guía para crear una habitacion, incluye  objetos del entorno (inanimados/inertes) y enemigos.
+### Como diseñar un mapa
+Usamos Tiled , para crear mapas metes un tilesheet que este validado, en la carpeta de  tilesheets. Usamos el formato por defecto de Tiled (.tmx), usando el script creado por Fran.
+#### Información sobre los tiles
+Los primeros 12 tiles (partiendo de 0) no tienen colisión, de ahí en adelante eso tiles tienen colisión.
+Al meter los tiles en Tiled esta tiene tiene que ser la configuación ![configuración tilesheet](/DocImg/confTilsheet.png)
+
+#### Características de la habitación
+- El ancho y el alto tienen que ser múltiplos de 4
+- Los siguientes tiles tienen que estar accesibles para el jugador, para no bloquear el acceso a una puerta.(el primer tile es el 0,0).
+  - (ancho/2 -1 ,1),(ancho/2 ,1)
+  - (ancho/2 -1 ,2),(ancho/2 ,2)
+  - (ancho/2 -1 ,alto - 2 ),(ancho/2,alto - 2 )
+  - (ancho/2 -1 ,alto - 3 ),(ancho/2,alto - 3 )
+  - (ancho - 2 ,alto/2 - 1 ),(ancho - 2,alto/2  )
+  - (ancho - 3 ,alto/2 - 1 ),(ancho - 3,alto/2  )
+  - (1 ,alto/2 - 1 ),(1,alto/2)
+  - (2 ,alto/2 - 1 ),(2,alto/2)
+- Las 4 huecos tienen que ser accesibles en todas los mapas ocasiones.
+
+#### Ejemplos
+- esta bien este mapa
+![mapa correcto](DocImg/mapac1.png)
+- la puerta norte es inaccesible
+![mapa incorrecto](DocImg/mapai1.png)
+- Tiles prohibidos de usar son usados
+![mapa incorrecto](DocImg/mapai2.png)
+
+### Meter Objetos en el mapa
+para poder meter objetos (enemigos o inanimados), se tiene que crear una capa de objetos en el mapa de tiled, según sea enemigo o inanimado tiene que cumplir ciertas condiciones, algunas son comunes.
+
+#### Condiciones
+##### Comunes
+- Han de tener tipo y nombre. Atributos de un objeto Tiled.
+- Los tipos tienen que ser validos y los nombre validos con tipos
+- Ejemplos:
+  - ![correcto](DocImg/objc1.png)
+  - ![correcto](DocImg/objc2.png)
+  - ![correcto](DocImg/obji1.png)
+  - ![correcto](DocImg/obji2.png)
+
+##### Inanimados
+- Si un objeto bloquea una puerta, este objeto será eliminado (Los tiles mencionados antes), se borra si esta si se ha generado una puerta si no se borra.
+- El Objeto tiene que ser un rectangulo.
+- El tipo que hay que poner es inanimado.
+- La lista de inanimados esta en el GDD.
+
+##### Enemigos
+- Da igual la forma con la que crees el objeto.
+- No debe solapar con un inanimado, si no no se genera.
+- El tipo que hay enemigo.
+- La lista de enemigos esta en el GDD.
+
+
+----------
+
+##Post-mortem Hito  1
+### Que si/no ha funcionado
+- Ha funcionado el consenso de que iba ir el juego, La idea principal del juego, todo el mundo esta de acuerdo en la idea primitiva del juego.
+- No ha funcionado parcialmente el uso correcto del repositiorio tenemos un miedo al merge fallido
+- Ha funcionado parcialmente el quedar para hablar por skipe todas las mañanas
+- Ha funcionado la distribución de tareas por el Pivotal Tracker.
+
+### Qué hubiera necesitado más detalle
+- Si los personajes van a disparar o tener un ataque cuerpo a cuerpo.
+- Los Mundos que vamos a tener.
+- Los personajes que vamos a hacer.
+- Los tipos de enemigos.
+- Los objetos que va a haber.
+- La herencia de los objetos.
+
+basicamente el GDD no esta definido del todo.
+
+### Qué procesos no han mejorado
+- El uso del repositiorio
+- Tener algo visible es demasiado complejo a veces
+
+### Qué documentos no se han leido
+- El GDD (Muy primitivo de momento para poder hacer algo).
+- La herencia de los personajes y de los objetos.
+
+### Qué cambios hacen falta
+- Terminar el GDD, al menos en el apartado de las entidades que contiene el juego.
+- Hacer la herencia para poder desarrollar contenido.
+- Una correcta distribución de tareas.
+
+## Conclusiones
+### Cargos Internos repartidos
+- Secretario: Francisco
+- Inspectores: Pachi y Ángel
+- Historia y arte: Mario y Manuel
+
+### Tareas repartidas hoy
+- Diseño conceptual de la historia, Mario y Manuel
+- Camara que siga al personaje, Victor y Carlos
+- Diseño de todos los objetos, Fran
+- Diseñar 3 enemigos (programación), Algaba, Mario, Manuel
+- Colisión personaje del personaje, Ángel y Pachi
+
 
