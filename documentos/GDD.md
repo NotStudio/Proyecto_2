@@ -329,7 +329,7 @@ Enemigo de tipo Jefe que divide su comportamiento en 2 fases:
 ## Recta final
 <img src="DocImg/imagenesGDD/Planificacion_3.png" width="519" height="376">
 # **POST-MORTEM**
-##Proyecto
+## Proyecto
 | Nombre | Desarrolladora | Plataforma desarrollo| Duración proceso |
 |:-------|:--------|:---------------|:-----------|
 | !Human | Not a Studio    |Visual Studio (C++)| nosecuando - 31/05/2017 
