@@ -90,7 +90,7 @@ void Play::update(){
 		if (needGetZona) { 
 			zona = pJuego->getZona(); needGetZona = false; };
 		if (needCarga) {
-			SDL_AddTimer(1000u, callbackCarga, this);
+			setState(JUGANDO);
 			needCarga = false;
 		}
 
