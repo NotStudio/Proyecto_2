@@ -1,4 +1,6 @@
 #include "jefe3g.h"
+#include "ObjetoHistorico.h"
+#include "ObjetoClave.h"
 
 
 jefe3g::jefe3g(Juego* punteroJuego, int x, int y) : Enemigo(punteroJuego, { x, y, 96, 96 }, "gnomo", 1000)
@@ -20,6 +22,8 @@ jefe3g::jefe3g(Juego* punteroJuego, int x, int y) : Enemigo(punteroJuego, { x, y
 	}
 	currentAnim = animaciones.at("move");
 	body->SetType(b2_dynamicBody);
+
+	isKillable = true;
 }
 
 
@@ -40,6 +44,19 @@ Uint32 jefe3g::changeStateCB(Uint32 intervalo, void * param){
 Uint32 jefe3g::changeIdleCB(Uint32 intervalo, void * param){
 	static_cast<jefe3g*>(param)->estar();
 	return 0;
+}
+
+void jefe3g::dropItems()
+{
+	if (pJuego->getNumTarjetas() < 4)
+		dynamic_cast<ZonaAccion*>(pJuego->getZona())->getNivel()->nuevoObjeto(new ObjetoClave(pJuego, { sprite->x,sprite->y,64,64 }));
+
+	int x; int y;
+	int pos = rand() % 2;
+	if (pos == 0) pos = -1;
+	x = rand() % 10 * pos;
+	y = rand() % 10 * (pos * -1);
+	dynamic_cast<ZonaAccion*>(pJuego->getZona())->getNivel()->nuevoObjeto(new ObjetoHistorico(pJuego, { sprite->x + x,sprite->y + y,64,64 }, "Pantalla", 1));
 }
 
 

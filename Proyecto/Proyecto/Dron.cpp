@@ -74,17 +74,7 @@ void Dron::hit(int dmg) {
 	if (stats.vida <= 0) {
 		muerte();
 	}
-	else {
-		if (stats.vida > lim1 && stats.vida < stats.vidaMax) {
-			//Animación 1
-		}
-		else if (stats.vida > lim2 && stats.vida < lim1) {
-			//Animacion 2
-		}
-		else if (stats.vida > 0 && stats.vida < lim2) {
-			//Animacion 3
-		}
-	}
+
 }
 
 void Dron::muerte() {

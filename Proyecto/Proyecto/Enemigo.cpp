@@ -78,6 +78,7 @@ void Enemigo::desactivar(){
 void Enemigo::muerte(){
 	isDead_ = true;
 	needDrop = true;
+	destruido = true;
 	try{
 		currentAnim = animaciones.at("dead");
 	}
