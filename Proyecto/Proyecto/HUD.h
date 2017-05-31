@@ -23,7 +23,7 @@ public:
 
 private:
 
-	HUDImage * fondoVida;
+	SDL_Rect fondoVida;
 	HUDImage * vida;
 	Juego* pjuego;
 
@@ -42,6 +42,8 @@ private:
 	HUDText *statVelMov;
 	HUDText *statDanyo;
 	HUDText *statVelAtaq;
+	HUDText *VidaGui;
+
 
 	HUDImage * marcoStats;
 	HUDImage * cables;

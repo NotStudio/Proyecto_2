@@ -24,12 +24,14 @@ Jugable::~Jugable()
 	
 }
 Uint32 desactivarInmunidad(Uint32 intervalo, void* param) {
-	static_cast<Jugable*>(param)->quitarInmunidad();
+	if(static_cast<Jugable*>(param))
+		static_cast<Jugable*>(param)->quitarInmunidad();
 	//cout << "inmunidad quitada\n";
 	return 0;
 }
 Uint32 velocidadNormal(Uint32 intervalo, void* param){
-	static_cast<Jugable*>(param)->velocidad();
+	if (static_cast<Jugable*>(param))
+		static_cast<Jugable*>(param)->velocidad();
 	return 0;
 }
 void Jugable::onColisionEnter(Objeto* obj, b2Body* b1, b2Body* b2){

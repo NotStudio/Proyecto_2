@@ -19,7 +19,7 @@ Tostadora::Tostadora(Juego* punteroJuego, SDL_Rect spritePar):Jugable(punteroJue
 	stats.vida = 40;			
 	stats.daño = 10;			
 	stats.velAtq = 3;		
-	stats.vidaMax = 50;
+	stats.vidaMax = 40;
 	
 }
 
@@ -87,7 +87,7 @@ void Tostadora::setStats(){
 	stats.vida = 40;
 	stats.daño = 10;
 	stats.velAtq = 3;
-	stats.vidaMax = 50;
+	stats.vidaMax = 40;
 
 }
 void Tostadora::update(){

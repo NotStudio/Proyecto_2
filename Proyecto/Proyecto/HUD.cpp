@@ -27,6 +27,8 @@ HUD::HUD(Juego* punteroJuego, SDL_Rect spritePar, string objectId, string object
 	statDanyo->setColor(color);
 	statVelAtaq = new HUDText(pjuego, 5.5*medAncho, medAlto * 25,  "hudfont");
 	statVelAtaq->setColor(color);
+	VidaGui = new HUDText(pjuego, 150,10, "hudfont");
+	VidaGui->setColor(color);
 	
 
 
@@ -39,7 +41,7 @@ HUD::HUD(Juego* punteroJuego, SDL_Rect spritePar, string objectId, string object
 
 
 
-	fondoVida = new HUDImage(pjuego, 3, 3, (33*medAncho)+6 + medAncho*2.5+5, 3.5 * medAlto, "fondovida");
+	fondoVida = { 0,0,400,60 };
 	cables = new HUDImage(pjuego, 0, 0, ancho, alto, "cables");
 	updateHUD();
 }
@@ -54,8 +56,8 @@ HUD::~HUD()
 	delete velAtaq; 
 	delete cables;
 	delete vida;
-	delete fondoVida;
 	delete marcoStats;
+	delete VidaGui;
 	pjuego = nullptr;
 }
 
@@ -71,21 +73,29 @@ void HUD::draw(){
 	velAtaq->draw();
 	velMov->draw(); 
 	ataque->draw();
-	int x0 = fondoVida->getPos().x+5;
-	int y0 = fondoVida->getPos().y;
+	int x0 = fondoVida.x+5;
+	int y0 = fondoVida.y+5;
 	int separacion = 1;
-	int anchoseccion = fondoVida->getPos().w / maxVidas;
+	int anchoseccion = fondoVida.w / maxVidas;
 	int anchobarra = anchoseccion - separacion;
-
-	fondoVida->draw();
-
-	for (size_t i = 0; i < vidasAct; i++){
-		if (i>vidasAct - 1)separacion = 0;
-		vida->draw(x0+(i * (anchobarra)), 3 + medAlto*0.25, x0 + ((i+1)*anchobarra) - separacion, (medAlto * 3.25));
 	
-	}
+	SDL_Rect barraVida{x0,y0,anchoseccion*vidasAct-10,50};
+	SDL_SetRenderDrawColor(pjuego->getRender(), 47, 79, 79, 255);
+	SDL_RenderFillRect(pjuego->getRender(), &fondoVida);
 
-	//vidas.draw();
+	SDL_SetRenderDrawColor(pjuego->getRender(), 0, 200, 75, 100);
+
+	SDL_RenderFillRect(pjuego->getRender(), &barraVida);
+
+	SDL_SetRenderDrawColor(pjuego->getRender(), 119, 136, 153, 255);
+	SDL_RenderDrawRect(pjuego->getRender(), &barraVida);
+	SDL_RenderDrawRect(pjuego->getRender(), &fondoVida);
+
+
+	SDL_SetRenderDrawColor(pjuego->getRender(), 0, 0, 0, 255);
+	VidaGui->draw();	
+
+
 }
 void HUD::updateHUD(){
 	maxVidas = static_cast<Jugable*>(pjuego->getActiveCharacter())->getStats()->vidaMax;
@@ -97,5 +107,6 @@ void HUD::updateHUD(){
 	statVelMov->setTexto(to_string(aux->getStats()->velMov).substr(0, 3));
 	statDanyo->setTexto(to_string(aux->getStats()->daño).substr(0, 4));
 	statVelAtaq->setTexto(to_string(aux->getStats()->velAtq).substr(0, 4));
+	VidaGui->setTexto(std::to_string(vidasAct)+" / "+ std::to_string(maxVidas));
 
 }

@@ -64,14 +64,12 @@ struct Fuente
 	Fuente() { fuente = nullptr; }
 	void loadFuente(string const & dir, int const  tam = 25) {
 		fuente = TTF_OpenFont(dir.c_str(), tam);
-		fuente2 = TTF_OpenFont(dir.c_str(), tam);
 		if (fuente == nullptr) {
 			cout << "No se ha cargado la fuente \n";
 		}
 		else {
 			fichero = dir;
 			tamFuente = tam;
-			TTF_SetFontOutline(fuente2, 1);
 		}
 	}
 	~Fuente() {
@@ -79,7 +77,6 @@ struct Fuente
 		fuente = nullptr;
 	}
 	TTF_Font * fuente;
-	TTF_Font * fuente2;
 	int tamFuente;
 	string fichero;
 };

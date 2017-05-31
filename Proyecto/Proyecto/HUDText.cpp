@@ -57,7 +57,6 @@ void HUDText::draw(){
 	txt->draw(pRend, pos.x, pos.y);
 }
 void HUDText::draw(string text){
-	setTexto(text);
 	draw();
 }
 /*Este metodo recibe las coordenadas de inicio (x e y) y final del rectangulo (x1 y1)

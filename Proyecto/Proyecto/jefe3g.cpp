@@ -1,10 +1,11 @@
 #include "jefe3g.h"
 
 
-jefe3g::jefe3g(Juego* punteroJuego, int x, int y) : Enemigo(punteroJuego, { x, y, 96, 96 }, "gnomo", 1000)
+jefe3g::jefe3g(Juego* punteroJuego, int x, int y) : Enemigo(punteroJuego, { x, y, 128, 128 }, "gnomo", 1000)
 {
 	fDef.filter.categoryBits = Juego::ENEMIGO;
 	fDef.filter.maskBits = Juego::JUGADOR | Juego::ESCENARIO | Juego::ENEMIGO | Juego::ESCENARIO_NOCOL | Juego::AT_JUGADOR;
+	fDef.friction = 1.0f;
 	body->CreateFixture(&fDef);
 
 	estado = IDLE;
@@ -20,6 +21,7 @@ jefe3g::jefe3g(Juego* punteroJuego, int x, int y) : Enemigo(punteroJuego, { x, y
 	}
 	currentAnim = animaciones.at("move");
 	body->SetType(b2_dynamicBody);
+	isKillable = true;
 }
 
 
@@ -213,7 +215,7 @@ void jefe3g::disparo(){
 	b2Vec2 posJug = b2Vec2(jugx / PPM, jugy / PPM);
 	b2Vec2 vecDir = posJug - pos;
 
-	dynamic_cast<ZonaAccion*>(pJuego->getZona())->getNivel()->nuevaBala(new BalaHacha(pJuego, SDL_Rect{ getX(), getY() + 150, 24, 24 }, vecDir.x, vecDir.y));
+	dynamic_cast<ZonaAccion*>(pJuego->getZona())->getNivel()->nuevaBala(new BalaHacha(pJuego, SDL_Rect{ getX(), getY(), 72, 72 }, vecDir.x, vecDir.y));
 
 }
 
@@ -225,7 +227,7 @@ void jefe3g::Ataque3(){
 		jugy = static_cast<Entidad*>(pJuego->getPlayer())->getY();
 		b2Vec2 posJug = b2Vec2(jugx / PPM, jugy / PPM);
 		b2Vec2 vecDir = posJug - pos;
-		dynamic_cast<ZonaAccion*>(pJuego->getZona())->getNivel()->nuevaBala(new BalaMultiple(pJuego, SDL_Rect{ getX(), getY() + 150, 24, 24 }, vecDir.x, vecDir.y));
-		
+		dynamic_cast<ZonaAccion*>(pJuego->getZona())->getNivel()->nuevaBala(new BalaHacha(pJuego, SDL_Rect{ getX(), getY(), 72, 72 }, vecDir.x, vecDir.y));
+
 	estado = IDLE;
 }

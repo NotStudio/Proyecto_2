@@ -1,10 +1,15 @@
 #include "BalaHacha.h"
 
 
-BalaHacha::BalaHacha(Juego *pJuego, SDL_Rect spritePar, float dirx, float diry) : BalaEnemiga(pJuego, spritePar, "BalaN", 12, dirx, diry, 10)
+BalaHacha::BalaHacha(Juego *pJuego, SDL_Rect spritePar, float dirx, float diry) : BalaEnemiga(pJuego, spritePar, "hacha", 12, dirx, diry, 10)
 {
 	dirx_ = dirx;
 	diry_ = diry;
+	for (unordered_map<string, Juego::Animacion*>::iterator i = animaciones.begin(); i != animaciones.end(); i++)
+	{
+		animaciones.at(i->first)->setNumFrames(30);
+	}
+	currentAnim = animaciones.at("move");
 }
 
 
@@ -13,6 +18,7 @@ BalaHacha::~BalaHacha()
 }
 
 void BalaHacha::update(){
+	currentAnim->ActualizarFrame();
 	Bala::update();
 }
 
