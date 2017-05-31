@@ -5,7 +5,7 @@ ZonaBosque::ZonaBosque(Juego* punteroJuego) :ZonaAccion(punteroJuego)
 {
 	id = "zon1";
 
-	setHabitaciones(20,5);	
+	setHabitaciones(1,1);	
 	setNivelActual();
 	initRooms();
 	

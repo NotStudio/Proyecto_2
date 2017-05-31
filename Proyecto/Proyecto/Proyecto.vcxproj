@@ -37,6 +37,7 @@
     <ClCompile Include="Entidad.cpp" />
     <ClCompile Include="EstadoPG.cpp" />
     <ClCompile Include="FactoryEntidades.cpp" />
+    <ClCompile Include="FinalJuego.cpp" />
     <ClCompile Include="GameOver.cpp" />
     <ClCompile Include="Helice.cpp" />
     <ClCompile Include="Historia.cpp" />
@@ -109,6 +110,7 @@
     <ClInclude Include="Entidad.h" />
     <ClInclude Include="EstadoJuego.h" />
     <ClInclude Include="EstadoPG.h" />
+    <ClInclude Include="FinalJuego.h" />
     <ClInclude Include="HUDImage.h" />
     <ClInclude Include="HUDObj.h" />
     <ClInclude Include="HUDObjeto.h" />

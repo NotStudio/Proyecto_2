@@ -142,7 +142,7 @@ void Juego::changeProgresoNave(){
 void Juego::tarjetasRecogida(){
 	
 	tarjetasRecogidas++;
-	string s = "SD_" + to_string(tarjetasRecogidas);
+	string s = "SD " + to_string(tarjetasRecogidas);
 	
 	mem.at(s) = true;
 
@@ -575,6 +575,7 @@ void Juego::run() {
 			update();
 			world->Step(FPSCAP, 6, 2);
 			fpsCount++;
+			//std::cout << mem.at("SD 1") << "\n";
 			accumulator -= fp;
 		}
 		if (fpsCount >= 60){
@@ -734,7 +735,7 @@ void Juego::guardarJuego()
 	ofstream kek;
 	kek.open("save.kek");
 	//ya ha jugado
-	(firstPlay) ? kek<<0: kek<<1;
+	(firstPlay) ? kek<<1: kek<<0;
 	kek << endl;
 	//progreso nave
 	kek << progresoNave << endl;
@@ -791,14 +792,17 @@ bool Juego::cargarJuego()
 			inventario->insertItem(nomObjeto, cantObjeto);
 
 		}
-
+		kek >> nLineas;
+		int sum = 0;
 		for (int i = 0; i < nLineas; i++) {
 			string nomObjeto;
+			string aux;
 			int cantObjeto;
-			kek >> nomObjeto >> cantObjeto;
-			mem.insert(std::pair<std::string, bool>(nomObjeto, (cantObjeto) ? true : false));
-
+			kek >> nomObjeto >> aux >> cantObjeto;
+			sum += cantObjeto;
+			mem.insert(std::pair<std::string, bool>(nomObjeto + " " + aux, (cantObjeto) ? true : false));
 		}
+		tarjetasRecogidas = sum;
 		kek.close();
 	}
 	else {

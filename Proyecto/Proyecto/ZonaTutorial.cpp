@@ -1,7 +1,7 @@
 #include "ZonaTutorial.h"
 #include "Consumible.h"
 #include "ObjetoHistorico.h"
-
+#include "ObjetoClave.h"
 
 
 ZonaTutorial::ZonaTutorial(Juego* punteroJuego) :ZonaAccion(punteroJuego), timerTexto_(255)
@@ -14,6 +14,7 @@ ZonaTutorial::ZonaTutorial(Juego* punteroJuego) :ZonaAccion(punteroJuego), timer
 	niveles->at(0)->meterEntidades();
 	niveles->at(0)->nuevoObjeto(new Pila(punteroJuego, SDL_Rect{800,700,64,64}, "Pila"));
 	niveles->at(0)->nuevoObjeto(new ObjetoHistorico(punteroJuego, SDL_Rect{ 800,3500,64,64 }, "Litio", 1));
+	niveles->at(0)->nuevoObjeto(new ObjetoClave(punteroJuego, SDL_Rect{ 800, 4000, 64, 64 }));
 	setNivelActual();
 
 	static_cast<Jugable*>(pJuego->getPlayer())->cambiaEstado(Jugable::BASE);
@@ -79,7 +80,7 @@ void ZonaTutorial::updateTextos()
 	}
 	else if(playerPos->y > 3600){
 		frase1_ = "Parece que este camino lleva a una fábrica abandonada.";
-		frase2_ = " ";
+		frase2_ = "¿Y esta tarjeta SD? ¿Para qué servirá? ";
 	}
 }
 

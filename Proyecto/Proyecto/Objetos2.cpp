@@ -145,12 +145,12 @@ void Objetos2::refinador(Juego* pjuego){
 
 void Objetos2::circuito(Juego* pjuego){
 
-	if ((pjuego->getBaul()->findItem("Estaño") && pjuego->getBaul()->getCantidad("Estaño") >= 1) &&
+	if ((pjuego->getBaul()->findItem("Estanyo") && pjuego->getBaul()->getCantidad("Estanyo") >= 1) &&
 
 		(pjuego->getBaul()->findItem("Chip") && pjuego->getBaul()->getCantidad("Chip") >= 1)){
 
 		pjuego->getBaul()->insertItem("Circuito", 1);
-		pjuego->getBaul()->removeItem("Estaño", 1);
+		pjuego->getBaul()->removeItem("Estanyo", 1);
 		pjuego->getBaul()->removeItem("Chip", 1);
 
 
@@ -160,12 +160,12 @@ void Objetos2::circuito(Juego* pjuego){
 void Objetos2::bateriaIones(Juego* pjuego){
 
 
-	if ((pjuego->getBaul()->findItem("Estaño") && pjuego->getBaul()->getCantidad("Estaño") >= 1) &&
+	if ((pjuego->getBaul()->findItem("Estanyo") && pjuego->getBaul()->getCantidad("Estanyo") >= 1) &&
 
 		(pjuego->getBaul()->findItem("Litio") && pjuego->getBaul()->getCantidad("Litio") >= 1)){
 
 		pjuego->getBaul()->insertItem("IonBattery", 1);
-		pjuego->getBaul()->removeItem("Estaño", 1);
+		pjuego->getBaul()->removeItem("Estanyo", 1);
 		pjuego->getBaul()->removeItem("Litio", 1);
 
 	}

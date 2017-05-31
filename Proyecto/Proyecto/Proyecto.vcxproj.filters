@@ -275,6 +275,18 @@
     <ClCompile Include="ZonaPinApple.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="BalaHacha.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BalaMultiple.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="jefe3g.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="FinalJuego.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Juego.h">
@@ -518,6 +530,18 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="ZonaPinApple.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BalaHacha.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="BalaMultiple.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="jefe3g.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FinalJuego.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

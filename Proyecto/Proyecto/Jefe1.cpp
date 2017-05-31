@@ -62,10 +62,11 @@ void Jefe1::onColisionEnter(Objeto* contactObject, b2Body* b1, b2Body* b2) {
 	if (contactObject != nullptr){
 		if (b2->GetFixtureList()->GetFilterData().categoryBits == Juego::AT_JUGADOR){
 
-			stats.vida -= stats.vida -= static_cast<BalaEnemiga*>(contactObject)->getDanyo();
+			stats.vida -= static_cast<BalaEnemiga*>(contactObject)->getDanyo();
 			//pJuego->reproducirEfecto("scream");
-			if (stats.vida == 15)fase = Fases::Fase2;
-			else  if (stats.vida <= 0) muerte();
+			if (stats.vida <= 150)fase = Fases::Fase2;
+			
+			if (stats.vida <= 0) muerte();
 		}
 	}
 }
@@ -91,9 +92,15 @@ void Jefe1::changeState(){// El metodo no es el más bonito lo sé
 		if (rdm == 1)
 		{
 			if(fase == Fases::Fase1)
-			estado = Estados::Ataque2;
-			else if (fase == Fases::Fase2)
-				estado = Estados::Ataque3;
+				estado = Estados::Ataque2;
+			else if (fase == Fases::Fase2){
+				int rdm2 = rand() % 2;
+				if (rdm2 == 0)
+					estado = Estados::Ataque2;
+				else
+					estado = Estados::Ataque3;
+			
+			}
 		}
 	
 	}
@@ -146,10 +153,10 @@ void Jefe1::Ataque1(){
 		
 		//disparaAceite();
 		
-		disparo("BalaN", SDL_Rect{ getX(), getY() + 150, 24, 24 }, -0.8, 0.3, 10);
-		disparo("BalaN", SDL_Rect{ getX(), getY() + 150, 24, 24 }, 0, 1, 10);
-		disparo("BalaN", SDL_Rect{ getX(), getY() + 150, 24, 24 }, 0.7, 0.8, 10);
-		disparo("BalaN", SDL_Rect{ getX(), getY() + 150, 24, 24 }, 1.5, 0.4, 10);
+		disparo("BalaN", SDL_Rect{ getX(), getY() + 150, 24, 24 }, -0.8, 0.3, 15);
+		disparo("BalaN", SDL_Rect{ getX(), getY() + 150, 24, 24 }, 0, 1, 15);
+		disparo("BalaN", SDL_Rect{ getX(), getY() + 150, 24, 24 }, 0.7, 0.8, 15);
+		disparo("BalaN", SDL_Rect{ getX(), getY() + 150, 24, 24 }, 1.5, 0.4, 15);
 		
 
 

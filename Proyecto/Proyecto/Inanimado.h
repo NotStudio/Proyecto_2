@@ -8,6 +8,7 @@
 #include "Crafteo.h"
 #include "Play.h"
 #include "Historia.h"
+#include "FinalJuego.h"
 
 class Inanimado :
 	public Entidad
@@ -214,6 +215,10 @@ public:
 	~NaveJuego() {};
 
 	virtual void onColisionEnter(Objeto* o, b2Body* b1, b2Body* b2) {
+		
+		if (estado == Estado::READY){
+			pJuego->pushState(new FinalJuego(pJuego));
+		}
 	}
 	void changeTexture(string i){
 		currentAnim->textura = pJuego->getTextura(i, "idle");
@@ -251,6 +256,7 @@ public:
 	~TriggerBase() {};
 
 	virtual void onColisionEnter(Objeto* o, b2Body* b1, b2Body* b2) {
+		pJuego->firstPlay = false;
 		pJuego->setFinZona();
 	}
 };
