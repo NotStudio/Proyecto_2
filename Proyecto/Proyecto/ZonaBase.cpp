@@ -44,27 +44,27 @@ void ZonaBase::setTextos() {
 void ZonaBase::updateTextos()
 {
 	SDL_Rect* playerPos = pJuego->getPlayer()->getRect();
-	if (playerPos->x > 66 && playerPos->x < 270 && playerPos->y > 240 && playerPos->y < 650){
+	if (playerPos->x > 66 && playerPos->x < 390 && playerPos->y > 400 && playerPos->y < 810){
 		frase1_ = "Hmmm, parece que tengo algún compañero para ayudarme.";
 		frase2_ = "Selector de personaje.";
 		frase3_ = " ";
 	}
 
-	else if (playerPos->x > 560 && playerPos->x < 915 && playerPos->y > 330 && playerPos->y < 710) {
+	else if (playerPos->x > 780 && playerPos->x < 1180 && playerPos->y > 420 && playerPos->y < 790) {
 		frase1_ = "Con este mapa podré ir avanzando en las zonas donde puedo conseguir recursos.";
 		frase2_ = "Misiones";
 		frase3_ = " ";
 		misiones = true;
 	}
 
-	else if (playerPos->x > 1200 && playerPos->x < 1470 && playerPos->y > 66 && playerPos->y < 240) {
+	else if (playerPos->x > 1210 && playerPos->x < 1470 && playerPos->y > 66 && playerPos->y < 250) {
 		frase1_ = "Esta mesa con herramientas me ayudará a fabricar las piezas para mi nave.";
 		frase2_ = "Que no se me olvide guardar las cosas de mi mochila con la tecla 't' en el baúl.";
 		frase3_ = "Fabricación de materiales.";
 		materiales = true;
 	}
 
-	else if (playerPos->x > 1000 && playerPos->x < 1500 && playerPos->y > 650 && playerPos->y < 900) {
+	else if (playerPos->x > 585 && playerPos->x < 1025 && playerPos->y > 66 && playerPos->y < 310) {
 		frase1_ = "Vaya, aqui puedo ver la información recogida.";
 		frase2_ = "Historia";
 		frase3_ = " ";
