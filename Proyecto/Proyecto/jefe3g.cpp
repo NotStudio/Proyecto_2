@@ -15,7 +15,7 @@ jefe3g::jefe3g(Juego* punteroJuego, int x, int y) : Enemigo(punteroJuego, { x, y
 
 	stats.daño = 5;
 	stats.vida = 700;
-	stats.velMov = 2;
+	stats.velMov = 2.8;
 
 	for (unordered_map<string, Juego::Animacion*>::iterator i = animaciones.begin(); i != animaciones.end(); i++)
 	{
@@ -231,7 +231,7 @@ void jefe3g::disparo(){
 	b2Vec2 posJug = b2Vec2(jugx / PPM, jugy / PPM);
 	b2Vec2 vecDir = posJug - pos;
 
-	dynamic_cast<ZonaAccion*>(pJuego->getZona())->getNivel()->nuevaBala(new BalaHacha(pJuego, SDL_Rect{ getX(), getY(), 72, 72 }, vecDir.x, vecDir.y));
+	dynamic_cast<ZonaAccion*>(pJuego->getZona())->getNivel()->nuevaBala(new BalaHacha(pJuego, SDL_Rect{ getX(), getY(), 100, 100 }, vecDir.x, vecDir.y));
 
 }
 
@@ -243,7 +243,7 @@ void jefe3g::Ataque3(){
 		jugy = static_cast<Entidad*>(pJuego->getPlayer())->getY();
 		b2Vec2 posJug = b2Vec2(jugx / PPM, jugy / PPM);
 		b2Vec2 vecDir = posJug - pos;
-		dynamic_cast<ZonaAccion*>(pJuego->getZona())->getNivel()->nuevaBala(new BalaHacha(pJuego, SDL_Rect{ getX(), getY(), 72, 72 }, vecDir.x, vecDir.y));
+		dynamic_cast<ZonaAccion*>(pJuego->getZona())->getNivel()->nuevaBala(new BalaMultiple(pJuego, SDL_Rect{ getX(), getY(), 120, 120 }, vecDir.x, vecDir.y));
 
 	estado = IDLE;
 }

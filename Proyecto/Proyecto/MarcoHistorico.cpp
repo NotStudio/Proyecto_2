@@ -36,7 +36,7 @@ void MarcoHistorico::draw(){
 	MenuJuego::draw();
 	if (botones[activo]->getNombre() != "Salir") {
 		imgObj = pJuego->getTextura(botones[activo]->getNombre(), "idle");
-		imgObj->draw(pJuego->getRender(), SDL_Rect{ pJuego->getWindow().ancho / 2 - pJuego->getWindow().ancho * 0.1, pJuego->getWindow().alto / 2 - pJuego->getWindow().alto * 0.3, 800, 600 }, nullptr);
+		imgObj->draw(pJuego->getRender(), SDL_Rect{ pJuego->getWindow().ancho / 2 - pJuego->getWindow().ancho * 0.2, pJuego->getWindow().alto / 2 - pJuego->getWindow().alto * 0.3, 800, 600 }, nullptr);
 	}
 }
 

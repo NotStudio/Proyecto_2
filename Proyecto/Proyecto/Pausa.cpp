@@ -12,9 +12,9 @@ Pausa::Pausa(Juego * juego) : MenuJuego(juego)//, pR(nullptr)
 	static_cast<ZonaAccion*>(pJuego->getZona())->getNivel()->stop();
 	static_cast<Jugable*>(pJuego->getPlayer())->stop();
 
-	insertarBoton(Boton::FUTURISTA, 32, 20, resume, "Continuar", "kek");
-	insertarBoton(Boton::FUTURISTA, 32, 26, opciones, "Opciones", "kek");
-	insertarBoton(Boton::FUTURISTA, 32, 32, returnMenu, "Vuelve al menu", "kek");
+	insertarBoton(Boton::FUTURISTA, 28, 26, resume, "Continuar", "kek");
+	insertarBoton(Boton::FUTURISTA, 28, 32, opciones, "Opciones", "kek");
+	insertarBoton(Boton::FUTURISTA, 28, 38, returnMenu, "Vuelve al menu", "kek");
 	Fondo = pJuego->getTextura("Pause", "idle");
 
 	//Para añadir los botones

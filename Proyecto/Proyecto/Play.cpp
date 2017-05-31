@@ -26,7 +26,14 @@ Play::Play(Juego * juego) : EstadoPG(juego)
 	Juego::Ventana window = juego->getWindow();
 	Camera = new Camara(static_cast<Entidad*>(personaje[pJuego->getActivo()])->getRect(), window.ancho, window.alto);
 	juego->setCamera(Camera);
-	juego->setZona("ZonaBase");
+	
+	
+	if (juego->firstPlay)
+		juego->setZona("ZonaTutorial");
+	else
+		juego->setZona("ZonaBase");
+	
+
 	vidasHUD = new HUD(juego, SDL_Rect{ 20,0,34,55 }, "Battery4", "idle");
 	inventario = pJuego->getInventory();
 	baul = pJuego->getBaul();

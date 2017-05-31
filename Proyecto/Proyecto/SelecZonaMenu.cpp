@@ -27,10 +27,7 @@ void SelecZonaMenu::salir(Juego* pJuego) {
 
 void SelecZonaMenu::goZona1(Juego* pJuego) {
 
-	if(pJuego->firstPlay)
-		pJuego->setZona("ZonaTutorial");
-	else
-		pJuego->setZona("ZonaBosque");
+	pJuego->setZona("ZonaBosque");
 	Play::setZona();
 	pJuego->popState();
 

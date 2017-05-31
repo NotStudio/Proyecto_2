@@ -14,7 +14,7 @@ ZonaTutorial::ZonaTutorial(Juego* punteroJuego) :ZonaAccion(punteroJuego), timer
 	niveles->at(0)->meterEntidades();
 	niveles->at(0)->nuevoObjeto(new Pila(punteroJuego, SDL_Rect{800,700,64,64}, "Pila"));
 	niveles->at(0)->nuevoObjeto(new ObjetoHistorico(punteroJuego, SDL_Rect{ 800,3500,64,64 }, "Litio", 1));
-	niveles->at(0)->nuevoObjeto(new ObjetoClave(punteroJuego, SDL_Rect{ 800, 4000, 64, 64 }));
+	niveles->at(0)->nuevoObjeto(new ObjetoClave(punteroJuego, SDL_Rect{ 800, 3800, 64, 64 }));
 	setNivelActual();
 
 	static_cast<Jugable*>(pJuego->getPlayer())->cambiaEstado(Jugable::BASE);
