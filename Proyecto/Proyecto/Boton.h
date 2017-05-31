@@ -10,7 +10,7 @@ class Boton : public Objeto
 public:
 	enum ButtonType
 	{
-		ILUMINADO,MECANICO,FUTURISTA
+		ILUMINADO,MECANICO,FUTURISTA,ILUMINADOBLANCO
 	};
 	
 	typedef void CallBack_t(Juego* jg);
@@ -87,6 +87,17 @@ class BotonIluminado :public Boton
 public:
 	BotonIluminado(Juego* juego, int x, int y, CallBack_t * cbCons, string Nombre, string descripcion = "No hay descripcion");
 	virtual ~BotonIluminado() {};
+	virtual void update();
+
+private:
+
+};
+
+class BotonIluminadoBlanco :public Boton
+{
+public:
+	BotonIluminadoBlanco(Juego* juego, int x, int y, CallBack_t * cbCons, string Nombre, string descripcion = "No hay descripcion");
+	virtual ~BotonIluminadoBlanco() {};
 	virtual void update();
 
 private:

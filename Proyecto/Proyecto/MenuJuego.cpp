@@ -128,6 +128,9 @@ void MenuJuego::insertarBoton(Boton::ButtonType type, Uint8 factorX, Uint8 facto
 	case Boton::FUTURISTA:
 		botones.push_back(new BotonFuturista(pJuego, factorX*fx, fy*factorY, accion, nombre, descripcion));
 		break;
+	case Boton::ILUMINADOBLANCO:
+		botones.push_back(new BotonIluminadoBlanco(pJuego, factorX*fx, fy*factorY, accion, nombre, descripcion));
+		break;
 	default:
 		break;
 	}
