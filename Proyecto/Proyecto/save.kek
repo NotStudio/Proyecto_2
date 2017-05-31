@@ -3,9 +3,9 @@
 7
 Carbon 4
 Engranaje 2
-Estanyo 5
-IonBattery 1
-Litio 1
+Estanyo 4
+IonBattery 2
+NucleoPlasma 2
 Sensor 1
 Tuercas 1
 0
@@ -13,4 +13,4 @@ Tuercas 1
 SD 1 1
 SD 2 1
 SD 3 1
-SD 4 0
+SD 4 1

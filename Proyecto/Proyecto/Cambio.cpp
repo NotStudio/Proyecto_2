@@ -5,17 +5,24 @@
 #include "ZonaAccion.h"
 #include <typeinfo>
 
-Cambio::Cambio(Juego * juego,vector<Objeto*>& Personajes) : MenuJuego(juego)//, pR(nullptr)
+Cambio::Cambio(Juego * juego,vector<Objeto*>& Personajes) : MenuJuego(juego), isSwitchyUnlocked(false)//, pR(nullptr)
 {
 	pJuego->reproducirEfecto("Multiusos");
 	static_cast<ZonaAccion*>(pJuego->getZona())->getNivel()->stop();
 	static_cast<Jugable*>(pJuego->getPlayer())->stop();
-	int contY = 0;
+	if (pJuego->getProgresoNave() >= 4)
+		isSwitchyUnlocked = true;
 	Fondo = pJuego->getTextura("SelecPersonajeFondo", "idle");
+	if (isSwitchyUnlocked) {
 
-	for (auto p : Personajes){
-		insertarBoton(Boton::ILUMINADO, 21 + contY, 33, resume, static_cast<Jugable*>(p)->getId(), "kek");
-		contY += 15 ;
+		int contY = 0;
+		for (auto p : Personajes) {
+			insertarBoton(Boton::ILUMINADO, 21 + contY, 33, resume, static_cast<Jugable*>(p)->getId(), "kek");
+			contY += 15;
+		}
+	}
+	else {
+		insertarBoton(Boton::ILUMINADO, 21, 33, resume, static_cast<Jugable*>(Personajes[0])->getId(), "kek");
 	}
 	f = 0;
 	activo = 0;

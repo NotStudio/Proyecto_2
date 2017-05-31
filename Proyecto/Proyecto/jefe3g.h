@@ -53,5 +53,7 @@ public:
 	static Uint32 changeIdleCB(Uint32 intervalo, void * param);
 	vector<Objeto*> sierras;
 
+	virtual void dropItems();
+
 };
 

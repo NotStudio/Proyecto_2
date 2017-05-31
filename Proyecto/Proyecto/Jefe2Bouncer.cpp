@@ -1,7 +1,7 @@
 #include "Jefe2Bouncer.h"
 #include "BalaEnemiga.h"
 #include "ObjetoClave.h"
-
+#include "ObjetoHistorico.h"
 
 
 Jefe2Bouncer::Jefe2Bouncer(Juego* punteroJuego, int x, int y, int lvl):Enemigo(punteroJuego, { x, y, 300-(lvl*40), 300-(lvl*40) }, "PlasmaBall", 1000), level(lvl), doDivision(false)
@@ -135,8 +135,16 @@ void Jefe2Bouncer::onColisionEnter(Objeto * contactObject, b2Body * b1, b2Body *
 void Jefe2Bouncer::dropItems()
 {
 	if (level == 1){
+
 		if (pJuego->getNumTarjetas() < 4)
 			dynamic_cast<ZonaAccion*>(pJuego->getZona())->getNivel()->nuevoObjeto(new ObjetoClave(pJuego, { sprite->x, sprite->y, 64, 64 }));
+
+		int x; int y;
+		int pos = rand() % 2;
+		if (pos == 0) pos = -1;
+		x = rand() % 10 * pos;
+		y = rand() % 10 * (pos * -1);
+		dynamic_cast<ZonaAccion*>(pJuego->getZona())->getNivel()->nuevoObjeto(new ObjetoHistorico(pJuego, { sprite->x + x,sprite->y + y,64,64 }, "NucleoPlasma", 1));
 	}
 	
 }

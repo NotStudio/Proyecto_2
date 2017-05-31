@@ -5,7 +5,7 @@ FinalJuego::FinalJuego(Juego* pJuego) : MenuJuego(pJuego)
 {
 
 	//Cambiar fondo al de final del juego
-	Fondo = pJuego->getTextura("SelectorHistoria1", "idle");
+	Fondo = pJuego->getTextura("FinJuego", "idle");
 
 	insertarBoton(Boton::FUTURISTA, 41, 48, salir, "Salir", "Vuelve a la base");
 	insertarBoton(Boton::FUTURISTA, 21, 48, menu, "Menú", "Vuelve al menu");

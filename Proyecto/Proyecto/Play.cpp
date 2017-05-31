@@ -32,7 +32,7 @@ Play::Play(Juego * juego) : EstadoPG(juego)
 	baul = pJuego->getBaul();
 
 
-	inventory = new HUDinventory(juego, SDL_Rect{ 150, 500, 500, 100 }, "Inventory", "idle",inventario);
+	inventory = new HUDinventory(juego, SDL_Rect{ 600 , 980, 500, 100 }, "Inventory", "idle", inventario);
 	//SDL_Rect{ (WINwidth/2) - width/2, WINheight - height , ... , ...}
 	zona = pJuego->getZona();
 
