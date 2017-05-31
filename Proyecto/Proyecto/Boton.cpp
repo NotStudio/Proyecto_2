@@ -106,7 +106,7 @@ void BotonIluminado::update()
 	}
 }
 
-BotonIluminadoBlanco::BotonIluminadoBlanco(Juego * juego, int x, int y, CallBack_t * cbCons, string Nombre, string descripcion):Boton(juego, "button", { x, y, 316 / 2, 60 }, cbCons, Nombre, descripcion)
+BotonIluminadoBlanco::BotonIluminadoBlanco(Juego * juego, int x, int y, CallBack_t * cbCons, string Nombre, string descripcion):Boton(juego, "Button4", { x, y, 316 / 2, 60 }, cbCons, Nombre, descripcion)
 {
 	Anim->setNumFrames(2);
 }
