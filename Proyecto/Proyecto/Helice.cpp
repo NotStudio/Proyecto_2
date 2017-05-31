@@ -101,16 +101,18 @@ void Helice::disparo(){
 }
 
 void Helice::comportamiento(){
-	currentAnim->ActualizarFrame();
-	if (distancia()){
+	if (!destruido) {
+		currentAnim->ActualizarFrame();
+		if (distancia()) {
 
-		if (rng == 0){
-			disparo();
-			stop();
+			if (rng == 0) {
+				disparo();
+				stop();
+			}
+			else
+				move();
 		}
 		else
-			move();
+			rng = rand() % 2;
 	}
-	else
-		rng = rand() % 2;
 }
