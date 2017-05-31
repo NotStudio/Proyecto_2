@@ -16,6 +16,7 @@ public:
 	virtual void update();
 
 private:
+	bool isSwitchyUnlocked;
 	static void resume(Juego * jg);
 	static void returnMenu(Juego * jg);
 	TexturasSDL * img;
