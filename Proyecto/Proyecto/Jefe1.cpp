@@ -245,6 +245,6 @@ void Jefe1::dropItems() {
 	if (pos == 0) pos = -1;
 	x = rand() % 10 * pos;
 	y = rand() % 10 * (pos * -1);
-	dynamic_cast<ZonaAccion*>(pJuego->getZona())->getNivel()->nuevoObjeto(new ObjetoHistorico(pJuego, { sprite->x + x,sprite->y + y,64,64 }, "NucleoPlasma", 1));
+	dynamic_cast<ZonaAccion*>(pJuego->getZona())->getNivel()->nuevoObjeto(new ObjetoHistorico(pJuego, { sprite->x + x,sprite->y + y,64,64 }, "Eje", 1));
 
 }
