@@ -36,7 +36,7 @@ void Room::update()
 	int deadEnemies = 0;
 	for (int i = 0; i < enemigos.size(); i++) {
 		enemigos[i]->update();
-		if (static_cast<Enemigo*>(enemigos[i])->isDead())
+		if (static_cast<Enemigo*>(enemigos[i])->isDead()&& static_cast<Enemigo*>(enemigos[i])->killable())
 			deadEnemies++;
 	}
 	for (int i = 0; i < extras.size(); i++) {
@@ -71,11 +71,12 @@ void Room::update()
 			}
 		}
 	}
-	else
+		else
 	{
 		if (isEmpty_){
 			abrirPuertas();
 			RoomState_ = ABIERTA;
+			pJuego->reproducirEfecto("Door");
 		}
 	}
 }
@@ -90,13 +91,8 @@ Room::Room(Juego * pJ, Zona* z, TMXReader::MapData* mdata,SDL_Point Coor):pJuego
 	open_ = true;
 	zona = z;
 	//Si es base, creamos la room de Base
-	if (typeid(ZonaBase) == typeid(*zona)){
-		textTiles = new Tilesheet(TOTAL_TILES, pJuego->getTilesheet(zona));
-	}
-	//Si no, generamos una zona con niveles aleatorios y to la pesca.
-	else {
-		textTiles = new Tilesheet(TOTAL_TILES, pJuego->getTilesheet(zona));
-	}
+	textTiles = new Tilesheet(TOTAL_TILES, pJuego->getTilesheet(zona));
+	
 	
 }
 //Constructora de niveles dependiendo del string (Boss o inicial)
