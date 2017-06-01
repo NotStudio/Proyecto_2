@@ -75,15 +75,30 @@
     <Filter Include="Source Files\Objetos\Botones">
       <UniqueIdentifier>{277d781c-f211-42ca-8d44-ea2602364826}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Objetos\Balas">
+      <UniqueIdentifier>{431f304c-9d29-4cd4-abce-31b8e6e8c488}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\HUD">
+      <UniqueIdentifier>{a094422e-7998-430c-889c-26d0cb714612}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Personajes\Enemigos\Bosses">
+      <UniqueIdentifier>{24c5f61a-bdf6-453a-8ead-764ab4d95de1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Personajes\Enemigos\Bosses">
+      <UniqueIdentifier>{143333f6-247a-4b70-902f-5644fb33d645}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Objetos\Balas">
+      <UniqueIdentifier>{a71b744f-1eab-48b6-af65-5bd13b242fb1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\HUD">
+      <UniqueIdentifier>{617ab57d-ca32-4583-a0eb-00f0f5081934}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Juego.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Entidad.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Camara.cpp">
@@ -137,12 +152,6 @@
     <ClCompile Include="Room.cpp">
       <Filter>Source Files\Niveles</Filter>
     </ClCompile>
-    <ClCompile Include="HUD.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Bala.cpp">
-      <Filter>Source Files\Objetos</Filter>
-    </ClCompile>
     <ClCompile Include="MaquinaDePelotas.cpp">
       <Filter>Source Files\Personajes\Enemigos</Filter>
     </ClCompile>
@@ -179,18 +188,6 @@
     <ClCompile Include="Cambiante.cpp">
       <Filter>Source Files\Personajes\Jugables</Filter>
     </ClCompile>
-    <ClCompile Include="BalaAceite.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="BalaAmiga.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="BalaEnemiga.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Jefe1.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="PjDañoArea.cpp">
       <Filter>Source Files\Personajes\Jugables</Filter>
     </ClCompile>
@@ -206,13 +203,7 @@
     <ClCompile Include="Inventory.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="HUDinventory.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Puertas.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Jefe2Bouncer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="MenuJuego.cpp">
@@ -248,51 +239,75 @@
     <ClCompile Include="Opciones.cpp">
       <Filter>Source Files\Estados\Menus</Filter>
     </ClCompile>
-    <ClCompile Include="HUDImage.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="HUDObj.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="HUDObjeto.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="HUDText.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="MarcoHistorico.cpp">
       <Filter>Source Files\Estados\Menus</Filter>
     </ClCompile>
     <ClCompile Include="Historia.cpp">
       <Filter>Source Files\Estados\Menus</Filter>
     </ClCompile>
-    <ClCompile Include="ZonaTutorial.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Boton.cpp">
       <Filter>Source Files\Objetos\Botones</Filter>
     </ClCompile>
-    <ClCompile Include="ZonaPinApple.cpp">
+    <ClCompile Include="FinalJuego.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Bala.cpp">
+      <Filter>Source Files\Objetos\Balas</Filter>
+    </ClCompile>
+    <ClCompile Include="BalaAceite.cpp">
+      <Filter>Source Files\Objetos\Balas</Filter>
+    </ClCompile>
+    <ClCompile Include="BalaAmiga.cpp">
+      <Filter>Source Files\Objetos\Balas</Filter>
+    </ClCompile>
+    <ClCompile Include="BalaEnemiga.cpp">
+      <Filter>Source Files\Objetos\Balas</Filter>
     </ClCompile>
     <ClCompile Include="BalaHacha.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Objetos\Balas</Filter>
     </ClCompile>
     <ClCompile Include="BalaMultiple.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Objetos\Balas</Filter>
+    </ClCompile>
+    <ClCompile Include="HUD.cpp">
+      <Filter>Source Files\HUD</Filter>
+    </ClCompile>
+    <ClCompile Include="HUDImage.cpp">
+      <Filter>Source Files\HUD</Filter>
+    </ClCompile>
+    <ClCompile Include="HUDinventory.cpp">
+      <Filter>Source Files\HUD</Filter>
+    </ClCompile>
+    <ClCompile Include="HUDObj.cpp">
+      <Filter>Source Files\HUD</Filter>
+    </ClCompile>
+    <ClCompile Include="HUDObjeto.cpp">
+      <Filter>Source Files\HUD</Filter>
+    </ClCompile>
+    <ClCompile Include="HUDText.cpp">
+      <Filter>Source Files\HUD</Filter>
+    </ClCompile>
+    <ClCompile Include="ZonaPinApple.cpp">
+      <Filter>Source Files\Zonas</Filter>
+    </ClCompile>
+    <ClCompile Include="ZonaTutorial.cpp">
+      <Filter>Source Files\Zonas</Filter>
+    </ClCompile>
+    <ClCompile Include="Jefe1.cpp">
+      <Filter>Source Files\Personajes\Enemigos\Bosses</Filter>
+    </ClCompile>
+    <ClCompile Include="Jefe2Bouncer.cpp">
+      <Filter>Source Files\Personajes\Enemigos\Bosses</Filter>
     </ClCompile>
     <ClCompile Include="jefe3g.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\Personajes\Enemigos\Bosses</Filter>
     </ClCompile>
-    <ClCompile Include="FinalJuego.cpp">
+    <ClCompile Include="Entidad.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Juego.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Entidad.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Objeto.h">
@@ -361,15 +376,6 @@
     <ClInclude Include="Room.h">
       <Filter>Header Files\Niveles</Filter>
     </ClInclude>
-    <ClInclude Include="HUD.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="HUDbase.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Bala.h">
-      <Filter>Header Files\Objetos</Filter>
-    </ClInclude>
     <ClInclude Include="MaquinaDePelotas.h">
       <Filter>Header Files\Personajes\Enemigos</Filter>
     </ClInclude>
@@ -430,19 +436,7 @@
     <ClInclude Include="Cambiante.h">
       <Filter>Header Files\Personajes\Jugables</Filter>
     </ClInclude>
-    <ClInclude Include="Jefe1.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="LTimer.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="BalaAceite.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="BalaAmiga.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="BalaEnemiga.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="PjDañoArea.h">
@@ -451,22 +445,13 @@
     <ClInclude Include="Cambio.h">
       <Filter>Header Files\Estados</Filter>
     </ClInclude>
-    <ClInclude Include="Dron.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="..\Box2D\include\Box2D\Common\b2Settings.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Inventory.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="HUDinventory.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Puertas.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Jefe2Bouncer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="MenuPG.h">
@@ -508,40 +493,73 @@
     <ClInclude Include="Opciones.h">
       <Filter>Header Files\Estados</Filter>
     </ClInclude>
-    <ClInclude Include="HUDImage.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="HUDObj.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="HUDObjeto.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="HUDText.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Historia.h">
       <Filter>Header Files\Estados\Menus</Filter>
     </ClInclude>
     <ClInclude Include="MarcoHistorico.h">
       <Filter>Header Files\Estados\Menus</Filter>
     </ClInclude>
-    <ClInclude Include="ZonaTutorial.h">
+    <ClInclude Include="FinalJuego.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="ZonaPinApple.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="Jefe1.h">
+      <Filter>Header Files\Personajes\Enemigos\Bosses</Filter>
     </ClInclude>
-    <ClInclude Include="BalaHacha.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="BalaMultiple.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="Jefe2Bouncer.h">
+      <Filter>Header Files\Personajes\Enemigos\Bosses</Filter>
     </ClInclude>
     <ClInclude Include="jefe3g.h">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\Personajes\Enemigos\Bosses</Filter>
     </ClInclude>
-    <ClInclude Include="FinalJuego.h">
+    <ClInclude Include="Dron.h">
+      <Filter>Header Files\Personajes\Enemigos</Filter>
+    </ClInclude>
+    <ClInclude Include="Bala.h">
+      <Filter>Header Files\Objetos\Balas</Filter>
+    </ClInclude>
+    <ClInclude Include="BalaAceite.h">
+      <Filter>Header Files\Objetos\Balas</Filter>
+    </ClInclude>
+    <ClInclude Include="BalaAmiga.h">
+      <Filter>Header Files\Objetos\Balas</Filter>
+    </ClInclude>
+    <ClInclude Include="BalaEnemiga.h">
+      <Filter>Header Files\Objetos\Balas</Filter>
+    </ClInclude>
+    <ClInclude Include="BalaHacha.h">
+      <Filter>Header Files\Objetos\Balas</Filter>
+    </ClInclude>
+    <ClInclude Include="BalaMultiple.h">
+      <Filter>Header Files\Objetos\Balas</Filter>
+    </ClInclude>
+    <ClInclude Include="ZonaPinApple.h">
+      <Filter>Header Files\Zonas</Filter>
+    </ClInclude>
+    <ClInclude Include="ZonaTutorial.h">
+      <Filter>Header Files\Zonas</Filter>
+    </ClInclude>
+    <ClInclude Include="HUD.h">
+      <Filter>Header Files\HUD</Filter>
+    </ClInclude>
+    <ClInclude Include="HUDbase.h">
+      <Filter>Header Files\HUD</Filter>
+    </ClInclude>
+    <ClInclude Include="HUDImage.h">
+      <Filter>Header Files\HUD</Filter>
+    </ClInclude>
+    <ClInclude Include="HUDinventory.h">
+      <Filter>Header Files\HUD</Filter>
+    </ClInclude>
+    <ClInclude Include="HUDObj.h">
+      <Filter>Header Files\HUD</Filter>
+    </ClInclude>
+    <ClInclude Include="HUDObjeto.h">
+      <Filter>Header Files\HUD</Filter>
+    </ClInclude>
+    <ClInclude Include="HUDText.h">
+      <Filter>Header Files\HUD</Filter>
+    </ClInclude>
+    <ClInclude Include="Entidad.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

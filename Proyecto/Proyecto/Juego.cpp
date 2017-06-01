@@ -97,6 +97,7 @@ Juego::Juego(b2World* mundo) : error(false), gameOver(false), exit(false), score
 	Mix_VolumeMusic(volumen);
 	cargarJuego();
 	load = true;
+	system("intro.exe");
 	pushState(new MenuPG(this));
 	
 	run();
