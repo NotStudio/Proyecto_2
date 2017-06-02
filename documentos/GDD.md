@@ -140,7 +140,7 @@ Como se ha mencionado antes, los niveles son donde sucede la acción. Los nivele
 
 ##### Jugabilidad
 Ataca lanzando tostadas a distancia, que hacen daño por contacto con los enemigos.
-####Switchy
+#### Switchy
 Switchy es una consola de una antigüedad parecida a Toasty.
 
 ##### Switchy (fase 1)
@@ -173,7 +173,7 @@ Switchy es una consola de una antigüedad parecida a Toasty.
 </table>
 
 
-#####Switchy (fase 2)
+##### Switchy (fase 2)
 
 <table>
 <tr>
