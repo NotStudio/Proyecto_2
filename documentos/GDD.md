@@ -95,7 +95,7 @@ Las zonas son las partes en las que se da lugar el verdadero _gameplay_ del jueg
 - Enemigos diferentes por zona, puediendo existir enemigos "comunes" a todas las zonas.
 - Tilesheets propio por zona, que definirá la estética de sus niveles, que lógicamente será la misma.
 
-##### The Natural Preserve 
+##### The Natural Preserve
 Un bosque de chatarra, es la primera zona que tienes al comenzar el juego. El tutorial, además, se desarrollará en esta zona también. Aquí aprenderemos lo básico sobre cómo jugar.
 ##### Hipsters Sancturary
 Una PinApple Store, es la segunda zona a la que podremos acceder.
@@ -141,7 +141,7 @@ Como se ha mencionado antes, los niveles son donde sucede la acción. Los nivele
 ##### Jugabilidad
 Ataca lanzando tostadas a distancia, que hacen daño por contacto con los enemigos.
 ####Switchy
-Switchy es una consola de una antigüedad parecida a Toasty. 
+Switchy es una consola de una antigüedad parecida a Toasty.
 
 ##### Switchy (fase 1)
 
@@ -282,19 +282,21 @@ Para el desarrollo de la historia, se craftean o se consiguen matando a jefes.
 | <img src="DocImg/imagenesGDD/NucleoPlasma_idle.png" width="50" height="50"> | Nucleo Plasma                | Dropea el Boss |
 
 ### NPC's
+*Cac = Cuerpo a Cuerpo.*
+*At Dist = Ataque a Distancia*
 
 | Sprite                                             | Nombre           |localizaciones    | descripcion | HP | At | Ve | FA |
 | :-------------:                                    | :-------------   |:---|:---|:---:|:---:|:---:|:---:|
-| <img src="../Proyecto/Material/Enemies/FotoEnemigos/Imanf_idle.png" width="50" height="50">     | Roomba          | Desguace | Debajo | HP | At | Ve | FA |
-| <img src="../Proyecto/Material/Enemies/FotoEnemigos/OVf_idle.png" width="50" height="50">     | OV          | Desguace | Debajo | HP | At | Ve | FA |
-| <img src="../Proyecto/Material/Enemies/FotoEnemigos/Bombaf_idle.png" width="50" height="50">     | Boom-Ba          | Desguace | Debajo | HP | At | Ve | FA |
-| <img src="../Proyecto/Material/Enemies/FotoEnemigos/Sierraf_idle.png" width="50" height="50">     | Sierra          | Desguace | Debajo | HP | At | Ve | FA |
-| <img src="../Proyecto/Material/Enemies/FotoEnemigos/Tornillerof_idle.png" width="50" height="50">     | Lanza-Tornillos         | Desguace | Debajo | HP | At | Ve | FA |
-| <img src="../Proyecto/Material/Enemies/FotoEnemigos/Trampaf_idle.png" width="50" height="50">     | Trampa Eléctrica         | Desguace | Debajo | HP | At | Ve | FA |
-| <img src="../Proyecto/Material/Enemies/FotoEnemigos/Dronf_idle.png" width="50" height="50">     | Dron         | Desguace | Debajo | HP | At | Ve | FA |
+| <img src="../Proyecto/Material/Enemies/FotoEnemigos/Imanf_idle.png" width="50" height="50">     | Roomba          | Desguace | Persigue al jugador y lo hiere cuando lo toca | 30 | 5 | 2.5 | CaC |
+| <img src="../Proyecto/Material/Enemies/FotoEnemigos/OVf_idle.png" width="50" height="50">     | OV          | Desguace | Vuela y persigue al jugador. Lanza balas. Cuando muere explota lanzando balas. | 20 | 10 | 1.4 | CaC /At Dist |
+| <img src="../Proyecto/Material/Enemies/FotoEnemigos/Bombaf_idle.png" width="50" height="50">     | Boom-Ba          | Desguace | Persigue al jugador y cuando lo toca se hincha y explota | 40 | 20 | 0.3 | CaC (Explosión) |
+| <img src="../Proyecto/Material/Enemies/FotoEnemigos/Sierraf_idle.png" width="50" height="50">     | Sierra          | Desguace | Inmortal. Se mueve en un solo eje de manera constante y hiere al jugador al tocarlo. | Inmortal | 20 | 4.2 | CaC |
+| <img src="../Proyecto/Material/Enemies/FotoEnemigos/Tornillerof_idle.png" width="50" height="50">     | Lanza-Tornillos         | Desguace | Enemigo estático de tipo torreta. | 40 | 10 | Estático | At Dist |
+| <img src="../Proyecto/Material/Enemies/FotoEnemigos/Trampaf_idle.png" width="50" height="50">     | Trampa Eléctrica         | Desguace | Al colisionar con ella comenzará a hacernos daño durante todo el tiempo que dure el contacto | Inmortal | 5 | 3 | CaC(por colision) |
+| <img src="../Proyecto/Material/Enemies/FotoEnemigos/Dronf_idle.png" width="50" height="50">     | Dron         | Desguace | Vuela y ataca a distancia | 30 | 10 | 1.6 | CaC/ At Dist |
 | <img src="../Proyecto/Material/Enemies/FotoEnemigos/Carstrollerf_idle.png" width="50" height="50">     | Carstroller (Boss)          | Desguace | Debajo | HP | At | Ve | FA |
-| <img src="../Proyecto/Material/Enemies/FotoEnemigos/Gnomof_idle.png" width="50" height="50">     | Gnomo (Boss)          | Desguace | Debajo | HP | At | Ve | FA |
-| <img src="../Proyecto/Material/Enemies/Bosses/JefeBola/jefeBola.png" width="50" height="50">     | Gnomo (Boss)          | Desguace | Debajo | HP | At | Ve | FA |
+| <img src="../Proyecto/Material/Enemies/FotoEnemigos/Gnomof_idle.png" width="50" height="50">     | Gnomo (Boss)          | Desguace | Debajo | 300 | 10 | Estático | FA |
+| <img src="../Proyecto/Material/Enemies/Bosses/JefeBola/jefeBola.png" width="50" height="50">     | Gnomo (Boss)          | Desguace | Debajo | 700 | 5 | 2.8 (variable según el estado) | CaC/At Dist |
 
 ##### Carstroller
 Enemigo jefe que se mueve solamente en el eje X. Está ubicado en la pared norte del nivel.
@@ -305,10 +307,11 @@ Ataque:
 ##### Gnomo
 Enemigo de tipo Jefe que divide su comportamiento en 2 fases:
 - 1º Fase (100-50 vida): Efectuará tres ataques: Perseguirá al jugador (si lo toca nos hace daño), lanzará 4 hachas en direcciones N, S, E, O. Si llegan a cierta distancia se dividen en 8 balas., lanza un hacha que rebota dos veces.
-- 2º Fase (50-0 vida): Será igual que la 1º fase haciendo un ataque más: Invocará enemigos Sierra que estarán en la escena cierto tiempo. 
+- 2º Fase (50-0 vida): Será igual que la 1º fase haciendo un ataque más: Invocará enemigos Sierra que estarán en la escena cierto tiempo.
 ### Referencias
 - The binding of Isaac.
 - Enter the gungeon.
+- The brave little toaster.
 
 ### Agradecimientos
 - Universidad Complutense de Madrid.
@@ -332,7 +335,7 @@ Enemigo de tipo Jefe que divide su comportamiento en 2 fases:
 | Nombre | Desarrolladora | Plataforma desarrollo| Duración proceso       |
 |:------:|:--------       |:---------------      |:-----------            |
 | !Human | Not a Studio   |Visual Studio (C++)   | 11/02/2017 - 31/05/2017|
-  
+
 
 !Human es un juego TopDown en 2D basado en la acción directa, con componentes de rol desarrollado para Ordenador. En él, nuestro personaje principal ha de enfrentarse a diferentes enemigos para lograr su propósito principal: volver a su nave. Pensado para salir a la venta en la plataforma Steam en el verano de 2017.
 ## Desarrollo
@@ -374,8 +377,8 @@ Aquí vamos ha llevar acabo un pequeño auto análisis más profundo, puntuando 
 |Actuación frente a problemas inesperados| 8|  
 |Rendimiento general                     | 7  |
 |Comunicación                            | 6  |
-|Cooperación como equipo                 | 8 | 
-|Utilización de los recursos             | 7 | 
+|Cooperación como equipo                 | 8 |
+|Utilización de los recursos             | 7 |
 
 ## Conocimientos adquiridos
 Para concluir, vamos a señalar cuáles han sido las mayores lecciones y conocimientos que hemos sacado de todo el proceso así como las consideraciones para siguientes proyectos.
@@ -384,11 +387,11 @@ En primer lugar, vamos a señalar cuáles han sido los principales conocimientos
 
  - Introducción a Box2D, algo que sin duda encontramos muy positivo ya que ahora conocemos muchos aspectos y toda la utilidad de esta librería, por lo que la siguiente vez que decidamo utilizarla será un proceso más familiar y por supuesto más facil
  - Al igual que con Box2D, nuestro manejo en Git y GitHub ha mejorado mucho. Hemos aprendido a, en la medida de lo posible, hacer merges que no dañen la estructura del proyecto.
- - Y por supuesto programación en general y C++ en concreto. El haber utilizado una arquitectura basada en herencia y abstracción ha hecho que aprendamos, a base de prueba y error, cómo utilizar este tipo de estructuración. 
+ - Y por supuesto programación en general y C++ en concreto. El haber utilizado una arquitectura basada en herencia y abstracción ha hecho que aprendamos, a base de prueba y error, cómo utilizar este tipo de estructuración.
 
-A parte de todo esto, también hemos visto qué prácticas y procesos nos han salido bien y cuáles mal. 
+A parte de todo esto, también hemos visto qué prácticas y procesos nos han salido bien y cuáles mal.
 
-Por un lado,  el no utilizar un estándar de código ha supuesto que cada vez que alguien tenía que tocar código de otra persona, ésta tenía que preguntar al que ha implementado esa parte para poder entender qué es lo que hace. Como es lógico, esto supuso una gran pérdida de tiempo. 
+Por un lado,  el no utilizar un estándar de código ha supuesto que cada vez que alguien tenía que tocar código de otra persona, ésta tenía que preguntar al que ha implementado esa parte para poder entender qué es lo que hace. Como es lógico, esto supuso una gran pérdida de tiempo.
 
 Por el contrario, el realizar las tareas de programación en pareja nos ha resultado muy cómodo y útil, ya que donde uno puede atascarse, el compañero puede resolverlo y ahorrar tiempo.
 
@@ -421,13 +424,13 @@ Para diseñar una habitación e implementarla utilizamos Tiled. Al diseñar una 
  3. Para añadir enemigos, debe crearse una capa de Objetos. Una vez en ella, se crea un rectángulo. A éste se le pone el nombre del PNJ que vayamos a colocar y en el campo Tipo se pone _enemigo_.
 
 ### Diseñar un tilesheet
-Para diseñar un nuevo tilesheet existe un patrón común que define que cuales de los tiles han de ser colisionables, cuales son de terreno superior y cuales son de terreno normal (por el que podemos desplazarnos.) 
+Para diseñar un nuevo tilesheet existe un patrón común que define que cuales de los tiles han de ser colisionables, cuales son de terreno superior y cuales son de terreno normal (por el que podemos desplazarnos.)
 
 
 # **Arquitectura del proyecto**
 
 La arquitectura está basada en abstracción y herencia, todo lo que tenga una cierta relación viene heredado de una clase superior que contiene el código común, por ejemplo en el caso de la clase Objeto que tiene un Update y Draw a modo de interfaz que luego heredan los objetos y personajes entre otros.
-Hemos usado dos librerías externas, SDL y Box2D. 
+Hemos usado dos librerías externas, SDL y Box2D.
 Por ultimo las clases que necesitan introducir un mapa o enemigos usan la clase rapidxml.
 
 <img src="DocImg/imagenesGDD/diagClases.png" height = "200" width="100%">
@@ -522,7 +525,7 @@ para poder meter objetos (enemigos o inanimados), se tiene que crear una capa de
 
 ----------
 
-## Post-mortem Hito  1
+## **Post-mortem Hito  1**
 ### Que si/no ha funcionado
 - Ha funcionado el consenso de que iba ir el juego, La idea principal del juego, todo el mundo esta de acuerdo en la idea primitiva del juego.
 - No ha funcionado parcialmente el uso correcto del repositiorio tenemos un miedo al merge fallido
@@ -551,3 +554,26 @@ basicamente el GDD no esta definido del todo.
 - Terminar el GDD, al menos en el apartado de las entidades que contiene el juego.
 - Hacer la herencia para poder desarrollar contenido.
 - Una correcta distribución de tareas.
+
+## **Post-mortem Hito 2**
+### Que si/no ha funcionado
+- El equipo ha trabajado unido para conseguir acabar los aspectos fundamentales del juego.
+- El proyecto al final no ha podido cerrarse como estaba estipulado, teniendo que eliminar algunas caracteristicas del juego.
+- El reparto de tareas ha mejorado levemente, siendo mucho más precisos con las tareas y su duración/coste.
+- La utilización del repositorio ha mejorado notablemente desde el hito anterior, siendo capaces de gestionar trabajo paralelo gracias a las ramas y a la capacidad de hacer merges sin problemas.
+- En ocasiones la comunicación del grupo ha sido ligeramente hostil debido a las situaciones de estrés. Por tanto, ha funcionado parcialmente.
+
+### Qué hubiera necesitado más detalle
+- Deberíamos haber prestado mayor atención a la arquitectura general. Al haberse ido haciendo poco a poco y sin mayor planificación de la inicial ha desembocado en una arquitectura un tanto caótica.
+- Deberíamos haber sido más precisos a la hora de pedir arte, ya que ha habido ocasiones en que se ha producido arte para ser inmediatamente deshechado.
+
+### Qué procesos no han mejorado
+- La unidad del grupo se ha mantenido constante durante todo el proyecto.
+- La idea del juego final no se ha cambiado significantemente desde el hito anterior.
+### Qué documentos no se han leido
+- El GDD (Muy primitivo de momento para poder hacer algo).
+- Documento de arquitectura.
+
+### Qué cambios hacen falta
+- Previsión mayor de arquitectura del juego.
+- Mayor precisión en la planificación general de todo el proyecto.
