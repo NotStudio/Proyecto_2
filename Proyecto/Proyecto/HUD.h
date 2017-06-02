@@ -46,11 +46,11 @@ private:
 
 
 	HUDImage * marcoStats;
-	HUDImage * cables;
 	int alto, ancho;
 	int maxVidas;
 	int vidasAct;
 	float medAlto, medAncho;
+	SDL_Rect Marcomapa;
 	//bool mostrar = true;
 };
 

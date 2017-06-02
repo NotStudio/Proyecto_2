@@ -42,17 +42,38 @@ void ZonaAccion::update(){
 
 void ZonaAccion::dibujarMapa()
 {
+	SDL_Rect cam = pJuego->getCameraRect();
+	SDL_Rect aux;
+	SDL_Rect marco = { pJuego->getWindow().ancho - 300, 0, 300, 150 };
+	SDL_Rect aux2;
+	SDL_Rect Player = *pJuego->getPlayer()->getRect();
+	Player.x -= cam.x;
+	Player.y -= cam.y;
+	Player.x /= 32; Player.y /= 32; Player.h /= 32; Player.w /= 32; Player.x += (marco.x + marco.w / 2); Player.y += marco.h / 2;
+
+
 	for (size_t i = 0; i < niveles->size(); i++)
 	{
 		
-		SDL_Rect aux = *niveles->at(i)->getArea();
-		aux.x /= 64; aux.y /= 64; aux.h /= 64; aux.w /= 64; aux.x += (pJuego->window.ancho / 64) * 53; aux.y += (pJuego->window.alto / 32 )* 4;
-		if (niveles->at(i) == nivelActual)
-			SDL_RenderFillRect(pJuego->getRender(), &aux);
-		else
-			SDL_RenderDrawRect(pJuego->getRender(), &aux);
+		aux = *niveles->at(i)->getArea();
+		aux.x -= cam.x;
+		aux.y -= cam.y;
+		aux.x /= 32; aux.y /= 32; aux.h /= 32; aux.w /= 32; aux.x += (marco.x+marco.w/2); aux.y += marco.h/2;
+		
+		if (SDL_IntersectRect(&aux, &marco, &aux2)){
+			if (niveles->at(i) == nivelActual){
+				SDL_SetRenderDrawColor(pJuego->getRender(), 0, 200, 75, 100);
+			}
+			else{
+				SDL_SetRenderDrawColor(pJuego->getRender(), 240, 230, 140,100);
+			}
+			SDL_RenderFillRect(pJuego->getRender(), &aux2);
+			SDL_SetRenderDrawColor(pJuego->getRender(), 0, 0, 0, 100);
+			SDL_RenderDrawRect(pJuego->getRender(), &aux2);
+		}
 
 	}
+	SDL_RenderFillRect(pJuego->getRender(), &Player);
 }
 
 bool ZonaAccion::CheckSolapaRooms(const SDL_Rect & R)

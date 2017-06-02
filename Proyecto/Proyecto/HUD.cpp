@@ -4,6 +4,7 @@
 
 HUD::HUD(Juego* punteroJuego, SDL_Rect spritePar, string objectId, string objectAnim) : pjuego(punteroJuego), statDanyo(), statVelMov(), statVelAtaq()
 {
+	
 	id = objectId;
 	anim = objectAnim;// Para las vidas esto tiene que ser: "Cuatro", solo al principio
 	animacion.loadTextura(pjuego->getTextura(id, anim));
@@ -14,12 +15,12 @@ HUD::HUD(Juego* punteroJuego, SDL_Rect spritePar, string objectId, string object
 	int ancho = pjuego->getWindow().ancho;
 	int alto = pjuego->getWindow().alto;
 
-
 	
 	
 
 	medAncho = (ancho + 0.0) / 64;
 	medAlto = (alto + 0.0) / 32;
+	Marcomapa = {ancho-300,0,300,150};
 	SDL_Color color = { 1.0, 1.0, 1.0 };
 	statVelMov = new HUDText(pjuego, 5.5*medAncho, medAlto * 22, "hudfont");
 	statVelMov->setColor(color);
@@ -42,7 +43,7 @@ HUD::HUD(Juego* punteroJuego, SDL_Rect spritePar, string objectId, string object
 
 
 	fondoVida = { 0,0,400,60 };
-	cables = new HUDImage(pjuego, 0, 0, ancho, alto, "cables");
+	
 	updateHUD();
 }
 
@@ -54,7 +55,7 @@ HUD::~HUD()
 	delete velMov;
 	delete ataque;
 	delete velAtaq; 
-	delete cables;
+
 	delete vida;
 	delete marcoStats;
 	delete VidaGui;
@@ -63,7 +64,6 @@ HUD::~HUD()
 
 void HUD::draw(){
 	updateHUD();
-	cables->draw();
 	marcoStats->draw();
 	statVelMov->draw();
 	statDanyo->draw();
@@ -79,6 +79,11 @@ void HUD::draw(){
 	int anchoseccion = fondoVida.w / maxVidas;
 	int anchobarra = anchoseccion - separacion;
 	
+	
+
+
+
+	
 	SDL_Rect barraVida{x0,y0,anchoseccion*vidasAct-10,50};
 	SDL_SetRenderDrawColor(pjuego->getRender(), 47, 79, 79, 255);
 	SDL_RenderFillRect(pjuego->getRender(), &fondoVida);
@@ -92,7 +97,9 @@ void HUD::draw(){
 	SDL_RenderDrawRect(pjuego->getRender(), &fondoVida);
 
 
+	SDL_RenderFillRect(pjuego->getRender(), &Marcomapa);
 	SDL_SetRenderDrawColor(pjuego->getRender(), 0, 0, 0, 255);
+	SDL_RenderDrawRect(pjuego->getRender(), &Marcomapa);
 	VidaGui->draw();	
 
 

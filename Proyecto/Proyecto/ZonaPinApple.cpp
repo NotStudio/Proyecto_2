@@ -6,7 +6,7 @@ ZonaPinApple::ZonaPinApple(Juego* punteroJuego) :ZonaAccion(punteroJuego)
 {
 	id = "zon3";
 
-	setHabitaciones(1, 1);
+	setHabitaciones(30, 3);
 	setNivelActual();
 	initRooms();
 }

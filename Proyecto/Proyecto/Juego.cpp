@@ -34,12 +34,12 @@ void operator+=(vector<string>& e,vector<string> o){
 	}
 }
 int threadFunction(void* data) { //Print incoming data
-	system("start ../Material/loading.exe");
+	//system("start ../Material/loading.exe");
 	while (!load)
 	{
 
 	}
-	system("taskkill /IM loading.exe >nul");
+//	system("taskkill /IM loading.exe >nul");
 	return 0; 
 }
 // Constructora que inicializa todos los atributos de la clase Juego
