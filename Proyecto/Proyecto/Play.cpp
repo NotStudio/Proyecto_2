@@ -34,12 +34,13 @@ Play::Play(Juego * juego) : EstadoPG(juego)
 		juego->setZona("ZonaBase");
 	
 
+
 	vidasHUD = new HUD(juego, SDL_Rect{ 20,0,34,55 }, "Battery4", "idle");
 	inventario = pJuego->getInventory();
 	baul = pJuego->getBaul();
 
 
-	inventory = new HUDinventory(juego, SDL_Rect{ 600 , 980, 500, 100 }, "Inventory", "idle", inventario);
+	inventory = new HUDinventory(juego, SDL_Rect{ window.ancho / 2 - 250, window.alto - 150, 500, 100 }, "Inventory", "idle", inventario);
 	//SDL_Rect{ (WINwidth/2) - width/2, WINheight - height , ... , ...}
 	zona = pJuego->getZona();
 
