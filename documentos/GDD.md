@@ -8,25 +8,25 @@
 | Acción, Rol | Jóven(12 - 30)    |1 Jugador| PC  
 
 ### Descripción
-!Human es un juego en 2D que mezcla componentes de rol (elaboración de objetos) con la acción directa, que se ubica temporalmente unos cuantos miles años más tarde de nuestra era.  En él, debemos avanzar por distintas zonas con distintos personajes jugables, máquinas electrónicas de que poseen una IA muy desarrollada. En dichas zonas, debemos derrotar a los enemigos y conseguir recursos para ayudar al personaje principal, Toasty, en su misión por volver a la estación espacial de la que ha caído por error a la Tierra para volver junto con su compañero humano "Collin McGuffin", un astronauta residente en la estación. Sin embargo, Toasty pronto se dará cuenta que no todo continúa como cuando el dejó el planeta.
+!Human es un juego en 2D que mezcla componentes de rol (elaboración de objetos) con la acción directa, que se ubica temporalmente unos cuantos miles de años más tarde de nuestra era.  En él, debemos avanzar por distintas zonas con distintos personajes jugables, máquinas electrónicas que poseen una IA muy desarrollada. En dichas zonas, debemos derrotar a los enemigos y conseguir recursos para ayudar a nuestro personaje principal, Toasty, en su misión para volver a la estación espacial de la que ha caído por error a la Tierra y volver junto con su compañero humano "Collin McGuffin", un astronauta residente en la estación. Sin embargo, Toasty pronto se dará cuenta que no todo continúa como cuando el dejó el planeta.
 ### Portada
 portada del juego
 
 ### Historia
 Año 16DB, Estacion espacial **Shuppatsu** un asteroide colisiona contra la estacion provocando el desprendimiento de uno de los módulos, el cual se precipita sobre la Tierra.
-Al estrellarse sobre la superficie terrestre en una pradera aparece entre el humo una tostadora que debido al impacto se ha encendido.
-Ésta tostadora fue una de las primeras de su especie, los Companion Devices, también conocidos como CD. Aparatos electrónicos corrientes con una avanzada inteligencia artificial que emulaba emociones para que los astronautas no se sintieran solos en sus trabajos en el espacio. Debido a la complejidad de dicha inteligencia artificial los diseñadores debí­an dividirlas en dos módulos.
-Por un lado el módulo de IA **m-4N** que estaba diseñado para poder desarrollar una inteligencia emocional, emulación de emociones y comunicación con humanos progresiva simulando la compañía humana. Por otro lado el módulo **g-0D** era el encargado de las respuestas motoras y control sobre el aparato en sí.
+Al estrellarse sobre la superficie terrestre en una pradera, aparece entre el humo una tostadora, que debido al impacto se ha encendido.
+Ésta tostadora fue una de las primeras de su especie, los Companion Devices, también conocidos como CD. Aparatos electrónicos corrientes con una avanzada inteligencia artificial que emulaban emociones. Debido a la complejidad de dicha inteligencia artificial los diseñadores debí­an dividirlas en dos módulos.
+Por un lado el módulo de IA **m-4N** que estaba diseñado para poder desarrollar una inteligencia emocional, emulación de emociones y comunicación con humanos progresiva simulando la compañía humana y por otro lado el módulo **g-0D** que es el encargado de las respuestas motoras y control sobre el aparato en sí.
 
-Pero llegado un momento, la gran cantidad de CDs sobre la tierra sumada a la escasez energética que sufría la tierra ocasiona la retirada de servicio de los CDs, cuyo gasto energético es muy alto. Durante esta retirada, en la estación espacial, el astronauta Collin McGuffin decide esconder a su amigo Toasty en un modulo de rescate para que no se lo llevaran con la promesa de volver a encenderlo cuando todo pasara. Ese es el último recuerdo de nuestro personaje, justo antes de despertarse desorientado en la superficie de la tierra, sin saber que hacer.
+Pero llegado un momento, la gran cantidad de CDs sobre la tierra sumada a la escasez energética que esta sufría ocasiona la retirada de servicio de los CDs, cuyo gasto energético es muy alto. Durante esta retirada, en la estación espacial, el astronauta Collin McGuffin decide esconder a su amigo Toasty en un modulo de rescate para que no se lo llevaran con la promesa de volver a encenderlo cuando todo pasara. Ese es el último recuerdo de nuestro personaje, justo antes de despertarse desorientado en la superficie de la tierra, sin saber que hacer.
 
-Toasty deberá abrirse paso a través de una tierra poco parecida a la que le había descrito su amigo Collin, repleta de CDs malignos que intentarán robar su energía, para conseguir las piezas necesaria para llegar de nuevo a la estación espacial y reencontrarse con su amigo. Pero ésto no lo hará sólo, pues durante su viaje se le unirán amigos que, igual que él, buscan sobrevivir en un mundo desolado y violento.
+Para conseguir las piezas necesarias para llegar de nuevo a la estación espacial y reencontrarse con su amigo, Toasty deberá abrirse paso a través de una tierra poco parecida a la que le había descrito Collin, repleta de CDs malignos que intentarán robar su energía. Pero ésto no lo hará sólo, pues durante su viaje se le unirán amigos que, igual que él, buscan sobrevivir en un mundo desolado y violento.
 
 
 
 ### 5 Primeros minutos del Juego
-Durante los primeros momentos del juego, se realiza una especie de tutorial en la que el jugador va aprendiendo poco a poco las mecánicas básicas del juego: movimiento, ataque, recolección de items, crafteo, etc.
-Al iniciar el tutorial, el jugador aparece con Toasty en medio de un lugar inhóspito. Se le muestra un primer mensaje que muestra como mover a Toasty. A medida que avanza por el nivel, se le irá dando instrucciones básicas para que se familiarice con el gameplay del juego: movimiento, ataque, objetos... A mitad del nivel, aparecerá el primer enemigo, un perseguidor. Con él, el jugador pondrá en práctica las mecánicas enseñadas anteriormente. A continuación, el jugador volverá a toparse con una serie de enemigos, diferentes al perseguidor. Momentos antes de llegar al fin del nivel, el jugador se encuentra con un objeto junto con un mensaje que informa al jugador sobre el sistema de almacenamiento de objetos durante el juego. Finalmente, el jugador saldrá del nivel y será llevado a la Base.
+Durante los primeros momentos del juego, se realiza una especie de tutorial en la que el jugador va aprendiendo poco a poco las mecánicas básicas: movimiento, ataque, recolección de items, construcción, etc.
+Al iniciar el tutorial, el jugador aparece con Toasty en medio de un lugar inhóspito. Se le muestra un primer mensaje que muestra como mover a Toasty. A medida que avanza por el nivel, se le irá dando instrucciones básicas para que se familiarice con el gameplay del juego: movimiento, ataque, objetos... A mitad del nivel, aparecerá el primer enemigo, un perseguidor. Con él, el jugador pondrá en práctica las mecánicas enseñadas anteriormente. A continuación, el jugador volverá a toparse con una serie de enemigos diferentes al perseguidor. Momentos antes de llegar al fin del nivel, el jugador se encuentra con un objeto junto con un mensaje que informa al jugador sobre el sistema de almacenamiento de objetos durante el juego. Finalmente, el jugador saldrá del nivel y será llevado a la Base.
 Éste es el lugar en el que se administran todos los aspectos del juego, y para ello cada objeto interactivo en la base contiene una descripción que provee de conocimientos al jugador para que sepa utilizar todos ellos.  
 
 ### Jugabilidad
@@ -42,7 +42,7 @@ En cuanto al ataque, se ejecuta con las teclas de dirección. Existen varias for
 - Ataque a distancia: el personaje lanza proyectiles que recorren el nivel hasta impactar con algo o llegar a su máximo rango, que dependerá de los atributos del personaje.
 ##### Creación de objetos
 Durante el juego, iremos recogiendo objetos que se almacenarán en nuestro inventario. Para abrir el inventario y observar los materiales que hemos recogido hasta el momento, utilizamos la tecla I.
-Una vez en la base, para guardar todos estos objetos en el baúl pulsamos la tecla T y se almacenan automáticamente en él.
+Una vez en la base, para guardar todos estos objetos en el baúl pulsamos la tecla T y se almacenan automáticamente en él. La mochila que lleva Toasty en la misión tiene un límite, con lo que debemos vaciar la mochila para poder recoger nuevos items
 
 
 #### Dinámica
@@ -56,7 +56,7 @@ Se desarrolla en las habitaciones. Éstas están repletas de enemigos que intent
 
 Al morir, los enemigos pueden dejar en el suelo una gran variedad de objetos: algunos consumibles que aumentan las estadísticas de nuestro personaje durante esa partida (hasta volver a base) y otros que nos servirán como materiales para fabricar las piezas de la nave.
 
-Si nosotros somos derrotamos, moriremos todos los objetos que hayamos recolectado hasta el momento. Para evitar esta pérdida de inventario, existirán habitaciones durante la zona que nos permitirán volver a base sanos y salvos con nuestros objetos, pero nos impedirán llegar al final de la zona.
+Si nosotros somos derrotados, moriremos y todos los objetos que hayamos recolectado hasta el momento desaparecerán. Para evitar esta pérdida de inventario, existirán habitaciones durante la zona que nos permitirán volver a base sanos y salvos con nuestros objetos, pero nos impedirán llegar al final de la zona.
 
 Al final de cada zona, nos enfrentaremos a un enemigo de una dificultad mayor al resto: el __boss__ de ese lugar. Si conseguimos derrotarlo, éste soltará una tarjeta SD con la que obtendremos más información sobre el contexto y la historia de !Human. Además, se abrirá la puerta a otra habitación que nos permitirá volver a base con todos nuestros objetos.
 #### Estética
@@ -75,9 +75,9 @@ Cuando el jugador muere, se muestra éste menú que únicamente nos permite volv
 Aquí no podremos realizar ataques, ya que no existirán enemigos. Será un único nivel, pero estará dividido por secciones. Para poder realizar las diferentes acciones disponibles en la base, el jugador ha de acercarse al objeto correspodiente. Así, podremos:
 
 
-- Elegir zona para jugar: se despliega un mapa en el que podemos ver la localización de las diferentes zonas y elegir a la que queramos ir. Al seleccionar una de las zonas, aparecemos en un nivel preparados para la acción.
+- Elegir zona para jugar: se despliega un mapa en el que podemos ver la localización de las diferentes zonas y elegir a la que queremos ir. Al seleccionar una de las zonas, aparecemos en un nivel preparados para la acción.
 - Elaborar componentes: desde aquí, podemos ver los objetos que tenemos almacenados en el baúl. Por otro lado, tendremos la posibilidad de elaborar nuevos objetos a partir de los que ya poseemos.
-- Elegir personaje: para cambiar entre Toasty y Switchy, podemos seleccionar uno de los dos. Una vez seleccionado, pasaremos a controlar dicho personaje.
+- Elegir personaje: para cambiar entre Toasty y Switchy, podemos seleccionar uno de los dos. Una vez seleccionado, pasaremos a controlar dicho personaje. Switchy solo estará disponible una vez nos hayamos pasado el juego una vez.
 
 - Leer las tarjetas SD: para poder acceder a la información de las tarjetas recogidas, podemos reproducirlas desde el Ordenador.
 
@@ -148,7 +148,7 @@ Switchy es una consola de una antigüedad parecida a Toasty.
 <table>
 <tr>
 <td>
-<img src="DocImg/imagenesGDD/toasty.png" width="100">
+<img src="DocImg/imagenesGDD/switchy.png" width="100">
 </td>
 <td>
   <strong>Switchy fase 1</strong>
@@ -178,7 +178,7 @@ Switchy es una consola de una antigüedad parecida a Toasty.
 <table>
 <tr>
 <td>
-<img src="DocImg/imagenesGDD/toasty.png" width="100">
+<img src="DocImg/imagenesGDD/switchy.png" width="100">
 </td>
 <td>
   <strong> Switchy fase 2</strong>
@@ -277,6 +277,9 @@ Para el desarrollo de la historia, se craftean o se consiguen matando a jefes.
 | <img src="DocImg/imagenesGDD/Combustible_idle.png" width="50" height="50">  | Combustible            | RE + Petróleo |
 | <img src="DocImg/imagenesGDD/FibraCarbono_idle.png" width="50" height="50"> | Fibra de carbono                 | Carbono + Tuberí­a |
 | <img src="DocImg/imagenesGDD/ModuloComandos_idle.png" width="50" height="50"> | Módulo de comando                | Chip + Chip + Pantalla |
+| <img src="DocImg/imagenesGDD/Pantalla_idle.png" width="50" height="50"> | Pantalla                | Dropea el Boss |
+| <img src="DocImg/imagenesGDD/Eje_idle.png" width="50" height="50"> | Eje                | Dropea el Boss |
+| <img src="DocImg/imagenesGDD/NucleoPlasma_idle.png" width="50" height="50"> | Nucleo Plasma                | Dropea el Boss |
 
 ### NPC's
 
@@ -288,8 +291,10 @@ Para el desarrollo de la historia, se craftean o se consiguen matando a jefes.
 | <img src="../Proyecto/Material/Enemies/FotoEnemigos/Sierraf_idle.png" width="50" height="50">     | Sierra          | Desguace | Debajo | HP | At | Ve | FA |
 | <img src="../Proyecto/Material/Enemies/FotoEnemigos/Tornillerof_idle.png" width="50" height="50">     | Lanza-Tornillos         | Desguace | Debajo | HP | At | Ve | FA |
 | <img src="../Proyecto/Material/Enemies/FotoEnemigos/Trampaf_idle.png" width="50" height="50">     | Trampa Eléctrica         | Desguace | Debajo | HP | At | Ve | FA |
+| <img src="../Proyecto/Material/Enemies/FotoEnemigos/Dronf_idle.png" width="50" height="50">     | Dron         | Desguace | Debajo | HP | At | Ve | FA |
 | <img src="../Proyecto/Material/Enemies/FotoEnemigos/Carstrollerf_idle.png" width="50" height="50">     | Carstroller (Boss)          | Desguace | Debajo | HP | At | Ve | FA |
 | <img src="../Proyecto/Material/Enemies/FotoEnemigos/Gnomof_idle.png" width="50" height="50">     | Gnomo (Boss)          | Desguace | Debajo | HP | At | Ve | FA |
+| <img src="../Proyecto/Material/Enemies/Bosses/JefeBola/jefeBola.png" width="50" height="50">     | Gnomo (Boss)          | Desguace | Debajo | HP | At | Ve | FA |
 
 ##### Carstroller
 Enemigo jefe que se mueve solamente en el eje X. Está ubicado en la pared norte del nivel.
@@ -299,9 +304,8 @@ Ataque:
 
 ##### Gnomo
 Enemigo de tipo Jefe que divide su comportamiento en 2 fases:
-- 1º Fase (100-50 vida): Efectuará tres ataques: Perseguirá al jugador (si lo toca nos hace daño), invocará enemigos Sierra que estarán en la escena cierto tiempo (10s), lanza un hacha que rebota dos veces.
-- 2º Fase (50-0 vida): Será igual que la 1º fase haciendo un ataque más: Lanzará 4 motosierras en direcciones N, S, E, O. Si llegan a cierta distancia se dividen en 8 balas. El contacto con cualquier de dichos proyectiles hará daño al jugador.
-
+- 1º Fase (100-50 vida): Efectuará tres ataques: Perseguirá al jugador (si lo toca nos hace daño), lanzará 4 hachas en direcciones N, S, E, O. Si llegan a cierta distancia se dividen en 8 balas., lanza un hacha que rebota dos veces.
+- 2º Fase (50-0 vida): Será igual que la 1º fase haciendo un ataque más: Invocará enemigos Sierra que estarán en la escena cierto tiempo. 
 ### Referencias
 - The binding of Isaac.
 - Enter the gungeon.
@@ -344,7 +348,7 @@ Aquí vamos a definir los principales obstáculos que nos han surgido durante el
 El principal problema que hemos encontrado ha sido el tiempo. Al comienzo del proyecto, no fuimos conscientes de la importancia de tener unan planificación lo suficientemente concreta como para plantearnos si el tiempo del que disponíamos era suficiente para desarrollar el proyecto. No fuimos conscientes de esto hasta pasado el hito 1.
 Esto afectó directamente al juego, ya que tuvimos que recortar varias 'features' para ganar tiempo.
 
-Otro aspecto en el que hemos cometido errores ha sido en el arte. Al comienzo del proyecto, fuimos demasiado optimistas, lanzándonos a crear todo lo referente al estilo del juego(imágenes, música, etc.) por nosotros mismo. Esto produjo que a mitad del desarrollo tuvimos que dejar de lado algunos aspectos de la programación para introducir alguna persona mas a la creación de texturas.
+Otro aspecto en el que hemos cometido errores ha sido en el arte. Al comienzo del proyecto, fuimos demasiado optimistas, lanzándonos a crear todo lo referente al estilo del juego(imágenes, música, etc.) por nosotros mismo. Esto produjo que a mitad del desarrollo tuvimos que dejar de lado algunos aspectos de la programación para introducir alguna persona más a la creación de texturas.
 Además, también surgieron algunas diferencias en torno al estilo de dibujo que queríamos para el juego. Al final, se solucionó pero esto produjo que no todos los componentes del estudio estuviesen del todo de acuerdo con el resultado.
 
 Algo que tampoco ha funcionado del todo bien es el reparto de tareas. Comenzamos utilizando PivotalTracker para el reparto de las mismas, usando los comienzos de sprint como fecha para asignarlas. Pero como no poseíamos una planificación estricta, han surgido muchos problemas en torno a esto: en ocasiones existían dudas de quién estaba haciendo qué cosa; otras, al no notificar del comienzo/finalización de una tarea, había mas de una persona realizando el mismo trabajo.
@@ -368,13 +372,13 @@ Aquí vamos ha llevar acabo un pequeño auto análisis más profundo, puntuando 
 |Planificación del proyecto              | 5  |
 |Seguimiento de la planificación         | 7|  
 |Actuación frente a problemas inesperados| 8|  
-|Rendimiento general                     | 6  |
+|Rendimiento general                     | 7  |
 |Comunicación                            | 6  |
-|Cooperación como equipo                 | 7 | 
+|Cooperación como equipo                 | 8 | 
 |Utilización de los recursos             | 7 | 
 
 ## Conocimientos adquiridos
-Para concluir el POST-MORTEM, vamos a señalar cuáles han sido las mayores lecciones y conocimientos que hemos sacado de todo el proceso así como las consideraciones para siguientes proyectos.
+Para concluir, vamos a señalar cuáles han sido las mayores lecciones y conocimientos que hemos sacado de todo el proceso así como las consideraciones para siguientes proyectos.
 
 En primer lugar, vamos a señalar cuáles han sido los principales conocimientos adquiridos a través de todo este tiempo en el desarrollo de !Human:
 
@@ -399,7 +403,7 @@ En el desarrollo de este proyecto utilizamos **Scrum**. Para ello, al comienzo d
  Los sprints ocupan una semana de trabajo, y las fechas de comienzo y, por tanto finalización de estos, fueron ubicadas en lunes. Sin embargo, a partir del hito 1 decidimos cambiarlas a miércoles por unanimidad, ya que nos permitía más flexibilidad a la hora de completar las tareas. Así pues, cada miércoles antes de comenzar el reparto de tareas y comenzar a trabajar, tiene lugar una pequeña reunión de los componentes del grupo en los que analizamos el avance de cada uno durante ese sprint. Después de esa breve reunión, se procedía al reparto de tareas para el siguiente sprint. Para ellos, utilizamos **PivotalTracker** como se especifica en el apartado de Herramientas.
 ## Toma decisiones
 La toma general de decisiones sobre las tareas se deposita en las personas que han realizado ese trabajo, ya que lo han hecho según está descrito en la tarea (GDD y PivotalTracker). Es decir, cada avance en el desarrollo del juego es responsabilidad de las personas que han de implementarlo. Ahora bien, toda implementación está expuesta a crítica y evaluación del resto de componentes del estudio. En el caso de no haber concordancia de opiniones entre todos los desarrolladores, la decisión final residirá en las personas que la han implementado.
-En cuanto a las decisiones importantes, cómo modificar, quitar o añadir nuevas 'features' al juego, debe llegarse a consenso entre todos los componentes del estudio. Si no se llega a consenso, no se lleva a cabo el cambio.
+En cuanto a las decisiones importantes, cómo modificar, quitar o añadir nuevas 'features' al juego, debe llegarse a consenso entre todos los componentes del estudio. Si no se llega a consenso, se lleva a cabo el cambio segun la mayoría de los integrantes  del equipo.
 ## Modus Operandi
 El estudio está conformado actualmente por 8 personas. Para organizarnos y repartir las tareas, utilizamos distintas herramientas:
 
@@ -456,6 +460,8 @@ Los estados del juego
 <img src="DocImg/imagenesGDD/Boceto3.jpeg" width="602" height="364">
 
 <img src="DocImg/imagenesGDD/Boceto4.jpeg" width="602" height="364">
+<img src="DocImg/imagenesGDD/base.jpeg" width="602" height="364">
+<img src="DocImg/imagenesGDD/craft.jpeg" width="602" height="364">
 
 
 ----------
@@ -545,18 +551,3 @@ basicamente el GDD no esta definido del todo.
 - Terminar el GDD, al menos en el apartado de las entidades que contiene el juego.
 - Hacer la herencia para poder desarrollar contenido.
 - Una correcta distribución de tareas.
-
-## Conclusiones
-### Cargos Internos repartidos
-- Secretario: Francisco
-- Inspectores: Pachi y Ángel
-- Historia y arte: Mario y Manuel
-
-### Tareas repartidas hoy
-- Diseño conceptual de la historia, Mario y Manuel
-- Camara que siga al personaje, Victor y Carlos
-- Diseño de todos los objetos, Fran
-- Diseñar 3 enemigos (programación), Algaba, Mario, Manuel
-- Colisión personaje del personaje, Ángel y Pachi
-
-
