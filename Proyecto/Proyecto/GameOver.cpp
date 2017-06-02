@@ -6,8 +6,8 @@
 
 GameOver::GameOver(Juego* juego) : MenuJuego(juego)
 {
-	insertarBoton(Boton::ILUMINADO, 32, 32, playAgain, "Jugar de nuevo", "Intentalo otra vez, tu puedes");
-	insertarBoton(Boton::ILUMINADO, 32, 40, quit, "Salir", "Sal perdiendo el culo como el cobarde que eres");
+	insertarBoton(Boton::ILUMINADOBLANCO, 29, 32, playAgain, "Jugar de nuevo", "Intentalo otra vez, tu puedes");
+	insertarBoton(Boton::ILUMINADOBLANCO, 29, 40, quit, "Salir", "Sal perdiendo el culo como el cobarde que eres");
 	Fondo = pJuego->getTextura("Gameover", "idle");
 }
 

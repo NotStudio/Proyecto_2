@@ -4,9 +4,9 @@
 
 
 
-Dron::Dron(Juego* punteroJuego, int x, int y) : Enemigo(punteroJuego, { x,y,128,64 }, "Dron", 200), doDieAction(false)
-{
+Dron::Dron(Juego* punteroJuego, int x, int y) : Enemigo(punteroJuego, { x, y, 128, 64 }, "Dron", 200) {
 	//a ver si funciona
+	noDeadAnim = true;
 	delete shape;
 	shape = new b2CircleShape;
 	static_cast<b2CircleShape*>(shape)->m_p.Set((sprite->w / PPM) / 2, (sprite->h / PPM) / 2);

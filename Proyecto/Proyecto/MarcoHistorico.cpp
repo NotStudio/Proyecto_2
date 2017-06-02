@@ -11,12 +11,12 @@ MarcoHistorico::MarcoHistorico(Juego* pJuego) : MenuJuego(pJuego)
 	for (map<string, bool>::iterator it = memorias.begin(); it != memorias.end(); it++)
 	{
 		if (it->second){
-			insertarBoton(Boton::ILUMINADO, 13, 11 + contY, salir, it->first, "kek");
+			insertarBoton(Boton::ILUMINADOBLANCO, 13, 11 + contY, salir, it->first, "kek");
 			contY += 5;
 			
 		}
 	}
-	insertarBoton(Boton::ILUMINADO, 13, 50, salir, "Salir", "Vuelve a historia");
+	insertarBoton(Boton::ILUMINADOBLANCO, 13, 50, salir, "Salir", "Vuelve a historia");
 	Texto.LoadFuente(pJuego->getTipografia("Acme____", 30));
 	imgObj = pJuego->getTextura(botones[activo]->getNombre(), "idle");
 
