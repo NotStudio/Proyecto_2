@@ -58,7 +58,7 @@ void kukxo(string dir, _finddata_t data, TiposArchivo const & T, vector<string> 
 vector<string> Buscador(TiposArchivo const T)
 {
 	vector<string> ass;
-	string dir = "../Material/";
+	string dir = "Material/";
 
 	_finddata_t data;
 	int ff = _findfirst((dir + "*.*").c_str(), &data);
